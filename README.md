@@ -2,7 +2,9 @@
 
 ###Application chrome for Px App Hub
 
-_Includes:_
+##[Live Demo](https://github.build.ge.com/pages/212326609/pxh-chrome-demo)
+
+*Includes:*
 * pxh-header
 * pxh-footer
 * pxh-drawer
