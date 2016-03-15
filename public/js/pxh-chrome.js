@@ -18,38 +18,38 @@
       });
   }
 
-  function setNavState(){
-    // Set initial highlighted & expanded state
-    for(var i=0;i<navItems.length;i++){
-      var item = navItems[i];
-      var link = item.querySelector('a');
-      var path = link.getAttribute('href');
-      // Hash routing
-      var app = path.split('#')[0];
-      var route = path.split('#')[1];
-      // console.log(app,route);
-      // Highlight if item is selected
-      // TODO: subnav highlight
-      if(path === selectedApp + selectedRoute){
-        link.setAttribute('class', 'pxh-navigation__link pxh-navigation__link--selected');
-      } else {
-        link.setAttribute('class', 'pxh-navigation__link');
-      }
-      // Expand the subnav for the selected app
-      if(app === selectedApp && item.querySelector('ul')){
-        item.querySelector('ul').setAttribute('class', 'pxh-navigation__sub-list');
-      }
-    }
-  }
+  // function setNavState(){
+  //   // Set initial highlighted & expanded state
+  //   for(var i=0;i<navItems.length;i++){
+  //     var item = navItems[i];
+  //     var link = item.querySelector('a');
+  //     var path = link.getAttribute('href');
+  //     // Hash routing
+  //     var app = path.split('#')[0];
+  //     var route = path.split('#')[1];
+  //     // console.log(app,route);
+  //     // Highlight if item is selected
+  //     // TODO: subnav highlight
+  //     if(path === selectedApp + selectedRoute){
+  //       link.setAttribute('class', 'pxh-navigation__link pxh-navigation__link--selected');
+  //     } else {
+  //       link.setAttribute('class', 'pxh-navigation__link');
+  //     }
+  //     // Expand the subnav for the selected app
+  //     if(app === selectedApp && item.querySelector('ul')){
+  //       item.querySelector('ul').setAttribute('class', 'pxh-navigation__sub-list');
+  //     }
+  //   }
+  // }
 
-  function watchState(){
-    // Set up a watch on the hashchange event
-    window.onhashchange = function(e){
-      selectedRoute = '#' + e.newURL.split('#')[1];
-      console.log('nav changed to',selectedRoute);
-      setNavState();
-    };
-  }
+  // function watchState(){
+  //   // Set up a watch on the hashchange event
+  //   window.onhashchange = function(e){
+  //     selectedRoute = '#' + e.newURL.split('#')[1];
+  //     console.log('nav changed to',selectedRoute);
+  //     setNavState();
+  //   };
+  // }
 
   var controlTriggers = [
     '.pxh-drawer-toggle__link',
@@ -106,8 +106,8 @@
   }
 
   // INIT
-  setNavState();
-  watchState();
+  // setNavState();
+  // watchState();
   bindControls();
   loginButton();
 
