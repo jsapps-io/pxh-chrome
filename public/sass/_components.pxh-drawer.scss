@@ -7,9 +7,8 @@
   z-index: 1000;
   position: fixed;
   top: 0;
-  left: -2 * $padding-unit;
-  width: 24 * $padding-unit;
-  padding-left: 2 * $padding-unit;
+  left: 0;
+  width: 15 * $inuit-base-spacing-unit;
   height: 100%;
   background-color: $gray10;
           transition: all 200ms ease-out;
@@ -17,21 +16,20 @@
 
 @include mq($until: md) {
   .pxh-drawer--hidden-until\@md {
-    left: -24 * $padding-unit;
+    left: -15 * $inuit-base-spacing-unit;
   }
 }
 
 @include mq($from: md) {
   .pxh-drawer--narrow\@md {
-    width: 7 * $padding-unit;
-    left: -2 * $padding-unit;
+    width: 3 * $inuit-base-spacing-unit;
   }
 }
 
 // "Hamburger" button for toggling the drawer open/closed
 .pxh-drawer-toggle {
-  margin: $padding-unit * 1.5 0 0 ($padding-unit * 1.5);
-  height: $padding-unit * 3.5;
+  margin: ($inuit-base-spacing-unit * 0.75) 0 0 ($inuit-base-spacing-unit * 0.75);
+  height: $inuit-base-spacing-unit * 1.75;
 }
 
 @include mq($from: md) {

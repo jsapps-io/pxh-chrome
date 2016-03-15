@@ -11,7 +11,6 @@
 @import "px-box-sizing-design/_generic.box-sizing";
 
 // ** #TOOLS ** //
-
 $mq-breakpoints: (
     xs:  18em,
     sm:  23em,
@@ -34,7 +33,6 @@ $fa-version         : "4.4.0" !default;
 // ** #OBJECTS ** //
 
 // ** #COMPONENTS ** //
-$padding-unit: 10px; // change this to px baseline something or another
 @import "components.pxh-badge.scss";
 @import "components.pxh-drawer.scss";
 @import "components.pxh-footer.scss";

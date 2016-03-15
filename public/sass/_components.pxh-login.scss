@@ -6,8 +6,8 @@
 .pxh-login {
   background-color: $gray10;
   position: relative;
-  padding-left: $padding-unit * 0.7;
-  height: 5 * $padding-unit;
+  padding-left: $inuit-base-spacing-unit / 2;
+  height: 3 * $inuit-base-spacing-unit;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -28,24 +28,24 @@
 
 .pxh-login__avatar-icon.pxh-login__avatar-icon.pxh-login__avatar-icon.pxh-login__avatar-icon.pxh-login__avatar-icon {  // yes, in fact, it DOES take a five-deep class chain to override px-theme here
   text-align: center;
-  font-size: 24px; // needs a !important with any less than a five-deep class chain
-  padding-top: $padding-unit / 5;
+  font-size: $inuit-base-font-size * 2; // needs a !important with any less than a five-deep class chain
+  padding-top: $inuit-base-spacing-unit / 5;
   background-color: $gray4;
   color: $gray8;
-  height: $padding-unit * 3.5;
-  width: $padding-unit * 3.5;
+  height: $inuit-base-spacing-unit * 2;
+  width: $inuit-base-spacing-unit * 2;
   border-radius: 100%;
   border: 1px solid $gray3;
 }
 
 .pxh-login__avatar-image {
-  height: $padding-unit * 3.5;
-  width: $padding-unit * 3.5;
+  height: $inuit-base-spacing-unit * 2.5;
+  width: $inuit-base-spacing-unit * 2.5;
   border-radius: 100%;
 }
 
 .pxh-login__name {
-  padding-left: $padding-unit;
+  padding-left: $inuit-base-spacing-unit;
 }
 
 .pxh-login__name--hidden {
@@ -57,11 +57,11 @@
 }
 
 .pxh-login__control {
-  padding-left: $padding-unit / 2;
+  padding-left: $inuit-base-spacing-unit / 4;
 }
 
 .pxh-login__settings {
-  padding-right: $padding-unit;
+  padding-right: $inuit-base-spacing-unit / 2;
 }
 
 .pxh-login__settings--hidden {
@@ -80,11 +80,11 @@
 
 .pxh-login-menu {
   position: absolute;
-  bottom: $padding-unit * 5;
+  bottom: $inuit-base-spacing-unit * 2;
   left: -9999px;
   background-color: $white;
   color: $black;
-  width: $padding-unit * 15;
+  width: $inuit-base-spacing-unit * 8;
   border-radius: 2px;
   -webkit-box-shadow: 0 1px 2px 0 rgba(0,0,0,0.25);
   -moz-box-shadow: 0 1px 2px 0 rgba(0,0,0,0.25);
@@ -92,7 +92,7 @@
 }
 
 .pxh-login-menu--visible {
-  left: $padding-unit * 3;
+  left: $inuit-base-spacing-unit * 2;
 }
 
 .pxh-login-menu__list.pxh-login-menu__list.pxh-login-menu__list { // chained to override px-theme
@@ -108,7 +108,7 @@
 
 .pxh-login-menu__link.pxh-login-menu__link { // chained to override px-theme
   display: block;
-  padding: $padding-unit;
+  padding: $inuit-base-spacing-unit;
   text-decoration: none;
   color: $black;
 }

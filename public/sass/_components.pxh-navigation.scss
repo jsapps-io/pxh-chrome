@@ -11,7 +11,7 @@
       display: none;
     }
     .pxh-navigation__link {
-      padding-left: $padding-unit * 3.8;
+      padding-left: $inuit-base-spacing-unit * 0.75;
     }
     .pxh-navigation__sub-list {
       display: none;
@@ -26,14 +26,12 @@
 }
 
 .pxh-navigation__item-icon {
-  // padding-right: $padding-unit;
-  width: $padding-unit * 3;
+  width: $inuit-base-spacing-unit * 1.5;
 }
 
 .pxh-navigation__link.pxh-navigation__link.pxh-navigation__link { // chained to override px-theme
-  margin-left: -2 * $padding-unit;
   display: block;
-  padding: (1.5 * $padding-unit) ($padding-unit / 2) (1.5 * $padding-unit) (3.8 * $padding-unit);
+  padding: $inuit-base-spacing-unit ($inuit-base-spacing-unit / 3) $inuit-base-spacing-unit ($inuit-base-spacing-unit);
   color: $white;
   text-decoration: none;
 }
@@ -79,9 +77,8 @@
 
 .pxh-navigation__sub-link.pxh-navigation__sub-link.pxh-navigation__sub-link { // chained to override px-theme
   font-size: 13px;
-  margin-left: -2 * $padding-unit;
   display: block;
-  padding: ($padding-unit / 2) 0 ($padding-unit / 2) $padding-unit * 7;
+  padding: ($inuit-base-spacing-unit / 2) 0 ($inuit-base-spacing-unit / 2) $inuit-base-spacing-unit * 2.75;
   display: block;
   color: $white;
   text-decoration: none;

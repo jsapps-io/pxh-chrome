@@ -1,8 +1,6 @@
 // Wrapper around all content
 .pxh-viewport {
-  margin-top: $padding-unit * 5.5;
-  background-color: $gray5;
-  padding-bottom: 0.1px; // forces fill from bottom margin of last card
+  margin-top: $inuit-base-spacing-unit * 3;
 }
 
 // Wrapper around cards
@@ -12,13 +10,13 @@
 
 @include mq($from: md) {
   .pxh-view--wide\@md {
-    margin-left: 5 * $padding-unit;
+    margin-left: $inuit-base-spacing-unit * 3;
   }
 }
 
 @include mq($from: lg) {
   .pxh-view--narrow\@lg {
-    margin-left: 22 * $padding-unit;
+    margin-left: 15 * $inuit-base-spacing-unit;
   }
 }
 
@@ -27,16 +25,16 @@
   top: 0;
   border-bottom: 1px solid $gray6;
   width: 100%;
-  height: 5 * $padding-unit;
+  height: 3 * $inuit-base-spacing-unit;
   background-color: $white;
-  padding: (1 * $padding-unit) 0 0 0;
+  padding: ($inuit-base-spacing-unit / 1.25) 0 0 0;
   margin: 0;
           transition: all 200ms ease-out;
 }
 
 @include mq($from: md) {
   .pxh-view-header--wide\@md {
-    left: 3 * $padding-unit;
+    left: 3 * $inuit-base-spacing-unit;
     right: 0;
     margin-right: auto;
     margin-left: auto;
@@ -45,8 +43,7 @@
 
 @include mq($from: lg) {
   .pxh-view-header--narrow\@lg {
-    left: 11 * $padding-unit;
-    right: 0;
+    left: 8 * $inuit-base-spacing-unit;
     margin-right: auto;
     margin-left: auto;
   }
@@ -73,8 +70,8 @@
 
 .pxh-view-header-drawer-toggle {
   position: fixed;
-  top: $padding-unit * 1.5;
-  left: $padding-unit * 1.5;
+  top: $inuit-base-spacing-unit / 1.25;
+  left: $inuit-base-spacing-unit / 1.25;
   z-index: 500; // making the same as overlay to overcome IE10 clickthru bug with overlay
           transition: opacity 100ms ease-out;
 }
