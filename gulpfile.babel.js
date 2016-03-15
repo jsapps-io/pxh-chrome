@@ -68,6 +68,10 @@ gulp.task('extras', () => {
   }).pipe(gulp.dest('dist'));
 });
 
+gulp.task('img', () => {
+  return gulp.src(['public/img/*']).pipe(gulp.dest('dist/img'));
+});
+
 gulp.task('clean', del.bind(null, ['.tmp', 'dist']));
 
 gulp.task('serve', ['sass', 'js'], () => {
@@ -84,7 +88,7 @@ gulp.task('serve', ['sass', 'js'], () => {
 
   gulp.watch([
     'public/*.html',
-    'public/images/**/*'
+    'public/img/*'
   ]).on('change', reload);
 
   gulp.watch('public/sass/**/*.scss', ['sass']);
@@ -120,7 +124,7 @@ gulp.task('serve:test', ['js'], () => {
   gulp.watch('test/spec/**/*.js', ['lint:test']);
 });
 
-gulp.task('build', ['lint', 'html', 'extras'], () => {
+gulp.task('build', ['lint', 'html', 'extras', 'img'], () => {
   return gulp.src('dist/**/*').pipe($.size({title: 'build', gzip: true}));
 });
 
