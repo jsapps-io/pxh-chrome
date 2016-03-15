@@ -1,0 +1,12 @@
+// utility class to disable scrolling
+@include mq($until: lg) {
+  .pxh-disable-scroll-until\@lg {
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+  }
+}
+
+.pxh-is-hidden {
+  display: none;
+}

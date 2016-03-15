@@ -1,0 +1,122 @@
+
+.pxh-login__spacer {
+  flex-grow: 1;
+}
+
+.pxh-login {
+  background-color: $gray10;
+  position: relative;
+  padding-left: $padding-unit * 0.7;
+  height: 5 * $padding-unit;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.pxh-login__action.pxh-login__action.pxh-login__action { // chained to override px-theme
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: $white;
+  text-decoration: none;
+}
+
+.pxh-login__action:link.pxh-login__action:link.pxh-login__action:link,
+.pxh-login__action:visited.pxh-login__action:visited.pxh-login__action:visited { // chained to override px-theme
+  color: $white;
+}
+
+.pxh-login__avatar-icon.pxh-login__avatar-icon.pxh-login__avatar-icon.pxh-login__avatar-icon.pxh-login__avatar-icon {  // yes, in fact, it DOES take a five-deep class chain to override px-theme here
+  text-align: center;
+  font-size: 24px; // needs a !important with any less than a five-deep class chain
+  padding-top: $padding-unit / 5;
+  background-color: $gray4;
+  color: $gray8;
+  height: $padding-unit * 3.5;
+  width: $padding-unit * 3.5;
+  border-radius: 100%;
+  border: 1px solid $gray3;
+}
+
+.pxh-login__avatar-image {
+  height: $padding-unit * 3.5;
+  width: $padding-unit * 3.5;
+  border-radius: 100%;
+}
+
+.pxh-login__name {
+  padding-left: $padding-unit;
+}
+
+.pxh-login__name--hidden {
+  display: none;
+}
+
+.pxh-login__control--hidden {
+  display: none;
+}
+
+.pxh-login__control {
+  padding-left: $padding-unit / 2;
+}
+
+.pxh-login__settings {
+  padding-right: $padding-unit;
+}
+
+.pxh-login__settings--hidden {
+  display: none;
+}
+
+.pxh-login__settings-link.pxh-login__settings-link.pxh-login__settings-link { // chained to override px-theme
+  color: $white;
+  text-decoration: none;
+}
+
+.pxh-login__settings-link:link.pxh-login__settings-link:link.pxh-login__settings-link:link,
+.pxh-login__settings-link:visited.pxh-login__settings-link:visited.pxh-login__settings-link:visited { // chained to override px-theme
+  color: $white;
+}
+
+.pxh-login-menu {
+  position: absolute;
+  bottom: $padding-unit * 5;
+  left: -9999px;
+  background-color: $white;
+  color: $black;
+  width: $padding-unit * 15;
+  border-radius: 2px;
+  -webkit-box-shadow: 0 1px 2px 0 rgba(0,0,0,0.25);
+  -moz-box-shadow: 0 1px 2px 0 rgba(0,0,0,0.25);
+  box-shadow: 0 1px 2px 0 rgba(0,0,0,0.25);
+}
+
+.pxh-login-menu--visible {
+  left: $padding-unit * 3;
+}
+
+.pxh-login-menu__list.pxh-login-menu__list.pxh-login-menu__list { // chained to override px-theme
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.pxh-login-menu__divider {
+  display: block;
+  border-top: 1px solid $gray3;
+}
+
+.pxh-login-menu__link.pxh-login-menu__link { // chained to override px-theme
+  display: block;
+  padding: $padding-unit;
+  text-decoration: none;
+  color: $black;
+}
+
+.pxh-login-menu__link:link.pxh-login-menu__link:link,
+.pxh-login-menu__link:visited.pxh-login-menu__link:visited { // chained to override px-theme
+  color: $black;
+}
+.pxh-login-menu__link:hover.pxh-login-menu__link:hover { // chained to override px-theme
+  background-color: $gray2;
+}

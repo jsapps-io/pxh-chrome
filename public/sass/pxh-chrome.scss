@@ -1,3 +1,40 @@
 /*------------------------------------*\
     #PXH-CHROME
 \*------------------------------------*/
+
+// ** #SETTINGS ** //
+
+@import "px-colors-design/_settings.colors";
+
+// ** #GENERIC ** //
+@import "px-normalize-design/_generic.normalize";
+@import "px-box-sizing-design/_generic.box-sizing";
+
+// ** #TOOLS ** //
+
+$mq-breakpoints: (
+    xs:  18em,
+    sm:  23em,
+    md:  45em,
+    lg:  60em,
+    xl:  75em,
+);
+@import "sass-mq/mq";
+
+// ** #ELEMENTS ** //
+
+// ** #OBJECTS ** //
+
+// ** #COMPONENTS ** //
+$padding-unit: 10px; // change this to px baseline something or another
+@import "components.pxh-badge.scss";
+@import "components.pxh-drawer.scss";
+@import "components.pxh-footer.scss";
+@import "components.pxh-header.scss";
+@import "components.pxh-login.scss";
+@import "components.pxh-navigation.scss";
+@import "components.pxh-overlay.scss";
+@import "components.pxh-view.scss";
+
+// ** #OVERRIDES ** //
+@import "overrides.pxh-utilities.scss";
