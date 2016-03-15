@@ -1,28 +1,38 @@
 .pxh-badge {
   text-align: center;
-  background-color: $primary-blue;
+  background-color: $gray5;
   display: inline-block;
   font-size: 13px;
   font-weight: bold;
-  font-color: $white;
+  color: $white;
   line-height: 1;
   padding: 3px 5px 2px 5px;
   border-radius: 8px;
-}
-
-.pxh-badge--navigation {
-  float: right;
-  background-color: $select-blue-pressed;
-}
-
-.pxh-badge--danger {
-  background-color: $red;
-}
-
-.pxh-badge--warning {
-  background-color: $orange;
-}
-
-.pxh-badge--success {
-  background-color: $green;
+  &--navigation {
+    // float: right;
+    background-color: $select-blue-pressed;
+  }
+  &--primary {
+    background-color: $primary-blue;
+  }
+  &--important {
+    background-color: $alert-red;
+  }
+  &--warning {
+    background-color: $alert-orange;
+  }
+  &--error {
+    background-color: $alert-yellow;
+  }
+  &--info {
+    background-color: $alert-blue;
+  }
+  &--healthy-black {
+    background-color: $black;
+  }
+  &--healthy-white {
+    background-color: $white;
+    border: 1px solid $gray5; // unless our box model is super smart, this is gonna misalign things
+    color: $black;
+  }
 }
