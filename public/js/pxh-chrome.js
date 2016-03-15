@@ -27,7 +27,7 @@
       // Hash routing
       var app = path.split('#')[0];
       var route = path.split('#')[1];
-      console.log(app,route);
+      // console.log(app,route);
       // Highlight if item is selected
       // TODO: subnav highlight
       if(path === selectedApp + selectedRoute){
