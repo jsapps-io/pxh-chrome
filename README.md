@@ -4,7 +4,7 @@
 
 ##[Live Demo](https://github.build.ge.com/pages/212326609/pxh-chrome-demo)
 
-*Includes:*
+**Includes:**
 * pxh-header
 * pxh-footer
 * pxh-drawer
