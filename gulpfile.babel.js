@@ -72,9 +72,15 @@ gulp.task('img', () => {
   return gulp.src(['public/img/*']).pipe(gulp.dest('dist/img'));
 });
 
+gulp.task('fonts', () => {
+  return gulp.src('bower_components/**/*.{eot,svg,ttf,woff,woff2}')
+    .pipe(gulp.dest('.tmp/fonts'))
+    .pipe(gulp.dest('dist/fonts'))
+});
+
 gulp.task('clean', del.bind(null, ['.tmp', 'dist']));
 
-gulp.task('serve', ['sass', 'js'], () => {
+gulp.task('serve', ['sass', 'js', 'extras', 'img', 'fonts'], () => {
   browserSync({
     notify: false,
     port: 9000,
@@ -124,7 +130,7 @@ gulp.task('serve:test', ['js'], () => {
   gulp.watch('test/spec/**/*.js', ['lint:test']);
 });
 
-gulp.task('build', ['lint', 'html', 'extras', 'img'], () => {
+gulp.task('build', ['lint', 'html', 'extras', 'img', 'fonts'], () => {
   return gulp.src('dist/**/*').pipe($.size({title: 'build', gzip: true}));
 });
 
