@@ -13,7 +13,7 @@
   function loginButton() {
       loginAction.addEventListener('click', function(e) {
         e.preventDefault();
-        console.log(loginMenu);
+        // console.log(loginMenu);
         loginMenu.classList.toggle('pxh-login-menu--visible');
       });
   }
@@ -94,7 +94,7 @@
         var el = document.querySelector(key);
         if (toggleTargets[key].indexOf(' ')) {
           var classes = toggleTargets[key].split(' ');
-          console.log(classes);
+          // console.log(classes);
           for (var i = 0; i < classes.length; i++) {
             el.classList.toggle(classes[i]);
           }
