@@ -93,8 +93,18 @@ $pxh-drawer-toggle-margin: $inuit-base-spacing-unit * 0.75 !default;
   transition: all 300ms ease-in-out;
 }
 
+// Hide the toggle button in the view-header. This class is
+// used even though the drawer covers the view-header toggle
+// button, because sometimes click events on the drawer toggle
+// are intercepted by the view-header toggle as well, resulting
+// in a bounce scenario.
+.pxh-view-header-drawer-toggle--hidden {
+  left: $pxh-drawer-width-narrow * -1;
+  opacity: 0;  
+}
+
 // From the @md (tablet) breakpoint and wider, hide the
-// toggle button in the view-toggle, as the toggle in the
+// toggle button in the view-header, as the toggle in the
 // narrow left drawer is persistently displayed instead.
 @include mq($from: md) {
   .pxh-view-header-drawer-toggle--hidden\@md {

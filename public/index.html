@@ -112,7 +112,7 @@
 
     </div>
 
-    <div class="pxh-overlay pxh-overlay--hidden"></div>
+    <div class="pxh-overlay pxh-overlay--hidden pxh-overlay--hidden@lg"></div>
 
     <div class="pxh-view-header-drawer-toggle pxh-view-header-drawer-toggle--hidden@md">
       <a href="#" class="pxh-view-header-drawer-toggle__link">
@@ -144,8 +144,9 @@
           <li>Find <code>.pxh-drawer</code> and toggle the classes <code>pxh-drawer--hidden-until@md</code> and <code>pxh-drawer--narrow@md</code> on it.</li>
         </ul>
         
-<h4>Sass:</h4>
-<pre><code>// Set the default styles for the wide/active state of the drawer.
+        <h4>Sass:</h4>
+
+        <pre><code>// Set the default styles for the wide/active state of the drawer.
 .pxh-drawer {
   z-index: 1000;
   position: fixed;
@@ -187,7 +188,7 @@
 
         <h4>Sass:</h4>
 
-<pre><code>// From the @md (tablet) breakpoint and wider,
+        <pre><code>// From the @md (tablet) breakpoint and wider,
 // display pxh-login__name in its narrow state.
 // Remove this class to display the drawer in its wide state.
 @include mq($from: md) {
@@ -223,12 +224,12 @@
         <ul>
           <li>Find <code>.pxh-view</code> and toggle the class <code>pxh-view--narrow@lg</code> on it</li>
           <li>Find <code>.pxh-view-header</code> and toggle the class <code>pxh-view-header--narrow@lg</code> on it</li>
-          <li>Find <code>.pxh-view-header-drawer-toggle</code> and toggle the class <code>pxh-view-header-drawer-toggle--hidden@md</code> on it</li>
+          <li>Find <code>.pxh-view-header-drawer-toggle</code> and toggle the classes <code>pxh-view-header-drawer-toggle--hidden@md and pxh-view-header-drawer-toggle--hidden</code> on it</li>
         </ul>
 
         <h4>Sass:</h4>
 
-<pre><code>// From the @md (tablet) breakpoint and wider,
+        <pre><code>// From the @md (tablet) breakpoint and wider,
 // the view is displayed in its wide state, which accounts
 // for the width of the narrow state of the drawer on the left.
 @include mq($from: md) {
@@ -264,12 +265,23 @@
   }
 }
 
+// Hide the toggle button in the view-header. This class is
+// used even though the drawer covers the view-header toggle
+// button, because sometimes click events on the drawer toggle
+// are intercepted by the view-header toggle as well, resulting
+// in a bounce scenario.
+.pxh-view-header-drawer-toggle--hidden {
+  left: $pxh-drawer-width-narrow * -1;
+  opacity: 0;  
+}
+
 // From the @md (tablet) breakpoint and wider, hide the
-// toggle button in the view-toggle, as the toggle in the
+// toggle button in the view-header, as the toggle in the
 // narrow left drawer is persistently displayed instead.
 @include mq($from: md) {
   .pxh-view-header-drawer-toggle--hidden\@md {
-      display: none;
+      left: $pxh-drawer-width-narrow * -1;
+      opacity: 0;
   }
 }</code></pre>
 
