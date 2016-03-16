@@ -132,8 +132,149 @@
       <div style="height: 5px;"></div>
 
       <div style="margin: 0 5px 5px 5px; padding: 20px; background-color: white;">
-        <h1>Microapp View Content</h1>
+        <h1>pxh-chrome Documentation</h1>
+
+        <h3>pxh-drawer States</h3>
+
+        <h4>Javascript:</h4>
+
+        <p>When the user clicks <code>.pxh-drawer-toggle__link</code> or <code>.pxh-view-header-drawer-toggle__link</code>&hellip;</p>
+
+        <ul>
+          <li>Find <code>.pxh-drawer</code> and toggle the classes <code>pxh-drawer--hidden-until@md</code> and <code>pxh-drawer--narrow@md</code> on it.</li>
+        </ul>
         
+<h4>Sass:</h4>
+<pre><code>// Set the default styles for the wide/active state of the drawer.
+.pxh-drawer {
+  z-index: 1000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: $pxh-drawer-width-wide;
+  height: 100%;
+  background-color: $pxh-drawer-bg-color;
+  transition: all 500ms ease-out;
+}
+
+// Keep the inactive drawer hidden off-screen until the @md (tablet) breakpoint.
+@include mq($until: md) {
+  .pxh-drawer--hidden-until\@md {
+    left: ($pxh-drawer-width-wide * -1);
+  }
+}
+
+// From the @md (tablet) breakpoint and wider,
+// the inactive drawer is displayed in its narrow state.
+// Remove this class to display the drawer in its wide state.
+@include mq($from: md) {
+  .pxh-drawer--narrow\@md {
+    width: $pxh-drawer-width-narrow;
+  }
+}</code></pre>
+
+        <h3>pxh-login States</h3>
+
+        <h4>Javascript:</h4>
+
+        <p>When the user clicks <code>.pxh-drawer-toggle__link</code> or <code>.pxh-view-header-drawer-toggle__link</code>&hellip;</p>
+
+        <ul>
+          <li>Find <code>.pxh-login__name</code> and toggle the class <code>pxh-login__name--narrow@md</code> on it</li>
+          <li>Find <code>.pxh-login__caret</code> and toggle the class <code>pxh-login__caret--narrow@md</code> on it</li>
+          <li>Find <code>.pxh-login__settings</code> and toggle the class <code>pxh-login__settings--narrow@md</code> on it</li>
+        </ul>
+
+        <h4>Sass:</h4>
+
+<pre><code>// From the @md (tablet) breakpoint and wider,
+// display pxh-login__name in its narrow state.
+// Remove this class to display the drawer in its wide state.
+@include mq($from: md) {
+  .pxh-login__name--narrow\@md {
+    display: none;
+  }
+}
+
+// From the @md (tablet) breakpoint and wider,
+// display pxh-login__caret in its narrow state.
+// Remove this class to display the drawer in its wide state.
+@include mq($from: md) {
+  .pxh-login__caret--narrow\@md {
+    display: none;
+  }
+}
+
+// From the @md (tablet) breakpoint and wider,
+// display pxh-login__settings in its narrow state.
+// Remove this class to display the drawer in its wide state.
+@include mq($from: md) {
+  .pxh-login__settings--narrow\@md {
+    display: none;
+  }
+}</code></pre>
+
+        <h3>pxh-view and pxh-view-header States</h3>
+
+        <h4>Javascript:</h4>
+
+        <p>When the user clicks <code>.pxh-drawer-toggle__link</code> or <code>.pxh-view-header-drawer-toggle__link</code>&hellip;</p>
+
+        <ul>
+          <li>Find <code>.pxh-view</code> and toggle the class <code>pxh-view--narrow@lg</code> on it</li>
+          <li>Find <code>.pxh-view-header</code> and toggle the class <code>pxh-view-header--narrow@lg</code> on it</li>
+          <li>Find <code>.pxh-view-header-drawer-toggle</code> and toggle the class <code>pxh-view-header-drawer-toggle--hidden@md</code> on it</li>
+        </ul>
+
+        <h4>Sass:</h4>
+
+<pre><code>// From the @md (tablet) breakpoint and wider,
+// the view is displayed in its wide state, which accounts
+// for the width of the narrow state of the drawer on the left.
+@include mq($from: md) {
+  .pxh-view--wide\@md {
+    margin-left: $pxh-drawer-width-narrow;
+  }
+}
+
+// From the @lg (desktop) breakpoint and wider,
+// add this class to display the view in its narrow state,
+// which acccounts for the width of the wide state of the drawer.
+@include mq($from: lg) {
+  .pxh-view--narrow\@lg {
+    margin-left: $pxh-drawer-width-wide;
+  }
+}
+
+// From the @md (tablet) breakpoint and wider,
+// the view header is displayed in its wide state, which accounts
+// for the width of the narrow state of the drawer on the left.
+@include mq($from: md) {
+  .pxh-view-header--wide\@md {
+    left: $pxh-drawer-width-narrow;
+  }
+}
+
+// From the @lg (desktop) breakpoint and wider,
+// add this class to display the view header in its narrow state,
+// which accounts for the width of the wide state of the drawer.
+@include mq($from: lg) {
+  .pxh-view-header--narrow\@lg {
+    left: $pxh-drawer-width-wide;
+  }
+}
+
+// From the @md (tablet) breakpoint and wider, hide the
+// toggle button in the view-toggle, as the toggle in the
+// narrow left drawer is persistently displayed instead.
+@include mq($from: md) {
+  .pxh-view-header-drawer-toggle--hidden\@md {
+      display: none;
+  }
+}</code></pre>
+
+
+
         <h3>pxh-badge Classes</h3>
 
         <span class="pxh-badge">123</span> <code>&lt;span class="pxh-badge"&gt;123&lt;/span&gt;</code><br>
