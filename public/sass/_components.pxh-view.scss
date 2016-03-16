@@ -88,6 +88,7 @@ $pxh-drawer-toggle-margin: $inuit-base-spacing-unit * 0.75 !default;
   position: fixed;
   top: $pxh-drawer-toggle-margin;
   left: $pxh-drawer-toggle-margin;
+  opacity: 1;
   z-index: 500; // making the same as overlay to overcome IE10 clickthru bug with overlay
   transition: all 300ms ease-in-out;
 }
@@ -98,6 +99,7 @@ $pxh-drawer-toggle-margin: $inuit-base-spacing-unit * 0.75 !default;
 @include mq($from: md) {
   .pxh-view-header-drawer-toggle--hidden\@md {
       left: $pxh-drawer-width-narrow * -1;
+      opacity: 0;
   }
 }
 
