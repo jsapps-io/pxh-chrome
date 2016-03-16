@@ -1,82 +1,101 @@
+/*------------------------------------*\
+    #PXH-LOGIN
+\*------------------------------------*/
 
-.pxh-login__spacer {
-  flex-grow: 1;
-}
+$pxh-login-height:  $inuit-base-spacing-unit * 3;
+$pxh-login-padding: $inuit-base-spacing-unit / 2;
+$pxh-login-avatar-height-width: $inuit-base-spacing-unit * 2;
 
 .pxh-login {
-  background-color: $gray10;
-  position: relative;
-  padding-left: $inuit-base-spacing-unit / 2;
-  height: 3 * $inuit-base-spacing-unit;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+  background-color: $pxh-drawer-bg-color;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: $pxh-login-padding;
 }
 
-.pxh-login__action.pxh-login__action.pxh-login__action { // chained to override px-theme
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+.pxh-login__link.pxh-login__link.pxh-login__link,
+.pxh-login__link:link.pxh-login__link:link.pxh-login__link:link,
+.pxh-login__link:visited.pxh-login__link:visited.pxh-login__link:visited { // chained to override px-theme
+  display: block;
   color: $white;
   text-decoration: none;
 }
 
-.pxh-login__action:link.pxh-login__action:link.pxh-login__action:link,
-.pxh-login__action:visited.pxh-login__action:visited.pxh-login__action:visited { // chained to override px-theme
-  color: $white;
+.pxh-login__avatar {
+  float: left;
 }
 
 .pxh-login__avatar-icon.pxh-login__avatar-icon.pxh-login__avatar-icon.pxh-login__avatar-icon.pxh-login__avatar-icon {  // yes, in fact, it DOES take a five-deep class chain to override px-theme here
-  text-align: center;
-  font-size: $inuit-base-font-size * 2; // needs a !important with any less than a five-deep class chain
+  height: $pxh-login-avatar-height-width;
+  width: $pxh-login-avatar-height-width;
+  font-size: $inuit-base-font-size * 1.5; // needs a !important with anything less than a five-deep class chain
+  padding-left: $inuit-base-spacing-unit / 2.5;
   padding-top: $inuit-base-spacing-unit / 5;
-  background-color: $gray4;
-  color: $gray8;
-  height: $inuit-base-spacing-unit * 2;
-  width: $inuit-base-spacing-unit * 2;
+  background-color: $gray7;
+  color: $black;
   border-radius: 100%;
-  border: 1px solid $gray3;
 }
 
 .pxh-login__avatar-image {
-  height: $inuit-base-spacing-unit * 2.5;
-  width: $inuit-base-spacing-unit * 2.5;
+  height: $pxh-login-avatar-height-width;
+  width: $pxh-login-avatar-height-width;
   border-radius: 100%;
 }
 
 .pxh-login__name {
-  padding-left: $inuit-base-spacing-unit;
+  padding: $pxh-login-avatar-height-width / 4 0 0 $pxh-login-padding;
+  float: left;
 }
 
-.pxh-login__name--hidden {
-  display: none;
+// From the @md (tablet) breakpoint and wider,
+// display pxh-login__name in its narrow state.
+// Remove this class to display the drawer in its wide state.
+@include mq($from: md) {
+  .pxh-login__name--narrow\@md {
+    display: none;
+  }
 }
 
-.pxh-login__control--hidden {
-  display: none;
+.pxh-login__caret {
+  float: left;
+  padding: $pxh-login-avatar-height-width / 4 0 0 $pxh-login-padding / 2;
 }
 
-.pxh-login__control {
-  padding-left: $inuit-base-spacing-unit / 4;
+// From the @md (tablet) breakpoint and wider,
+// display pxh-login__caret in its narrow state.
+// Remove this class to display the drawer in its wide state.
+@include mq($from: md) {
+  .pxh-login__caret--narrow\@md {
+    display: none;
+  }
 }
 
 .pxh-login__settings {
-  padding-right: $inuit-base-spacing-unit / 2;
+  float: right;
+  padding: $pxh-login-avatar-height-width / 4 0 0 0;
 }
 
-.pxh-login__settings--hidden {
-  display: none;
+// From the @md (tablet) breakpoint and wider,
+// display pxh-login__settings in its narrow state.
+// Remove this class to display the drawer in its wide state.
+@include mq($from: md) {
+  .pxh-login__settings--narrow\@md {
+    display: none;
+  }
 }
 
-.pxh-login__settings-link.pxh-login__settings-link.pxh-login__settings-link { // chained to override px-theme
+.pxh-login__settings-link.pxh-login__settings-link.pxh-login__settings-link,
+.pxh-login__settings-link:link.pxh-login__settings-link:link.pxh-login__settings-link:link,
+.pxh-login__settings-link:visited.pxh-login__settings-link:visited.pxh-login__settings-link:visited { // chained to override px-theme
+  float: right;
   color: $white;
   text-decoration: none;
 }
 
-.pxh-login__settings-link:link.pxh-login__settings-link:link.pxh-login__settings-link:link,
-.pxh-login__settings-link:visited.pxh-login__settings-link:visited.pxh-login__settings-link:visited { // chained to override px-theme
-  color: $white;
-}
+/*------------------------------------*\
+    #PXH-LOGIN-MENU
+\*------------------------------------*/
 
 .pxh-login-menu {
   position: absolute;

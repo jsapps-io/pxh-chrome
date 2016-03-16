@@ -7,7 +7,7 @@
   var navContainer = document.querySelector('.pxh-navigation'); // Is this safe?
   var navItems = document.querySelectorAll('.pxh-navigation__item');
 
-  var loginAction = document.querySelector('.pxh-login__action');
+  var loginAction = document.querySelector('.pxh-login__link');
   var loginMenu = document.querySelector('.pxh-login-menu');
 
   function loginButton() {
@@ -60,14 +60,12 @@
     '.pxh-drawer' : 'pxh-drawer--hidden-until@md pxh-drawer--narrow@md',
     '.pxh-overlay' : 'pxh-overlay--hidden pxh-overlay--hidden@lg',
     '.pxh-navigation' : 'pxh-navigation--narrow@md',
-    '.pxh-login__name' : 'pxh-login__name--hidden',
-    '.pxh-login__control' : 'pxh-login__control--hidden',
-    '.pxh-login__settings' : 'pxh-login__settings--hidden',
+    '.pxh-login__name' : 'pxh-login__name--narrow@md',
+    '.pxh-login__link' : 'pxh-login__link--narrow@md',
+    '.pxh-login__settings' : 'pxh-login__settings--narrow@md',
     '.pxh-view-header-drawer-toggle' : 'pxh-view-header-drawer-toggle--visible',
     '.pxh-view' : 'pxh-view--narrow@lg',
     '.pxh-view-header' : 'pxh-view-header--narrow@lg',
-    '.pxh-drawer-toggle' : 'pxh-drawer-toggle--narrow@md',
-    '.pxh-drawer-toggle__link' : 'pxh-drawer-toggle__link--visible',
     'html' : 'pxh-disable-scroll-until@lg',
     'body' : 'pxh-disable-scroll-until@lg'
   };

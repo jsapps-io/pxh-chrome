@@ -1,49 +1,51 @@
-// Left navigation drawer
+/*------------------------------------*\
+    #PXH-DRAWER
+\*------------------------------------*/
+
+$pxh-drawer-width-wide: $inuit-base-spacing-unit * 15 !default;
+$pxh-drawer-width-narrow: $inuit-base-spacing-unit * 3 !default;
+$pxh-drawer-toggle-margin: $inuit-base-spacing-unit * 0.75 !default;
+$pxh-drawer-bg-color: $gray10 !default;
+$pxh-view-header-height: $inuit-base-spacing-unit * 2 !default;
+
+// Set the default styles for the wide state of the drawer.
 .pxh-drawer {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  justify-content: flex-start;
   z-index: 1000;
   position: fixed;
   top: 0;
   left: 0;
-  width: 15 * $inuit-base-spacing-unit;
+  width: $pxh-drawer-width-wide;
   height: 100%;
-  background-color: $gray10;
-          transition: all 200ms ease-out;
+  background-color: $pxh-drawer-bg-color;
+  transition: all 300ms ease-in-out;
 }
 
+// Keep the inactive drawer hidden off-screen until the @md (tablet) breakpoint.
 @include mq($until: md) {
   .pxh-drawer--hidden-until\@md {
-    left: -15 * $inuit-base-spacing-unit;
+    left: ($pxh-drawer-width-wide * -1);
   }
 }
 
+// From the @md (tablet) breakpoint and wider,
+// the inactive drawer is displayed in its narrow state.
+// Remove this class to display the drawer in its wide state.
 @include mq($from: md) {
   .pxh-drawer--narrow\@md {
-    width: 3 * $inuit-base-spacing-unit;
+    width: $pxh-drawer-width-narrow;
   }
 }
 
-// "Hamburger" button for toggling the drawer open/closed
 .pxh-drawer-toggle {
-  margin: ($inuit-base-spacing-unit * 0.75) 0 0 ($inuit-base-spacing-unit * 0.75);
-  height: $inuit-base-spacing-unit * 1.75;
-}
-
-@include mq($from: md) {
+  margin: $pxh-drawer-toggle-margin 0 0 $pxh-drawer-toggle-margin;
+  height: $pxh-view-header-height;
 }
 
 .pxh-drawer-toggle__link {
   color: $white;
-  transition: all 600ms ease-out;
+  transition: all 300ms ease-in-out;
   &:link,
   &:visited {
     color: $white;
   }
-}
-
-.pxh-drawer__spacer {
-  flex-grow: 1;
 }
