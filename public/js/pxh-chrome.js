@@ -58,7 +58,7 @@
 
   var toggleTargets = {
     '.pxh-drawer' : 'pxh-drawer--hidden-until@md pxh-drawer--narrow@md',
-    '.pxh-overlay' : 'pxh-overlay--hidden pxh-overlay--hidden@lg',
+    '.pxh-overlay' : 'pxh-overlay--hidden',
     '.pxh-navigation' : 'pxh-navigation--narrow@md',
     '.pxh-login__name' : 'pxh-login__name--narrow@md',
     '.pxh-login__link' : 'pxh-login__link--narrow@md',
