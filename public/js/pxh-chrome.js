@@ -63,9 +63,9 @@
     '.pxh-login__name' : 'pxh-login__name--narrow@md',
     '.pxh-login__link' : 'pxh-login__link--narrow@md',
     '.pxh-login__settings' : 'pxh-login__settings--narrow@md',
-    '.pxh-view-header-drawer-toggle' : 'pxh-view-header-drawer-toggle--visible',
     '.pxh-view' : 'pxh-view--narrow@lg',
     '.pxh-view-header' : 'pxh-view-header--narrow@lg',
+    '.pxh-view-header-drawer-toggle' : 'pxh-view-header-drawer-toggle--hidden',
     'html' : 'pxh-disable-scroll-until@lg',
     'body' : 'pxh-disable-scroll-until@lg'
   };
