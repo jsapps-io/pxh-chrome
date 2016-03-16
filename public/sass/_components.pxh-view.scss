@@ -89,7 +89,7 @@ $pxh-drawer-toggle-margin: $inuit-base-spacing-unit * 0.75 !default;
   top: $pxh-drawer-toggle-margin;
   left: $pxh-drawer-toggle-margin;
   z-index: 500; // making the same as overlay to overcome IE10 clickthru bug with overlay
-  transition: opacity 100ms ease-in-out;
+  transition: all 300ms ease-in-out;
 }
 
 // From the @md (tablet) breakpoint and wider, hide the
@@ -97,7 +97,7 @@ $pxh-drawer-toggle-margin: $inuit-base-spacing-unit * 0.75 !default;
 // narrow left drawer is persistently displayed instead.
 @include mq($from: md) {
   .pxh-view-header-drawer-toggle--hidden\@md {
-      display: none;
+      left: $pxh-drawer-width-narrow * -1;
   }
 }
 
