@@ -44,6 +44,7 @@ $pxh-drawer-toggle-margin: $inuit-base-spacing-unit * 0.75 !default;
   height: $pxh-view-header-height + $pxh-drawer-toggle-margin;
   background-color: $white;
   transition: all 300ms ease-in-out;
+  z-index: 250;
 }
 
 // From the @md (tablet) breakpoint and wider,
