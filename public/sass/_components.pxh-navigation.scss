@@ -2,6 +2,10 @@
     #PXH-NAVIGATION
 \*------------------------------------*/
 
+$pxh-navigation-selected-bg-color: $select-blue-pressed !default;
+$pxh-navigation-active-bg-color: $gray8 !default;
+$pxh-navigation-hover-bg-color: $gray7 !default;
+
 .pxh-navigation {
   position: relative;
   max-height: 100%;
@@ -45,31 +49,24 @@
   color: $white;
 }
 .pxh-navigation__link:hover.pxh-navigation__link:hover.pxh-navigation__link:hover { // chained to override px-theme
-  background-color: $gray7;
+  background-color: $pxh-navigation-hover-bg-color;
 }
 
-.pxh-navigation__link--selected.pxh-navigation__link--selected.pxh-navigation__link--selected { // chained to override px-theme
-  background-color: $select-blue-pressed;
-}
-
+.pxh-navigation__link--selected.pxh-navigation__link--selected.pxh-navigation__link--selected,
 .pxh-navigation__link--selected:link.pxh-navigation__link--selected:link.pxh-navigation__link--selected:link,
-.pxh-navigation__link--selected:visited.pxh-navigation__link--selected:visited.pxh-navigation__link--selected:visited {
-  background-color: $select-blue-pressed;
-}
-.pxh-navigation__link--selected:hover.pxh-navigation__link--selected:hover.pxh-navigation__link--selected:hover {
-  background-color: $select-blue-pressed;
+.pxh-navigation__link--selected:visited.pxh-navigation__link--selected:visited.pxh-navigation__link--selected:visited,
+.pxh-navigation__link--selected:hover.pxh-navigation__link--selected:hover.pxh-navigation__link--selected:hover { // chained to override px-theme
+  background-color: $pxh-navigation-selected-bg-color;
 }
 
-.pxh-navigation__link--active.pxh-navigation__link--active.pxh-navigation__link--active {
-  background-color: $gray8;
-}
-
+.pxh-navigation__link--active.pxh-navigation__link--active.pxh-navigation__link--active,
 .pxh-navigation__link--active:link.pxh-navigation__link--active:link.pxh-navigation__link--active:link,
 .pxh-navigation__link--active:visited.pxh-navigation__link--active:visited.pxh-navigation__link--active:visited {
-  background-color: $gray8;
+  background-color: $pxh-navigation-active-bg-color;
 }
 
 .pxh-navigation__sub-list.pxh-navigation__sub-list.pxh-navigation__sub-list { // chained to override px-theme
+  clear: both;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -95,17 +92,17 @@
   color: $white;
 }
 .pxh-navigation__sub-link.pxh-navigation__sub-link:hover.pxh-navigation__sub-link:hover { // chained to override px-theme
-  background-color: $gray7;
+  background-color: $pxh-navigation-hover-bg-color;
 }
 
 .pxh-navigation__sub-link--selected {
-  background-color: $select-blue-pressed;
+  background-color: $pxh-navigation-selected-bg-color;
   &:link,
   &:visited {
-    background-color: $select-blue-pressed;
+    background-color: $pxh-navigation-selected-bg-color;
   }
   &:hover {
-    background-color: $select-blue-pressed;
+    background-color: $pxh-navigation-selected-bg-color;
   }
 }
 
@@ -114,14 +111,12 @@
   border-top: 1px solid $gray9;
 }
 
-.pxh-navigation__sub-link--settings.pxh-navigation__sub-link--settings.pxh-navigation__sub-link--settings {
-  color: $primary-blue;
-}
-
+.pxh-navigation__sub-link--settings.pxh-navigation__sub-link--settings.pxh-navigation__sub-link--settings,
 .pxh-navigation__sub-link--settings:link.pxh-navigation__sub-link--settings:link.pxh-navigation__sub-link--settings:link,
 .pxh-navigation__sub-link--settings:visited.pxh-navigation__sub-link--settings:visited.pxh-navigation__sub-link--settings:visited {
   color: $primary-blue;
 }
+
 .pxh-navigation__sub-link--settings:hover.pxh-navigation__sub-link--settings:hover.pxh-navigation__sub-link--settings:hover {
   color: $white;
 }
