@@ -19,11 +19,11 @@ html {
 
 // ** #TOOLS ** //
 $mq-breakpoints: (
-    xs:  18em,
-    sm:  23em,
-    md:  45em,
-    lg:  60em,
-    xl:  75em,
+    xs:  300px,
+    sm:  480px,
+    md:  768px,
+    lg:  1024px,
+    xl:  1200px,
 );
 @import "sass-mq/mq";
 
