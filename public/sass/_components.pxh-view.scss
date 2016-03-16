@@ -122,8 +122,3 @@ $pxh-drawer-toggle-margin: $inuit-base-spacing-unit * 0.75 !default;
     color: $black;
   }
 }
-
-.pxh-view-header-drawer-toggle--visible {
-  opacity: 1;
-  pointer-events: auto;
-}
