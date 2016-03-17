@@ -10,7 +10,51 @@ $pxh-navigation-hover-bg-color: $gray7 !default;
   position: relative;
   max-height: 100%;
   overflow: auto;
- -webkit-overflow-scrolling: touch;
+  -webkit-overflow-scrolling: touch;
+}
+
+.pxh-navigation__link {
+  .pxh-badge {
+    animation-name: pxh-badge--in;
+    animation-duration: 500ms;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: 1;
+
+    // default state for browsers that don't support keyframes
+    font-size: 13px;
+    opacity: 1;
+    visibility: visible;
+  }
+  &.pxh-navigation__link--selected {
+    .pxh-badge {
+      &--navigation {
+        // when badge is on the current state, background color should be knocked out
+        background-color: $gray10;
+      }
+      // I'm deeply unhappy about re-declaring all of these just to override the rule above
+      &--primary {
+        background-color: $primary-blue;
+      }
+      &--important {
+        background-color: $alert-red;
+      }
+      &--warning {
+        background-color: $alert-orange;
+      }
+      &--error {
+        background-color: $alert-yellow;
+      }
+      &--info {
+        background-color: $alert-blue;
+      }
+      &--healthy-black {
+        background-color: $black;
+      }
+      &--healthy-white {
+        background-color: $white;
+      }
+    }
+  }
 }
 
 @include mq($from: md) {
