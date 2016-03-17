@@ -8,6 +8,18 @@ $pxh-drawer-toggle-margin: $inuit-base-spacing-unit * 0.75 !default;
 $pxh-drawer-bg-color: $gray10 !default;
 $pxh-view-header-height: $inuit-base-spacing-unit * 2 !default;
 
+@include keyframes(pxh-drawer--in) {
+  0% {
+    opacity: 0;
+  }
+  75% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 // Set the default styles for the wide state of the drawer.
 .pxh-drawer {
   z-index: 750;
@@ -19,7 +31,17 @@ $pxh-view-header-height: $inuit-base-spacing-unit * 2 !default;
   background-color: $pxh-drawer-bg-color;
   transition: all 300ms ease-in-out;
   transition-delay: 0ms;
+  .pxh-navigation,
+  .pxh-login,
+  .pxh-drawer-toggle {
+    animation-name: pxh-drawer--in;
+    animation-duration: 600ms;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: 1;
+  }
 }
+
+
 
 // Keep the inactive drawer hidden off-screen until the @md (tablet) breakpoint.
 @include mq($until: md) {
