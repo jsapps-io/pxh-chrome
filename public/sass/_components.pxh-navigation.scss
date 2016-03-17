@@ -214,16 +214,64 @@ $pxh-navigation-hover-bg-color: $gray7 !default;
 @include mq($from: md) {
   .pxh-navigation--narrow\@md {
     .pxh-navigation__item-text {
-      display: none;
+      animation-name: pxh-navigation__item-text--out;
+      animation-duration: 500ms;
+      animation-timing-function: ease-in-out;
+      animation-iteration-count: 1;
+
+      // default values for browsers that don't support keyframes
+      font-size: 0;
+      opacity: 0;
+      visibility: hidden;
+    }
+    .pxh-navigation__sub-link {
+      animation-name: pxh-navigation__sub-link--out;
+      animation-duration: 500ms;
+      animation-timing-function: ease-in-out;
+      animation-iteration-count: 1;
+
+      // default values for browsers that don't support keyframes
+      font-size: 0;
+      opacity: 0;
+      visibility: hidden;
+      height: 0;
+      padding: 0;
+    }
+    .pxh-navigation__sub-item--divider {
+      opacity: 0;
+      transition-delay: 0s;
     }
     .pxh-navigation__link {
       padding-left: $inuit-base-spacing-unit * 0.75;
     }
-    .pxh-navigation__sub-list {
-      display: none;
+    .pxh-badge {
+      animation-name: pxh-badge--out;
+      animation-duration: 500ms;
+      animation-timing-function: ease-in-out;
+      animation-iteration-count: 1;
+
+      // default state for browsers that don't support keyframes
+      font-size: 0;
+      opacity: 0;
+      visibility: hidden;
     }
   }
 }
+
+.pxh-navigation__item-text {
+  display: block;
+  float: left;
+  opacity: 1;
+  animation-name: pxh-navigation__item-text--in;
+  animation-duration: 500ms;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: 1;
+
+  // default state for browsers that don't support keyframes
+  font-size: $inuit-base-font-size;
+  opacity: 1;
+  visibility: visible;
+  }
 
 .pxh-navigation__list.pxh-navigation__list.pxh-navigation__list { // chained to override px-theme
   list-style: none;
@@ -232,11 +280,18 @@ $pxh-navigation-hover-bg-color: $gray7 !default;
 }
 
 .pxh-navigation__item-icon {
+  float: left;
+  display: block;
   width: $inuit-base-spacing-unit * 1.5;
 }
 
 .pxh-navigation__link.pxh-navigation__link.pxh-navigation__link { // chained to override px-theme
+  font-size: $inuit-base-font-size;
   display: block;
+  width: 100%;
+  height: $inuit-base-spacing-unit * 3.5;
+  float: left;
+  clear: left;
   padding: $inuit-base-spacing-unit ($inuit-base-spacing-unit / 3) $inuit-base-spacing-unit ($inuit-base-spacing-unit);
   color: $white;
   text-decoration: none;
@@ -270,25 +325,30 @@ $pxh-navigation-hover-bg-color: $gray7 !default;
   list-style: none;
 }
 
-.pxh-navigation__sub-list--hidden {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.pxh-navigation__sub-link.pxh-navigation__sub-link.pxh-navigation__sub-link { // chained to override px-theme
-  font-size: 13px;
+.pxh-navigation__sub-link {
   display: block;
-  padding: ($inuit-base-spacing-unit / 2) 0 ($inuit-base-spacing-unit / 2) $inuit-base-spacing-unit * 2.75;
-  display: block;
-  color: $white;
+  height: $inuit-base-spacing-unit * 2;
+  padding: ($inuit-base-spacing-unit / 2) 0 0 $inuit-base-spacing-unit * 2.75;
   text-decoration: none;
+  animation-name: pxh-navigation__sub-link--in;
+  animation-duration: 500ms;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: 1;
+
+  // default state for browsers that don't support keyframes
+  font-size: 13px;
+  opacity: 1;
+  visibility: visible;
+  height: $inuit-base-spacing-unit * 2;
+  padding: ($inuit-base-spacing-unit / 2) 0 0 $inuit-base-spacing-unit * 2.75;
 }
 
+.pxh-navigation__sub-link.pxh-navigation__sub-link.pxh-navigation__sub-link,
 .pxh-navigation__sub-link:link.pxh-navigation__sub-link:link.pxh-navigation__sub-link:link,
 .pxh-navigation__sub-link:visited.pxh-navigation__sub-link:visited.pxh-navigation__sub-link:visited { // chained to override px-theme
   color: $white;
 }
+
 .pxh-navigation__sub-link.pxh-navigation__sub-link:hover.pxh-navigation__sub-link:hover { // chained to override px-theme
   background-color: $pxh-navigation-hover-bg-color;
 }
@@ -307,6 +367,8 @@ $pxh-navigation-hover-bg-color: $gray7 !default;
 .pxh-navigation__sub-item--divider {
   display: block;
   border-top: 1px solid $gray9;
+  transition: opacity 300ms linear;
+  transition-delay: 300ms;
 }
 
 .pxh-navigation__sub-link--settings.pxh-navigation__sub-link--settings.pxh-navigation__sub-link--settings,
