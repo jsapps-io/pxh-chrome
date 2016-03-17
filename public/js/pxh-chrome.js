@@ -81,12 +81,12 @@
   function toggleThings(event) {
     event.preventDefault();
     // handle badge elements separately because they're an array (gross)
-    var els = document.querySelectorAll('.pxh-badge--navigation');
-
+    // var els = document.querySelectorAll('.pxh-badge--navigation');
+    // for (var i = 0; i < els.length; i++) {
+    //   els[i].classList.toggle('pxh-is-hidden');
+    // }
     // handle all the other single elements
-    for (var i = 0; i < els.length; i++) {
-      els[i].classList.toggle('pxh-is-hidden');
-    }
+
     for (var key in toggleTargets) {
       if ((toggleTargets.hasOwnProperty(key)) && (document.querySelector(key))) {
         var el = document.querySelector(key);
