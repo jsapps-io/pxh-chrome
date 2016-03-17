@@ -139,8 +139,19 @@ $pxh-login-avatar-height-width: $inuit-base-spacing-unit * 2;
 }
 
 .pxh-login__name {
-  padding: $pxh-login-avatar-height-width / 4 0 0 $pxh-login-padding;
+  padding: 0 0 0 $pxh-login-padding;
   float: left;
+
+  animation-name: pxh-login--in;
+  animation-duration: 500ms;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: 1;
+
+  font-size: $inuit-base-font-size;
+  opacity: 1;
+  visibility: visible;
+  max-height: 200px;
+  padding-top: $pxh-login-avatar-height-width / 4;
 }
 
 // From the @md (tablet) breakpoint and wider,
@@ -148,13 +159,32 @@ $pxh-login-avatar-height-width: $inuit-base-spacing-unit * 2;
 // Remove this class to display the drawer in its wide state.
 @include mq($from: md) {
   .pxh-login__name--narrow\@md {
-    display: none;
+    animation-name: pxh-login--out;
+    animation-duration: 500ms;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: 1;
+
+    font-size: 0;
+    opacity: 0;
+    visibility: hidden;
+    max-height: 0;
+    padding-top: 0;
   }
 }
 
 .pxh-login__caret {
   float: left;
-  padding: $pxh-login-avatar-height-width / 4 0 0 $pxh-login-padding / 2;
+  padding: 0 0 0 $pxh-login-padding / 2;
+  animation-name: pxh-login--in;
+  animation-duration: 500ms;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: 1;
+
+  font-size: $inuit-base-font-size;
+  opacity: 1;
+  visibility: visible;
+  max-height: 200px;
+  padding-top: $pxh-login-avatar-height-width / 4;
 }
 
 // From the @md (tablet) breakpoint and wider,
@@ -162,13 +192,32 @@ $pxh-login-avatar-height-width: $inuit-base-spacing-unit * 2;
 // Remove this class to display the drawer in its wide state.
 @include mq($from: md) {
   .pxh-login__caret--narrow\@md {
-    display: none;
+    animation-name: pxh-login--out;
+    animation-duration: 500ms;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: 1;
+
+    font-size: 0;
+    opacity: 0;
+    visibility: hidden;
+    max-height: 0;
+    padding-top: 0;
   }
 }
 
 .pxh-login__settings {
   float: right;
   padding: $pxh-login-avatar-height-width / 4 0 0 0;
+  animation-name: pxh-login--in;
+  animation-duration: 500ms;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: 1;
+
+  font-size: $inuit-base-font-size;
+  opacity: 1;
+  visibility: visible;
+  max-height: 200px;
+  padding-top: $pxh-login-avatar-height-width / 4;
 }
 
 // From the @md (tablet) breakpoint and wider,
@@ -176,7 +225,16 @@ $pxh-login-avatar-height-width: $inuit-base-spacing-unit * 2;
 // Remove this class to display the drawer in its wide state.
 @include mq($from: md) {
   .pxh-login__settings--narrow\@md {
-    display: none;
+    animation-name: pxh-login--out;
+    animation-duration: 500ms;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: 1;
+
+    font-size: 0;
+    opacity: 0;
+    visibility: hidden;
+    max-height: 0;
+    padding-top: 0;
   }
 }
 
