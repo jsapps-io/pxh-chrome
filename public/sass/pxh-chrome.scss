@@ -11,12 +11,6 @@ $inuit-base-background-color: $gray5 !default;
 @import "px-normalize-design/_generic.normalize";
 @import "px-box-sizing-design/_generic.box-sizing";
 
-// remove this once px-box-sizing is fixed
-// https://github.com/PredixDev/px-box-sizing-design/pull/1
-html {
-  box-sizing: border-box;
-}
-
 // ** #TOOLS ** //
 @import "_tools.pxh-animations";
 $mq-breakpoints: (
@@ -39,6 +33,16 @@ $fa-version         : "4.4.0" !default;
 // https://github.com/PredixDev/px-typography-design/pull/1
 html {
   font-family: $predix-font-family;
+}
+
+// remove this once px-box-sizing is fixed
+// needs to go way down here below the @import for px-box-sizing
+// or else it will still be adjacent to the :host declaration
+// and will still be combined.
+
+// https://github.com/PredixDev/px-box-sizing-design/pull/1
+html {
+  box-sizing: border-box;
 }
 
 // ** #ELEMENTS ** //
