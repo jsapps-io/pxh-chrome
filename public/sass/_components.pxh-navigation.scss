@@ -6,6 +6,160 @@ $pxh-navigation-selected-bg-color: $select-blue-pressed !default;
 $pxh-navigation-active-bg-color: $gray8 !default;
 $pxh-navigation-hover-bg-color: $gray7 !default;
 
+@include keyframes(pxh-navigation__sub-link--out) {
+  0% {
+    font-size: 13px;
+    opacity: 1;
+    visibility: visible;
+    height: $inuit-base-spacing-unit * 2;
+    padding: ($inuit-base-spacing-unit / 2) 0 0 $inuit-base-spacing-unit * 2.75;
+  }
+  50% {
+    font-size: 13px;
+    opacity: 0;
+    visibility: visible;
+    height: $inuit-base-spacing-unit * 2;
+    padding: ($inuit-base-spacing-unit / 2) 0 0 $inuit-base-spacing-unit * 2.75;
+  }
+  99% {
+    font-size: 0;
+    opacity: 0;
+    visibility: visible;
+    height: 0;
+    padding: 0;
+  }
+  100% {
+    font-size: 0;
+    opacity: 0;
+    visibility: hidden;
+    height: 0;
+    padding: 0;
+  }
+}
+
+@include keyframes(pxh-navigation__sub-link--in) {
+  0% {
+    font-size: 0;
+    opacity: 0;
+    visibility: hidden;
+    height: 0;
+    padding: 0;
+  }
+  1% {
+    font-size: 0;
+    opacity: 0;
+    visibility: visible;
+    height: 0;
+    padding: 0;
+  }
+  50% {
+    font-size: 13px;
+    opacity: 0;
+    visibility: visible;
+    height: $inuit-base-spacing-unit * 2;
+    padding: ($inuit-base-spacing-unit / 2) 0 0 $inuit-base-spacing-unit * 2.75;
+  }
+  100% {
+    font-size: 13px;
+    opacity: 1;
+    visibility: visible;
+    height: $inuit-base-spacing-unit * 2;
+    padding: ($inuit-base-spacing-unit / 2) 0 0 $inuit-base-spacing-unit * 2.75;
+  }
+}
+
+@include keyframes(pxh-navigation__item-text--out) {
+  0% {
+    font-size: $inuit-base-font-size;
+    opacity: 1;
+    visibility: visible;
+  }
+  50% {
+    font-size: $inuit-base-font-size;
+    opacity: 0;
+    visibility: visible;
+  }
+  99% {
+    font-size: 0;
+    opacity: 0;
+    visibility: visible;
+  }
+  100% {
+    font-size: 0;
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@include keyframes(pxh-navigation__item-text--in) {
+  0% {
+    font-size: 0;
+    opacity: 0;
+    visibility: hidden;
+  }
+  1% {
+    font-size: 0;
+    opacity: 0;
+    visibility: visible;
+  }
+  50% {
+    font-size: $inuit-base-font-size;
+    opacity: 0;
+    visibility: visible;
+  }
+  100% {
+    font-size: $inuit-base-font-size;
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+@include keyframes(pxh-badge--out) {
+  0% {
+    font-size: 13px;
+    opacity: 1;
+    visibility: visible;
+  }
+  50% {
+    font-size: 13px;
+    opacity: 0;
+    visibility: visible;
+  }
+  99% {
+    font-size: 0;
+    opacity: 0;
+    visibility: visible;
+  }
+  100% {
+    font-size: 0;
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@include keyframes(pxh-badge--in) {
+  0% {
+    font-size: 0;
+    opacity: 0;
+    visibility: hidden;
+  }
+  1% {
+    font-size: 0;
+    opacity: 0;
+    visibility: visible;
+  }
+  50% {
+    font-size: 13px;
+    opacity: 0;
+    visibility: visible;
+  }
+  100% {
+    font-size: 13px;
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
 .pxh-navigation {
   position: relative;
   max-height: 100%;
