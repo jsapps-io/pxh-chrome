@@ -1,0 +1,17 @@
+/*------------------------------------*\
+    #PXH-ANIMATIONS
+\*------------------------------------*/
+
+@mixin keyframes($animation-name) {
+  @keyframes #{$animation-name} {
+    @content;
+  }
+}
+
+@mixin animation($str) {
+  // -webkit-animation: #{$str};
+  // -moz-animation: #{$str};
+  // -ms-animation: #{$str};
+  // -o-animation: #{$str};
+  animation: #{$str};
+}

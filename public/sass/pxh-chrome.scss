@@ -18,6 +18,7 @@ html {
 }
 
 // ** #TOOLS ** //
+@import "_tools.pxh-animations";
 $mq-breakpoints: (
     xs:  300px,
     sm:  480px,
