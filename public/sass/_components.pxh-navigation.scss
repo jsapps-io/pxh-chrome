@@ -6,14 +6,6 @@ $pxh-navigation-selected-bg-color: $select-blue-pressed !default;
 $pxh-navigation-active-bg-color: $gray8 !default;
 $pxh-navigation-hover-bg-color: $gray7 !default;
 
-// mixin for embedding common animation declarations across pxh-navigation elements
-@mixin pxh-navigation__animation($name) {
-  animation-name: $name;
-  animation-duration: 500ms;
-  animation-timing-function: ease-in-out;
-  animation-iteration-count: 1;
-}
-
 /*------------------------------------*\
     #pxh-navigation
 \*------------------------------------*/
@@ -127,7 +119,7 @@ $pxh-navigation-hover-bg-color: $gray7 !default;
 .pxh-badge {
   .pxh-navigation__link & {
     // include the animation boilerplate with corresponding keyframes
-    @include pxh-navigation__animation(pxh-badge--in);
+    @include pxh-animation(pxh-badge--in);
     // include the "visible by default" styles
     @include pxh-badge--in-styles;
   }
@@ -244,7 +236,7 @@ $pxh-navigation-hover-bg-color: $gray7 !default;
 
 .pxh-navigation__item-text {
   @include pxh-navigation__item-text--in-styles;
-  @include pxh-navigation__animation(pxh-navigation__item-text--in);
+  @include pxh-animation(pxh-navigation__item-text--in);
   display: block;
   float: left;
   opacity: 1;
@@ -350,7 +342,7 @@ $pxh-navigation-hover-bg-color: $gray7 !default;
 }
 
 .pxh-navigation__sub-link {
-  @include pxh-navigation__animation(pxh-navigation__sub-link--in);
+  @include pxh-animation(pxh-navigation__sub-link--in);
   @include pxh-navigation__sub-link--in-styles;
   display: block;
   height: $inuit-base-spacing-unit * 2;
@@ -375,8 +367,9 @@ $pxh-navigation-hover-bg-color: $gray7 !default;
 
 .pxh-navigation__sub-item--divider {
   display: block;
-  border-top: 1px solid $gray9;
-  transition: all 200ms linear;
+  height: 1px;
+  background-color: $gray9;
+  transition: height 200ms linear;
   transition-delay: 200ms;
 }
 
@@ -387,21 +380,19 @@ $pxh-navigation-hover-bg-color: $gray7 !default;
 @include mq($from: md) {
   .pxh-navigation--narrow\@md {
     .pxh-navigation__item-text {
-      @include pxh-navigation__animation(pxh-navigation__item-text--out);
+      @include pxh-animation(pxh-navigation__item-text--out);
       @include pxh-navigation__item-text--out-styles;
     }
     .pxh-navigation__sub-link {
-      @include pxh-navigation__animation(pxh-navigation__sub-link--out);
+      @include pxh-animation(pxh-navigation__sub-link--out);
       @include pxh-navigation__sub-link--out-styles;
     }
     .pxh-navigation__sub-item--divider {
-      opacity: 0;
-      border: 0;
-      border-color: $gray10;
-      transition-delay: 0s;
+      height: 0;
+      transition-delay: 0;
     }
     .pxh-badge {
-      @include pxh-navigation__animation(pxh-badge--out);
+      @include pxh-animation(pxh-badge--out);
       @include pxh-badge--out-styles;
     }
   }

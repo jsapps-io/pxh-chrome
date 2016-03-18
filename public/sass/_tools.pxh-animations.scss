@@ -2,16 +2,10 @@
     #PXH-ANIMATIONS
 \*------------------------------------*/
 
-@mixin keyframes($animation-name) {
-  @keyframes #{$animation-name} {
-    @content;
-  }
-}
-
-@mixin animation($str) {
-  // -webkit-animation: #{$str};
-  // -moz-animation: #{$str};
-  // -ms-animation: #{$str};
-  // -o-animation: #{$str};
-  animation: #{$str};
+// mixin for embedding common animation declarations across pxh-navigation elements
+@mixin pxh-animation($name) {
+  animation-name: $name;
+  animation-duration: 500ms;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: 1;
 }
