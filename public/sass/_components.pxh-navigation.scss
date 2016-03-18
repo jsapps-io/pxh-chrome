@@ -6,277 +6,22 @@ $pxh-navigation-selected-bg-color: $select-blue-pressed !default;
 $pxh-navigation-active-bg-color: $gray8 !default;
 $pxh-navigation-hover-bg-color: $gray7 !default;
 
-@include keyframes(pxh-navigation__sub-link--out) {
-  0% {
-    font-size: 13px;
-    opacity: 1;
-    visibility: visible;
-    height: $inuit-base-spacing-unit * 2;
-    padding: ($inuit-base-spacing-unit / 2) 0 0 $inuit-base-spacing-unit * 2.75;
-  }
-  50% {
-    font-size: 13px;
-    opacity: 0;
-    visibility: visible;
-    height: $inuit-base-spacing-unit * 2;
-    padding: ($inuit-base-spacing-unit / 2) 0 0 $inuit-base-spacing-unit * 2.75;
-  }
-  99% {
-    font-size: 0;
-    opacity: 0;
-    visibility: visible;
-    height: 0;
-    padding: 0;
-  }
-  100% {
-    font-size: 0;
-    opacity: 0;
-    visibility: hidden;
-    height: 0;
-    padding: 0;
-  }
-}
-
-@include keyframes(pxh-navigation__sub-link--in) {
-  0% {
-    font-size: 0;
-    opacity: 0;
-    visibility: hidden;
-    height: 0;
-    padding: 0;
-  }
-  1% {
-    font-size: 0;
-    opacity: 0;
-    visibility: visible;
-    height: 0;
-    padding: 0;
-  }
-  50% {
-    font-size: 13px;
-    opacity: 0;
-    visibility: visible;
-    height: $inuit-base-spacing-unit * 2;
-    padding: ($inuit-base-spacing-unit / 2) 0 0 $inuit-base-spacing-unit * 2.75;
-  }
-  100% {
-    font-size: 13px;
-    opacity: 1;
-    visibility: visible;
-    height: $inuit-base-spacing-unit * 2;
-    padding: ($inuit-base-spacing-unit / 2) 0 0 $inuit-base-spacing-unit * 2.75;
-  }
-}
-
-@include keyframes(pxh-navigation__item-text--out) {
-  0% {
-    font-size: $inuit-base-font-size;
-    opacity: 1;
-    visibility: visible;
-  }
-  50% {
-    font-size: $inuit-base-font-size;
-    opacity: 0;
-    visibility: visible;
-  }
-  99% {
-    font-size: 0;
-    opacity: 0;
-    visibility: visible;
-  }
-  100% {
-    font-size: 0;
-    opacity: 0;
-    visibility: hidden;
-  }
-}
-
-@include keyframes(pxh-navigation__item-text--in) {
-  0% {
-    font-size: 0;
-    opacity: 0;
-    visibility: hidden;
-  }
-  1% {
-    font-size: 0;
-    opacity: 0;
-    visibility: visible;
-  }
-  50% {
-    font-size: $inuit-base-font-size;
-    opacity: 0;
-    visibility: visible;
-  }
-  100% {
-    font-size: $inuit-base-font-size;
-    opacity: 1;
-    visibility: visible;
-  }
-}
-
-@include keyframes(pxh-badge--out) {
-  0% {
-    font-size: 13px;
-    opacity: 1;
-    visibility: visible;
-  }
-  50% {
-    font-size: 13px;
-    opacity: 0;
-    visibility: visible;
-  }
-  99% {
-    font-size: 0;
-    opacity: 0;
-    visibility: visible;
-  }
-  100% {
-    font-size: 0;
-    opacity: 0;
-    visibility: hidden;
-  }
-}
-
-@include keyframes(pxh-badge--in) {
-  0% {
-    font-size: 0;
-    opacity: 0;
-    visibility: hidden;
-  }
-  1% {
-    font-size: 0;
-    opacity: 0;
-    visibility: visible;
-  }
-  50% {
-    font-size: 13px;
-    opacity: 0;
-    visibility: visible;
-  }
-  100% {
-    font-size: 13px;
-    opacity: 1;
-    visibility: visible;
-  }
-}
-
-.pxh-navigation {
-  position: relative;
-  max-height: 100%;
-  overflow: auto;
-  -webkit-overflow-scrolling: touch;
-}
-
-.pxh-navigation__link {
-  .pxh-badge {
-    animation-name: pxh-badge--in;
-    animation-duration: 500ms;
-    animation-timing-function: ease-in-out;
-    animation-iteration-count: 1;
-
-    // default state for browsers that don't support keyframes
-    font-size: 13px;
-    opacity: 1;
-    visibility: visible;
-  }
-  &.pxh-navigation__link--selected {
-    .pxh-badge {
-      &--navigation {
-        // when badge is on the current state, background color should be knocked out
-        background-color: $gray10;
-      }
-      // I'm deeply unhappy about re-declaring all of these just to override the rule above
-      &--primary {
-        background-color: $primary-blue;
-      }
-      &--important {
-        background-color: $alert-red;
-      }
-      &--warning {
-        background-color: $alert-orange;
-      }
-      &--error {
-        background-color: $alert-yellow;
-      }
-      &--info {
-        background-color: $alert-blue;
-      }
-      &--healthy-black {
-        background-color: $black;
-      }
-      &--healthy-white {
-        background-color: $white;
-      }
-    }
-  }
-}
-
-@include mq($from: md) {
-  .pxh-navigation--narrow\@md {
-    .pxh-navigation__item-text {
-      animation-name: pxh-navigation__item-text--out;
-      animation-duration: 500ms;
-      animation-timing-function: ease-in-out;
-      animation-iteration-count: 1;
-
-      // default values for browsers that don't support keyframes
-      font-size: 0;
-      opacity: 0;
-      visibility: hidden;
-    }
-    .pxh-navigation__sub-link {
-      animation-name: pxh-navigation__sub-link--out;
-      animation-duration: 500ms;
-      animation-timing-function: ease-in-out;
-      animation-iteration-count: 1;
-
-      // default values for browsers that don't support keyframes
-      font-size: 0;
-      opacity: 0;
-      visibility: hidden;
-      height: 0;
-      padding: 0;
-    }
-    .pxh-navigation__sub-item--divider {
-      opacity: 0;
-      transition-delay: 0s;
-    }
-    .pxh-navigation__link {
-      padding-left: $inuit-base-spacing-unit * 0.75;
-    }
-    .pxh-badge {
-      animation-name: pxh-badge--out;
-      animation-duration: 500ms;
-      animation-timing-function: ease-in-out;
-      animation-iteration-count: 1;
-
-      // default state for browsers that don't support keyframes
-      font-size: 0;
-      opacity: 0;
-      visibility: hidden;
-    }
-  }
-}
-
-.pxh-navigation__item-text {
-  display: block;
-  float: left;
-  opacity: 1;
-  animation-name: pxh-navigation__item-text--in;
+// mixin for embedding common animation declarations across pxh-navigation elements
+@mixin pxh-navigation__animation($name) {
+  animation-name: $name;
   animation-duration: 500ms;
   animation-timing-function: ease-in-out;
   animation-iteration-count: 1;
+}
 
-  // default state for browsers that don't support keyframes
-  font-size: $inuit-base-font-size;
-  opacity: 1;
-  visibility: visible;
-  }
+/*------------------------------------*\
+    #pxh-navigation
+\*------------------------------------*/
 
-.pxh-navigation__list.pxh-navigation__list.pxh-navigation__list { // chained to override px-theme
-  list-style: none;
-  margin: 0;
-  padding: 0;
+.pxh-navigation {
+  max-height: 100%;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .pxh-navigation__item-icon {
@@ -285,22 +30,401 @@ $pxh-navigation-hover-bg-color: $gray7 !default;
   width: $inuit-base-spacing-unit * 1.5;
 }
 
-.pxh-navigation__link.pxh-navigation__link.pxh-navigation__link { // chained to override px-theme
+.pxh-navigation__link {
   font-size: $inuit-base-font-size;
   display: block;
   width: 100%;
   height: $inuit-base-spacing-unit * 3.5;
   float: left;
   clear: left;
-  padding: $inuit-base-spacing-unit ($inuit-base-spacing-unit / 3) $inuit-base-spacing-unit ($inuit-base-spacing-unit);
-  color: $white;
+  padding: $inuit-base-spacing-unit ($inuit-base-spacing-unit / 3) $inuit-base-spacing-unit $inuit-base-spacing-unit;
+}
+
+/*------------------------------------*\
+    #pxh-badge
+\*------------------------------------*/
+
+// mixin for "animate in" styles
+//
+// These styles are applied at the end of an entrance animation
+// when the element toggles from hidden to visible, or at the
+// beginning of an exit animation when the elemenbt toggles from
+// visible to hidden.
+//
+// These styles are also applied to the element when it is visible
+// by default, absent an animation.
+@mixin pxh-badge--in-styles {
+  font-size: 13px;
+  opacity: 1;
+  visibility: visible;
+}
+
+// mixin for "animate out" styles
+//
+// These styles are applied at the end of an exit animation
+// when the element toggles from visible to hidden, or at the
+// beginning of an entrance animation when the element toggles from
+// hidden to visible.
+//
+// These styles are also applied to the element when it is hidden
+// by default, absent an animation.
+@mixin pxh-badge--out-styles {
+  font-size: 0;
+  opacity: 0;
+  visibility: hidden;
+}
+
+// keyframes for "animate in" styles
+//
+// This animation sequence is applied when the element
+// toggles from hidden to visible.
+@keyframes pxh-badge--in {
+  0% {
+    // start the entrance animation with the "hidden by default" styles
+    @include pxh-badge--out-styles;
+  }
+  1% {
+    font-size: 0;
+    opacity: 0;
+    visibility: visible;
+  }
+  50% {
+    font-size: 13px;
+    opacity: 0;
+    visibility: visible;
+  }
+  100% {
+    // end the entrance animation with the "visible by default" styles
+    @include pxh-badge--in-styles;
+  }
+}
+
+// keyframes for "animate out" styles
+//
+// This animation sequence is applied when the element
+// toggles from visible to hidden.
+@keyframes pxh-badge--out {
+  0% {
+    // start the exit animation with the "visible by default" styles
+    @include pxh-badge--in-styles;
+  }
+  50% {
+    font-size: 13px;
+    opacity: 0;
+    visibility: visible;
+  }
+  99% {
+    font-size: 0;
+    opacity: 0;
+    visibility: visible;
+  }
+  100% {
+    // end the exit animation with the "hidden by default" styles
+    @include pxh-badge--out-styles;
+  }
+}
+
+.pxh-badge {
+  .pxh-navigation__link & {
+    // include the animation boilerplate with corresponding keyframes
+    @include pxh-navigation__animation(pxh-badge--in);
+    // include the "visible by default" styles
+    @include pxh-badge--in-styles;
+  }
+  .pxh-navigation__link--selected & {
+    &--navigation {
+      // when badge is on the current state the background color should be knocked out
+      background-color: $gray10;
+    }
+    // override the rule above in non-navigation contexts
+    // i'm deeply unhappy about doing it this way...
+    &--primary {
+      background-color: $primary-blue;
+    }
+    &--important {
+      background-color: $alert-red;
+    }
+    &--warning {
+      background-color: $alert-orange;
+    }
+    &--error {
+      background-color: $alert-yellow;
+    }
+    &--info {
+      background-color: $alert-blue;
+    }
+    &--healthy-black {
+      background-color: $black;
+    }
+    &--healthy-white {
+      background-color: $white;
+    }
+  }
+}
+
+/*------------------------------------*\
+    #pxh-navigation__item-text
+\*------------------------------------*/
+
+// mixin for "animate in" styles
+//
+// These styles are applied at the end of an entrance animation
+// when the element toggles from hidden to visible, or at the
+// beginning of an exit animation when the elemenbt toggles from
+// visible to hidden.
+//
+// These styles are also applied to the element when it is visible
+// by default, absent an animation.
+@mixin pxh-navigation__item-text--in-styles {
+  font-size: $inuit-base-font-size;
+  opacity: 1;
+  visibility: visible;
+}
+
+// mixin for "animate out" styles
+//
+// These styles are applied at the end of an exit animation
+// when the element toggles from visible to hidden, or at the
+// beginning of an entrance animation when the element toggles from
+// hidden to visible.
+//
+// These styles are also applied to the element when it is hidden
+// by default, absent an animation.
+@mixin pxh-navigation__item-text--out-styles {
+  font-size: 0;
+  opacity: 0;
+  visibility: hidden;
+}
+
+// keyframes for "animate in" styles
+//
+// This animation sequence is applied when the element
+// toggles from hidden to visible.
+@keyframes pxh-navigation__item-text--in {
+  0% {
+    @include pxh-navigation__item-text--out-styles;
+  }
+  1% {
+    font-size: 0;
+    opacity: 0;
+    visibility: visible;
+  }
+  50% {
+    font-size: $inuit-base-font-size;
+    opacity: 0;
+    visibility: visible;
+  }
+  100% {
+    @include pxh-navigation__item-text--in-styles;
+  }
+}
+
+// keyframes for "animate out" styles
+//
+// This animation sequence is applied when the element
+// toggles from visible to hidden.
+@keyframes pxh-navigation__item-text--out {
+  0% {
+    @include pxh-navigation__item-text--in-styles;
+  }
+  50% {
+    font-size: $inuit-base-font-size;
+    opacity: 0;
+    visibility: visible;
+  }
+  99% {
+    font-size: 0;
+    opacity: 0;
+    visibility: visible;
+  }
+  100% {
+    @include pxh-navigation__item-text--out-styles;
+  }
+}
+
+.pxh-navigation__item-text {
+  @include pxh-navigation__item-text--in-styles;
+  @include pxh-navigation__animation(pxh-navigation__item-text--in);
+  display: block;
+  float: left;
+  opacity: 1;
+}
+
+// hide sub-lists (such as sub-navigation for microapps besides the one
+// the user is currently using) with this class
+// this class should be toggled as the user navigates between microapps
+.pxh-navigation__sub-list--hidden {
+  display: none;
+}
+
+/*------------------------------------*\
+    #pxh-navigation__sub-link
+\*------------------------------------*/
+
+// mixin for "animate in" styles
+//
+// These styles are applied at the end of an entrance animation
+// when the element toggles from hidden to visible, or at the
+// beginning of an exit animation when the elemenbt toggles from
+// visible to hidden.
+//
+// These styles are also applied to the element when it is visible
+// by default, absent an animation.
+@mixin pxh-navigation__sub-link--in-styles {
+    font-size: 13px;
+    opacity: 1;
+    visibility: visible;
+    height: $inuit-base-spacing-unit * 2;
+    padding: ($inuit-base-spacing-unit / 2) 0 0 $inuit-base-spacing-unit * 2.75;
+}
+
+// mixin for "animate out" styles
+//
+// These styles are applied at the end of an exit animation
+// when the element toggles from visible to hidden, or at the
+// beginning of an entrance animation when the element toggles from
+// hidden to visible.
+//
+// These styles are also applied to the element when it is hidden
+// by default, absent an animation.
+@mixin pxh-navigation__sub-link--out-styles {
+  font-size: 0;
+  opacity: 0;
+  visibility: hidden;
+  height: 0;
+  padding: 0;
+}
+
+// keyframes for "animate in" styles
+//
+// This animation sequence is applied when the element
+// toggles from hidden to visible.
+@keyframes pxh-navigation__sub-link--in {
+  0% {
+    @include pxh-navigation__sub-link--out-styles;
+  }
+  1% {
+    font-size: 0;
+    opacity: 0;
+    visibility: visible;
+    height: 0;
+    padding: 0;
+  }
+  50% {
+    font-size: 13px;
+    opacity: 0;
+    visibility: visible;
+    height: $inuit-base-spacing-unit * 2;
+    padding: ($inuit-base-spacing-unit / 2) 0 0 $inuit-base-spacing-unit * 2.75;
+  }
+  100% {
+    @include pxh-navigation__sub-link--in-styles;
+  }
+}
+
+// keyframes for "animate out" styles
+//
+// This animation sequence is applied when the element
+// toggles from visible to hidden.
+@keyframes pxh-navigation__sub-link--out {
+  0% {
+    @include pxh-navigation__sub-link--in-styles;
+  }
+  50% {
+    font-size: 13px;
+    opacity: 0;
+    visibility: visible;
+    height: $inuit-base-spacing-unit * 2;
+    padding: ($inuit-base-spacing-unit / 2) 0 0 $inuit-base-spacing-unit * 2.75;
+  }
+  99% {
+    font-size: 0;
+    opacity: 0;
+    visibility: visible;
+    height: 0;
+    padding: 0;
+  }
+  100% {
+    @include pxh-navigation__sub-link--out-styles;
+  }
+}
+
+.pxh-navigation__sub-link {
+  @include pxh-navigation__animation(pxh-navigation__sub-link--in);
+  @include pxh-navigation__sub-link--in-styles;
+  display: block;
+  height: $inuit-base-spacing-unit * 2;
+  padding: ($inuit-base-spacing-unit / 2) 0 0 $inuit-base-spacing-unit * 2.75;
   text-decoration: none;
 }
 
+.pxh-navigation__sub-link--selected {
+  background-color: $pxh-navigation-selected-bg-color;
+  &:link,
+  &:visited {
+    background-color: $pxh-navigation-selected-bg-color;
+  }
+  &:hover {
+    background-color: $pxh-navigation-selected-bg-color;
+  }
+}
+
+/*------------------------------------*\
+    #pxh-navigation__sub-item--divider
+\*------------------------------------*/
+
+.pxh-navigation__sub-item--divider {
+  display: block;
+  border-top: 1px solid $gray9;
+  transition: all 200ms linear;
+  transition-delay: 200ms;
+}
+
+/*------------------------------------*\
+    #pxh-navigation responsive rules
+\*------------------------------------*/
+
+@include mq($from: md) {
+  .pxh-navigation--narrow\@md {
+    .pxh-navigation__item-text {
+      @include pxh-navigation__animation(pxh-navigation__item-text--out);
+      @include pxh-navigation__item-text--out-styles;
+    }
+    .pxh-navigation__sub-link {
+      @include pxh-navigation__animation(pxh-navigation__sub-link--out);
+      @include pxh-navigation__sub-link--out-styles;
+    }
+    .pxh-navigation__sub-item--divider {
+      opacity: 0;
+      border: 0;
+      border-color: $gray10;
+      transition-delay: 0s;
+    }
+    .pxh-badge {
+      @include pxh-navigation__animation(pxh-badge--out);
+      @include pxh-badge--out-styles;
+    }
+  }
+}
+
+/*------------------------------------*\
+    #px-theme overrides
+\*------------------------------------*/
+
+.pxh-navigation__list.pxh-navigation__list.pxh-navigation__list { // chained to override px-theme
+  display: block;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.pxh-navigation__link.pxh-navigation__link.pxh-navigation__link,
 .pxh-navigation__link:link.pxh-navigation__link:link.pxh-navigation__link:link,
 .pxh-navigation__link:visited.pxh-navigation__link:visited.pxh-navigation__link:visited { // chained to override px-theme
+  text-decoration: none;
   color: $white;
 }
+
 .pxh-navigation__link:hover.pxh-navigation__link:hover.pxh-navigation__link:hover { // chained to override px-theme
   background-color: $pxh-navigation-hover-bg-color;
 }
@@ -325,24 +449,6 @@ $pxh-navigation-hover-bg-color: $gray7 !default;
   list-style: none;
 }
 
-.pxh-navigation__sub-link {
-  display: block;
-  height: $inuit-base-spacing-unit * 2;
-  padding: ($inuit-base-spacing-unit / 2) 0 0 $inuit-base-spacing-unit * 2.75;
-  text-decoration: none;
-  animation-name: pxh-navigation__sub-link--in;
-  animation-duration: 500ms;
-  animation-timing-function: ease-in-out;
-  animation-iteration-count: 1;
-
-  // default state for browsers that don't support keyframes
-  font-size: 13px;
-  opacity: 1;
-  visibility: visible;
-  height: $inuit-base-spacing-unit * 2;
-  padding: ($inuit-base-spacing-unit / 2) 0 0 $inuit-base-spacing-unit * 2.75;
-}
-
 .pxh-navigation__sub-link.pxh-navigation__sub-link.pxh-navigation__sub-link,
 .pxh-navigation__sub-link:link.pxh-navigation__sub-link:link.pxh-navigation__sub-link:link,
 .pxh-navigation__sub-link:visited.pxh-navigation__sub-link:visited.pxh-navigation__sub-link:visited { // chained to override px-theme
@@ -353,30 +459,12 @@ $pxh-navigation-hover-bg-color: $gray7 !default;
   background-color: $pxh-navigation-hover-bg-color;
 }
 
-.pxh-navigation__sub-link--selected {
-  background-color: $pxh-navigation-selected-bg-color;
-  &:link,
-  &:visited {
-    background-color: $pxh-navigation-selected-bg-color;
-  }
-  &:hover {
-    background-color: $pxh-navigation-selected-bg-color;
-  }
-}
-
-.pxh-navigation__sub-item--divider {
-  display: block;
-  border-top: 1px solid $gray9;
-  transition: opacity 300ms linear;
-  transition-delay: 300ms;
-}
-
 .pxh-navigation__sub-link--settings.pxh-navigation__sub-link--settings.pxh-navigation__sub-link--settings,
 .pxh-navigation__sub-link--settings:link.pxh-navigation__sub-link--settings:link.pxh-navigation__sub-link--settings:link,
-.pxh-navigation__sub-link--settings:visited.pxh-navigation__sub-link--settings:visited.pxh-navigation__sub-link--settings:visited {
+.pxh-navigation__sub-link--settings:visited.pxh-navigation__sub-link--settings:visited.pxh-navigation__sub-link--settings:visited { // chained to override px-theme
   color: $primary-blue;
 }
 
-.pxh-navigation__sub-link--settings:hover.pxh-navigation__sub-link--settings:hover.pxh-navigation__sub-link--settings:hover {
+.pxh-navigation__sub-link--settings:hover.pxh-navigation__sub-link--settings:hover.pxh-navigation__sub-link--settings:hover { // chained to override px-theme
   color: $white;
 }
