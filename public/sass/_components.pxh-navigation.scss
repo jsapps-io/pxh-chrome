@@ -46,7 +46,7 @@ $pxh-navigation-hover-bg-color: $gray7 !default;
 // These styles are also applied to the element when it is visible
 // by default, absent an animation.
 @mixin pxh-badge--in-styles {
-  font-size: 13px;
+  font-size: $inuit-base-font-size * 0.866666666666;
   opacity: 1;
   visibility: visible;
 }
@@ -81,7 +81,7 @@ $pxh-navigation-hover-bg-color: $gray7 !default;
     visibility: visible;
   }
   50% {
-    font-size: 13px;
+    font-size: $inuit-base-font-size * 0.866666666666;
     opacity: 0;
     visibility: visible;
   }
@@ -101,7 +101,7 @@ $pxh-navigation-hover-bg-color: $gray7 !default;
     @include pxh-badge--in-styles;
   }
   50% {
-    font-size: 13px;
+    font-size: $inuit-base-font-size * 0.866666666666;
     opacity: 0;
     visibility: visible;
   }
@@ -263,7 +263,7 @@ $pxh-navigation-hover-bg-color: $gray7 !default;
 // These styles are also applied to the element when it is visible
 // by default, absent an animation.
 @mixin pxh-navigation__sub-link--in-styles {
-    font-size: 13px;
+    font-size: $inuit-base-font-size * 0.866666666666;
     opacity: 1;
     visibility: visible;
     height: $inuit-base-spacing-unit * 2;
@@ -303,7 +303,7 @@ $pxh-navigation-hover-bg-color: $gray7 !default;
     padding: 0;
   }
   50% {
-    font-size: 13px;
+    font-size: $inuit-base-font-size * 0.866666666666;
     opacity: 0;
     visibility: visible;
     height: $inuit-base-spacing-unit * 2;
@@ -323,7 +323,7 @@ $pxh-navigation-hover-bg-color: $gray7 !default;
     @include pxh-navigation__sub-link--in-styles;
   }
   50% {
-    font-size: 13px;
+    font-size: $inuit-base-font-size * 0.866666666666;
     opacity: 0;
     visibility: visible;
     height: $inuit-base-spacing-unit * 2;

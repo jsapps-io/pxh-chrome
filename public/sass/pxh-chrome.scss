@@ -39,7 +39,6 @@ html {
 // needs to go way down here below the @import for px-box-sizing
 // or else it will still be adjacent to the :host declaration
 // and will still be combined.
-
 // https://github.com/PredixDev/px-box-sizing-design/pull/1
 html {
   box-sizing: border-box;
