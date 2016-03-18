@@ -8,7 +8,7 @@
     <!-- build:css css/pxh-chrome.css -->
     <link rel="stylesheet" href="css/pxh-chrome.css">
     <!-- endbuild -->
-    
+
   </head>
   <body unresolved>
 
@@ -123,7 +123,7 @@
           </li>
         </ul>
       </div>
-<!--       <div class="pxh-login pxh-login--narrow@md">
+      <!-- <div class="pxh-login pxh-login--narrow@md">
         <a href="#" class="pxh-login__link">
           <div class="pxh-login__avatar">
             <i class="fa fa-user pxh-login__avatar-icon"></i>
@@ -365,6 +365,57 @@ Note that the divider is typically applied to an <code>&lt;li&gt;</code> element
 }</code></pre>
 
         <h2>pxh-login States</h2>
+
+        <h3>Overview</h3>
+
+
+        <p>The basic markup for the <em>logged-out</em> state of <code>pxh-login</code> looks like this:</p>
+
+
+        <pre><code>&lt;div class="pxh-login pxh-login--narrow@md"&gt;
+  &lt;a href="#" class="pxh-login__link"&gt;
+    &lt;div class="pxh-login__avatar"&gt;
+      &lt;i class="fa fa-user pxh-login__avatar-icon"&gt;&lt;/i&gt;
+    &lt;/div&gt;
+    &lt;div class="pxh-login__name pxh-login__name--narrow@md"&gt;
+      Log In
+    &lt;/div&gt;
+  &lt;/a&gt;
+&lt;/div&gt;</code></pre>
+      
+        <p>The basic markup for the <em>logged-in</em> state of <code>pxh-login</code> looks like this:</p>
+
+        <pre><code>&lt;div class="pxh-login pxh-login--narrow@md"&gt;
+  &lt;a href="#" class="pxh-login__link"&gt;
+    &lt;div class="pxh-login__avatar"&gt;
+      &lt;img src="img/avatar.jpg" class="pxh-login__avatar-image"&gt;
+    &lt;/div&gt;
+    &lt;div class="pxh-login__name pxh-login__name--narrow@md"&gt;
+      Xiying Wang
+    &lt;/div&gt;
+    &lt;div class="pxh-login__caret pxh-login__caret--narrow@md"&gt;
+      &lt;i class="fa fa-angle-up pxh-login__caret-icon"&gt;&lt;/i&gt;
+    &lt;/div&gt;
+  &lt;/a&gt;
+  &lt;div class="pxh-login-menu"&gt;
+    &lt;ul class="pxh-login-menu__list"&gt;
+      &lt;li class="pxh-login-menu__item"&gt;
+        &lt;a class="pxh-login-menu__link" href="#"&gt;Your Profile&lt;/a&gt;
+      &lt;/li&gt;
+      &lt;li class="pxh-login-menu__item"&gt;
+        &lt;a class="pxh-login-menu__link" href="#"&gt;Help&lt;/a&gt;
+      &lt;/li&gt;
+      &lt;li class="pxh-login-menu__divider"&gt;&lt;/li&gt;
+      &lt;li class="pxh-login-menu__item"&gt;
+        &lt;a class="pxh-login-menu__link" href="/logout"&gt;Log Out&lt;/a&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/div&gt;
+  &lt;div class="pxh-login__settings pxh-login__settings--narrow@md"&gt;
+    &lt;a class="pxh-login__settings-link" href="#"&gt;&lt;i class="fa fa-cog"&gt;&lt;/i&gt;&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
 
         <h4>Javascript:</h4>
 
