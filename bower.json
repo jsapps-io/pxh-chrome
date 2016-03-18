@@ -4,7 +4,6 @@
   "ignore": [
         ".babelrc",
         ".bowerrc",
-        "bower.json",
         ".editorconfig",
         ".gitattributes",
         ".gitignore",
