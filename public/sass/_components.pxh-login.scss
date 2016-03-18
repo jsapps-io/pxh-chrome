@@ -6,70 +6,47 @@ $pxh-login-height:  $inuit-base-spacing-unit * 3;
 $pxh-login-padding: $inuit-base-spacing-unit / 2;
 $pxh-login-avatar-height-width: $inuit-base-spacing-unit * 2;
 
-@include keyframes(pxh-login--out) {
-  0% {
-    max-height: 200px;
-    font-size: $inuit-base-font-size;
-    opacity: 1;
-    visibility: visible;
-    padding-top: $pxh-login-avatar-height-width / 4;
-  }
-  50% {
-    max-height: 200px;
-    font-size: $inuit-base-font-size;
-    opacity: 0;
-    visibility: visible;
-    padding-top: $pxh-login-avatar-height-width / 4;
-  }
-  99% {
-    max-height: 0;
-    font-size: 0;
-    opacity: 0;
-    visibility: visible;
-    padding-top: 0;
-
-  }
-  100% {
-    max-height: 0;
-    font-size: 0;
-    opacity: 0;
-    visibility: hidden;
-    padding-top: 0;
-  }
+// mixin for "animate in" styles
+//
+// These styles are applied at the end of an entrance animation
+// when the element toggles from hidden to visible, or at the
+// beginning of an exit animation when the elemenbt toggles from
+// visible to hidden.
+//
+// These styles are also applied to the element when it is visible
+// by default, absent an animation.
+@mixin pxh-login--in-styles {
+  max-height: 200px;
+  font-size: $inuit-base-font-size;
+  opacity: 1;
+  visibility: visible;
+  padding-top: $pxh-login-avatar-height-width / 4;
 }
 
+// mixin for "animate out" styles
+//
+// These styles are applied at the end of an exit animation
+// when the element toggles from visible to hidden, or at the
+// beginning of an entrance animation when the element toggles from
+// hidden to visible.
+//
+// These styles are also applied to the element when it is hidden
+// by default, absent an animation.
+@mixin pxh-login--out-styles {
+  max-height: 0;
+  font-size: 0;
+  opacity: 0;
+  visibility: hidden;
+  padding-top: 0;
+}
 
-
-// @include keyframes(pxh-login--in) {
-//   0% {
-//     font-size: 0;
-//     opacity: 0;
-//     visibility: hidden;
-//   }
-//   1% {
-//     font-size: 0;
-//     opacity: 0;
-//     visibility: visible;
-//   }
-//   50% {
-//     font-size: $inuit-base-font-size;
-//     opacity: 0;
-//     visibility: visible;
-//   }
-//   100% {
-//     font-size: $inuit-base-font-size;
-//     opacity: 1;
-//     visibility: visible;
-//   }
-// }
-
-@include keyframes(pxh-login--in) {
+// keyframes for "animate in" styles
+//
+// This animation sequence is applied when the element
+// toggles from hidden to visible.
+@keyframes pxh-login--in {
   0% {
-    max-height: 0;
-    font-size: 0;
-    opacity: 0;
-    visibility: hidden;
-    padding-top: 0;
+    @include pxh-login--out-styles;
   }
   1% {
     max-height: 0;
@@ -93,11 +70,34 @@ $pxh-login-avatar-height-width: $inuit-base-spacing-unit * 2;
     padding-top: $pxh-login-avatar-height-width / 4;
   }
   100% {
+    @include pxh-login--in-styles;
+  }
+}
+
+// keyframes for "animate out" styles
+//
+// This animation sequence is applied when the element
+// toggles from visible to hidden.
+@keyframes pxh-login--out {
+  0% {
+    @include pxh-login--in-styles;
+  }
+  50% {
     max-height: 200px;
     font-size: $inuit-base-font-size;
-    opacity: 1;
+    opacity: 0;
     visibility: visible;
     padding-top: $pxh-login-avatar-height-width / 4;
+  }
+  99% {
+    max-height: 0;
+    font-size: 0;
+    opacity: 0;
+    visibility: visible;
+    padding-top: 0;
+  }
+  100% {
+    @include pxh-login--out-styles;
   }
 }
 
@@ -109,12 +109,15 @@ $pxh-login-avatar-height-width: $inuit-base-spacing-unit * 2;
   padding: $pxh-login-padding;
 }
 
+.pxh-login__link {
+  display: block;
+  text-decoration: none;
+}
+
 .pxh-login__link.pxh-login__link.pxh-login__link,
 .pxh-login__link:link.pxh-login__link:link.pxh-login__link:link,
 .pxh-login__link:visited.pxh-login__link:visited.pxh-login__link:visited { // chained to override px-theme
-  display: block;
   color: $white;
-  text-decoration: none;
 }
 
 .pxh-login__avatar {
@@ -139,19 +142,11 @@ $pxh-login-avatar-height-width: $inuit-base-spacing-unit * 2;
 }
 
 .pxh-login__name {
-  padding: 0 0 0 $pxh-login-padding;
+  @include pxh-animation(pxh-login--in);
+  @include pxh-login--in-styles;
+  padding-left: $pxh-login-padding;
   float: left;
 
-  animation-name: pxh-login--in;
-  animation-duration: 500ms;
-  animation-timing-function: ease-in-out;
-  animation-iteration-count: 1;
-
-  font-size: $inuit-base-font-size;
-  opacity: 1;
-  visibility: visible;
-  max-height: 200px;
-  padding-top: $pxh-login-avatar-height-width / 4;
 }
 
 // From the @md (tablet) breakpoint and wider,
@@ -159,32 +154,16 @@ $pxh-login-avatar-height-width: $inuit-base-spacing-unit * 2;
 // Remove this class to display the drawer in its wide state.
 @include mq($from: md) {
   .pxh-login__name--narrow\@md {
-    animation-name: pxh-login--out;
-    animation-duration: 500ms;
-    animation-timing-function: ease-in-out;
-    animation-iteration-count: 1;
-
-    font-size: 0;
-    opacity: 0;
-    visibility: hidden;
-    max-height: 0;
-    padding-top: 0;
+    @include pxh-animation(pxh-login--out);
+    @include pxh-login--out-styles;
   }
 }
 
 .pxh-login__caret {
+  @include pxh-animation(pxh-login--in);
+  @include pxh-login--in-styles;
   float: left;
-  padding: 0 0 0 $pxh-login-padding / 2;
-  animation-name: pxh-login--in;
-  animation-duration: 500ms;
-  animation-timing-function: ease-in-out;
-  animation-iteration-count: 1;
-
-  font-size: $inuit-base-font-size;
-  opacity: 1;
-  visibility: visible;
-  max-height: 200px;
-  padding-top: $pxh-login-avatar-height-width / 4;
+  padding-left: $pxh-login-padding / 2;
 }
 
 // From the @md (tablet) breakpoint and wider,
@@ -192,32 +171,16 @@ $pxh-login-avatar-height-width: $inuit-base-spacing-unit * 2;
 // Remove this class to display the drawer in its wide state.
 @include mq($from: md) {
   .pxh-login__caret--narrow\@md {
-    animation-name: pxh-login--out;
-    animation-duration: 500ms;
-    animation-timing-function: ease-in-out;
-    animation-iteration-count: 1;
-
-    font-size: 0;
-    opacity: 0;
-    visibility: hidden;
-    max-height: 0;
-    padding-top: 0;
+  @include pxh-animation(pxh-login--out);
+  @include pxh-login--out-styles;
   }
 }
 
 .pxh-login__settings {
   float: right;
-  padding: $pxh-login-avatar-height-width / 4 0 0 0;
-  animation-name: pxh-login--in;
-  animation-duration: 500ms;
-  animation-timing-function: ease-in-out;
-  animation-iteration-count: 1;
-
-  font-size: $inuit-base-font-size;
-  opacity: 1;
-  visibility: visible;
-  max-height: 200px;
-  padding-top: $pxh-login-avatar-height-width / 4;
+  @include pxh-animation(pxh-login--in);
+  @include pxh-login--in-styles;
+  // padding-top: $pxh-login-avatar-height-width / 4 0 0 0;
 }
 
 // From the @md (tablet) breakpoint and wider,
@@ -225,16 +188,8 @@ $pxh-login-avatar-height-width: $inuit-base-spacing-unit * 2;
 // Remove this class to display the drawer in its wide state.
 @include mq($from: md) {
   .pxh-login__settings--narrow\@md {
-    animation-name: pxh-login--out;
-    animation-duration: 500ms;
-    animation-timing-function: ease-in-out;
-    animation-iteration-count: 1;
-
-    font-size: 0;
-    opacity: 0;
-    visibility: hidden;
-    max-height: 0;
-    padding-top: 0;
+  @include pxh-animation(pxh-login--out);
+  @include pxh-login--out-styles;
   }
 }
 
