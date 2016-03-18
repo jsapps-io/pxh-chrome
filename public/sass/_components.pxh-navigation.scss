@@ -369,7 +369,7 @@ $pxh-navigation-hover-bg-color: $gray7 !default;
   display: block;
   height: 1px;
   background-color: $gray9;
-  transition: height 200ms linear;
+  transition: all 200ms linear;
   transition-delay: 200ms;
 }
 
