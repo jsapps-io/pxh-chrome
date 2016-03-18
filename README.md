@@ -1,8 +1,8 @@
 #pxh-chrome
 
-###Application chrome for Px App Hub
+Application chrome for Px App Hub
 
-##[Live Demo](https://github.build.ge.com/pages/212326609/pxh-chrome-demo)
+##[Live Demo](https://github.build.ge.com/pages/hubs/pxh-chrome-demo)
 
 **Includes:**
 * pxh-header
