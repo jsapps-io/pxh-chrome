@@ -1,6 +1,20 @@
 {
   "name": "pxh-chrome",
   "private": true,
+  "ignore": [
+        ".babelrc",
+        ".bowerrc",
+        ".editorconfig",
+        ".gitattributes",
+        ".gitignore",
+        ".yo-rc.json",
+        "bower.json",
+        "gulpfile.babel.js",
+        "package.json",
+        "README.md",
+        "public",
+        "test"
+    ],
   "dependencies": {
     "px-colors-design": "https://github.com/PredixDev/px-colors-design.git#^0.2.11",
     "sass-mq": "^3.2.8",
