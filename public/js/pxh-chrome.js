@@ -4,17 +4,15 @@
   var selectedApp = window.location.pathname;
   var selectedRoute = window.location.hash;
 
-  var navContainer = document.querySelector('.pxh-navigation'); // Is this safe?
   var navItems = document.querySelectorAll('.pxh-navigation__item');
 
-  var loginAction = document.querySelector('.pxh-login__link');
-  var loginMenu = document.querySelector('.pxh-login-menu');
+  var pxhLoginMenuToggleControl = document.querySelector('.pxh-login__link');
+  var pxhLoginMenuToggleTarget = document.querySelector('.pxh-login-menu');
 
-  function loginButton() {
-      loginAction.addEventListener('click', function(e) {
+  function pxhToggleLoginMenu() {
+      pxhLoginMenuToggleControl.addEventListener('click', function(e) {
         e.preventDefault();
-        // console.log(loginMenu);
-        loginMenu.classList.toggle('pxh-login-menu--visible');
+        pxhLoginMenuToggleTarget.classList.toggle('pxh-login-menu--visible');
       });
   }
 
@@ -51,12 +49,13 @@
   //   };
   // }
 
-  var controlTriggers = [
+  // 
+  var pxhDrawerToggleControls = [
     '.pxh-drawer-toggle__link',
     '.pxh-view-header-drawer-toggle__link'
   ];
 
-  var toggleTargets = {
+  var pxhDrawerToggleTargets = {
     '.pxh-drawer' : 'pxh-drawer--hidden-until@md pxh-drawer--narrow@md',
     '.pxh-overlay' : 'pxh-overlay--hidden',
     '.pxh-navigation' : 'pxh-navigation--narrow@md',
@@ -71,34 +70,26 @@
     'body' : 'pxh-disable-scroll-until@lg'
   };
 
-  function bindControls() {
-    for (var i = 0; i < controlTriggers.length; i++) {
-      var item = controlTriggers[i];
-      var el = document.querySelector(item);
-      el.addEventListener('click', toggleThings);
+  function pxhBindDrawerToggleEvents() {
+    for (var i = 0; i < pxhDrawerToggleControls.length; i++) {
+      var toggleControl = pxhDrawerToggleControls[i];
+      var toggleControlElement = document.querySelector(toggleControl);
+      toggleControlElement.addEventListener('click', pxhToggleDrawerTargets);
     }
   }
 
-  function toggleThings(event) {
+  function pxhToggleDrawerTargets(event) {
     event.preventDefault();
-    // handle badge elements separately because they're an array (gross)
-    // var els = document.querySelectorAll('.pxh-badge--navigation');
-    // for (var i = 0; i < els.length; i++) {
-    //   els[i].classList.toggle('pxh-is-hidden');
-    // }
-    // handle all the other single elements
-
-    for (var key in toggleTargets) {
-      if ((toggleTargets.hasOwnProperty(key)) && (document.querySelector(key))) {
-        var el = document.querySelector(key);
-        if (toggleTargets[key].indexOf(' ')) {
-          var classes = toggleTargets[key].split(' ');
-          // console.log(classes);
-          for (var i = 0; i < classes.length; i++) {
-            el.classList.toggle(classes[i]);
+    for (var pxhBaseClassName in pxhDrawerToggleTargets) {
+      if ((pxhDrawerToggleTargets.hasOwnProperty(pxhBaseClassName)) && (document.querySelector(pxhBaseClassName))) {
+        var toggleTargetElement = document.querySelector(pxhBaseClassName);
+        if (pxhDrawerToggleTargets[pxhBaseClassName].indexOf(' ')) {
+          var pxhToggleClassNames = pxhDrawerToggleTargets[pxhBaseClassName].split(' ');
+          for (var i = 0; i < pxhToggleClassNames.length; i++) {
+            toggleTargetElement.classList.toggle(pxhToggleClassNames[i]);
           }
         } else {
-          el.classList.toggle(toggleTargets[key]);
+          toggleTargetElement.classList.toggle(pxhDrawerToggleTargets[pxhBaseClassName]);
         }
       }
     }
@@ -107,7 +98,7 @@
   // INIT
   // setNavState();
   // watchState();
-  bindControls();
-  loginButton();
+  pxhBindDrawerToggleEvents();
+  pxhToggleLoginMenu();
 
 }());
