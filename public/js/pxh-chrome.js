@@ -10,10 +10,12 @@
   var pxhLoginMenuToggleTarget = document.querySelector('.pxh-login-menu');
 
   function pxhToggleLoginMenu() {
+    if ((pxhLoginMenuToggleControl) && (pxhLoginMenuToggleTarget)) {
       pxhLoginMenuToggleControl.addEventListener('click', function(e) {
         e.preventDefault();
         pxhLoginMenuToggleTarget.classList.toggle('pxh-login-menu--visible');
-      });
+      }); 
+    }
   }
 
   // function setNavState(){
