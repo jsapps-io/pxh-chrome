@@ -80,8 +80,42 @@
     }
   }
 
+  // Returns a function, that, as long as it continues to be invoked, will not
+  // be triggered. The function will be called after it stops being called for
+  // N milliseconds. If `immediate` is passed, trigger the function on the
+  // leading edge, instead of the trailing.
+  function debounce(func, wait, immediate) {
+    var timeout;
+    return function() {
+      var context = this, args = arguments;
+      var later = function() {
+        timeout = null;
+        if (!immediate) func.apply(context, args);
+      };
+      var callNow = immediate && !timeout;
+      clearTimeout(timeout);
+      timeout = setTimeout(later, wait);
+      if (callNow) func.apply(context, args);
+    };
+  };
+
+  var phxToggleDrawerOnWindowChange = debounce(function() {
+    var windowWidth = window.innerWidth;
+    console.log('current width: ' + windowWidth);
+    if (
+      ((windowWidth >= 1024) && (document.querySelector(".pxh-view--narrow\\@lg") === null))
+      ||
+      ((windowWidth < 1024) && (document.querySelector(".pxh-view--narrow\\@lg")))
+      )
+      {
+      pxhToggleDrawerTargets();
+    }
+  }, 500);
+
   function pxhToggleDrawerTargets(event) {
-    event.preventDefault();
+    if (event) {
+      event.preventDefault();
+    }
     for (var pxhBaseClassName in pxhDrawerToggleTargets) {
       if ((pxhDrawerToggleTargets.hasOwnProperty(pxhBaseClassName)) && (document.querySelector(pxhBaseClassName))) {
         var toggleTargetElement = document.querySelector(pxhBaseClassName);
@@ -102,5 +136,6 @@
   // watchState();
   pxhBindDrawerToggleEvents();
   pxhToggleLoginMenu();
+  window.addEventListener('resize', phxToggleDrawerOnWindowChange);
 
 }());
