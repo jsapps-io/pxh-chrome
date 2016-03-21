@@ -103,9 +103,9 @@
     var windowWidth = window.innerWidth;
     console.log('current width: ' + windowWidth);
     if (
-      ((windowWidth >= 1024) && (document.querySelector(".pxh-view--narrow\\@lg") === null))
+      ((windowWidth >= 1024) && (document.querySelector('.pxh-view--narrow\\@lg') === null))
       ||
-      ((windowWidth < 1024) && (document.querySelector(".pxh-view--narrow\\@lg")))
+      ((windowWidth < 1024) && (document.querySelector('.pxh-view--narrow\\@lg')))
       )
       {
       pxhToggleDrawerTargets();
