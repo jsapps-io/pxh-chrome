@@ -20,7 +20,7 @@ $pxh-view-header-height: $inuit-base-spacing-unit * 2 !default;
   }
 }
 
-// Set the default styles for the wide state of the drawer.
+// Set the default styles for the wide/open state of the drawer (as seen on mobile).
 .pxh-drawer {
   z-index: 750;
   position: fixed;
