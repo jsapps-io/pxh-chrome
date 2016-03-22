@@ -101,11 +101,12 @@
 
   var phxToggleDrawerOnWindowChange = debounce(function() {
     var windowWidth = window.innerWidth;
+    var triggerWidth = 1024 + 30; // add a few extra pixels to accomodate scroll bar and prevent @md state bounce
     console.log('current width: ' + windowWidth);
     if (
-      ((windowWidth >= 1024) && (document.querySelector('.pxh-view--narrow\\@lg') === null))
+      ((windowWidth >= triggerWidth) && (document.querySelector('.pxh-view--narrow\\@lg') === null))
       ||
-      ((windowWidth < 1024) && (document.querySelector('.pxh-view--narrow\\@lg')))
+      ((windowWidth < triggerWidth) && (document.querySelector('.pxh-view--narrow\\@lg')))
       )
       {
       pxhToggleDrawerTargets();
