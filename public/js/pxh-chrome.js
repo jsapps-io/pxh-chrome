@@ -131,7 +131,7 @@
       return false;
     }
   }
-  
+
   function pxhUpdateCookie(key, val) {
     if (pxhReadCookie(key)) {
       document.cookie = escape(key) + '=' + escape(val);
@@ -148,7 +148,7 @@
   pxhBindDrawerToggleEvents();
   pxhToggleLoginMenu();
   window.addEventListener('resize', phxToggleDrawerOnWindowChange);
-  document.addEventListener("DOMContentLoaded", function(event) {
+  document.addEventListener('DOMContentLoaded', function(event) {
     phxCreateCookie('pxh-drawer-state', 'narrow');
     phxPrepareDrawer();
   });
