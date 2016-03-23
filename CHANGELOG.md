@@ -1,5 +1,8 @@
 #pxh-chrome changelog
 
+### v0.3.1 - March 23, 2016
+* Update drawer state cookie to work across microapps
+
 ### v0.3.0 - March 22, 2016
 * Truncate long text in primary and secondary navigation items and show an elipsis
 * Truncate long user names
