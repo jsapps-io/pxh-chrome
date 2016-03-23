@@ -71,13 +71,31 @@
       )
     {
       pxhToggleDrawerTargets();
+      // duplicating the cookie toggle here because it's an event and we want to fire the cookie toggle even though that's suppressed in the main toggle function
+      if (pxhReadCookie('pxh-drawer-state') == 'wide') {
+        pxhUpdateCookie('pxh-drawer-state', 'narrow');
+      }
+      else {
+        pxhUpdateCookie('pxh-drawer-state', 'wide');
+      }
     }
   }, 500);
 
   function pxhToggleDrawerTargets(event) {
     if (event) {
+      // toggle was triggered by a click event, not a load event
+      // prevent default event behavior
       event.preventDefault();
+      // if drawer-state cookie is wide, change it to narrow
+      if (pxhReadCookie('pxh-drawer-state') == 'wide') {
+        pxhUpdateCookie('pxh-drawer-state', 'narrow');
+      }
+      // else, change drawer-state cookie to wide
+      else {
+        pxhUpdateCookie('pxh-drawer-state', 'wide');
+      }
     }
+    // loop through all the target classes to toggle
     for (var pxhBaseClassName in pxhDrawerToggleTargets) {
       if ((pxhDrawerToggleTargets.hasOwnProperty(pxhBaseClassName)) && (document.querySelector(pxhBaseClassName))) {
         var toggleTargetElement = document.querySelector(pxhBaseClassName);
@@ -91,11 +109,48 @@
         }
       }
     }
+
+  }
+
+  function phxCreateCookie(key, val) {
+    if (!pxhReadCookie(key)) {
+      document.cookie = escape(key) + '=' + escape(val);
+    }
+  }
+
+  function pxhReadCookie(key) {
+    if (document.cookie) {
+      var cookies = document.cookie.split('; ');
+      for (var i = cookies.length - 1; i >= 0; i--) {
+        var cookie = cookies[i].split('=');
+        if (cookie[0] == key) {
+          return cookie[1];
+        }
+      }
+    } else {
+      return false;
+    }
+  }
+  
+  function pxhUpdateCookie(key, val) {
+    if (pxhReadCookie(key)) {
+      document.cookie = escape(key) + '=' + escape(val);
+    }
+  }
+
+  function phxPrepareDrawer() {
+    if (pxhReadCookie('pxh-drawer-state') == 'wide') {
+      pxhToggleDrawerTargets();
+    }
   }
 
   // INIT
   pxhBindDrawerToggleEvents();
   pxhToggleLoginMenu();
   window.addEventListener('resize', phxToggleDrawerOnWindowChange);
+  document.addEventListener("DOMContentLoaded", function(event) {
+    phxCreateCookie('pxh-drawer-state', 'narrow');
+    phxPrepareDrawer();
+  });
 
 }());
