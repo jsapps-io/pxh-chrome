@@ -1,5 +1,10 @@
 #pxh-chrome changelog
 
+### v0.3.0 - March 22, 2016
+* Truncate long text in primary and secondary navigation items and show an elipsis
+* Truncate long user names
+* Use Javascript cookies to track and recall expanded/collapsed state of the drawer between page refreshes (should work when navigating between microapps as well)
+
 ### v0.2.0 - March 22, 2016
 
 * Add initial architectural documentation
