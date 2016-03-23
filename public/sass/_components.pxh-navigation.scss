@@ -238,6 +238,10 @@ $pxh-navigation-hover-bg-color: $gray7 !default;
   @include pxh-navigation__item-text--in-styles;
   @include pxh-animation(pxh-navigation__item-text--in);
   display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: $inuit-base-spacing-unit * 10; // has to be narrower than the available space to accomodate potential pxh-badge
   float: left;
   opacity: 1;
 }
@@ -345,6 +349,10 @@ $pxh-navigation-hover-bg-color: $gray7 !default;
   @include pxh-animation(pxh-navigation__sub-link--in);
   @include pxh-navigation__sub-link--in-styles;
   display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: $inuit-base-spacing-unit * 15;
   height: $inuit-base-spacing-unit * 2;
   padding: ($inuit-base-spacing-unit / 2) 0 0 $inuit-base-spacing-unit * 2.75;
   text-decoration: none;

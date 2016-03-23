@@ -146,7 +146,10 @@ $pxh-login-avatar-height-width: $inuit-base-spacing-unit * 2;
   @include pxh-login--in-styles;
   padding-left: $pxh-login-padding;
   float: left;
-
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: $inuit-base-spacing-unit * 10;
 }
 
 // From the @md (tablet) breakpoint and wider,
@@ -163,7 +166,7 @@ $pxh-login-avatar-height-width: $inuit-base-spacing-unit * 2;
   @include pxh-animation(pxh-login--in);
   @include pxh-login--in-styles;
   float: left;
-  padding-left: $pxh-login-padding / 2;
+  padding-left: $pxh-login-padding / 4;
 }
 
 // From the @md (tablet) breakpoint and wider,
@@ -178,6 +181,7 @@ $pxh-login-avatar-height-width: $inuit-base-spacing-unit * 2;
 
 .pxh-login__settings {
   float: right;
+  padding-left: $pxh-login-padding / 2;
   @include pxh-animation(pxh-login--in);
   @include pxh-login--in-styles;
   // padding-top: $pxh-login-avatar-height-width / 4 0 0 0;
