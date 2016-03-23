@@ -73,26 +73,27 @@
       pxhToggleDrawerTargets();
       // duplicating the cookie toggle here because it's an event and we want to fire the cookie toggle even though that's suppressed in the main toggle function
       if (pxhReadCookie('pxh-drawer-state') == 'wide') {
-        pxhUpdateCookie('pxh-drawer-state', 'narrow');
+        pxhSetCookie('pxh-drawer-state', 'narrow', 1, '/');
       }
       else {
-        pxhUpdateCookie('pxh-drawer-state', 'wide');
+        pxhSetCookie('pxh-drawer-state', 'wide', 1, '/');
       }
     }
   }, 500);
 
   function pxhToggleDrawerTargets(event) {
+    console.log('start pxhToggleDrawerTargets: ' + document.cookie);
     if (event) {
       // toggle was triggered by a click event, not a load event
       // prevent default event behavior
       event.preventDefault();
       // if drawer-state cookie is wide, change it to narrow
       if (pxhReadCookie('pxh-drawer-state') == 'wide') {
-        pxhUpdateCookie('pxh-drawer-state', 'narrow');
+        pxhSetCookie('pxh-drawer-state', 'narrow', 1, '/');
       }
       // else, change drawer-state cookie to wide
       else {
-        pxhUpdateCookie('pxh-drawer-state', 'wide');
+        pxhSetCookie('pxh-drawer-state', 'wide', 1, '/');
       }
     }
     // loop through all the target classes to toggle
@@ -109,13 +110,13 @@
         }
       }
     }
-
+    console.log('end pxhToggleDrawerTargets: ' + document.cookie);
   }
 
-  function phxCreateCookie(key, val) {
-    if (!pxhReadCookie(key)) {
-      document.cookie = escape(key) + '=' + escape(val);
-    }
+  function pxhSetCookie(key, value, days, path) {
+    var expirationDate = new Date();
+    expirationDate.setDate(expirationDate.getDate() + days);
+    document.cookie = escape(key) + '=' + escape(value) + '; expires=' + expirationDate + '; path=' + escape(path);
   }
 
   function pxhReadCookie(key) {
@@ -132,16 +133,12 @@
     }
   }
 
-  function pxhUpdateCookie(key, val) {
-    if (pxhReadCookie(key)) {
-      document.cookie = escape(key) + '=' + escape(val);
-    }
-  }
-
   function phxPrepareDrawer() {
+    console.log('start pxhPrepareDrawer: ' + document.cookie);
     if (pxhReadCookie('pxh-drawer-state') == 'wide') {
       pxhToggleDrawerTargets();
     }
+    console.log('end pxhPrepareDrawer: ' + document.cookie);
   }
 
   // INIT
@@ -149,7 +146,9 @@
   pxhToggleLoginMenu();
   window.addEventListener('resize', phxToggleDrawerOnWindowChange);
   document.addEventListener('DOMContentLoaded', function(event) {
-    phxCreateCookie('pxh-drawer-state', 'narrow');
+    if (!pxhReadCookie('pxh-drawer-state')) {
+      pxhSetCookie('pxh-drawer-state', 'narrow', 1, '/');
+    }
     phxPrepareDrawer();
   });
 
