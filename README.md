@@ -42,17 +42,15 @@ Define your responsive styles using `$from` (mobile-first philosophy) rather tha
 
 pxh-chrome uses [BEM syntax when naming CSS classes](http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/). BEM (Block, Element, Modifier) gives us a controlled grammer for describing the relationships between classes, which is incredibly helpful when working with large, sophisticated design systems like Px.
 
-* `block`
-* `block--modifier`
-* `block--modifier@md`
-* `block--modifier-until@lg`
-* `block--modifier@md-until@lg`
-
-
-* `block__element`
-* `block__element--modifier`
-* `block__element--modifier@md`
-* `block__element--modifier@md-until@lg`
+* `block` -- person
+* `block--modifier` -- person--female, person--jogging
+* `block--modifier@md` -- menu--hidden@md
+* `block__element` -- person__arm, person__hand, person__finger
+* `block__element--modifier` -- person__arm--raised, person__finger--pointing
+* `block--modifier-until@lg` -- menu--collapsed-until@lg
+* `block--modifier@md-until@lg` -- menu--fixed@md-until@lg
+* `block__element--modifier@md` -- menu__summary--visible@md
+* `block__element--modifier@md-until@lg` -- menu__summary--visible@md-until@lg
 
 ###Inverted Triangle (ITCSS)
 
