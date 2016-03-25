@@ -1,5 +1,9 @@
 #pxh-chrome changelog
 
+
+### v0.3.2 - March 25, 2016
+* Disable scrolling of background content when navigation drawer is open and overlay is active on mobile and tablet
+
 ### v0.3.1 - March 23, 2016
 * Update drawer state cookie to work across microapps
 
