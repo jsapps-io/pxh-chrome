@@ -1,5 +1,7 @@
 #pxh-chrome changelog
 
+### v0.3.3 - March 25, 2016
+* Fix double scroll bars in IE
 
 ### v0.3.2 - March 25, 2016
 * Disable scrolling of background content when navigation drawer is open and overlay is active on mobile and tablet
