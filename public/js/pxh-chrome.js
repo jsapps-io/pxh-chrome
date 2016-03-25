@@ -17,11 +17,9 @@
     '.pxh-login__link' : 'pxh-login__link--narrow@md',
     '.pxh-login__settings' : 'pxh-login__settings--narrow@md',
     '.pxh-login__caret' : 'pxh-login__caret--narrow@md',
-    '.pxh-view' : 'pxh-view--narrow@lg',
+    '.pxh-view' : 'pxh-view--narrow@lg pxh-disable-scroll-until@lg',
     '.pxh-view-header' : 'pxh-view-header--narrow@lg',
-    '.pxh-view-header-drawer-toggle' : 'pxh-view-header-drawer-toggle--hidden',
-    'html' : 'pxh-disable-scroll-until@lg',
-    'body' : 'pxh-disable-scroll-until@lg'
+    '.pxh-view-header-drawer-toggle' : 'pxh-view-header-drawer-toggle--hidden'
   };
 
   function pxhToggleLoginMenu() {

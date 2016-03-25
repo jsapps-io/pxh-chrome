@@ -8,8 +8,7 @@
   // a way to use overflow: hidden without auto-scrolling the user
   // back to the top of the window
   .pxh-disable-scroll-until\@lg {
-    height: 100%;
-    position: relative;
+    overflow: hidden;
   }
 }
 
