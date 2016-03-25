@@ -3,7 +3,10 @@
 \*------------------------------------*/
 
 html {
+  // overrides dark gray color (used for header, footer, left and right margins for centered Px layout) with lighter gray color (used for content behind the cards in the main view):
   background-color: $inuit-base-background-color !important;
+  // prevents duplicate scroll bars on the viewport in addition to the pxh-view content area in IE:
+  overflow: hidden !important;
 }
 
 body {

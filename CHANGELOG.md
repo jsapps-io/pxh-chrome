@@ -1,5 +1,8 @@
 #pxh-chrome changelog
 
+### v0.3.4 - March 25, 2016
+* REALLY fix the double scroll bar issue in IE (with a `!important` rule in the px-theme overrides layer)
+
 ### v0.3.3 - March 25, 2016
 * Fix double scroll bars in IE
 
