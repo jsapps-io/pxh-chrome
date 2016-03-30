@@ -9,7 +9,7 @@ $pxh-drawer-width-narrow: $inuit-base-spacing-unit * 3 !default;
 $pxh-drawer-toggle-margin: $inuit-base-spacing-unit * 0.75 !default;
 
 .pxh-view {
-  // margin-top: $pxh-view-header-height + $pxh-drawer-toggle-margin;
+  margin-top: $pxh-view-header-height + $pxh-drawer-toggle-margin;
   height: 100%;
   // width: 100%;
   overflow: auto;
