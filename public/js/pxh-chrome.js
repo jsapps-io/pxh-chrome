@@ -211,15 +211,16 @@
 
   // toggle drawer-specific classes when drawer toggle is fired
   function toggleDrawer(event) {
-    loadState(stateToggleObject);
-    console.log(docCookies.getItem('pxh-drawer-state'));
-    if (lgBreakpoint.matches) {
-      if (docCookies.getItem('pxh-drawer-state') === 'narrow') {
-        docCookies.setItem('pxh-drawer-state', 'wide', 86400, '/');
-      } 
-      else if (docCookies.getItem('pxh-drawer-state') === 'wide') {
-        docCookies.setItem('pxh-drawer-state', 'narrow', 86400, '/');
-      }
+    if (docCookies.getItem('pxh-drawer-open') === 'true') {
+
+      loadState(statesObject, 'drawerClosed');
+      docCookies.setItem('pxh-drawer-open', 'false', 86400, '/');
+      docCookies.setItem('pxh-drawer-narrow', 'true', 86400, '/');
+    }
+    else if (docCookies.getItem('pxh-drawer-open') === 'false') {
+      loadState(statesObject, 'drawerOpen');
+      docCookies.setItem('pxh-drawer-open', 'true', 86400, '/');
+      docCookies.setItem('pxh-drawer-narrow', 'false', 86400, '/');
     }
   }
 
