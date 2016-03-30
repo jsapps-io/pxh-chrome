@@ -1,26 +1,207 @@
 'use strict';
 (function(){
 
+  var lgBreakpoint = window.matchMedia('(min-width: 1024px)');
+
+  // :: cookies.js ::
+
+  // A complete cookies reader/writer framework with full unicode support.
+
+  // Revision #1 - September 4, 2014
+
+  // https://developer.mozilla.org/en-US/docs/Web/API/document.cookie
+  // https://developer.mozilla.org/User:fusionchess
+
+  // This framework is released under the GNU Public License, version 3 or later.
+  // http://www.gnu.org/licenses/gpl-3.0-standalone.html
+
+  // Syntaxes:
+
+  // * docCookies.setItem(name, value[, end[, path[, domain[, secure]]]])
+  // * docCookies.getItem(name)
+  // * docCookies.removeItem(name[, path[, domain]])
+  // * docCookies.hasItem(name)
+  // * docCookies.keys()
+
+  var docCookies = {
+    getItem: function (sKey) {
+      if (!sKey) { return null; }
+      return decodeURIComponent(document.cookie.replace(new RegExp('(?:(?:^|.*;)\\s*' + encodeURIComponent(sKey).replace(/[\-\.\+\*]/g, '\\$&') + '\\s*\\=\\s*([^;]*).*$)|^.*$'), '$1')) || null;
+    },
+    setItem: function (sKey, sValue, vEnd, sPath, sDomain, bSecure) {
+      if (!sKey || /^(?:expires|max\-age|path|domain|secure)$/i.test(sKey)) { return false; }
+      var sExpires = '';
+      if (vEnd) {
+        switch (vEnd.constructor) {
+          case Number:
+            sExpires = vEnd === Infinity ? '; expires=Fri, 31 Dec 9999 23:59:59 GMT' : '; max-age=' + vEnd;
+            break;
+          case String:
+            sExpires = '; expires=' + vEnd;
+            break;
+          case Date:
+            sExpires = '; expires=' + vEnd.toUTCString();
+            break;
+        }
+      }
+      document.cookie = encodeURIComponent(sKey) + '=' + encodeURIComponent(sValue) + sExpires + (sDomain ? '; domain=' + sDomain : '') + (sPath ? '; path=' + sPath : '') + (bSecure ? '; secure' : '');
+      return true;
+    },
+    removeItem: function (sKey, sPath, sDomain) {
+      if (!this.hasItem(sKey)) { return false; }
+      document.cookie = encodeURIComponent(sKey) + '=; expires=Thu, 01 Jan 1970 00:00:00 GMT' + (sDomain ? '; domain=' + sDomain : '') + (sPath ? '; path=' + sPath : '');
+      return true;
+    },
+    hasItem: function (sKey) {
+      if (!sKey) { return false; }
+      return (new RegExp('(?:^|;\\s*)' + encodeURIComponent(sKey).replace(/[\-\.\+\*]/g, '\\$&') + '\\s*\\=')).test(document.cookie);
+    },
+    keys: function () {
+      var aKeys = document.cookie.replace(/((?:^|\s*;)[^\=]+)(?=;|$)|^\s*|\s*(?:\=[^;]*)?(?:\1|$)/g, '').split(/\s*(?:\=[^;]*)?;\s*/);
+      for (var nLen = aKeys.length, nIdx = 0; nIdx < nLen; nIdx++) { aKeys[nIdx] = decodeURIComponent(aKeys[nIdx]); }
+      return aKeys;
+    }
+  };
+
+  // toggle classes
+  function changeClasses(targetClassName, changeType, classNamesToChange) {
+    // find the first element that matches targetClassName
+    var targets = document.getElementsByClassName(targetClassName);
+    // if an element matches, work with it
+    if ((typeof targets !== 'undefined') && (targets.length > 0)) {
+
+      for (var j = targets.length - 1; j >= 0; j--) {
+
+        // if there are multiple classNamesToChange delimited by spaces, work with them
+        if (classNamesToChange.indexOf(' ')) {
+          // split multiple classNamesToChange into an array
+          var classes = classNamesToChange.split(' ');
+          // iterate through the array of classes
+          for (var k = classes.length - 1; k >= 0; k--) {
+            // if we're supposed to toggle the classNamesToChange on the target element, do it
+            if (changeType === 'toggle') {
+              targets[j].classList.toggle(classes[k]);
+            }
+            // if we're supposed to add the classNamesToChange to the target element, do it
+            else if (changeType === 'add') {
+              targets[j].classList.add(classes[k]);
+            }
+            // if we're supposed to remove the classNamesToChange from the target element, do it
+            else if (changeType === 'remove') {
+              targets[j].classList.remove(classes[k]);
+            }
+          }
+        }
+        // if there's just one class name, work with it
+        else if (classNamesToChange) {
+          // if we're supposed to toggle the class name on the target element, do it
+          if (changeType === 'toggle') {
+            targets[j].classList.toggle(classNamesToChange);
+          }
+          // if we're supposed to add the class name to the target element, do it
+          else if (changeType === 'add') {
+            targets[j].classList.add(classNamesToChange);
+          }
+          // if we're supposed to remove the class name from the target element, do it
+          else if (changeType === 'remove') {
+            targets[j].classList.remove(classNamesToChange);
+          }
+        }
+      }
+    }
+  }
+
+  function loadState(stateObject) {
+    if (stateObject) {
+      // iterate through each target class
+      for (var targetClass in stateObject) {
+        var stateChangeTarget = stateObject[targetClass];
+        // var stateChangeTargetName = Object.getOwnPropertyNames(stateChangeTarget);
+        // within each target class, iterate through each state change
+        for (var stateChangeType in stateChangeTarget) {
+          var stateChangeClasses = stateChangeTarget[stateChangeType];
+          // now that we have everything, let's feed it to changeClasses
+          changeClasses(targetClass, stateChangeType, stateChangeClasses);
+        }
+      }
+    }
+  }
+
+  var stateToggleObject = {
+    'pxh-drawer' : {
+      'toggle' : 'pxh-drawer--hidden-until@md pxh-drawer--narrow@md'
+    },
+    'pxh-overlay' : {
+      'toggle' : 'pxh-overlay--hidden'
+    },
+    'pxh-navigation' : {
+      'toggle' : 'pxh-navigation--narrow@md'
+    },
+    'pxh-login__name' : {
+      'toggle' : 'pxh-login__name--narrow@md'
+    },
+    'pxh-login__link' : {
+      'toggle' : 'pxh-login__link--narrow@md'
+    },
+    'pxh-login__settings' : {
+      'toggle' : 'pxh-login__settings--narrow@md'
+    },
+    'pxh-login__caret' : {
+      'toggle' : 'pxh-login__caret--narrow@md'
+    },
+    'pxh-view' : {
+      'toggle' : 'pxh-view--narrow@lg pxh-disable-scroll-until@lg'
+    },
+    'pxh-view-header' : {
+      'toggle' : 'pxh-view-header--narrow@lg'
+    },
+    'pxh-view-header-drawer-toggle' : {
+      'toggle' : 'pxh-view-header-drawer-toggle--hidden'
+    }
+  }
+
+  // add an event listener for when the DOM content is ready
+  document.addEventListener('DOMContentLoaded', function(event) {
+    // check if the "narrow" cookie is set and if we're currently at the desktop breakpoint
+    if ((docCookies.getItem('pxh-drawer-state') === 'narrow') && (lgBreakpoint.matches)) {
+      // toggle the drawer closed
+      loadState(stateToggleObject);
+      docCookies.setItem('pxh-drawer-state', 'narrow', 86400, '/');
+    }
+    if (!docCookies.getItem('pxh-drawer-state')) {
+      docCookies.setItem('pxh-drawer-state', 'wide', 86400, '/');
+    }
+  });
+
+  // toggle drawer-specific classes when drawer toggle is fired
+  function toggleDrawer(event) {
+    loadState(stateToggleObject);
+    console.log(docCookies.getItem('pxh-drawer-state'));
+    if (lgBreakpoint.matches) {
+      if (docCookies.getItem('pxh-drawer-state') === 'narrow') {
+        docCookies.setItem('pxh-drawer-state', 'wide', 86400, '/');
+      } 
+      else if (docCookies.getItem('pxh-drawer-state') === 'wide') {
+        docCookies.setItem('pxh-drawer-state', 'narrow', 86400, '/');
+      }
+    }
+  }
+
+  function bindDrawerControls(controlClass) {
+    var controlElement = document.getElementsByClassName(controlClass);
+    if ((typeof controlElement !== 'undefined') && (controlElement.length > 0)) {
+      // iterate through drawer controls and fire the toggleDrawer function when clicked
+      for (var i = controlElement.length - 1; i >= 0; i--) {
+        controlElement[i].addEventListener('click', toggleDrawer);
+      }
+    }
+  }
+
+  bindDrawerControls('pxh-drawer-toggle__link');
+  bindDrawerControls('pxh-view-header-drawer-toggle__link');
+
   var pxhLoginMenuToggleControl = document.querySelector('.pxh-login__link');
   var pxhLoginMenuToggleTarget = document.querySelector('.pxh-login-menu');
-
-  var pxhDrawerToggleControls = [
-    '.pxh-drawer-toggle__link',
-    '.pxh-view-header-drawer-toggle__link'
-  ];
-
-  var pxhDrawerToggleTargets = {
-    '.pxh-drawer' : 'pxh-drawer--hidden-until@md pxh-drawer--narrow@md',
-    '.pxh-overlay' : 'pxh-overlay--hidden',
-    '.pxh-navigation' : 'pxh-navigation--narrow@md',
-    '.pxh-login__name' : 'pxh-login__name--narrow@md',
-    '.pxh-login__link' : 'pxh-login__link--narrow@md',
-    '.pxh-login__settings' : 'pxh-login__settings--narrow@md',
-    '.pxh-login__caret' : 'pxh-login__caret--narrow@md',
-    '.pxh-view' : 'pxh-view--narrow@lg pxh-disable-scroll-until@lg',
-    '.pxh-view-header' : 'pxh-view-header--narrow@lg',
-    '.pxh-view-header-drawer-toggle' : 'pxh-view-header-drawer-toggle--hidden'
-  };
 
   function pxhToggleLoginMenu() {
     if ((pxhLoginMenuToggleControl) && (pxhLoginMenuToggleTarget)) {
@@ -31,123 +212,6 @@
     }
   }
 
-  function pxhBindDrawerToggleEvents() {
-    for (var i = 0; i < pxhDrawerToggleControls.length; i++) {
-      var toggleControl = pxhDrawerToggleControls[i];
-      var toggleControlElement = document.querySelector(toggleControl);
-      toggleControlElement.addEventListener('click', pxhToggleDrawerTargets);
-    }
-  }
-
-  // Returns a function, that, as long as it continues to be invoked, will not
-  // be triggered. The function will be called after it stops being called for
-  // N milliseconds. If `immediate` is passed, trigger the function on the
-  // leading edge, instead of the trailing.
-  function debounce(func, wait, immediate) {
-    var timeout;
-    return function() {
-      var context = this, args = arguments;
-      var later = function() {
-        timeout = null;
-        if (!immediate) func.apply(context, args);
-      };
-      var callNow = immediate && !timeout;
-      clearTimeout(timeout);
-      timeout = setTimeout(later, wait);
-      if (callNow) func.apply(context, args);
-    };
-  };
-
-  var phxToggleDrawerOnWindowChange = debounce(function() {
-    var windowWidth = window.innerWidth;
-    var triggerWidth = 1024 + 30; // add a few extra pixels to accomodate scroll bar and prevent @md state bounce
-    console.log('current width: ' + windowWidth);
-    if (
-      ((windowWidth >= triggerWidth) && (document.querySelector('.pxh-view--narrow\\@lg') === null))
-      ||
-      ((windowWidth < triggerWidth) && (document.querySelector('.pxh-view--narrow\\@lg')))
-      )
-    {
-      pxhToggleDrawerTargets();
-      // duplicating the cookie toggle here because it's an event and we want to fire the cookie toggle even though that's suppressed in the main toggle function
-      if (pxhReadCookie('pxh-drawer-state') == 'wide') {
-        pxhSetCookie('pxh-drawer-state', 'narrow', 1, '/');
-      }
-      else {
-        pxhSetCookie('pxh-drawer-state', 'wide', 1, '/');
-      }
-    }
-  }, 500);
-
-  function pxhToggleDrawerTargets(event) {
-    console.log('start pxhToggleDrawerTargets: ' + document.cookie);
-    if (event) {
-      // toggle was triggered by a click event, not a load event
-      // prevent default event behavior
-      event.preventDefault();
-      // if drawer-state cookie is wide, change it to narrow
-      if (pxhReadCookie('pxh-drawer-state') == 'wide') {
-        pxhSetCookie('pxh-drawer-state', 'narrow', 1, '/');
-      }
-      // else, change drawer-state cookie to wide
-      else {
-        pxhSetCookie('pxh-drawer-state', 'wide', 1, '/');
-      }
-    }
-    // loop through all the target classes to toggle
-    for (var pxhBaseClassName in pxhDrawerToggleTargets) {
-      if ((pxhDrawerToggleTargets.hasOwnProperty(pxhBaseClassName)) && (document.querySelector(pxhBaseClassName))) {
-        var toggleTargetElement = document.querySelector(pxhBaseClassName);
-        if (pxhDrawerToggleTargets[pxhBaseClassName].indexOf(' ')) {
-          var pxhToggleClassNames = pxhDrawerToggleTargets[pxhBaseClassName].split(' ');
-          for (var i = 0; i < pxhToggleClassNames.length; i++) {
-            toggleTargetElement.classList.toggle(pxhToggleClassNames[i]);
-          }
-        } else {
-          toggleTargetElement.classList.toggle(pxhDrawerToggleTargets[pxhBaseClassName]);
-        }
-      }
-    }
-    console.log('end pxhToggleDrawerTargets: ' + document.cookie);
-  }
-
-  function pxhSetCookie(key, value, days, path) {
-    var expirationDate = new Date();
-    expirationDate.setDate(expirationDate.getDate() + days);
-    document.cookie = escape(key) + '=' + escape(value) + '; expires=' + expirationDate + '; path=' + escape(path);
-  }
-
-  function pxhReadCookie(key) {
-    if (document.cookie) {
-      var cookies = document.cookie.split('; ');
-      for (var i = cookies.length - 1; i >= 0; i--) {
-        var cookie = cookies[i].split('=');
-        if (cookie[0] == key) {
-          return cookie[1];
-        }
-      }
-    } else {
-      return false;
-    }
-  }
-
-  function phxPrepareDrawer() {
-    console.log('start pxhPrepareDrawer: ' + document.cookie);
-    if (pxhReadCookie('pxh-drawer-state') == 'wide') {
-      pxhToggleDrawerTargets();
-    }
-    console.log('end pxhPrepareDrawer: ' + document.cookie);
-  }
-
-  // INIT
-  pxhBindDrawerToggleEvents();
   pxhToggleLoginMenu();
-  window.addEventListener('resize', phxToggleDrawerOnWindowChange);
-  document.addEventListener('DOMContentLoaded', function(event) {
-    if (!pxhReadCookie('pxh-drawer-state')) {
-      pxhSetCookie('pxh-drawer-state', 'narrow', 1, '/');
-    }
-    phxPrepareDrawer();
-  });
 
 }());
