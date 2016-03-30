@@ -199,6 +199,20 @@
     }
   }
 
+  function toggleDrawerOnLarge(mediaQueryList) {
+    if (mediaQueryList.matches) {
+      loadState(statesObject, 'drawerOpen');
+      docCookies.setItem('pxh-drawer-narrow', 'false', 86400, '/');
+      docCookies.setItem('pxh-drawer-open', 'true', 86400, '/');
+    } else {
+      loadState(statesObject, 'drawerClosed');
+      docCookies.setItem('pxh-drawer-narrow', 'true', 86400, '/');
+      docCookies.setItem('pxh-drawer-open', 'false', 86400, '/');
+    }
+  }
+
+  lgBreakpoint.addListener(toggleDrawerOnLarge);
+
   // add an event listener for when the DOM content is ready
   document.addEventListener('DOMContentLoaded', function(event) {
     // check if the "narrow" cookie is set and if we're currently at the desktop breakpoint
