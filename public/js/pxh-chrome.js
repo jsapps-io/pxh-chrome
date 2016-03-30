@@ -111,18 +111,21 @@
     }
   }
 
-  function loadState(stateObject) {
-    if (stateObject) {
-      // iterate through each target class
-      for (var targetClass in stateObject) {
-        var stateChangeTarget = stateObject[targetClass];
-        // var stateChangeTargetName = Object.getOwnPropertyNames(stateChangeTarget);
-        // within each target class, iterate through each state change
-        for (var stateChangeType in stateChangeTarget) {
-          var stateChangeClasses = stateChangeTarget[stateChangeType];
-          // now that we have everything, let's feed it to changeClasses
-          changeClasses(targetClass, stateChangeType, stateChangeClasses);
-        }
+  function findObjectByLabel(obj, label) {
+    for(var i in obj) {
+      if(obj.hasOwnProperty(label)) {
+        return obj[label];
+      }
+    }
+  };
+
+  function loadState(statesObject, targetStateName) {
+    var targetState = findObjectByLabel(statesObject, targetStateName);
+    for (var targetClass in targetState) {
+      var stateChangeTarget = targetState[targetClass];
+      for (var stateChangeType in stateChangeTarget) {
+        var stateChangeClasses = stateChangeTarget[stateChangeType];
+        changeClasses(targetClass, stateChangeType, stateChangeClasses);
       }
     }
   }
