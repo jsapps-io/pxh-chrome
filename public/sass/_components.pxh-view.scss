@@ -36,6 +36,12 @@ $pxh-drawer-toggle-margin: $inuit-base-spacing-unit * 0.75 !default;
   }
 }
 
+@include mq($from: lg) {
+  .pxh-view--wide\@lg {
+    margin-left: $pxh-drawer-width-narrow;
+  }
+}
+
 /*------------------------------------*\
     #PXH-VIEW-HEADER
 \*------------------------------------*/
@@ -59,6 +65,13 @@ $pxh-drawer-toggle-margin: $inuit-base-spacing-unit * 0.75 !default;
   .pxh-view-header--wide\@md {
     left: $pxh-drawer-width-narrow;
     transition-delay: 300ms;
+  }
+}
+
+@include mq($from: lg) {
+  .pxh-view-header--wide\@lg {
+    left: $pxh-drawer-width-narrow;
+    // transition-delay: 500ms;
   }
 }
 

@@ -162,6 +162,14 @@ $pxh-login-avatar-height-width: $inuit-base-spacing-unit * 2;
   }
 }
 
+@include mq($from: lg) {
+  .pxh-login__name--wide\@lg {
+    @include pxh-animation(pxh-login--in);
+    @include pxh-login--in-styles;
+
+  }
+}
+
 .pxh-login__caret {
   @include pxh-animation(pxh-login--in);
   @include pxh-login--in-styles;
@@ -176,6 +184,13 @@ $pxh-login-avatar-height-width: $inuit-base-spacing-unit * 2;
   .pxh-login__caret--narrow\@md {
   @include pxh-animation(pxh-login--out);
   @include pxh-login--out-styles;
+  }
+}
+
+@include mq($from: lg) {
+  .pxh-login__caret--wide\@lg {
+  @include pxh-animation(pxh-login--in);
+  @include pxh-login--in-styles;
   }
 }
 
@@ -194,6 +209,13 @@ $pxh-login-avatar-height-width: $inuit-base-spacing-unit * 2;
   .pxh-login__settings--narrow\@md {
   @include pxh-animation(pxh-login--out);
   @include pxh-login--out-styles;
+  }
+}
+
+@include mq($from: lg) {
+  .pxh-login__settings--wide\@lg {
+  @include pxh-animation(pxh-login--in);
+  @include pxh-login--in-styles;
   }
 }
 

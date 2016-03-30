@@ -41,8 +41,6 @@ $pxh-view-header-height: $inuit-base-spacing-unit * 2 !default;
   }
 }
 
-
-
 // Keep the inactive drawer hidden off-screen until the @md (tablet) breakpoint.
 @include mq($until: md) {
   .pxh-drawer--hidden-until\@md {
@@ -57,6 +55,13 @@ $pxh-view-header-height: $inuit-base-spacing-unit * 2 !default;
   .pxh-drawer--narrow\@md {
     width: $pxh-drawer-width-narrow;
     transition-delay: 300ms;
+  }
+}
+
+@include mq($from: lg) {
+  .pxh-drawer--wide\@lg {
+    width: $pxh-drawer-width-wide;
+    transition-delay: 100ms;
   }
 }
 

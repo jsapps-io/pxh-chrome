@@ -406,6 +406,30 @@ $pxh-navigation-hover-bg-color: $gray7 !default;
   }
 }
 
+@include mq($from: lg) {
+  .pxh-navigation--wide\@lg {
+    .pxh-navigation__item-text {
+      @include pxh-animation(pxh-navigation__item-text--in);
+      @include pxh-navigation__item-text--in-styles;
+    }
+    .pxh-navigation__sub-link {
+      @include pxh-animation(pxh-navigation__sub-link--in);
+      @include pxh-navigation__sub-link--in-styles;
+    }
+    .pxh-navigation__sub-item--divider {
+      display: block;
+      height: 1px;
+      background-color: $gray9;
+      transition: all 200ms linear;
+      transition-delay: 200ms;
+    }
+    .pxh-badge {
+      @include pxh-animation(pxh-badge--in);
+      @include pxh-badge--in-styles;
+    }
+  }
+}
+
 /*------------------------------------*\
     #px-theme overrides
 \*------------------------------------*/
