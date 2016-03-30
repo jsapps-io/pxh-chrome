@@ -22,7 +22,7 @@ $pxh-drawer-toggle-margin: $inuit-base-spacing-unit * 0.75 !default;
 @include mq($from: md) {
   .pxh-view--wide\@md {
     margin-left: $pxh-drawer-width-narrow;
-    transition-delay: 300ms;
+    transition-delay: 500ms;
   }
 }
 
@@ -32,7 +32,7 @@ $pxh-drawer-toggle-margin: $inuit-base-spacing-unit * 0.75 !default;
 @include mq($from: lg) {
   .pxh-view--narrow\@lg {
     margin-left: $pxh-drawer-width-wide;
-    transition-delay: 0ms;
+    transition-delay: 100ms;
   }
 }
 
