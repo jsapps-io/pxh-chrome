@@ -14,6 +14,7 @@ $pxh-navigation-hover-bg-color: $gray7 !default;
   max-height: 100%;
   overflow: auto;
   -webkit-overflow-scrolling: touch;
+  animation-duration: 300ms;
 }
 
 .pxh-navigation__item-icon {
@@ -306,7 +307,7 @@ $pxh-navigation-hover-bg-color: $gray7 !default;
     height: 0;
     padding: 0;
   }
-  50% {
+  75% {
     font-size: $inuit-base-font-size * 0.866666666666;
     opacity: 0;
     visibility: visible;
@@ -326,7 +327,7 @@ $pxh-navigation-hover-bg-color: $gray7 !default;
   0% {
     @include pxh-navigation__sub-link--in-styles;
   }
-  50% {
+  25% {
     font-size: $inuit-base-font-size * 0.866666666666;
     opacity: 0;
     visibility: visible;
