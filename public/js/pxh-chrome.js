@@ -215,14 +215,22 @@
 
   // add an event listener for when the DOM content is ready
   document.addEventListener('DOMContentLoaded', function(event) {
-    // check if the "narrow" cookie is set and if we're currently at the desktop breakpoint
-    if ((docCookies.getItem('pxh-drawer-state') === 'narrow') && (lgBreakpoint.matches)) {
-      // toggle the drawer closed
-      loadState(stateToggleObject);
-      docCookies.setItem('pxh-drawer-state', 'narrow', 86400, '/');
+    if (docCookies.getItem('pxh-drawer-open') === null) {
+      docCookies.setItem('pxh-drawer-open', 'false', 86400, '/');
     }
-    if (!docCookies.getItem('pxh-drawer-state')) {
-      docCookies.setItem('pxh-drawer-state', 'wide', 86400, '/');
+
+    if (docCookies.getItem('pxh-drawer-narrow') === null)  {
+      docCookies.setItem('pxh-drawer-narrow', 'false', 86400, '/');
+    }
+
+    // check if the "narrow" cookie is set and if we're currently at the desktop breakpoint
+    if ((docCookies.getItem('pxh-drawer-narrow') === 'true') && (lgBreakpoint.matches)) {
+      // toggle the drawer closed
+      loadState(statesObject, 'drawerClosed');
+      docCookies.setItem('pxh-drawer-narrow', 'true', 86400, '/');
+    } 
+    else {
+      docCookies.setItem('pxh-drawer-open', 'false', 86400, '/');
     }
   });
 
