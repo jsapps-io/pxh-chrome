@@ -127,36 +127,72 @@
     }
   }
 
-  var stateToggleObject = {
-    'pxh-drawer' : {
-      'toggle' : 'pxh-drawer--hidden-until@md pxh-drawer--narrow@md'
+  var statesObject = {
+    'drawerOpen' : {
+      'pxh-drawer' : {
+        'remove' : 'pxh-drawer--hidden-until@md pxh-drawer--narrow@md'
+      },
+      'pxh-overlay' : {
+        'remove' : 'pxh-overlay--hidden'
+      },
+      'pxh-navigation' : {
+        'remove' : 'pxh-navigation--narrow@md'
+      },
+      'pxh-login__name' : {
+        'remove' : 'pxh-login__name--narrow@md'
+      },
+      'pxh-login__link' : {
+        'remove' : 'pxh-login__link--narrow@md'
+      },
+      'pxh-login__settings' : {
+        'remove' : 'pxh-login__settings--narrow@md'
+      },
+      'pxh-login__caret' : {
+        'remove' : 'pxh-login__caret--narrow@md'
+      },
+      'pxh-view' : {
+        'add' : 'pxh-disable-scroll-until@lg',
+        'add' : 'pxh-view--narrow@lg'
+      },
+      'pxh-view-header' : {
+        'add' : 'pxh-view-header--narrow@lg'
+      },
+      'pxh-view-header-drawer-toggle' : {
+        'add' : 'pxh-view-header-drawer-toggle--hidden'
+      }
     },
-    'pxh-overlay' : {
-      'toggle' : 'pxh-overlay--hidden'
-    },
-    'pxh-navigation' : {
-      'toggle' : 'pxh-navigation--narrow@md'
-    },
-    'pxh-login__name' : {
-      'toggle' : 'pxh-login__name--narrow@md'
-    },
-    'pxh-login__link' : {
-      'toggle' : 'pxh-login__link--narrow@md'
-    },
-    'pxh-login__settings' : {
-      'toggle' : 'pxh-login__settings--narrow@md'
-    },
-    'pxh-login__caret' : {
-      'toggle' : 'pxh-login__caret--narrow@md'
-    },
-    'pxh-view' : {
-      'toggle' : 'pxh-view--narrow@lg pxh-disable-scroll-until@lg'
-    },
-    'pxh-view-header' : {
-      'toggle' : 'pxh-view-header--narrow@lg'
-    },
-    'pxh-view-header-drawer-toggle' : {
-      'toggle' : 'pxh-view-header-drawer-toggle--hidden'
+    'drawerClosed' : {
+      'pxh-drawer' : {
+        'add' : 'pxh-drawer--hidden-until@md pxh-drawer--narrow@md'
+      },
+      'pxh-overlay' : {
+        'add' : 'pxh-overlay--hidden'
+      },
+      'pxh-navigation' : {
+        'add' : 'pxh-navigation--narrow@md'
+      },
+      'pxh-login__name' : {
+        'add' : 'pxh-login__name--narrow@md'
+      },
+      'pxh-login__link' : {
+        'add' : 'pxh-login__link--narrow@md'
+      },
+      'pxh-login__settings' : {
+        'add' : 'pxh-login__settings--narrow@md'
+      },
+      'pxh-login__caret' : {
+        'add' : 'pxh-login__caret--narrow@md'
+      },
+      'pxh-view' : {
+        'remove' : 'pxh-disable-scroll-until@lg',
+        'remove' : 'pxh-view--narrow@lg'
+      },
+      'pxh-view-header' : {
+        'remove' : 'pxh-view-header--narrow@lg'
+      },
+      'pxh-view-header-drawer-toggle' : {
+        'remove' : 'pxh-view-header-drawer-toggle--hidden'
+      }
     }
   }
 
