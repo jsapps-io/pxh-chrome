@@ -101,7 +101,7 @@ gulp.task('serve', ['sass', 'js', 'extras', 'img', 'fonts'], () => {
   gulp.watch('public/js/**/*.js', ['js']);
 });
 
-gulp.task('serve:dist', () => {
+gulp.task('serve:dist', ['sass', 'js', 'extras', 'img', 'fonts'], () => {
   browserSync({
     notify: false,
     port: 9000,
@@ -109,6 +109,9 @@ gulp.task('serve:dist', () => {
       baseDir: ['dist']
     }
   });
+  gulp.watch('public/sass/**/*.scss', ['sass', 'html']);
+  gulp.watch('public/js/**/*.js', ['js', 'html']);
+  gulp.watch('public/*.html', ['html']);
 });
 
 gulp.task('serve:test', ['js'], () => {

@@ -254,6 +254,7 @@
 
   // toggle drawer-specific classes when drawer toggle is fired
   function toggleDrawer(event) {
+    event.preventDefault();
     if (docCookies.getItem('pxh-drawer-open') === 'true') {
       loadState(statesObject, 'drawerClosed');
       docCookies.setItem('pxh-drawer-open', 'false', 86400, '/');
