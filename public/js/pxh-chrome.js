@@ -240,12 +240,14 @@
     }
 
     // check if the "narrow" cookie is set and if we're currently at the desktop breakpoint
-    if ((docCookies.getItem('pxh-drawer-narrow') === 'true') && (lgBreakpoint.matches)) {
+    if ((lgBreakpoint.matches) && (docCookies.getItem('pxh-drawer-narrow') === 'true')) {
       // toggle the drawer closed
       loadState(statesObject, 'drawerClosed');
       docCookies.setItem('pxh-drawer-narrow', 'true', 86400, '/');
     } 
-    else {
+    else if (lgBreakpoint.matches) {
+      docCookies.setItem('pxh-drawer-open', 'true', 86400, '/');
+    } else {
       docCookies.setItem('pxh-drawer-open', 'false', 86400, '/');
     }
   });
@@ -253,7 +255,6 @@
   // toggle drawer-specific classes when drawer toggle is fired
   function toggleDrawer(event) {
     if (docCookies.getItem('pxh-drawer-open') === 'true') {
-
       loadState(statesObject, 'drawerClosed');
       docCookies.setItem('pxh-drawer-open', 'false', 86400, '/');
       docCookies.setItem('pxh-drawer-narrow', 'true', 86400, '/');
