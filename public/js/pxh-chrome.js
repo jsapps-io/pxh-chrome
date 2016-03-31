@@ -133,32 +133,40 @@
   var statesObject = {
     'drawerOpen' : {
       'pxh-drawer' : {
-        'remove' : 'pxh-drawer--hidden-until@md pxh-drawer--narrow@md'
+        'remove' : 'pxh-drawer--hidden-until@md pxh-drawer--narrow@md',
+        'add' : 'pxh-drawer--wide@lg'
       },
       'pxh-overlay' : {
         'remove' : 'pxh-overlay--hidden'
       },
       'pxh-navigation' : {
-        'remove' : 'pxh-navigation--narrow@md'
+        'remove' : 'pxh-navigation--narrow@md',
+        'add' : 'pxh-navigation--wide@lg'
       },
       'pxh-login__name' : {
-        'remove' : 'pxh-login__name--narrow@md'
+        'remove' : 'pxh-login__name--narrow@md',
+        'add' : 'pxh-login__name--wide@lg'
       },
       'pxh-login__link' : {
-        'remove' : 'pxh-login__link--narrow@md'
+        'remove' : 'pxh-login__link--narrow@md',
+        'add' : 'pxh-login__link--narrow@lg'
       },
       'pxh-login__settings' : {
-        'remove' : 'pxh-login__settings--narrow@md'
+        'remove' : 'pxh-login__settings--narrow@md',
+        'add' : 'pxh-login__settings--wide@lg'
       },
       'pxh-login__caret' : {
-        'remove' : 'pxh-login__caret--narrow@md'
+        'remove' : 'pxh-login__caret--narrow@md',
+        'add' : 'pxh-login__caret--wide@lg'
       },
       'pxh-view' : {
         'add' : 'pxh-disable-scroll-until@lg',
-        'add' : 'pxh-view--narrow@lg'
+        'add' : 'pxh-view--narrow@lg',
+        'remove' : 'pxh-view--wide@lg'
       },
       'pxh-view-header' : {
-        'add' : 'pxh-view-header--narrow@lg'
+        'add' : 'pxh-view-header--narrow@lg',
+        'remove' : 'pxh-view-header--wide@lg'
       },
       'pxh-view-header-drawer-toggle' : {
         'add' : 'pxh-view-header-drawer-toggle--hidden'
@@ -166,32 +174,40 @@
     },
     'drawerClosed' : {
       'pxh-drawer' : {
-        'add' : 'pxh-drawer--hidden-until@md pxh-drawer--narrow@md'
+        'add' : 'pxh-drawer--hidden-until@md pxh-drawer--narrow@md',
+        'remove' : 'pxh-drawer--wide@lg'
       },
       'pxh-overlay' : {
         'add' : 'pxh-overlay--hidden'
       },
       'pxh-navigation' : {
-        'add' : 'pxh-navigation--narrow@md'
+        'add' : 'pxh-navigation--narrow@md',
+        'remove' : 'pxh-navigation--wide@lg'
       },
       'pxh-login__name' : {
-        'add' : 'pxh-login__name--narrow@md'
+        'add' : 'pxh-login__name--narrow@md',
+        'remove' : 'pxh-login__name--wide@lg'
       },
       'pxh-login__link' : {
-        'add' : 'pxh-login__link--narrow@md'
+        'add' : 'pxh-login__link--narrow@md',
+        'remove' : 'pxh-login__link--wide@lg'
       },
       'pxh-login__settings' : {
-        'add' : 'pxh-login__settings--narrow@md'
+        'add' : 'pxh-login__settings--narrow@md',
+        'remove' : 'pxh-login__settings--wide@lg'
       },
       'pxh-login__caret' : {
-        'add' : 'pxh-login__caret--narrow@md'
+        'add' : 'pxh-login__caret--narrow@md',
+        'remove' : 'pxh-login__caret--wide@lg'
       },
       'pxh-view' : {
         'remove' : 'pxh-disable-scroll-until@lg',
-        'remove' : 'pxh-view--narrow@lg'
+        'remove' : 'pxh-view--narrow@lg',
+        'add' : 'pxh-view--wide@lg'
       },
       'pxh-view-header' : {
-        'remove' : 'pxh-view-header--narrow@lg'
+        'remove' : 'pxh-view-header--narrow@lg',
+        'add' : 'pxh-view-header--wide@lg'
       },
       'pxh-view-header-drawer-toggle' : {
         'remove' : 'pxh-view-header-drawer-toggle--hidden'
