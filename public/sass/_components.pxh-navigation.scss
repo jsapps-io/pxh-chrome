@@ -30,7 +30,7 @@ $pxh-navigation-hover-bg-color: $gray7 !default;
   height: $inuit-base-spacing-unit * 3.5;
   float: left;
   clear: left;
-  padding: $inuit-base-spacing-unit ($inuit-base-spacing-unit / 3) $inuit-base-spacing-unit $inuit-base-spacing-unit;
+  padding: $inuit-base-spacing-unit ($inuit-base-spacing-unit / 8) $inuit-base-spacing-unit $inuit-base-spacing-unit;
 }
 
 /*------------------------------------*\
@@ -118,13 +118,15 @@ $pxh-navigation-hover-bg-color: $gray7 !default;
 }
 
 .pxh-badge {
-  .pxh-navigation__link & {
+  .pxh-navigation__link &,
+  .pxh-navigation__sub-link & {
     // include the animation boilerplate with corresponding keyframes
     @include pxh-animation(pxh-badge--in);
     // include the "visible by default" styles
     @include pxh-badge--in-styles;
   }
-  .pxh-navigation__link--selected & {
+  .pxh-navigation__link--selected &,
+  .pxh-navigation__sub-link--selected & {
     &--navigation {
       // when badge is on the current state the background color should be knocked out
       background-color: $gray10;
@@ -242,7 +244,7 @@ $pxh-navigation-hover-bg-color: $gray7 !default;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  max-width: $inuit-base-spacing-unit * 10; // has to be narrower than the available space to accomodate potential pxh-badge
+  max-width: $inuit-base-spacing-unit * 9.9; // has to be narrower than the available space to accomodate potential pxh-badge
   float: left;
   opacity: 1;
 }
@@ -272,7 +274,7 @@ $pxh-navigation-hover-bg-color: $gray7 !default;
     opacity: 1;
     visibility: visible;
     height: $inuit-base-spacing-unit * 2;
-    padding: ($inuit-base-spacing-unit / 2) 0 0 $inuit-base-spacing-unit * 2.75;
+    padding: ($inuit-base-spacing-unit / 2) ($inuit-base-spacing-unit / 8) 0 $inuit-base-spacing-unit * 2.75;
 }
 
 // mixin for "animate out" styles
@@ -354,9 +356,17 @@ $pxh-navigation-hover-bg-color: $gray7 !default;
   white-space: nowrap;
   text-overflow: ellipsis;
   max-width: $inuit-base-spacing-unit * 15;
-  height: $inuit-base-spacing-unit * 2;
-  padding: ($inuit-base-spacing-unit / 2) 0 0 $inuit-base-spacing-unit * 2.75;
   text-decoration: none;
+}
+
+.pxh-navigation__sub-item-text {
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: $inuit-base-spacing-unit * 9.5; // has to be narrower than the available space to accomodate potential pxh-badge
+  float: left;
+  opacity: 1;
 }
 
 .pxh-navigation__sub-link--selected {
