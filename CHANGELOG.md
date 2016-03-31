@@ -1,5 +1,22 @@
 #pxh-chrome changelog
 
+###v0.4.0 - March 30, 2016
+* Completely refactor how states are handled in JavaScript
+  * States are now handled via a global state object
+  * Instead of simple toggles, explicitly add/remove classes from elements
+  * Track "drawer is narrow" and "drawer is open" states using JavaScript cookies
+  * On desktop, if the drawer is collapsed when moving between microapps, keep it collapsed
+* Refactor how we handle JavaScript cookies
+* Refine animations between states
+* Add `--wide@lg` and `--narrow@lg` modifier classes to more precisely target desktop states
+* Improve navigation
+  * Add support for badges on secondary navigation items
+  * Wrap secondary navigation text in a text BEM element
+  * Convert `<spans>`s to `<div>`s for all primary and secondary navigation items (blocks and elements in BEM)
+
+### v0.3.4 - March 25, 2016
+* REALLY fix the double scroll bar issue in IE (with a `!important` rule in the px-theme overrides layer)
+
 ### v0.3.4 - March 25, 2016
 * REALLY fix the double scroll bar issue in IE (with a `!important` rule in the px-theme overrides layer)
 
