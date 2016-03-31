@@ -1,5 +1,10 @@
 #pxh-chrome changelog
 
+###v0.4.1 - March 31, 2016
+* Prevent default event from firing when clicking drawer toggle buttons
+* Add modifier classes to login items
+* Watch and compile /dist files when running `gulp serve:dist` to steamline local, live development on ui-app-hub via `bower link`
+
 ###v0.4.0 - March 30, 2016
 * Completely refactor how states are handled in JavaScript
   * States are now handled via a global state object
