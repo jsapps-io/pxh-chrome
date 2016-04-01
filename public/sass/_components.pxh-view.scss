@@ -13,6 +13,7 @@ $pxh-drawer-toggle-margin: $inuit-base-spacing-unit * 0.75 !default;
   height: 100%;
   // width: 100%;
   overflow: auto;
+  -webkit-overflow-scrolling: touch;
   transition: all 300ms ease-in-out;
 }
 
