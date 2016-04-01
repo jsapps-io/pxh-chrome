@@ -51,8 +51,12 @@
 * Add initial architectural documentation
 * Automatically expand and collapse `pxh-drawer` between `@md` and `@lg` breakpoints
 
+### 0.1.3 - March 21, 2016
 
+### 0.1.2 - March 18, 2016
 
+### 0.1.1 - March 18, 2016
 
+### 0.1.0 - March 18, 2016
 
 * Initial release
