@@ -160,8 +160,7 @@
         'add' : 'pxh-login__caret--wide@lg'
       },
       'pxh-view' : {
-        'add' : 'pxh-disable-scroll-until@lg',
-        'add' : 'pxh-view--narrow@lg',
+        'add' : 'pxh-disable-scroll-until@lg pxh-view--narrow@lg',
         'remove' : 'pxh-view--wide@lg'
       },
       'pxh-view-header' : {
@@ -201,8 +200,7 @@
         'remove' : 'pxh-login__caret--wide@lg'
       },
       'pxh-view' : {
-        'remove' : 'pxh-disable-scroll-until@lg',
-        'remove' : 'pxh-view--narrow@lg',
+        'remove' : 'pxh-disable-scroll-until@lg pxh-view--narrow@lg',
         'add' : 'pxh-view--wide@lg'
       },
       'pxh-view-header' : {

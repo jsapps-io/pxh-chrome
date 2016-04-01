@@ -4,11 +4,9 @@
 
 // utility class to disable scrolling
 @include mq($until: lg) {
-  // this class doesn't work yet; not until we figure out
-  // a way to use overflow: hidden without auto-scrolling the user
-  // back to the top of the window
   .pxh-disable-scroll-until\@lg {
     overflow: hidden;
+    -webkit-overflow-scrolling: auto;
   }
 }
 
