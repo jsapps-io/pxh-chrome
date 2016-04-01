@@ -9,9 +9,8 @@ html {
 }
 
 body {
-  height: 100%; // without this it won't scroll at all
+  height: 100%;
   width: 100%;
   min-height: 100%;
   overflow: hidden;
-  // -webkit-overflow-scrolling: touch; // re-enable intertial scrolling
 }
