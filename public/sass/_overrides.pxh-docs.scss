@@ -2,8 +2,14 @@
     #PXH-DOCS
 \*------------------------------------*/
 
-code {
-  font-size: $inuit-base-font-size;
-  background-color: #fff3f3;
-  color: #900;
+.pxh-docs {
+  margin: 5px 5px 46px 5px;
+  padding: 20px;
+  background-color: $white;
+
+  code {
+    font-size: $inuit-base-font-size;
+    background-color: #fff3f3;
+    color: #900;
+  }
 }

@@ -1,5 +1,12 @@
 #pxh-chrome changelog
 
+###v0.4.2 - April 1, 2016
+* Fix intertial- scrolling on iOS
+  * Prevent all scrolling of `<html>` and `<body>` elements
+  * Force iOS intertial scrolling of the `pxh-view`-classed element
+  * Disable scrolling of `pxh-view` when `pxh-overlay` is visible
+* Move `pxh-chrome` documentation styles into a `pxh-docs` class 
+
 ###v0.4.1 - March 31, 2016
 * Prevent default event from firing when clicking drawer toggle buttons
 * Add modifier classes to login items
