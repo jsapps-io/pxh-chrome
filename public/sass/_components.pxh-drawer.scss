@@ -4,9 +4,9 @@
 
 $pxh-drawer-width-wide: $inuit-base-spacing-unit * 15 !default;
 $pxh-drawer-width-narrow: $inuit-base-spacing-unit * 3 !default;
-$pxh-drawer-toggle-margin: $inuit-base-spacing-unit * 0.75 !default;
+$pxh-drawer-toggle-margin: 10px !default;
 $pxh-drawer-bg-color: $gray10 !default;
-$pxh-view-header-height: $inuit-base-spacing-unit * 2 !default;
+$pxh-view-header-height: 60px !default; // locked to current height of px-context-browser
 
 @keyframes pxh-drawer--in {
   0% {
@@ -67,7 +67,7 @@ $pxh-view-header-height: $inuit-base-spacing-unit * 2 !default;
 
 .pxh-drawer-toggle {
   margin: $pxh-drawer-toggle-margin 0 0 $pxh-drawer-toggle-margin;
-  height: $pxh-view-header-height;
+  height: $pxh-view-header-height - ($pxh-drawer-toggle-margin * 2);
 }
 
 .pxh-drawer-toggle__link {

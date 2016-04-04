@@ -2,14 +2,14 @@
     #PXH-VIEW
 \*------------------------------------*/
 
-$pxh-view-header-height: $inuit-base-spacing-unit * 2 !default;
+$pxh-view-header-height: $inuit-base-spacing-unit * 4 !default;
 $pxh-drawer-toggle-margin: $inuit-base-spacing-unit * 0.75 !default;
 $pxh-drawer-width-wide: $inuit-base-spacing-unit * 15 !default;
 $pxh-drawer-width-narrow: $inuit-base-spacing-unit * 3 !default;
 $pxh-drawer-toggle-margin: $inuit-base-spacing-unit * 0.75 !default;
 
 .pxh-view {
-  margin-top: $pxh-view-header-height + $pxh-drawer-toggle-margin;
+  margin-top: $pxh-view-header-height;
   height: 100%;
   overflow: auto;
   -webkit-overflow-scrolling: touch;
@@ -52,7 +52,7 @@ $pxh-drawer-toggle-margin: $inuit-base-spacing-unit * 0.75 !default;
   right: 0;
   left: 0;
   border-bottom: 1px solid $gray6;
-  height: $pxh-view-header-height + $pxh-drawer-toggle-margin;
+  height: $pxh-view-header-height;
   background-color: $white;
   transition: all 300ms ease-in-out;
   z-index: 250;
@@ -71,7 +71,6 @@ $pxh-drawer-toggle-margin: $inuit-base-spacing-unit * 0.75 !default;
 @include mq($from: lg) {
   .pxh-view-header--wide\@lg {
     left: $pxh-drawer-width-narrow;
-    // transition-delay: 500ms;
   }
 }
 
@@ -86,7 +85,7 @@ $pxh-drawer-toggle-margin: $inuit-base-spacing-unit * 0.75 !default;
 }
 
 .pxh-view-header__title {
-  padding-top: $inuit-base-spacing-unit / 3;
+  padding-top: $inuit-base-spacing-unit;
   text-align: center;
   font-size: $inuit-base-font-size * 1.5;
 }
