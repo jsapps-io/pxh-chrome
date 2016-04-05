@@ -1,5 +1,9 @@
 #pxh-chrome changelog
 
+### 0.4.3 - April 4, 2016
+* Increase height of drawer toggle and view header to match `px-context-browser`
+* Add basic loading spinner from `px-spinner`
+
 ### 0.4.2 - April 1, 2016
 * Fix intertial- scrolling on iOS
   * Prevent all scrolling of `<html>` and `<body>` elements
