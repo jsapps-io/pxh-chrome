@@ -67,7 +67,7 @@ $pxh-view-header-height: 60px !default; // locked to current height of px-contex
 
 .pxh-drawer-toggle {
   margin: $pxh-drawer-toggle-margin 0 0 $pxh-drawer-toggle-margin;
-  height: $pxh-view-header-height - ($pxh-drawer-toggle-margin * 2);
+  height: $pxh-view-header-height - $pxh-drawer-toggle-margin;
 }
 
 .pxh-drawer-toggle__link {
