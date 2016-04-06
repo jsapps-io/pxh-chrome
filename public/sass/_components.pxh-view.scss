@@ -8,8 +8,16 @@ $pxh-drawer-width-wide: $inuit-base-spacing-unit * 15 !default;
 $pxh-drawer-width-narrow: $inuit-base-spacing-unit * 3 !default;
 $pxh-drawer-toggle-margin: $inuit-base-spacing-unit * 0.75 !default;
 
+.pxh-wrapper {
+  padding-top: $pxh-view-header-height;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
 .pxh-view {
-  margin-top: $pxh-view-header-height;
   height: 100%;
   overflow: auto;
   -webkit-overflow-scrolling: touch;
