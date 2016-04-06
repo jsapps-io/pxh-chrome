@@ -1,5 +1,12 @@
 #pxh-chrome changelog
 
+### 0.5.0 - April 6, 2016
+* Move `pxh-view-header` out from `pxh-view`
+  * There were simply too many bugs on iOS and IE to justify keeping the `position: fixed` view-header element inside the view element
+* Add wrapper class `pxh-wrapper` around `pxh-view-header` and `pxh-view`
+* Move responsibility of wrapper, view header and view out of the App Hub and into the Microapp
+  * The App Hub (via pxh-chrome) will continue to provide the styles and markup for these elements, as well as the desired responsive behavior and JavaScript events, but each Microapp is now responsible for embedding these elements and populating them with content
+
 ### 0.4.4 - April 5, 2016
 * On tablet and mobile, automatically close the navigation drawer when the user clicks a primary or secondary navigation link
 
