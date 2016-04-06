@@ -1,5 +1,8 @@
 #pxh-chrome changelog
 
+### 0.4.4 - April 5, 2016
+* On tablet and mobile, automatically close the navigation drawer when the user clicks a primary or secondary navigation link
+
 ### 0.4.3 - April 4, 2016
 * Increase height of drawer toggle and view header to match `px-context-browser`
 * Add basic loading spinner from `px-spinner`

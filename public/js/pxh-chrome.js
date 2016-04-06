@@ -227,6 +227,26 @@
 
   lgBreakpoint.addListener(toggleDrawerOnLarge);
 
+  // make links automatically close the drawer when clicked
+  function bindDrawerMediaQueryControls(targetClass, mediaQueryList) {
+    var targetElements = document.getElementsByClassName(targetClass);
+    if ((typeof targetElements !== 'undefined') && (targetElements.length > 0)) {
+      // iterate through drawer controls and fire the toggleDrawer function when clicked
+      for (var i = targetElements.length - 1; i >= 0; i--) {
+        targetElements[i].addEventListener('click', function() {
+          if (!mediaQueryList.matches) {
+            loadState(statesObject, 'drawerClosed');
+            docCookies.setItem('pxh-drawer-open', 'false', 86400, '/');
+            docCookies.setItem('pxh-drawer-narrow', 'true', 86400, '/');
+          }
+        })
+      }
+    }
+  }
+
+  bindDrawerMediaQueryControls('pxh-navigation__link', lgBreakpoint);
+  bindDrawerMediaQueryControls('pxh-navigation__sub-link', lgBreakpoint);
+
   // add an event listener for when the DOM content is ready
   document.addEventListener('DOMContentLoaded', function(event) {
     if (docCookies.getItem('pxh-drawer-open') === null) {
