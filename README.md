@@ -82,6 +82,13 @@ Refer to [CSS Guidelines](http://cssguidelin.es/) for more best practices, inclu
 
 There are a number of ways to skin this cat, from redefining variables at the pxh-chrome level and recompiling your CSS to embedding your theme styles in the <head> of your HTML file. Refer to Harry Roberts' [4 1/2 Methods for Theming in (S)CSS](https://speakerdeck.com/csswizardry/4half-methods-for-theming-in-s-css).
 
+###Triggering "Chromeless" Mode
+To trigger "chromeless" mode, which hides the drawer, drawer toggle, navigation, and login module, simply:
+
+* Remove the markup for `pxh-drawer` and `pxh-view-header-toggle` from your HTML file
+* Remove all `@lg` and `@md` responsive classes from `pxh-view-header` and `pxh-view`
+* Remove the `<script>` tag for `pxh-chrome.js` (`pxh-chrome.js` is not required for chromeless view, as the JavaScript is only necessary for managing drawer state between breakpoints, page refreshes and toggle events... if there's no drawer, there's no need for JavaScript!)
+
 ##Browser Support
 
 pxh-chrome is tested in the most recent major releases of Chrome, Firefox, Safari, and Internet Explorer (IE11 and IE Edge).
