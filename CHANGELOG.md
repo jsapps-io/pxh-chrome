@@ -1,5 +1,8 @@
 #pxh-chrome changelog
 
+### Pending Release
+* _nothing yet..._
+
 ### 0.5.0 - April 6, 2016
 * Move `pxh-view-header` out from `pxh-view`
   * There were simply too many bugs on iOS and IE to justify keeping the `position: fixed` view-header element inside the view element
@@ -43,9 +46,6 @@
 ### 0.3.4 - March 25, 2016
 * REALLY fix the double scroll bar issue in IE (with a `!important` rule in the px-theme overrides layer)
 
-### 0.3.4 - March 25, 2016
-* REALLY fix the double scroll bar issue in IE (with a `!important` rule in the px-theme overrides layer)
-
 ### 0.3.3 - March 25, 2016
 * Fix double scroll bars in IE
 
@@ -61,7 +61,6 @@
 * Use Javascript cookies to track and recall expanded/collapsed state of the drawer between page refreshes (should work when navigating between microapps as well)
 
 ### 0.2.0 - March 22, 2016
-
 * Add initial architectural documentation
 * Automatically expand and collapse `pxh-drawer` between `@md` and `@lg` breakpoints
 
@@ -72,5 +71,4 @@
 ### 0.1.1 - March 18, 2016
 
 ### 0.1.0 - March 18, 2016
-
 * Initial release
