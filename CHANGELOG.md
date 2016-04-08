@@ -3,6 +3,10 @@
 ### Pending Release
 * _nothing yet..._
 
+### 0.5.1 - April 8, 2016
+* Add a responsive "chromeless" view, which can display a Microapp without the left drawer, navigation, login module, and drawer toggle
+  * Triggering "chromeless" is simply a matter of removing the markup for the drawer and toggle, removing the responsive classes from `pxh-view-header` and `pxh-view`, and removing `pxh-chrome.js` (`pxh-chrome.js` is not required for chromeless view, as the JavaScript is only necessary for managing drawer state between breakpoints, refreshes and toggles... no drawer, no JavaScript!)
+
 ### 0.5.0 - April 6, 2016
 * Move `pxh-view-header` out from `pxh-view`
   * There were simply too many bugs on iOS and IE to justify keeping the `position: fixed` view-header element inside the view element
