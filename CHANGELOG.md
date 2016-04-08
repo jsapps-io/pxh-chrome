@@ -1,5 +1,12 @@
 #pxh-chrome changelog
 
+### Pending Release
+* _nothing yet..._
+
+### 0.5.1 - April 8, 2016
+* Add a responsive "chromeless" view, which can display a Microapp without the left drawer, navigation, login module, and drawer toggle
+  * Triggering "chromeless" is simply a matter of removing the markup for the drawer and toggle, removing the responsive classes from `pxh-view-header` and `pxh-view`, and removing `pxh-chrome.js` (`pxh-chrome.js` is not required for chromeless view, as the JavaScript is only necessary for managing drawer state between breakpoints, refreshes and toggles... no drawer, no JavaScript!)
+
 ### 0.5.0 - April 6, 2016
 * Move `pxh-view-header` out from `pxh-view`
   * There were simply too many bugs on iOS and IE to justify keeping the `position: fixed` view-header element inside the view element
@@ -43,9 +50,6 @@
 ### 0.3.4 - March 25, 2016
 * REALLY fix the double scroll bar issue in IE (with a `!important` rule in the px-theme overrides layer)
 
-### 0.3.4 - March 25, 2016
-* REALLY fix the double scroll bar issue in IE (with a `!important` rule in the px-theme overrides layer)
-
 ### 0.3.3 - March 25, 2016
 * Fix double scroll bars in IE
 
@@ -61,7 +65,6 @@
 * Use Javascript cookies to track and recall expanded/collapsed state of the drawer between page refreshes (should work when navigating between microapps as well)
 
 ### 0.2.0 - March 22, 2016
-
 * Add initial architectural documentation
 * Automatically expand and collapse `pxh-drawer` between `@md` and `@lg` breakpoints
 
@@ -72,5 +75,4 @@
 ### 0.1.1 - March 18, 2016
 
 ### 0.1.0 - March 18, 2016
-
 * Initial release
