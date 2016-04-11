@@ -1,7 +1,12 @@
 #pxh-chrome changelog
 
 ### Pending Release
-* _nothing yet..._
+* Updated drawer to latest styles from APM UX team
+  * New active, current and hover styles
+  * 
+* Added drawer header component ("Predix") that displays responsively depending on viewport width
+* Added global style for hyperlinks
+* Bumped versions on Bower dependencies, including Px Sass components
 
 ### 0.5.1 - April 8, 2016
 * Add a responsive "chromeless" view, which can display a Microapp without the left drawer, navigation, login module, and drawer toggle. Triggering "chromeless" is simply a matter of:
