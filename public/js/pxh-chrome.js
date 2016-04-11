@@ -136,6 +136,10 @@
         'remove' : 'pxh-drawer--hidden-until@md pxh-drawer--narrow@md',
         'add' : 'pxh-drawer--wide@lg'
       },
+      'pxh-drawer-header' : {
+        'remove' : 'pxh-drawer-header--narrow@md',
+        'add' : 'pxh-drawer-header--wide@md'
+      },
       'pxh-overlay' : {
         'remove' : 'pxh-overlay--hidden'
       },
@@ -175,6 +179,10 @@
       'pxh-drawer' : {
         'add' : 'pxh-drawer--hidden-until@md pxh-drawer--narrow@md',
         'remove' : 'pxh-drawer--wide@lg'
+      },
+      'pxh-drawer-header' : {
+        'remove' : 'pxh-drawer-header--wide@md pxh-drawer-header--wide@lg',
+        'add' : 'pxh-drawer-header--narrow@md'
       },
       'pxh-overlay' : {
         'add' : 'pxh-overlay--hidden'

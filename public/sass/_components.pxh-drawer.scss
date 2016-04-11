@@ -167,6 +167,7 @@ $pxh-view-header-height: 60px !default; // locked to current height of px-contex
 .pxh-drawer-header {
   float: left;
   @include pxh-drawer-header--in-styles;
+  @include pxh-animation(pxh-drawer-header--in);
   margin-top: $pxh-drawer-margin / 1.25;
   margin-left: $pxh-drawer-margin;
 }
@@ -190,23 +191,9 @@ $pxh-view-header-height: 60px !default; // locked to current height of px-contex
   }
 }
 
-
 @include mq($from: lg) {
   .pxh-drawer-header--wide\@lg {
     @include pxh-drawer-header--in-styles;
     @include pxh-animation(pxh-drawer-header--in);
   }
 }
-
-@include mq($until: lg) {
-  .pxh-drawer-header--hidden-until\@lg {
-    @include pxh-drawer-header--out-styles;
-  }
-}
-
-// @include mq($from: lg) {
-//   .pxh-drawer-header--wide\@lg {
-//     @include pxh-drawer-header--in-styles;
-//     @include pxh-animation(pxh-drawer-header--in);
-//   }
-// }
