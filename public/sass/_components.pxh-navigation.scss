@@ -2,15 +2,36 @@
     #PXH-NAVIGATION
 \*------------------------------------*/
 
-$pxh-navigation-selected-bg-color: $select-blue-pressed !default;
-$pxh-navigation-active-bg-color: $gray8 !default;
-$pxh-navigation-hover-bg-color: $gray7 !default;
+$pxh-navigation-color: $gray7 !default;
+$pxh-navigation-bg-color: transparent !default;
+
+$pxh-navigation-selected-bg-color: $gray9 !default;
+$pxh-navigation-selected-color: $white !default;
+
+$pxh-navigation-active-bg-color: $gray9 !default;
+$pxh-navigation-active-color: $white !default;
+
+$pxh-navigation-sub-color: $gray7 !default;
+
+$pxh-navigation-sub-selected-bg-color: transparent !default;
+$pxh-navigation-sub-selected-color: $white !default;
+
+$pxh-navigation-hover-bg-color: $gray9 !default;
+$pxh-navigation-hover-color: $gray4 !default;
+
+$pxh-navigation-sub-hover-bg-color: transparent !default;
+$pxh-navigation-sub-hover-color: $gray4 !default;
+
+$pxh-drawer-margin: 20px !default; // magic number ... fix this
+$pxh-drawer-width-wide: 260px !default; // magic number ... fix this
 
 /*------------------------------------*\
     #pxh-navigation
 \*------------------------------------*/
 
 .pxh-navigation {
+  clear: both;
+  border-top: 1px solid rgba(0,0,0,0.15);
   max-height: 100%;
   overflow: auto;
   -webkit-overflow-scrolling: touch;
@@ -18,9 +39,10 @@ $pxh-navigation-hover-bg-color: $gray7 !default;
 }
 
 .pxh-navigation__item-icon {
+  text-align: center;
   float: left;
   display: block;
-  width: $inuit-base-spacing-unit * 1.5;
+  width: $pxh-drawer-margin;
 }
 
 .pxh-navigation__link {
@@ -30,7 +52,7 @@ $pxh-navigation-hover-bg-color: $gray7 !default;
   height: $inuit-base-spacing-unit * 3.5;
   float: left;
   clear: left;
-  padding: $inuit-base-spacing-unit ($inuit-base-spacing-unit / 8) $inuit-base-spacing-unit $inuit-base-spacing-unit;
+  padding: $pxh-drawer-margin ($inuit-base-spacing-unit / 8) $inuit-base-spacing-unit $pxh-drawer-margin;
 }
 
 /*------------------------------------*\
@@ -244,7 +266,8 @@ $pxh-navigation-hover-bg-color: $gray7 !default;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  max-width: $inuit-base-spacing-unit * 9.9; // has to be narrower than the available space to accomodate potential pxh-badge
+  padding-left: $pxh-drawer-margin;
+  max-width: $pxh-drawer-width-wide - ($pxh-drawer-margin * 4); // has to be narrower than the available space to accomodate potential pxh-badge
   float: left;
   opacity: 1;
 }
@@ -274,7 +297,7 @@ $pxh-navigation-hover-bg-color: $gray7 !default;
     opacity: 1;
     visibility: visible;
     height: $inuit-base-spacing-unit * 2;
-    padding: ($inuit-base-spacing-unit / 2) ($inuit-base-spacing-unit / 8) 0 $inuit-base-spacing-unit * 2.75;
+    padding: ($inuit-base-spacing-unit / 2) ($inuit-base-spacing-unit / 8) 0 $pxh-drawer-margin * 3;
 }
 
 // mixin for "animate out" styles
@@ -314,7 +337,7 @@ $pxh-navigation-hover-bg-color: $gray7 !default;
     opacity: 0;
     visibility: visible;
     height: $inuit-base-spacing-unit * 2;
-    padding: ($inuit-base-spacing-unit / 2) 0 0 $inuit-base-spacing-unit * 2.75;
+    padding: ($inuit-base-spacing-unit / 2) ($inuit-base-spacing-unit / 8) 0 $pxh-drawer-margin * 3;
   }
   100% {
     @include pxh-navigation__sub-link--in-styles;
@@ -334,7 +357,7 @@ $pxh-navigation-hover-bg-color: $gray7 !default;
     opacity: 0;
     visibility: visible;
     height: $inuit-base-spacing-unit * 2;
-    padding: ($inuit-base-spacing-unit / 2) 0 0 $inuit-base-spacing-unit * 2.75;
+    padding: ($inuit-base-spacing-unit / 2) ($inuit-base-spacing-unit / 8) 0 $pxh-drawer-margin * 3;
   }
   99% {
     font-size: 0;
@@ -355,7 +378,7 @@ $pxh-navigation-hover-bg-color: $gray7 !default;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  max-width: $inuit-base-spacing-unit * 15;
+  max-width: $pxh-drawer-width-wide;
   text-decoration: none;
 }
 
@@ -364,19 +387,22 @@ $pxh-navigation-hover-bg-color: $gray7 !default;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  max-width: $inuit-base-spacing-unit * 9.5; // has to be narrower than the available space to accomodate potential pxh-badge
+  max-width: $pxh-drawer-width-wide - ($pxh-drawer-margin * 5); // has to be narrower than the available space to accomodate potential pxh-badge
   float: left;
   opacity: 1;
 }
 
 .pxh-navigation__sub-link--selected {
-  background-color: $pxh-navigation-selected-bg-color;
+  background-color: $pxh-navigation-sub-selected-bg-color;
+  color: $pxh-navigation-sub-selected-color;
   &:link,
   &:visited {
-    background-color: $pxh-navigation-selected-bg-color;
+    background-color: $pxh-navigation-sub-selected-bg-color;
+    color: $pxh-navigation-sub-selected-color;
   }
   &:hover {
-    background-color: $pxh-navigation-selected-bg-color;
+    background-color: $pxh-navigation-sub-selected-bg-color;
+    color: $pxh-navigation-sub-selected-color;
   }
 }
 
@@ -385,6 +411,8 @@ $pxh-navigation-hover-bg-color: $gray7 !default;
 \*------------------------------------*/
 
 .pxh-navigation__sub-item--divider {
+  margin-left: $pxh-drawer-margin * 3;
+  margin-right: $pxh-drawer-margin;
   display: block;
   height: 1px;
   background-color: $gray9;
@@ -456,11 +484,12 @@ $pxh-navigation-hover-bg-color: $gray7 !default;
 .pxh-navigation__link:link.pxh-navigation__link:link.pxh-navigation__link:link,
 .pxh-navigation__link:visited.pxh-navigation__link:visited.pxh-navigation__link:visited { // chained to override px-theme
   text-decoration: none;
-  color: $white;
+  color: $pxh-navigation-color;
 }
 
 .pxh-navigation__link:hover.pxh-navigation__link:hover.pxh-navigation__link:hover { // chained to override px-theme
   background-color: $pxh-navigation-hover-bg-color;
+  color: $pxh-navigation-hover-color;
 }
 
 .pxh-navigation__link--selected.pxh-navigation__link--selected.pxh-navigation__link--selected,
@@ -468,12 +497,14 @@ $pxh-navigation-hover-bg-color: $gray7 !default;
 .pxh-navigation__link--selected:visited.pxh-navigation__link--selected:visited.pxh-navigation__link--selected:visited,
 .pxh-navigation__link--selected:hover.pxh-navigation__link--selected:hover.pxh-navigation__link--selected:hover { // chained to override px-theme
   background-color: $pxh-navigation-selected-bg-color;
+  color: $pxh-navigation-selected-color;
 }
 
 .pxh-navigation__link--active.pxh-navigation__link--active.pxh-navigation__link--active,
 .pxh-navigation__link--active:link.pxh-navigation__link--active:link.pxh-navigation__link--active:link,
 .pxh-navigation__link--active:visited.pxh-navigation__link--active:visited.pxh-navigation__link--active:visited {
   background-color: $pxh-navigation-active-bg-color;
+  color: $pxh-navigation-active-color;
 }
 
 .pxh-navigation__sub-list.pxh-navigation__sub-list.pxh-navigation__sub-list { // chained to override px-theme
@@ -486,11 +517,19 @@ $pxh-navigation-hover-bg-color: $gray7 !default;
 .pxh-navigation__sub-link.pxh-navigation__sub-link.pxh-navigation__sub-link,
 .pxh-navigation__sub-link:link.pxh-navigation__sub-link:link.pxh-navigation__sub-link:link,
 .pxh-navigation__sub-link:visited.pxh-navigation__sub-link:visited.pxh-navigation__sub-link:visited { // chained to override px-theme
-  color: $white;
+  color: $pxh-navigation-sub-color;
 }
 
-.pxh-navigation__sub-link.pxh-navigation__sub-link:hover.pxh-navigation__sub-link:hover { // chained to override px-theme
-  background-color: $pxh-navigation-hover-bg-color;
+.pxh-navigation__sub-link:hover.pxh-navigation__sub-link:hover.pxh-navigation__sub-link:hover { // chained to override px-theme
+  background-color: $pxh-navigation-sub-hover-bg-color;
+  color: $pxh-navigation-sub-hover-color;
+}
+
+.pxh-navigation__sub-link--selected.pxh-navigation__sub-link--selected.pxh-navigation__sub-link--selected,
+.pxh-navigation__sub-link--selected:link.pxh-navigation__sub-link--selected:link.pxh-navigation__sub-link--selected:link,
+.pxh-navigation__sub-link--selected:visited.pxh-navigation__sub-link--selected:visited.pxh-navigation__sub-link--selected:visited { // chained to override px-theme
+  background-color: $pxh-navigation-sub-selected-bg-color;
+  color: $pxh-navigation-sub-selected-color;
 }
 
 .pxh-navigation__sub-link--settings.pxh-navigation__sub-link--settings.pxh-navigation__sub-link--settings,

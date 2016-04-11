@@ -3,8 +3,8 @@
 \*------------------------------------*/
 
 $pxh-login-height:  $inuit-base-spacing-unit * 3;
-$pxh-login-padding: $inuit-base-spacing-unit / 2;
-$pxh-login-avatar-height-width: $inuit-base-spacing-unit * 2;
+$pxh-drawer-padding: 20px !default;
+$pxh-login-avatar-height-width: 30px; // magic number, fix this
 
 // mixin for "animate in" styles
 //
@@ -102,11 +102,12 @@ $pxh-login-avatar-height-width: $inuit-base-spacing-unit * 2;
 }
 
 .pxh-login {
+  border-top: 1px solid $gray9;
   background-color: $pxh-drawer-bg-color;
   position: absolute;
   bottom: 0;
   width: 100%;
-  padding: $pxh-login-padding;
+  padding: $pxh-drawer-margin / 1.5;
 }
 
 .pxh-login__link {
@@ -117,6 +118,10 @@ $pxh-login-avatar-height-width: $inuit-base-spacing-unit * 2;
 .pxh-login__link.pxh-login__link.pxh-login__link,
 .pxh-login__link:link.pxh-login__link:link.pxh-login__link:link,
 .pxh-login__link:visited.pxh-login__link:visited.pxh-login__link:visited { // chained to override px-theme
+  color: $gray7;
+}
+
+.pxh-login__link:hover.pxh-login__link:hover.pxh-login__link:hover { // chained to override px-theme
   color: $white;
 }
 
@@ -127,11 +132,12 @@ $pxh-login-avatar-height-width: $inuit-base-spacing-unit * 2;
 .pxh-login__avatar-icon.pxh-login__avatar-icon.pxh-login__avatar-icon.pxh-login__avatar-icon.pxh-login__avatar-icon {  // yes, in fact, it DOES take a five-deep class chain to override px-theme here
   height: $pxh-login-avatar-height-width;
   width: $pxh-login-avatar-height-width;
-  font-size: $inuit-base-font-size * 1.5; // needs a !important with anything less than a five-deep class chain
-  padding-left: $inuit-base-spacing-unit / 2.5;
-  padding-top: $inuit-base-spacing-unit / 5;
-  background-color: $gray7;
-  color: $black;
+  font-size: $inuit-base-font-size * 1.1; // needs a !important with anything less than a five-deep class chain
+  padding-left: $inuit-base-spacing-unit / 2;
+  padding-top: $inuit-base-spacing-unit / 3;
+  background-color: transparent;
+  color: $gray7;
+  border: 1px solid $gray7;
   border-radius: 100%;
 }
 
@@ -144,7 +150,7 @@ $pxh-login-avatar-height-width: $inuit-base-spacing-unit * 2;
 .pxh-login__name {
   @include pxh-animation(pxh-login--in);
   @include pxh-login--in-styles;
-  padding-left: $pxh-login-padding;
+  padding-left: $pxh-drawer-margin / 3;
   float: left;
   overflow: hidden;
   white-space: nowrap;
@@ -174,7 +180,7 @@ $pxh-login-avatar-height-width: $inuit-base-spacing-unit * 2;
   @include pxh-animation(pxh-login--in);
   @include pxh-login--in-styles;
   float: left;
-  padding-left: $pxh-login-padding / 4;
+  padding-left: $pxh-drawer-margin / 4;
 }
 
 // From the @md (tablet) breakpoint and wider,
@@ -196,7 +202,7 @@ $pxh-login-avatar-height-width: $inuit-base-spacing-unit * 2;
 
 .pxh-login__settings {
   float: right;
-  padding-left: $pxh-login-padding / 2;
+  padding-left: $pxh-drawer-margin / 2;
   @include pxh-animation(pxh-login--in);
   @include pxh-login--in-styles;
   // padding-top: $pxh-login-avatar-height-width / 4 0 0 0;
@@ -223,7 +229,7 @@ $pxh-login-avatar-height-width: $inuit-base-spacing-unit * 2;
 .pxh-login__settings-link:link.pxh-login__settings-link:link.pxh-login__settings-link:link,
 .pxh-login__settings-link:visited.pxh-login__settings-link:visited.pxh-login__settings-link:visited { // chained to override px-theme
   float: right;
-  color: $white;
+  color: $gray7;
   text-decoration: none;
 }
 
@@ -235,8 +241,8 @@ $pxh-login-avatar-height-width: $inuit-base-spacing-unit * 2;
   position: absolute;
   bottom: $inuit-base-spacing-unit * 2;
   left: -9999px;
-  background-color: $white;
-  color: $black;
+  background-color: $black;
+  color: $white;
   width: $inuit-base-spacing-unit * 8;
   border-radius: 2px;
   -webkit-box-shadow: 0 1px 2px 0 rgba(0,0,0,0.25);
@@ -256,20 +262,20 @@ $pxh-login-avatar-height-width: $inuit-base-spacing-unit * 2;
 
 .pxh-login-menu__divider {
   display: block;
-  border-top: 1px solid $gray3;
+  border-top: 1px solid $gray10;
 }
 
 .pxh-login-menu__link.pxh-login-menu__link { // chained to override px-theme
   display: block;
   padding: $inuit-base-spacing-unit;
   text-decoration: none;
-  color: $black;
+  color: $white;
 }
 
 .pxh-login-menu__link:link.pxh-login-menu__link:link,
 .pxh-login-menu__link:visited.pxh-login-menu__link:visited { // chained to override px-theme
-  color: $black;
+  color: $white;
 }
 .pxh-login-menu__link:hover.pxh-login-menu__link:hover { // chained to override px-theme
-  background-color: $gray2;
+  background-color: $gray10;
 }
