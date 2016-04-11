@@ -84,3 +84,129 @@ $pxh-view-header-height: 60px !default; // locked to current height of px-contex
   fill: $gray7;
 }
 
+/*------------------------------------*\
+    #pxh-drawer-header
+\*------------------------------------*/
+
+// mixin for "animate in" styles
+//
+// These styles are applied at the end of an entrance animation
+// when the element toggles from hidden to visible, or at the
+// beginning of an exit animation when the elemenbt toggles from
+// visible to hidden.
+//
+// These styles are also applied to the element when it is visible
+// by default, absent an animation.
+@mixin pxh-drawer-header--in-styles {
+  font-size: $inuit-base-font-size * 1.5;
+  opacity: 1;
+  visibility: visible;
+}
+
+// mixin for "animate out" styles
+//
+// These styles are applied at the end of an exit animation
+// when the element toggles from visible to hidden, or at the
+// beginning of an entrance animation when the element toggles from
+// hidden to visible.
+//
+// These styles are also applied to the element when it is hidden
+// by default, absent an animation.
+@mixin pxh-drawer-header--out-styles {
+  font-size: 0;
+  opacity: 0;
+  visibility: hidden;
+}
+
+// keyframes for "animate in" styles
+//
+// This animation sequence is applied when the element
+// toggles from hidden to visible.
+@keyframes pxh-drawer-header--in {
+  0% {
+    @include pxh-drawer-header--out-styles;
+  }
+  50% {
+    font-size: 0;
+    opacity: 0;
+    visibility: visible;
+  }
+  75% {
+    font-size: $inuit-base-font-size * 1.5;
+    opacity: 0;
+    visibility: visible;
+  }
+  100% {
+    @include pxh-drawer-header--in-styles;
+  }
+}
+
+// keyframes for "animate out" styles
+//
+// This animation sequence is applied when the element
+// toggles from visible to hidden.
+@keyframes pxh-drawer-header--out {
+  0% {
+    @include pxh-drawer-header--in-styles;
+  }
+  50% {
+    font-size: $inuit-base-font-size * 1.5;
+    opacity: 0;
+    visibility: visible;
+  }
+  99% {
+    font-size: 0;
+    opacity: 0;
+    visibility: visible;
+  }
+  100% {
+    @include pxh-drawer-header--out-styles;
+  }
+}
+
+.pxh-drawer-header {
+  float: left;
+  @include pxh-drawer-header--in-styles;
+  margin-top: $pxh-drawer-margin / 1.25;
+  margin-left: $pxh-drawer-margin;
+}
+
+.pxh-drawer-header__link {
+  color: $gray7;
+  text-decoration: none;
+}
+
+@include mq($from: md) {
+  .pxh-drawer-header--narrow\@md {
+    @include pxh-drawer-header--out-styles;
+    @include pxh-animation(pxh-drawer-header--out);
+  }
+}
+
+@include mq($from: md) {
+  .pxh-drawer-header--wide\@md {
+    @include pxh-drawer-header--in-styles;
+    @include pxh-animation(pxh-drawer-header--in);
+  }
+}
+
+
+@include mq($from: lg) {
+  .pxh-drawer-header--wide\@lg {
+    @include pxh-drawer-header--in-styles;
+    @include pxh-animation(pxh-drawer-header--in);
+  }
+}
+
+@include mq($until: lg) {
+  .pxh-drawer-header--hidden-until\@lg {
+    @include pxh-drawer-header--out-styles;
+  }
+}
+
+// @include mq($from: lg) {
+//   .pxh-drawer-header--wide\@lg {
+//     @include pxh-drawer-header--in-styles;
+//     @include pxh-animation(pxh-drawer-header--in);
+//   }
+// }
