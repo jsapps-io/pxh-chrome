@@ -25,6 +25,11 @@ $pxh-navigation-sub-hover-color: $gray4 !default;
 $pxh-drawer-margin: 20px !default; // magic number ... fix this
 $pxh-drawer-width-wide: 260px !default; // magic number ... fix this
 
+$pxh-navigation-link-height: 48px;
+$pxh-navigation-sub-link-height: 30px;
+$pxh-navigation-divider-margin: 10px;
+
+
 /*------------------------------------*\
     #pxh-navigation
 \*------------------------------------*/
@@ -43,16 +48,17 @@ $pxh-drawer-width-wide: 260px !default; // magic number ... fix this
   float: left;
   display: block;
   width: $pxh-drawer-margin;
+  padding-top: 2px;
 }
 
 .pxh-navigation__link {
   font-size: $inuit-base-font-size;
   display: block;
   width: 100%;
-  height: $inuit-base-spacing-unit * 3.5;
+  height: $pxh-navigation-link-height;
   float: left;
   clear: left;
-  padding: $pxh-drawer-margin ($inuit-base-spacing-unit / 8) $inuit-base-spacing-unit $pxh-drawer-margin;
+  padding: $pxh-drawer-margin / 1.5 2px 0 $pxh-drawer-margin;
 }
 
 /*------------------------------------*\
@@ -69,7 +75,7 @@ $pxh-drawer-width-wide: 260px !default; // magic number ... fix this
 // These styles are also applied to the element when it is visible
 // by default, absent an animation.
 @mixin pxh-badge--in-styles {
-  font-size: $inuit-base-font-size * 0.866666666666;
+  font-size: 12px;
   opacity: 1;
   visibility: visible;
 }
@@ -104,7 +110,7 @@ $pxh-drawer-width-wide: 260px !default; // magic number ... fix this
     visibility: visible;
   }
   50% {
-    font-size: $inuit-base-font-size * 0.866666666666;
+    font-size: 12px;
     opacity: 0;
     visibility: visible;
   }
@@ -124,7 +130,7 @@ $pxh-drawer-width-wide: 260px !default; // magic number ... fix this
     @include pxh-badge--in-styles;
   }
   50% {
-    font-size: $inuit-base-font-size * 0.866666666666;
+    font-size: 12px;
     opacity: 0;
     visibility: visible;
   }
@@ -293,11 +299,11 @@ $pxh-drawer-width-wide: 260px !default; // magic number ... fix this
 // These styles are also applied to the element when it is visible
 // by default, absent an animation.
 @mixin pxh-navigation__sub-link--in-styles {
-    font-size: $inuit-base-font-size * 0.866666666666;
+    font-size: $inuit-base-font-size;
     opacity: 1;
     visibility: visible;
-    height: $inuit-base-spacing-unit * 2;
-    padding: ($inuit-base-spacing-unit / 2) ($inuit-base-spacing-unit / 8) 0 $pxh-drawer-margin * 3;
+    height: $pxh-navigation-sub-link-height;
+    padding: $pxh-drawer-margin / 1.5 2px 0 $pxh-drawer-margin * 3;
 }
 
 // mixin for "animate out" styles
@@ -333,7 +339,7 @@ $pxh-drawer-width-wide: 260px !default; // magic number ... fix this
     padding: 0;
   }
   75% {
-    font-size: $inuit-base-font-size * 0.866666666666;
+    font-size: $inuit-base-font-size;
     opacity: 0;
     visibility: visible;
     height: $inuit-base-spacing-unit * 2;
@@ -353,7 +359,6 @@ $pxh-drawer-width-wide: 260px !default; // magic number ... fix this
     @include pxh-navigation__sub-link--in-styles;
   }
   25% {
-    font-size: $inuit-base-font-size * 0.866666666666;
     opacity: 0;
     visibility: visible;
     height: $inuit-base-spacing-unit * 2;
@@ -411,6 +416,7 @@ $pxh-drawer-width-wide: 260px !default; // magic number ... fix this
 \*------------------------------------*/
 
 .pxh-navigation__sub-item--divider {
+  margin-top: $pxh-navigation-divider-margin * 1.5;
   margin-left: $pxh-drawer-margin * 3;
   margin-right: $pxh-drawer-margin;
   display: block;
@@ -435,6 +441,7 @@ $pxh-drawer-width-wide: 260px !default; // magic number ... fix this
       @include pxh-navigation__sub-link--out-styles;
     }
     .pxh-navigation__sub-item--divider {
+      margin-top: 0;
       height: 0;
       transition-delay: 0;
     }
@@ -512,6 +519,10 @@ $pxh-drawer-width-wide: 260px !default; // magic number ... fix this
   margin: 0;
   padding: 0;
   list-style: none;
+}
+
+.pxh-navigation__sub-item:last-of-type.pxh-navigation__sub-item:last-of-type.pxh-navigation__sub-item:last-of-type {
+  margin-bottom: $pxh-drawer-margin / 2;
 }
 
 .pxh-navigation__sub-link.pxh-navigation__sub-link.pxh-navigation__sub-link,
