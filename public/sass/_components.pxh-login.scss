@@ -298,8 +298,16 @@ $pxh-login-magic-centering: 14px !default; // magic number, fix this
 
 @include mq($from: md) {
   .pxh-login--narrow\@md {
-    .pxh-login-menu--visible {
+    .pxh-login-menu--profile.pxh-login-menu--visible {
       left: $pxh-drawer-width-narrow - 20px; // magic number
+    }
+  }
+}
+
+@include mq($from: lg) {
+  .pxh-login--wide\@lg {
+    .pxh-login-menu--profile.pxh-login-menu--visible {
+      left: ($pxh-drawer-width-wide / 3) + 5px; // magic number
     }
   }
 }
