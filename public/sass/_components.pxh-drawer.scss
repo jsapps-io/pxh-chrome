@@ -98,6 +98,9 @@ $pxh-view-header-height: 60px !default; // locked to current height of px-contex
 // These styles are also applied to the element when it is visible
 // by default, absent an animation.
 @mixin pxh-drawer-header__link--in-styles {
+  margin-top: $pxh-drawer-margin / 1.25;
+  margin-left: $pxh-drawer-margin;
+  width: $pxh-drawer-width-wide - ($pxh-drawer-margin * 3);
   font-size: $inuit-base-font-size * 1.5;
   opacity: 1;
   visibility: visible;
@@ -113,6 +116,8 @@ $pxh-view-header-height: 60px !default; // locked to current height of px-contex
 // These styles are also applied to the element when it is hidden
 // by default, absent an animation.
 @mixin pxh-drawer-header__link--out-styles {
+  margin: 0;
+  width: 0;
   font-size: 0;
   opacity: 0;
   visibility: hidden;
@@ -127,14 +132,27 @@ $pxh-view-header-height: 60px !default; // locked to current height of px-contex
     @include pxh-drawer-header__link--out-styles;
   }
   50% {
+    margin: 0;
+    width: 0;
     font-size: 0;
     opacity: 0;
-    visibility: visible;
+    visibility: hidden;
   }
   75% {
+    margin-top: $pxh-drawer-margin / 1.25;
+    margin-left: $pxh-drawer-margin;
+    width: $pxh-drawer-width-wide - ($pxh-drawer-margin * 3);
+    font-size: 0;
+    opacity: 0;
+    visibility: hidden;
+  }
+  90% {
+    margin-top: $pxh-drawer-margin / 1.25;
+    margin-left: $pxh-drawer-margin;
+    width: $pxh-drawer-width-wide - ($pxh-drawer-margin * 3);
     font-size: $inuit-base-font-size * 1.5;
     opacity: 0;
-    visibility: visible;
+    visibility: hidden;
   }
   100% {
     @include pxh-drawer-header__link--in-styles;
@@ -150,6 +168,9 @@ $pxh-view-header-height: 60px !default; // locked to current height of px-contex
     @include pxh-drawer-header__link--in-styles;
   }
   50% {
+    margin-top: $pxh-drawer-margin / 1.25;
+    margin-left: $pxh-drawer-margin;
+    width: $pxh-drawer-width-wide - ($pxh-drawer-margin * 3);
     font-size: $inuit-base-font-size * 1.5;
     opacity: 0;
     visibility: visible;
@@ -166,10 +187,6 @@ $pxh-view-header-height: 60px !default; // locked to current height of px-contex
 
 .pxh-drawer-header {
   float: left;
-  @include pxh-drawer-header--in-styles;
-  @include pxh-animation(pxh-drawer-header--in);
-  margin-top: $pxh-drawer-margin / 1.25;
-  margin-left: $pxh-drawer-margin;
 }
 
 .pxh-drawer-header__link {
