@@ -53,7 +53,9 @@ gulp.task('lint:test', lint('test/spec/**/*.js', testLintOptions));
 gulp.task('html', ['sass', 'js'], () => {
   return gulp.src('public/*.html')
     .pipe($.useref({searchPath: ['.tmp', 'public', '.']}))
-    .pipe($.if('*.js', $.uglify()))
+    .pipe($.if('*.js', $.uglify({
+      preserveComments: 'some'
+    })))
     .pipe($.if('*.css', $.cssnano()))
     .pipe($.if('*.html', $.htmlmin({collapseWhitespace: true})))
     .pipe(gulp.dest('dist'));

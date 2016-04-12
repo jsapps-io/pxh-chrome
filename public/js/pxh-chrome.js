@@ -1,4 +1,5 @@
 'use strict';
+/*! pxh-chrome.js 0.7.0 */
 (function(){
 
   var lgBreakpoint = window.matchMedia('(min-width: 1024px)');
