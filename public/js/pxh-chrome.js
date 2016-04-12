@@ -324,7 +324,7 @@
   pxhOverlayDrawerControl();
 
   function pxhEscapeDrawerControl() {
-    document.addEventListener("keyup", function(e) {
+    document.addEventListener('keyup', function(e) {
        if ((e.keyCode == 27) && (!lgBreakpoint.matches) && (docCookies.getItem('pxh-drawer-open') === 'true')) {
         loadState(statesObject, 'drawerClosed');
         docCookies.setItem('pxh-drawer-open', 'false', 86400, '/');
