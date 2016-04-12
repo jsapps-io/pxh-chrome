@@ -1,7 +1,13 @@
 #pxh-chrome changelog
 
-### pending release
-* _nothing yet..._
+### 0.7.0
+* Allow user to dismiss the drawer on tablet and mobile by clicking anywhere in the overlay
+* Allow user to dismiss the drawer on tablet and mobile by pressing the ESC key on the keyboard
+* Update login module design
+  * Update design
+  * Add two menus, one for user profile and one for user settings (and sign out link)
+  * Allow user to click anywhere to disable menus
+  * Add (reasonably) smarter menu positioning
 
 ### 0.6.1 - April 11, 2016
 * Limit width of application title in `drawer-header`, add elipses if too long, and fix word wrap when narrow
