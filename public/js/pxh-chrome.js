@@ -312,7 +312,7 @@
     if ((typeof pxhOverlay !== 'undefined') && (pxhOverlay.length > 0)) {
       pxhOverlay[0].addEventListener('click', function(e) {
         console.log('clicked');
-        if (!lgBreakpoint.matches) {
+        if ((!lgBreakpoint.matches) && (docCookies.getItem('pxh-drawer-open') === 'true')) {
           loadState(statesObject, 'drawerClosed');
           docCookies.setItem('pxh-drawer-open', 'false', 86400, '/');
           docCookies.setItem('pxh-drawer-narrow', 'true', 86400, '/');
@@ -322,6 +322,19 @@
   }
 
   pxhOverlayDrawerControl();
+
+  function pxhEscapeDrawerControl() {
+    document.addEventListener("keyup", function(e) {
+       if ((e.keyCode == 27) && (!lgBreakpoint.matches) && (docCookies.getItem('pxh-drawer-open') === 'true')) {
+        loadState(statesObject, 'drawerClosed');
+        docCookies.setItem('pxh-drawer-open', 'false', 86400, '/');
+        docCookies.setItem('pxh-drawer-narrow', 'true', 86400, '/');
+      }
+    })
+  }
+
+  pxhEscapeDrawerControl();
+
 
   var pxhLoginMenuToggleControl = document.getElementsByClassName('pxh-login__link');
   var pxhLoginMenuToggleTarget = document.getElementsByClassName('pxh-login-menu');
