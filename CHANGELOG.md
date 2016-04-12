@@ -1,7 +1,11 @@
 #pxh-chrome changelog
 
 ### 0.6.1 - April 11, 2016
-* Recompile `pxh-chrome.css`
+* Limit width of application title in `drawer-header` and fix word wrap when narrow
+* Prevent px-theme from overriding the application title link color
+* Move toggle styles to drawer header link (for animation reasons)
+* Animation is janky, but other things are an improvement over 0.6.0?
+* Fix overflow issue where last two navigation items were inaccessible behind login module on short viewports
 
 ### 0.6.0 - April 11, 2016
 * Update drawer to latest styles from APM UX team
