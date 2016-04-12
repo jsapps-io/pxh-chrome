@@ -3,6 +3,7 @@
 \*------------------------------------*/
 
 $pxh-drawer-width-wide: 260px !default;
+$pxh-drawer-width-narrow: 60px !default;
 $pxh-login-height: 48px !default;
 $pxh-drawer-padding: 20px !default;
 $pxh-login-avatar-height-width: 30px !default;
@@ -215,8 +216,8 @@ $pxh-login-magic-centering: 14px !default; // magic number, fix this
 // Remove this class to display the drawer in its wide state.
 @include mq($from: md) {
   .pxh-login__settings--narrow\@md {
-  @include pxh-animation(pxh-login--out);
-  @include pxh-login--out-styles;
+    @include pxh-animation(pxh-login--out);
+    @include pxh-login--out-styles;
   }
 }
 
@@ -235,13 +236,17 @@ $pxh-login-magic-centering: 14px !default; // magic number, fix this
   text-decoration: none;
 }
 
+.pxh-login__settings-link:hover.pxh-login__settings-link:hover.pxh-login__settings-link:hover { // chained to override px-theme
+  color: $white;
+}
+
 /*------------------------------------*\
     #PXH-LOGIN-MENU
 \*------------------------------------*/
 
 .pxh-login-menu {
   position: absolute;
-  bottom: ($pxh-login-height / 2) + 5px; // magic number to position above name
+  bottom: ($pxh-login-height / 2) + 10px; // magic number to position above name
   left: -9999px;
   background-color: $black;
   color: $white;
@@ -289,4 +294,12 @@ $pxh-login-magic-centering: 14px !default; // magic number, fix this
 }
 .pxh-login-menu__link:hover.pxh-login-menu__link:hover { // chained to override px-theme
   background-color: $gray10;
+}
+
+@include mq($from: md) {
+  .pxh-login--narrow\@md {
+    .pxh-login-menu--visible {
+      left: $pxh-drawer-width-narrow - 20px; // magic number
+    }
+  }
 }
