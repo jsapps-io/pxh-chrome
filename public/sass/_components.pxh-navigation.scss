@@ -301,11 +301,11 @@ $pxh-login-height:  60px !default;
 // These styles are also applied to the element when it is visible
 // by default, absent an animation.
 @mixin pxh-navigation__sub-link--in-styles {
-    font-size: $inuit-base-font-size;
-    opacity: 1;
-    visibility: visible;
-    height: $pxh-navigation-sub-link-height;
-    padding: $pxh-drawer-margin / 1.5 2px 0 $pxh-drawer-margin * 3;
+  font-size: $inuit-base-font-size;
+  opacity: 1;
+  visibility: visible;
+  height: $pxh-navigation-sub-link-height;
+  padding: $pxh-drawer-margin / 1.5 2px 0 $pxh-drawer-margin * 3;
 }
 
 // mixin for "animate out" styles
@@ -442,6 +442,11 @@ $pxh-login-height:  60px !default;
       @include pxh-animation(pxh-navigation__sub-link--out);
       @include pxh-navigation__sub-link--out-styles;
     }
+    .pxh-navigation__sub-item:last-of-type {
+      .pxh-navigation__sub-link { // really don't like nesting but don't know how else to target this
+        margin-bottom: 0;
+      }
+    }
     .pxh-navigation__sub-item--divider {
       margin-top: 0;
       height: 0;
@@ -518,13 +523,14 @@ $pxh-login-height:  60px !default;
 
 .pxh-navigation__sub-list.pxh-navigation__sub-list.pxh-navigation__sub-list { // chained to override px-theme
   clear: both;
-  margin: 0;
   padding: 0;
   list-style: none;
 }
 
-.pxh-navigation__sub-item:last-of-type.pxh-navigation__sub-item:last-of-type.pxh-navigation__sub-item:last-of-type {
-  margin-bottom: $pxh-drawer-margin / 2;
+.pxh-navigation__sub-item:last-of-type {
+  .pxh-navigation__sub-link { // really don't like nesting but don't know how else to target this
+    margin-bottom: $pxh-drawer-margin / 2;
+  }
 }
 
 .pxh-navigation__sub-link.pxh-navigation__sub-link.pxh-navigation__sub-link,
