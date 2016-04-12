@@ -97,7 +97,7 @@ $pxh-view-header-height: 60px !default; // locked to current height of px-contex
 //
 // These styles are also applied to the element when it is visible
 // by default, absent an animation.
-@mixin pxh-drawer-header--in-styles {
+@mixin pxh-drawer-header__link--in-styles {
   font-size: $inuit-base-font-size * 1.5;
   opacity: 1;
   visibility: visible;
@@ -112,7 +112,7 @@ $pxh-view-header-height: 60px !default; // locked to current height of px-contex
 //
 // These styles are also applied to the element when it is hidden
 // by default, absent an animation.
-@mixin pxh-drawer-header--out-styles {
+@mixin pxh-drawer-header__link--out-styles {
   font-size: 0;
   opacity: 0;
   visibility: hidden;
@@ -122,9 +122,9 @@ $pxh-view-header-height: 60px !default; // locked to current height of px-contex
 //
 // This animation sequence is applied when the element
 // toggles from hidden to visible.
-@keyframes pxh-drawer-header--in {
+@keyframes pxh-drawer-header__link--in {
   0% {
-    @include pxh-drawer-header--out-styles;
+    @include pxh-drawer-header__link--out-styles;
   }
   50% {
     font-size: 0;
@@ -137,7 +137,7 @@ $pxh-view-header-height: 60px !default; // locked to current height of px-contex
     visibility: visible;
   }
   100% {
-    @include pxh-drawer-header--in-styles;
+    @include pxh-drawer-header__link--in-styles;
   }
 }
 
@@ -145,9 +145,9 @@ $pxh-view-header-height: 60px !default; // locked to current height of px-contex
 //
 // This animation sequence is applied when the element
 // toggles from visible to hidden.
-@keyframes pxh-drawer-header--out {
+@keyframes pxh-drawer-header__link--out {
   0% {
-    @include pxh-drawer-header--in-styles;
+    @include pxh-drawer-header__link--in-styles;
   }
   50% {
     font-size: $inuit-base-font-size * 1.5;
@@ -160,7 +160,7 @@ $pxh-view-header-height: 60px !default; // locked to current height of px-contex
     visibility: visible;
   }
   100% {
-    @include pxh-drawer-header--out-styles;
+    @include pxh-drawer-header__link--out-styles;
   }
 }
 
@@ -178,22 +178,22 @@ $pxh-view-header-height: 60px !default; // locked to current height of px-contex
 }
 
 @include mq($from: md) {
-  .pxh-drawer-header--narrow\@md {
-    @include pxh-drawer-header--out-styles;
-    @include pxh-animation(pxh-drawer-header--out);
+  .pxh-drawer-header__link--narrow\@md {
+    @include pxh-drawer-header__link--out-styles;
+    @include pxh-animation(pxh-drawer-header__link--out);
   }
 }
 
 @include mq($from: md) {
-  .pxh-drawer-header--wide\@md {
-    @include pxh-drawer-header--in-styles;
-    @include pxh-animation(pxh-drawer-header--in);
+  .pxh-drawer-header__link--wide\@md {
+    @include pxh-drawer-header__link--in-styles;
+    @include pxh-animation(pxh-drawer-header__link--in);
   }
 }
 
 @include mq($from: lg) {
-  .pxh-drawer-header--wide\@lg {
-    @include pxh-drawer-header--in-styles;
-    @include pxh-animation(pxh-drawer-header--in);
+  .pxh-drawer-header__link--wide\@lg {
+    @include pxh-drawer-header__link--in-styles;
+    @include pxh-animation(pxh-drawer-header__link--in);
   }
 }
