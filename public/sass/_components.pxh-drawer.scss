@@ -191,7 +191,13 @@ $pxh-view-header-height: 60px !default; // locked to current height of px-contex
 
 .pxh-drawer-header__link {
   color: $gray7;
+  @include pxh-drawer-header__link--in-styles;
+  @include pxh-animation(pxh-drawer-header__link--in);
+  display: block;
   text-decoration: none;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 @include mq($from: md) {
