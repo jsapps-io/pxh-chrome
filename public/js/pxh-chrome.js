@@ -306,14 +306,32 @@
   bindDrawerControls('pxh-drawer-toggle__link');
   bindDrawerControls('pxh-view-header-drawer-toggle__link');
 
-  var pxhLoginMenuToggleControl = document.querySelector('.pxh-login__link');
-  var pxhLoginMenuToggleTarget = document.querySelector('.pxh-login-menu');
+  var pxhOverlay = document.getElementsByClassName('pxh-overlay');
+
+  function pxhOverlayDrawerControl() {
+    if ((typeof pxhOverlay !== 'undefined') && (pxhOverlay.length > 0)) {
+      pxhOverlay[0].addEventListener('click', function(e) {
+        console.log('clicked');
+        if (!lgBreakpoint.matches) {
+          loadState(statesObject, 'drawerClosed');
+          docCookies.setItem('pxh-drawer-open', 'false', 86400, '/');
+          docCookies.setItem('pxh-drawer-narrow', 'true', 86400, '/');
+        }
+      })
+    }
+  }
+
+  pxhOverlayDrawerControl();
+
+  var pxhLoginMenuToggleControl = document.getElementsByClassName('pxh-login__link');
+  var pxhLoginMenuToggleTarget = document.getElementsByClassName('pxh-login-menu');
 
   function pxhToggleLoginMenu() {
-    if ((pxhLoginMenuToggleControl) && (pxhLoginMenuToggleTarget)) {
-      pxhLoginMenuToggleControl.addEventListener('click', function(e) {
+    if ((typeof pxhLoginMenuToggleControl !== 'undefined') && (pxhLoginMenuToggleControl.length > 0) && (typeof pxhLoginMenuToggleTarget !== 'undefined') && (pxhLoginMenuToggleTarget.length > 0)) {
+      // grab the first login menu and login toggle found and handle it ... ignore the rest
+      pxhLoginMenuToggleControl[0].addEventListener('click', function(e) {
         e.preventDefault();
-        pxhLoginMenuToggleTarget.classList.toggle('pxh-login-menu--visible');
+        pxhLoginMenuToggleTarget[0].classList.toggle('pxh-login-menu--visible');
       }); 
     }
   }
