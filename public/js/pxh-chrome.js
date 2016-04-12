@@ -147,6 +147,10 @@
         'remove' : 'pxh-navigation--narrow@md',
         'add' : 'pxh-navigation--wide@lg'
       },
+      'pxh-login' : {
+        'add' : 'pxh-login--wide@lg',
+        'remove' : 'pxh-login--narrow@md'
+      },
       'pxh-login__name' : {
         'remove' : 'pxh-login__name--narrow@md',
         'add' : 'pxh-login__name--wide@lg'
@@ -190,6 +194,10 @@
       'pxh-navigation' : {
         'add' : 'pxh-navigation--narrow@md',
         'remove' : 'pxh-navigation--wide@lg'
+      },
+      'pxh-login' : {
+        'add' : 'pxh-login--narrow@md',
+        'remove' : 'pxh-login--wide@lg'
       },
       'pxh-login__name' : {
         'add' : 'pxh-login__name--narrow@md',
