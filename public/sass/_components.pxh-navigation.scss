@@ -470,6 +470,9 @@ $pxh-login-height:  60px !default;
       @include pxh-navigation__sub-link--in-styles;
     }
     .pxh-navigation__sub-item--divider {
+      margin-top: $pxh-navigation-divider-margin * 1.5;
+      margin-left: $pxh-drawer-margin * 3;
+      margin-right: $pxh-drawer-margin;
       display: block;
       height: 1px;
       background-color: $gray9;
@@ -524,6 +527,7 @@ $pxh-login-height:  60px !default;
 .pxh-navigation__sub-list.pxh-navigation__sub-list.pxh-navigation__sub-list { // chained to override px-theme
   clear: both;
   padding: 0;
+  margin: 0;
   list-style: none;
 }
 
