@@ -136,9 +136,9 @@
         'remove' : 'pxh-drawer--hidden-until@md pxh-drawer--narrow@md',
         'add' : 'pxh-drawer--wide@lg'
       },
-      'pxh-drawer-header' : {
-        'remove' : 'pxh-drawer-header--narrow@md',
-        'add' : 'pxh-drawer-header--wide@md'
+      'pxh-drawer-header__link' : {
+        'remove' : 'pxh-drawer-header__link--narrow@md',
+        'add' : 'pxh-drawer-header__link--wide@md'
       },
       'pxh-overlay' : {
         'remove' : 'pxh-overlay--hidden'
@@ -180,9 +180,9 @@
         'add' : 'pxh-drawer--hidden-until@md pxh-drawer--narrow@md',
         'remove' : 'pxh-drawer--wide@lg'
       },
-      'pxh-drawer-header' : {
-        'remove' : 'pxh-drawer-header--wide@md pxh-drawer-header--wide@lg',
-        'add' : 'pxh-drawer-header--narrow@md'
+      'pxh-drawer-header__link' : {
+        'remove' : 'pxh-drawer-header__link--wide@md pxh-drawer-header__link--wide@lg',
+        'add' : 'pxh-drawer-header__link--narrow@md'
       },
       'pxh-overlay' : {
         'add' : 'pxh-overlay--hidden'
