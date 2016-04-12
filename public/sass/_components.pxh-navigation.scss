@@ -29,6 +29,7 @@ $pxh-navigation-link-height: 48px;
 $pxh-navigation-sub-link-height: 30px;
 $pxh-navigation-divider-margin: 10px;
 
+$pxh-login-height:  60px !default;
 
 /*------------------------------------*\
     #pxh-navigation
@@ -41,6 +42,7 @@ $pxh-navigation-divider-margin: 10px;
   overflow: auto;
   -webkit-overflow-scrolling: touch;
   animation-duration: 300ms;
+  padding-bottom: ($pxh-login-height * 2) + 5px;
 }
 
 .pxh-navigation__item-icon {
