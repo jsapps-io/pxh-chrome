@@ -343,20 +343,35 @@
 
   pxhEscapeDrawerControl();
 
-  function pxhToggleLoginMenu(toggleControl, toggleTarget) {
+  function pxhToggleLoginMenu(toggleControl, toggleTarget, toggleClass) {
     var toggleControlElement = document.getElementsByClassName(toggleControl);
     var toggleTargetElement = document.getElementsByClassName(toggleTarget);
     if ((typeof toggleControlElement !== 'undefined') && (toggleControlElement.length > 0) && (typeof toggleTargetElement !== 'undefined') && (toggleTargetElement.length > 0)) {
       // grab the first login menu and login toggle found and handle it ... ignore the rest
       toggleControlElement[0].addEventListener('click', function(e) {
         e.preventDefault();
-        toggleTargetElement[0].classList.toggle('pxh-login-menu--visible');
+        toggleTargetElement[0].classList.toggle(toggleClass);
+        e.stopPropagation();
       }); 
     }
   }
 
-  pxhToggleLoginMenu('pxh-login__profile-link', 'pxh-login-menu--profile');
-  pxhToggleLoginMenu('pxh-login__settings-link', 'pxh-login-menu--settings');
+  // dismiss the login menu if the user clicks anywhere
+  function pxhAnywhereLoginMenuControl(toggleControl, toggleTarget, removeClass) {
+    var controlElement = document.getElementsByClassName(toggleControl);
+    var targetElement = document.getElementsByClassName(toggleTarget);
+    if ((typeof controlElement !== 'undefined') && (controlElement.length > 0) && (typeof targetElement !== 'undefined') && (targetElement.length > 0)) {
+      document.addEventListener('click', function(e) {
+        e.preventDefault();
+        targetElement[0].classList.remove(removeClass);
+      });
+    }
+  }
 
+  pxhAnywhereLoginMenuControl('pxh-login__profile-link', 'pxh-login-menu--profile', 'pxh-login-menu--visible');
+  pxhAnywhereLoginMenuControl('pxh-login__settings-link', 'pxh-login-menu--settings', 'pxh-login-menu--visible');
+
+  pxhToggleLoginMenu('pxh-login__profile-link', 'pxh-login-menu--profile', 'pxh-login-menu--visible');
+  pxhToggleLoginMenu('pxh-login__settings-link', 'pxh-login-menu--settings', 'pxh-login-menu--visible');
 
 }());
