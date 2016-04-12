@@ -1,5 +1,8 @@
 #pxh-chrome changelog
 
+### 0.6.1 - April 11, 2016
+* Recompile `pxh-chrome.css`
+
 ### 0.6.0 - April 11, 2016
 * Update drawer to latest styles from APM UX team
   * Newish colors
