@@ -335,20 +335,20 @@
 
   pxhEscapeDrawerControl();
 
-
-  var pxhLoginMenuToggleControl = document.getElementsByClassName('pxh-login__link');
-  var pxhLoginMenuToggleTarget = document.getElementsByClassName('pxh-login-menu');
-
-  function pxhToggleLoginMenu() {
-    if ((typeof pxhLoginMenuToggleControl !== 'undefined') && (pxhLoginMenuToggleControl.length > 0) && (typeof pxhLoginMenuToggleTarget !== 'undefined') && (pxhLoginMenuToggleTarget.length > 0)) {
+  function pxhToggleLoginMenu(toggleControl, toggleTarget) {
+    var toggleControlElement = document.getElementsByClassName(toggleControl);
+    var toggleTargetElement = document.getElementsByClassName(toggleTarget);
+    if ((typeof toggleControlElement !== 'undefined') && (toggleControlElement.length > 0) && (typeof toggleTargetElement !== 'undefined') && (toggleTargetElement.length > 0)) {
       // grab the first login menu and login toggle found and handle it ... ignore the rest
-      pxhLoginMenuToggleControl[0].addEventListener('click', function(e) {
+      toggleControlElement[0].addEventListener('click', function(e) {
         e.preventDefault();
-        pxhLoginMenuToggleTarget[0].classList.toggle('pxh-login-menu--visible');
+        toggleTargetElement[0].classList.toggle('pxh-login-menu--visible');
       }); 
     }
   }
 
-  pxhToggleLoginMenu();
+  pxhToggleLoginMenu('pxh-login__profile-link', 'pxh-login-menu--profile');
+  pxhToggleLoginMenu('pxh-login__settings-link', 'pxh-login-menu--settings');
+
 
 }());

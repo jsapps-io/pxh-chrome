@@ -2,10 +2,11 @@
     #PXH-LOGIN
 \*------------------------------------*/
 
-$pxh-login-height:  48px !default;
+$pxh-drawer-width-wide: 260px !default;
+$pxh-login-height: 48px !default;
 $pxh-drawer-padding: 20px !default;
-$pxh-login-avatar-height-width: 30px; // magic number, fix this
-$pxh-login-magic-centering: 14px; // magic number, fix this
+$pxh-login-avatar-height-width: 30px !default;
+$pxh-login-magic-centering: 14px !default; // magic number, fix this
 
 // mixin for "animate in" styles
 //
@@ -105,18 +106,18 @@ $pxh-login-magic-centering: 14px; // magic number, fix this
   width: 100%;
 }
 
-.pxh-login__link {
+.pxh-login__profile-link {
   display: block;
   text-decoration: none;
 }
 
-.pxh-login__link.pxh-login__link.pxh-login__link,
-.pxh-login__link:link.pxh-login__link:link.pxh-login__link:link,
-.pxh-login__link:visited.pxh-login__link:visited.pxh-login__link:visited { // chained to override px-theme
+.pxh-login__profile-link.pxh-login__profile-link.pxh-login__profile-link,
+.pxh-login__profile-link:link.pxh-login__profile-link:link.pxh-login__profile-link:link,
+.pxh-login__profile-link:visited.pxh-login__profile-link:visited.pxh-login__profile-link:visited { // chained to override px-theme
   color: $gray7;
 }
 
-.pxh-login__link:hover.pxh-login__link:hover.pxh-login__link:hover { // chained to override px-theme
+.pxh-login__profile-link:hover.pxh-login__profile-link:hover.pxh-login__profile-link:hover { // chained to override px-theme
   color: $white;
 }
 
@@ -129,6 +130,9 @@ $pxh-login-magic-centering: 14px; // magic number, fix this
 .pxh-login__avatar-icon.pxh-login__avatar-icon.pxh-login__avatar-icon.pxh-login__avatar-icon.pxh-login__avatar-icon {  // yes, in fact, it DOES take a five-deep class chain to override px-theme here
   height: $pxh-login-avatar-height-width;
   width: $pxh-login-avatar-height-width;
+  text-align: center;
+  padding-top: 5px; // magic number to center icon vertically 
+  padding-right: 1px; // magic number to correct text-align and center icon horizontally
   font-size: $inuit-base-font-size * 1.1; // needs a !important with anything less than a five-deep class chain
   background-color: transparent;
   color: $gray7;
@@ -237,19 +241,24 @@ $pxh-login-magic-centering: 14px; // magic number, fix this
 
 .pxh-login-menu {
   position: absolute;
-  bottom: $inuit-base-spacing-unit * 2;
+  bottom: ($pxh-login-height / 2) + 5px; // magic number to position above name
   left: -9999px;
   background-color: $black;
   color: $white;
-  width: $inuit-base-spacing-unit * 8;
-  border-radius: 2px;
+  width: $pxh-drawer-width-wide / 2;
+  border-radius: 3px;
+  border: 1px solid $gray9;
   -webkit-box-shadow: 0 1px 2px 0 rgba(0,0,0,0.25);
   -moz-box-shadow: 0 1px 2px 0 rgba(0,0,0,0.25);
   box-shadow: 0 1px 2px 0 rgba(0,0,0,0.25);
 }
 
-.pxh-login-menu--visible {
-  left: $inuit-base-spacing-unit * 2;
+.pxh-login-menu--visible.pxh-login-menu--profile {
+  left: ($pxh-drawer-width-wide / 3) + 5px; // magic number
+}
+
+.pxh-login-menu--visible.pxh-login-menu--settings {
+  left: $pxh-drawer-width-wide - 20px;
 }
 
 .pxh-login-menu__list.pxh-login-menu__list.pxh-login-menu__list { // chained to override px-theme
@@ -265,6 +274,11 @@ $pxh-login-magic-centering: 14px; // magic number, fix this
 
 .pxh-login-menu__link.pxh-login-menu__link { // chained to override px-theme
   display: block;
+  height: 30px;
+  padding: 5px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
   text-decoration: none;
   color: $white;
 }
