@@ -190,7 +190,6 @@ $pxh-view-header-height: 60px !default; // locked to current height of px-contex
 }
 
 .pxh-drawer-header__link {
-  color: $gray7;
   @include pxh-drawer-header__link--in-styles;
   @include pxh-animation(pxh-drawer-header__link--in);
   display: block;
@@ -219,4 +218,13 @@ $pxh-view-header-height: 60px !default; // locked to current height of px-contex
     @include pxh-drawer-header__link--in-styles;
     @include pxh-animation(pxh-drawer-header__link--in);
   }
+}
+
+// chained to override px-theme
+.pxh-drawer-header__link.pxh-drawer-header__link, 
+.pxh-drawer-header__link:link.pxh-drawer-header__link:link, 
+.pxh-drawer-header__link:visited.pxh-drawer-header__link:visited,
+.pxh-drawer-header__link:hover.pxh-drawer-header__link:hover,
+.pxh-drawer-header__link:active.pxh-drawer-header__link:active {
+  color: $gray7;
 }
