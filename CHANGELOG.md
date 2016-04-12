@@ -1,11 +1,18 @@
 #pxh-chrome changelog
 
-### Pending Release
-* _nothing yet..._
+### 0.6.0 - April 11, 2016
+* Update drawer to latest styles from APM UX team
+  * Newish colors
+  * New normal, active, current, and hover styles
+* Add drawer header component ("Predix") that displays responsively depending on viewport width (hidden on narrow, visible on wide)
+* Add global style for hyperlinks
+* Bump versions on Bower dependencies, including Px Sass components
 
 ### 0.5.1 - April 8, 2016
-* Add a responsive "chromeless" view, which can display a Microapp without the left drawer, navigation, login module, and drawer toggle
-  * Triggering "chromeless" is simply a matter of removing the markup for the drawer and toggle, removing the responsive classes from `pxh-view-header` and `pxh-view`, and removing `pxh-chrome.js` (`pxh-chrome.js` is not required for chromeless view, as the JavaScript is only necessary for managing drawer state between breakpoints, refreshes and toggles... no drawer, no JavaScript!)
+* Add a responsive "chromeless" view, which can display a Microapp without the left drawer, navigation, login module, and drawer toggle. Triggering "chromeless" is simply a matter of:
+  * Removing the markup for the drawer and toggle
+  * Removing all the responsive classes from `pxh-view-header` and `pxh-view`
+  * Removing the `<script>` tag for `pxh-chrome.js` (`pxh-chrome.js` is not required for chromeless view, as the JavaScript is only necessary for managing drawer state between breakpoints, page refreshes and toggle events... if there's no drawer, there's no need for JavaScript!)
 
 ### 0.5.0 - April 6, 2016
 * Move `pxh-view-header` out from `pxh-view`
