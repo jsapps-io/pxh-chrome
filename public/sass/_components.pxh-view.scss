@@ -2,11 +2,12 @@
     #PXH-VIEW
 \*------------------------------------*/
 
-$pxh-view-header-height: $inuit-base-spacing-unit * 4 !default;
-$pxh-drawer-toggle-margin: $inuit-base-spacing-unit * 0.75 !default;
-$pxh-drawer-width-wide: $inuit-base-spacing-unit * 15 !default;
-$pxh-drawer-width-narrow: $inuit-base-spacing-unit * 3 !default;
-$pxh-drawer-toggle-margin: $inuit-base-spacing-unit * 0.75 !default;
+
+$pxh-drawer-width-wide: 260px !default; // magic number ... fix this
+$pxh-drawer-width-narrow: 60px !default; // magic number ... fix this
+$pxh-drawer-margin: 20px !default;
+$pxh-drawer-bg-color: $gray10 !default;
+$pxh-view-header-height: 60px !default; // locked to current height of px-context-browser
 
 .pxh-wrapper {
   padding-top: $pxh-view-header-height;
@@ -114,8 +115,8 @@ $pxh-drawer-toggle-margin: $inuit-base-spacing-unit * 0.75 !default;
 
 .pxh-view-header-drawer-toggle {
   position: fixed;
-  top: $pxh-drawer-toggle-margin;
-  left: $pxh-drawer-toggle-margin;
+  top: $pxh-drawer-margin;
+  left: $pxh-drawer-margin;
   opacity: 1;
   z-index: 500; // making the same as overlay to overcome IE10 clickthru bug with overlay
   transition: all 300ms ease-in-out;
