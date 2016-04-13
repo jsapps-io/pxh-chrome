@@ -469,6 +469,11 @@ $pxh-login-height:  60px !default;
       @include pxh-animation(pxh-navigation__sub-link--in);
       @include pxh-navigation__sub-link--in-styles;
     }
+    .pxh-navigation__sub-item:last-of-type {
+      .pxh-navigation__sub-link { // really don't like nesting but don't know how else to target this
+        margin-bottom: $pxh-drawer-margin / 2;
+      }
+    }
     .pxh-navigation__sub-item--divider {
       margin-top: $pxh-navigation-divider-margin * 1.5;
       margin-left: $pxh-drawer-margin * 3;

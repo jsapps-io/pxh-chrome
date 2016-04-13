@@ -25,31 +25,40 @@ $pxh-view-header-height: 60px !default; // locked to current height of px-contex
   transition: all 300ms ease-in-out;
 }
 
-// From the @md (tablet) breakpoint and wider,
-// the view is displayed in its wide state, which accounts
-// for the width of the narrow state of the drawer on the left.
-@include mq($from: md) {
-  .pxh-view--wide\@md {
-    margin-left: $pxh-drawer-width-narrow;
-    transition-delay: 500ms;
+// nest all responsive styles within a pxh-chromeful class (applied to the <body> element so they only apply if the chrome is present
+// this violates our principle of immutability for class styles, but yolo
+.pxh-chromeful {
+  // From the @md (tablet) breakpoint and wider,
+  // the view is displayed in its wide state, which accounts
+  // for the width of the narrow state of the drawer on the left.
+  @include mq($from: md) {
+    .pxh-view--wide\@md {
+      margin-left: $pxh-drawer-width-narrow;
+      transition-delay: 500ms;
+    }
+  }
+
+  // From the @lg (desktop) breakpoint and wider,
+  // add this class to display the view in its narrow state,
+  // which accounts for the width of the wide state of the drawer.
+  @include mq($from: lg) {
+    .pxh-view--narrow\@lg {
+      margin-left: $pxh-drawer-width-wide;
+      transition-delay: 100ms;
+    }
+  }
+
+  @include mq($from: lg) {
+    .pxh-view--wide\@lg {
+      margin-left: $pxh-drawer-width-narrow;
+    }
   }
 }
 
-// From the @lg (desktop) breakpoint and wider,
-// add this class to display the view in its narrow state,
-// which accounts for the width of the wide state of the drawer.
-@include mq($from: lg) {
-  .pxh-view--narrow\@lg {
-    margin-left: $pxh-drawer-width-wide;
-    transition-delay: 100ms;
-  }
-}
 
-@include mq($from: lg) {
-  .pxh-view--wide\@lg {
-    margin-left: $pxh-drawer-width-narrow;
-  }
-}
+
+
+
 
 /*------------------------------------*\
     #PXH-VIEW-HEADER
@@ -67,33 +76,40 @@ $pxh-view-header-height: 60px !default; // locked to current height of px-contex
   z-index: 250;
 }
 
-// From the @md (tablet) breakpoint and wider,
-// the view header is displayed in its wide state, which accounts
-// for the width of the narrow state of the drawer on the left.
-@include mq($from: md) {
-  .pxh-view-header--wide\@md {
-    left: $pxh-drawer-width-narrow;
-    transition-delay: 500ms;
+// nest all responsive styles within a pxh-chromeful class (applied to the <body> element so they only apply if the chrome is present
+// this violates our principle of immutability for class styles, but yolo
+.pxh-chromeful {
+  // From the @md (tablet) breakpoint and wider,
+  // the view header is displayed in its wide state, which accounts
+  // for the width of the narrow state of the drawer on the left.
+  @include mq($from: md) {
+    .pxh-view-header--wide\@md {
+      left: $pxh-drawer-width-narrow;
+      transition-delay: 500ms;
+    }
   }
-}
 
-@include mq($from: lg) {
-  .pxh-view-header--wide\@lg {
-    left: $pxh-drawer-width-narrow;
+  @include mq($from: lg) {
+    .pxh-view-header--wide\@lg {
+      left: $pxh-drawer-width-narrow;
+    }
   }
-}
 
-// From the @lg (desktop) breakpoint and wider,
-// add this class to display the view header in its narrow state,
-// which accounts for the width of the wide state of the drawer.
-@include mq($from: lg) {
-  .pxh-view-header--narrow\@lg {
-    left: $pxh-drawer-width-wide;
-    transition-delay: 100ms;
+  // From the @lg (desktop) breakpoint and wider,
+  // add this class to display the view header in its narrow state,
+  // which accounts for the width of the wide state of the drawer.
+  @include mq($from: lg) {
+    .pxh-view-header--narrow\@lg {
+      left: $pxh-drawer-width-wide;
+      transition-delay: 100ms;
+    }
   }
 }
 
 .pxh-view-header__title {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
   padding-top: $inuit-base-spacing-unit;
   text-align: center;
   font-size: $inuit-base-font-size * 1.5;
@@ -132,13 +148,17 @@ $pxh-view-header-height: 60px !default; // locked to current height of px-contex
   opacity: 0;  
 }
 
-// From the @md (tablet) breakpoint and wider, hide the
-// toggle button in the view-header, as the toggle in the
-// narrow left drawer is persistently displayed instead.
-@include mq($from: md) {
-  .pxh-view-header-drawer-toggle--hidden\@md {
-      left: $pxh-drawer-width-narrow * -1;
-      opacity: 0;
+// nest all responsive styles within a pxh-chromeful class (applied to the <body> element so they only apply if the chrome is present
+// this violates our principle of immutability for class styles, but yolo
+.pxh-chromeful {
+  // From the @md (tablet) breakpoint and wider, hide the
+  // toggle button in the view-header, as the toggle in the
+  // narrow left drawer is persistently displayed instead.
+  @include mq($from: md) {
+    .pxh-view-header-drawer-toggle--hidden\@md {
+        left: $pxh-drawer-width-narrow * -1;
+        opacity: 0;
+    }
   }
 }
 

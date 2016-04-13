@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>pxh-chrome 0.7.1</title>
+    <title>pxh-chrome 0.8.0</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/png" href="favicon.ico">
@@ -9,19 +9,19 @@
     <link rel="stylesheet" href="css/pxh-chrome.css">
     <!-- endbuild -->
   </head>
-  <body>
-    <div class="pxh-drawer pxh-drawer--hidden-until@md pxh-drawer--narrow@md pxh-drawer--wide@lg">
+  <body class="pxh-chromeful">
+    <aside class="pxh-drawer pxh-drawer--hidden-until@md pxh-drawer--narrow@md pxh-drawer--wide@lg">
       <div class="pxh-drawer-toggle">
         <a href="#" class="pxh-drawer-toggle__link">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="291 489.4 20 16" class="pxh-drawer-toggle__icon"><path d="M291 489.4v4h20v-4h-20zm0 10h20v-4h-20v4zm0 6h20v-4h-20v4z"></path></svg>
         </a>
       </div>
-      <div class="pxh-drawer-header">
+      <h1 class="pxh-drawer-header">
         <a href="#" class="pxh-drawer-header__link pxh-drawer-header__link--narrow@md pxh-drawer-header__link--wide@lg">
           Predix
         </a>
-      </div>
-      <div class="pxh-navigation pxh-navigation--narrow@md pxh-navigation--wide@lg">
+      </h1>
+      <nav class="pxh-navigation pxh-navigation--narrow@md pxh-navigation--wide@lg">
         <ul class="pxh-navigation__list">
           <li class="pxh-navigation__item">
             <a href="#" class="pxh-navigation__link">
@@ -122,7 +122,7 @@
             </ul>
           </li>
         </ul>
-      </div>
+      </nav>
       <!-- <div class="pxh-login pxh-login--narrow@md">
         <a href="#" class="pxh-login__link">
           <div class="pxh-login__avatar">
@@ -175,7 +175,7 @@
         </div>
       </div>
 
-    </div>
+    </aside>
 
     <div class="pxh-overlay pxh-overlay--hidden pxh-overlay--hidden@lg"></div>
     <div class="pxh-view-header-drawer-toggle pxh-view-header-drawer-toggle--hidden@md">
@@ -184,19 +184,19 @@
       </a>
     </div>
 
-    <div class="pxh-wrapper">
-      <div class="pxh-view-header pxh-view-header--wide@md pxh-view-header--narrow@lg">
-        <div class="pxh-view-header__title">
+    <section class="pxh-wrapper">
+      <header class="pxh-view-header pxh-view-header--wide@md pxh-view-header--narrow@lg">
+        <h1 class="pxh-view-header__title">
           <a href="#" class="pxh-view-header__title-link">
             Microapp View Header <!-- <i class="fa fa-caret-down pxh-view-header__title-action"></i> -->
           </a>
-        </div>
-      </div>
-      <div class="pxh-view pxh-view--wide@md pxh-view--narrow@lg">
+        </h1>
+      </header>
+      <main class="pxh-view pxh-view--wide@md pxh-view--narrow@lg">
 
         <div class="pxh-docs">
 
-          <h1>pxh-chrome 0.7.1 Documentation</h1>
+          <h1>pxh-chrome 0.8.0 Documentation</h1>
 
           <h2><a href="chromeless.html">View "chromeless" layout</a></h2>
 
@@ -601,8 +601,8 @@
 
           <p>Donec laoreet maximus tincidunt. Mauris eget ex eget eros suscipit lacinia quis id urna. Proin at bibendum tellus. Donec cursus neque in arcu rhoncus, sit amet sagittis metus ultricies. Suspendisse scelerisque condimentum ante, sed semper mauris sollicitudin in. Mauris euismod commodo lacinia. Cras dignissim enim at mi sodales faucibus. Sed arcu mauris, commodo et dapibus volutpat, hendrerit vitae ante. Donec sed est porta, ornare nunc eget, accumsan lectus. Curabitur mattis odio leo, non accumsan est blandit eu.</p>
         </div>
-      </div>
-    </div>
+      </main>
+    </section>
 
     <!-- build:js js/pxh-chrome.js -->
     <script src="js/pxh-chrome.js"></script>

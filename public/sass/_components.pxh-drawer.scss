@@ -189,6 +189,12 @@ $pxh-view-header-height: 60px !default; // locked to current height of px-contex
   float: left;
 }
 
+.pxh-drawer-header {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+}
+
 .pxh-drawer-header__link {
   @include pxh-drawer-header__link--in-styles;
   @include pxh-animation(pxh-drawer-header__link--in);
