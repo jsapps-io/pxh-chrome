@@ -289,9 +289,11 @@ $pxh-login-magic-centering: 14px !default; // magic number, fix this
 }
 
 .pxh-login-menu__link:link.pxh-login-menu__link:link,
-.pxh-login-menu__link:visited.pxh-login-menu__link:visited { // chained to override px-theme
+.pxh-login-menu__link:visited.pxh-login-menu__link:visited,
+.pxh-login-menu__link:active.pxh-login-menu__link:active { // chained to override px-theme
   color: $white;
 }
+
 .pxh-login-menu__link:hover.pxh-login-menu__link:hover { // chained to override px-theme
   background-color: $gray10;
 }
@@ -299,7 +301,7 @@ $pxh-login-magic-centering: 14px !default; // magic number, fix this
 @include mq($from: md) {
   .pxh-login--narrow\@md {
     .pxh-login-menu--profile.pxh-login-menu--visible {
-      left: $pxh-drawer-width-narrow - 20px; // magic number
+      left: $pxh-drawer-margin * 1.25; // magic number
     }
   }
 }
