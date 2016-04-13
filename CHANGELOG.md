@@ -1,9 +1,18 @@
 #pxh-chrome changelog
 
+### 0.7.0
+* Allow user to dismiss the drawer on tablet and mobile by clicking anywhere in the overlay
+* Allow user to dismiss the drawer on tablet and mobile by pressing the ESC key on the keyboard
+* Update login module design
+  * Update design
+  * Add two menus, one for user profile and one for user settings (and sign out link)
+  * Allow user to click anywhere to disable menus
+  * Add (reasonably) smarter menu positioning
+
 ### 0.6.1 - April 11, 2016
-* Limit width of application title in `drawer-header` and fix word wrap when narrow
+* Limit width of application title in `drawer-header`, add elipses if too long, and fix word wrap when narrow
 * Prevent px-theme from overriding the application title link color
-* Move toggle styles to drawer header link (for animation reasons)
+* Move toggle styles to drawer header link (for animation sequencing reasons)
 * Animation is janky, but other things are an improvement over 0.6.0?
 * Fix overflow issue where last two navigation items were inaccessible behind login module on short viewports
 

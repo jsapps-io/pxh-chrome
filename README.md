@@ -1,6 +1,6 @@
-#pxh-chrome
+#pxh-chrome 0.7.0
 
-Application chrome for Px App Hub
+Application chrome for the Predix UI App Hub
 
 ##[Live Demo](https://github.build.ge.com/pages/hubs/pxh-chrome-demo)
 
