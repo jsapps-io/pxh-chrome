@@ -7,41 +7,53 @@ Application chrome for the Predix UI App Hub
 pxh-chrome is the CSS/HTML layer of [ui-app-hub](https://github.build.ge.com/hubs/ui-app-hub), a front-end architecture that allows you to build and deliver separate [microapps](https://github.build.ge.com/hubs/ui-microapp) to your users through a shared navigation portal. Adhering to a mobile-first mindset, pxh-chrome offers the following components:
 
 * `pxh-drawer`, a fixed lefthand drawer that contains application navigation, user profile information, and login controls
+* `pxh-drawer-toggle` - a "hamburger" that allows a user to toggle the navigation drawer open or closed
 * `pxh-navigation`, a linked list that works with ui-config-service and ui-app-hub to show the primary and secondary navigation for your microapps
+* `pxh-badge`, a small component for displaying "unread counts" for an item, with configurable color options (required by pxh-navigation)
 * `pxh-login`, a fixed bottom-left component that offers login controls, user profile information, and access to user settings
 * `pxh-overlay`, a semi-transparent background that overlays microapp content when the user opens the navigation drawer in mobile and tablet contexts
-* `pxh-badge`, a small component for displaying "unread counts" for an item, with configurable color options (required by pxh-navigation)
-* `drawer toggle` - a "hamburger" that allows a user to toggle the navigation drawer open or closed
-* `view header` - a fixed top header that should display a user's context within a microapp, potentially with a px-context-browser component
-* `view` - a flexible, responsive target container for all microapp content
+* `pxh-wrapper` - an element that wraps around the view header and view in your Microapp
+* `pxh-view-header` - a fixed top header that should display a user's context within a microapp, potentially with a px-context-browser component
+* `pxh-view` - a flexible, responsive target container for all microapp content
 
 ##Using pxh-chrome
 
-###On its own:
+###Use pxh-chrome on its own
 ####Pre-work
 1. Make sure your GE proxies are configured
 1. Make sure you have Node installed
 1. Install Bower and Gulp globally
 
 ####Build pxh-chrome
-1. Download, clone or fork `pxh-chrome` to your local machine
+1. Download, clone or fork pxh-chrome to your local machine
 1. Run `npm install && bower install` at the command line to install all dependencies
-1. Run `gulp` to compile the static files for `pxh-chrome`
+1. Run `gulp` to compile the static files for pxh-chrome
 1. Run `gulp serve` to start your local development server
   * Type `CTRL+C` to shut down your local development server
-1. Navigate to [http://localhost:4000](http://localhost:4000) to view a static version of pxh-chrome, which shows the styles, markup and responsive behavior of `pxh-chrome`
+1. Navigate to [http://localhost:4000](http://localhost:4000) to view a static version of pxh-chrome, which shows the styles, markup and responsive behavior of pxh-chrome
   * The navigation links are for demonstration purposes, and will not allow you to navigate between pages
 
-**Need a more robust prototyping environment?** Try [Propeller-Px](https://github.build.ge.com/212326609/propeller-px), which includes `pxh-chrome` along with templating, jQuery, Bootstrap, etc.
+**Need a more robust prototyping environment?** Try [Propeller-Px](https://github.build.ge.com/212326609/propeller-px), which includes pxh-chrome along with server-side templating, jQuery, Bootstrap, GitHub Pages hosting, etc.
 
-###In your project:
+###Use pxh-chrome in your project
+
+Add pxh-chrome to your project using Bower:
+
 ```bash
 bower install https://github.build.ge.com/hubs/pxh-chrome --save
 ```
 
-1. Add `pxh-chrome.css` and `pxh-chrome.js` to your HTML file
-Refer to `index.html` for the proper markup
+Add `pxh-chrome.css` and `pxh-chrome.js` to your HTML file:
 
+```html
+<link rel="stylesheet" href="bower_components/pxh-chrome/dist/css/pxh-chrome.css">
+```
+
+```html
+<script src="bower_components/pxh-chrome/dist/js/pxh-chrome.js"></script>
+```
+
+Finally, update your HTML to use pxh-chrome's markup and classes. Refer to the source code of `index.html` for the full and proper way of doing this.
 
 ##Design Philosophy
 
@@ -113,25 +125,26 @@ There are a number of ways to skin this cat, from redefining variables at the px
 ###Triggering "Chromeless" Mode
 To trigger "chromeless" mode, which hides the drawer, drawer toggle, navigation, and login module, simply:
 
-* Remove the markup for `pxh-drawer` and `pxh-view-header-toggle` from your HTML file
-* Remove all `@lg` and `@md` responsive classes from `pxh-view-header` and `pxh-view`
-* Remove the `<script>` tag for `pxh-chrome.js` (`pxh-chrome.js` is not required for chromeless view, as the JavaScript is only necessary for managing drawer state between breakpoints, page refreshes and toggle events... if there's no drawer, there's no need for JavaScript!)
+1. Replace the `pxh-chromeful` class on your `<body>` element with `pxh-chromeless`
+1. Remove the markup for `pxh-drawer`, `pxh-view-header-toggle` and `pxh-overlay` from your HTML file (we're not showing it so we don't need it)
+1. Remove the `<script>` tag for `pxh-chrome.js`
+  * `pxh-chrome.js` is not required for chromeless view, as the JavaScript is only necessary for managing drawer state between breakpoints, page refreshes and toggle events... if there's no drawer, there's no need for JavaScript!
 
 ##Browser Support
 pxh-chrome is tested in the most recent major releases of Chrome, Firefox, Safari, and Internet Explorer (IE11 and IE Edge).
 
-##Distribute pxh-chrome
-1. Run `gulp` to compile your local version of `pxh-chrome` to your `/dist` folder
-  * The files at `/dist` contain the compiled, concatenated and minified HTML, CSS and JavaScript for `pxh-chrome`
-1. Run `gulp serve:dist` to test your distribution version of `pxh-chrome` for any last-minute bugs
-  1. At this point you might want to test your local version of `pxh-chrome` in your local version of `ui-app-hub`
-  1. In your local `pxh-chrome` folder, type `bower link` to create a local symlink for `pxh-chrome`
-  1. In your local `ui-app-hub` folder, type `bower link pxh-chrome` to tell `ui-app-hub` to use _your local modified version_ of `pxh-chrome` rather than the version listed on `ui-app-hub`'s `bower.json` file
-  1. In your local `ui-app-hub` folder, run `gulp` (or `node app.js` or `nodemon`) to start your local App Hub
-  1. Preview your changes to your local `ui-app-hub` and local `pxh-chrome` at [http://localhost:3000](http://localhost:3000)
-  1. If anything looks broken, keep modifying your local `ui-app-hub` and `pxh-chrome` until it looks right
-1. If everything looks good, bump your local version of `pxh-chrome`, tag it as a release, and push it to GitHub (remember to push your `--tags` too!)
-1. Update the `bower.json` in your local version of `ui-app-hub` to reference your latest version of `pxh-chrome`
-1. Run `bower install` to install the version of `pxh-chrome` that you just pushed to GitHub
+##Distributing pxh-chrome
+1. Run `gulp` to compile your local version of pxh-chrome to your `/dist` folder
+  * The files at `/dist` contain the compiled, concatenated and minified HTML, CSS and JavaScript for pxh-chrome
+1. Run `gulp serve:dist` to test your distribution version of pxh-chrome for any last-minute bugs
+  1. At this point you might want to test your local version of pxh-chrome in your local version of ui-app-hub
+  1. In your local pxh-chrome folder, type `bower link` to create a local symlink for pxh-chrome
+  1. In your local ui-app-hub folder, type `bower link pxh-chrome` to tell ui-app-hub to use _your local modified version_ of pxh-chrome rather than the version listed on ui-app-hub's `bower.json` file
+  1. In your local ui-app-hub folder, run `gulp` (or `node app.js` or `nodemon`) to start your local App Hub
+  1. Preview your changes to your local ui-app-hub and local pxh-chrome at [http://localhost:3000](http://localhost:3000)
+  1. If anything looks broken, keep modifying your local ui-app-hub and pxh-chrome until it looks right
+1. If everything looks good, bump your local version of pxh-chrome, tag it as a release, and push it to GitHub (remember to push your `--tags` too!)
+1. Update the `bower.json` in your local version of ui-app-hub to reference your latest version of pxh-chrome
+1. Run `bower install` to install the version of pxh-chrome that you just pushed to GitHub
 1. Fire up your local App Hub
-1. If everything looks good, commit your changes to `ui-app-hub` and push them to GitHub
+1. If everything looks good, commit your changes to ui-app-hub and push them to GitHub
