@@ -363,7 +363,6 @@
     var targetElement = document.getElementsByClassName(toggleTarget);
     if ((typeof controlElement !== 'undefined') && (controlElement.length > 0) && (typeof targetElement !== 'undefined') && (targetElement.length > 0)) {
       document.addEventListener('click', function(e) {
-        e.preventDefault();
         targetElement[0].classList.remove(removeClass);
       });
     }
