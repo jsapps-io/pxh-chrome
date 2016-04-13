@@ -1,5 +1,14 @@
 #pxh-chrome changelog
 
+### 0.8.0
+* Scope `pxh-view-header` and `pxh-view` reponsive modifier class styles so they are only applied in the "chromeful" view
+  * That is, when the `<body>` has a class of `pxh-chromeful` on it
+  * "chromeful" means we show all the UI chrome (drawer, hamburger, navigation, login module)
+  * "chromeless" means we only show the content of the microapp
+* Add semantic HTML elements for accessibility purposes
+  * Support heading elements (e.g. h1, h2, etc.) in drawer header and view header
+* Launch development server on port `4000` by default to avoid conflicts with ui-app-hub and ui-micro-app
+
 ### 0.7.1
 * Fix JavaScript bug that prevented click events from firing if they were not bound to JavaScript (e.g. raw hyperlinks)
 
