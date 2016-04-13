@@ -1,5 +1,8 @@
 #pxh-chrome changelog
 
+### 0.7.1
+* Fix JavaScript bug that prevented click events from firing if they were not bound to JavaScript (e.g. raw hyperlinks)
+
 ### 0.7.0
 * Allow user to dismiss the drawer on tablet and mobile by clicking anywhere in the overlay
 * Allow user to dismiss the drawer on tablet and mobile by pressing the ESC key on the keyboard
