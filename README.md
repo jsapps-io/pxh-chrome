@@ -1,4 +1,4 @@
-#pxh-chrome 0.8.0
+#pxh-chrome 0.8.2
 
 Application chrome for the Predix UI App Hub
 

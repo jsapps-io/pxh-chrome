@@ -1,5 +1,8 @@
 #pxh-chrome changelog
 
+### 0.8.2
+  * Bump version number in CSS/JS comments, HTML, `bower.json`, `package.json`, etc.
+
 ### 0.8.1
   * Use `<section>` element instead of `<main>` for the `pxh-view` content area to avoid colliding with the global `<main>` element styles defined in px-theme
 
