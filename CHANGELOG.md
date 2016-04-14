@@ -1,5 +1,8 @@
 #pxh-chrome changelog
 
+### 0.8.1
+  * Use `<section>` element instead of `<main>` for the `pxh-view` content area to avoid colliding with the global `<main>` element styles defined in px-theme
+
 ### 0.8.0
 * Scope `pxh-view-header` and `pxh-view` reponsive modifier class styles so they are only applied in the "chromeful" view
   * That is, when the `<body>` has a class of `pxh-chromeful` on it
