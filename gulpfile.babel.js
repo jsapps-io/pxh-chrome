@@ -37,13 +37,24 @@ gulp.task('replace', () => {
     'public/chromeless.html',
     'public/index.html'
   ];
-  console.log(`Attempting to update version numbers from ${options.old} to ${options.new}...`);
-  files.forEach(function(file) {
-    console.log(`Updating ${file}...`);
-    gulp.src(file)
-    .pipe(replace(options.old, options.new))
-    .pipe(gulp.dest(path.dirname(file)));
-  })
+  var regex = new RegExp('^\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}(\\.\\d{1,3})?$');
+  if ((options.old.search(regex) !== -1) && (options.new.search(regex) !== -1)) {
+    console.log(`Attempting to update version numbers from ${options.old} to ${options.new}...`);
+    files.forEach(function(file) {
+      console.log(`Updating ${file}...`);
+      gulp.src(file)
+      .pipe(replace(options.old, options.new))
+      .pipe(gulp.dest(path.dirname(file)));
+    })
+  } else {
+    console.log('');
+    console.log(`The values --old ${options.old} and --new ${options.new} don't look like version numbers.`);
+    console.log('');
+    console.log('Please follow the format {major}.{minor}.{patch} (with an optional .{hotfix})');
+    console.log('');
+    console.log('Examples: 0.1.1, 0.1.2, 0.1.2.1, etc.')
+    console.log('');
+  }
 });
 
 gulp.task('sass', () => {
