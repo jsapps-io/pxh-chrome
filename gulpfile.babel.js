@@ -3,9 +3,48 @@ import gulp from 'gulp';
 import gulpLoadPlugins from 'gulp-load-plugins';
 import browserSync from 'browser-sync';
 import del from 'del';
+import path from 'path';
+import minimist from 'minimist';
+import replace from 'gulp-replace';
 
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
+
+var replaceOptions = {
+  string: 'old',
+  string: 'new',
+  default: { 
+    old: '0.0.0',
+    new: '0.0.1'
+  }
+};
+
+var options = minimist(process.argv.slice(3), replaceOptions);
+console.log(options.new);
+
+// replace
+// Update version numbers on all relevant files
+// Usage:
+// $ gulp replace --old 0.0.1 --new 0.0.2
+gulp.task('replace', () => {
+  // list of files with static version numbers
+  var files = [
+    'bower.json',
+    'package.json',
+    'README.md',
+    'public/sass/pxh-chrome.scss',
+    'public/js/pxh-chrome.js',
+    'public/chromeless.html',
+    'public/index.html'
+  ];
+  console.log(`Attempting to update version numbers from ${options.old} to ${options.new}...`);
+  files.forEach(function(file) {
+    console.log(`Updating ${file}...`);
+    gulp.src(file)
+    .pipe(replace(options.old, options.new))
+    .pipe(gulp.dest(path.dirname(file)));
+  })
+});
 
 gulp.task('sass', () => {
   return gulp.src('public/sass/*.scss')
