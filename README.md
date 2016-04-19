@@ -141,7 +141,7 @@ pxh-chrome is tested in the most recent major releases of Chrome, Firefox, Safar
   1. In your local pxh-chrome folder, type `bower link` to create a local symlink for pxh-chrome
   1. In your local ui-app-hub folder, type `bower link pxh-chrome` to tell ui-app-hub to use _your local modified version_ of pxh-chrome rather than the version listed on ui-app-hub's `bower.json` file
   1. In your local ui-app-hub folder, run `gulp` (or `node app.js` or `nodemon`) to start your local App Hub
-  1. Preview your changes to your local ui-app-hub and local pxh-chrome at [http://localhost:3000](http://localhost:3000)
+  1. Preview your changes to your local ui-app-hub and local pxh-chrome at [http://localhost:4000](http://localhost:4000)
   1. If anything looks broken, keep modifying your local ui-app-hub and pxh-chrome until it looks right
 1. If everything looks good, bump your local version of pxh-chrome, tag it as a release, and push it to GitHub (remember to push your `--tags` too!)
 1. Update the `bower.json` in your local version of ui-app-hub to reference your latest version of pxh-chrome
