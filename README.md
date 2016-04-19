@@ -120,11 +120,11 @@ To trigger "chromeless" mode, which hides the drawer, drawer toggle, navigation,
   * `pxh-chrome.js` is not required for chromeless view, as the JavaScript is only necessary for managing drawer state between breakpoints, page refreshes and toggle events... if there's no drawer, there's no need for JavaScript!
 
 ##Browser Support
-pxh-chrome is tested in the most recent major releases of Chrome, Firefox, Safari, and Internet Explorer (IE11 and IE Edge).
+pxh-chrome is tested in the most recent major releases of Chrome, Firefox, Safari, iOS Safari, and Internet Explorer (IE11 on Windows 7 and IE Edge on Windows 10).
 
 ##Bumping your version of pxh-chrome
 
-The pxh-chrome version number is hard-coded in a number of files, to help with documentation and debugging. These files are:
+The pxh-chrome version number is hard-coded in a number of files to help with documentation and debugging. These files are:
 
   * `bower.json`
   * `package.json`
@@ -134,17 +134,17 @@ The pxh-chrome version number is hard-coded in a number of files, to help with d
   * `public/chromeless.html`
   * `public/index.html`
 
-When you cut a new version of pxh-chrome you will want to bump the version number in all these files. If you try to do this manually, though you're almost _always_ going to miss one.
+When you cut a new version of pxh-chrome you will want to bump the version number in all these files. If you try to do this manually, however, you're almost _always_ going to miss one or two.
 
-We added a gulp task to help you search and replace the version numbers across all these files. At the command line:
+We added a convenient gulp task to help you search and replace the version numbers across all these files. At the command line:
 
 ```bash
-gulp bump --old 0.8.0 --new 0.8.1
+gulp replace --old 0.8.0 --new 0.8.1
 ```
 
-This will find all instances of your old version number in the relevant files and replace it with your new version number. The next time you run the default gulp task these changes will compile to your `/dist` folder as well.
+This will find all instances of your old version number in the relevant files and replace it with your new version number. The next time you run the default gulp task these changes will compile to your `/dist` folder.
 
-This task **does not** create a new Git tag, update the CHANGELOG, merge your develop branch into master, or push to remote. Please follow your team's process when performing those tasks. A recommended distribution workflow is shown below.
+This task **does not** create a new Git tag, update the CHANGELOG, merge your develop branch into master, or push to remote. Please follow your team's process when performing these tasks. A recommended distribution workflow is included below.
 
 ##Distributing pxh-chrome
 1. Run `gulp` to compile your local version of pxh-chrome to your `/dist` folder
