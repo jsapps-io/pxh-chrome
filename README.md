@@ -139,7 +139,7 @@ When you cut a new version of pxh-chrome you will want to bump the version numbe
 We added a convenient gulp task to help you search and replace the version numbers across all these files. At the command line:
 
 ```bash
-gulp replace --old 0.8.0 --new 0.8.1
+gulp bump --old 0.8.0 --new 0.8.1
 ```
 
 This will find all instances of your old version number in the relevant files and replace it with your new version number. The next time you run the default gulp task these changes will compile to your `/dist` folder.

@@ -26,7 +26,7 @@ console.log(options.new);
 // Update version numbers on all relevant files
 // Usage:
 // $ gulp replace --old 0.0.1 --new 0.0.2
-gulp.task('replace', () => {
+gulp.task('bump', () => {
   // list of files with static version numbers
   var files = [
     'bower.json',
@@ -41,7 +41,7 @@ gulp.task('replace', () => {
   if ((options.old.search(regex) !== -1) && (options.new.search(regex) !== -1)) {
     console.log(`Attempting to update version numbers from ${options.old} to ${options.new}...`);
     files.forEach(function(file) {
-      console.log(`Updating ${file}...`);
+      console.log(`Reading (and maybe updating) ${file}...`);
       gulp.src(file)
       .pipe(replace(options.old, options.new))
       .pipe(gulp.dest(path.dirname(file)));
