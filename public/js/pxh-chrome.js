@@ -127,13 +127,13 @@ var pxhOverlay = document.getElementsByClassName('pxh-overlay');
 
 // Syntaxes:
 
-// * pxhDocCookies.setItem(name, value[, end[, path[, domain[, secure]]]])
-// * pxhDocCookies.getItem(name)
-// * pxhDocCookies.removeItem(name[, path[, domain]])
-// * pxhDocCookies.hasItem(name)
-// * pxhDocCookies.keys()
+// * pxhCookies.setItem(name, value[, end[, path[, domain[, secure]]]])
+// * pxhCookies.getItem(name)
+// * pxhCookies.removeItem(name[, path[, domain]])
+// * pxhCookies.hasItem(name)
+// * pxhCookies.keys()
 
-var pxhDocCookies = {
+var pxhCookies = {
   getItem: function (sKey) {
     if (!sKey) { return null; }
     return decodeURIComponent(document.cookie.replace(new RegExp('(?:(?:^|.*;)\\s*' + encodeURIComponent(sKey).replace(/[\-\.\+\*]/g, '\\$&') + '\\s*\\=\\s*([^;]*).*$)|^.*$'), '$1')) || null;
@@ -242,12 +242,12 @@ var pxhLoadState = function(pxhStatesObject, targetStateName) {
 var pxhToggleDrawerOnLarge = function(mediaQueryList) {
   if (mediaQueryList.matches) {
     pxhLoadState(pxhStatesObject, 'drawerOpen');
-    pxhDocCookies.setItem('pxh-drawer-narrow', 'false', 86400, '/');
-    pxhDocCookies.setItem('pxh-drawer-open', 'true', 86400, '/');
+    pxhCookies.setItem('pxh-drawer-narrow', 'false', 86400, '/');
+    pxhCookies.setItem('pxh-drawer-open', 'true', 86400, '/');
   } else {
     pxhLoadState(pxhStatesObject, 'drawerClosed');
-    pxhDocCookies.setItem('pxh-drawer-narrow', 'true', 86400, '/');
-    pxhDocCookies.setItem('pxh-drawer-open', 'false', 86400, '/');
+    pxhCookies.setItem('pxh-drawer-narrow', 'true', 86400, '/');
+    pxhCookies.setItem('pxh-drawer-open', 'false', 86400, '/');
   }
 }
 
@@ -260,8 +260,8 @@ var pxhBindDrawerMediaQueryControls = function(targetClass, mediaQueryList) {
       targetElements[i].addEventListener('click', function() {
         if (!mediaQueryList.matches) {
           pxhLoadState(pxhStatesObject, 'drawerClosed');
-          pxhDocCookies.setItem('pxh-drawer-open', 'false', 86400, '/');
-          pxhDocCookies.setItem('pxh-drawer-narrow', 'true', 86400, '/');
+          pxhCookies.setItem('pxh-drawer-open', 'false', 86400, '/');
+          pxhCookies.setItem('pxh-drawer-narrow', 'true', 86400, '/');
         }
       })
     }
@@ -271,15 +271,15 @@ var pxhBindDrawerMediaQueryControls = function(targetClass, mediaQueryList) {
 // toggle drawer-specific classes when drawer toggle is fired
 var pxhToggleDrawer = function(event) {
   event.preventDefault();
-  if (pxhDocCookies.getItem('pxh-drawer-open') === 'true') {
+  if (pxhCookies.getItem('pxh-drawer-open') === 'true') {
     pxhLoadState(pxhStatesObject, 'drawerClosed');
-    pxhDocCookies.setItem('pxh-drawer-open', 'false', 86400, '/');
-    pxhDocCookies.setItem('pxh-drawer-narrow', 'true', 86400, '/');
+    pxhCookies.setItem('pxh-drawer-open', 'false', 86400, '/');
+    pxhCookies.setItem('pxh-drawer-narrow', 'true', 86400, '/');
   }
-  else if (pxhDocCookies.getItem('pxh-drawer-open') === 'false') {
+  else if (pxhCookies.getItem('pxh-drawer-open') === 'false') {
     pxhLoadState(pxhStatesObject, 'drawerOpen');
-    pxhDocCookies.setItem('pxh-drawer-open', 'true', 86400, '/');
-    pxhDocCookies.setItem('pxh-drawer-narrow', 'false', 86400, '/');
+    pxhCookies.setItem('pxh-drawer-open', 'true', 86400, '/');
+    pxhCookies.setItem('pxh-drawer-narrow', 'false', 86400, '/');
   }
 }
 
@@ -308,10 +308,10 @@ var pxhOverlayDrawerControl = function() {
 
 var pxhEscapeDrawerControl = function() {
   document.addEventListener('keyup', function(e) {
-     if ((e.keyCode == 27) && (!pxhLgBreakpoint.matches) && (pxhDocCookies.getItem('pxh-drawer-open') === 'true')) {
+     if ((e.keyCode == 27) && (!pxhLgBreakpoint.matches) && (pxhCookies.getItem('pxh-drawer-open') === 'true')) {
       pxhLoadState(pxhStatesObject, 'drawerClosed');
-      pxhDocCookies.setItem('pxh-drawer-open', 'false', 86400, '/');
-      pxhDocCookies.setItem('pxh-drawer-narrow', 'true', 86400, '/');
+      pxhCookies.setItem('pxh-drawer-open', 'false', 86400, '/');
+      pxhCookies.setItem('pxh-drawer-narrow', 'true', 86400, '/');
     }
   })
 }
@@ -347,24 +347,24 @@ var pxhAnywhereLoginMenuControl = function(toggleControl, toggleTarget, removeCl
 
 // add an event listener for when the DOM content is ready
 document.addEventListener('DOMContentLoaded', function(event) {
-  if (pxhDocCookies.getItem('pxh-drawer-open') === null) {
-    pxhDocCookies.setItem('pxh-drawer-open', 'false', 86400, '/');
+  if (pxhCookies.getItem('pxh-drawer-open') === null) {
+    pxhCookies.setItem('pxh-drawer-open', 'false', 86400, '/');
   }
 
-  if (pxhDocCookies.getItem('pxh-drawer-narrow') === null)  {
-    pxhDocCookies.setItem('pxh-drawer-narrow', 'false', 86400, '/');
+  if (pxhCookies.getItem('pxh-drawer-narrow') === null)  {
+    pxhCookies.setItem('pxh-drawer-narrow', 'false', 86400, '/');
   }
 
   // check if the "narrow" cookie is set and if we're currently at the desktop breakpoint
-  if ((pxhLgBreakpoint.matches) && (pxhDocCookies.getItem('pxh-drawer-narrow') === 'true')) {
+  if ((pxhLgBreakpoint.matches) && (pxhCookies.getItem('pxh-drawer-narrow') === 'true')) {
     // toggle the drawer closed
     pxhLoadState(pxhStatesObject, 'drawerClosed');
-    pxhDocCookies.setItem('pxh-drawer-narrow', 'true', 86400, '/');
+    pxhCookies.setItem('pxh-drawer-narrow', 'true', 86400, '/');
   } 
   else if (pxhLgBreakpoint.matches) {
-    pxhDocCookies.setItem('pxh-drawer-open', 'true', 86400, '/');
+    pxhCookies.setItem('pxh-drawer-open', 'true', 86400, '/');
   } else {
-    pxhDocCookies.setItem('pxh-drawer-open', 'false', 86400, '/');
+    pxhCookies.setItem('pxh-drawer-open', 'false', 86400, '/');
   }
 });
 
