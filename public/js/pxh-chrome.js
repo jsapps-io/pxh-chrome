@@ -167,6 +167,15 @@ var pxhCookies = {
     var aKeys = document.cookie.replace(/((?:^|\s*;)[^\=]+)(?=;|$)|^\s*|\s*(?:\=[^;]*)?(?:\1|$)/g, '').split(/\s*(?:\=[^;]*)?;\s*/);
     for (var nLen = aKeys.length, nIdx = 0; nIdx < nLen; nIdx++) { aKeys[nIdx] = decodeURIComponent(aKeys[nIdx]); }
     return aKeys;
+  },
+  removeAll: function () {
+    var cookies = document.cookie.split(";");
+    for (var i = cookies.length - 1; i >= 0; i--) {
+      var cookie = cookies[i];
+      var eqPos = cookie.indexOf("=");
+      var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+      document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+    }
   }
 };
 
