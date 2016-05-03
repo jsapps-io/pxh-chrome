@@ -309,14 +309,15 @@ var pxhBindDrawerControls = function(controlClass) {
 var pxhOverlayDrawerControl = function() {
   var pxhOverlay = document.getElementsByClassName('pxh-overlay');
   if ((typeof pxhOverlay !== 'undefined') && (pxhOverlay.length > 0)) {
-    pxhOverlay[0].addEventListener('click', function(e) {
-      console.log('clicked');
-      if ((!pxhLgBreakpoint.matches) && (pxhDocCookies.getItem('pxh-drawer-open') === 'true')) {
-        pxhLoadState(pxhStatesObject, 'drawerClosed');
-        pxhDocCookies.setItem('pxh-drawer-open', 'false', 86400, '/');
-        pxhDocCookies.setItem('pxh-drawer-narrow', 'true', 86400, '/');
-      }
-    })
+    for (var i = pxhOverlay.length - 1; i >= 0; i--) {
+      pxhOverlay[i].addEventListener('click', function(e) {
+        if ((!pxhLgBreakpoint.matches) && (pxhCookies.getItem('pxh-drawer-open') === 'true')) {
+          pxhLoadState(pxhStatesObject, 'drawerClosed');
+          pxhCookies.setItem('pxh-drawer-open', 'false', 86400, '/');
+          pxhCookies.setItem('pxh-drawer-narrow', 'true', 86400, '/');
+        }
+      })
+    }
   }
 }
 
@@ -334,12 +335,13 @@ var pxhToggleLoginMenu = function(toggleControl, toggleTarget, toggleClass) {
   var toggleControlElement = document.getElementsByClassName(toggleControl);
   var toggleTargetElement = document.getElementsByClassName(toggleTarget);
   if ((typeof toggleControlElement !== 'undefined') && (toggleControlElement.length > 0) && (typeof toggleTargetElement !== 'undefined') && (toggleTargetElement.length > 0)) {
-    // grab the first login menu and login toggle found and handle it ... ignore the rest
-    toggleControlElement[0].addEventListener('click', function(e) {
-      e.preventDefault();
-      toggleTargetElement[0].classList.toggle(toggleClass);
-      e.stopPropagation();
-    }); 
+    for (var i = toggleControlElement.length - 1; i >= 0; i--) {
+      toggleControlElement[i].addEventListener('click', function(e) {
+        e.preventDefault();
+        toggleTargetElement[0].classList.toggle(toggleClass);
+        e.stopPropagation();
+      }); 
+    }
   }
 }
 
@@ -349,7 +351,9 @@ var pxhAnywhereLoginMenuControl = function(toggleControl, toggleTarget, removeCl
   var targetElement = document.getElementsByClassName(toggleTarget);
   if ((typeof controlElement !== 'undefined') && (controlElement.length > 0) && (typeof targetElement !== 'undefined') && (targetElement.length > 0)) {
     document.addEventListener('click', function(e) {
-      targetElement[0].classList.remove(removeClass);
+      for (var i = targetElement.length - 1; i >= 0; i--) {
+        targetElement[i].classList.remove(removeClass);
+      }
     });
   }
 }
