@@ -245,8 +245,8 @@ var pxhLoadState = function(pxhStatesObject, targetStateName) {
   }
 }
 
-var pxhToggleDrawerOnLarge = function(mediaQueryList) {
-  if (mediaQueryList.matches) {
+var pxhToggleDrawerOnLarge = function(mediaQuery) {
+  if (mediaQuery.matches) {
     pxhLoadState(pxhStatesObject, 'drawerOpen');
     pxhCookies.setItem('pxh-drawer-narrow', 'false', 86400, '/');
     pxhCookies.setItem('pxh-drawer-open', 'true', 86400, '/');
@@ -258,13 +258,13 @@ var pxhToggleDrawerOnLarge = function(mediaQueryList) {
 }
 
 // make links automatically close the drawer when clicked
-var pxhBindDrawerMediaQueryControls = function(targetClass, mediaQueryList) {
+var pxhBindDrawerMediaQueryControls = function(targetClass, mediaQuery) {
   var targetElements = document.getElementsByClassName(targetClass);
   if ((typeof targetElements !== 'undefined') && (targetElements.length > 0)) {
     // iterate through drawer controls and fire the pxhToggleDrawer function when clicked
     for (var i = targetElements.length - 1; i >= 0; i--) {
       targetElements[i].addEventListener('click', function() {
-        if (!mediaQueryList.matches) {
+        if (!mediaQuery.matches) {
           pxhLoadState(pxhStatesObject, 'drawerClosed');
           pxhCookies.setItem('pxh-drawer-open', 'false', 86400, '/');
           pxhCookies.setItem('pxh-drawer-narrow', 'true', 86400, '/');
