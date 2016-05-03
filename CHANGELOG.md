@@ -1,5 +1,17 @@
 #pxh-chrome changelog
 
+### _Pending Release_
+  * _nothing yet..._
+
+### 0.8.3
+  * Add `title=""` attributes to all pxh-drawer links, so users can see the full text even when they're truncated with ellipses
+  * Add a task for bumping the pxh-chrome version number across all relevant files, with lightweight validation
+    * Just type `gulp bump --old 0.8.2 --new 0.8.3` to use it
+    * At the next `gulp` it will compile the changes to `/dist` as well
+  * Bump version numbers on all node modules
+  * Add a `gulp dist` task that does the exact same thing as `gulp`
+  * Stub out tests (currently broken in this release)
+
 ### 0.8.2
   * Bump version number in CSS/JS comments, HTML, `bower.json`, `package.json`, etc.
 

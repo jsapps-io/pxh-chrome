@@ -1,7 +1,6 @@
 'use strict';
-/*! pxh-chrome.js 0.8.2 */
+/*! pxh-chrome.js 0.8.3 */
 (function(){
-
   var lgBreakpoint = window.matchMedia('(min-width: 1024px)');
 
   // :: cookies.js ::
@@ -373,5 +372,4 @@
 
   pxhToggleLoginMenu('pxh-login__profile-link', 'pxh-login-menu--profile', 'pxh-login-menu--visible');
   pxhToggleLoginMenu('pxh-login__settings-link', 'pxh-login-menu--settings', 'pxh-login-menu--visible');
-
 }());
