@@ -1,5 +1,4 @@
-(function () {
-  'use strict';
+'use strict';
 
   var foo = 'bar';
   var beverages = { tea: [ 'chai', 'matcha', 'oolong' ] };
@@ -20,4 +19,4 @@
       });
     });
   });
-})();
+});
