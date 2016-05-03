@@ -1,7 +1,16 @@
 #pxh-chrome changelog
 
 ### _Pending Release_
-  * _nothing yet..._
+  * Remove anonymous wrapper function around `pxh-chrome.js` code
+  * Reorder and refactor`pxh-chrome.js` code
+  * Rename functions and variables in `pxh-chrome.js`
+    * Namespace all functions with `pxh-`
+    * Changed functions/variables include `pxhCookies`, `pxhChangeClasses`, `pxhFindObjectByLabel`, `pxhLoadState`, `pxhStatesObject`, etc.
+  * Add a `removeAll()` method to `pxhCookies` that obliterates all cookies
+  * Add unit tests for:
+    * working with cookies
+    * adding/removing/toggling classes
+    * switching between states
 
 ### 0.8.3
   * Add `title=""` attributes to all pxh-drawer links, so users can see the full text even when they're truncated with ellipses
