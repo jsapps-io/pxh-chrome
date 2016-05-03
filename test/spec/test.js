@@ -1,6 +1,5 @@
 'use strict';
 
-var pxhSubObject = pxhFindObjectByLabel(pxhStatesObject, 'drawerOpen');
 // create a state object for testing purposes
 var testStatesObject = {
   'stateOne' : {
@@ -89,8 +88,11 @@ pxhLoadState(testStatesObject, 'stateTwo');
 
 describe('Tests for pxh-chrome.js', () => {
   describe('Tests for pxhFindObjectByLabel', () => {
-    it('pxhFindObjectByLabel returns an object by label', () => {
-      assert.isObject(pxhSubObject, 'subObject is an object');
+    it('pxhFindObjectByLabel returns the stateOne object by label', () => {
+      assert.isObject(testStateOne, 'testStateOne is an object');
+    });
+    it('pxhFindObjectByLabel returns the drawerClosedState object by label', () => {
+      assert.isObject(testStateTwo, 'stateTwo is an object');
     });
   });
   describe('Tests for pxhChangeClasses', () => {
