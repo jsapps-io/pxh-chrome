@@ -106,9 +106,6 @@ var pxhStatesObject = {
 
 var pxhLgBreakpoint = window.matchMedia('(min-width: 1024px)');
 
-var pxhOverlay = document.getElementsByClassName('pxh-overlay');
-
-
 // *********
 // FUNCTIONS
 // *********
@@ -294,6 +291,7 @@ var pxhBindDrawerControls = function(controlClass) {
 }
 
 var pxhOverlayDrawerControl = function() {
+  var pxhOverlay = document.getElementsByClassName('pxh-overlay');
   if ((typeof pxhOverlay !== 'undefined') && (pxhOverlay.length > 0)) {
     pxhOverlay[0].addEventListener('click', function(e) {
       console.log('clicked');
