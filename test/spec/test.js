@@ -1,27 +1,49 @@
 'use strict';
 
-// var foo = 'bar';
-// var beverages = { tea: [ 'chai', 'matcha', 'oolong' ] };
 var pxhSubObject = pxhFindObjectByLabel(pxhStatesObject, 'drawerOpen');
 
-describe('Give it some context', () => {
-  describe('maybe a bit more context here', function () {
-    it('we should be able to return an object by label from the state object', () => {
+var addClass = document.createElement('div');
+addClass.classList.add('qa-target-add');
+document.body.appendChild(addClass);
+
+var removeClass = document.createElement('div');
+removeClass.classList.add('qa-target-removed');
+removeClass.classList.add('qa-remove');
+document.body.appendChild(removeClass);
+
+var toggleClassAdd = document.createElement('div');
+toggleClassAdd.classList.add('qa-target-toggle');
+toggleClassAdd.classList.add('qa-toggle-remove');
+document.body.appendChild(toggleClassAdd);
+
+pxhChangeClasses('qa-target-add', 'add', 'qa-added');
+pxhChangeClasses('qa-target-removed', 'remove', 'qa-remove');
+pxhChangeClasses('qa-target-toggle', 'toggle', 'qa-toggle-add');
+pxhChangeClasses('qa-target-toggle', 'toggle', 'qa-toggle-remove');
+
+// multiple classes ... multiple matching elements
+
+
+
+
+describe('Tests for pxh-chrome.js', () => {
+  describe('Tests for pxhFindObjectByLabel', () => {
+    it('pxhFindObjectByLabel returns an object by label', () => {
       assert.isObject(pxhSubObject, 'subObject is an object');
     });
-    
-    // it('foo should be a string', () => {
-    //   assert.isString(foo, 'foo is a string');
-    // });
-    // it('foo should equal bar', () => {
-    //   assert.strictEqual(foo, 'bar', 'foo equals bar');
-    // });
-    // it('foo should be 3 characters long', () => {
-    //   assert.lengthOf(foo, 3, 'foo has length of 3');
-    // });
-    // it('beverages should have tea and tea should be three', () => {
-    //   assert.property(beverages, 'tea');
-    //   assert.lengthOf(beverages.tea, 3, 'beverages has 3 types of tea');
-    // });
+  });
+  describe('Tests for pxhChangeClasses', () => {
+    it('pxhChangeClasses added a class to a target class element', () => {
+      assert.deepEqual(document.getElementsByClassName('qa-target-add'), document.getElementsByClassName('qa-added'));
+    });
+    it('pxhChangeClasses removes a class from a target class element', () => {
+      assert.notDeepEqual(document.getElementsByClassName('qa-target-removed'), document.getElementsByClassName('qa-remove'));
+    });
+    it('pxhChangeClasses toggles (adds) a class on a target class element', () => {
+      assert.deepEqual(document.getElementsByClassName('qa-target-toggle'), document.getElementsByClassName('qa-toggle-add'));
+    });
+    it('pxhChangeClasses toggles (removes) a class on a target class element', () => {
+      assert.notDeepEqual(document.getElementsByClassName('qa-target-toggle'), document.getElementsByClassName('qa-toggle-remove'));
+    });
   });
 });
