@@ -2,12 +2,12 @@
 
 // var foo = 'bar';
 // var beverages = { tea: [ 'chai', 'matcha', 'oolong' ] };
-var subObject = findObjectByLabel(statesObject, 'drawerOpen');
+var pxhSubObject = pxhFindObjectByLabel(pxhStatesObject, 'drawerOpen');
 
 describe('Give it some context', () => {
   describe('maybe a bit more context here', function () {
     it('we should be able to return an object by label from the state object', () => {
-      assert.isObject(subObject, 'subObject is an object');
+      assert.isObject(pxhSubObject, 'subObject is an object');
     });
     
     // it('foo should be a string', () => {
