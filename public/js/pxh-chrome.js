@@ -104,6 +104,7 @@ var pxhStatesObject = {
   }
 }
 
+// TODO: lots of functions reach into this without explicitly taking it as an input parameter, and you should probably compartmentalize your code better than that
 var pxhLgBreakpoint = window.matchMedia('(min-width: 1024px)');
 
 // *********
@@ -227,20 +228,26 @@ var pxhChangeClasses = function(targetClassName, changeType, classNamesToChange)
 }
 
 var pxhFindObjectByLabel = function(obj, label) {
-  for(var i in obj) {
-    if(obj.hasOwnProperty(label)) {
+  for (var i in obj) {
+    if (obj.hasOwnProperty(label)) {
       return obj[label];
     }
   }
 };
 
 var pxhLoadState = function(pxhStatesObject, targetStateName) {
+  // grab the target state object from the master states object
   var targetState = pxhFindObjectByLabel(pxhStatesObject, targetStateName);
+  // iterate through each target class in the target state object
   for (var targetClass in targetState) {
+    // grab the target state for each class in the target state
     var stateChangeTarget = targetState[targetClass];
+    // iterate through each target state change (e.g. whether to add, remove, toggle)
     for (var stateChangeType in stateChangeTarget) {
       var statepxhChangeClasses = stateChangeTarget[stateChangeType];
       pxhChangeClasses(targetClass, stateChangeType, statepxhChangeClasses);
+      // grab the target state change classes (e.g. which classes to add, remove, or toggle)
+      // change the classes of each target element based on its target class, the type of change to make, and its target classes
     }
   }
 }
