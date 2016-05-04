@@ -1,4 +1,9 @@
 exports.config = {
   framework: 'mocha',
-  specs: ['spec/test.js']
+  specs: [],
+  suites: {
+    smoke:      'spec/smoke/*.spec.js',
+    nav:        'spec/drawer/*.spec.js',
+    responsive: 'spec/responsive/*.spec.js'
+  }
 }
