@@ -98,7 +98,7 @@ const testLintOptions = {
 };
 
 gulp.task('lint', lint('public/js/**/*.js'));
-gulp.task('lint:test', lint('test/spec/**/*.js', testLintOptions));
+gulp.task('lint:test', lint('test/unit/spec/**/*.js', testLintOptions));
 
 gulp.task('html', ['sass', 'js'], () => {
   return gulp.src('public/*.html')
@@ -178,7 +178,7 @@ gulp.task('serve:test', ['js'], () => {
     port: 4000,
     notify: false,
     server: {
-      baseDir: 'test',
+      baseDir: 'test/unit',
       routes: {
         '/js': '.tmp/js',
         '/bower_components': 'bower_components'
@@ -187,8 +187,6 @@ gulp.task('serve:test', ['js'], () => {
   });
 
   gulp.watch('public/js/**/*.js', ['js']);
-  gulp.watch('test/spec/**/*.js').on('change', reload);
-  gulp.watch('test/spec/**/*.js', ['lint:test']);
 });
 
 gulp.task('build', ['lint', 'html', 'extras', 'img', 'fonts'], () => {
