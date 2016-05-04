@@ -208,7 +208,7 @@ gulp.task('e2e-install', function (done){
 
 gulp.task('e2e', function (done) {
     // var argv = process.argv.slice(3); // forward args to protractor
-    child_process.spawn(getProtractorBinary('protractor'), ['./test/e2e/conf.js'], {
+    child_process.spawn(getProtractorBinary('protractor'), ['./test/e2e/protractor.config.js'], {
         stdio: 'inherit'
     }).once('close', done);
 });
