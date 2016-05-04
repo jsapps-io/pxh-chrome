@@ -170,12 +170,12 @@ var pxhCookies = {
     return aKeys;
   },
   removeAll: function () {
-    var cookies = document.cookie.split(";");
+    var cookies = document.cookie.split(';');
     for (var i = cookies.length - 1; i >= 0; i--) {
       var cookie = cookies[i];
-      var eqPos = cookie.indexOf("=");
+      var eqPos = cookie.indexOf('=');
       var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
-      document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+      document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:00 GMT';
     }
   }
 };
@@ -373,7 +373,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
     pxhCookies.setItem('pxh-drawer-narrow', 'false', 86400, '/');
   }
 
-  // check if the "narrow" cookie is set and if we're currently at the desktop breakpoint
+  // check if the 'narrow' cookie is set and if we're currently at the desktop breakpoint
   if ((pxhLgBreakpoint.matches) && (pxhCookies.getItem('pxh-drawer-narrow') === 'true')) {
     // toggle the drawer closed
     pxhLoadState(pxhStatesObject, 'drawerClosed');
