@@ -6,6 +6,7 @@ import del from 'del';
 import path from 'path';
 import minimist from 'minimist';
 import replace from 'gulp-replace';
+import child_process from 'child_process';
 
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
@@ -35,7 +36,8 @@ gulp.task('bump', () => {
     'public/sass/pxh-chrome.scss',
     'public/js/pxh-chrome.js',
     'public/chromeless.html',
-    'public/index.html'
+    'public/index.html',
+    'test/e2e/spec/test.js'
   ];
   var regex = new RegExp('^\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}(\\.\\d{1,3})?$');
   if ((options.old.search(regex) !== -1) && (options.new.search(regex) !== -1)) {
@@ -187,6 +189,28 @@ gulp.task('serve:test', ['js'], () => {
   });
 
   gulp.watch('public/js/**/*.js', ['js']);
+  gulp.watch('test/unit/spec/**/*.js').on('change', reload);
+  gulp.watch('test/unit/spec/**/*.js', ['lint:test']);
+});
+
+function getProtractorBinary(binaryName){
+    var winExt = /^win/.test(process.platform)? '.cmd' : '';
+    var pkgPath = require.resolve('protractor');
+    var protractorDir = path.resolve(path.join(path.dirname(pkgPath), '..', 'bin'));
+    return path.join(protractorDir, '/'+binaryName+winExt);
+}
+
+gulp.task('e2e-install', function (done){
+    child_process.spawn(getProtractorBinary('webdriver-manager'), ['update'], {
+        stdio: 'inherit'
+    }).once('close', done);
+});
+
+gulp.task('e2e', function (done) {
+    // var argv = process.argv.slice(3); // forward args to protractor
+    child_process.spawn(getProtractorBinary('protractor'), ['./test/e2e/conf.js'], {
+        stdio: 'inherit'
+    }).once('close', done);
 });
 
 gulp.task('build', ['lint', 'html', 'extras', 'img', 'fonts'], () => {
