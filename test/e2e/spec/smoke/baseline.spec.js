@@ -13,12 +13,15 @@ var assert = chai.assert;
 
 describe('The pxh-chrome', function() {
 
+    browser.driver.get('http://localhost:4000');
+    browser.driver.manage().window().setSize(1100, 800);
+    browser.driver.sleep(1000);
+
   var commonPage = require('../common/common.po.js');
   var mainComponents    = require('../smoke/mainComponents.po.js');
   var navPage    = require('../drawer/drawerComponents.po.js');
 
   describe('index page', function() {
-    browser.driver.get('http://localhost:4000');
 
     beforeEach(function() {
     });

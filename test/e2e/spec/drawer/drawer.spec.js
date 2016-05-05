@@ -17,8 +17,6 @@ describe('The pxh-drawer', function () {
   var mainComponents    = require('../smoke/mainComponents.po.js');
   var drawerComponents = require('../drawer/drawerComponents.po.js');
 
-  // browser.driver.manage().window().setSize(1200, 1000);
-
   it('has a header link', function() {
     assert.eventually.isOk(drawerComponents.getDrawerHeaderLink());
   });
