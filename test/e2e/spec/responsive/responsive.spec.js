@@ -1,4 +1,4 @@
-// dimension.spec.js
+// responsive.spec.js
 /*
 * Test view port change that triggers responsiveness design
 * */
@@ -14,49 +14,43 @@ var expect = chai.expect;
 
 describe('Check responsive design', function() {
 
-    // var commonPage = require('../common/common.po.js');
-    // var drawerComponents    = require('../drawer/drawerComponents.po.js');
+  var commonPage = require('../common/common.po.js');
+  var mainComponents    = require('../smoke/mainComponents.po.js');
+  var drawerComponents = require('../drawer/drawerComponents.po.js');
 
-    // var convertPxToNum = function(px){
-    //     return parseInt(px, 10);
-    // };
+  var convertPxToNum = function(px){
+    return parseInt(px, 10);
+  };
 
-    // it('should start with wide version of layout', function() {
-    //     browser.driver.sleep(2000);
-    //     expect(drawerComponents.getNavBar().isPresent()).toBe(true);
-    //     expect(drawerComponents.getNavBar().isDisplayed()).toBe(true);
-    //     browser.manage().window().setSize(1200, 1000);
-    //     browser.driver.sleep(2000);
+  it('should start with desktop version of layout', function() {
+    assert.eventually.isOk(mainComponents.getDrawer());
+    assert.eventually.isOk(mainComponents.getDrawer().isDisplayed());
+    var drawerWidth = mainComponents.getDrawer().getCssValue('width');
+    drawerWidth = convertPxToNum(drawerWidth);
+    assert.eventually.isAtLeast(Promise.resolve(drawerWidth), 200);
+    var leftValue = mainComponents.getDrawer().getCssValue('left');
+    leftValue = convertPxToNum(leftValue);
+    assert.eventually.isAtMost(Promise.resolve(drawerWidth), 0);
+  });
 
-    //     drawerComponents.getNavBar().getSize().then(function(dimension){
-    //        expect(dimension.width).toBeGreaterThan(250);
-    //     });
-    // });
+  it('should change to mobile layout', function() {
+    browser.driver.manage().window().setSize(400, 800);
+    browser.driver.sleep(1000);
+    assert.eventually.isOk(mainComponents.getDrawer().isDisplayed());
+    var leftValue = mainComponents.getDrawer().getCssValue('left');
+    leftValue = convertPxToNum(leftValue);
+    assert.eventually.isAtMost(Promise.resolve(leftValue), -200);
+  });
 
-    // it('should respond to view port change to narrow size', function() {
-
-    //     browser.manage().window().setSize(400, 1000);
-    //     browser.driver.sleep(2000);
-    //     expect(drawerComponents.getNavBar().isPresent()).toBe(true);
-    //     //Nav bar is hidden (but size is does not change)
-    //     drawerComponents.getNavBar().getCssValue('left').then(function(leftValue){
-    //         leftValue = convertPxToNum(leftValue);
-    //         expect(leftValue ).toBeLessThan(-200); //off view port to the left
-    //     });
-
-    // });
-
-
-    // it('should respond to view port change to wide size', function() {
-
-    //     browser.manage().window().setSize(1200, 1000);
-
-    //     browser.driver.sleep(2000);
-    //     expect(drawerComponents.getNavBar().isPresent()).toBe(true);
-    //     expect(drawerComponents.getNavBar().isDisplayed()).toBe(true);
-    //     drawerComponents.getNavBar().getSize().then(function(dimension){
-    //         expect(dimension.width).toBeGreaterThan(250);
-    //     });
-
-    // });
+  it('should change to tablet layout', function() {
+    browser.driver.manage().window().setSize(800, 800);
+    browser.driver.sleep(1000);
+    assert.eventually.isOk(mainComponents.getDrawer().isDisplayed());
+    var drawerWidth = mainComponents.getDrawer().getCssValue('width');
+    drawerWidth = convertPxToNum(drawerWidth);
+    assert.eventually.isAtMost(Promise.resolve(drawerWidth), 100);
+    var leftValue = mainComponents.getDrawer().getCssValue('left');
+    leftValue = convertPxToNum(leftValue);
+    assert.eventually.isAtMost(Promise.resolve(drawerWidth), 0);
+  });
 });
