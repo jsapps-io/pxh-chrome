@@ -9,36 +9,38 @@
 var drawerComponents = function() {
   var commonPage = require('../common/common.po.js');
   return {
-    getDrawerHeaderLink: function (){
-      return driver.findElement(by.css("a.pxh-drawer-header__link"));
+    getDrawerHeaderLink: function () {
+      return browser.driver.findElement(by.css("a.pxh-drawer-header__link"));
     },
-    getDrawerToggleLink: function (){
-      return driver.findElement(by.css("a.phx-drawer-toggle__link"));
+    getDrawerToggleLink: function () {
+      return browser.driver.findElement(by.css("a.pxh-drawer-toggle__link"));
     },
-    clickDrawerToggleLink: function (){
+    clickDrawerToggleLink: function () {
       return this.getDrawerToggleLink().click();
     },
     getLoginProfileLink: function () {
-      return driver.findElement(by.css("a.pxh-login__profile-link"));
+      return browser.driver.findElement(by.css("a.pxh-login__profile-link"));
     },
     clickLoginProfileLink: function () {
       this.getLoginProfileLink().click();
     },
+    getLoginName: function () {
+      return browser.driver.findElement(by.css(".pxh-login__name"));
+    },
+    clickLoginName: function () {
+      this.getLoginName().click();
+    },
     getLoginProfileMenu: function () {
-      var css = '.pxh-login-menu--profile';
-      commonPage.waitForElement(css);
-      return driver.findElement(by.css(css));
+      return browser.driver.findElement(by.css(".pxh-login-menu--profile"));
     },
     getLoginSettingsLink: function () {
-      return driver.findElement(by.css("a.pxh-login__settings-link"));
+      return browser.driver.findElement(by.css("a.pxh-login__settings-link"));
     },
     clickLoginSettingsLink: function () {
       this.getLoginSettingsLink().click();
     },
     getLoginSettingsMenu: function () {
-      var css = '.pxh-login-menu--settings';
-      commonPage.waitForElement(css);
-      return driver.findElement(by.css(css));
+      return browser.driver.findElement(by.css(".pxh-login-menu--settings"));
     }
   };
 };

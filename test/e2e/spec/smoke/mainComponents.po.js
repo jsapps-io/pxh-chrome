@@ -34,6 +34,9 @@
       getViewHeader: function() {
         return browser.driver.findElement(by.className('pxh-view-header'));
       },
+      clickViewHeader: function () {
+        this.getViewHeader().click();
+      },
       getViewHeaderDrawerToggle: function() {
         return browser.driver.findElement(by.className('pxh-view'));
       },
