@@ -17,6 +17,10 @@
                 });
             },
 
+            convertPxToNum: function (px) {
+              return parseInt(px, 10);
+            },
+
             // To generate a random String name
             getRandomString: function () {
                 var chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";

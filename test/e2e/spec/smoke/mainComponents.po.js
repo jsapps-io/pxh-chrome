@@ -16,6 +16,9 @@
       getDrawerToggle: function() {
         return browser.driver.findElement(by.className('pxh-drawer-toggle'));
       },
+      clickDrawerToggle: function () {
+        this.getDrawerToggle().click();
+      },
       getNavigation: function() {
         return browser.driver.findElement(by.className('pxh-navigation'));
       },
@@ -38,7 +41,10 @@
         this.getViewHeader().click();
       },
       getViewHeaderDrawerToggle: function() {
-        return browser.driver.findElement(by.className('pxh-view'));
+        return browser.driver.findElement(by.className('pxh-view-header-drawer-toggle'));
+      },
+      clickViewHeaderDrawerToggle: function () {
+        this.getViewHeaderDrawerToggle().click();
       },
       getView: function() {
         return browser.driver.findElement(by.className('pxh-view'));
