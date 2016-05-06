@@ -233,7 +233,7 @@ describe('pxh-chrome', function() {
     mainComponents.clickDrawerToggle();
     browser.driver.sleep(1000);
     browser.driver.navigate().refresh();
-    browser.driver.sleep(1000);
+    browser.driver.sleep(2000);
     mainComponents.getDrawer().getCssValue('left').then(function (leftPosition) {
       leftPosition = commonPage.convertPxToNum(leftPosition);
       assert.isAtLeast(leftPosition, 0);
