@@ -37,7 +37,7 @@ gulp.task('bump', () => {
     'public/js/pxh-chrome.js',
     'public/chromeless.html',
     'public/index.html',
-    'test/e2e/spec/test.js'
+    'test/e2e/spec/smoke/baseline.spec.js'
   ];
   var regex = new RegExp('^\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}(\\.\\d{1,3})?$');
   if ((options.old.search(regex) !== -1) && (options.new.search(regex) !== -1)) {
