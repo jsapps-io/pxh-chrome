@@ -139,6 +139,8 @@ Then, start your development server in one Terminal window:
 gulp serve
 ```
 
+This task will automatically open a browser window. In order to avoid potentially destabilizing behavior from BrowserSync, **before running your end-to-end tests you should close this browser window, along with any other browser windows you have open to your development server.** BrowserSync is an awesome utility for doing real-time cross-browser development, but it plays havok on the automated environment for end-to-end tests as it attempts to sync behavior across browsers.
+
 Finally, open a second Terminal window and run your end-to-end tests:
 
 ```bash
