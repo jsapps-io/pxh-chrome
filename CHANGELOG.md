@@ -1,6 +1,6 @@
 #pxh-chrome changelog
 
-### _Pending Release_
+### 0.9.0
   * Remove anonymous wrapper function around `pxh-chrome.js` code
   * Reorder and refactor`pxh-chrome.js` code
   * Rename functions and variables in `pxh-chrome.js`
@@ -11,6 +11,11 @@
     * working with cookies
     * adding/removing/toggling classes
     * switching between states
+  * Add end-to-end tests for:
+    * basic presence and visibility of key elements
+    * toggling login menus
+    * toggling `pxh-drawer` and `pxh-overlay` on mobile, tablet and desktop
+    * preserving drawer state between page refreshes
 
 ### 0.8.3
   * Add `title=""` attributes to all pxh-drawer links, so users can see the full text even when they're truncated with ellipses
