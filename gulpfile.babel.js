@@ -6,6 +6,7 @@ import del from 'del';
 import path from 'path';
 import minimist from 'minimist';
 import replace from 'gulp-replace';
+import child_process from 'child_process';
 
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
@@ -35,7 +36,8 @@ gulp.task('bump', () => {
     'public/sass/pxh-chrome.scss',
     'public/js/pxh-chrome.js',
     'public/chromeless.html',
-    'public/index.html'
+    'public/index.html',
+    'test/e2e/spec/smoke/baseline.spec.js'
   ];
   var regex = new RegExp('^\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}(\\.\\d{1,3})?$');
   if ((options.old.search(regex) !== -1) && (options.new.search(regex) !== -1)) {
@@ -98,7 +100,7 @@ const testLintOptions = {
 };
 
 gulp.task('lint', lint('public/js/**/*.js'));
-gulp.task('lint:test', lint('test/spec/**/*.js', testLintOptions));
+gulp.task('lint:test', lint('test/unit/spec/**/*.js', testLintOptions));
 
 gulp.task('html', ['sass', 'js'], () => {
   return gulp.src('public/*.html')
@@ -178,7 +180,7 @@ gulp.task('serve:test', ['js'], () => {
     port: 4000,
     notify: false,
     server: {
-      baseDir: 'test',
+      baseDir: 'test/unit',
       routes: {
         '/js': '.tmp/js',
         '/bower_components': 'bower_components'
@@ -187,8 +189,28 @@ gulp.task('serve:test', ['js'], () => {
   });
 
   gulp.watch('public/js/**/*.js', ['js']);
-  gulp.watch('test/spec/**/*.js').on('change', reload);
-  gulp.watch('test/spec/**/*.js', ['lint:test']);
+  gulp.watch('test/unit/spec/**/*.js').on('change', reload);
+  gulp.watch('test/unit/spec/**/*.js', ['lint:test']);
+});
+
+function getProtractorBinary(binaryName){
+    var winExt = /^win/.test(process.platform)? '.cmd' : '';
+    var pkgPath = require.resolve('protractor');
+    var protractorDir = path.resolve(path.join(path.dirname(pkgPath), '..', 'bin'));
+    return path.join(protractorDir, '/'+binaryName+winExt);
+}
+
+gulp.task('e2e-install', function (done){
+    child_process.spawn(getProtractorBinary('webdriver-manager'), ['update'], {
+        stdio: 'inherit'
+    }).once('close', done);
+});
+
+gulp.task('e2e', function (done) {
+    // var argv = process.argv.slice(3); // forward args to protractor
+    child_process.spawn(getProtractorBinary('protractor'), ['./test/e2e/protractor.config.js'], {
+        stdio: 'inherit'
+    }).once('close', done);
 });
 
 gulp.task('build', ['lint', 'html', 'extras', 'img', 'fonts'], () => {

@@ -1,4 +1,4 @@
-#pxh-chrome 0.8.3
+#pxh-chrome 0.9.0
 Application chrome for the Predix UI App Hub
 
 ##[Live Demo](https://github.build.ge.com/pages/hubs/pxh-chrome-demo)
@@ -118,6 +118,34 @@ To trigger "chromeless" mode, which hides the drawer, drawer toggle, navigation,
 1. Remove the markup for `pxh-drawer`, `pxh-view-header-toggle` and `pxh-overlay` from your HTML file (we're not showing it so we don't need it)
 1. Remove the `<script>` tag for `pxh-chrome.js`
   * `pxh-chrome.js` is not required for chromeless view, as the JavaScript is only necessary for managing drawer state between breakpoints, page refreshes and toggle events... if there's no drawer, there's no need for JavaScript!
+
+
+##Running Tests
+To run unit tests, type the following at the command line:
+
+```bash
+gulp serve:test
+```
+
+To run end-to-end tests, first install all the necessary Protractor and WebDriver dependencies by typing the following at the command line:
+
+```bash
+gulp e2e-install
+```
+
+Then, start your development server in one Terminal window:
+
+```bash
+gulp serve
+```
+
+This task will automatically open a browser window. In order to avoid potentially destabilizing behavior from BrowserSync, **before running your end-to-end tests you should close this browser window, along with any other browser windows you have open to your development server.** BrowserSync is an awesome utility for doing real-time cross-browser development, but it plays havok on the automated environment for end-to-end tests as it attempts to sync behavior across browsers.
+
+Finally, open a second Terminal window and run your end-to-end tests:
+
+```bash
+gulp e2e
+```
 
 ##Browser Support
 pxh-chrome is tested in the most recent major releases of Chrome, Firefox, Safari, iOS Safari, and Internet Explorer (IE11 on Windows 7 and IE Edge on Windows 10).
