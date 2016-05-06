@@ -21,6 +21,12 @@
               return parseInt(px, 10);
             },
 
+            parseColor: function (input) {
+              var m = input.match(/^rgba\s*\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*,\s*([\.\d]+)\s*\)$/i);
+              if (m) return m;
+              else throw new Error("Color " + input + " could not be parsed.");
+            },
+
             // To generate a random String name
             getRandomString: function () {
                 var chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";

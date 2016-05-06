@@ -25,6 +25,10 @@ describe('pxh-chrome', function() {
       leftPosition = commonPage.convertPxToNum(leftPosition);
       assert.isAtMost(leftPosition, -200);
     });
+    mainComponents.getOverlay().getCssValue('background-color').then(function (color) {
+      var color = commonPage.parseColor(color)
+      assert.equal(color[4], 0);
+    });
   });
 
   it('should show the view header drawer toggle button at the mobile breakpoint', function() {
@@ -48,6 +52,10 @@ describe('pxh-chrome', function() {
       drawerWidth = commonPage.convertPxToNum(drawerWidth);
       assert.isAtLeast(drawerWidth, 200);
     });
+    mainComponents.getOverlay().getCssValue('background-color').then(function (color) {
+      var color = commonPage.parseColor(color)
+      assert.isAbove(color[4], 0);
+    });
   });
 
   it('should close the drawer when the drawer toggle is clicked', function() {
@@ -57,6 +65,26 @@ describe('pxh-chrome', function() {
     mainComponents.getDrawer().getCssValue('left').then(function (leftPosition) {
       leftPosition = commonPage.convertPxToNum(leftPosition);
       assert.isAtMost(leftPosition, -200);
+    });
+    mainComponents.getOverlay().getCssValue('background-color').then(function (color) {
+      var color = commonPage.parseColor(color)
+      assert.equal(color[4], 0);
+    });
+  });
+
+  it('should close the drawer when the overlay is clicked', function() {
+    browser.driver.manage().window().setSize(400, 800);
+    mainComponents.clickViewHeaderDrawerToggle();
+    browser.driver.sleep(400);
+    browser.driver.actions().mouseMove(mainComponents.getDrawer(), {x: 300, y: 100}).click().perform();
+    browser.driver.sleep(400);
+    mainComponents.getDrawer().getCssValue('left').then(function (leftPosition) {
+      leftPosition = commonPage.convertPxToNum(leftPosition);
+      assert.isAtMost(leftPosition, -200);
+    });
+    mainComponents.getOverlay().getCssValue('background-color').then(function (color) {
+      var color = commonPage.parseColor(color)
+      assert.equal(color[4], 0);
     });
   });
 
@@ -71,6 +99,10 @@ describe('pxh-chrome', function() {
     mainComponents.getDrawer().getCssValue('width').then(function (drawerWidth) {
       drawerWidth = commonPage.convertPxToNum(drawerWidth);
       assert.isAtMost(drawerWidth, 100);
+    });
+    mainComponents.getOverlay().getCssValue('background-color').then(function (color) {
+      var color = commonPage.parseColor(color)
+      assert.equal(color[4], 0);
     });
   });
 
@@ -95,6 +127,10 @@ describe('pxh-chrome', function() {
       drawerWidth = commonPage.convertPxToNum(drawerWidth);
       assert.isAtLeast(drawerWidth, 200);
     });
+    mainComponents.getOverlay().getCssValue('background-color').then(function (color) {
+      var color = commonPage.parseColor(color)
+      assert.isAbove(color[4], 0);
+    });
   });
 
   it('should narrow the drawer when the view header drawer toggle is clicked', function() {
@@ -109,6 +145,32 @@ describe('pxh-chrome', function() {
       drawerWidth = commonPage.convertPxToNum(drawerWidth);
       assert.isAtMost(drawerWidth, 100);
     });
+    mainComponents.getOverlay().getCssValue('background-color').then(function (color) {
+      var color = commonPage.parseColor(color)
+      assert.equal(color[4], 0);
+    });
+  });
+
+  it('should narrow the drawer when the overlay is clicked', function() {
+    this.timeout(10000);
+    browser.driver.manage().window().setSize(800, 800);
+    mainComponents.clickDrawerToggle();
+    browser.driver.sleep(1000);
+    browser.driver.actions().mouseMove(mainComponents.getDrawer(), {x: 400, y: 100}).click().perform();
+    browser.driver.sleep(1000);
+    mainComponents.getDrawer().getCssValue('left').then(function (leftPosition) {
+      leftPosition = commonPage.convertPxToNum(leftPosition);
+      assert.isAtLeast(leftPosition, 0);
+    });
+    mainComponents.getDrawer().getCssValue('width').then(function (drawerWidth) {
+      drawerWidth = commonPage.convertPxToNum(drawerWidth);
+      assert.isAtMost(drawerWidth, 100);
+    });
+    mainComponents.getOverlay().getCssValue('background-color').then(function (color) {
+      var color = commonPage.parseColor(color)
+      assert.equal(color[4], 0);
+    });
+    browser.driver.sleep(1000);
   });
 
   it('should show the wide drawer at the desktop breakpoint', function() {
@@ -122,6 +184,10 @@ describe('pxh-chrome', function() {
     mainComponents.getDrawer().getCssValue('width').then(function (drawerWidth) {
       drawerWidth = commonPage.convertPxToNum(drawerWidth);
       assert.isAtLeast(drawerWidth, 200);
+    });
+    mainComponents.getOverlay().getCssValue('background-color').then(function (color) {
+      var color = commonPage.parseColor(color)
+      assert.equal(color[4], 0);
     });
   });
 
@@ -137,6 +203,10 @@ describe('pxh-chrome', function() {
       drawerWidth = commonPage.convertPxToNum(drawerWidth);
       assert.isAtMost(drawerWidth, 100);
     });
+    mainComponents.getOverlay().getCssValue('background-color').then(function (color) {
+      var color = commonPage.parseColor(color)
+      assert.equal(color[4], 0);
+    });
   });
 
   it('should expand the drawer when the view header drawer toggle is clicked', function() {
@@ -150,6 +220,10 @@ describe('pxh-chrome', function() {
     mainComponents.getDrawer().getCssValue('width').then(function (drawerWidth) {
       drawerWidth = commonPage.convertPxToNum(drawerWidth);
       assert.isAtLeast(drawerWidth, 200);
+    });
+    mainComponents.getOverlay().getCssValue('background-color').then(function (color) {
+      var color = commonPage.parseColor(color)
+      assert.equal(color[4], 0);
     });
   });
 
@@ -167,6 +241,10 @@ describe('pxh-chrome', function() {
     mainComponents.getDrawer().getCssValue('width').then(function (drawerWidth) {
       drawerWidth = commonPage.convertPxToNum(drawerWidth);
       assert.isAtMost(drawerWidth, 100);
+    });
+    mainComponents.getOverlay().getCssValue('background-color').then(function (color) {
+      var color = commonPage.parseColor(color)
+      assert.equal(color[4], 0);
     });
     browser.driver.sleep(1000);
   });
