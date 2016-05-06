@@ -119,6 +119,32 @@ To trigger "chromeless" mode, which hides the drawer, drawer toggle, navigation,
 1. Remove the `<script>` tag for `pxh-chrome.js`
   * `pxh-chrome.js` is not required for chromeless view, as the JavaScript is only necessary for managing drawer state between breakpoints, page refreshes and toggle events... if there's no drawer, there's no need for JavaScript!
 
+
+##Running Tests
+To run unit tests, type the following at the command line:
+
+```bash
+gulp serve:test
+```
+
+To run end-to-end tests, first install all the necessary Protractor and WebDriver dependencies by typing the following at the command line:
+
+```bash
+gulp e2e-install
+```
+
+Then, start your development server in one Terminal window:
+
+```bash
+gulp serve
+```
+
+Finally, open a second Terminal window and run your end-to-end tests:
+
+```bash
+gulp e2e
+```
+
 ##Browser Support
 pxh-chrome is tested in the most recent major releases of Chrome, Firefox, Safari, iOS Safari, and Internet Explorer (IE11 on Windows 7 and IE Edge on Windows 10).
 
