@@ -1,5 +1,9 @@
 #pxh-chrome changelog
 
+
+### Pending release...
+  * Change "Your Profile" user menu item to "My Profile"
+
 ### 0.9.0
   * Remove anonymous wrapper function around `pxh-chrome.js` code
   * Reorder and refactor`pxh-chrome.js` code
