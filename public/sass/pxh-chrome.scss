@@ -10,12 +10,14 @@
 // ** #TOOLS USED BY SETTINGS ** //
 @import "px/tools.px-functions.scss";
 
-// ** #SETTINGS ** //
+// ** #SETTINGS USED BY SETTINGS ** //
 @import "px/settings.colors.scss";
+
+// ** #SETTINGS
+$inuit-base-background-color: $gray5 !default;
 @import "px/settings.defaults.scss";
 
 // ** #GENERIC ** //
-$inuit-base-background-color: $gray5 !default;
 @import "px/generic.normalize.scss";
 @import "px/generic.box-sizing.scss";
 
