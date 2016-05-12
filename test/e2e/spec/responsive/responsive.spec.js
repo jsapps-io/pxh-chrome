@@ -152,7 +152,6 @@ describe('pxh-chrome', function() {
   });
 
   it('should narrow the drawer when the overlay is clicked', function() {
-    this.timeout(10000);
     browser.driver.manage().window().setSize(800, 800);
     mainComponents.clickDrawerToggle();
     browser.driver.sleep(1000);
@@ -228,7 +227,6 @@ describe('pxh-chrome', function() {
   });
 
   it('should remember that the drawer is narrow between refreshes', function() {
-    this.timeout(10000);
     browser.driver.manage().window().setSize(1100, 800);
     mainComponents.clickDrawerToggle();
     browser.driver.sleep(1000);

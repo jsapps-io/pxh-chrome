@@ -5,5 +5,10 @@ exports.config = {
     smoke:      'spec/smoke/*.spec.js',
     nav:        'spec/drawer/*.spec.js',
     responsive: 'spec/responsive/*.spec.js'
+  },
+  mochaOpts: {
+    ui: 'bdd',
+    reporter: 'list',
+    timeout: '10000'
   }
 }

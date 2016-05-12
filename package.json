@@ -2,10 +2,10 @@
   "name": "pxh-chrome",
   "private": true,
   "description": "Application chrome for the Predix UI App Hub",
-  "version": "0.9.0",
+  "version": "0.10.0",
   "homepage": "https://github.build.ge.com/hubs/pxh-chrome",
   "engines": {
-    "node": ">=0.12.0"
+    "node": ">=4"
   },
   "devDependencies": {
     "babel-core": "^6.8.0",
