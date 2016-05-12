@@ -3,6 +3,7 @@
 
 ### Pending release...
   * Change "Your Profile" user menu item to "My Profile"
+  * Move all Px Sass `@import` dependencies directly into pxh-chrome 
 
 ### 0.9.0
   * Remove anonymous wrapper function around `pxh-chrome.js` code
