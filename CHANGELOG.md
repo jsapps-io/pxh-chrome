@@ -6,36 +6,36 @@
   * Move all Px Sass `@import` dependencies directly into pxh-chrome 
 
 ### 0.9.0
-  * Remove anonymous wrapper function around `pxh-chrome.js` code
-  * Reorder and refactor`pxh-chrome.js` code
-  * Rename functions and variables in `pxh-chrome.js`
-    * Namespace all functions with `pxh-`
-    * Changed functions/variables include `pxhCookies`, `pxhChangeClasses`, `pxhFindObjectByLabel`, `pxhLoadState`, `pxhStatesObject`, etc.
-  * Add a `removeAll()` method to `pxhCookies` that obliterates all cookies
-  * Add unit tests for:
-    * working with cookies
-    * adding/removing/toggling classes
-    * switching between states
-  * Add end-to-end tests for:
-    * basic presence and visibility of key elements
-    * toggling login menus
-    * toggling `pxh-drawer` and `pxh-overlay` on mobile, tablet and desktop
-    * preserving drawer state between page refreshes
+* Remove anonymous wrapper function around `pxh-chrome.js` code
+* Reorder and refactor`pxh-chrome.js` code
+* Rename functions and variables in `pxh-chrome.js`
+  * Namespace all functions with `pxh-`
+  * Changed functions/variables include `pxhCookies`, `pxhChangeClasses`, `pxhFindObjectByLabel`, `pxhLoadState`, `pxhStatesObject`, etc.
+* Add a `removeAll()` method to `pxhCookies` that obliterates all cookies
+* Add unit tests for:
+  * working with cookies
+  * adding/removing/toggling classes
+  * switching between states
+* Add end-to-end tests for:
+  * basic presence and visibility of key elements
+  * toggling login menus
+  * toggling `pxh-drawer` and `pxh-overlay` on mobile, tablet and desktop
+  * preserving drawer state between page refreshes
 
 ### 0.8.3
-  * Add `title=""` attributes to all pxh-drawer links, so users can see the full text even when they're truncated with ellipses
-  * Add a task for bumping the pxh-chrome version number across all relevant files, with lightweight validation
-    * Just type `gulp bump --old 0.8.2 --new 0.8.3` to use it
-    * At the next `gulp` it will compile the changes to `/dist` as well
-  * Bump version numbers on all node modules
-  * Add a `gulp dist` task that does the exact same thing as `gulp`
-  * Stub out tests (currently broken in this release)
+* Add `title=""` attributes to all pxh-drawer links, so users can see the full text even when they're truncated with ellipses
+* Add a task for bumping the pxh-chrome version number across all relevant files, with lightweight validation
+  * Just type `gulp bump --old 0.8.2 --new 0.8.3` to use it
+  * At the next `gulp` it will compile the changes to `/dist` as well
+* Bump version numbers on all node modules
+* Add a `gulp dist` task that does the exact same thing as `gulp`
+* Stub out tests (currently broken in this release)
 
 ### 0.8.2
-  * Bump version number in CSS/JS comments, HTML, `bower.json`, `package.json`, etc.
+* Bump version number in CSS/JS comments, HTML, `bower.json`, `package.json`, etc.
 
 ### 0.8.1
-  * Use `<section>` element instead of `<main>` for the `pxh-view` content area to avoid colliding with the global `<main>` element styles defined in px-theme
+* Use `<section>` element instead of `<main>` for the `pxh-view` content area to avoid colliding with the global `<main>` element styles defined in px-theme
 
 ### 0.8.0
 * Scope `pxh-view-header` and `pxh-view` reponsive modifier class styles so they are only applied in the "chromeful" view
