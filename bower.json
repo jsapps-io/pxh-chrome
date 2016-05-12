@@ -20,8 +20,8 @@
   ],
   "devDependencies": {
     "chai": "3.5.0",
-    "font-awesome": "4.4.0",
     "px-typography-design": "https://github.com/PredixDev/px-typography-design.git#0.3.4",
+    "font-awesome": "4.6.2",
     "mocha": "2.4.5",
     "sass-mq": "3.2.9"
   }
