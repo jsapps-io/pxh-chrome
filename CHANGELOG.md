@@ -1,9 +1,17 @@
 #pxh-chrome changelog
 
+### Pending release
+* Nothing yet...
 
-### Pending release...
-  * Change "Your Profile" user menu item to "My Profile"
-  * Move all Px Sass `@import` dependencies directly into pxh-chrome 
+### 0.10.0
+* Change "Your Profile" user menu item to "My Profile"
+* Move all Px Sass `@import` dependencies directly into pxh-chrome 
+* Remove all Px dependencies from `bower.json`
+* Remove GE Inspira fonts from pxh-chrome
+  * We are relying on each microapp to load it if it needs it, which current experience indicates is a reliable assumption.
+* Bump required Node version to 4.x.x
+* Bump font-awesome to 4.6.2
+* Increase default end-to-end test timeout to 10 seconds
 
 ### 0.9.0
 * Remove anonymous wrapper function around `pxh-chrome.js` code
