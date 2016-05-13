@@ -25,15 +25,11 @@ $mq-breakpoints: (
 );
 @import "sass-mq/mq.scss";
 $fa-font-path       : "../fonts/font-awesome/fonts" !default;
-$fa-version         : "4.6.2" !default;
 @import "font-awesome/scss/font-awesome.scss";
 @import "tools.pxh-animations.scss";
 
 // ** #BASE ** //
-// $inuit-webfont-path: '../fonts/px-typography-design/type' !default;
 @import "px/base.typography.scss";
-$fa-font-path       : "../fonts/font-awesome/fonts" !default;
-$fa-version         : "4.4.0" !default;
 @import "px/base.iconography.scss";
 
 
