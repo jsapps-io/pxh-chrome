@@ -36,23 +36,6 @@ $fa-font-path       : "../fonts/font-awesome/fonts" !default;
 $fa-version         : "4.4.0" !default;
 @import "px/base.iconography.scss";
 
-// remove this once px-typography is fixed
-// needs to go way down here below the @import for px-box-sizing
-// or else it will still be adjacent to the :host declaration
-// and will still be combined.
-// https://github.com/PredixDev/px-typography-design/pull/1
-html {
-  font-family: $predix-font-family;
-}
-
-// remove this once px-box-sizing is fixed
-// needs to go way down here below the @import for px-box-sizing
-// or else it will still be adjacent to the :host declaration
-// and will still be combined.
-// https://github.com/PredixDev/px-box-sizing-design/pull/1
-html {
-  box-sizing: border-box;
-}
 
 // ** #ELEMENTS ** //
 @import "elements.body.scss";
