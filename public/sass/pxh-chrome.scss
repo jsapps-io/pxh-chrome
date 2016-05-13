@@ -16,7 +16,6 @@ $inuit-base-background-color: $gray5 !default;
 @import "generic.defaults.scss";
 
 // ** #TOOLS ** //
-@import "px/tools.mixins.scss";
 $mq-breakpoints: (
     xs:  300px,
     sm:  480px,
