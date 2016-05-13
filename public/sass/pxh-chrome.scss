@@ -19,7 +19,7 @@ $inuit-base-background-color: $gray5 !default;
 
 // ** #GENERIC ** //
 @import "px/generic.normalize.scss";
-@import "px/generic.box-sizing.scss";
+@import "generic.defaults.scss";
 
 // ** #TOOLS ** //
 @import "px/tools.mixins.scss";
