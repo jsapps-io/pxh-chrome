@@ -4,6 +4,16 @@
 /// @group px-defaults-design
 ////
 
+/// @name calculateRem
+/// @param {Number} $size - pixel font size
+/// @return {Number} rem font size equivalent
+@function calculateRem($size) {
+  $remSize: $size / $inuit-base-font-size;
+  $remUnit: 1rem;
+
+  @return $remSize * $remUnit;
+}
+
 /// @type Number [default] - Base font size
 $inuit-base-font-size           : 15px !default;
 
