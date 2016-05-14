@@ -1,15 +1,6 @@
-////
-/// PX-TYPOGRAPHY-DESIGN
-/// Defines styles for typography.
-/// @group px-typography-design
-////
-
-/// @type String [default] - Predix font-family
-$predix-font-family: "GE Inspira Sans", "Helvetica", "Arial", sans-serif !default;
-
-html {
-  font-family: $predix-font-family;
-}
+/*------------------------------------*\
+    #elements.typography
+\*------------------------------------*/
 
 /* Text-level semantics
    ========================================================================== */
