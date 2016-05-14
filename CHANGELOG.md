@@ -1,7 +1,20 @@
 #pxh-chrome changelog
 
 ### Pending release
-* Nothing yet...
+* Bump normalize.css to 4.1.1
+  * Improves font rendering in all browsers
+  * Removes opinionated style declarations
+* Move `box-sizing` rule into the `generic.defaults` ITCSS Sass layer
+* Move `px/typography` rules into the `elements.typography` layer
+* Move global font families declaration into the `elements.body` layer
+* Consolidate `px/settings.defaults` and `px/settings.colors` into a single `settings.defaults` layer
+* Remove `px/functions`, `px/inuit-functions`, `px/iconography`, `px/mixins`, `px/typography`
+* Remove unused `pxh-header` and `pxh-footer` Sass files
+* Remove unused `pxh-is-hidden` class
+* Remove `:host` declarations and minification hacks
+* Remove `calculateRem` mixin
+* Pluralize `elements.links` layer
+* Make `pxh-badge` font weight normal (not bold) by default 
 
 ### 0.10.0
 * Change "Your Profile" user menu item to "My Profile"
