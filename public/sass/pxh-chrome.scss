@@ -4,12 +4,8 @@
     #PXH-CHROME
 \*------------------------------------*/
 
-// ** #SETTINGS USED BY SETTINGS ** //
-@import "px/settings.colors.scss";
-
 // ** #SETTINGS
-$inuit-base-background-color: $gray5 !default;
-@import "px/settings.defaults.scss";
+@import "settings.defaults.scss";
 
 // ** #GENERIC ** //
 @import "generic.normalize.scss";
