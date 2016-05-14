@@ -24,12 +24,10 @@ $fa-font-path       : "../fonts/font-awesome/fonts" !default;
 @import "font-awesome/scss/font-awesome.scss";
 @import "tools.pxh-animations.scss";
 
-// ** #BASE ** //
-@import "px/base.typography.scss";
-
 // ** #ELEMENTS ** //
 @import "elements.body.scss";
 @import "elements.links.scss";
+@import "elements.typography.scss";
 
 // ** #OBJECTS ** //
 
