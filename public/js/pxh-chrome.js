@@ -581,3 +581,18 @@ pxhAnywhereLoginMenuControl('pxh-login__settings-link', 'pxh-login-menu--setting
 
 pxhToggleLoginMenu('pxh-login__profile-link', 'pxh-login-menu--profile', 'pxh-login-menu--visible');
 pxhToggleLoginMenu('pxh-login__settings-link', 'pxh-login-menu--settings', 'pxh-login-menu--visible');
+
+var pxhView = document.getElementById('js-view');
+
+var pxhViewResized = new CustomEvent('pxhViewResized', {
+  'detail' : pxhView.offsetWidth
+});
+
+new ResizeSensor(pxhView, function() {
+  document.dispatchEvent(pxhViewResized);
+});
+
+// document.addEventListener('pxhViewResized', function(event) {
+//   console.log('pxhViewResized was fired!');
+//   console.log('width changed to ' + event.detail);
+// });
