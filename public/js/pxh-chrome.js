@@ -684,11 +684,11 @@ var pxhViewResized = new CustomEvent('pxhViewResized', {
   'detail' : pxhView.offsetWidth
 });
 
-new ResizeSensor(pxhView, function() {
+new pxhResizeSensor(pxhView, function() {
   document.dispatchEvent(pxhViewResized);
 });
 
-// document.addEventListener('pxhViewResized', function(event) {
-//   console.log('pxhViewResized was fired!');
-//   console.log('width changed to ' + event.detail);
-// });
+document.addEventListener('pxhViewResized', function(event) {
+  console.log('pxhViewResized was fired!');
+  console.log('width changed to ' + event.detail);
+});
