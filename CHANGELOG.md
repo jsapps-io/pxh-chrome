@@ -1,7 +1,12 @@
 #pxh-chrome changelog
 
 ### Pending release
-* Add `ResizeSensor` function from css-element-queries so we can detect with element widths change
+* Replace `pxhCookies` JavaScript cookie library with js-cookie
+  * Replace `pxhCookies.setItem()` with `pxhCookies.set()`
+  * Replace `pxhCookies.getItem()` with `pxhCookies.get()`
+  * Replace `pxhCookies.removeItem()` with `pxhCookies.remove()`
+  * Remove unused `pxhCookies.hasItem()` method
+* Add `pxhResizeSensor` function from css-element-queries so we can detect changes in element widths
 * Fire a `pxhViewResized` event when the width of `pxh-view` changes
 * Bump normalize.css to 4.1.1
   * Improves font rendering in all browsers
