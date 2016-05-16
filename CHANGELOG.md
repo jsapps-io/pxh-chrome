@@ -16,7 +16,7 @@
 * Pluralize `elements.links` layer
 * Make `pxh-badge` font weight normal (not bold) by default 
 
-### 0.10.0
+### 0.10.0 - May 12, 2016
 * Change "Your Profile" user menu item to "My Profile"
 * Move all Px Sass `@import` dependencies directly into pxh-chrome 
 * Remove all Px dependencies from `bower.json`
@@ -26,7 +26,7 @@
 * Bump font-awesome to 4.6.2
 * Increase default end-to-end test timeout to 10 seconds
 
-### 0.9.0
+### 0.9.0 - May 6, 2016
 * Remove anonymous wrapper function around `pxh-chrome.js` code
 * Reorder and refactor`pxh-chrome.js` code
 * Rename functions and variables in `pxh-chrome.js`
@@ -43,7 +43,7 @@
   * toggling `pxh-drawer` and `pxh-overlay` on mobile, tablet and desktop
   * preserving drawer state between page refreshes
 
-### 0.8.3
+### 0.8.3 - May 3, 2016
 * Add `title=""` attributes to all pxh-drawer links, so users can see the full text even when they're truncated with ellipses
 * Add a task for bumping the pxh-chrome version number across all relevant files, with lightweight validation
   * Just type `gulp bump --old 0.8.2 --new 0.8.3` to use it
@@ -52,13 +52,13 @@
 * Add a `gulp dist` task that does the exact same thing as `gulp`
 * Stub out tests (currently broken in this release)
 
-### 0.8.2
+### 0.8.2 - April 14, 2016
 * Bump version number in CSS/JS comments, HTML, `bower.json`, `package.json`, etc.
 
-### 0.8.1
+### 0.8.1 - April 14, 2016
 * Use `<section>` element instead of `<main>` for the `pxh-view` content area to avoid colliding with the global `<main>` element styles defined in px-theme
 
-### 0.8.0
+### 0.8.0 - April 13, 2016
 * Scope `pxh-view-header` and `pxh-view` reponsive modifier class styles so they are only applied in the "chromeful" view
   * That is, when the `<body>` has a class of `pxh-chromeful` on it
   * "chromeful" means we show all the UI chrome (drawer, hamburger, navigation, login module)
@@ -67,10 +67,10 @@
   * Support heading elements (e.g. h1, h2, etc.) in drawer header and view header
 * Launch development server on port `4000` by default to avoid conflicts with ui-app-hub and ui-micro-app
 
-### 0.7.1
+### 0.7.1 - April 12, 2016
 * Fix JavaScript bug that prevented click events from firing if they were not bound to JavaScript (e.g. raw hyperlinks)
 
-### 0.7.0
+### 0.7.0 - April 12, 2016
 * Allow user to dismiss the drawer on tablet and mobile by clicking anywhere in the overlay
 * Allow user to dismiss the drawer on tablet and mobile by pressing the ESC key on the keyboard
 * Update login module design
@@ -168,4 +168,4 @@
 ### 0.1.1 - March 18, 2016
 
 ### 0.1.0 - March 18, 2016
-* Initial release
+* Initial release of pxh-chrome
