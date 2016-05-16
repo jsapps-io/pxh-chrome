@@ -1,6 +1,8 @@
 #pxh-chrome changelog
 
 ### Pending release
+* Add `ResizeSensor` function from css-element-queries so we can detect with element widths change
+* Fire a `pxhViewResized` event when the width of `pxh-view` changes
 * Bump normalize.css to 4.1.1
   * Improves font rendering in all browsers
   * Removes opinionated style declarations
