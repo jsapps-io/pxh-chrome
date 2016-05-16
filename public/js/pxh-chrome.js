@@ -289,74 +289,170 @@ var pxhLgBreakpoint = window.matchMedia('(min-width: 1024px)');
 
 })();
 
-// :: cookies.js ::
-
-// A complete cookies reader/writer framework with full unicode support.
-
-// Revision #1 - September 4, 2014
-
-// https://developer.mozilla.org/en-US/docs/Web/API/document.cookie
-// https://developer.mozilla.org/User:fusionchess
-
-// This framework is released under the GNU Public License, version 3 or later.
-// http://www.gnu.org/licenses/gpl-3.0-standalone.html
-
-// Syntaxes:
-
-// * pxhCookies.setItem(name, value[, end[, path[, domain[, secure]]]])
-// * pxhCookies.getItem(name)
-// * pxhCookies.removeItem(name[, path[, domain]])
-// * pxhCookies.hasItem(name)
-// * pxhCookies.keys()
-
-var pxhCookies = {
-  getItem: function (sKey) {
-    if (!sKey) { return null; }
-    return decodeURIComponent(document.cookie.replace(new RegExp('(?:(?:^|.*;)\\s*' + encodeURIComponent(sKey).replace(/[\-\.\+\*]/g, '\\$&') + '\\s*\\=\\s*([^;]*).*$)|^.*$'), '$1')) || null;
-  },
-  setItem: function (sKey, sValue, vEnd, sPath, sDomain, bSecure) {
-    if (!sKey || /^(?:expires|max\-age|path|domain|secure)$/i.test(sKey)) { return false; }
-    var sExpires = '';
-    if (vEnd) {
-      switch (vEnd.constructor) {
-        case Number:
-          sExpires = vEnd === Infinity ? '; expires=Fri, 31 Dec 9999 23:59:59 GMT' : '; max-age=' + vEnd;
-          break;
-        case String:
-          sExpires = '; expires=' + vEnd;
-          break;
-        case Date:
-          sExpires = '; expires=' + vEnd.toUTCString();
-          break;
+/*!
+ * JavaScript Cookie v2.1.1
+ * https://github.com/js-cookie/js-cookie
+ *
+ * Copyright 2006, 2015 Klaus Hartl & Fagner Brack
+ * Released under the MIT license
+ */
+;(function (factory) {
+  if (typeof define === 'function' && define.amd) {
+    define(factory);
+  } else if (typeof exports === 'object') {
+    module.exports = factory();
+  } else {
+    var OldCookies = window.Cookies;
+    var api = window.Cookies = factory();
+    api.noConflict = function () {
+      window.Cookies = OldCookies;
+      return api;
+    };
+  }
+}(function () {
+  function extend () {
+    var i = 0;
+    var result = {};
+    for (; i < arguments.length; i++) {
+      var attributes = arguments[ i ];
+      for (var key in attributes) {
+        result[key] = attributes[key];
       }
     }
-    document.cookie = encodeURIComponent(sKey) + '=' + encodeURIComponent(sValue) + sExpires + (sDomain ? '; domain=' + sDomain : '') + (sPath ? '; path=' + sPath : '') + (bSecure ? '; secure' : '');
-    return true;
-  },
-  removeItem: function (sKey, sPath, sDomain) {
-    if (!this.hasItem(sKey)) { return false; }
-    document.cookie = encodeURIComponent(sKey) + '=; expires=Thu, 01 Jan 1970 00:00:00 GMT' + (sDomain ? '; domain=' + sDomain : '') + (sPath ? '; path=' + sPath : '');
-    return true;
-  },
-  hasItem: function (sKey) {
-    if (!sKey) { return false; }
-    return (new RegExp('(?:^|;\\s*)' + encodeURIComponent(sKey).replace(/[\-\.\+\*]/g, '\\$&') + '\\s*\\=')).test(document.cookie);
-  },
-  keys: function () {
-    var aKeys = document.cookie.replace(/((?:^|\s*;)[^\=]+)(?=;|$)|^\s*|\s*(?:\=[^;]*)?(?:\1|$)/g, '').split(/\s*(?:\=[^;]*)?;\s*/);
-    for (var nLen = aKeys.length, nIdx = 0; nIdx < nLen; nIdx++) { aKeys[nIdx] = decodeURIComponent(aKeys[nIdx]); }
-    return aKeys;
-  },
-  removeAll: function () {
-    var cookies = document.cookie.split(';');
-    for (var i = cookies.length - 1; i >= 0; i--) {
-      var cookie = cookies[i];
-      var eqPos = cookie.indexOf('=');
-      var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
-      document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:00 GMT';
-    }
+    return result;
   }
-};
+
+  function init (converter) {
+    function api (key, value, attributes) {
+      var result;
+      if (typeof document === 'undefined') {
+        return;
+      }
+
+      // Write
+
+      if (arguments.length > 1) {
+        attributes = extend({
+          path: '/'
+        }, api.defaults, attributes);
+
+        if (typeof attributes.expires === 'number') {
+          var expires = new Date();
+          expires.setMilliseconds(expires.getMilliseconds() + attributes.expires * 864e+5);
+          attributes.expires = expires;
+        }
+
+        try {
+          result = JSON.stringify(value);
+          if (/^[\{\[]/.test(result)) {
+            value = result;
+          }
+        } catch (e) {}
+
+        if (!converter.write) {
+          value = encodeURIComponent(String(value))
+            .replace(/%(23|24|26|2B|3A|3C|3E|3D|2F|3F|40|5B|5D|5E|60|7B|7D|7C)/g, decodeURIComponent);
+        } else {
+          value = converter.write(value, key);
+        }
+
+        key = encodeURIComponent(String(key));
+        key = key.replace(/%(23|24|26|2B|5E|60|7C)/g, decodeURIComponent);
+        key = key.replace(/[\(\)]/g, escape);
+
+        return (document.cookie = [
+          key, '=', value,
+          attributes.expires && '; expires=' + attributes.expires.toUTCString(), // use expires attribute, max-age is not supported by IE
+          attributes.path    && '; path=' + attributes.path,
+          attributes.domain  && '; domain=' + attributes.domain,
+          attributes.secure ? '; secure' : ''
+        ].join(''));
+      }
+
+      // Read
+
+      if (!key) {
+        result = {};
+      }
+
+      // To prevent the for loop in the first place assign an empty array
+      // in case there are no cookies at all. Also prevents odd result when
+      // calling "get()"
+      var cookies = document.cookie ? document.cookie.split('; ') : [];
+      var rdecode = /(%[0-9A-Z]{2})+/g;
+      var i = 0;
+
+      for (; i < cookies.length; i++) {
+        var parts = cookies[i].split('=');
+        var name = parts[0].replace(rdecode, decodeURIComponent);
+        var cookie = parts.slice(1).join('=');
+
+        if (cookie.charAt(0) === '"') {
+          cookie = cookie.slice(1, -1);
+        }
+
+        try {
+          cookie = converter.read ?
+            converter.read(cookie, name) : converter(cookie, name) ||
+            cookie.replace(rdecode, decodeURIComponent);
+
+          if (this.json) {
+            try {
+              cookie = JSON.parse(cookie);
+            } catch (e) {}
+          }
+
+          if (key === name) {
+            result = cookie;
+            break;
+          }
+
+          if (!key) {
+            result[name] = cookie;
+          }
+        } catch (e) {}
+      }
+
+      return result;
+    }
+
+    api.get = api.set = api;
+    // api.set = api;
+    // api.get = function (key) {
+    //   return api(key);
+    // };
+    api.getJSON = function () {
+      return api.apply({
+        json: true
+      }, [].slice.call(arguments));
+    };
+    api.defaults = {};
+
+    api.remove = function (key, attributes) {
+      api(key, '', extend(attributes, {
+        expires: -1
+      }));
+    };
+
+    api.removeAll = function () {
+      var cookies = document.cookie.split(';');
+      for (var i = cookies.length - 1; i >= 0; i--) {
+        var cookie = cookies[i];
+        var eqPos = cookie.indexOf('=');
+        var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+        document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:00 GMT';
+      }
+    }
+
+    api.withConverter = init;
+
+    return api;
+  }
+
+  return init(function () {});
+}));
+
+var pxhCookies = Cookies.noConflict();
 
 // toggle classes
 var pxhChangeClasses = function(targetClassName, changeType, classNamesToChange) {
@@ -433,12 +529,12 @@ var pxhLoadState = function(pxhStatesObject, targetStateName) {
 var pxhToggleDrawerOnLarge = function(mediaQuery) {
   if (mediaQuery.matches) {
     pxhLoadState(pxhStatesObject, 'drawerOpen');
-    pxhCookies.setItem('pxh-drawer-narrow', 'false', 86400, '/');
-    pxhCookies.setItem('pxh-drawer-open', 'true', 86400, '/');
+    pxhCookies.set('pxh-drawer-narrow', 'false', { expires: 1, path: '/'});
+    pxhCookies.set('pxh-drawer-open', 'true', { expires: 1, path: '/'});
   } else {
     pxhLoadState(pxhStatesObject, 'drawerClosed');
-    pxhCookies.setItem('pxh-drawer-narrow', 'true', 86400, '/');
-    pxhCookies.setItem('pxh-drawer-open', 'false', 86400, '/');
+    pxhCookies.set('pxh-drawer-narrow', 'true', { expires: 1, path: '/'});
+    pxhCookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/'});
   }
 }
 
@@ -451,8 +547,8 @@ var pxhBindDrawerMediaQueryControls = function(targetClass, mediaQuery) {
       targetElements[i].addEventListener('click', function() {
         if (!mediaQuery.matches) {
           pxhLoadState(pxhStatesObject, 'drawerClosed');
-          pxhCookies.setItem('pxh-drawer-open', 'false', 86400, '/');
-          pxhCookies.setItem('pxh-drawer-narrow', 'true', 86400, '/');
+          pxhCookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/'});
+          pxhCookies.set('pxh-drawer-narrow', 'true', { expires: 1, path: '/'});
         }
       })
     }
@@ -462,15 +558,15 @@ var pxhBindDrawerMediaQueryControls = function(targetClass, mediaQuery) {
 // toggle drawer-specific classes when drawer toggle is fired
 var pxhToggleDrawer = function(event) {
   event.preventDefault();
-  if (pxhCookies.getItem('pxh-drawer-open') === 'true') {
+  if (pxhCookies.get('pxh-drawer-open') === 'true') {
     pxhLoadState(pxhStatesObject, 'drawerClosed');
-    pxhCookies.setItem('pxh-drawer-open', 'false', 86400, '/');
-    pxhCookies.setItem('pxh-drawer-narrow', 'true', 86400, '/');
+    pxhCookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/'});
+    pxhCookies.set('pxh-drawer-narrow', 'true', { expires: 1, path: '/'});
   }
-  else if (pxhCookies.getItem('pxh-drawer-open') === 'false') {
+  else if (pxhCookies.get('pxh-drawer-open') === 'false') {
     pxhLoadState(pxhStatesObject, 'drawerOpen');
-    pxhCookies.setItem('pxh-drawer-open', 'true', 86400, '/');
-    pxhCookies.setItem('pxh-drawer-narrow', 'false', 86400, '/');
+    pxhCookies.set('pxh-drawer-open', 'true', { expires: 1, path: '/'});
+    pxhCookies.set('pxh-drawer-narrow', 'false', { expires: 1, path: '/'});
   }
 }
 
@@ -489,10 +585,10 @@ var pxhOverlayDrawerControl = function() {
   if ((typeof pxhOverlay !== 'undefined') && (pxhOverlay.length > 0)) {
     for (var i = pxhOverlay.length - 1; i >= 0; i--) {
       pxhOverlay[i].addEventListener('click', function(e) {
-        if ((!pxhLgBreakpoint.matches) && (pxhCookies.getItem('pxh-drawer-open') === 'true')) {
+        if ((!pxhLgBreakpoint.matches) && (pxhCookies.get('pxh-drawer-open') === 'true')) {
           pxhLoadState(pxhStatesObject, 'drawerClosed');
-          pxhCookies.setItem('pxh-drawer-open', 'false', 86400, '/');
-          pxhCookies.setItem('pxh-drawer-narrow', 'true', 86400, '/');
+          pxhCookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/'});
+          pxhCookies.set('pxh-drawer-narrow', 'true', { expires: 1, path: '/'});
         }
       })
     }
@@ -501,10 +597,10 @@ var pxhOverlayDrawerControl = function() {
 
 var pxhEscapeDrawerControl = function() {
   document.addEventListener('keyup', function(e) {
-     if ((e.keyCode == 27) && (!pxhLgBreakpoint.matches) && (pxhCookies.getItem('pxh-drawer-open') === 'true')) {
+     if ((e.keyCode == 27) && (!pxhLgBreakpoint.matches) && (pxhCookies.get('pxh-drawer-open') === 'true')) {
       pxhLoadState(pxhStatesObject, 'drawerClosed');
-      pxhCookies.setItem('pxh-drawer-open', 'false', 86400, '/');
-      pxhCookies.setItem('pxh-drawer-narrow', 'true', 86400, '/');
+      pxhCookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/'});
+      pxhCookies.set('pxh-drawer-narrow', 'true', { expires: 1, path: '/'});
     }
   })
 }
@@ -543,24 +639,24 @@ var pxhAnywhereLoginMenuControl = function(toggleControl, toggleTarget, removeCl
 
 // add an event listener for when the DOM content is ready
 document.addEventListener('DOMContentLoaded', function(event) {
-  if (pxhCookies.getItem('pxh-drawer-open') === null) {
-    pxhCookies.setItem('pxh-drawer-open', 'false', 86400, '/');
+  if (pxhCookies.get('pxh-drawer-open') === null) {
+    pxhCookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/'});
   }
 
-  if (pxhCookies.getItem('pxh-drawer-narrow') === null)  {
-    pxhCookies.setItem('pxh-drawer-narrow', 'false', 86400, '/');
+  if (pxhCookies.get('pxh-drawer-narrow') === null)  {
+    pxhCookies.set('pxh-drawer-narrow', 'false', { expires: 1, path: '/'});
   }
 
   // check if the 'narrow' cookie is set and if we're currently at the desktop breakpoint
-  if ((pxhLgBreakpoint.matches) && (pxhCookies.getItem('pxh-drawer-narrow') === 'true')) {
+  if ((pxhLgBreakpoint.matches) && (pxhCookies.get('pxh-drawer-narrow') === 'true')) {
     // toggle the drawer closed
     pxhLoadState(pxhStatesObject, 'drawerClosed');
-    pxhCookies.setItem('pxh-drawer-narrow', 'true', 86400, '/');
+    pxhCookies.set('pxh-drawer-narrow', 'true', { expires: 1, path: '/'});
   } 
   else if (pxhLgBreakpoint.matches) {
-    pxhCookies.setItem('pxh-drawer-open', 'true', 86400, '/');
+    pxhCookies.set('pxh-drawer-open', 'true', { expires: 1, path: '/'});
   } else {
-    pxhCookies.setItem('pxh-drawer-open', 'false', 86400, '/');
+    pxhCookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/'});
   }
 });
 
