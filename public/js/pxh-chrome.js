@@ -146,6 +146,8 @@ var pxhLgBreakpoint = window.matchMedia('(min-width: 1024px)');
         for (i = 0, j = this.q.length; i < j; i++) {
           this.q[i].call();
         }
+      };
+    }
 
     /**
      * @param {HTMLElement} element
