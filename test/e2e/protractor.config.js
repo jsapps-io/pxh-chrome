@@ -11,6 +11,9 @@ exports.config = {
     nav:        'spec/drawer/*.spec.js',
     responsive: 'spec/responsive/*.spec.js'
   },
+  capabilities: {
+    'browserName': 'chrome' // chrome or firefox ... safari doesn't support mouse move events
+  },
   mochaOpts: {
     ui: 'bdd',
     reporter: 'list',
