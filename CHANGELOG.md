@@ -1,6 +1,9 @@
 #pxh-chrome changelog
 
-### Pending release
+### pending release
+* _nothing yet..._
+
+### 0.11.0 - May 17, 2016
 * Replace `pxhCookies` JavaScript cookie library with js-cookie
   * Replace `pxhCookies.setItem()` with `pxhCookies.set()`
   * Replace `pxhCookies.getItem()` with `pxhCookies.get()`
