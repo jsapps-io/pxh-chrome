@@ -1,18 +1,23 @@
+// test.js
+/*
+* Unit tests for pxh-chrome
+* */
+
 'use strict';
 
 // clear all cookies to make sure we're testing the current state of the codebase
 pxhCookies.removeAll();
 
 // set a cookie to test getting
-pxhCookies.setItem('qa-cookie-set', 'qa-cookie-is-set', 86400, '/');
+pxhCookies.set('qa-cookie-set', 'qa-cookie-is-set', {expires: 1, path: '/'});
 // get the cookie and assign it to a variable
-var testCookie = (pxhCookies.getItem('qa-cookie-set'));
+var testCookie = (pxhCookies.get('qa-cookie-set'));
 
 // set a cookie to test removing
-pxhCookies.setItem('qa-cookie-remove', 'qa-cookie-to-remove', 86400, '/');
+pxhCookies.set('qa-cookie-remove', 'qa-cookie-to-remove', {expires: 1, path: '/'});
 // remove the cookie
-pxhCookies.removeItem('qa-cookie-remove');
-var removedTestCookie = (pxhCookies.getItem('qa-cookie-remove'));
+pxhCookies.remove('qa-cookie-remove');
+var removedTestCookie = (pxhCookies.get('qa-cookie-remove'));
 
 // create a state object for testing purposes
 var testStatesObject = {
@@ -102,17 +107,14 @@ pxhLoadState(testStatesObject, 'stateTwo');
 
 describe('Tests for pxh-chrome.js', () => {
   describe('Tests for pxhCookies', () => {
-    it('pxhCookies.setItem should set a cookie', () => {
+    it('pxhCookies.set should set a cookie', () => {
       assert.include(document.cookie, 'qa-cookie-is-set');
       assert.include(document.cookie, 'qa-cookie-set');
     });
-    it('pxhCookies.hasItem should return true', () => {
-      assert.isOk(testCookie, 'qa-cookie-is-set');
-    });
-    it('pxhCookies.getItem should get a cookie', () => {
+    it('pxhCookies.get should get a cookie', () => {
       assert.strictEqual(testCookie, 'qa-cookie-is-set');
     });
-    it('pxhCookies.removeItem should remove a cookie', () => {
+    it('pxhCookies.remove should remove a cookie', () => {
       assert.notInclude(document.cookie, 'qa-cookie-remove');
       assert.notInclude(document.cookie, 'qa-cookie-to-remove');
       assert.isNotOk(removedTestCookie, 'qa-cookie-remove');

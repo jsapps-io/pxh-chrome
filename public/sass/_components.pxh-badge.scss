@@ -1,5 +1,5 @@
 /*------------------------------------*\
-    #PXH-BADGE
+    #components.pxh-badge
 \*------------------------------------*/
 
 .pxh-badge {
@@ -7,7 +7,7 @@
   background-color: $gray5;
   display: inline-block;
   font-size: $inuit-base-font-size * 0.866666666666;
-  font-weight: bold;
+  font-weight: normal;
   color: $white;
   line-height: 1;
   padding: 4px 5px 1px 5px;

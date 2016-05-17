@@ -1,5 +1,5 @@
 /*------------------------------------*\
-    #PXH-UTILITIES
+    #overrides.pxh-utilities
 \*------------------------------------*/
 
 // utility class to disable scrolling
@@ -8,10 +8,6 @@
     overflow: hidden;
     -webkit-overflow-scrolling: auto;
   }
-}
-
-.pxh-is-hidden {
-  display: none;
 }
 
 .pxh-float-left {

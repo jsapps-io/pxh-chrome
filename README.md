@@ -1,4 +1,4 @@
-#pxh-chrome 0.10.0
+#pxh-chrome 0.11.0
 Application chrome for the Predix UI App Hub
 
 ##[Live Demo](https://github.build.ge.com/pages/hubs/pxh-chrome-demo)
@@ -119,6 +119,46 @@ To trigger "chromeless" mode, which hides the drawer, drawer toggle, navigation,
 1. Remove the `<script>` tag for `pxh-chrome.js`
   * `pxh-chrome.js` is not required for chromeless view, as the JavaScript is only necessary for managing drawer state between breakpoints, page refreshes and toggle events... if there's no drawer, there's no need for JavaScript!
 
+
+## Listening for resize events
+
+Since pxh-chrome is mobile-first and responsive, there may be cases where you need to rerender your microapp content based on changes in width to the `pxh-view` wrapping element. This is common with SVGs or other types of content that need to render at a specific and known pixel width.
+
+Listening to `window.width` will cover many responsive use cases, but it doesn't cover the expansion (and collapse) of the navigation drawer, as that behavior changes the width of `pxh-view` without changing the width of the browser window.
+
+Fortunately, pxh-chrome and the App Hub provides a custom event, `pxhViewResized`, that fires whenever the `pxh-view` element changes size. Simply listen for this event in your microapp, and respond as necessary after it fires.
+
+* We include the ResizeSensor class from css-element-queries to give ourselves the ability to track when elements resize
+* We grab `pxh-view` by ID and put it in a var
+* `document.getElementById('js-view'); // you'll need to add this ID to your markup`
+* In cases where pxh-chrome uses classes or IDs to grab elements via JS, we prefix them with `js-*` so we know there are no actual CSS styles associated with that attribute
+* We create a new custom event called `pxhViewResized`
+
+```javascript
+var pxhViewResized = new CustomEvent('pxhViewResized', {
+ 'detail' : pxhView.offsetWidth
+});
+```
+
+* Since it's a custom event, we return the offsetWidth in the detail object
+* We add a new ResizeSensor to the pxh-view element, which dispatches the pxhViewResized event when it fires
+
+```javascript
+new ResizeSensor(pxhView, function() {
+  document.dispatchEvent(pxhViewResized);
+});
+```
+
+**Here's a basic usage example (do this in your microapp ... pxh-chrome should handle the rest):**
+
+```javascript
+document.addEventListener('pxhViewResized', function(event) {
+  console.log('pxhViewResized was fired!');
+  console.log('width changed to ' + event.detail);
+});
+```
+
+P.S. If you look at the console output for this example, you'll realize you'll want to implement some debouncing on your event listener ... our current thinking is that the debouncing should be the responsibility of the microapp, not the event itself, but we're open to alternative perspectives.
 
 ##Running Tests
 To run unit tests, type the following at the command line:
