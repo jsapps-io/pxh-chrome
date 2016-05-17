@@ -1,6 +1,6 @@
 // basline.spec.js
 /*
- * Test baseline functionality of ui app hub
+ * Test baseline functionality of pxh-chrome
  * */
 
 'use strict';
