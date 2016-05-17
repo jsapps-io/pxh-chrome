@@ -6,7 +6,7 @@ import del from 'del';
 import path from 'path';
 import minimist from 'minimist';
 import replace from 'gulp-replace';
-import child_process from 'child_process';
+import shell from 'gulp-shell';
 
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
@@ -174,10 +174,27 @@ gulp.task('serve:dist', ['sass', 'js', 'extras', 'img', 'fonts'], () => {
   gulp.watch('public/*.html', ['html']);
 });
 
+gulp.task('e2e', shell.task('protractor ./test/e2e/protractor.config.js'));
+
+gulp.task('serve:e2e', ['sass', 'js', 'extras', 'img', 'fonts'], () => {
+  browserSync.init({
+    ui: false,
+    port: 4444,
+    open: false,
+    notify: false,
+    server: {
+      baseDir: ['.tmp', 'public'],
+      routes: {
+        '/bower_components': 'bower_components'
+      }
+    }
+  }, gulp.run(['e2e']))
+});
+
 gulp.task('serve:test', ['js'], () => {
   browserSync.init({
     ui: false,
-    port: 4000,
+    port: 4040,
     notify: false,
     server: {
       baseDir: 'test/unit',
@@ -191,26 +208,6 @@ gulp.task('serve:test', ['js'], () => {
   gulp.watch('public/js/**/*.js', ['js']);
   gulp.watch('test/unit/spec/**/*.js').on('change', reload);
   gulp.watch('test/unit/spec/**/*.js', ['lint:test']);
-});
-
-function getProtractorBinary(binaryName){
-    var winExt = /^win/.test(process.platform)? '.cmd' : '';
-    var pkgPath = require.resolve('protractor');
-    var protractorDir = path.resolve(path.join(path.dirname(pkgPath), '..', 'bin'));
-    return path.join(protractorDir, '/'+binaryName+winExt);
-}
-
-gulp.task('e2e-install', function (done){
-    child_process.spawn(getProtractorBinary('webdriver-manager'), ['update'], {
-        stdio: 'inherit'
-    }).once('close', done);
-});
-
-gulp.task('e2e', function (done) {
-    // var argv = process.argv.slice(3); // forward args to protractor
-    child_process.spawn(getProtractorBinary('protractor'), ['./test/e2e/protractor.config.js'], {
-        stdio: 'inherit'
-    }).once('close', done);
 });
 
 gulp.task('build', ['lint', 'html', 'extras', 'img', 'fonts'], () => {

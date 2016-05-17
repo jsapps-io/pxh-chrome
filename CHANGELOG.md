@@ -1,7 +1,13 @@
 #pxh-chrome changelog
 
 ### pending release
-* _nothing yet..._
+* Replace `gulp e2e` task with `gulp serve:e2e` task for running end-to-end tests
+  * `gulp serve:e2e` will automatically fire up a local server at `http://localhost:4444` and then run e2e tests against it
+    * It doesn't automatically shut down, though ... use CTRL+C to do that
+* Run end-to-end tests via `directConnect` rather than through Selenium
+* Fix end-to-end tests in Firefox
+  * They now work in Firefox and Chrome (Safari isn't supported by `directConnect` and is too buggy in Selenium Web Driver)
+* Remove `gulp e2e-install` task
 
 ### 0.11.0 - May 17, 2016
 * Replace `pxhCookies` JavaScript cookie library with js-cookie
@@ -12,8 +18,8 @@
 * Add `pxhResizeSensor` function from css-element-queries so we can detect changes in element widths
 * Fire a `pxhViewResized` event when the width of `pxh-view` changes
 * Bump normalize.css to 4.1.1
-  * Improves font rendering in all browsers
-  * Removes opinionated style declarations
+  * Improve font rendering in all browsers
+  * Remove opinionated style declarations
 * Move `box-sizing` rule into the `generic.defaults` ITCSS Sass layer
 * Move `px/typography` rules into the `elements.typography` layer
 * Move global font families declaration into the `elements.body` layer

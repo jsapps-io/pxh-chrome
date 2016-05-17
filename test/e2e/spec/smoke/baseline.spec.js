@@ -13,7 +13,7 @@ var assert = chai.assert;
 
 describe('The pxh-chrome', function() {
 
-    browser.driver.get('http://localhost:4000');
+    browser.driver.get('http://localhost:4444');
     browser.driver.manage().window().setSize(1100, 800);
     browser.driver.sleep(1000);
 
