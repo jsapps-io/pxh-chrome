@@ -7,9 +7,21 @@ import path from 'path';
 import minimist from 'minimist';
 import replace from 'gulp-replace';
 import shell from 'gulp-shell';
+import gulpsmith from 'gulpsmith';
+import layouts from 'metalsmith-layouts';
+import handlebars from 'handlebars';
+import lodash from 'lodash';
+import copy from 'metalsmith-copy';
 
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
+
+var componentConfig = {
+  site: {
+    title:            'pxh-chrome',
+    version:           '0.11.0'
+  }
+};
 
 var replaceOptions = {
   string: 'old',
@@ -102,8 +114,34 @@ const testLintOptions = {
 gulp.task('lint', lint('public/js/**/*.js'));
 gulp.task('lint:test', lint('test/unit/spec/**/*.js', testLintOptions));
 
+gulp.task('smith', function() {
+  gulp.src('src/screens/**/*')
+  .pipe($.frontMatter()).on('data', function(file) {
+    lodash.assign(file, file.frontMatter); 
+    delete file.frontMatter;
+  })
+  .pipe(
+    gulpsmith()
+    .metadata(componentConfig)
+    .use(layouts({ 
+      'engine': 'handlebars',
+      'directory': 'src/templates',
+      'pattern': '*.hbs',
+      'default': 'layout.hbs'
+    }))
+    .use(copy({
+      pattern: '*.hbs',
+      extension: '.html',
+      move: true
+    }))
+  )
+  .pipe(gulp.dest('.tmp'))
+  .pipe(gulp.dest('dist'))
+  .pipe(reload({stream: true}));
+});
+
 gulp.task('html', ['sass', 'js'], () => {
-  return gulp.src('public/*.html')
+  return gulp.src(['public/*.html', '.tmp/*.html'])
     .pipe($.useref({searchPath: ['.tmp', 'public', '.']}))
     .pipe($.if('*.js', $.uglify({
       preserveComments: 'some'
@@ -210,7 +248,7 @@ gulp.task('serve:test', ['js'], () => {
   gulp.watch('test/unit/spec/**/*.js', ['lint:test']);
 });
 
-gulp.task('build', ['lint', 'html', 'extras', 'img', 'fonts'], () => {
+gulp.task('build', ['lint', 'smith', 'html', 'extras', 'img', 'fonts'], () => {
   return gulp.src('dist/**/*').pipe($.size({title: 'build', gzip: true}));
 });
 
