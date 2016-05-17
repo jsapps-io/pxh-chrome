@@ -680,15 +680,12 @@ pxhToggleLoginMenu('pxh-login__settings-link', 'pxh-login-menu--settings', 'pxh-
 
 var pxhView = document.getElementById('js-view');
 
-var pxhViewResized = new CustomEvent('pxhViewResized', {
-  'detail' : pxhView.offsetWidth
-});
-
 new pxhResizeSensor(pxhView, function() {
   document.dispatchEvent(pxhViewResized);
 });
 
+var pxhViewResized = new Event('pxhViewResized');
+
 document.addEventListener('pxhViewResized', function(event) {
   console.log('pxhViewResized was fired!');
-  console.log('width changed to ' + event.detail);
 });
