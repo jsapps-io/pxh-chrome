@@ -1,3 +1,8 @@
+// protractor.config.js
+/*
+* Defines protractor configuration for end-to-end tests
+* */
+
 exports.config = {
   framework: 'mocha',
   specs: [],

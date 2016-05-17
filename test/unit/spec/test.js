@@ -1,3 +1,8 @@
+// test.js
+/*
+* Unit tests for pxh-chrome
+* */
+
 'use strict';
 
 // clear all cookies to make sure we're testing the current state of the codebase

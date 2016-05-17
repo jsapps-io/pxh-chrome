@@ -1,6 +1,6 @@
 // responsive.spec.js
 /*
-* Test view port change that triggers responsiveness design
+* Test viewport changes that trigger responsive design
 * */
 
 'use strict';
@@ -246,5 +246,4 @@ describe('pxh-chrome', function() {
     });
     browser.driver.sleep(1000);
   });
-
 });

@@ -3,8 +3,10 @@
  * This page object tests the main components of pxh-chrome
  *
  * */
+
+'use strict';
+
 (function () {
-  'use strict';
   var mainComponents = function() {
     return {
       getDrawer: function() {
