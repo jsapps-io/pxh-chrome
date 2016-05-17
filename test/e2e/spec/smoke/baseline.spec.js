@@ -27,7 +27,8 @@ describe('The pxh-chrome', function() {
     });
 
     it('has a title', function() {
-        assert.eventually.strictEqual(browser.driver.getTitle(), 'pxh-chrome 0.11.0');
+        assert.eventually.include(browser.driver.getTitle(), 'pxh-chrome');
+        assert.eventually.include(browser.driver.getTitle(), '0.11.0');
     });
 
     it('has a drawer', function() {
