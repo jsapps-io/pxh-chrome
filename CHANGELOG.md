@@ -1,6 +1,7 @@
 #pxh-chrome changelog
 
 ### pending release
+* Use Metalsmith to stub out static site tool for generating demo and test screens 
 * Replace `gulp e2e` task with `gulp serve:e2e` task for running end-to-end tests
   * `gulp serve:e2e` will automatically fire up a local server at `http://localhost:4444` and then run e2e tests against it
     * It doesn't automatically shut down, though ... use CTRL+C to do that
