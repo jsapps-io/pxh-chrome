@@ -23,8 +23,29 @@
       },
 
       parseColor: function (input) {
-        var m = input.match(/^rgba\s*\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*,\s*([\.\d]+)\s*\)$/i);
-        if (m) return m;
+        if (input === 'transparent') {
+          return input;
+        }
+        else if (input) {
+          var regex = /^rgba\s*\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*,\s*([\.\d]+)\s*\)$/i
+          var matches = regex.exec(input);
+          if (matches) return matches;
+        }
+        else throw new Error("Color " + input + " could not be parsed.");
+      },
+
+      isOpaque: function (input) {
+        if (input === 'transparent') {
+          return false;
+        }
+        else if (input) {
+          var regex = /^rgba\s*\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*,\s*([\.\d]+)\s*\)$/i
+          var matches = regex.exec(input);
+          if (parseFloat(matches[4]) === 0) return false;
+          else {
+            return true;
+          }
+        }
         else throw new Error("Color " + input + " could not be parsed.");
       },
 
