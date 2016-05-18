@@ -1,9 +1,10 @@
 #pxh-chrome changelog
 
 ### pending release
+* Use Metalsmith as a static site generation tool for creating demo and test screens
+* Add "pre-chrome" error states, including "pre-auth" and "post-auth" states
 * Increase height of `pxh-view-header` from 60px to 61px
   * `px-context-browser` has a default height of 60px ... by increasing the `pxh-view-header` height to 61px, the bottom border will show by default
-* Use Metalsmith as a static site generation tool for creating demo and test screens
 * Add `gulp serve:e2e` task alongside `gulp e2e` task
   * `gulp serve:e2e` will fire up a local server at `http://localhost:4444`
   * Once the server is loaded, run `gulp e2e` to run end-to-end tests against it
