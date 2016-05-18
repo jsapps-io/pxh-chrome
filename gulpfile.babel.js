@@ -146,8 +146,8 @@ gulp.task('smith', function() {
 });
 
 gulp.task('html', ['sass', 'js'], () => {
-  return gulp.src(['public/*.html', '.tmp/*.html'])
-    .pipe($.useref({searchPath: ['.tmp', 'public', '.']}))
+  return gulp.src(['.tmp/*.html'])
+    .pipe($.useref({searchPath: ['.tmp']}))
     .pipe($.if('*.js', $.uglify({
       preserveComments: 'some'
     })))
