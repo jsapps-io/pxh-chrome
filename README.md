@@ -177,9 +177,17 @@ Type `CTRL+C` to shut down the unit testing server.
 gulp serve:e2e
 ```
 
-This will start a local development server at [http://localhost:4444](http://localhost:4444) and automatically open a browser window showing pxh-chrome. In your Terminal window it will run all the end-to-end tests located at `./test/e2e/spec/**/*.js` and show you the results.
+This will start a local development server at [http://localhost:4444](http://localhost:4444).
 
-When the end-to-end tests are finished running, type `CTRL+C` to shut down the development server.
+As soon as the server finishes loading (watch your Terminal output) open a new Terminal window and type the following:
+
+```bash
+gulp e2e
+```
+
+This will run all the end-to-end tests located at `./test/e2e/spec/**/*.js` and show you the results.
+
+When you're done, type `CTRL+C` to shut down the development server.
 
 ##Browser Support
 pxh-chrome is tested in the most recent major releases of Chrome, Firefox, Safari, iOS Safari, and Internet Explorer (IE11 on Windows 7 and IE Edge on Windows 10).
