@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="css/pxh-chrome.css">
     <!-- endbuild -->
   </head>
-  <body class="{{bodyClass}}">
+  <body{{#if bodyClass}} class="{{bodyClass}}"{{/if}}>
     {{> drawer }}
     {{> overlay }}
     {{> view-header-drawer-toggle }}
