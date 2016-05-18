@@ -114,7 +114,7 @@ const testLintOptions = {
 gulp.task('lint', lint('public/js/**/*.js'));
 gulp.task('lint:test', lint('test/unit/spec/**/*.js', testLintOptions));
 
-gulp.task('smith', ['clean'], function() {
+gulp.task('smith', function() {
   gulp.src(['src/screens/*'])
   .pipe($.frontMatter()).on('data', function(file) {
     lodash.assign(file, file.frontMatter); 
@@ -191,13 +191,18 @@ gulp.task('serve', ['sass', 'js', 'extras', 'img', 'fonts'], () => {
     }
   });
 
-  gulp.watch([
-    'public/*.html',
-    'public/img/*'
-  ]).on('change', reload);
-
+  gulp.watch('src/**/*.hbs', ['smith']);
   gulp.watch('public/sass/**/*.scss', ['sass']);
   gulp.watch('public/js/**/*.js', ['js']);
+  gulp.watch('public/img/**', ['img']);
+
+  gulp.watch([
+    '.tmp/*.html',
+    '.tmp/img/*',
+    '.tmp/css/*.css',
+    '.tmp/js/*.js'
+  ]).on('change', reload);
+
 });
 
 gulp.task('serve:dist', ['sass', 'js', 'extras', 'img', 'fonts'], () => {
