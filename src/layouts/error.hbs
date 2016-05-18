@@ -5,8 +5,17 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/png" href="favicon.ico">
+    <!-- build:css css/pxh-error.css -->
+    <link rel="stylesheet" href="css/pxh-error.css">
+    <!-- endbuild -->
   </head>
-  <body>
-    {{{contents}}}
+  <body{{#if bodyClass}} class="{{bodyClass}}"{{/if}}>
+
+    <section class="pxh-error pxh-error@md pxh-error@lg">
+      <div class="pxh-error__icon">
+        <i class="fa fa-exclamation-circle"></i>
+      </div>
+      {{{contents}}}
+    </section>
   </body>
 </html>
