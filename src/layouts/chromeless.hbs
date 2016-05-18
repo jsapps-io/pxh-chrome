@@ -10,9 +10,8 @@
     <!-- endbuild -->
   </head>
   <body class="{{bodyClass}}">
+    {{> overlay }}
+    {{> view-header-drawer-toggle }}
     {{{contents}}}
-    <!-- build:js js/pxh-chrome.js -->
-    <script src="js/pxh-chrome.js"></script>
-    <!-- endbuild -->
   </body>
 </html>
