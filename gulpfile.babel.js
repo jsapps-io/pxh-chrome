@@ -9,9 +9,9 @@ import replace from 'gulp-replace';
 import shell from 'gulp-shell';
 import gulpsmith from 'gulpsmith';
 import layouts from 'metalsmith-layouts';
+import copy from 'metalsmith-copy';
 import handlebars from 'handlebars';
 import lodash from 'lodash';
-import copy from 'metalsmith-copy';
 
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
@@ -114,8 +114,8 @@ const testLintOptions = {
 gulp.task('lint', lint('public/js/**/*.js'));
 gulp.task('lint:test', lint('test/unit/spec/**/*.js', testLintOptions));
 
-gulp.task('smith', function() {
-  gulp.src('src/screens/**/*')
+gulp.task('smith', ['clean'], function() {
+  gulp.src(['src/screens/*'])
   .pipe($.frontMatter()).on('data', function(file) {
     lodash.assign(file, file.frontMatter); 
     delete file.frontMatter;
@@ -123,17 +123,21 @@ gulp.task('smith', function() {
   .pipe(
     gulpsmith()
     .metadata(componentConfig)
+    .on('error', console.log.bind(console))
     .use(layouts({ 
       'engine': 'handlebars',
-      'directory': 'src/templates',
+      'directory': 'src/layouts',
       'pattern': '*.hbs',
-      'default': 'default.hbs'
+      'default': 'default.hbs',
+      'partials': 'src/partials'
     }))
+    .on('error', console.log.bind(console))
     .use(copy({
       pattern: '*.hbs',
       extension: '.html',
       move: true
     }))
+    .on('error', console.log.bind(console))
   )
   .pipe(gulp.dest('.tmp'))
   .pipe(gulp.dest('dist'))
@@ -161,7 +165,7 @@ gulp.task('extras', () => {
 });
 
 gulp.task('img', () => {
-  return gulp.src(['public/img/*']).pipe(gulp.dest('dist/img'));
+  return gulp.src(['public/img/*']).pipe(gulp.dest('dist/img')).pipe(gulp.dest('.tmp/img'));
 });
 
 gulp.task('fonts', () => {
@@ -221,12 +225,12 @@ gulp.task('serve:e2e', ['sass', 'js', 'extras', 'img', 'fonts'], () => {
     open: false,
     notify: false,
     server: {
-      baseDir: ['.tmp', 'public'],
+      baseDir: ['.tmp'],
       routes: {
         '/bower_components': 'bower_components'
       }
     }
-  }, gulp.run(['e2e']))
+  })
 });
 
 gulp.task('serve:test', ['js'], () => {

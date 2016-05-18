@@ -1,10 +1,10 @@
 #pxh-chrome changelog
 
 ### pending release
-* Use Metalsmith to stub out static site tool for generating demo and test screens 
-* Replace `gulp e2e` task with `gulp serve:e2e` task for running end-to-end tests
-  * `gulp serve:e2e` will automatically fire up a local server at `http://localhost:4444` and then run e2e tests against it
-    * It doesn't automatically shut down, though ... use CTRL+C to do that
+* Use Metalsmith as a static site generation tool for creating demo and test screens
+* Add `gulp serve:e2e` task alongside `gulp e2e` task
+  * `gulp serve:e2e` will fire up a local server at `http://localhost:4444`
+  * Once the server is loaded, run `gulp e2e` to run end-to-end tests against it
 * Run end-to-end tests via `directConnect` rather than through Selenium
 * Fix end-to-end tests in Firefox
   * They now work in Firefox and Chrome (Safari isn't supported by `directConnect` and is too buggy in Selenium Web Driver)
