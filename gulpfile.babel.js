@@ -127,7 +127,7 @@ gulp.task('smith', function() {
       'engine': 'handlebars',
       'directory': 'src/templates',
       'pattern': '*.hbs',
-      'default': 'layout.hbs'
+      'default': 'default.hbs'
     }))
     .use(copy({
       pattern: '*.hbs',
