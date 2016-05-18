@@ -46,6 +46,7 @@ gulp.task('bump', () => {
     'package.json',
     'README.md',
     'public/sass/pxh-chrome.scss',
+    'public/sass/pxh-error.scss',
     'public/js/pxh-chrome.js',
     'public/chromeless.html',
     'public/index.html',
