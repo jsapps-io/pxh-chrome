@@ -538,24 +538,6 @@ $pxh-login-height:  60px !default;
 .pxh-navigation__item--error:visited.pxh-navigation__item--error:visited.pxh-navigation__item--error:visited {
   background-color: $pxh-navigation-error-bg-color;
   color: $pxh-navigation-error-color;
-  padding: $pxh-drawer-margin / 1.5 2px 0 $pxh-drawer-margin;
-  height: $pxh-navigation-link-height;
-  &:hover {
-    cursor: not-allowed;
-  }
-  .pxh-navigation__link.pxh-navigation__link.pxh-navigation__link {
-    padding: 0;
-    height: auto;
-  }
-  .pxh-navigation__link:hover.pxh-navigation__link:hover.pxh-navigation__link:hover {
-  background-color: $pxh-navigation-error-bg-color;
-  color: $pxh-navigation-error-color;
-  &:hover {
-    background-color: $pxh-navigation-error-bg-color;
-    color: $pxh-navigation-error-color;
-    cursor: not-allowed;
-    }
-  }
   .pxh-navigation__item-icon { // really not happy about using inheritance to do this
     color: $pxh-navigation-error-icon-color;
     font-size: $inuit-base-font-size * 1.25;
