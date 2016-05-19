@@ -1,6 +1,9 @@
 #pxh-chrome changelog
 
 ### pending release
+* Add GE Inspira Sans and `font-face` declarations back to pxh-chrome
+  * Fonts are located at `public/fonts/ge/type/**` and copied out to `dist/fonts/ge/type/**`
+  * This way, the pxh-chrome design displays independently of any downstream dependencies, though it does add significant KBs to our overall payload
 * Use Metalsmith as a static site generation tool for creating demo and test screens
 * Add "pre-chrome" error states, including "pre-auth" and "post-auth" states
 * Increase height of `pxh-view-header` from 60px to 61px
