@@ -6,10 +6,21 @@ import del from 'del';
 import path from 'path';
 import minimist from 'minimist';
 import replace from 'gulp-replace';
-import child_process from 'child_process';
+import shell from 'gulp-shell';
+import gulpsmith from 'gulpsmith';
+import layouts from 'metalsmith-layouts';
+import copy from 'metalsmith-copy';
+import handlebars from 'handlebars';
+import lodash from 'lodash';
 
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
+
+var componentConfig = {
+  site: {
+    title:            'pxh-chrome'
+  }
+};
 
 var replaceOptions = {
   string: 'old',
@@ -34,9 +45,13 @@ gulp.task('bump', () => {
     'package.json',
     'README.md',
     'public/sass/pxh-chrome.scss',
+    'public/sass/pxh-prechrome.scss',
+    'src/screens/chromeless.hbs',
+    'src/screens/index.hbs',
+    'src/layouts/chromeless.hbs',
+    'src/layouts/default.hbs',
+    'src/layouts/error.hbs',
     'public/js/pxh-chrome.js',
-    'public/chromeless.html',
-    'public/index.html',
     'test/e2e/spec/smoke/baseline.spec.js'
   ];
   var regex = new RegExp('^\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}(\\.\\d{1,3})?$');
@@ -102,9 +117,39 @@ const testLintOptions = {
 gulp.task('lint', lint('public/js/**/*.js'));
 gulp.task('lint:test', lint('test/unit/spec/**/*.js', testLintOptions));
 
+gulp.task('smith', function() {
+  gulp.src(['src/screens/*'])
+  .pipe($.frontMatter()).on('data', function(file) {
+    lodash.assign(file, file.frontMatter); 
+    delete file.frontMatter;
+  })
+  .pipe(
+    gulpsmith()
+    .metadata(componentConfig)
+    .on('error', console.log.bind(console))
+    .use(layouts({ 
+      'engine': 'handlebars',
+      'directory': 'src/layouts',
+      'pattern': '*.hbs',
+      'default': 'default.hbs',
+      'partials': 'src/partials'
+    }))
+    .on('error', console.log.bind(console))
+    .use(copy({
+      pattern: '*.hbs',
+      extension: '.html',
+      move: true
+    }))
+    .on('error', console.log.bind(console))
+  )
+  .pipe(gulp.dest('.tmp'))
+  .pipe(gulp.dest('dist'))
+  .pipe(reload({stream: true}));
+});
+
 gulp.task('html', ['sass', 'js'], () => {
-  return gulp.src('public/*.html')
-    .pipe($.useref({searchPath: ['.tmp', 'public', '.']}))
+  return gulp.src(['.tmp/*.html'])
+    .pipe($.useref({searchPath: ['.tmp']}))
     .pipe($.if('*.js', $.uglify({
       preserveComments: 'some'
     })))
@@ -123,11 +168,11 @@ gulp.task('extras', () => {
 });
 
 gulp.task('img', () => {
-  return gulp.src(['public/img/*']).pipe(gulp.dest('dist/img'));
+  return gulp.src(['public/img/*']).pipe(gulp.dest('dist/img')).pipe(gulp.dest('.tmp/img'));
 });
 
 gulp.task('fonts', () => {
-  return gulp.src('bower_components/**/*.{eot,svg,ttf,woff,woff2}')
+  return gulp.src(['bower_components/**/*.{eot,svg,ttf,woff,woff2}', 'public/fonts/**/*'])
     .pipe(gulp.dest('.tmp/fonts'))
     .pipe(gulp.dest('dist/fonts'))
 });
@@ -149,13 +194,18 @@ gulp.task('serve', ['sass', 'js', 'extras', 'img', 'fonts'], () => {
     }
   });
 
-  gulp.watch([
-    'public/*.html',
-    'public/img/*'
-  ]).on('change', reload);
-
+  gulp.watch('src/**/*.hbs', ['smith']);
   gulp.watch('public/sass/**/*.scss', ['sass']);
   gulp.watch('public/js/**/*.js', ['js']);
+  gulp.watch('public/img/**', ['img']);
+
+  gulp.watch([
+    '.tmp/*.html',
+    '.tmp/img/*',
+    '.tmp/css/*.css',
+    '.tmp/js/*.js'
+  ]).on('change', reload);
+
 });
 
 gulp.task('serve:dist', ['sass', 'js', 'extras', 'img', 'fonts'], () => {
@@ -174,10 +224,27 @@ gulp.task('serve:dist', ['sass', 'js', 'extras', 'img', 'fonts'], () => {
   gulp.watch('public/*.html', ['html']);
 });
 
+gulp.task('e2e', shell.task('protractor ./test/e2e/protractor.config.js'));
+
+gulp.task('serve:e2e', ['sass', 'js', 'extras', 'img', 'fonts'], () => {
+  browserSync.init({
+    ui: false,
+    port: 4444,
+    open: false,
+    notify: false,
+    server: {
+      baseDir: ['.tmp'],
+      routes: {
+        '/bower_components': 'bower_components'
+      }
+    }
+  })
+});
+
 gulp.task('serve:test', ['js'], () => {
   browserSync.init({
     ui: false,
-    port: 4000,
+    port: 4040,
     notify: false,
     server: {
       baseDir: 'test/unit',
@@ -193,27 +260,7 @@ gulp.task('serve:test', ['js'], () => {
   gulp.watch('test/unit/spec/**/*.js', ['lint:test']);
 });
 
-function getProtractorBinary(binaryName){
-    var winExt = /^win/.test(process.platform)? '.cmd' : '';
-    var pkgPath = require.resolve('protractor');
-    var protractorDir = path.resolve(path.join(path.dirname(pkgPath), '..', 'bin'));
-    return path.join(protractorDir, '/'+binaryName+winExt);
-}
-
-gulp.task('e2e-install', function (done){
-    child_process.spawn(getProtractorBinary('webdriver-manager'), ['update'], {
-        stdio: 'inherit'
-    }).once('close', done);
-});
-
-gulp.task('e2e', function (done) {
-    // var argv = process.argv.slice(3); // forward args to protractor
-    child_process.spawn(getProtractorBinary('protractor'), ['./test/e2e/protractor.config.js'], {
-        stdio: 'inherit'
-    }).once('close', done);
-});
-
-gulp.task('build', ['lint', 'html', 'extras', 'img', 'fonts'], () => {
+gulp.task('build', ['lint', 'smith', 'html', 'extras', 'img', 'fonts'], () => {
   return gulp.src('dist/**/*').pipe($.size({title: 'build', gzip: true}));
 });
 

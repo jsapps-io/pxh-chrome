@@ -5,6 +5,7 @@
 
 exports.config = {
   framework: 'mocha',
+  directConnect: true,
   specs: [],
   suites: {
     smoke:      'spec/smoke/*.spec.js',
@@ -12,7 +13,7 @@ exports.config = {
     responsive: 'spec/responsive/*.spec.js'
   },
   capabilities: {
-    'browserName': 'chrome' // chrome or firefox ... safari doesn't support mouse move events
+    'browserName': 'chrome' // chrome or firefox ... directConnect doesn't support safari
   },
   mochaOpts: {
     ui: 'bdd',

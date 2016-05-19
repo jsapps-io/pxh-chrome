@@ -1,0 +1,42 @@
+/*------------------------------------*\
+    #generic.fonts
+\*------------------------------------*/
+
+/**
+ * Define web font paths and declarations for GE Inspira
+ *
+ */
+/// @type String [default] - Webfont path
+$webfont-path: '../fonts/ge/type' !default;
+
+/// @name font-face
+/// @param {String} $font-family - Name of font family @font-face will use
+/// @param {String} $file-path - Path to webfont file
+/// @param {String} $weight [normal] - CSS Font weight value
+/// @param {String} $style [normal] - CSS Font style value
+/// @output Generate various required paths etc for use with `@font-face`
+@mixin font-face($font-family, $file-path, $weight: normal, $style: normal) {
+  @font-face {
+    font-family: $font-family;
+    font-weight: $weight;
+    font-style: $style;
+    src: url('#{$file-path}.eot');
+    src: url('#{$file-path}.eot?#iefix')               format('embedded-opentype'),
+         url('#{$file-path}.woff')                     format('woff'),
+         url('#{$file-path}.ttf')                      format('truetype'),
+         url('#{$file-path}.svg##{$font-family}')      format('svg');
+  }
+}
+
+@include font-face('GE Inspira', '#{$webfont-path}/GEInspMd');
+@include font-face('GE Inspira', '#{$webfont-path}/GEInspMdIt', normal, italic);
+@include font-face('GE Inspira', '#{$webfont-path}/GEInspBd', bold, normal);
+@include font-face('GE Inspira', '#{$webfont-path}/GEInspBI', bold, italic);
+@include font-face('GE Inspira Sans', '#{$webfont-path}/GEInspiraSans-Regular-v01');
+@include font-face('GE Inspira Sans', '#{$webfont-path}/GEInspiraSans-Italic-v01', normal, italic);
+@include font-face('GE Inspira Sans', '#{$webfont-path}/GEInspiraSans-Bold-v01', bold, normal);
+@include font-face('GE Inspira Sans', '#{$webfont-path}/GEInspiraSans-BoldItalic-v01', bold, italic);
+@include font-face('GE Inspira Serif', '#{$webfont-path}/GEInspiraSerif-Regular-v01');
+@include font-face('GE Inspira Serif', '#{$webfont-path}/GEInspiraSerif-Italic-v01', normal, italic);
+@include font-face('GE Inspira Serif', '#{$webfont-path}/GEInspiraSerif-Bold-v01', bold, normal);
+@include font-face('GE Inspira Serif', '#{$webfont-path}/GEInspiraSerif-BoldItalic-v01', bold, italic);

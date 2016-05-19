@@ -1,0 +1,62 @@
+/*------------------------------------*\
+    #components.pxh-error
+\*------------------------------------*/
+
+$error-icon-color: $gray5 !default;
+$error-title-color: $gray6 !default;
+$error-description-color: $gray6 !default;
+$error-margin-top: $inuit-base-spacing-unit * 3 !default;
+$error-padding-top: $inuit-base-spacing-unit !default;
+$error-text-decoration: none !default;
+
+.pxh-error {
+  width: 100%;
+  max-width: 1200px;
+  text-align: center;
+  margin: $error-margin-top 0 0 0;
+  padding: $error-padding-top $inuit-base-spacing-unit ($inuit-base-spacing-unit * 8) $inuit-base-spacing-unit;
+}
+
+@include mq($from: md) {
+  .pxh-error\@md {
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+  }
+}
+
+@include mq($from: lg) {
+  .pxh-error\@lg {
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+  }
+}
+
+.pxh-error__icon {
+  font-size: $px-font-size-beta;
+  // color: $gray5;
+  color: $error-icon-color;
+  line-height: 1;
+}
+
+.pxh-error__title {
+  font-size: $px-font-size-epsilon;
+  font-weight: bold;
+  // color: $white;
+  color: $error-title-color;
+  a, 
+  a:link {
+    text-decoration: $error-text-decoration;
+  }
+}
+
+.pxh-error__description {
+  font-size: $px-font-size-regular;
+  // color: $white;
+  color: $error-description-color;
+  a, 
+  a:link {
+    text-decoration: $error-text-decoration;
+  }
+}

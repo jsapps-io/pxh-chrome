@@ -6,7 +6,7 @@ $pxh-drawer-width-wide: 260px !default; // magic number ... fix this
 $pxh-drawer-width-narrow: 60px !default; // magic number ... fix this
 $pxh-drawer-margin: 20px !default;
 $pxh-drawer-bg-color: $gray10 !default;
-$pxh-view-header-height: 60px !default; // locked to current height of px-context-browser
+$pxh-view-header-height: 61px !default; // locked to current height of px-context-browser
 
 @keyframes pxh-drawer--in {
   0% {

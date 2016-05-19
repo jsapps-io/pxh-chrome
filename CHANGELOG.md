@@ -3,6 +3,28 @@
 ### pending release
 * _nothing yet..._
 
+### 0.12.0 - May 19, 2016
+* Add optional `pxh-view--white` and `pxh-view--gray5` classes for customizing the color of `pxh-view`
+  * Without these flags, the `pxh-view` element is transparent by default and gets its color based on the `<html>` tag (`$gray5`)
+* Add "pre-chrome" error states that represent what should be shown to the user if the App Hub errors out before the application chrome (i.e. drawer, navigation, login module, view header, etc.) can be rendered
+* Add a "post-chrome" error state that represents what should be shown to the user if the App Hub (or a Microapp) throws an error while the user is within the application chrome
+* Add `pxh-error` Sass component, which displays an error message and allows for color customization based on context (i.e. whether the error is being displayed in a pre-chrome or post-chrome context)
+* Add `pxh-prechrome.scss` manifest and corresponding `pxh-prechrome.css` file
+* Add GE Inspira Sans and `font-face` declarations back to pxh-chrome
+  * Fonts are located at `public/fonts/ge/type/**` and copied out to `dist/fonts/ge/type/**`
+  * This way, the pxh-chrome design displays independently of any downstream dependencies, though it does add significant KBs to our overall payload
+* Use Metalsmith as a static site generation tool for creating demo and test screens
+* Add "pre-chrome" error states, including "pre-auth" and "post-auth" states
+* Increase height of `pxh-view-header` from 60px to 61px
+  * `px-context-browser` has a default height of 60px ... by increasing the `pxh-view-header` height to 61px, the bottom border will show by default
+* Add `gulp serve:e2e` task alongside `gulp e2e` task
+  * `gulp serve:e2e` will fire up a local server at `http://localhost:4444`
+  * Once the server is loaded, run `gulp e2e` to run end-to-end tests against it
+* Run end-to-end tests via `directConnect` rather than through Selenium
+* Fix end-to-end tests in Firefox
+  * They now work in Firefox and Chrome (Safari isn't supported by `directConnect` and is too buggy in Selenium Web Driver)
+* Remove `gulp e2e-install` task
+
 ### 0.11.0 - May 17, 2016
 * Replace `pxhCookies` JavaScript cookie library with js-cookie
   * Replace `pxhCookies.setItem()` with `pxhCookies.set()`
@@ -11,9 +33,10 @@
   * Remove unused `pxhCookies.hasItem()` method
 * Add `pxhResizeSensor` function from css-element-queries so we can detect changes in element widths
 * Fire a `pxhViewResized` event when the width of `pxh-view` changes
+* Add a `js-view` id to the `pxh-view` element for binding the `pxhViewResized` event
 * Bump normalize.css to 4.1.1
-  * Improves font rendering in all browsers
-  * Removes opinionated style declarations
+  * Improve font rendering in all browsers
+  * Remove opinionated style declarations
 * Move `box-sizing` rule into the `generic.defaults` ITCSS Sass layer
 * Move `px/typography` rules into the `elements.typography` layer
 * Move global font families declaration into the `elements.body` layer

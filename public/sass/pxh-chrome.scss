@@ -1,4 +1,4 @@
-/*! pxh-chrome.css 0.11.0 */
+/*! pxh-chrome.css 0.12.0 */
 
 /*------------------------------------*\
     #pxh-chrome
@@ -9,6 +9,7 @@
 
 // ** #GENERIC ** //
 @import "generic.normalize.scss";
+@import "generic.fonts.scss";
 @import "generic.defaults.scss";
 
 // ** #TOOLS ** //
@@ -39,6 +40,7 @@ $fa-font-path       : "../fonts/font-awesome/fonts" !default;
 @import "components.pxh-overlay.scss";
 @import "components.pxh-view.scss";
 @import "components.pxh-spinner.scss";
+@import "components.pxh-error.scss";
 
 // ** #OVERRIDES ** //
 @import "overrides.px-theme.scss";

@@ -1,5 +1,5 @@
 'use strict';
-/*! pxh-chrome.js 0.11.0 */
+/*! pxh-chrome.js 0.12.0 */
 
 // **************
 // CONFIG OBJECTS
@@ -680,11 +680,14 @@ pxhToggleLoginMenu('pxh-login__settings-link', 'pxh-login-menu--settings', 'pxh-
 
 var pxhView = document.getElementById('js-view');
 
+var pxhViewResized = document.createEvent('CustomEvent');
+pxhViewResized.initCustomEvent('pxhViewResized', false, false, {
+    'viewResized': true
+});
+
 new pxhResizeSensor(pxhView, function() {
   document.dispatchEvent(pxhViewResized);
 });
-
-var pxhViewResized = new Event('pxhViewResized');
 
 document.addEventListener('pxhViewResized', function(event) {
   console.log('pxhViewResized was fired!');

@@ -1,4 +1,4 @@
-#pxh-chrome 0.11.0
+#pxh-chrome 0.12.0
 Application chrome for the Predix UI App Hub
 
 ##[Live Demo](https://github.build.ge.com/pages/hubs/pxh-chrome-demo)
@@ -161,31 +161,33 @@ document.addEventListener('pxhViewResized', function(event) {
 P.S. If you look at the console output for this example, you'll realize you'll want to implement some debouncing on your event listener ... our current thinking is that the debouncing should be the responsibility of the microapp, not the event itself, but we're open to alternative perspectives.
 
 ##Running Tests
-To run unit tests, type the following at the command line:
+**To run unit tests** type the following at the command line:
 
 ```bash
 gulp serve:test
 ```
 
-To run end-to-end tests, first install all the necessary Protractor and WebDriver dependencies by typing the following at the command line:
+This will start a local testing server at [http://localhost:4040](http://localhost:4040) and automatically open a browser window that shows the results of all the unit tests located at `./test/unit/spec/**/*.js`.
+
+Type `CTRL+C` to shut down the unit testing server.
+
+**To run end-to-end tests** type the following at the command line:
 
 ```bash
-gulp e2e-install
+gulp serve:e2e
 ```
 
-Then, start your development server in one Terminal window:
+This will start a local development server at [http://localhost:4444](http://localhost:4444).
 
-```bash
-gulp serve
-```
-
-This task will automatically open a browser window. In order to avoid potentially destabilizing behavior from BrowserSync, **before running your end-to-end tests you should close this browser window, along with any other browser windows you have open to your development server.** BrowserSync is an awesome utility for doing real-time cross-browser development, but it plays havok on the automated environment for end-to-end tests as it attempts to sync behavior across browsers.
-
-Finally, open a second Terminal window and run your end-to-end tests:
+As soon as the server finishes loading (watch your Terminal output) open a new Terminal window and type the following:
 
 ```bash
 gulp e2e
 ```
+
+This will run all the end-to-end tests located at `./test/e2e/spec/**/*.js` and show you the results.
+
+When you're done, type `CTRL+C` to shut down the development server.
 
 ##Browser Support
 pxh-chrome is tested in the most recent major releases of Chrome, Firefox, Safari, iOS Safari, and Internet Explorer (IE11 on Windows 7 and IE Edge on Windows 10).

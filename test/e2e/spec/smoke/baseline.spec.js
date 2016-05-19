@@ -13,7 +13,7 @@ var assert = chai.assert;
 
 describe('The pxh-chrome', function() {
 
-    browser.driver.get('http://localhost:4000');
+    browser.driver.get('http://localhost:4444');
     browser.driver.manage().window().setSize(1100, 800);
     browser.driver.sleep(1000);
 
@@ -27,7 +27,8 @@ describe('The pxh-chrome', function() {
     });
 
     it('has a title', function() {
-        assert.eventually.strictEqual(browser.driver.getTitle(), 'pxh-chrome 0.11.0');
+        assert.eventually.include(browser.driver.getTitle(), 'pxh-chrome');
+        assert.eventually.include(browser.driver.getTitle(), '0.12.0');
     });
 
     it('has a drawer', function() {
