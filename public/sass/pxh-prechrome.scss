@@ -1,7 +1,7 @@
-/*! pxh-error.css 0.11.0 */
+/*! pxh-prechrome.css 0.11.0 */
 
 /*------------------------------------*\
-    #pxh-error
+    #pxh-prechrome
 \*------------------------------------*/
 
 // ** #SETTINGS
@@ -38,48 +38,15 @@ a {
   text-decoration: none;
 }
 
-.pxh-error {
-  width: 100%;
-  text-align: center;
-  margin: ($inuit-base-spacing-unit * 6) 0 0 0;
-  padding: ($inuit-base-spacing-unit * 2) $inuit-base-spacing-unit ($inuit-base-spacing-unit * 8) $inuit-base-spacing-unit;
-}
-
-@include mq($from: md) {
-  .pxh-error\@md {
-    margin-left: auto;
-    margin-right: auto;
-    width: 90%;
-  }
-}
-
-@include mq($from: lg) {
-  .pxh-error\@lg {
-    margin-left: auto;
-    margin-right: auto;
-    width: 70%;
-  }
-}
-
-.pxh-error__icon {
-  font-size: $px-font-size-beta;
-  color: $gray5;
-  line-height: 1;
-}
-
-.pxh-error__title {
-  font-size: $px-font-size-epsilon;
-  font-weight: bold;
-  color: $white;
-}
-
-.pxh-error__description {
-  font-size: $px-font-size-regular;
-  color: $white;
-}
-
 // ** #OBJECTS ** //
 
 // ** #COMPONENTS ** //
+$error-icon-color: $gray5;
+$error-title-color: $white;
+$error-description-color: $white;
+$error-margin-top: $inuit-base-spacing-unit * 6;
+$error-padding-top: $inuit-base-spacing-unit * 2;
+$error-text-decoration: underline;
+@import "components.pxh-error.scss";
 
 // ** #OVERRIDES ** //
