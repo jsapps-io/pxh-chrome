@@ -46,11 +46,14 @@ gulp.task('bump', () => {
     'README.md',
     'public/sass/pxh-chrome.scss',
     'public/sass/pxh-prechrome.scss',
+<<<<<<< HEAD
+=======
     'src/screens/chromeless.hbs',
     'src/screens/index.hbs',
     'src/layouts/chromeless.hbs',
     'src/layouts/default.hbs',
     'src/layouts/error.hbs',
+>>>>>>> feature/add-error-states
     'public/js/pxh-chrome.js',
     'test/e2e/spec/smoke/baseline.spec.js'
   ];
