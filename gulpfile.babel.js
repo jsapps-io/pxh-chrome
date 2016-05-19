@@ -45,10 +45,13 @@ gulp.task('bump', () => {
     'package.json',
     'README.md',
     'public/sass/pxh-chrome.scss',
-    'public/sass/pxh-error.scss',
+    'public/sass/pxh-prechrome.scss',
+    'src/screens/chromeless.hbs',
+    'src/screens/index.hbs',
+    'src/layouts/chromeless.hbs',
+    'src/layouts/default.hbs',
+    'src/layouts/error.hbs',
     'public/js/pxh-chrome.js',
-    'public/chromeless.html',
-    'public/index.html',
     'test/e2e/spec/smoke/baseline.spec.js'
   ];
   var regex = new RegExp('^\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}(\\.\\d{1,3})?$');
