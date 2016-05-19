@@ -170,7 +170,7 @@ gulp.task('img', () => {
 });
 
 gulp.task('fonts', () => {
-  return gulp.src('bower_components/**/*.{eot,svg,ttf,woff,woff2}')
+  return gulp.src(['bower_components/**/*.{eot,svg,ttf,woff,woff2}', 'public/fonts/**/*'])
     .pipe(gulp.dest('.tmp/fonts'))
     .pipe(gulp.dest('dist/fonts'))
 });
