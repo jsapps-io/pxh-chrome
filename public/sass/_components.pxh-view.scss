@@ -24,6 +24,14 @@ $pxh-view-header-height: 61px !default; // locked to current height of px-contex
   transition: all 300ms ease-in-out;
 }
 
+.pxh-view--white {
+  background-color: $white;
+}
+
+.pxh-view--gray5 {
+  background-color: $gray5;
+}
+
 // nest all responsive styles within a pxh-chromeful class (applied to the <body> element so they only apply if the chrome is present
 // this violates our principle of immutability for class styles, but yolo
 .pxh-chromeful {
