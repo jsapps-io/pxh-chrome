@@ -1,6 +1,9 @@
 #pxh-chrome changelog
 
 ### pending release
+* _nothing yet..._
+
+### 0.12.0 - May 19, 2016
 * Add optional `pxh-view--white` and `pxh-view--gray5` classes for customizing the color of `pxh-view`
   * Without these flags, the `pxh-view` element is transparent by default and gets its color based on the `<html>` tag (`$gray5`)
 * Add "pre-chrome" error states that represent what should be shown to the user if the App Hub errors out before the application chrome (i.e. drawer, navigation, login module, view header, etc.) can be rendered
