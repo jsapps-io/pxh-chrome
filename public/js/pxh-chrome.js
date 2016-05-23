@@ -691,6 +691,6 @@ if (pxhView) {
   });
 }
 
-document.addEventListener('pxhViewResized', function(event) {
-  console.log('pxhViewResized was fired!');
-});
+// document.addEventListener('pxhViewResized', function(event) {
+//   console.log('pxhViewResized was fired!');
+// });
