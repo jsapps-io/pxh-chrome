@@ -685,9 +685,11 @@ pxhViewResized.initCustomEvent('pxhViewResized', false, false, {
     'viewResized': true
 });
 
-new pxhResizeSensor(pxhView, function() {
-  document.dispatchEvent(pxhViewResized);
-});
+if (pxhView) {
+  new pxhResizeSensor(pxhView, function() {
+    document.dispatchEvent(pxhViewResized);
+  });
+}
 
 document.addEventListener('pxhViewResized', function(event) {
   console.log('pxhViewResized was fired!');
