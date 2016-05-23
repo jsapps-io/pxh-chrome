@@ -54,7 +54,11 @@ $pxh-login-height:  60px !default;
   float: left;
   display: block;
   width: $pxh-drawer-margin;
-  padding-top: 2px;
+}
+
+.pxh-navigation__item-icon--error {
+  color: $pxh-navigation-error-icon-color;
+  font-size: $inuit-base-font-size * 1.25;
 }
 
 .pxh-navigation__link {
@@ -531,18 +535,6 @@ $pxh-login-height:  60px !default;
 .pxh-navigation__link--active:visited.pxh-navigation__link--active:visited.pxh-navigation__link--active:visited {
   background-color: $pxh-navigation-active-bg-color;
   color: $pxh-navigation-active-color;
-}
-
-.pxh-navigation__item--error.pxh-navigation__item--error.pxh-navigation__item--error,
-.pxh-navigation__item--error:link.pxh-navigation__item--error:link.pxh-navigation__item--error:link,
-.pxh-navigation__item--error:visited.pxh-navigation__item--error:visited.pxh-navigation__item--error:visited {
-  background-color: $pxh-navigation-error-bg-color;
-  color: $pxh-navigation-error-color;
-  .pxh-navigation__item-icon { // really not happy about using inheritance to do this
-    color: $pxh-navigation-error-icon-color;
-    font-size: $inuit-base-font-size * 1.25;
-    margin-top: -2px;
-  }
 }
 
 .pxh-navigation__sub-list.pxh-navigation__sub-list.pxh-navigation__sub-list { // chained to override px-theme
