@@ -1,5 +1,11 @@
 #pxh-chrome changelog
 
+### pending release
+* _nothing yet..._
+
+### 0.12.3 - May 23, 2016
+* Fix pxh-chrome version number
+
 ### 0.12.2 - May 23, 2016
 * Increase size of drawer toggle (both in-drawer and in-view-header) to full height and width of available space, to make the target easier to hit on mobile and tablet
 * Comment out test event listener for `pxhViewResized` custom event
