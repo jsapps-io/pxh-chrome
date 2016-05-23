@@ -1,7 +1,9 @@
 #pxh-chrome changelog
 
-### pending release
-* _nothing yet..._
+### 0.12.1 - May 23, 2016
+* Only bind the `resizeSensor` custom event if `pxh-view` (that is, an element with the `js-view` id) is present
+* Tweak padding of drawer navigation links
+* Add a `pxh-navigation__item-icon--error` class for targeting the icon error state, rather than relying on inheritance
 
 ### 0.12.0 - May 19, 2016
 * Add optional `pxh-view--white` and `pxh-view--gray5` classes for customizing the color of `pxh-view`
