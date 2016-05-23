@@ -1,5 +1,5 @@
 'use strict';
-/*! pxh-chrome.js 0.12.1 */
+/*! pxh-chrome.js 0.12.2 */
 
 // **************
 // CONFIG OBJECTS
@@ -691,6 +691,6 @@ if (pxhView) {
   });
 }
 
-document.addEventListener('pxhViewResized', function(event) {
-  console.log('pxhViewResized was fired!');
-});
+// document.addEventListener('pxhViewResized', function(event) {
+//   console.log('pxhViewResized was fired!');
+// });

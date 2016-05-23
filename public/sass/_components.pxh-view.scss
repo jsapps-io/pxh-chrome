@@ -138,8 +138,8 @@ $pxh-view-header-height: 61px !default; // locked to current height of px-contex
 
 .pxh-view-header-drawer-toggle {
   position: fixed;
-  top: $pxh-drawer-margin;
-  left: $pxh-drawer-margin;
+  top: 0;
+  left: 0;
   opacity: 1;
   z-index: 500; // making the same as overlay to overcome IE10 clickthru bug with overlay
   transition: all 300ms ease-in-out;
@@ -170,6 +170,11 @@ $pxh-view-header-height: 61px !default; // locked to current height of px-contex
 }
 
 .pxh-view-header-drawer-toggle__link {
+  display: block;
+  height: $pxh-drawer-width-narrow;
+  width: $pxh-drawer-width-narrow;
+  padding-top: $pxh-drawer-margin;
+  padding-left: $pxh-drawer-margin;
   color: $black;
   text-decoration: none;
   &:link,

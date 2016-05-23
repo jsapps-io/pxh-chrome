@@ -67,11 +67,14 @@ $pxh-view-header-height: 61px !default; // locked to current height of px-contex
 
 .pxh-drawer-toggle {
   float: left;
-  margin: $pxh-drawer-margin 0 0 $pxh-drawer-margin;
-  height: $pxh-view-header-height - $pxh-drawer-margin;
 }
 
 .pxh-drawer-toggle__link {
+  display: block;
+  float: left;
+  width: $pxh-drawer-margin * 3;
+  height: $pxh-drawer-margin * 3;
+  padding: $pxh-drawer-margin;
   color: $white;
   transition: all 500ms ease-in-out;
   &:link,
@@ -98,9 +101,8 @@ $pxh-view-header-height: 61px !default; // locked to current height of px-contex
 // These styles are also applied to the element when it is visible
 // by default, absent an animation.
 @mixin pxh-drawer-header__link--in-styles {
-  margin-top: $pxh-drawer-margin;
-  margin-left: $pxh-drawer-margin;
-  width: $pxh-drawer-width-wide - ($pxh-drawer-margin * 3);
+  padding-top: $pxh-drawer-margin;
+  width: $pxh-drawer-width-wide - ($pxh-drawer-margin * 9);
   font-size: $inuit-base-font-size * 1.25;
   opacity: 1;
   visibility: visible;
@@ -139,17 +141,15 @@ $pxh-view-header-height: 61px !default; // locked to current height of px-contex
     visibility: hidden;
   }
   75% {
-    margin-top: $pxh-drawer-margin;
-    margin-left: $pxh-drawer-margin;
-    width: $pxh-drawer-width-wide - ($pxh-drawer-margin * 3);
+    padding-top: $pxh-drawer-margin;
+    width: $pxh-drawer-width-wide - ($pxh-drawer-margin * 9);
     font-size: 0;
     opacity: 0;
     visibility: hidden;
   }
   90% {
-    margin-top: $pxh-drawer-margin;
-    margin-left: $pxh-drawer-margin;
-    width: $pxh-drawer-width-wide - ($pxh-drawer-margin * 3);
+    padding-top: $pxh-drawer-margin;
+    width: $pxh-drawer-width-wide - ($pxh-drawer-margin * 9);
     font-size: $inuit-base-font-size * 1.25;
     opacity: 0;
     visibility: hidden;
@@ -168,9 +168,8 @@ $pxh-view-header-height: 61px !default; // locked to current height of px-contex
     @include pxh-drawer-header__link--in-styles;
   }
   50% {
-    margin-top: $pxh-drawer-margin;
-    margin-left: $pxh-drawer-margin;
-    width: $pxh-drawer-width-wide - ($pxh-drawer-margin * 3);
+    padding-top: $pxh-drawer-margin;
+    width: $pxh-drawer-width-wide - ($pxh-drawer-margin * 9);
     font-size: $inuit-base-font-size * 1.25;
     opacity: 0;
     visibility: visible;
@@ -187,9 +186,6 @@ $pxh-view-header-height: 61px !default; // locked to current height of px-contex
 
 .pxh-drawer-header {
   float: left;
-}
-
-.pxh-drawer-header {
   margin: 0;
   padding: 0;
   font-weight: normal;
@@ -199,6 +195,7 @@ $pxh-view-header-height: 61px !default; // locked to current height of px-contex
   @include pxh-drawer-header__link--in-styles;
   @include pxh-animation(pxh-drawer-header__link--in);
   display: block;
+  width: 100px;
   text-decoration: none;
   overflow: hidden;
   white-space: nowrap;
