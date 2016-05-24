@@ -1,5 +1,13 @@
 #pxh-chrome changelog
 
+### pending release
+* Add `pxh-spinner--tiny` and `pxh-spinner--small` modifier classes for displaying tiny and small loading indicators
+* Add `pxh-spinner--inverted` modifier class for displaying a loading indicator on a dark background
+* Add subtle alpha transparency to `pxh-spinner` circle so it displays better on unknown background colors
+
+### 0.12.3 - May 23, 2016
+* Fix pxh-chrome version number
+
 ### 0.12.2 - May 23, 2016
 * Increase size of drawer toggle (both in-drawer and in-view-header) to full height and width of available space, to make the target easier to hit on mobile and tablet
 * Comment out test event listener for `pxhViewResized` custom event
