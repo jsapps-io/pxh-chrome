@@ -2,12 +2,14 @@
     #components.pxh-spinner
 \*------------------------------------*/
 
+$pxh-spinner-alpha: 0.7;
+
 .pxh-spinner {
   margin: 60px auto;
   font-size: 1px;
   position: relative;
   text-indent: -9999em;
-  border: 10px solid $gray4;
+  border: 10px solid rgba($gray4, $pxh-spinner-alpha);
   border-left-color: $primary-blue;
   transform: translateZ(0);
   animation: load8 1.2s infinite linear;
@@ -33,7 +35,7 @@
     width: 150px;
   }
   &--inverted {
-    border-color: $gray8;
+    border-color: rgba($gray8, $pxh-spinner-alpha);
     border-left-color: $primary-blue;
   }
   &--finished {
