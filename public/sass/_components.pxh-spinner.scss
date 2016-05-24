@@ -4,19 +4,16 @@
 
 .pxh-spinner {
   margin: 60px auto;
-  font-size: 10px;
+  font-size: 1px;
   position: relative;
   text-indent: -9999em;
-  border-top: 1.1em solid $gray4;
-  border-right: 1.1em solid $gray4;
-  border-bottom: 1.1em solid $gray4;
-  border-left: 1.1em solid $primary-blue;
+  border: 10px solid $gray4;
+  border-left-color: $primary-blue;
   transform: translateZ(0);
   animation: load8 1.1s infinite linear;
-  &, &:after {
-    border-radius: 50%;
-    width: 10em;
-    height: 10em;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
   }
   &--large {
     height: 150px;
