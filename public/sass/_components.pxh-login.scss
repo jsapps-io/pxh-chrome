@@ -114,11 +114,16 @@ $pxh-login-magic-centering: 14px !default; // magic number, fix this
 
 .pxh-login__profile-link.pxh-login__profile-link.pxh-login__profile-link,
 .pxh-login__profile-link:link.pxh-login__profile-link:link.pxh-login__profile-link:link,
-.pxh-login__profile-link:visited.pxh-login__profile-link:visited.pxh-login__profile-link:visited { // chained to override px-theme
+.pxh-login__profile-link:visited.pxh-login__profile-link:visited.pxh-login__profile-link:visited,
+.pxh-login__link.pxh-login__link.pxh-login__link,
+.pxh-login__link:link.pxh-login__link:link.pxh-login__link:link,
+.pxh-login__link:visited.pxh-login__link:visited.pxh-login__link:visited { // chained to override px-theme
   color: $gray7;
 }
 
-.pxh-login__profile-link:hover.pxh-login__profile-link:hover.pxh-login__profile-link:hover { // chained to override px-theme
+.pxh-login__profile-link:hover.pxh-login__profile-link:hover.pxh-login__profile-link:hover,
+.pxh-login__link:hover.pxh-login__link:hover.pxh-login__link:hover,
+ { // chained to override px-theme
   color: $white;
 }
 

@@ -1,7 +1,9 @@
 #pxh-chrome changelog
 
-### pending release
-* _nothing yet..._
+### 0.12.4 - May 24, 2016
+* Add `pxh-spinner--tiny` and `pxh-spinner--small` modifier classes to `pxh-spinner` for displaying tiny and small loading indicators
+* Add `pxh-spinner--inverted` modifier class for displaying a loading indicator on a dark background
+* Add subtle alpha transparency to the `pxh-spinner` circle so it renders better on unknown background colors
 
 ### 0.12.3 - May 23, 2016
 * Fix pxh-chrome version number
