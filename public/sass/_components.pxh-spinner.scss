@@ -14,10 +14,24 @@
   border-radius: 50%;
   width: 100px;
   height: 100px;
+  &--tiny {
+    border-width: 3px;
+    height: 20px;
+    width: 20px;
+  }
+  &--small {
+    border-width: 5px;
+    height: 40px;
+    width: 40px;
   }
   &--large {
+    border-width: 15px;
     height: 150px;
     width: 150px;
+  }
+  &--inverted {
+    border-color: $gray8;
+    border-left-color: $primary-blue;
   }
   &--finished {
     display: none;
