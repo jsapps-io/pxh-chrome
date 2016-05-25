@@ -1,5 +1,8 @@
 #pxh-chrome changelog
 
+### pending release
+* Stop collapsing whitespace in `/dist` HTML output
+
 ### 0.12.4 - May 24, 2016
 * Add `pxh-spinner--tiny` and `pxh-spinner--small` modifier classes to `pxh-spinner` for displaying tiny and small loading indicators
 * Add `pxh-spinner--inverted` modifier class for displaying a loading indicator on a dark background
