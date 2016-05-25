@@ -51,6 +51,7 @@ gulp.task('bump', () => {
     'src/layouts/chromeless.hbs',
     'src/layouts/default.hbs',
     'src/layouts/error.hbs',
+    'src/layouts/loading.hbs',
     'public/js/pxh-chrome.js',
     'test/e2e/spec/smoke/baseline.spec.js'
   ];
