@@ -155,7 +155,7 @@ gulp.task('html', ['sass', 'js'], () => {
       preserveComments: 'some'
     })))
     .pipe($.if('*.css', $.cssnano()))
-    // .pipe($.if('*.html', $.htmlmin({collapseWhitespace: true})))
+    .pipe($.if('*.html', $.htmlmin()))
     .pipe(gulp.dest('dist'));
 });
 
