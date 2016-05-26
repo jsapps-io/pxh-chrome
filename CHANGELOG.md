@@ -1,7 +1,12 @@
 #pxh-chrome changelog
 
-### pending release
+### Pending release
+* _nothing yet..._*
+
+### 0.12.5 - May 26, 2016
 * Stop collapsing whitespace in `/dist` HTML output
+* Fix Sass bug where the text in the `pxh-drawer-header__link` drawer header was being prematurely truncated
+* Force Internet Explorer to use the most recent rendering engine available, even in an intranet context
 
 ### 0.12.4 - May 24, 2016
 * Add `pxh-spinner--tiny` and `pxh-spinner--small` modifier classes to `pxh-spinner` for displaying tiny and small loading indicators
