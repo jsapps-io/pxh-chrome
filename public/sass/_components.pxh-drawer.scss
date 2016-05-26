@@ -102,7 +102,7 @@ $pxh-view-header-height: 61px !default; // locked to current height of px-contex
 // by default, absent an animation.
 @mixin pxh-drawer-header__link--in-styles {
   padding-top: $pxh-drawer-margin;
-  width: $pxh-drawer-width-wide - ($pxh-drawer-margin * 9);
+  width: $pxh-drawer-width-wide - ($pxh-drawer-margin * 3);
   font-size: $inuit-base-font-size * 1.25;
   opacity: 1;
   visibility: visible;
@@ -142,14 +142,14 @@ $pxh-view-header-height: 61px !default; // locked to current height of px-contex
   }
   75% {
     padding-top: $pxh-drawer-margin;
-    width: $pxh-drawer-width-wide - ($pxh-drawer-margin * 9);
+    width: $pxh-drawer-width-wide - ($pxh-drawer-margin * 3);
     font-size: 0;
     opacity: 0;
     visibility: hidden;
   }
   90% {
     padding-top: $pxh-drawer-margin;
-    width: $pxh-drawer-width-wide - ($pxh-drawer-margin * 9);
+    width: $pxh-drawer-width-wide - ($pxh-drawer-margin * 3);
     font-size: $inuit-base-font-size * 1.25;
     opacity: 0;
     visibility: hidden;
@@ -169,7 +169,7 @@ $pxh-view-header-height: 61px !default; // locked to current height of px-contex
   }
   50% {
     padding-top: $pxh-drawer-margin;
-    width: $pxh-drawer-width-wide - ($pxh-drawer-margin * 9);
+    width: $pxh-drawer-width-wide - ($pxh-drawer-margin * 3);
     font-size: $inuit-base-font-size * 1.25;
     opacity: 0;
     visibility: visible;

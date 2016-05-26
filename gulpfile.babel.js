@@ -51,6 +51,7 @@ gulp.task('bump', () => {
     'src/layouts/chromeless.hbs',
     'src/layouts/default.hbs',
     'src/layouts/error.hbs',
+    'src/layouts/loading.hbs',
     'public/js/pxh-chrome.js',
     'test/e2e/spec/smoke/baseline.spec.js'
   ];
@@ -154,7 +155,7 @@ gulp.task('html', ['sass', 'js'], () => {
       preserveComments: 'some'
     })))
     .pipe($.if('*.css', $.cssnano()))
-    .pipe($.if('*.html', $.htmlmin({collapseWhitespace: true})))
+    .pipe($.if('*.html', $.htmlmin()))
     .pipe(gulp.dest('dist'));
 });
 
