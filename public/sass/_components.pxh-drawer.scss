@@ -195,7 +195,6 @@ $pxh-view-header-height: 61px !default; // locked to current height of px-contex
   @include pxh-drawer-header__link--in-styles;
   @include pxh-animation(pxh-drawer-header__link--in);
   display: block;
-  width: 100px;
   text-decoration: none;
   overflow: hidden;
   white-space: nowrap;
