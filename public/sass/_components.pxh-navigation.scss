@@ -40,6 +40,10 @@ $pxh-login-height:  60px !default;
 \*------------------------------------*/
 
 .pxh-navigation {
+  position: absolute;
+  top: $pxh-view-header-height;
+  left: 0;
+  width: 100%;
   clear: both;
   border-top: 1px solid rgba(0,0,0,0.15);
   max-height: 100%;
@@ -62,6 +66,7 @@ $pxh-login-height:  60px !default;
 }
 
 .pxh-navigation__link {
+  position: relative;
   font-size: $inuit-base-font-size;
   display: block;
   width: 100%;
@@ -158,10 +163,18 @@ $pxh-login-height:  60px !default;
 .pxh-badge {
   .pxh-navigation__link &,
   .pxh-navigation__sub-link & {
+    position: absolute;
+    right: 5px;
     // include the animation boilerplate with corresponding keyframes
     @include pxh-animation(pxh-badge--in);
     // include the "visible by default" styles
     @include pxh-badge--in-styles;
+  }
+  .pxh-navigation__link & {
+    top: 33%; // magic number
+  }
+  .pxh-navigation__sub-link & {
+    top: 44%; // magic number
   }
   .pxh-navigation__link--selected &,
   .pxh-navigation__sub-link--selected & {
@@ -389,6 +402,7 @@ $pxh-login-height:  60px !default;
 .pxh-navigation__sub-link {
   @include pxh-animation(pxh-navigation__sub-link--in);
   @include pxh-navigation__sub-link--in-styles;
+  position: relative;
   display: block;
   overflow: hidden;
   white-space: nowrap;
@@ -442,6 +456,7 @@ $pxh-login-height:  60px !default;
 
 @include mq($from: md) {
   .pxh-navigation--narrow\@md {
+    width: 100%;
     .pxh-navigation__item-text {
       @include pxh-animation(pxh-navigation__item-text--out);
       @include pxh-navigation__item-text--out-styles;
