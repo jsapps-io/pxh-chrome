@@ -1,12 +1,26 @@
 #pxh-chrome changelog
 
-### Pending release
-* _nothing yet..._*
+# pending release
+* _Nothing yet..._
+
+### 0.12.6 - May 27, 2016
+* Bump versions on outdated node modules
+* Increase CSS specificity of `pxh-login-menu__link` white link color to prevent it from being overridden by px-theme's `:not([style-scope]):not(.style-scope)` blue link rules
+* Fix bug where drawer header was still being prematurely truncated in some responsive contexts
+* Fix bug where navigation drawer badges would wrap to a second line below the link text if persistent scrollbars were displayed
+  * Remove `pxh-float-right` utility class from navigation drawer badge markup since we're positioning them differently now
+* Adjust vertical padding inside badges so the spacing looks better across browsers
+* Fix bug where users were unable to scroll to last items in drawer navigation, if there were so many items that it caused a vertical scrollbar to appear
+* Move bottom of drawer navigation scrollbar so it displays on top of the login module, rather than below and behind it
+* When the drawer navigation needs to show scrollbars, show custom-colored scrollbars in IE11
+  * Other browsers use an alternative pseudo-class syntax which we haven't implemented in pxh-chrome yet
 
 ### 0.12.5 - May 26, 2016
 * Stop collapsing whitespace in `/dist` HTML output
 * Fix Sass bug where the text in the `pxh-drawer-header__link` drawer header was being prematurely truncated
 * Force Internet Explorer to use the most recent rendering engine available, even in an intranet context
+* Tell Internet Explorer to use Chrome Frame if it's installed
+
 
 ### 0.12.4 - May 24, 2016
 * Add `pxh-spinner--tiny` and `pxh-spinner--small` modifier classes to `pxh-spinner` for displaying tiny and small loading indicators
