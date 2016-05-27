@@ -52,6 +52,10 @@ $pxh-login-height:  60px !default;
   max-height: 100%;
   overflow-y: auto;
   animation-duration: 300ms;
+  scrollbar-base-color: $gray10;
+  scrollbar-arrow-color: $gray8;
+  scrollbar-track-color: $gray10;
+  scrollbar-face-color: $gray8;
   -webkit-overflow-scrolling: touch;
 }
 
