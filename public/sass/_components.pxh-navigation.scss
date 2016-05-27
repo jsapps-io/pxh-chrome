@@ -29,6 +29,8 @@ $pxh-navigation-sub-hover-color: $gray4 !default;
 $pxh-drawer-margin: 20px !default; // magic number ... fix this
 $pxh-drawer-width-wide: 260px !default; // magic number ... fix this
 
+$pxh-view-header-height: 61px !default;
+
 $pxh-navigation-link-height: 48px;
 $pxh-navigation-sub-link-height: 30px;
 $pxh-navigation-divider-margin: 10px;
@@ -43,14 +45,14 @@ $pxh-login-height:  60px !default;
   position: absolute;
   top: $pxh-view-header-height;
   left: 0;
+  bottom: $pxh-login-height;
   width: 100%;
   clear: both;
   border-top: 1px solid rgba(0,0,0,0.15);
   max-height: 100%;
-  overflow: auto;
-  -webkit-overflow-scrolling: touch;
+  overflow-y: auto;
   animation-duration: 300ms;
-  padding-bottom: ($pxh-login-height * 2) + 5px;
+  -webkit-overflow-scrolling: touch;
 }
 
 .pxh-navigation__item-icon {
