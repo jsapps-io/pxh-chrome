@@ -87,6 +87,7 @@ gulp.task('sass', () => {
     .pipe($.autoprefixer({browsers: ['> 1%', 'last 2 versions', 'Firefox ESR']}))
     .pipe($.sourcemaps.write())
     .pipe(gulp.dest('.tmp/css'))
+    .pipe(gulp.dest('dist/css'))
     .pipe(reload({stream: true}));
 });
 
@@ -220,9 +221,8 @@ gulp.task('serve:dist', ['sass', 'js', 'extras', 'img', 'fonts'], () => {
       baseDir: ['dist']
     }
   });
-  gulp.watch('public/sass/**/*.scss', ['sass', 'html']);
-  gulp.watch('public/js/**/*.js', ['js', 'html']);
-  gulp.watch('public/*.html', ['html']);
+  gulp.watch('public/sass/**/*.scss', ['sass']);
+  gulp.watch('public/js/**/*.js', ['js']);
 });
 
 gulp.task('e2e', shell.task('protractor ./test/e2e/protractor.config.js'));
