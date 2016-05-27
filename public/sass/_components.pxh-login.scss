@@ -282,7 +282,7 @@ $pxh-login-magic-centering: 14px !default; // magic number, fix this
   border-top: 1px solid $gray10;
 }
 
-.pxh-login-menu__link.pxh-login-menu__link { // chained to override px-theme
+.pxh-login-menu__link.pxh-login-menu__link.pxh-login-menu__link { // chained to override px-theme
   display: block;
   height: 30px;
   padding: 5px;
@@ -293,13 +293,13 @@ $pxh-login-magic-centering: 14px !default; // magic number, fix this
   color: $white;
 }
 
-.pxh-login-menu__link:link.pxh-login-menu__link:link,
-.pxh-login-menu__link:visited.pxh-login-menu__link:visited,
-.pxh-login-menu__link:active.pxh-login-menu__link:active { // chained to override px-theme
+.pxh-login-menu__link:link.pxh-login-menu__link:link.pxh-login-menu__link:link,
+.pxh-login-menu__link:visited.pxh-login-menu__link:visited.pxh-login-menu__link:visited,
+.pxh-login-menu__link:active.pxh-login-menu__link:active.pxh-login-menu__link:active { // chained to override px-theme
   color: $white;
 }
 
-.pxh-login-menu__link:hover.pxh-login-menu__link:hover { // chained to override px-theme
+.pxh-login-menu__link:hover.pxh-login-menu__link:hover.pxh-login-menu__link:hover { // chained to override px-theme
   background-color: $gray10;
 }
 
