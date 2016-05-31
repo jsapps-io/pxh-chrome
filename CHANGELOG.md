@@ -1,9 +1,11 @@
 #pxh-chrome changelog
 
 # pending release
+* Create demo and documentation pages for all major `pxh-*` components
 * Reduce sizes of all types of `pxh-spinner` including default, `--small` and `--large`
 * Remove `--tiny` size of `pxh-spinner`
   * `--small` is now approximately the same size as `--tiny`
+* Bind spinner visualization to `::after` pseudo-element so top and bottom margins don't rotate and cause intermittent scrollbars in narrow contexts
 * Remove CSS rule that overrode the default badge background color when it was rendered inside a selected navigation item, as we're no longer using the same color to indicate the selected state
 * Add separate demos for each pxh-chrome component
 * Add colored borders around all badge states so their layout and sizing is consistent with the required border around `pxh-badge--healthy-white`
