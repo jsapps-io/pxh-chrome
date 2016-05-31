@@ -10,33 +10,42 @@
   font-weight: normal;
   color: $white;
   line-height: 1;
-  padding: 3px 5px 2px 5px;
+  padding: 2px 4px 1px 4px;
   border-radius: 10px;
   text-decoration: none;
+  border: 1px solid $gray5;
   &--navigation {
     background-color: $select-blue-pressed;
+    border-color: $select-blue-pressed;
   }
   &--primary {
     background-color: $primary-blue;
+    border-color: $primary-blue;
   }
   &--important {
     background-color: $alert-red;
+    border-color: $alert-red;
   }
   &--warning {
     background-color: $alert-orange;
+    border-color: $alert-orange;
   }
   &--error {
     background-color: $alert-yellow;
+    border-color: $alert-yellow;
   }
   &--info {
     background-color: $alert-blue;
+    border-color: $alert-blue;
   }
   &--healthy-black {
     background-color: $black;
+    border-color: $black;
   }
   &--healthy-white {
     background-color: $white;
-    border: 1px solid $gray5; // unless our box model is super smart, this is gonna misalign things
     color: $black;
+    border-color: $gray5;
+  }
   }
 }
