@@ -16,17 +16,11 @@ $pxh-spinner-alpha: 0.7;
   border-radius: 50%;
   width: 100px;
   height: 100px;
-  &--tiny {
-    animation-duration: 0.8s;
-    border-width: 3px;
+  &--small {
+    animation-duration: 1.6s;
+    border-width: 2px;
     height: 20px;
     width: 20px;
-  }
-  &--small {
-    animation-duration: 0.9s;
-    border-width: 5px;
-    height: 40px;
-    width: 40px;
   }
   &--large {
     animation-duration: 1.4s;
