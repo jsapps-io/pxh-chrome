@@ -1,0 +1,60 @@
+---
+title: "pxh-overlay"
+bodyClass: "pxh-chromeful"
+errorSelected: false
+---
+
+    <section class="pxh-wrapper">
+      <header class="pxh-view-header pxh-view-header--wide@md pxh-view-header--narrow@lg">
+        <h1 class="pxh-view-header__title">
+          <a href="index.html" class="pxh-view-header__title-link">
+            Overlay
+          </a>
+        </h1>
+      </header>
+      <section class="pxh-view pxh-view--wide@md pxh-view--narrow@lg" id="js-view">
+
+        <div class="pxh-docs">
+
+          <h4>Javascript:</h4>
+
+          <p>When the user clicks <code>.pxh-drawer-toggle__link</code> or <code>.pxh-view-header-drawer-toggle__link</code>&hellip;</p>
+
+          <ul>
+            <li>Find <code>.pxh-overlay</code> and toggle the class <code>pxh-overlay--hidden</code> on it</li>
+          </ul>
+
+          <h4>Sass:</h4>
+
+          <pre><code>// Base styles for the overlay to display when
+  // pxh-drawer is toggled open on mobile and tablet.
+  .pxh-overlay {
+    z-index: 500;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: auto;
+    background-color: rgba(0, 0, 0, 0.7);
+    -webkit-transition: all 200ms ease-in-out;
+  }
+
+  // Modifier class that hides the overlay.
+  .pxh-overlay--hidden {
+    pointer-events: none;
+    background-color: rgba(0, 0, 0, 0);
+  }
+
+  // From the @lg (desktop) breakpoint and wider,
+  // prevent the overlay from being shown at all.
+  @include mq($from: lg) {
+    .pxh-overlay--hidden\@lg {
+      pointer-events: none;
+      background-color: rgba(0, 0, 0, 0);
+    }
+  }</code></pre>
+
+        </div>
+      </section>
+    </section>
