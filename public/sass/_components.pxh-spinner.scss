@@ -9,13 +9,13 @@ $pxh-spinner-alpha: 0.7;
   font-size: 1px;
   position: relative;
   text-indent: -9999em;
-  border: 10px solid rgba($gray4, $pxh-spinner-alpha);
+  border: 4px solid rgba($gray4, $pxh-spinner-alpha);
   border-left-color: $primary-blue;
   transform: translateZ(0);
-  animation: load8 1.2s infinite linear;
+  animation: pxh-spinner 1.7s infinite linear;
   border-radius: 50%;
-  width: 100px;
-  height: 100px;
+  width: 40px;
+  height: 40px;
   &--small {
     animation-duration: 1.6s;
     border-width: 2px;
@@ -23,10 +23,10 @@ $pxh-spinner-alpha: 0.7;
     width: 20px;
   }
   &--large {
-    animation-duration: 1.4s;
-    border-width: 15px;
-    height: 150px;
-    width: 150px;
+    animation-duration: 1.8s;
+    border-width: 6px;
+    height: 60px;
+    width: 60px;
   }
   &--inverted {
     border-color: rgba($gray8, $pxh-spinner-alpha);
@@ -37,7 +37,7 @@ $pxh-spinner-alpha: 0.7;
   }
 }
 
-@keyframes load8 {
+@keyframes pxh-spinner {
   0% {
     -webkit-transform: rotate(0deg);
     transform: rotate(0deg);
