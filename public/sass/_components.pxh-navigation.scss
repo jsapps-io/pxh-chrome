@@ -79,7 +79,7 @@ $pxh-login-height:  60px !default;
   height: $pxh-navigation-link-height;
   float: left;
   clear: left;
-  padding: 15px 2px 0 $pxh-drawer-margin;
+  padding: 15px 0 0 $pxh-drawer-margin;
 }
 
 /*------------------------------------*\
@@ -302,7 +302,7 @@ $pxh-login-height:  60px !default;
   opacity: 1;
   visibility: visible;
   height: $pxh-navigation-sub-link-height;
-  padding: $pxh-drawer-margin / 1.5 2px 0 $pxh-drawer-margin * 3;
+  padding: ($inuit-base-spacing-unit / 2) ($inuit-base-spacing-unit / 8) 0 $pxh-drawer-margin * 3;
 }
 
 // mixin for "animate out" styles
@@ -341,7 +341,7 @@ $pxh-login-height:  60px !default;
     font-size: $inuit-base-font-size;
     opacity: 0;
     visibility: visible;
-    height: $inuit-base-spacing-unit * 2;
+    height: $pxh-navigation-sub-link-height;
     padding: ($inuit-base-spacing-unit / 2) ($inuit-base-spacing-unit / 8) 0 $pxh-drawer-margin * 3;
   }
   100% {
@@ -360,7 +360,7 @@ $pxh-login-height:  60px !default;
   25% {
     opacity: 0;
     visibility: visible;
-    height: $inuit-base-spacing-unit * 2;
+    height: $pxh-navigation-sub-link-height;
     padding: ($inuit-base-spacing-unit / 2) ($inuit-base-spacing-unit / 8) 0 $pxh-drawer-margin * 3;
   }
   99% {
@@ -392,7 +392,7 @@ $pxh-login-height:  60px !default;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  max-width: $pxh-drawer-width-wide - ($pxh-drawer-margin * 5); // has to be narrower than the available space to accomodate potential pxh-badge
+  max-width: $pxh-drawer-width-wide - ($pxh-drawer-margin * 3.25); // has to be narrower than the available space to accomodate potential pxh-badge
   float: left;
   opacity: 1;
 }
