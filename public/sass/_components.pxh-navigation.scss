@@ -428,7 +428,8 @@ $pxh-login-height:  60px !default;
 \*------------------------------------*/
 
 .pxh-navigation__sub-item--divider {
-  margin-top: $pxh-navigation-divider-margin * 1.5;
+  margin-top: $pxh-navigation-divider-margin * .75;
+  margin-bottom: $pxh-navigation-divider-margin * .75;
   margin-left: $pxh-drawer-margin * 3;
   margin-right: $pxh-drawer-margin;
   display: block;
