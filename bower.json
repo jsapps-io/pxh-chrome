@@ -16,7 +16,9 @@
     "package.json",
     "README.md",
     "public",
-    "test"
+    "test",
+    "src",
+    "dist/*.html"
   ],
   "devDependencies": {
     "chai": "3.5.0",
