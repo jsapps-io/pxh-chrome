@@ -13,12 +13,11 @@
 * Remove CSS rule that overrode the default badge background color when it was rendered inside a selected navigation item, as we're no longer using the same color to indicate the selected state
 * Add separate demos for each pxh-chrome component
 * Add colored borders around all badge states so their layout and sizing is consistent with the required border around `pxh-badge--healthy-white`
-* Add `--truncated` modifier class to `pxh-badge` which accomodates the approximate maximum width of `99,999`.
+* Add `--truncated` modifier class to `pxh-badge` which accomodates the approximate maximum width of `99,999`
 * Increase maximum width available to navigation text now that badges are absolutely positioned
 * Add unopinionated default styles for horizontal rule `<hr>` elements
 * Apply custom styles to drawer navigation scrollbars in Chrome and Safari
   * The `::scrollbar` pseudo-class syntax is not currently supported by IE Edge or Firefox
-* Add an experimental `pxh-view-header--pad-until@md` class to `pxh-view-header` which automatically applies left padding for the hamburger icon on mobile, and removes the padding at the `@md` breakpoint and above
 
 
 ### 0.12.6 - May 27, 2016
