@@ -272,7 +272,7 @@ $pxh-login-height:  60px !default;
   white-space: nowrap;
   text-overflow: ellipsis;
   padding-left: $pxh-drawer-margin;
-  max-width: $pxh-drawer-width-wide - ($pxh-drawer-margin * 4); // has to be narrower than the available space to accomodate potential pxh-badge
+  max-width: $pxh-drawer-width-wide - ($pxh-drawer-margin * 3); // has to be narrower than you think to accomodate potential vertical scrollbar in IE11
   float: left;
   opacity: 1;
 }
