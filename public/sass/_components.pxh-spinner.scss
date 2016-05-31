@@ -5,34 +5,40 @@
 $pxh-spinner-alpha: 0.7;
 
 .pxh-spinner {
-  margin: 60px auto;
-  font-size: 1px;
-  position: relative;
-  text-indent: -9999em;
-  border: 4px solid rgba($gray4, $pxh-spinner-alpha);
-  border-left-color: $primary-blue;
-  transform: translateZ(0);
-  animation: pxh-spinner 1.7s infinite linear;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  &--small {
+  margin: 60px 0 60px 0;
+  text-align: center;
+  overflow: hidden;
+  &::after {
+    content: ' ';
+    display: inline-block;
+    font-size: 1px;
+    position: relative;
+    text-indent: -9999em;
+    border: 4px solid rgba($gray4, $pxh-spinner-alpha);
+    border-left-color: $primary-blue;
+    transform: translateZ(0);
+    animation: pxh-spinner 1.7s infinite linear;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+  }
+  &--small::after {
     animation-duration: 1.6s;
     border-width: 2px;
     height: 20px;
     width: 20px;
   }
-  &--large {
+  &--large::after {
     animation-duration: 1.8s;
     border-width: 6px;
     height: 60px;
     width: 60px;
   }
-  &--inverted {
+  &--inverted::after {
     border-color: rgba($gray8, $pxh-spinner-alpha);
     border-left-color: $primary-blue;
   }
-  &--finished {
+  &--finished::after {
     display: none;
   }
 }
