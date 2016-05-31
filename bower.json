@@ -5,6 +5,13 @@
   "version": "0.12.6",
   "homepage": "https://github.build.ge.com/hubs/pxh-chrome",
   "ignore": [
+    ".tmp",
+    "bower_components",
+    "dist/*.html",
+    "node_modules",
+    "public",
+    "src",
+    "test",
     ".babelrc",
     ".bowerrc",
     ".editorconfig",
@@ -13,12 +20,7 @@
     ".yo-rc.json",
     "bower.json",
     "gulpfile.babel.js",
-    "package.json",
-    "README.md",
-    "public",
-    "test",
-    "src",
-    "dist/*.html"
+    "package.json"
   ],
   "devDependencies": {
     "chai": "3.5.0",
