@@ -1,7 +1,15 @@
 #pxh-chrome changelog
 
 # pending release
-* _Nothing yet..._
+* Reduce sizes of all types of `pxh-spinner` including default, `--small` and `--large`
+* Remove `--tiny` size of `pxh-spinner`
+  * `--small` is now approximately the same size as `--tiny`
+* Remove CSS rule that overrode the default badge background color when it was rendered inside a selected navigation item, as we're no longer using the same color to indicate the selected state
+* Add separate demos for each pxh-chrome component
+* Add colored borders around all badge states so their layout and sizing is consistent with the required border around `pxh-badge--healthy-white`
+* Add `--truncated` modifier class to `pxh-badge` which accomodates the approximate maximum width of `99,999`.
+* Increase maximum width available to navigation text now that badges are absolutely positioned
+* Add unopinionated default styles for horizontal rule `<hr>` elements
 
 ### 0.12.6 - May 27, 2016
 * Bump versions on outdated node modules
