@@ -1,6 +1,10 @@
 #pxh-chrome changelog
 
-# pending release
+### pending release
+* _nothing yet..._
+
+### 0.13.0 - May 31, 2016
+* Ignore `/src`, `/dist/*.html` and other files when pxh-chrome is installed via Bower
 * Create demo and documentation pages for all major `pxh-*` components
 * Reduce sizes of all types of `pxh-spinner` including default, `--small` and `--large`
 * Remove `--tiny` size of `pxh-spinner`
