@@ -10,6 +10,10 @@
 * Add `--truncated` modifier class to `pxh-badge` which accomodates the approximate maximum width of `99,999`.
 * Increase maximum width available to navigation text now that badges are absolutely positioned
 * Add unopinionated default styles for horizontal rule `<hr>` elements
+* Apply custom styles to drawer navigation scrollbars in Chrome and Safari
+  * The `::scrollbar` pseudo-class syntax is not currently supported by IE Edge or Firefox
+* Add an experimental `pxh-view-header--pad-until@md` class to `pxh-view-header` which automatically applies left padding for the hamburger icon on mobile, and removes the padding at the `@md` breakpoint and above
+
 
 ### 0.12.6 - May 27, 2016
 * Bump versions on outdated node modules

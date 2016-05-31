@@ -57,6 +57,18 @@ $pxh-login-height:  60px !default;
   scrollbar-track-color: $gray10;
   scrollbar-face-color: $gray8;
   -webkit-overflow-scrolling: touch;
+  &::-webkit-scrollbar {
+    width: 7px;
+  }
+  &::-webkit-scrollbar-track {
+      background-color: $gray10;
+      border: 2px solid $gray10;
+  }
+  &::-webkit-scrollbar-thumb {
+      border-left: 2px solid $gray10;
+      border-right: 2px solid $gray10;
+      background-color: $gray7;
+  }
 }
 
 .pxh-navigation__item-icon {
