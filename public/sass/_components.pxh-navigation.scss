@@ -182,36 +182,6 @@ $pxh-login-height:  60px !default;
   .pxh-navigation__sub-link & {
     top: 44%; // magic number
   }
-  .pxh-navigation__link--selected &,
-  .pxh-navigation__sub-link--selected & {
-    &--navigation {
-      // when badge is on the current state the background color should be knocked out
-      background-color: $gray10;
-    }
-    // override the rule above in non-navigation contexts
-    // i'm deeply unhappy about doing it this way...
-    &--primary {
-      background-color: $primary-blue;
-    }
-    &--important {
-      background-color: $alert-red;
-    }
-    &--warning {
-      background-color: $alert-orange;
-    }
-    &--error {
-      background-color: $alert-yellow;
-    }
-    &--info {
-      background-color: $alert-blue;
-    }
-    &--healthy-black {
-      background-color: $black;
-    }
-    &--healthy-white {
-      background-color: $white;
-    }
-  }
 }
 
 /*------------------------------------*\
