@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>pxh-chrome 0.12.6 | 404 Error</title>
+    <title>pxh-chrome 0.12.6 | pxh-overlay</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -177,23 +177,61 @@
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="16" viewBox="291 489.4 20 16" class="pxh-drawer-toggle__icon"><path fill="#000000" d="M291 489.4v4h20v-4h-20zm0 10h20v-4h-20v4zm0 6h20v-4h-20v4z"></path></svg>
       </a>
     </div>
+    
     <section class="pxh-wrapper">
-  <header class="pxh-view-header pxh-view-header--wide@md pxh-view-header--narrow@lg">
-  </header>
-  <section class="pxh-view pxh-view--wide@md pxh-view--narrow@lg pxh-view--white" id="js-view">
-    <section class="pxh-error pxh-error@md pxh-error@lg">
-      <div class="pxh-error__icon">
-        <i class="fa fa-exclamation-circle"></i>
-      </div> 
-      <h1 class="pxh-error__title">
-        This &lt;module&gt; does not exist.
-      </h1>
-      <p class="pxh-error__description">
-        Return to <a href="index.html">&lt;home page&gt;</a>.
-      </p>
+      <header class="pxh-view-header pxh-view-header--wide@md pxh-view-header--narrow@lg">
+        <h1 class="pxh-view-header__title">
+          <a href="index.html" class="pxh-view-header__title-link">
+            Overlay
+          </a>
+        </h1>
+      </header>
+      <section class="pxh-view pxh-view--wide@md pxh-view--narrow@lg" id="js-view">
+
+        <div class="pxh-docs">
+
+          <h4>Javascript:</h4>
+
+          <p>When the user clicks <code>.pxh-drawer-toggle__link</code> or <code>.pxh-view-header-drawer-toggle__link</code>&hellip;</p>
+
+          <ul>
+            <li>Find <code>.pxh-overlay</code> and toggle the class <code>pxh-overlay--hidden</code> on it</li>
+          </ul>
+
+          <h4>Sass:</h4>
+
+          <pre><code>// Base styles for the overlay to display when
+  // pxh-drawer is toggled open on mobile and tablet.
+  .pxh-overlay {
+    z-index: 500;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: auto;
+    background-color: rgba(0, 0, 0, 0.7);
+    -webkit-transition: all 200ms ease-in-out;
+  }
+
+  // Modifier class that hides the overlay.
+  .pxh-overlay--hidden {
+    pointer-events: none;
+    background-color: rgba(0, 0, 0, 0);
+  }
+
+  // From the @lg (desktop) breakpoint and wider,
+  // prevent the overlay from being shown at all.
+  @include mq($from: lg) {
+    .pxh-overlay--hidden\@lg {
+      pointer-events: none;
+      background-color: rgba(0, 0, 0, 0);
+    }
+  }</code></pre>
+
+        </div>
+      </section>
     </section>
-  </section>
-</section>
 
     <!-- build:js js/pxh-chrome.js -->
     <script src="js/pxh-chrome.js"></script>

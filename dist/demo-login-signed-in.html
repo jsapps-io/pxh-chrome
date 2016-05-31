@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>pxh-chrome 0.12.6 | Loading Screen</title>
+    <title>pxh-chrome 0.12.6 | Drawer Login Demo - Logged In</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -19,18 +19,48 @@
       </div>
       <h1 class="pxh-drawer-header">
         <a href="index.html" class="pxh-drawer-header__link pxh-drawer-header__link--narrow@md pxh-drawer-header__link--wide@lg" title="Predix">
-          Predix is an app with a really long name
+          Predix
         </a>
       </h1>
-      <nav class="pxh-navigation pxh-navigation--narrow@md pxh-navigation--wide@lg">
-        <ul class="pxh-navigation__list">
-          <div class="pxh-spinner pxh-spinner--tiny pxh-spinner--inverted"></div>
-          <div class="pxh-spinner pxh-spinner--small pxh-spinner--inverted"></div>
-          <div class="pxh-spinner pxh-spinner--inverted"></div>
-          <div class="pxh-spinner pxh-spinner--large pxh-spinner--inverted"></div>
-        </ul>
-      </nav>
       <div class="pxh-login pxh-login--narrow@md pxh-login--wide@lg">
+        <a href="#" class="pxh-login__profile-link" title="Perspiciatis unde omnis iste natus">
+          <div class="pxh-login__avatar">
+            <img src="img/avatar.jpg" class="pxh-login__avatar-image">
+          </div>
+          <div class="pxh-login__name pxh-login__name--narrow@md pxh-login__name--wide@lg">
+            User who has a really long name
+          </div>
+          <div class="pxh-login__caret pxh-login__caret--narrow@md pxh-login__caret--wide@lg">
+            <i class="fa fa-angle-up pxh-login__caret-icon"></i>
+          </div>
+        </a>
+        <div class="pxh-login-menu pxh-login-menu--profile">
+          <ul class="pxh-login-menu__list">
+            <li class="pxh-login-menu__item">
+              <a class="pxh-login-menu__link" href="#" title="My Profile">My Profile</a>
+            </li>
+            <li class="pxh-login-menu__divider"></li>
+            <li class="pxh-login-menu__item">
+              <a class="pxh-login-menu__link" href="#" title="Sign Out">Sign Out</a>
+            </li>
+          </ul>
+        </div>
+        <div class="pxh-login-menu pxh-login-menu--settings">
+          <ul class="pxh-login-menu__list">
+            <li class="pxh-login-menu__item">
+              <a class="pxh-login-menu__link" href="#" title="Settings">Settings</a>
+            </li>
+            <li class="pxh-login-menu__item">
+              <a class="pxh-login-menu__link" href="#" title="About">About</a>
+            </li>
+            <li class="pxh-login-menu__item">
+              <a class="pxh-login-menu__link" href="#" title="Help">Help</a>
+            </li>
+          </ul>
+        </div>
+        <div class="pxh-login__settings pxh-login__settings--narrow@md pxh-login__settings--wide@lg">
+          <a class="pxh-login__settings-link" href="#" title="Settings"><i class="fa fa-cog"></i></a>
+        </div>
       </div>
     </aside>
     <div class="pxh-overlay pxh-overlay--hidden pxh-overlay--hidden@lg"></div>
@@ -43,23 +73,16 @@
     <section class="pxh-wrapper">
       <header class="pxh-view-header pxh-view-header--wide@md pxh-view-header--narrow@lg">
         <h1 class="pxh-view-header__title">
-          <a href="#" class="pxh-view-header__title-link">
-            Microapp View Header <!-- <i class="fa fa-caret-down pxh-view-header__title-action"></i> -->
+          <a href="index.html" class="pxh-view-header__title-link">
+            Drawer Login Demo - Signed In
           </a>
         </h1>
       </header>
       <section class="pxh-view pxh-view--wide@md pxh-view--narrow@lg" id="js-view">
-        <div class="pxh-spinner pxh-spinner--tiny"></div>
-        <div class="pxh-spinner pxh-spinner--small"></div>
-        <div class="pxh-spinner"></div>
-        <div class="pxh-spinner pxh-spinner--large"></div>
-        <div class="pxh-spinner pxh-spinner--large pxh-spinner--finished"></div>
         <div class="pxh-docs">
-        <div class="pxh-spinner pxh-spinner--tiny"></div>
-        <div class="pxh-spinner pxh-spinner--small"></div>
-        <div class="pxh-spinner"></div>
-        <div class="pxh-spinner pxh-spinner--large"></div>
-        <div class="pxh-spinner pxh-spinner--large pxh-spinner--finished"></div>
+          <p>This screen demonstrates...</p>
+
+          <h1>pxh-login</h1>
         </div>
       </section>
     </section>

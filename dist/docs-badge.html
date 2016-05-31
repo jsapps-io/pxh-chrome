@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>pxh-chrome 0.12.6 | 404 Error</title>
+    <title>pxh-chrome 0.12.6 | pxh-badge</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -177,23 +177,43 @@
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="16" viewBox="291 489.4 20 16" class="pxh-drawer-toggle__icon"><path fill="#000000" d="M291 489.4v4h20v-4h-20zm0 10h20v-4h-20v4zm0 6h20v-4h-20v4z"></path></svg>
       </a>
     </div>
+    
     <section class="pxh-wrapper">
-  <header class="pxh-view-header pxh-view-header--wide@md pxh-view-header--narrow@lg">
-  </header>
-  <section class="pxh-view pxh-view--wide@md pxh-view--narrow@lg pxh-view--white" id="js-view">
-    <section class="pxh-error pxh-error@md pxh-error@lg">
-      <div class="pxh-error__icon">
-        <i class="fa fa-exclamation-circle"></i>
-      </div> 
-      <h1 class="pxh-error__title">
-        This &lt;module&gt; does not exist.
-      </h1>
-      <p class="pxh-error__description">
-        Return to <a href="index.html">&lt;home page&gt;</a>.
-      </p>
+      <header class="pxh-view-header pxh-view-header--wide@md pxh-view-header--narrow@lg">
+        <h1 class="pxh-view-header__title">
+          <a href="index.html" class="pxh-view-header__title-link">
+            Badges
+          </a>
+        </h1>
+      </header>
+      <section class="pxh-view pxh-view--wide@md pxh-view--narrow@lg" id="js-view">
+
+        <div class="pxh-docs">
+
+          <h4>Add a badge to a primary navigation item</h4>
+
+          <p>To include a badge to the right of a primary navigation item, refer to this markup:</p>
+
+          <code><pre>&lt;a href="#" class="pxh-navigation__link pxh-navigation__link--active"&gt;
+    &lt;i class="fa fa-table pxh-navigation__item-icon"&gt;&lt;/i&gt;
+    &lt;span class="pxh-navigation__item-text"&gt;Nav Item Three&lt;/span&gt;&lt;span class="pxh-badge pxh-badge--navigation"&gt;&lt;/span&gt;
+  &lt;/a&gt;</pre></code>
+
+          <p>A number of modifier classes are available to changing the color of the badge. For instance, add the modifier class <code>pxh-badge--important</code> to make the badge red.</p>
+
+          <span class="pxh-badge">123</span> <code>&lt;span class="pxh-badge"&gt;123&lt;/span&gt;</code><br>
+          <span class="pxh-badge pxh-badge--primary">123</span> <code>&lt;span class="pxh-badge pxh-badge--primary"&gt;123&lt;/span&gt;</code><br>
+          <span class="pxh-badge pxh-badge--info">123</span> <code>&lt;span class="pxh-badge pxh-badge--info"&gt;123&lt;/span&gt;</code><br>
+          <span class="pxh-badge pxh-badge--healthy-black">123</span> <code>&lt;span class="pxh-badge pxh-badge--healthy-black"&gt;123&lt;/span&gt;</code><br>
+          <span class="pxh-badge pxh-badge--healthy-white">123</span> <code>&lt;span class="pxh-badge pxh-badge--healthy-white"&gt;123&lt;/span&gt;</code><br>
+          <span class="pxh-badge pxh-badge--error">123</span> <code>&lt;span class="pxh-badge pxh-badge--error"&gt;123&lt;/span&gt;</code><br>
+          <span class="pxh-badge pxh-badge--warning">123</span> <code>&lt;span class="pxh-badge pxh-badge--warning"&gt;123&lt;/span&gt;</code><br>
+          <span class="pxh-badge pxh-badge--important">123</span> <code>&lt;span class="pxh-badge pxh-badge--important"&gt;123&lt;/span&gt;</code><br>
+          <span class="pxh-badge pxh-badge--navigation">123</span> <code>&lt;span class="pxh-badge pxh-badge--navigation"&gt;123&lt;/span&gt;</code>
+
+        </div>
+      </section>
     </section>
-  </section>
-</section>
 
     <!-- build:js js/pxh-chrome.js -->
     <script src="js/pxh-chrome.js"></script>
