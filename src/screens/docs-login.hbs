@@ -1,0 +1,113 @@
+---
+title: "pxh-login"
+bodyClass: "pxh-chromeful"
+errorSelected: false
+---
+
+    <section class="pxh-wrapper">
+      <header class="pxh-view-header pxh-view-header--wide@md pxh-view-header--narrow@lg">
+        <h1 class="pxh-view-header__title">
+          <a href="index.html" class="pxh-view-header__title-link">
+            Login Component
+          </a>
+        </h1>
+      </header>
+      <section class="pxh-view pxh-view--wide@md pxh-view--narrow@lg" id="js-view">
+
+        <div class="pxh-docs">
+
+          <h3>Overview</h3>
+
+
+          <p>The basic markup for the <em>signed-out</em> state of <code>pxh-login</code> looks like this:</p>
+
+
+          <pre><code>&lt;div class="pxh-login pxh-login--narrow@md"&gt;
+    &lt;a href="#" class="pxh-login__link"&gt;
+      &lt;div class="pxh-login__avatar"&gt;
+        &lt;i class="fa fa-user pxh-login__avatar-icon"&gt;&lt;/i&gt;
+      &lt;/div&gt;
+      &lt;div class="pxh-login__name pxh-login__name--narrow@md"&gt;
+        Log In
+      &lt;/div&gt;
+    &lt;/a&gt;
+  &lt;/div&gt;</code></pre>
+        
+          <p>The basic markup for the <em>signed-in</em> state of <code>pxh-login</code> looks like this:</p>
+
+          <pre><code>&lt;div class="pxh-login pxh-login--narrow@md"&gt;
+    &lt;a href="#" class="pxh-login__link"&gt;
+      &lt;div class="pxh-login__avatar"&gt;
+        &lt;img src="img/avatar.jpg" class="pxh-login__avatar-image"&gt;
+      &lt;/div&gt;
+      &lt;div class="pxh-login__name pxh-login__name--narrow@md"&gt;
+        Xiying Wang
+      &lt;/div&gt;
+      &lt;div class="pxh-login__caret pxh-login__caret--narrow@md"&gt;
+        &lt;i class="fa fa-angle-up pxh-login__caret-icon"&gt;&lt;/i&gt;
+      &lt;/div&gt;
+    &lt;/a&gt;
+    &lt;div class="pxh-login-menu"&gt;
+      &lt;ul class="pxh-login-menu__list"&gt;
+        &lt;li class="pxh-login-menu__item"&gt;
+          &lt;a class="pxh-login-menu__link" href="#"&gt;My Profile&lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li class="pxh-login-menu__item"&gt;
+          &lt;a class="pxh-login-menu__link" href="#"&gt;Help&lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li class="pxh-login-menu__divider"&gt;&lt;/li&gt;
+        &lt;li class="pxh-login-menu__item"&gt;
+          &lt;a class="pxh-login-menu__link" href="/logout"&gt;Log Out&lt;/a&gt;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+    &lt;div class="pxh-login__settings pxh-login__settings--narrow@md"&gt;
+      &lt;a class="pxh-login__settings-link" href="#"&gt;&lt;i class="fa fa-cog"&gt;&lt;/i&gt;&lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;</code></pre>
+
+
+          <h4>Javascript:</h4>
+
+          <p>When the user clicks <code>.pxh-drawer-toggle__link</code> or <code>.pxh-view-header-drawer-toggle__link</code>&hellip;</p>
+
+          <ul>
+            <li>Find <code>.pxh-login__name</code> and toggle the class <code>pxh-login__name--narrow@md</code> on it</li>
+            <li>Find <code>.pxh-login__caret</code> and toggle the class <code>pxh-login__caret--narrow@md</code> on it</li>
+            <li>Find <code>.pxh-login__settings</code> and toggle the class <code>pxh-login__settings--narrow@md</code> on it</li>
+          </ul>
+
+          <h4>Sass:</h4>
+
+          <pre><code>// From the @md (tablet) breakpoint and wider,
+  // display pxh-login__name in its narrow state.
+  // Remove this class to display the drawer in its wide state.
+  @include mq($from: md) {
+    .pxh-login__name--narrow\@md {
+      display: none;
+    }
+  }
+
+  // From the @md (tablet) breakpoint and wider,
+  // display pxh-login__caret in its narrow state.
+  // Remove this class to display the drawer in its wide state.
+  @include mq($from: md) {
+    .pxh-login__caret--narrow\@md {
+      display: none;
+    }
+  }
+
+  // From the @md (tablet) breakpoint and wider,
+  // display pxh-login__settings in its narrow state.
+  // Remove this class to display the drawer in its wide state.
+  @include mq($from: md) {
+    .pxh-login__settings--narrow\@md {
+      display: none;
+    }
+  }</code></pre>
+
+
+
+        </div>
+      </section>
+    </section>

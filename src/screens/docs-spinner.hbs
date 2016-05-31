@@ -1,0 +1,97 @@
+---
+title: "Loading Indicator"
+bodyClass: "pxh-chromeful"
+---
+
+    <section class="pxh-wrapper">
+      <header class="pxh-view-header pxh-view-header--wide@md pxh-view-header--narrow@lg">
+        <h1 class="pxh-view-header__title">
+          <a href="docs.html" class="pxh-view-header__title-link">
+            Loading Indicator
+          </a>
+        </h1>
+      </header>
+      <section class="pxh-view pxh-view--wide@md pxh-view--narrow@lg" id="js-view">
+        <div class="pxh-docs">
+          <h1>Progress &amp; Activity</h1>
+
+          <p>A progress indicator provides a visual indicator that the application is loading content. The type of indicator is dependent on the type of content and how long the operation will take. The placement and size of the indicator will be determined by the content area and the type of process. </p>
+
+<!--           <h3>Indeterminate</h3>
+          <p>An indeterminate indicator visualizes an unspecified amount of time that the user must wait for their content to be loaded. An indeterminate indicator ask that the user wait while the loading process finishes when it’s not known how long the process will take.</p>
+
+          <h3>Determinate</h3>
+          <p>A determinate indicator will display how long a process will take. A determinate indicator can be complemented with a percentage loaded or a number of values loaded.</p> -->
+
+          <h2>Circular Loader</h2>
+          A circular loader is best used to indicate to the user that a single loading process is taking place. A circular loader will generally center within the content area or loading process.
+
+          <h3>Usage</h3>
+
+          <pre><code>&lt;div class="pxh-spinner"&gt;&lt;/div&gt;</code></pre>
+
+          <div class="pxh-spinner"></div>
+
+          <hr>
+
+          <pre><code>&lt;div class="pxh-spinner pxh-spinner--small"&gt;&lt;/div&gt;</code></pre>
+
+          <div class="pxh-spinner pxh-spinner--small"></div>
+
+          <hr>
+
+          <pre><code>&lt;div class="pxh-spinner pxh-spinner--large"&gt;&lt;/div&gt;</code></pre>
+
+          <div class="pxh-spinner pxh-spinner--large"></div>
+
+          <hr>
+
+          <pre><code>&lt;div class="pxh-spinner pxh-spinner--finished"&gt;&lt;/div&gt;</code></pre>
+
+          <div class="pxh-spinner pxh-spinner--finished"></div>
+
+          <p>&nbsp;</p>
+
+          <p><em>The <code>pxh-spinner--finished</code> modifier class completely hides the spinner and all its spacing. This is helpful if you want to hide the spinner but keep its element in the DOM.</em></p>
+
+          <hr>
+
+          <pre><code>&lt;div class="pxh-spinner pxh-spinner--inverted"&gt;&lt;/div&gt;</code></pre>
+
+          <div class="pxh-spinner pxh-spinner--inverted"></div>
+
+          <hr>
+
+          <pre><code>&lt;div class="pxh-spinner pxh-spinner-small pxh-spinner--inverted"&gt;&lt;/div&gt;</code></pre>
+
+          <div class="pxh-spinner pxh-spinner-small pxh-spinner--inverted"></div>
+
+          <hr>
+
+          <pre><code>&lt;div class="pxh-spinner pxh-spinner-small pxh-spinner--inverted"&gt;&lt;/div&gt;</code></pre>
+
+          <div class="pxh-spinner pxh-spinner-large pxh-spinner--inverted"></div>
+<!-- 
+          <h2>Linear Loader</h2>
+          <p>A linear loader is best used when integrating a loading indicator within a component or the area requires a loader to horizontally fit within an area.</p>
+
+          <h2>Ellipsis Loader</h2>
+          <p>An ellipsis loader is best used when loading multiple objects within a view or the content area limits the size of an indicator. The subtle nature of the ellipsis allows the indicator to provide enough context that a loading process is active while not visually disturbing other areas of the interface.</p>
+
+          <h2>Preview Loader</h2>
+          <p>A preview loader is best used when loading multiple unique objects. A preview loader can also be used to provide context for an empty area that is loading content.</p>
+
+          <h2>Micro App / Page Loading</h2>
+          <p>Loading a Micro App requires the user to wait for an indeterminate amount of time while the main content of the application loads. It is best to use a circular loader to provide a strong visual indicator that the Micro App is in the process of loading. The circular loader is centered within the content area of the Micro App.</p>
+
+          <h2>Microservice Loading</h2>
+          <p>Since Micro-Services are loaded independently, numerous indeterminate loaders can appear within a Micro App at any given time. It is best to use the ellipsis loaders because it provides a subtle loading indicator while not visually distracting from other services that have been loaded.</p>
+
+          <h2>Widget Loading</h2>
+          <p>Widgets are loaded independently within a card and will have an unspecified amount of time it will take for the widget to load. Widgets will load a animated preview image. Loading a preview image provides context of the visualization while filling in areas of the application that would be empty. </p>
+
+          <h2>Progressive Loading</h2>
+          <p>When a data set is too large to load as a single instance, progressively loading the content is necessary. Arriving at the end of a data set will load the next data set. Providing a loading state will inform the user they must wait till the next data set will load. It is best to place the loading state in the area where the next data set will appear.</p> -->
+        </div>
+      </section>
+    </section>

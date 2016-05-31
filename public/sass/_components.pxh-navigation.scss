@@ -57,6 +57,18 @@ $pxh-login-height:  60px !default;
   scrollbar-track-color: $gray10;
   scrollbar-face-color: $gray8;
   -webkit-overflow-scrolling: touch;
+  &::-webkit-scrollbar {
+    width: 7px;
+  }
+  &::-webkit-scrollbar-track {
+      background-color: $gray10;
+      border: 2px solid $gray10;
+  }
+  &::-webkit-scrollbar-thumb {
+      border-left: 2px solid $gray10;
+      border-right: 2px solid $gray10;
+      background-color: $gray7;
+  }
 }
 
 .pxh-navigation__item-icon {
@@ -79,7 +91,7 @@ $pxh-login-height:  60px !default;
   height: $pxh-navigation-link-height;
   float: left;
   clear: left;
-  padding: 15px 2px 0 $pxh-drawer-margin;
+  padding: 15px 0 0 $pxh-drawer-margin;
 }
 
 /*------------------------------------*\
@@ -180,37 +192,7 @@ $pxh-login-height:  60px !default;
     top: 33%; // magic number
   }
   .pxh-navigation__sub-link & {
-    top: 44%; // magic number
-  }
-  .pxh-navigation__link--selected &,
-  .pxh-navigation__sub-link--selected & {
-    &--navigation {
-      // when badge is on the current state the background color should be knocked out
-      background-color: $gray10;
-    }
-    // override the rule above in non-navigation contexts
-    // i'm deeply unhappy about doing it this way...
-    &--primary {
-      background-color: $primary-blue;
-    }
-    &--important {
-      background-color: $alert-red;
-    }
-    &--warning {
-      background-color: $alert-orange;
-    }
-    &--error {
-      background-color: $alert-yellow;
-    }
-    &--info {
-      background-color: $alert-blue;
-    }
-    &--healthy-black {
-      background-color: $black;
-    }
-    &--healthy-white {
-      background-color: $white;
-    }
+    top: 30%; // magic number
   }
 }
 
@@ -302,7 +284,7 @@ $pxh-login-height:  60px !default;
   white-space: nowrap;
   text-overflow: ellipsis;
   padding-left: $pxh-drawer-margin;
-  max-width: $pxh-drawer-width-wide - ($pxh-drawer-margin * 4); // has to be narrower than the available space to accomodate potential pxh-badge
+  max-width: $pxh-drawer-width-wide - ($pxh-drawer-margin * 3); // has to be narrower than you think to accomodate potential vertical scrollbar in IE11
   float: left;
   opacity: 1;
 }
@@ -332,7 +314,7 @@ $pxh-login-height:  60px !default;
   opacity: 1;
   visibility: visible;
   height: $pxh-navigation-sub-link-height;
-  padding: $pxh-drawer-margin / 1.5 2px 0 $pxh-drawer-margin * 3;
+  padding: ($inuit-base-spacing-unit / 2) ($inuit-base-spacing-unit / 8) 0 $pxh-drawer-margin * 3;
 }
 
 // mixin for "animate out" styles
@@ -371,7 +353,7 @@ $pxh-login-height:  60px !default;
     font-size: $inuit-base-font-size;
     opacity: 0;
     visibility: visible;
-    height: $inuit-base-spacing-unit * 2;
+    height: $pxh-navigation-sub-link-height;
     padding: ($inuit-base-spacing-unit / 2) ($inuit-base-spacing-unit / 8) 0 $pxh-drawer-margin * 3;
   }
   100% {
@@ -390,7 +372,7 @@ $pxh-login-height:  60px !default;
   25% {
     opacity: 0;
     visibility: visible;
-    height: $inuit-base-spacing-unit * 2;
+    height: $pxh-navigation-sub-link-height;
     padding: ($inuit-base-spacing-unit / 2) ($inuit-base-spacing-unit / 8) 0 $pxh-drawer-margin * 3;
   }
   99% {
@@ -422,7 +404,7 @@ $pxh-login-height:  60px !default;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  max-width: $pxh-drawer-width-wide - ($pxh-drawer-margin * 5); // has to be narrower than the available space to accomodate potential pxh-badge
+  max-width: $pxh-drawer-width-wide - ($pxh-drawer-margin * 3.25); // has to be narrower than the available space to accomodate potential pxh-badge
   float: left;
   opacity: 1;
 }
@@ -446,7 +428,8 @@ $pxh-login-height:  60px !default;
 \*------------------------------------*/
 
 .pxh-navigation__sub-item--divider {
-  margin-top: $pxh-navigation-divider-margin * 1.5;
+  margin-top: $pxh-navigation-divider-margin * .75;
+  margin-bottom: $pxh-navigation-divider-margin * .75;
   margin-left: $pxh-drawer-margin * 3;
   margin-right: $pxh-drawer-margin;
   display: block;

@@ -78,15 +78,16 @@ gulp.task('bump', () => {
 gulp.task('sass', () => {
   return gulp.src('public/sass/*.scss')
     .pipe($.plumber())
-    .pipe($.sourcemaps.init())
     .pipe($.sass.sync({
       outputStyle: 'expanded',
       precision: 10,
       includePaths: ['.', 'bower_components']
     }).on('error', $.sass.logError))
+    .pipe($.sourcemaps.init())
     .pipe($.autoprefixer({browsers: ['> 1%', 'last 2 versions', 'Firefox ESR']}))
     .pipe($.sourcemaps.write())
     .pipe(gulp.dest('.tmp/css'))
+    .pipe($.if('*.css', $.cssnano()))
     .pipe(gulp.dest('dist/css'))
     .pipe(reload({stream: true}));
 });
@@ -98,6 +99,10 @@ gulp.task('js', () => {
     .pipe($.babel())
     .pipe($.sourcemaps.write('.'))
     .pipe(gulp.dest('.tmp/js'))
+    .pipe($.if('*.js', $.uglify({
+      preserveComments: 'some'
+    })))
+    .pipe(gulp.dest('dist/js'))
     .pipe(reload({stream: true}));
 });
 
@@ -152,10 +157,6 @@ gulp.task('smith', function() {
 gulp.task('html', ['sass', 'js'], () => {
   return gulp.src(['.tmp/*.html'])
     .pipe($.useref({searchPath: ['.tmp']}))
-    .pipe($.if('*.js', $.uglify({
-      preserveComments: 'some'
-    })))
-    .pipe($.if('*.css', $.cssnano()))
     .pipe($.if('*.html', $.htmlmin()))
     .pipe(gulp.dest('dist'));
 });
