@@ -47,5 +47,10 @@
     color: $black;
     border-color: $gray5;
   }
+  &--truncated {
+    max-width: $inuit-base-spacing-unit * 3;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
 }
