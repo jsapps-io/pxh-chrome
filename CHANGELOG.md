@@ -2,6 +2,7 @@
 
 ### pending release
 * Change order of items on index page to match documentation navigation
+* Update `pxh-spinner` code examples and documentation
 
 ### 0.13.0 - May 31, 2016
 * Ignore `/src`, `/dist/*.html` and other files when pxh-chrome is installed via Bower
