@@ -1,7 +1,7 @@
 #pxh-chrome changelog
 
 ### pending release
-* _nothing yet..._
+* Change order of items on index page to match documentation navigation
 
 ### 0.13.0 - May 31, 2016
 * Ignore `/src`, `/dist/*.html` and other files when pxh-chrome is installed via Bower
