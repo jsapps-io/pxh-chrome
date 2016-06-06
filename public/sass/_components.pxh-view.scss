@@ -102,6 +102,12 @@ $pxh-view-header-height: 61px !default; // locked to current height of px-contex
     }
   }
 
+  @include mq($until: md) {
+    .pxh-view-header--nudge-until\@md {
+      padding-left: $pxh-drawer-width-narrow;
+    }
+  }
+
   // From the @lg (desktop) breakpoint and wider,
   // add this class to display the view header in its narrow state,
   // which accounts for the width of the wide state of the drawer.
