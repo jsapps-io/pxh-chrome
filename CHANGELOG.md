@@ -17,7 +17,7 @@
     * drawerIsVisible - BOOLEAN
     * drawerIsNarrow - BOOLEAN
     * drawerDisplacesView - BOOLEAN
-    * drawerDisplacesViewNarrowAmount - BOOLEAN - <em>On tablet the drawer displaces a narrow amount of the view no matter if it's narrow or wide (when the drawer is wide it overlays the content without displacing it more)</em>
+    * drawerDisplacesViewNarrowAmount - BOOLEAN - _on tablet the drawer displaces a narrow amount of the view no matter if it's narrow or wide (when the drawer is wide it overlays the content without displacing it more)_
 
 ### 0.13.0 - May 31, 2016
 * Ignore `/src`, `/dist/*.html` and other files when pxh-chrome is installed via Bower
