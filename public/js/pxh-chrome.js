@@ -1,5 +1,5 @@
 'use strict';
-/*! pxh-chrome.js 0.13.0 */
+/*! pxh-chrome.js 0.13.1 */
 
 // **************
 // CONFIG OBJECTS
@@ -529,10 +529,12 @@ var pxhLoadState = function(pxhStatesObject, targetStateName) {
 var pxhToggleDrawerOnLarge = function(mediaQuery) {
   if (mediaQuery.matches) {
     pxhLoadState(pxhStatesObject, 'drawerOpen');
+    document.dispatchEvent(pxhDrawerOpened);
     pxhCookies.set('pxh-drawer-narrow', 'false', { expires: 1, path: '/'});
     pxhCookies.set('pxh-drawer-open', 'true', { expires: 1, path: '/'});
   } else {
     pxhLoadState(pxhStatesObject, 'drawerClosed');
+    document.dispatchEvent(pxhDrawerClosed);
     pxhCookies.set('pxh-drawer-narrow', 'true', { expires: 1, path: '/'});
     pxhCookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/'});
   }
@@ -547,8 +549,8 @@ var pxhBindDrawerMediaQueryControls = function(targetClass, mediaQuery) {
       targetElements[i].addEventListener('click', function() {
         if (!mediaQuery.matches) {
           pxhLoadState(pxhStatesObject, 'drawerClosed');
-          pxhCookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/'});
           pxhCookies.set('pxh-drawer-narrow', 'true', { expires: 1, path: '/'});
+          pxhCookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/'});
         }
       })
     }
@@ -560,13 +562,15 @@ var pxhToggleDrawer = function(event) {
   event.preventDefault();
   if (pxhCookies.get('pxh-drawer-open') === 'true') {
     pxhLoadState(pxhStatesObject, 'drawerClosed');
-    pxhCookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/'});
+    document.dispatchEvent(pxhDrawerClosed);
     pxhCookies.set('pxh-drawer-narrow', 'true', { expires: 1, path: '/'});
+    pxhCookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/'});
   }
   else if (pxhCookies.get('pxh-drawer-open') === 'false') {
     pxhLoadState(pxhStatesObject, 'drawerOpen');
-    pxhCookies.set('pxh-drawer-open', 'true', { expires: 1, path: '/'});
+    document.dispatchEvent(pxhDrawerOpened);
     pxhCookies.set('pxh-drawer-narrow', 'false', { expires: 1, path: '/'});
+    pxhCookies.set('pxh-drawer-open', 'true', { expires: 1, path: '/'});
   }
 }
 
@@ -587,8 +591,10 @@ var pxhOverlayDrawerControl = function() {
       pxhOverlay[i].addEventListener('click', function(e) {
         if ((!pxhLgBreakpoint.matches) && (pxhCookies.get('pxh-drawer-open') === 'true')) {
           pxhLoadState(pxhStatesObject, 'drawerClosed');
-          pxhCookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/'});
+          document.dispatchEvent(pxhDrawerClosed);
           pxhCookies.set('pxh-drawer-narrow', 'true', { expires: 1, path: '/'});
+          pxhCookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/'});
+
         }
       })
     }
@@ -599,8 +605,9 @@ var pxhEscapeDrawerControl = function() {
   document.addEventListener('keyup', function(e) {
      if ((e.keyCode == 27) && (!pxhLgBreakpoint.matches) && (pxhCookies.get('pxh-drawer-open') === 'true')) {
       pxhLoadState(pxhStatesObject, 'drawerClosed');
-      pxhCookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/'});
+      document.dispatchEvent(pxhDrawerClosed);
       pxhCookies.set('pxh-drawer-narrow', 'true', { expires: 1, path: '/'});
+      pxhCookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/'});
     }
   })
 }
@@ -651,6 +658,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
   if ((pxhLgBreakpoint.matches) && (pxhCookies.get('pxh-drawer-narrow') === 'true')) {
     // toggle the drawer closed
     pxhLoadState(pxhStatesObject, 'drawerClosed');
+    document.dispatchEvent(pxhDrawerClosed);
     pxhCookies.set('pxh-drawer-narrow', 'true', { expires: 1, path: '/'});
   } 
   else if (pxhLgBreakpoint.matches) {
@@ -685,6 +693,16 @@ pxhViewResized.initCustomEvent('pxhViewResized', false, false, {
     'viewResized': true
 });
 
+var pxhDrawerOpened = document.createEvent('CustomEvent');
+pxhDrawerOpened.initCustomEvent('pxhDrawerOpened', false, false, {
+    'drawerOpened': true
+});
+
+var pxhDrawerClosed = document.createEvent('CustomEvent');
+pxhDrawerClosed.initCustomEvent('pxhDrawerClosed', false, false, {
+    'drawerClosed': true
+});
+
 if (pxhView) {
   new pxhResizeSensor(pxhView, function() {
     document.dispatchEvent(pxhViewResized);
@@ -693,4 +711,12 @@ if (pxhView) {
 
 // document.addEventListener('pxhViewResized', function(event) {
 //   console.log('pxhViewResized was fired!');
+// });
+
+// document.addEventListener('pxhDrawerOpened', function(event) {
+//   console.log('the drawer was opened!');
+// });
+
+// document.addEventListener('pxhDrawerClosed', function(event) {
+//   console.log('the drawer was closed!');
 // });

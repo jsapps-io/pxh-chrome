@@ -3,6 +3,22 @@
 ### pending release
 * _nothing yet..._
 
+### 0.13.1 - Jun 6, 2016
+* Add `pxh-view-header--indent-until@md` responsive modifier class
+  * This class prevents a microapp's view header content from colliding with the "hamburger" drawer toggle by automatically inserting the required left padding at the mobile breakpoint, and removing it at wider breakpoints
+* Fix `pxh-view-header__title` font weight, prevent long lines from wrapping, and automatically truncate it with elipses if its text is longer than its container
+* Change order of items on index page to match documentation navigation
+* Update `pxh-spinner` code examples and documentation
+* **experimental:** Add `pxhDrawerOpened` and `pxhDrawerClosed` custom events, which fire when the drawer opens or closes
+  * These events are likely to change, but we want to see if they are helpful in addition to the `pxhViewResized` event
+  * The reason they'll likely change is because "opened" and "closed" don't cover all the possible drawer states
+  * We'll likely want to expose a pxhDrawerState object that fires events, or that a microapp can query to determine the state of the drawer
+  * The drawerState object might include:
+    * drawerIsVisible - BOOLEAN
+    * drawerIsNarrow - BOOLEAN
+    * drawerDisplacesView - BOOLEAN
+    * drawerDisplacesViewNarrowAmount - BOOLEAN - <em>On tablet the drawer displaces a narrow amount of the view no matter if it's narrow or wide (when the drawer is wide it overlays the content without displacing it more)</em>
+
 ### 0.13.0 - May 31, 2016
 * Ignore `/src`, `/dist/*.html` and other files when pxh-chrome is installed via Bower
 * Create demo and documentation pages for all major `pxh-*` components
@@ -13,12 +29,11 @@
 * Remove CSS rule that overrode the default badge background color when it was rendered inside a selected navigation item, as we're no longer using the same color to indicate the selected state
 * Add separate demos for each pxh-chrome component
 * Add colored borders around all badge states so their layout and sizing is consistent with the required border around `pxh-badge--healthy-white`
-* Add `--truncated` modifier class to `pxh-badge` which accomodates the approximate maximum width of `99,999`.
+* Add `--truncated` modifier class to `pxh-badge` which accomodates the approximate maximum width of `99,999`
 * Increase maximum width available to navigation text now that badges are absolutely positioned
 * Add unopinionated default styles for horizontal rule `<hr>` elements
 * Apply custom styles to drawer navigation scrollbars in Chrome and Safari
   * The `::scrollbar` pseudo-class syntax is not currently supported by IE Edge or Firefox
-* Add an experimental `pxh-view-header--pad-until@md` class to `pxh-view-header` which automatically applies left padding for the hamburger icon on mobile, and removes the padding at the `@md` breakpoint and above
 
 
 ### 0.12.6 - May 27, 2016

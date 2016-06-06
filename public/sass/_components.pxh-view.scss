@@ -102,6 +102,12 @@ $pxh-view-header-height: 61px !default; // locked to current height of px-contex
     }
   }
 
+  @include mq($until: md) {
+    .pxh-view-header--nudge-until\@md {
+      padding-left: $pxh-drawer-width-narrow;
+    }
+  }
+
   // From the @lg (desktop) breakpoint and wider,
   // add this class to display the view header in its narrow state,
   // which accounts for the width of the wide state of the drawer.
@@ -114,9 +120,12 @@ $pxh-view-header-height: 61px !default; // locked to current height of px-contex
 }
 
 .pxh-view-header__title {
+  font-weight: normal;
   margin: 0;
   padding: 0;
-  font-weight: normal;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
   padding-top: $inuit-base-spacing-unit;
   text-align: center;
   font-size: $inuit-base-font-size * 1.5;

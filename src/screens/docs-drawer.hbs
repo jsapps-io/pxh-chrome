@@ -5,18 +5,16 @@ errorSelected: false
 ---
 
     <section class="pxh-wrapper">
-      <header class="pxh-view-header pxh-view-header--wide@md pxh-view-header--narrow@lg">
+      <header class="pxh-view-header pxh-view-header--wide@md pxh-view-header--narrow@lg pxh-view-header--nudge-until@md">
         <h1 class="pxh-view-header__title">
           <a href="index.html" class="pxh-view-header__title-link">
-            Drawer, View &amp; View Header
+            Drawer, View &amp; View Header Documentation
           </a>
         </h1>
       </header>
       <section class="pxh-view pxh-view--wide@md pxh-view--narrow@lg" id="js-view">
 
         <div class="pxh-docs">
-
-
 
           <h2>pxh-drawer</h2>
 
@@ -61,8 +59,6 @@ errorSelected: false
       width: $pxh-drawer-width-narrow;
     }
   }</code></pre>
-
-
 
           <h2>pxh-view and pxh-view-header</h2>
 
@@ -134,8 +130,28 @@ errorSelected: false
     }
   }</code></pre>
 
+          <hr>
 
+          <h2>Accounting for the "hamburger" drawer toggle menu at the mobile breakpoint</h2>
 
+          <p>By default, <code>pxh-view-header</code> assumes the styles for your microapp's view header content will account for the extra space needed to display the "hamburger" drawer toggle menu at the mobile breakpoint. If you would rather that pxh-chrome handles this spacing automatically, add the responsive modifier class <code>pxh-view-header--nudge-until@md</code> to your <code>pxh-view-header</code> element markup like so:</p>
+
+          <pre><code>&lt;section class="pxh-wrapper"&gt;
+  &lt;header class="pxh-view-header pxh-view-header--wide@md pxh-view-header--narrow@lg <strong>pxh-view-header--nudge-until@md</strong>"&gt;
+    &lt;h1 class="pxh-view-header__title"&gt;
+      &lt;a href="index.html" class="pxh-view-header__title-link"&gt;
+        View Header Nudge Demo
+      &lt;/a&gt;
+    &lt;/h1&gt;
+  &lt;/header&gt;
+  &lt;section class="pxh-view pxh-view--wide@md pxh-view--narrow@lg" id="js-view"&gt;
+    &hellip;
+  &lt;/section&gt;
+&lt;/section&gt;</code></pre>
+
+<p>This class will automatically include the extra left spacing for the drawer toggle menu at the mobile breakpoint and below, but remove it at all higher breakpoints.</p>
+
+<p>Typically we prefer that the mobile breakpoint is simply defined by our application's default non-responsive styles, and we layer additional styles on top of it to achieve the desired look-and-feel at wider breakpoints. By targeting <em>lower</em> rather than <em>higher</em> breakpoints the <code>--until@md</code> responsive modifier class clearly doesn't follow this best practice, but we find it to be an allowable exception in this case.</p>
         </div>
       </section>
     </section>
