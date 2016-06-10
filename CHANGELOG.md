@@ -4,7 +4,7 @@
 * _nothing yet..._
 
 ### 0.13.1 - Jun 6, 2016
-* Add `pxh-view-header--indent-until@md` responsive modifier class
+* Add `pxh-view-header--nudge-until@md` responsive modifier class
   * This class prevents a microapp's view header content from colliding with the "hamburger" drawer toggle by automatically inserting the required left padding at the mobile breakpoint, and removing it at wider breakpoints
 * Fix `pxh-view-header__title` font weight, prevent long lines from wrapping, and automatically truncate it with elipses if its text is longer than its container
 * Change order of items on index page to match documentation navigation
