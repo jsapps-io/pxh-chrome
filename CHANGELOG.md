@@ -1,7 +1,8 @@
 #pxh-chrome changelog
 
-### pending release
-* _nothing yet..._
+### 0.13.2 - Jun 13, 2016
+* Fix markdown formatting in CHANGELOG
+* Fix incorrect class name in CHANGELOG
 
 ### 0.13.1 - Jun 6, 2016
 * Add `pxh-view-header--nudge-until@md` responsive modifier class
