@@ -76,10 +76,6 @@ $pxh-view-background-colors: (
 }
 
 
-
-
-
-
 /*------------------------------------*\
     #PXH-VIEW-HEADER
 \*------------------------------------*/
@@ -89,7 +85,7 @@ $pxh-view-background-colors: (
   top: 0;
   right: 0;
   left: 0;
-  border-bottom: 1px solid $gray6;
+  border-bottom: 1px solid rgba($gray7, 0.8);
   height: $pxh-view-header-height;
   background-color: $white;
   transition: all 300ms ease-in-out;
