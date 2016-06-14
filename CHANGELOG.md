@@ -1,5 +1,13 @@
 #pxh-chrome changelog
 
+### 0.13.3 - June 14, 2016
+* Add modifier classes for `pxh-view` that allow you to override the default background color with any Predix UI monochromatic color
+  * Options now include `white`, `gray1-10` and `black`
+  * Simply add the modifier class (e.g. `pxh-view--gray7`) to your `pxh-view` element in your microapp to use it
+* Add a demo screen for each `pxh-view` background color modifier class
+* Fix code whitespace in documentation
+* Add links to demo screens from documentation screens
+
 ### 0.13.2 - Jun 13, 2016
 * Fix markdown formatting in CHANGELOG
 * Fix incorrect class name in CHANGELOG
@@ -124,7 +132,7 @@
 * Move all Px Sass `@import` dependencies directly into pxh-chrome 
 * Remove all Px dependencies from `bower.json`
 * Remove GE Inspira fonts from pxh-chrome
-  * We are relying on each microapp to load it if it needs it, which current experience indicates is a reliable assumption.
+  * We are relying on each microapp to load it if it needs it, which current experience indicates is a reliable assumption
 * Bump required Node version to 4.x.x
 * Bump font-awesome to 4.6.2
 * Increase default end-to-end test timeout to 10 seconds
