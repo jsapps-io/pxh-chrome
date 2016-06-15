@@ -1,5 +1,5 @@
 'use strict';
-/*! pxh-chrome.js 0.13.3 */
+/*! pxh-chrome.js 0.13.4 */
 
 // **************
 // CONFIG OBJECTS
@@ -666,6 +666,10 @@ document.addEventListener('DOMContentLoaded', function(event) {
   } else {
     pxhCookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/'});
   }
+  document.addEventListener('navRefreshed', function(event) {
+    pxhToggleLoginMenu('pxh-login__profile-link', 'pxh-login-menu--profile', 'pxh-login-menu--visible');
+    pxhToggleLoginMenu('pxh-login__settings-link', 'pxh-login-menu--settings', 'pxh-login-menu--visible');
+  });
 });
 
 pxhLgBreakpoint.addListener(pxhToggleDrawerOnLarge);
