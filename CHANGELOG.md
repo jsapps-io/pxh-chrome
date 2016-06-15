@@ -1,5 +1,10 @@
 #pxh-chrome changelog
 
+### 0.13.4 - June 15, 2016
+* Fix a bug where login profile and settings dropdown menus wouldn't function after UI App Hub fired its `window.nav.refresh()` method to refresh the navigation
+  * `window.nav.refresh()` now emits a `navRefreshed` event when it executes
+  * pxh-chrome listens for the `navRefreshed` event and fires `pxhToggleLoginMenu` when it detects it
+
 ### 0.13.3 - June 14, 2016
 * Add modifier classes for `pxh-view` that allow you to override the default background color with any Predix UI monochromatic color
   * Options now include `white`, `gray1-10` and `black`
