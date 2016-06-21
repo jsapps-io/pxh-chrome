@@ -611,31 +611,37 @@ function bindControl(controlName) {
           console.log('@lg - drawer default so narrow it');
           // loadState(transitionsObject, 'transitionWideToNarrowAtLarge');
           loadState(pxhStates, 'drawerNarrowAtLarge');
+          document.dispatchEvent(pxhDrawerClosed);
         }
         else if (window.matchMedia('(min-width: 1024px)').matches) {
           console.log('@lg - drawer narrow so widen it');
           // loadState(transitionsObject, 'transitionNarrowToWideAtLarge');
           loadState(pxhStates, 'drawerDefault');
+          document.dispatchEvent(pxhDrawerOpened);
         }
         else if ((drawerIsNarrowAtMedium) && (window.matchMedia('(min-width: 768px)').matches)) {
           console.log('@md - drawer narrow so open it');
           // loadState(transitionsObject, 'transitionNarrowToOpenAtMedium');
           loadState(pxhStates, 'drawerOpen');
+          document.dispatchEvent(pxhDrawerOpened);
         }
         else if (window.matchMedia('(min-width: 768px)').matches) {
           console.log('@md - drawer open so narrow it');
           // loadState(transitionsObject, 'transitionOpenToNarrowAtMedium');
           loadState(pxhStates, 'drawerDefault');
+          document.dispatchEvent(pxhDrawerClosed);
         }
         else if (drawerIsHiddenAtSmall) {
           console.log('@sm - drawer hidden so reveal it');
           // loadState(transitionsObject, 'transitionOutToIn');
           loadState(pxhStates, 'drawerOpen');
+          document.dispatchEvent(pxhDrawerOpened);
         }
         else {
           console.log('@sm - drawer revealed so hide it');
           // loadState(transitionsObject, 'transitionInToOut');
           loadState(pxhStates, 'drawerDefault');
+          document.dispatchEvent(pxhDrawerClosed);
         }
       })
     }
@@ -651,6 +657,7 @@ function handleMdBreakpoint(breakpoint) {
     console.log('entered @md');
     if (drawerIsAtDefaultState) {
       console.log('drawer was at default');
+      document.dispatchEvent(pxhDrawerClosed);
       // loadState(transitionsObject, 'transitionOutToInAtMedium')
     }
   } else {
@@ -678,12 +685,14 @@ function handleLgBreakpoint(breakpoint) {
       console.log('drawer was narrow @md so open it @lg');
       // loadState(transitionsObject, 'transitionNarrowToWideAtLarge');
       loadState(pxhStates, 'drawerDefault');
+      document.dispatchEvent(pxhDrawerOpened);
     }
   }
   else {
     console.log('exited @lg');
     // loadState(transitionsObject, 'transitionOpenToNarrowAtMedium');
     loadState(pxhStates, 'drawerDefault');
+    document.dispatchEvent(pxhDrawerClosed);
   }
 }
 
@@ -722,3 +731,25 @@ document.addEventListener('DOMContentLoaded', function(event) {
 document.addEventListener('DOMContentLoaded', function(event) {
   bindControl('pxh-drawer-toggle');
 });
+var pxhView = document.getElementById('js-view');
+
+var pxhViewResized = document.createEvent('CustomEvent');
+pxhViewResized.initCustomEvent('pxhViewResized', false, false, {
+    'viewResized': true
+});
+
+var pxhDrawerOpened = document.createEvent('CustomEvent');
+pxhDrawerOpened.initCustomEvent('pxhDrawerOpened', false, false, {
+    'drawerOpened': true
+});
+
+var pxhDrawerClosed = document.createEvent('CustomEvent');
+pxhDrawerClosed.initCustomEvent('pxhDrawerClosed', false, false, {
+    'drawerClosed': true
+});
+
+if (pxhView) {
+  new pxhResizeSensor(pxhView, function() {
+    document.dispatchEvent(pxhViewResized);
+  });
+}
