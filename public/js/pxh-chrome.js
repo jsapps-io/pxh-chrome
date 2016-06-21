@@ -694,6 +694,8 @@ function handleLgBreakpoint(breakpoint) {
     if (drawerIsOpen) {
       console.log('drawer is open so keep it open');
       loadState(pxhStates, 'drawerDefault');
+      pxhCookies.set('pxh-drawer-narrow', 'false', { expires: 1, path: '/'});
+      pxhCookies.set('pxh-drawer-open', 'true', { expires: 1, path: '/'});
     }
     else {
       console.log('drawer was narrow @md so open it @lg');
