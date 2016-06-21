@@ -5,7 +5,54 @@
 // CONFIG OBJECTS
 // **************
 
-var pxhStatesObject = {
+
+
+
+
+
+
+var pxhStates = {
+  'drawerDefault' : {
+    'pxh-drawer' : {
+      'add' : 'pxh-drawer--hidden-until@md pxh-drawer--narrow@md pxh-drawer--wide@lg'
+    },
+    'pxh-drawer-header__link' : {
+      'remove' : 'pxh-drawer-header__link--wide@md',
+      'add' : 'pxh-drawer-header__link--narrow@md pxh-drawer-header__link--wide@lg'
+    },
+    'pxh-overlay' : {
+      'add' : 'pxh-overlay--hidden'
+    },
+    'pxh-navigation' : {
+      'add' : 'pxh-navigation--narrow@md pxh-navigation--wide@lg'
+    },
+    'pxh-login' : {
+      'add' : 'pxh-login--narrow@md pxh-login--wide@lg'
+    },
+    'pxh-login__name' : {
+      'add' : 'pxh-login__name--narrow@md pxh-login__name--wide@lg'
+    },
+    'pxh-login__link' : {
+      'add' : 'pxh-login__link--narrow@md pxh-login__link--wide@lg'
+    },
+    'pxh-login__settings' : {
+      'add' : 'pxh-login__settings--narrow@md pxh-login__settings--wide@lg'
+    },
+    'pxh-login__caret' : {
+      'add' : 'pxh-login__caret--narrow@md pxh-login__caret--wide@lg',
+    },
+    'pxh-view' : {
+      'remove' : 'pxh-disable-scroll-until@lg pxh-view--wide@lg',
+      'add' : 'pxh-view--narrow@lg'
+    },
+    'pxh-view-header' : {
+      'remove' : 'pxh-view-header--wide@lg',
+      'add' : 'pxh-view-header--narrow@lg'
+    },
+    'pxh-view-header-drawer-toggle' : {
+      'remove' : 'pxh-view-header-drawer-toggle--hidden'
+    }
+  },
   'drawerOpen' : {
     'pxh-drawer' : {
       'remove' : 'pxh-drawer--hidden-until@md pxh-drawer--narrow@md',
@@ -13,7 +60,7 @@ var pxhStatesObject = {
     },
     'pxh-drawer-header__link' : {
       'remove' : 'pxh-drawer-header__link--narrow@md',
-      'add' : 'pxh-drawer-header__link--wide@md'
+      'add' : 'pxh-drawer-header__link--wide@md pxh-drawer-header__link--wide@lg'
     },
     'pxh-overlay' : {
       'remove' : 'pxh-overlay--hidden'
@@ -31,8 +78,7 @@ var pxhStatesObject = {
       'add' : 'pxh-login__name--wide@lg'
     },
     'pxh-login__link' : {
-      'remove' : 'pxh-login__link--narrow@md',
-      'add' : 'pxh-login__link--narrow@lg'
+      'remove' : 'pxh-login__link--narrow@md pxh-login__link--narrow@lg'
     },
     'pxh-login__settings' : {
       'remove' : 'pxh-login__settings--narrow@md',
@@ -54,9 +100,9 @@ var pxhStatesObject = {
       'add' : 'pxh-view-header-drawer-toggle--hidden'
     }
   },
-  'drawerClosed' : {
+  'drawerNarrowAtLarge' : {
     'pxh-drawer' : {
-      'add' : 'pxh-drawer--hidden-until@md pxh-drawer--narrow@md',
+      'add' : 'pxh-drawer--hidden-until@md pxh-drawer--narrow@md pxh-drawer--narrow@lg',
       'remove' : 'pxh-drawer--wide@lg'
     },
     'pxh-drawer-header__link' : {
@@ -104,12 +150,25 @@ var pxhStatesObject = {
   }
 }
 
-// TODO: lots of functions reach into this without explicitly taking it as an input parameter, and you should probably compartmentalize your code better than that
-var pxhLgBreakpoint = window.matchMedia('(min-width: 1024px)');
+
+
+
+
+
+
 
 // *********
 // FUNCTIONS
 // *********
+
+
+
+
+
+
+
+
+
 
 /*! css-element-queries/ResizeSensor.js 0.3.2 */
 
@@ -120,7 +179,7 @@ var pxhLgBreakpoint = window.matchMedia('(min-width: 1024px)');
  * https://github.com/marcj/css-element-queries/blob/master/src/ResizeSensor.js
  */
 
-(function() {
+// (function() {
 
   /**
    * Class for dimension change detection.
@@ -287,7 +346,22 @@ var pxhLgBreakpoint = window.matchMedia('(min-width: 1024px)');
     window.pxhResizeSensor = pxhResizeSensor;
   }
 
-})();
+// })();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*!
  * JavaScript Cookie v2.1.1
@@ -454,64 +528,39 @@ var pxhLgBreakpoint = window.matchMedia('(min-width: 1024px)');
 
 var pxhCookies = Cookies.noConflict();
 
-// toggle classes
-var pxhChangeClasses = function(targetClassName, changeType, classNamesToChange) {
-  var targets = document.getElementsByClassName(targetClassName);
-  // if an element matches, work with it
-  if ((typeof targets !== 'undefined') && (targets.length > 0)) {
 
-    for (var j = targets.length - 1; j >= 0; j--) {
 
-      // if there are multiple classNamesToChange delimited by spaces, work with them
-      if (classNamesToChange.indexOf(' ')) {
-        // split multiple classNamesToChange into an array
-        var classes = classNamesToChange.split(' ');
-        // iterate through the array of classes
-        for (var k = classes.length - 1; k >= 0; k--) {
-          // if we're supposed to toggle the classNamesToChange on the target element, do it
-          if (changeType === 'toggle') {
-            targets[j].classList.toggle(classes[k]);
-          }
-          // if we're supposed to add the classNamesToChange to the target element, do it
-          else if (changeType === 'add') {
-            targets[j].classList.add(classes[k]);
-          }
-          // if we're supposed to remove the classNamesToChange from the target element, do it
-          else if (changeType === 'remove') {
-            targets[j].classList.remove(classes[k]);
-          }
-        }
-      }
-      // if there's just one class name, work with it
-      else if (classNamesToChange) {
-        // if we're supposed to toggle the class name on the target element, do it
-        if (changeType === 'toggle') {
-          targets[j].classList.toggle(classNamesToChange);
-        }
-        // if we're supposed to add the class name to the target element, do it
-        else if (changeType === 'add') {
-          targets[j].classList.add(classNamesToChange);
-        }
-        // if we're supposed to remove the class name from the target element, do it
-        else if (changeType === 'remove') {
-          targets[j].classList.remove(classNamesToChange);
-        }
-      }
-    }
+
+
+
+
+
+
+
+
+
+
+
+function arrayExists(array) {
+  if ((typeof array !== 'undefined') && (array.length > 0)) {
+    return true;
+  }
+  else {
+    return false;
   }
 }
 
-var pxhFindObjectByLabel = function(obj, label) {
-  for (var i in obj) {
-    if (obj.hasOwnProperty(label)) {
-      return obj[label];
+function getItemByPropertyName(haystack, propertyName) {
+  for (var i in haystack) {
+    if (haystack.hasOwnProperty(propertyName)) {
+      return haystack[propertyName];
     }
   }
 };
 
-var pxhLoadState = function(pxhStatesObject, targetStateName) {
+function loadState(stateObject, targetStateName) {
   // grab the target state object from the master states object
-  var targetState = pxhFindObjectByLabel(pxhStatesObject, targetStateName);
+  var targetState = getItemByPropertyName(stateObject, targetStateName);
   // iterate through each target class in the target state object
   for (var targetClass in targetState) {
     // grab the target state for each class in the target state
@@ -521,206 +570,155 @@ var pxhLoadState = function(pxhStatesObject, targetStateName) {
       // grab the target state change classes (e.g. which classes to add, remove, or toggle)
       var stateChangeClasses = stateChangeTarget[stateChangeType];
       // change the classes of each target element based on its target class, the type of change to make, and its target classes
-      pxhChangeClasses(targetClass, stateChangeType, stateChangeClasses);
+      changeClasses(targetClass, stateChangeType, stateChangeClasses);
     }
   }
 }
 
-var pxhToggleDrawerOnLarge = function(mediaQuery) {
-  if (mediaQuery.matches) {
-    pxhLoadState(pxhStatesObject, 'drawerOpen');
-    document.dispatchEvent(pxhDrawerOpened);
-    pxhCookies.set('pxh-drawer-narrow', 'false', { expires: 1, path: '/'});
-    pxhCookies.set('pxh-drawer-open', 'true', { expires: 1, path: '/'});
-  } else {
-    pxhLoadState(pxhStatesObject, 'drawerClosed');
-    document.dispatchEvent(pxhDrawerClosed);
-    pxhCookies.set('pxh-drawer-narrow', 'true', { expires: 1, path: '/'});
-    pxhCookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/'});
-  }
-}
-
-// make links automatically close the drawer when clicked
-var pxhBindDrawerMediaQueryControls = function(targetClass, mediaQuery) {
-  var targetElements = document.getElementsByClassName(targetClass);
-  if ((typeof targetElements !== 'undefined') && (targetElements.length > 0)) {
-    // iterate through drawer controls and fire the pxhToggleDrawer function when clicked
+// e.g. changeClasses('nav', 'add', 'hidden--until-@md')
+function changeClasses(targetClassName, changeType, classNamesToChange) {
+  var targetElements = document.getElementsByClassName(targetClassName);
+  if (arrayExists(targetElements) && (classNamesToChange)) {
+    classNamesToChange = classNamesToChange.replace(/  +/g, ' ');
+    var classNamesToChangeArray = classNamesToChange.split(' ');
     for (var i = targetElements.length - 1; i >= 0; i--) {
-      targetElements[i].addEventListener('click', function() {
-        if (!mediaQuery.matches) {
-          pxhLoadState(pxhStatesObject, 'drawerClosed');
-          pxhCookies.set('pxh-drawer-narrow', 'true', { expires: 1, path: '/'});
-          pxhCookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/'});
+      for (var j = classNamesToChangeArray.length -1; j >= 0; j--) {
+        if (changeType === 'add') {
+          targetElements[i].classList.add(classNamesToChangeArray[j]);
         }
-      })
-    }
-  }
-}
-
-// toggle drawer-specific classes when drawer toggle is fired
-var pxhToggleDrawer = function(event) {
-  event.preventDefault();
-  if (pxhCookies.get('pxh-drawer-open') === 'true') {
-    pxhLoadState(pxhStatesObject, 'drawerClosed');
-    document.dispatchEvent(pxhDrawerClosed);
-    pxhCookies.set('pxh-drawer-narrow', 'true', { expires: 1, path: '/'});
-    pxhCookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/'});
-  }
-  else if (pxhCookies.get('pxh-drawer-open') === 'false') {
-    pxhLoadState(pxhStatesObject, 'drawerOpen');
-    document.dispatchEvent(pxhDrawerOpened);
-    pxhCookies.set('pxh-drawer-narrow', 'false', { expires: 1, path: '/'});
-    pxhCookies.set('pxh-drawer-open', 'true', { expires: 1, path: '/'});
-  }
-}
-
-var pxhBindDrawerControls = function(controlClass) {
-  var controlElement = document.getElementsByClassName(controlClass);
-  if ((typeof controlElement !== 'undefined') && (controlElement.length > 0)) {
-    // iterate through drawer controls and fire the pxhToggleDrawer function when clicked
-    for (var i = controlElement.length - 1; i >= 0; i--) {
-      controlElement[i].addEventListener('click', pxhToggleDrawer);
-    }
-  }
-}
-
-var pxhOverlayDrawerControl = function() {
-  var pxhOverlay = document.getElementsByClassName('pxh-overlay');
-  if ((typeof pxhOverlay !== 'undefined') && (pxhOverlay.length > 0)) {
-    for (var i = pxhOverlay.length - 1; i >= 0; i--) {
-      pxhOverlay[i].addEventListener('click', function(e) {
-        if ((!pxhLgBreakpoint.matches) && (pxhCookies.get('pxh-drawer-open') === 'true')) {
-          pxhLoadState(pxhStatesObject, 'drawerClosed');
-          document.dispatchEvent(pxhDrawerClosed);
-          pxhCookies.set('pxh-drawer-narrow', 'true', { expires: 1, path: '/'});
-          pxhCookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/'});
-
+        else if (changeType === 'remove') {
+          targetElements[i].classList.remove(classNamesToChangeArray[j]);
         }
-      })
-    }
-  }
-}
-
-var pxhEscapeDrawerControl = function() {
-  document.addEventListener('keyup', function(e) {
-     if ((e.keyCode == 27) && (!pxhLgBreakpoint.matches) && (pxhCookies.get('pxh-drawer-open') === 'true')) {
-      pxhLoadState(pxhStatesObject, 'drawerClosed');
-      document.dispatchEvent(pxhDrawerClosed);
-      pxhCookies.set('pxh-drawer-narrow', 'true', { expires: 1, path: '/'});
-      pxhCookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/'});
-    }
-  })
-}
-
-var pxhToggleLoginMenu = function(toggleControl, toggleTarget, toggleClass) {
-  var toggleControlElement = document.getElementsByClassName(toggleControl);
-  var toggleTargetElement = document.getElementsByClassName(toggleTarget);
-  if ((typeof toggleControlElement !== 'undefined') && (toggleControlElement.length > 0) && (typeof toggleTargetElement !== 'undefined') && (toggleTargetElement.length > 0)) {
-    for (var i = toggleControlElement.length - 1; i >= 0; i--) {
-      toggleControlElement[i].addEventListener('click', function(e) {
-        e.preventDefault();
-        toggleTargetElement[0].classList.toggle(toggleClass);
-        e.stopPropagation();
-      }); 
-    }
-  }
-}
-
-// dismiss the login menu if the user clicks anywhere
-var pxhAnywhereLoginMenuControl = function(toggleControl, toggleTarget, removeClass) {
-  var controlElement = document.getElementsByClassName(toggleControl);
-  var targetElement = document.getElementsByClassName(toggleTarget);
-  if ((typeof controlElement !== 'undefined') && (controlElement.length > 0) && (typeof targetElement !== 'undefined') && (targetElement.length > 0)) {
-    document.addEventListener('click', function(e) {
-      for (var i = targetElement.length - 1; i >= 0; i--) {
-        targetElement[i].classList.remove(removeClass);
+        else if (changeType === 'toggle') {
+          targetElements[i].classList.toggle(classNamesToChangeArray[j]);
+        }
       }
-    });
+    }
   }
 }
+
+function bindControl(controlName) {
+  var controlElements = document.getElementsByClassName(controlName);
+  if (arrayExists(controlElements)) {
+    for (var i = controlElements.length - 1; i >= 0; i--) {
+      controlElements[i].addEventListener('click', function() {
+        var firstDrawer = document.getElementsByClassName('pxh-drawer')[0];
+        var drawerIsAtDefaultState = firstDrawer.classList.contains('pxh-drawer--wide@lg');
+        var drawerIsNarrowAtMedium = firstDrawer.classList.contains('pxh-drawer--narrow@md');
+        var drawerIsHiddenAtSmall = firstDrawer.classList.contains('pxh-drawer--hidden-until@md');
+        // loadState(transitionsObject, 'removeAllTransitions');
+        if ((window.matchMedia('(min-width: 1024px)').matches) && (drawerIsAtDefaultState)) {
+          console.log('@lg - drawer default so narrow it');
+          // loadState(transitionsObject, 'transitionWideToNarrowAtLarge');
+          loadState(pxhStates, 'drawerNarrowAtLarge');
+        }
+        else if (window.matchMedia('(min-width: 1024px)').matches) {
+          console.log('@lg - drawer narrow so widen it');
+          // loadState(transitionsObject, 'transitionNarrowToWideAtLarge');
+          loadState(pxhStates, 'drawerDefault');
+        }
+        else if ((drawerIsNarrowAtMedium) && (window.matchMedia('(min-width: 768px)').matches)) {
+          console.log('@md - drawer narrow so open it');
+          // loadState(transitionsObject, 'transitionNarrowToOpenAtMedium');
+          loadState(pxhStates, 'drawerOpen');
+        }
+        else if (window.matchMedia('(min-width: 768px)').matches) {
+          console.log('@md - drawer open so narrow it');
+          // loadState(transitionsObject, 'transitionOpenToNarrowAtMedium');
+          loadState(pxhStates, 'drawerDefault');
+        }
+        else if (drawerIsHiddenAtSmall) {
+          console.log('@sm - drawer hidden so reveal it');
+          // loadState(transitionsObject, 'transitionOutToIn');
+          loadState(pxhStates, 'drawerOpen');
+        }
+        else {
+          console.log('@sm - drawer revealed so hide it');
+          // loadState(transitionsObject, 'transitionInToOut');
+          loadState(pxhStates, 'drawerDefault');
+        }
+      })
+    }
+  }
+}
+
+function handleMdBreakpoint(breakpoint) {
+  console.log('@md breakpoint - removing all transitions');
+  // loadState(transitionsObject, 'removeAllTransitions');
+  var firstDrawer = document.getElementsByClassName('pxh-drawer')[0];
+  var drawerIsAtDefaultState = firstDrawer.classList.contains('pxh-drawer--wide@lg');
+  if (breakpoint.matches) {
+    console.log('entered @md');
+    if (drawerIsAtDefaultState) {
+      console.log('drawer was at default');
+      // loadState(transitionsObject, 'transitionOutToInAtMedium')
+    }
+  } else {
+    console.log('exited @md');
+    if (drawerIsAtDefaultState) {
+      console.log('drawer was at default');
+      // loadState(transitionsObject, 'transitionInToOutAtNarrow');
+    }
+  }
+}
+
+function handleLgBreakpoint(breakpoint) {
+  console.log('@lg breakpoint - removing all transitions');
+  // loadState(transitionsObject, 'removeAllTransitions');
+  var firstDrawer = document.getElementsByClassName('pxh-drawer')[0];
+  // var drawerIsAtNarrowAtLargeState = firstDrawer.classList.contains('pxh-drawer--narrow@lg');
+  var drawerIsOpen = firstDrawer.classList.contains('pxh-drawer--wide@lg');
+  if (breakpoint.matches) {
+    console.log('entered @lg');
+    if (drawerIsOpen) {
+      console.log('drawer is open so keep it open');
+      loadState(pxhStates, 'drawerDefault');
+    }
+    else {
+      console.log('drawer was narrow @md so open it @lg');
+      // loadState(transitionsObject, 'transitionNarrowToWideAtLarge');
+      loadState(pxhStates, 'drawerDefault');
+    }
+  }
+  else {
+    console.log('exited @lg');
+    // loadState(transitionsObject, 'transitionOpenToNarrowAtMedium');
+    loadState(pxhStates, 'drawerDefault');
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // ********
 // FIRE!!!!
 // ********
 
-// add an event listener for when the DOM content is ready
+
+
+
+
+var lgBreakpoint = window.matchMedia("(min-width: 1024px)");
+var mdBreakpoint = window.matchMedia("(min-width: 768px)");
 document.addEventListener('DOMContentLoaded', function(event) {
-  if (pxhCookies.get('pxh-drawer-open') === null) {
-    pxhCookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/'});
-  }
-
-  if (pxhCookies.get('pxh-drawer-narrow') === null)  {
-    pxhCookies.set('pxh-drawer-narrow', 'false', { expires: 1, path: '/'});
-  }
-
-  // check if the 'narrow' cookie is set and if we're currently at the desktop breakpoint
-  if ((pxhLgBreakpoint.matches) && (pxhCookies.get('pxh-drawer-narrow') === 'true')) {
-    // toggle the drawer closed
-    pxhLoadState(pxhStatesObject, 'drawerClosed');
-    document.dispatchEvent(pxhDrawerClosed);
-    pxhCookies.set('pxh-drawer-narrow', 'true', { expires: 1, path: '/'});
-  } 
-  else if (pxhLgBreakpoint.matches) {
-    pxhCookies.set('pxh-drawer-open', 'true', { expires: 1, path: '/'});
-  } else {
-    pxhCookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/'});
-  }
-  document.addEventListener('navRefreshed', function(event) {
-    pxhToggleLoginMenu('pxh-login__profile-link', 'pxh-login-menu--profile', 'pxh-login-menu--visible');
-    pxhToggleLoginMenu('pxh-login__settings-link', 'pxh-login-menu--settings', 'pxh-login-menu--visible');
-  });
+  lgBreakpoint.addListener(handleLgBreakpoint);
+  mdBreakpoint.addListener(handleMdBreakpoint);
 });
 
-pxhLgBreakpoint.addListener(pxhToggleDrawerOnLarge);
-
-pxhBindDrawerMediaQueryControls('pxh-navigation__link', pxhLgBreakpoint);
-pxhBindDrawerMediaQueryControls('pxh-navigation__sub-link', pxhLgBreakpoint);
-
-pxhBindDrawerControls('pxh-drawer-toggle__link');
-pxhBindDrawerControls('pxh-view-header-drawer-toggle__link');
-
-pxhOverlayDrawerControl();
-
-pxhEscapeDrawerControl();
-
-pxhAnywhereLoginMenuControl('pxh-login__profile-link', 'pxh-login-menu--profile', 'pxh-login-menu--visible');
-pxhAnywhereLoginMenuControl('pxh-login__settings-link', 'pxh-login-menu--settings', 'pxh-login-menu--visible');
-
-pxhToggleLoginMenu('pxh-login__profile-link', 'pxh-login-menu--profile', 'pxh-login-menu--visible');
-pxhToggleLoginMenu('pxh-login__settings-link', 'pxh-login-menu--settings', 'pxh-login-menu--visible');
-
-var pxhView = document.getElementById('js-view');
-
-var pxhViewResized = document.createEvent('CustomEvent');
-pxhViewResized.initCustomEvent('pxhViewResized', false, false, {
-    'viewResized': true
+document.addEventListener('DOMContentLoaded', function(event) {
+  bindControl('pxh-view-header-drawer-toggle');
 });
 
-var pxhDrawerOpened = document.createEvent('CustomEvent');
-pxhDrawerOpened.initCustomEvent('pxhDrawerOpened', false, false, {
-    'drawerOpened': true
+document.addEventListener('DOMContentLoaded', function(event) {
+  bindControl('pxh-drawer-toggle');
 });
-
-var pxhDrawerClosed = document.createEvent('CustomEvent');
-pxhDrawerClosed.initCustomEvent('pxhDrawerClosed', false, false, {
-    'drawerClosed': true
-});
-
-if (pxhView) {
-  new pxhResizeSensor(pxhView, function() {
-    document.dispatchEvent(pxhViewResized);
-  });
-}
-
-// document.addEventListener('pxhViewResized', function(event) {
-//   console.log('pxhViewResized was fired!');
-// });
-
-// document.addEventListener('pxhDrawerOpened', function(event) {
-//   console.log('the drawer was opened!');
-// });
-
-// document.addEventListener('pxhDrawerClosed', function(event) {
-//   console.log('the drawer was closed!');
-// });
