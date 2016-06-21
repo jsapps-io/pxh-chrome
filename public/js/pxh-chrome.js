@@ -612,36 +612,48 @@ function bindControl(controlName) {
           // loadState(transitionsObject, 'transitionWideToNarrowAtLarge');
           loadState(pxhStates, 'drawerNarrowAtLarge');
           document.dispatchEvent(pxhDrawerClosed);
+          pxhCookies.set('pxh-drawer-narrow', 'true', { expires: 1, path: '/'});
+          pxhCookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/'});
         }
         else if (window.matchMedia('(min-width: 1024px)').matches) {
           console.log('@lg - drawer narrow so widen it');
           // loadState(transitionsObject, 'transitionNarrowToWideAtLarge');
           loadState(pxhStates, 'drawerDefault');
           document.dispatchEvent(pxhDrawerOpened);
+          pxhCookies.set('pxh-drawer-narrow', 'false', { expires: 1, path: '/'});
+          pxhCookies.set('pxh-drawer-open', 'true', { expires: 1, path: '/'});
         }
         else if ((drawerIsNarrowAtMedium) && (window.matchMedia('(min-width: 768px)').matches)) {
           console.log('@md - drawer narrow so open it');
           // loadState(transitionsObject, 'transitionNarrowToOpenAtMedium');
           loadState(pxhStates, 'drawerOpen');
           document.dispatchEvent(pxhDrawerOpened);
+          pxhCookies.set('pxh-drawer-open', 'true', { expires: 1, path: '/'});
+          pxhCookies.set('pxh-drawer-narrow', 'false', { expires: 1, path: '/'});
         }
         else if (window.matchMedia('(min-width: 768px)').matches) {
           console.log('@md - drawer open so narrow it');
           // loadState(transitionsObject, 'transitionOpenToNarrowAtMedium');
           loadState(pxhStates, 'drawerDefault');
           document.dispatchEvent(pxhDrawerClosed);
+          pxhCookies.set('pxh-drawer-narrow', 'true', { expires: 1, path: '/'});
+          pxhCookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/'});
         }
         else if (drawerIsHiddenAtSmall) {
           console.log('@sm - drawer hidden so reveal it');
           // loadState(transitionsObject, 'transitionOutToIn');
           loadState(pxhStates, 'drawerOpen');
           document.dispatchEvent(pxhDrawerOpened);
+          pxhCookies.set('pxh-drawer-narrow', 'false', { expires: 1, path: '/'});
+          pxhCookies.set('pxh-drawer-open', 'true', { expires: 1, path: '/'});
         }
         else {
           console.log('@sm - drawer revealed so hide it');
           // loadState(transitionsObject, 'transitionInToOut');
           loadState(pxhStates, 'drawerDefault');
           document.dispatchEvent(pxhDrawerClosed);
+          pxhCookies.set('pxh-drawer-narrow', 'true', { expires: 1, path: '/'});
+          pxhCookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/'});
         }
       })
     }
@@ -658,6 +670,8 @@ function handleMdBreakpoint(breakpoint) {
     if (drawerIsAtDefaultState) {
       console.log('drawer was at default');
       document.dispatchEvent(pxhDrawerClosed);
+      pxhCookies.set('pxh-drawer-narrow', 'true', { expires: 1, path: '/'});
+      pxhCookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/'});
       // loadState(transitionsObject, 'transitionOutToInAtMedium')
     }
   } else {
@@ -686,6 +700,8 @@ function handleLgBreakpoint(breakpoint) {
       // loadState(transitionsObject, 'transitionNarrowToWideAtLarge');
       loadState(pxhStates, 'drawerDefault');
       document.dispatchEvent(pxhDrawerOpened);
+      pxhCookies.set('pxh-drawer-narrow', 'false', { expires: 1, path: '/'});
+      pxhCookies.set('pxh-drawer-open', 'true', { expires: 1, path: '/'});
     }
   }
   else {
@@ -693,6 +709,8 @@ function handleLgBreakpoint(breakpoint) {
     // loadState(transitionsObject, 'transitionOpenToNarrowAtMedium');
     loadState(pxhStates, 'drawerDefault');
     document.dispatchEvent(pxhDrawerClosed);
+    pxhCookies.set('pxh-drawer-narrow', 'true', { expires: 1, path: '/'});
+    pxhCookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/'});
   }
 }
 
@@ -731,6 +749,25 @@ document.addEventListener('DOMContentLoaded', function(event) {
 document.addEventListener('DOMContentLoaded', function(event) {
   bindControl('pxh-drawer-toggle');
 });
+
+document.addEventListener('DOMContentLoaded', function(event) {
+  if (pxhCookies.get('pxh-drawer-open') === null) {
+    pxhCookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/'});
+  }
+
+  if (pxhCookies.get('pxh-drawer-narrow') === null)  {
+    pxhCookies.set('pxh-drawer-narrow', 'false', { expires: 1, path: '/'});
+  }
+});
+
+
+
+
+
+
+
+
+
 var pxhView = document.getElementById('js-view');
 
 var pxhViewResized = document.createEvent('CustomEvent');
@@ -753,3 +790,7 @@ if (pxhView) {
     document.dispatchEvent(pxhViewResized);
   });
 }
+
+
+
+
