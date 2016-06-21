@@ -51,7 +51,7 @@ $pxh-login-height:  60px !default;
   border-top: 1px solid rgba(0,0,0,0.15);
   max-height: 100%;
   overflow-y: auto;
-  animation-duration: 300ms;
+  // animation-duration: 300ms;
   scrollbar-base-color: $gray10;
   scrollbar-arrow-color: $gray8;
   scrollbar-track-color: $gray10;
@@ -184,7 +184,7 @@ $pxh-login-height:  60px !default;
     position: absolute;
     right: 5px;
     // include the animation boilerplate with corresponding keyframes
-    @include pxh-animation(pxh-badge--in);
+    // @include pxh-animation(pxh-badge--in);
     // include the "visible by default" styles
     @include pxh-badge--in-styles;
   }
@@ -278,7 +278,7 @@ $pxh-login-height:  60px !default;
 
 .pxh-navigation__item-text {
   @include pxh-navigation__item-text--in-styles;
-  @include pxh-animation(pxh-navigation__item-text--in);
+  // @include pxh-animation(pxh-navigation__item-text--in);
   display: block;
   overflow: hidden;
   white-space: nowrap;
@@ -388,7 +388,7 @@ $pxh-login-height:  60px !default;
 }
 
 .pxh-navigation__sub-link {
-  @include pxh-animation(pxh-navigation__sub-link--in);
+  // @include pxh-animation(pxh-navigation__sub-link--in);
   @include pxh-navigation__sub-link--in-styles;
   position: relative;
   display: block;
@@ -435,8 +435,8 @@ $pxh-login-height:  60px !default;
   display: block;
   height: 1px;
   background-color: $gray9;
-  transition: all 200ms linear;
-  transition-delay: 200ms;
+  // transition: all 200ms linear;
+  // transition-delay: 200ms;
 }
 
 /*------------------------------------*\
@@ -447,11 +447,11 @@ $pxh-login-height:  60px !default;
   .pxh-navigation--narrow\@md {
     width: 100%;
     .pxh-navigation__item-text {
-      @include pxh-animation(pxh-navigation__item-text--out);
+      // @include pxh-animation(pxh-navigation__item-text--out);
       @include pxh-navigation__item-text--out-styles;
     }
     .pxh-navigation__sub-link {
-      @include pxh-animation(pxh-navigation__sub-link--out);
+      // @include pxh-animation(pxh-navigation__sub-link--out);
       @include pxh-navigation__sub-link--out-styles;
     }
     .pxh-navigation__sub-item:last-of-type {
@@ -462,10 +462,10 @@ $pxh-login-height:  60px !default;
     .pxh-navigation__sub-item--divider {
       margin-top: 0;
       height: 0;
-      transition-delay: 0;
+      // transition-delay: 0;
     }
     .pxh-badge {
-      @include pxh-animation(pxh-badge--out);
+      // @include pxh-animation(pxh-badge--out);
       @include pxh-badge--out-styles;
     }
   }
@@ -474,11 +474,11 @@ $pxh-login-height:  60px !default;
 @include mq($from: lg) {
   .pxh-navigation--wide\@lg {
     .pxh-navigation__item-text {
-      @include pxh-animation(pxh-navigation__item-text--in);
+      // @include pxh-animation(pxh-navigation__item-text--in);
       @include pxh-navigation__item-text--in-styles;
     }
     .pxh-navigation__sub-link {
-      @include pxh-animation(pxh-navigation__sub-link--in);
+      // @include pxh-animation(pxh-navigation__sub-link--in);
       @include pxh-navigation__sub-link--in-styles;
     }
     .pxh-navigation__sub-item:last-of-type {
@@ -493,11 +493,11 @@ $pxh-login-height:  60px !default;
       display: block;
       height: 1px;
       background-color: $gray9;
-      transition: all 200ms linear;
-      transition-delay: 200ms;
+      // transition: all 200ms linear;
+      // transition-delay: 200ms;
     }
     .pxh-badge {
-      @include pxh-animation(pxh-badge--in);
+      // @include pxh-animation(pxh-badge--in);
       @include pxh-badge--in-styles;
     }
   }

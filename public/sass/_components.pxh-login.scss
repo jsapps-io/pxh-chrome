@@ -153,7 +153,7 @@ $pxh-login-magic-centering: 14px !default; // magic number, fix this
 }
 
 .pxh-login__name {
-  @include pxh-animation(pxh-login--in);
+  // @include pxh-animation(pxh-login--in);
   @include pxh-login--in-styles;
   margin-left: $pxh-drawer-margin / 2;
   padding-top: $pxh-login-magic-centering; // magic number that centers it vertically
@@ -169,21 +169,21 @@ $pxh-login-magic-centering: 14px !default; // magic number, fix this
 // Remove this class to display the drawer in its wide state.
 @include mq($from: md) {
   .pxh-login__name--narrow\@md {
-    @include pxh-animation(pxh-login--out);
+    // @include pxh-animation(pxh-login--out);
     @include pxh-login--out-styles;
   }
 }
 
 @include mq($from: lg) {
   .pxh-login__name--wide\@lg {
-    @include pxh-animation(pxh-login--in);
+    // @include pxh-animation(pxh-login--in);
     @include pxh-login--in-styles;
 
   }
 }
 
 .pxh-login__caret {
-  @include pxh-animation(pxh-login--in);
+  // @include pxh-animation(pxh-login--in);
   @include pxh-login--in-styles;
   float: left;
   padding-top: $pxh-login-magic-centering; // magic number that keeps it vertically centered
@@ -195,14 +195,14 @@ $pxh-login-magic-centering: 14px !default; // magic number, fix this
 // Remove this class to display the drawer in its wide state.
 @include mq($from: md) {
   .pxh-login__caret--narrow\@md {
-  @include pxh-animation(pxh-login--out);
+  // @include pxh-animation(pxh-login--out);
   @include pxh-login--out-styles;
   }
 }
 
 @include mq($from: lg) {
   .pxh-login__caret--wide\@lg {
-  @include pxh-animation(pxh-login--in);
+  // @include pxh-animation(pxh-login--in);
   @include pxh-login--in-styles;
   }
 }
@@ -212,7 +212,7 @@ $pxh-login-magic-centering: 14px !default; // magic number, fix this
   margin-right: $pxh-drawer-margin / 2;
   float: right;
   padding-top: $pxh-login-magic-centering;
-  @include pxh-animation(pxh-login--in);
+  // @include pxh-animation(pxh-login--in);
   @include pxh-login--in-styles;
 }
 
@@ -221,14 +221,14 @@ $pxh-login-magic-centering: 14px !default; // magic number, fix this
 // Remove this class to display the drawer in its wide state.
 @include mq($from: md) {
   .pxh-login__settings--narrow\@md {
-    @include pxh-animation(pxh-login--out);
+    // @include pxh-animation(pxh-login--out);
     @include pxh-login--out-styles;
   }
 }
 
 @include mq($from: lg) {
   .pxh-login__settings--wide\@lg {
-  @include pxh-animation(pxh-login--in);
+  // @include pxh-animation(pxh-login--in);
   @include pxh-login--in-styles;
   }
 }

@@ -36,7 +36,7 @@ $pxh-view-background-colors: (
   height: 100%;
   overflow: auto;
   -webkit-overflow-scrolling: touch;
-  transition: all 300ms ease-in-out;
+  // transition: all 300ms ease-in-out;
 }
 
 @each $color-slug, $color-variable in $pxh-view-background-colors {
@@ -54,7 +54,7 @@ $pxh-view-background-colors: (
   @include mq($from: md) {
     .pxh-view--wide\@md {
       margin-left: $pxh-drawer-width-narrow;
-      transition-delay: 500ms;
+      // transition-delay: 500ms;
     }
   }
 
@@ -64,7 +64,7 @@ $pxh-view-background-colors: (
   @include mq($from: lg) {
     .pxh-view--narrow\@lg {
       margin-left: $pxh-drawer-width-wide;
-      transition-delay: 100ms;
+      // transition-delay: 100ms;
     }
   }
 
@@ -88,7 +88,7 @@ $pxh-view-background-colors: (
   border-bottom: 1px solid rgba($gray7, 0.8);
   height: $pxh-view-header-height;
   background-color: $white;
-  transition: all 300ms ease-in-out;
+  // transition: all 300ms ease-in-out;
   z-index: 250;
 }
 
@@ -101,7 +101,7 @@ $pxh-view-background-colors: (
   @include mq($from: md) {
     .pxh-view-header--wide\@md {
       left: $pxh-drawer-width-narrow;
-      transition-delay: 500ms;
+      // transition-delay: 500ms;
     }
   }
 
@@ -123,7 +123,7 @@ $pxh-view-background-colors: (
   @include mq($from: lg) {
     .pxh-view-header--narrow\@lg {
       left: $pxh-drawer-width-wide;
-      transition-delay: 100ms;
+      // transition-delay: 100ms;
     }
   }
 }
@@ -160,7 +160,7 @@ $pxh-view-background-colors: (
   left: 0;
   opacity: 1;
   z-index: 500; // making the same as overlay to overcome IE10 clickthru bug with overlay
-  transition: all 300ms ease-in-out;
+  // transition: all 300ms ease-in-out;
 }
 
 // Hide the toggle button in the view-header. This class is

@@ -29,16 +29,16 @@ $pxh-view-header-height: 61px !default; // locked to current height of px-contex
   width: $pxh-drawer-width-wide;
   height: 100%;
   background-color: $pxh-drawer-bg-color;
-  transition: all 300ms ease-in-out;
-  transition-delay: 0ms;
-  .pxh-navigation,
-  .pxh-login,
-  .pxh-drawer-toggle {
-    animation-name: pxh-drawer--in;
-    animation-duration: 600ms;
-    animation-timing-function: ease-in-out;
-    animation-iteration-count: 1;
-  }
+  // transition: all 300ms ease-in-out;
+  // transition-delay: 0ms;
+  // .pxh-navigation,
+  // .pxh-login,
+  // .pxh-drawer-toggle {
+  //   animation-name: pxh-drawer--in;
+  //   animation-duration: 600ms;
+  //   animation-timing-function: ease-in-out;
+  //   animation-iteration-count: 1;
+  // }
 }
 
 // Keep the inactive drawer hidden off-screen until the @md (tablet) breakpoint.
@@ -54,14 +54,14 @@ $pxh-view-header-height: 61px !default; // locked to current height of px-contex
 @include mq($from: md) {
   .pxh-drawer--narrow\@md {
     width: $pxh-drawer-width-narrow;
-    transition-delay: 500ms;
+    // transition-delay: 500ms;
   }
 }
 
 @include mq($from: lg) {
   .pxh-drawer--wide\@lg {
     width: $pxh-drawer-width-wide;
-    transition-delay: 100ms;
+    // transition-delay: 100ms;
   }
 }
 
@@ -76,7 +76,7 @@ $pxh-view-header-height: 61px !default; // locked to current height of px-contex
   height: $pxh-drawer-margin * 3;
   padding: $pxh-drawer-margin;
   color: $white;
-  transition: all 500ms ease-in-out;
+  // transition: all 500ms ease-in-out;
   &:link,
   &:visited {
     color: $white;
@@ -193,7 +193,7 @@ $pxh-view-header-height: 61px !default; // locked to current height of px-contex
 
 .pxh-drawer-header__link {
   @include pxh-drawer-header__link--in-styles;
-  @include pxh-animation(pxh-drawer-header__link--in);
+  // @include pxh-animation(pxh-drawer-header__link--in);
   display: block;
   text-decoration: none;
   overflow: hidden;
@@ -204,21 +204,21 @@ $pxh-view-header-height: 61px !default; // locked to current height of px-contex
 @include mq($from: md) {
   .pxh-drawer-header__link--narrow\@md {
     @include pxh-drawer-header__link--out-styles;
-    @include pxh-animation(pxh-drawer-header__link--out);
+    // @include pxh-animation(pxh-drawer-header__link--out);
   }
 }
 
 @include mq($from: md) {
   .pxh-drawer-header__link--wide\@md {
     @include pxh-drawer-header__link--in-styles;
-    @include pxh-animation(pxh-drawer-header__link--in);
+    // @include pxh-animation(pxh-drawer-header__link--in);
   }
 }
 
 @include mq($from: lg) {
   .pxh-drawer-header__link--wide\@lg {
     @include pxh-drawer-header__link--in-styles;
-    @include pxh-animation(pxh-drawer-header__link--in);
+    // @include pxh-animation(pxh-drawer-header__link--in);
   }
 }
 
