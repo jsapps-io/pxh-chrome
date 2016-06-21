@@ -758,6 +758,19 @@ document.addEventListener('DOMContentLoaded', function(event) {
   if (pxhCookies.get('pxh-drawer-narrow') === null)  {
     pxhCookies.set('pxh-drawer-narrow', 'false', { expires: 1, path: '/'});
   }
+
+  // check if the 'narrow' cookie is set and if we're currently at the desktop breakpoint
+  if ((window.matchMedia('(min-width: 1024px)').matches) && (pxhCookies.get('pxh-drawer-narrow') === 'true')) {
+    // toggle the drawer closed
+    loadState(pxhStates, 'drawerNarrowAtLarge');
+    document.dispatchEvent(pxhDrawerClosed);
+    pxhCookies.set('pxh-drawer-narrow', 'true', { expires: 1, path: '/'});
+  } 
+  else if (window.matchMedia('(min-width: 1024px)').matches) {
+    pxhCookies.set('pxh-drawer-open', 'true', { expires: 1, path: '/'});
+  } else {
+    pxhCookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/'});
+  }
 });
 
 
