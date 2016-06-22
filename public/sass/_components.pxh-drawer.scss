@@ -43,8 +43,6 @@ $pxh-view-header-height: 61px !default; // locked to current height of px-contex
   }
 }
 
-
-
 @keyframes pxh-drawer--animate-in {
   0% {
     transform: translateX(-$pxh-drawer-width-wide);
@@ -86,13 +84,16 @@ $pxh-view-header-height: 61px !default; // locked to current height of px-contex
     transform: translateX(0);
     width: $pxh-drawer-width-narrow;
   }
-  85% {
-    width: $pxh-drawer-width-narrow;
+  33% {
     transform: translateX(-$pxh-drawer-width-wide);
+    width: $pxh-drawer-width-narrow;
+  }
+  66% {
+    width: $pxh-drawer-width-wide;
   }
   100% {
-    width: $pxh-drawer-width-wide;
     transform: translateX(-$pxh-drawer-width-wide);
+    width: $pxh-drawer-width-wide;
   }
 }
 
@@ -115,13 +116,13 @@ $pxh-view-header-height: 61px !default; // locked to current height of px-contex
   &--animate-in {
     animation-timing-function: ease-in-out;
     animation-fill-mode: forwards;
-    animation-duration: 500ms;
+    animation-duration: 250ms;
     animation-name: pxh-drawer--animate-in;
   }
   &--animate-out {
     animation-timing-function: ease-in-out;
     animation-fill-mode: forwards;
-    animation-duration: 500ms;
+    animation-duration: 250ms;
     animation-name: pxh-drawer--animate-out;
   }
   &--animate-narrow {
@@ -133,7 +134,7 @@ $pxh-view-header-height: 61px !default; // locked to current height of px-contex
   &--animate-wide {
     animation-timing-function: ease-in-out;
     animation-fill-mode: forwards;
-    animation-duration: 1000ms;
+    animation-duration: 500ms;
     animation-name: pxh-drawer--animate-wide;
   }
   &--animate-out-wide {

@@ -14,7 +14,8 @@
 var pxhStates = {
   'default' : {
     'pxh-drawer' : {
-      'add' : 'pxh-drawer--hidden-until@md pxh-drawer--narrow@md pxh-drawer--wide@lg'
+      'add' : 'pxh-drawer--hidden-until@md pxh-drawer--narrow@md pxh-drawer--wide@lg',
+      'remove' : 'pxh-drawer--narrow@lg'
     },
     'pxh-drawer-header__link' : {
       'remove' : 'pxh-drawer-header__link--wide@md',
@@ -55,7 +56,7 @@ var pxhStates = {
   },
   'open' : {
     'pxh-drawer' : {
-      'remove' : 'pxh-drawer--hidden-until@md pxh-drawer--narrow@md',
+      'remove' : 'pxh-drawer--hidden-until@md pxh-drawer--narrow@md pxh-drawer--narrow@lg',
       'add' : 'pxh-drawer--wide@lg'
     },
     'pxh-drawer-header__link' : {
@@ -215,15 +216,36 @@ var pxhTransitions = {
       'add' : 'pxh-drawer--animate-in'
     },
     'pxh-view' : {
-      'add' : 'pxh-view--animate-wide'
+      'add' : 'pxh-view--animate-full-to-wide'
     },
     'pxh-view-header' : {
-      'add' : 'pxh-view-header--animate-wide'
+      'add' : 'pxh-view-header--animate-full-to-wide'
     }
   },
   'narrowToOut' : {
     'pxh-drawer' : {
       'add' : 'pxh-drawer--animate-out-wide'
+    },
+    'pxh-drawer-header__link' : {
+      'add' : 'pxh-drawer-header__link--animate-in'
+    },
+    'pxh-navigation__item-text' : {
+      'add' : 'pxh-navigation__item-text--animate-in'
+    },
+    'pxh-navigation__sub-link' : {
+      'add' : 'pxh-navigation__sub-link--animate-in'
+    },
+    'pxh-login' : {
+      'add' : 'pxh-navigation__sub-link--animate-wide'
+    },
+    'pxh-login__name' : {
+      'add' : 'pxh-login__name--animate-in'
+    },
+    'pxh-login__caret' : {
+      'add' : 'pxh-login__caret--animate-in'
+    },
+    'pxh-login__settings' : {
+      'add' : 'pxh-login__settings--animate-in'
     }
   },
   'wideToNarrow' : {
@@ -836,7 +858,7 @@ function handleMdBreakpoint(breakpoint) {
       document.dispatchEvent(pxhDrawerClosed);
       pxhCookies.set('pxh-drawer-narrow', 'true', { expires: 1, path: '/'});
       pxhCookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/'});
-      loadState(pxhTransitions, 'outToNarrow')
+      loadState(pxhTransitions, 'outToNarrow');
     }
   } else {
     console.log('exited @md');
@@ -857,13 +879,14 @@ function handleLgBreakpoint(breakpoint) {
     console.log('entered @lg');
     if (drawerIsOpen) {
       console.log('drawer is open so keep it open');
+      loadState(pxhTransitions, 'narrowToWide');
       loadState(pxhStates, 'default');
       pxhCookies.set('pxh-drawer-narrow', 'false', { expires: 1, path: '/'});
       pxhCookies.set('pxh-drawer-open', 'true', { expires: 1, path: '/'});
     }
     else {
       console.log('drawer was narrow @md so open it @lg');
-        loadState(pxhTransitions, 'narrowToWide');
+      loadState(pxhTransitions, 'narrowToWide');
       loadState(pxhStates, 'default');
       document.dispatchEvent(pxhDrawerOpened);
       pxhCookies.set('pxh-drawer-narrow', 'false', { expires: 1, path: '/'});
@@ -872,7 +895,7 @@ function handleLgBreakpoint(breakpoint) {
   }
   else {
     console.log('exited @lg');
-    loadState(pxhTransitions, 'openToNarrow');
+    loadState(pxhTransitions, 'wideToNarrow');
     loadState(pxhStates, 'default');
     document.dispatchEvent(pxhDrawerClosed);
     pxhCookies.set('pxh-drawer-narrow', 'true', { expires: 1, path: '/'});
