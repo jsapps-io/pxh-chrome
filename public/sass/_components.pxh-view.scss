@@ -32,6 +32,66 @@ $pxh-view-background-colors: (
   left: 0;
 }
 
+@keyframes pxh-view--animate-wide {
+  0% {
+    margin-left: $pxh-drawer-width-wide;
+  }
+  33% {
+    margin-left: $pxh-drawer-width-wide;
+  }
+  66% {
+    margin-left: $pxh-drawer-width-narrow;
+  }
+  100% {
+    margin-left: $pxh-drawer-width-narrow;
+  }
+}
+
+@keyframes pxh-view--animate-narrow {
+  0% {
+    margin-left: $pxh-drawer-width-narrow;
+  }
+  33% {
+    margin-left: $pxh-drawer-width-wide;
+  }
+  100% {
+    margin-left: $pxh-drawer-width-wide;
+  }
+}
+
+@keyframes pxh-view--animate-full-to-wide {
+  0% {
+    margin-left: 0;
+  }
+  50% {
+    margin-left: 0;
+  }
+  100% {
+    margin-left: $pxh-drawer-width-narrow;
+  }
+}
+
+.pxh-view {
+  &--animate-wide {
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+    animation-duration: 1000ms;
+    animation-name: pxh-view--animate-wide;
+  }
+  &--animate-narrow {
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+    animation-duration: 1000ms;
+    animation-name: pxh-view--animate-narrow;
+  }
+  &--animate-full-to-wide {
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+    animation-duration: 500ms;
+    animation-name: pxh-view--animate-full-to-wide;
+  }
+}
+
 .pxh-view {
   height: 100%;
   overflow: auto;
@@ -75,10 +135,69 @@ $pxh-view-background-colors: (
   }
 }
 
-
 /*------------------------------------*\
     #PXH-VIEW-HEADER
 \*------------------------------------*/
+
+@keyframes pxh-view-header--animate-wide {
+  0% {
+    left: $pxh-drawer-width-wide;
+  }
+  33% {
+    left: $pxh-drawer-width-wide;
+  }
+  66% {
+    left: $pxh-drawer-width-narrow;
+  }
+  100% {
+    left: $pxh-drawer-width-narrow;
+  }
+}
+
+@keyframes pxh-view-header--animate-narrow {
+  0% {
+    left: $pxh-drawer-width-narrow;
+  }
+  33% {
+    left: $pxh-drawer-width-wide;
+  }
+  100% {
+    left: $pxh-drawer-width-wide;
+  }
+}
+
+@keyframes pxh-view-header--animate-full-to-wide {
+  0% {
+    left: 0;
+  }
+  50% {
+    left: 0;
+  }
+  100% {
+    left: $pxh-drawer-width-narrow;
+  }
+}
+
+.pxh-view-header {
+  &--animate-wide {
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+    animation-duration: 1000ms;
+    animation-name: pxh-view-header--animate-wide;
+  }
+  &--animate-narrow {
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+    animation-duration: 1000ms;
+    animation-name: pxh-view-header--animate-narrow;
+  }
+  &--animate-full-to-wide {
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+    animation-duration: 500ms;
+    animation-name: pxh-view-header--animate-full-to-wide;
+  }
+}
 
 .pxh-view-header {
   position: fixed;
