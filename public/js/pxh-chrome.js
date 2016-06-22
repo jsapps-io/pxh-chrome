@@ -150,6 +150,170 @@ var pxhStates = {
   }
 }
 
+var pxhTransitions = {
+  'outToIn' : {
+    'pxh-drawer' : {
+      'add' : 'pxh-drawer--animate-in',
+    }
+  },
+  'inToOut' : {
+    'pxh-drawer' : {
+      'add' : 'pxh-drawer--animate-out'
+    }
+  },
+  'narrowToOpen' : {
+    'pxh-drawer' : {
+      'add' : 'pxh-drawer--animate-wide'
+    },
+    'pxh-drawer-header__link' : {
+      'add' : 'pxh-drawer-header__link--animate-in'
+    },
+    'pxh-navigation__item-text' : {
+      'add' : 'pxh-navigation__item-text--animate-in'
+    },
+    'pxh-navigation__sub-link' : {
+      'add' : 'pxh-navigation__sub-link--animate-in'
+    },
+    'pxh-login' : {
+      'add' : 'pxh-navigation__sub-link--animate-wide'
+    },
+    'pxh-login__name' : {
+      'add' : 'pxh-login__name--animate-in'
+    },
+    'pxh-login__caret' : {
+      'add' : 'pxh-login__caret--animate-in'
+    },
+    'pxh-login__settings' : {
+      'add' : 'pxh-login__settings--animate-in'
+    }
+  },
+  'openToNarrow' : {
+    'pxh-drawer' : {
+      'add' : 'pxh-drawer--animate-narrow'
+    },
+    'pxh-drawer-header__link' : {
+      'add' : 'pxh-drawer-header__link--animate-out'
+    },
+    'pxh-navigation__item-text' : {
+      'add' : 'pxh-navigation__item-text--animate-out'
+    },
+    'pxh-navigation__sub-link' : {
+      'add' : 'pxh-navigation__sub-link--animate-out'
+    },
+    'pxh-login__name' : {
+      'add' : 'pxh-login__name--animate-out'
+    },
+    'pxh-login__caret' : {
+      'add' : 'pxh-login__caret--animate-out'
+    },
+    'pxh-login__settings' : {
+      'add' : 'pxh-login__settings--animate-out'
+    }
+  },
+  'outToNarrow' : {
+    'pxh-drawer' : {
+      'add' : 'pxh-drawer--animate-in'
+    },
+    'pxh-view' : {
+      'add' : 'pxh-view--animate-wide'
+    },
+    'pxh-view-header' : {
+      'add' : 'pxh-view-header--animate-wide'
+    }
+  },
+  'narrowToOut' : {
+    'pxh-drawer' : {
+      'add' : 'pxh-drawer--animate-out-wide'
+    }
+  },
+  'wideToNarrow' : {
+    'pxh-drawer' : {
+      'add' : 'pxh-drawer--animate-narrow'
+    },
+    'pxh-drawer-header__link' : {
+      'add' : 'pxh-drawer-header__link--animate-out'
+    },
+    'pxh-navigation__item-text' : {
+      'add' : 'pxh-navigation__item-text--animate-out'
+    },
+    'pxh-navigation__sub-link' : {
+      'add' : 'pxh-navigation__sub-link--animate-out'
+    },
+    'pxh-login__name' : {
+      'add' : 'pxh-login__name--animate-out'
+    },
+    'pxh-login__caret' : {
+      'add' : 'pxh-login__caret--animate-out'
+    },
+    'pxh-login__settings' : {
+      'add' : 'pxh-login__settings--animate-out'
+    },
+    'pxh-view' : {
+      'add' : 'pxh-view--animate-wide'
+    },
+    'pxh-view-header' : {
+      'add' : 'pxh-view-header--animate-wide'
+    }
+  },
+  'narrowToWide' : {
+    'pxh-drawer' : {
+      'add' : 'pxh-drawer--animate-wide'
+    },
+    'pxh-drawer-header__link' : {
+      'add' : 'pxh-drawer-header__link--animate-in'
+    },
+    'pxh-navigation__item-text' : {
+      'add' : 'pxh-navigation__item-text--animate-in'
+    },
+    'pxh-navigation__sub-link' : {
+      'add' : 'pxh-navigation__sub-link--animate-in'
+    },
+    'pxh-login__name' : {
+      'add' : 'pxh-login__name--animate-in'
+    },
+    'pxh-login__caret' : {
+      'add' : 'pxh-login__caret--animate-in'
+    },
+    'pxh-login__settings' : {
+      'add' : 'pxh-login__settings--animate-in'
+    },
+    'pxh-view' : {
+      'add' : 'pxh-view--animate-narrow'
+    },
+    'pxh-view-header' : {
+      'add' : 'pxh-view-header--animate-narrow'
+    }
+  },
+  'clearAll' : {
+    'pxh-drawer' : {
+      'remove' : 'pxh-drawer--animate-in pxh-drawer--animate-out pxh-drawer--animate-narrow pxh-drawer--animate-wide pxh-drawer--animate-out-wide'
+    },
+    'pxh-drawer-header__link' : {
+      'remove' : 'pxh-drawer-header__link--animate-in pxh-drawer-header__link--animate-out'
+    },
+    'pxh-navigation__item-text' : {
+      'remove' : 'pxh-navigation__item-text--animate-in pxh-navigation__item-text--animate-out'
+    },
+    'pxh-navigation__sub-link' : {
+      'remove' : 'pxh-navigation__sub-link--animate-in pxh-navigation__sub-link--animate-out'
+    },
+    'pxh-login__name' : {
+      'remove' : 'pxh-login__name--animate-in pxh-login__name--animate-out'
+    },
+    'pxh-login__caret' : {
+      'remove' : 'pxh-login__caret--animate-in pxh-login__caret--animate-out'
+    },
+    'pxh-login__settings' : {
+      'remove' : 'pxh-login__settings--animate-in pxh-login__settings--animate-out'
+    },
+    'pxh-view' : {
+      'remove' : 'pxh-view--animate-wide pxh-view--animate-narrow pxh-view--animate-full-to-wide'
+    },
+    'pxh-view-header' : {
+      'remove' : 'pxh-view-header--animate-wide pxh-view-header--animate-narrow pxh-view-header--animate-full-to-wide'
+    }
+  }
+}
 
 
 
