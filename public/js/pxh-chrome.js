@@ -924,8 +924,8 @@ function handleLgBreakpoint(breakpoint) {
 
 
 
-var lgBreakpoint = window.matchMedia("(min-width: 1024px)");
-var mdBreakpoint = window.matchMedia("(min-width: 768px)");
+var lgBreakpoint = window.matchMedia('(min-width: 1024px)');
+var mdBreakpoint = window.matchMedia('(min-width: 768px)');
 document.addEventListener('DOMContentLoaded', function(event) {
   lgBreakpoint.addListener(handleLgBreakpoint);
   mdBreakpoint.addListener(handleMdBreakpoint);
