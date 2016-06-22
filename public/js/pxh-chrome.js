@@ -12,7 +12,7 @@
 
 
 var pxhStates = {
-  'drawerDefault' : {
+  'default' : {
     'pxh-drawer' : {
       'add' : 'pxh-drawer--hidden-until@md pxh-drawer--narrow@md pxh-drawer--wide@lg'
     },
@@ -53,7 +53,7 @@ var pxhStates = {
       'remove' : 'pxh-view-header-drawer-toggle--hidden'
     }
   },
-  'drawerOpen' : {
+  'open' : {
     'pxh-drawer' : {
       'remove' : 'pxh-drawer--hidden-until@md pxh-drawer--narrow@md',
       'add' : 'pxh-drawer--wide@lg'
@@ -100,7 +100,7 @@ var pxhStates = {
       'add' : 'pxh-view-header-drawer-toggle--hidden'
     }
   },
-  'drawerNarrowAtLarge' : {
+  'narrowAtLarge' : {
     'pxh-drawer' : {
       'add' : 'pxh-drawer--hidden-until@md pxh-drawer--narrow@md pxh-drawer--narrow@lg',
       'remove' : 'pxh-drawer--wide@lg'
@@ -610,7 +610,7 @@ function bindControl(controlName) {
         if ((window.matchMedia('(min-width: 1024px)').matches) && (drawerIsAtDefaultState)) {
           console.log('@lg - drawer default so narrow it');
           // loadState(transitionsObject, 'transitionWideToNarrowAtLarge');
-          loadState(pxhStates, 'drawerNarrowAtLarge');
+          loadState(pxhStates, 'narrowAtLarge');
           document.dispatchEvent(pxhDrawerClosed);
           pxhCookies.set('pxh-drawer-narrow', 'true', { expires: 1, path: '/'});
           pxhCookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/'});
@@ -618,7 +618,7 @@ function bindControl(controlName) {
         else if (window.matchMedia('(min-width: 1024px)').matches) {
           console.log('@lg - drawer narrow so widen it');
           // loadState(transitionsObject, 'transitionNarrowToWideAtLarge');
-          loadState(pxhStates, 'drawerDefault');
+          loadState(pxhStates, 'default');
           document.dispatchEvent(pxhDrawerOpened);
           pxhCookies.set('pxh-drawer-narrow', 'false', { expires: 1, path: '/'});
           pxhCookies.set('pxh-drawer-open', 'true', { expires: 1, path: '/'});
@@ -626,7 +626,7 @@ function bindControl(controlName) {
         else if ((drawerIsNarrowAtMedium) && (window.matchMedia('(min-width: 768px)').matches)) {
           console.log('@md - drawer narrow so open it');
           // loadState(transitionsObject, 'transitionNarrowToOpenAtMedium');
-          loadState(pxhStates, 'drawerOpen');
+          loadState(pxhStates, 'open');
           document.dispatchEvent(pxhDrawerOpened);
           pxhCookies.set('pxh-drawer-open', 'true', { expires: 1, path: '/'});
           pxhCookies.set('pxh-drawer-narrow', 'false', { expires: 1, path: '/'});
@@ -634,7 +634,7 @@ function bindControl(controlName) {
         else if (window.matchMedia('(min-width: 768px)').matches) {
           console.log('@md - drawer open so narrow it');
           // loadState(transitionsObject, 'transitionOpenToNarrowAtMedium');
-          loadState(pxhStates, 'drawerDefault');
+          loadState(pxhStates, 'default');
           document.dispatchEvent(pxhDrawerClosed);
           pxhCookies.set('pxh-drawer-narrow', 'true', { expires: 1, path: '/'});
           pxhCookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/'});
@@ -642,7 +642,7 @@ function bindControl(controlName) {
         else if (drawerIsHiddenAtSmall) {
           console.log('@sm - drawer hidden so reveal it');
           // loadState(transitionsObject, 'transitionOutToIn');
-          loadState(pxhStates, 'drawerOpen');
+          loadState(pxhStates, 'open');
           document.dispatchEvent(pxhDrawerOpened);
           pxhCookies.set('pxh-drawer-narrow', 'false', { expires: 1, path: '/'});
           pxhCookies.set('pxh-drawer-open', 'true', { expires: 1, path: '/'});
@@ -650,7 +650,7 @@ function bindControl(controlName) {
         else {
           console.log('@sm - drawer revealed so hide it');
           // loadState(transitionsObject, 'transitionInToOut');
-          loadState(pxhStates, 'drawerDefault');
+          loadState(pxhStates, 'default');
           document.dispatchEvent(pxhDrawerClosed);
           pxhCookies.set('pxh-drawer-narrow', 'true', { expires: 1, path: '/'});
           pxhCookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/'});
@@ -693,14 +693,14 @@ function handleLgBreakpoint(breakpoint) {
     console.log('entered @lg');
     if (drawerIsOpen) {
       console.log('drawer is open so keep it open');
-      loadState(pxhStates, 'drawerDefault');
+      loadState(pxhStates, 'default');
       pxhCookies.set('pxh-drawer-narrow', 'false', { expires: 1, path: '/'});
       pxhCookies.set('pxh-drawer-open', 'true', { expires: 1, path: '/'});
     }
     else {
       console.log('drawer was narrow @md so open it @lg');
       // loadState(transitionsObject, 'transitionNarrowToWideAtLarge');
-      loadState(pxhStates, 'drawerDefault');
+      loadState(pxhStates, 'default');
       document.dispatchEvent(pxhDrawerOpened);
       pxhCookies.set('pxh-drawer-narrow', 'false', { expires: 1, path: '/'});
       pxhCookies.set('pxh-drawer-open', 'true', { expires: 1, path: '/'});
@@ -709,7 +709,7 @@ function handleLgBreakpoint(breakpoint) {
   else {
     console.log('exited @lg');
     // loadState(transitionsObject, 'transitionOpenToNarrowAtMedium');
-    loadState(pxhStates, 'drawerDefault');
+    loadState(pxhStates, 'default');
     document.dispatchEvent(pxhDrawerClosed);
     pxhCookies.set('pxh-drawer-narrow', 'true', { expires: 1, path: '/'});
     pxhCookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/'});
@@ -764,7 +764,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
   // check if the 'narrow' cookie is set and if we're currently at the desktop breakpoint
   if ((window.matchMedia('(min-width: 1024px)').matches) && (pxhCookies.get('pxh-drawer-narrow') === 'true')) {
     // toggle the drawer closed
-    loadState(pxhStates, 'drawerNarrowAtLarge');
+    loadState(pxhStates, 'narrowAtLarge');
     document.dispatchEvent(pxhDrawerClosed);
     pxhCookies.set('pxh-drawer-narrow', 'true', { expires: 1, path: '/'});
   } 
