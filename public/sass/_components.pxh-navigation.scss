@@ -2,41 +2,6 @@
     #components.pxh-navigation
 \*------------------------------------*/
 
-$pxh-navigation-color: $gray7 !default;
-$pxh-navigation-bg-color: transparent !default;
-
-$pxh-navigation-selected-bg-color: $gray9 !default;
-$pxh-navigation-selected-color: $white !default;
-
-$pxh-navigation-active-bg-color: $gray9 !default;
-$pxh-navigation-active-color: $white !default;
-
-$pxh-navigation-error-bg-color: $pxh-navigation-bg-color !default;
-$pxh-navigation-error-color: $pxh-navigation-color !default;
-$pxh-navigation-error-icon-color: $red !default;
-
-$pxh-navigation-sub-color: $gray7 !default;
-
-$pxh-navigation-sub-selected-bg-color: transparent !default;
-$pxh-navigation-sub-selected-color: $white !default;
-
-$pxh-navigation-hover-bg-color: $gray9 !default;
-$pxh-navigation-hover-color: $gray4 !default;
-
-$pxh-navigation-sub-hover-bg-color: transparent !default;
-$pxh-navigation-sub-hover-color: $gray4 !default;
-
-$pxh-drawer-margin: 20px !default; // magic number ... fix this
-$pxh-drawer-width-wide: 260px !default; // magic number ... fix this
-
-$pxh-view-header-height: 61px !default;
-
-$pxh-navigation-link-height: 48px;
-$pxh-navigation-sub-link-height: 30px;
-$pxh-navigation-divider-margin: 10px;
-
-$pxh-login-height:  60px !default;
-
 /*------------------------------------*\
     #pxh-navigation
 \*------------------------------------*/
