@@ -826,7 +826,7 @@ function bindControl(controlName) {
 
 function handleMdBreakpoint(breakpoint) {
   console.log('@md breakpoint - removing all transitions');
-  // loadState(transitionsObject, 'removeAllTransitions');
+  loadState(pxhTransitions, 'clearAll');
   var firstDrawer = document.getElementsByClassName('pxh-drawer')[0];
   var drawerIsAtDefaultState = firstDrawer.classList.contains('pxh-drawer--wide@lg');
   if (breakpoint.matches) {
@@ -836,20 +836,20 @@ function handleMdBreakpoint(breakpoint) {
       document.dispatchEvent(pxhDrawerClosed);
       pxhCookies.set('pxh-drawer-narrow', 'true', { expires: 1, path: '/'});
       pxhCookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/'});
-      // loadState(transitionsObject, 'transitionOutToInAtMedium')
+      loadState(pxhTransitions, 'outToNarrow')
     }
   } else {
     console.log('exited @md');
     if (drawerIsAtDefaultState) {
       console.log('drawer was at default');
-      // loadState(transitionsObject, 'transitionInToOutAtNarrow');
+      loadState(pxhTransitions, 'narrowToOut');
     }
   }
 }
 
 function handleLgBreakpoint(breakpoint) {
   console.log('@lg breakpoint - removing all transitions');
-  // loadState(transitionsObject, 'removeAllTransitions');
+  loadState(pxhTransitions, 'clearAll');
   var firstDrawer = document.getElementsByClassName('pxh-drawer')[0];
   // var drawerIsAtNarrowAtLargeState = firstDrawer.classList.contains('pxh-drawer--narrow@lg');
   var drawerIsOpen = firstDrawer.classList.contains('pxh-drawer--wide@lg');
@@ -863,7 +863,7 @@ function handleLgBreakpoint(breakpoint) {
     }
     else {
       console.log('drawer was narrow @md so open it @lg');
-      // loadState(transitionsObject, 'transitionNarrowToWideAtLarge');
+        loadState(pxhTransitions, 'narrowToWide');
       loadState(pxhStates, 'default');
       document.dispatchEvent(pxhDrawerOpened);
       pxhCookies.set('pxh-drawer-narrow', 'false', { expires: 1, path: '/'});
@@ -872,7 +872,7 @@ function handleLgBreakpoint(breakpoint) {
   }
   else {
     console.log('exited @lg');
-    // loadState(transitionsObject, 'transitionOpenToNarrowAtMedium');
+    loadState(pxhTransitions, 'openToNarrow');
     loadState(pxhStates, 'default');
     document.dispatchEvent(pxhDrawerClosed);
     pxhCookies.set('pxh-drawer-narrow', 'true', { expires: 1, path: '/'});
