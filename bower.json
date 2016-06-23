@@ -24,8 +24,8 @@
   ],
   "devDependencies": {
     "chai": "3.5.0",
-    "font-awesome": "4.6.2",
-    "mocha": "2.4.5",
+    "font-awesome": "4.6.3",
+    "mocha": "2.5.3",
     "sass-mq": "3.2.9"
   }
 }
