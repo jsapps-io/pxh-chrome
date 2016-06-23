@@ -2,27 +2,6 @@
     #components.pxh-view
 \*------------------------------------*/
 
-$pxh-drawer-width-wide: 260px !default; // magic number ... fix this
-$pxh-drawer-width-narrow: 60px !default; // magic number ... fix this
-$pxh-drawer-margin: 20px !default;
-$pxh-drawer-bg-color: $gray10 !default;
-$pxh-view-header-height: 61px !default; // locked to current height of px-context-browser + 1px for bottom border
-
-$pxh-view-background-colors: (
-  white: $white, 
-  gray1: $gray1, 
-  gray2: $gray2, 
-  gray3: $gray3, 
-  gray4: $gray4, 
-  gray5: $gray5, 
-  gray6: $gray6, 
-  gray7: $gray7, 
-  gray8: $gray8, 
-  gray9: $gray9, 
-  gray10: $gray10, 
-  black: $black
- );
-
 .pxh-wrapper {
   padding-top: $pxh-view-header-height;
   position: absolute;

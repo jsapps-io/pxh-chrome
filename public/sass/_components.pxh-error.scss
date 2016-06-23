@@ -2,13 +2,6 @@
     #components.pxh-error
 \*------------------------------------*/
 
-$error-icon-color: $gray5 !default;
-$error-title-color: $gray6 !default;
-$error-description-color: $gray6 !default;
-$error-margin-top: $inuit-base-spacing-unit * 3 !default;
-$error-padding-top: $inuit-base-spacing-unit !default;
-$error-text-decoration: none !default;
-
 .pxh-error {
   width: 100%;
   max-width: 1200px;
