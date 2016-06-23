@@ -679,19 +679,8 @@ var pxhTransitions = {
 var pxhCookies = Cookies.noConflict();
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-function arrayExists(array) {
+/* arrayExists() */
+var arrayExists = function(array) {
   if ((typeof array !== 'undefined') && (array.length > 0)) {
     return true;
   }
@@ -700,7 +689,8 @@ function arrayExists(array) {
   }
 }
 
-function getItemByPropertyName(haystack, propertyName) {
+/* getItemByPropertyName() */
+var getItemByPropertyName = function(haystack, propertyName) {
   for (var i in haystack) {
     if (haystack.hasOwnProperty(propertyName)) {
       return haystack[propertyName];
@@ -708,7 +698,8 @@ function getItemByPropertyName(haystack, propertyName) {
   }
 };
 
-function pxhLoadState(stateObject, targetStateName) {
+/* pxhLoadState() */
+var pxhLoadState = function(stateObject, targetStateName) {
   // grab the target state object from the master states object
   var targetState = getItemByPropertyName(stateObject, targetStateName);
   // iterate through each target class in the target state object
@@ -725,8 +716,9 @@ function pxhLoadState(stateObject, targetStateName) {
   }
 }
 
+/* pxhChangeClasses() */
 // e.g. pxhChangeClasses('nav', 'add', 'hidden--until-@md')
-function pxhChangeClasses(targetClassName, changeType, classNamesToChange) {
+var pxhChangeClasses = function(targetClassName, changeType, classNamesToChange) {
   var targetElements = document.getElementsByClassName(targetClassName);
   if (arrayExists(targetElements) && (classNamesToChange)) {
     classNamesToChange = classNamesToChange.replace(/  +/g, ' ');
@@ -869,19 +861,6 @@ function handleLgBreakpoint(breakpoint) {
   }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 var pxhBindDrawerMediaQueryControls = function(targetClass, mediaQuery) {
   var targetElements = document.getElementsByClassName(targetClass);
   if ((typeof targetElements !== 'undefined') && (targetElements.length > 0)) {
@@ -910,7 +889,6 @@ var pxhOverlayDrawerControl = function() {
           document.dispatchEvent(pxhDrawerClosed);
           pxhCookies.set('pxh-drawer-narrow', 'true', { expires: 1, path: '/'});
           pxhCookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/'});
-
         }
       })
     }
