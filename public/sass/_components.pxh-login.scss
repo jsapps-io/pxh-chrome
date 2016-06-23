@@ -9,91 +9,78 @@ $pxh-drawer-padding: 20px !default;
 $pxh-login-avatar-height-width: 30px !default;
 $pxh-login-magic-centering: 14px !default; // magic number, fix this
 
-// mixin for "animate in" styles
-//
-// These styles are applied at the end of an entrance animation
-// when the element toggles from hidden to visible, or at the
-// beginning of an exit animation when the elemenbt toggles from
-// visible to hidden.
-//
-// These styles are also applied to the element when it is visible
-// by default, absent an animation.
-@mixin pxh-login--in-styles {
+@mixin pxh-login--in-state-scale {
   height: $pxh-login-height;
   font-size: $inuit-base-font-size;
-  opacity: 1;
-  visibility: visible;
 }
 
-// mixin for "animate out" styles
-//
-// These styles are applied at the end of an exit animation
-// when the element toggles from visible to hidden, or at the
-// beginning of an entrance animation when the element toggles from
-// hidden to visible.
-//
-// These styles are also applied to the element when it is hidden
-// by default, absent an animation.
-@mixin pxh-login--out-styles {
+@mixin pxh-login--in-state-opacity {
+  opacity: 1;
+}
+
+@mixin pxh-login--in-state {
+  @include pxh-login--in-state-scale;
+  @include pxh-login--in-state-opacity;
+}
+
+@mixin pxh-login--out-state-scale {
   height: 0;
   font-size: 0;
+}
+
+@mixin pxh-login--out-state-opacity {
   opacity: 0;
-  visibility: hidden;
 }
 
-// keyframes for "animate in" styles
-//
-// This animation sequence is applied when the element
-// toggles from hidden to visible.
-@keyframes pxh-login--in {
+@mixin pxh-login--out-state {
+  @include pxh-login--out-state-scale;
+  @include pxh-login--out-state-opacity;
+}
+
+@keyframes pxh-login--animate-in {
   0% {
-    @include pxh-login--out-styles;
+    @include pxh-login--out-state;
   }
-  1% {
-    height: 0;
-    font-size: 0;
-    opacity: 0;
-    visibility: visible;
-  }
-  50% {
-    height: 0;
-    font-size: 0;
-    opacity: 0;
-    visibility: visible;
-  }
-  75% {
-    height: $pxh-login-height;
-    font-size: $inuit-base-font-size;
-    opacity: 0;
-    visibility: visible;
+  33% {
+    @include pxh-login--in-state-scale;
+    @include out-state-opacity;
   }
   100% {
-    @include pxh-login--in-styles;
+    @include pxh-login--in-state;
   }
 }
 
-// keyframes for "animate out" styles
-//
-// This animation sequence is applied when the element
-// toggles from visible to hidden.
-@keyframes pxh-login--out {
+@keyframes pxh-login--animate-out {
   0% {
-    @include pxh-login--in-styles;
+    @include pxh-login--in-state;
   }
-  50% {
-    height: $pxh-login-height;
-    font-size: $inuit-base-font-size;
-    opacity: 0;
-    visibility: visible;
+  33% {
+    @include out-state-opacity;
+    @include pxh-login--in-state-scale;
   }
-  99% {
-    height: 0;
-    font-size: 0;
-    opacity: 0;
-    visibility: visible;
+  34% {
+    @include out-state-opacity;
+    @include pxh-login--in-state-scale;
   }
   100% {
-    @include pxh-login--out-styles;
+    @include pxh-login--out-state;
+  }
+}
+
+.pxh-login {
+  &, &__name, &__caret, &__settings {
+    &--animate-in {
+      animation-timing-function: ease-in-out;
+      animation-fill-mode: forwards;
+      animation-duration: 500ms;
+      animation-name: pxh-login--animate-in;
+    }
+    &--animate-out {
+      animation-timing-function: ease-in-out;
+      animation-fill-mode: forwards;
+      animation-duration: 500ms;
+      animation-name: pxh-login--animate-out;
+    }
   }
 }
 
@@ -153,8 +140,7 @@ $pxh-login-magic-centering: 14px !default; // magic number, fix this
 }
 
 .pxh-login__name {
-  @include pxh-animation(pxh-login--in);
-  @include pxh-login--in-styles;
+  @include pxh-login--in-state;
   margin-left: $pxh-drawer-margin / 2;
   padding-top: $pxh-login-magic-centering; // magic number that centers it vertically
   float: left;
@@ -169,22 +155,19 @@ $pxh-login-magic-centering: 14px !default; // magic number, fix this
 // Remove this class to display the drawer in its wide state.
 @include mq($from: md) {
   .pxh-login__name--narrow\@md {
-    @include pxh-animation(pxh-login--out);
-    @include pxh-login--out-styles;
+    @include pxh-login--out-state;
   }
 }
 
 @include mq($from: lg) {
   .pxh-login__name--wide\@lg {
-    @include pxh-animation(pxh-login--in);
-    @include pxh-login--in-styles;
+    @include pxh-login--in-state;
 
   }
 }
 
 .pxh-login__caret {
-  @include pxh-animation(pxh-login--in);
-  @include pxh-login--in-styles;
+  @include pxh-login--in-state;
   float: left;
   padding-top: $pxh-login-magic-centering; // magic number that keeps it vertically centered
   margin-left: $pxh-drawer-margin / 4;
@@ -195,15 +178,13 @@ $pxh-login-magic-centering: 14px !default; // magic number, fix this
 // Remove this class to display the drawer in its wide state.
 @include mq($from: md) {
   .pxh-login__caret--narrow\@md {
-  @include pxh-animation(pxh-login--out);
-  @include pxh-login--out-styles;
+  @include pxh-login--out-state;
   }
 }
 
 @include mq($from: lg) {
   .pxh-login__caret--wide\@lg {
-  @include pxh-animation(pxh-login--in);
-  @include pxh-login--in-styles;
+  @include pxh-login--in-state;
   }
 }
 
@@ -212,8 +193,7 @@ $pxh-login-magic-centering: 14px !default; // magic number, fix this
   margin-right: $pxh-drawer-margin / 2;
   float: right;
   padding-top: $pxh-login-magic-centering;
-  @include pxh-animation(pxh-login--in);
-  @include pxh-login--in-styles;
+  @include pxh-login--in-state;
 }
 
 // From the @md (tablet) breakpoint and wider,
@@ -221,15 +201,13 @@ $pxh-login-magic-centering: 14px !default; // magic number, fix this
 // Remove this class to display the drawer in its wide state.
 @include mq($from: md) {
   .pxh-login__settings--narrow\@md {
-    @include pxh-animation(pxh-login--out);
-    @include pxh-login--out-styles;
+    @include pxh-login--out-state;
   }
 }
 
 @include mq($from: lg) {
   .pxh-login__settings--wide\@lg {
-  @include pxh-animation(pxh-login--in);
-  @include pxh-login--in-styles;
+  @include pxh-login--in-state;
   }
 }
 

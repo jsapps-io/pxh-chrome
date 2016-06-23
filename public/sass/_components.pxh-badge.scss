@@ -2,18 +2,47 @@
     #components.pxh-badge
 \*------------------------------------*/
 
+@mixin pxh-badge--in-state-scale {
+  padding: 2px 4px 0px 4px;
+  font-size: $inuit-base-font-size * 0.866666666666;
+}
+@mixin pxh-badge--in-state-opacity {
+  @include in-state-opacity;
+}
+
+@mixin pxh-badge--in-state {
+  @include pxh-badge--in-state-opacity;
+  @include pxh-badge--in-state-scale;
+}
+
+@mixin pxh-badge--out-state-opacity {
+  @include out-state-opacity;
+}
+
+@mixin pxh-badge--out-state-scale {
+  @include out-state-scale;
+  border: 0;
+}
+
+@mixin pxh-badge--out-state {
+  @include pxh-badge--out-state-opacity;
+  @include pxh-badge--out-state-scale;
+}
+
+// no keyframes because we're not using animation classes yet
+
 .pxh-badge {
+  @include pxh-badge--in-state;
   text-align: center;
   background-color: $gray5;
   display: inline-block;
-  font-size: $inuit-base-font-size * 0.866666666666;
   font-weight: normal;
   color: $white;
   line-height: 1;
-  padding: 2px 4px 0px 4px;
   border-radius: 7px;
   text-decoration: none;
-  border: 1px solid $gray5;
+  transition: opacity 250ms ease-in-out;
+  transition-delay: 250ms;
   &--navigation {
     background-color: $select-blue-pressed;
     border-color: $select-blue-pressed;
@@ -52,5 +81,18 @@
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+  }
+  &--hidden {
+    @include pxh-badge--out-state;
+  }
+  @include mq($from: lg) {
+    &--visible\@lg {
+    @include pxh-badge--in-state;
+    }
+  }
+  @include mq($from: md) {
+    &--hidden\@md {
+    @include pxh-badge--out-state;
+    }
   }
 }
