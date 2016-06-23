@@ -4,7 +4,7 @@
 
 $pxh-drawer-width-wide: 260px !default;
 $pxh-drawer-width-narrow: 60px !default;
-$pxh-login-height: 48px !default;
+$pxh-login-height: 60px !default;
 $pxh-drawer-padding: 20px !default;
 $pxh-login-avatar-height-width: 30px !default;
 $pxh-login-magic-centering: 14px !default; // magic number, fix this
@@ -90,6 +90,7 @@ $pxh-login-magic-centering: 14px !default; // magic number, fix this
   background-color: $pxh-drawer-bg-color;
   position: absolute;
   bottom: 0;
+  padding-top: $inuit-base-spacing-unit / 2;
   height: $pxh-login-height;
   width: 100%;
 }
