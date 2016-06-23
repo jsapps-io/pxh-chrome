@@ -859,7 +859,9 @@ function handleLgBreakpoint(breakpoint) {
   }
   else {
     console.log('exited @lg');
-    pxhLoadState(pxhTransitions, 'wideToNarrow');
+    if (drawerIsOpen) {
+      pxhLoadState(pxhTransitions, 'wideToNarrow');
+    };
     pxhLoadState(pxhStates, 'default');
     document.dispatchEvent(pxhDrawerClosed);
     pxhCookies.set('pxh-drawer-narrow', 'true', { expires: 1, path: '/'});
