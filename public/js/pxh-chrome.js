@@ -880,13 +880,83 @@ function handleLgBreakpoint(breakpoint) {
 
 
 
+var pxhBindDrawerMediaQueryControls = function(targetClass, mediaQuery) {
+  var targetElements = document.getElementsByClassName(targetClass);
+  if ((typeof targetElements !== 'undefined') && (targetElements.length > 0)) {
+    // iterate through drawer controls and fire the pxhToggleDrawer function when clicked
+    for (var i = targetElements.length - 1; i >= 0; i--) {
+      targetElements[i].addEventListener('click', function() {
+        pxhLoadState(pxhTransitions, 'clearAll');
+        if (!mediaQuery.matches) {
+          pxhLoadState(pxhStates, 'default');
+          pxhCookies.set('pxh-drawer-narrow', 'true', { expires: 1, path: '/'});
+          pxhCookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/'});
+        }
+      })
+    }
+  }
+}
+
+var pxhOverlayDrawerControl = function() {
+  var pxhOverlay = document.getElementsByClassName('pxh-overlay');
+  if ((typeof pxhOverlay !== 'undefined') && (pxhOverlay.length > 0)) {
+    for (var i = pxhOverlay.length - 1; i >= 0; i--) {
+      pxhOverlay[i].addEventListener('click', function(e) {
+        if ((!lgBreakpoint.matches) && (pxhCookies.get('pxh-drawer-open') === 'true')) {
+          pxhLoadState(pxhTransitions, 'clearAll');
+          pxhLoadState(pxhStates, 'default');
+          document.dispatchEvent(pxhDrawerClosed);
+          pxhCookies.set('pxh-drawer-narrow', 'true', { expires: 1, path: '/'});
+          pxhCookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/'});
+
+        }
+      })
+    }
+  }
+}
+
+var pxhEscapeDrawerControl = function() {
+  document.addEventListener('keyup', function(e) {
+     if ((e.keyCode == 27) && (!lgBreakpoint.matches) && (pxhCookies.get('pxh-drawer-open') === 'true')) {
+      pxhLoadState(pxhTransitions, 'clearAll');
+      pxhLoadState(pxhStates, 'default');
+      document.dispatchEvent(pxhDrawerClosed);
+      pxhCookies.set('pxh-drawer-narrow', 'true', { expires: 1, path: '/'});
+      pxhCookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/'});
+    }
+  })
+}
+
+var pxhToggleLoginMenu = function(toggleControl, toggleTarget, toggleClass) {
+  var toggleControlElement = document.getElementsByClassName(toggleControl);
+  var toggleTargetElement = document.getElementsByClassName(toggleTarget);
+  if ((typeof toggleControlElement !== 'undefined') && (toggleControlElement.length > 0) && (typeof toggleTargetElement !== 'undefined') && (toggleTargetElement.length > 0)) {
+    for (var i = toggleControlElement.length - 1; i >= 0; i--) {
+      toggleControlElement[i].addEventListener('click', function(e) {
+        e.preventDefault();
+        toggleTargetElement[0].classList.toggle(toggleClass);
+        e.stopPropagation();
+      }); 
+    }
+  }
+}
+
+// dismiss the login menu if the user clicks anywhere
+var pxhAnywhereLoginMenuControl = function(toggleControl, toggleTarget, removeClass) {
+  var controlElement = document.getElementsByClassName(toggleControl);
+  var targetElement = document.getElementsByClassName(toggleTarget);
+  if ((typeof controlElement !== 'undefined') && (controlElement.length > 0) && (typeof targetElement !== 'undefined') && (targetElement.length > 0)) {
+    document.addEventListener('click', function(e) {
+      for (var i = targetElement.length - 1; i >= 0; i--) {
+        targetElement[i].classList.remove(removeClass);
+      }
+    });
+  }
+}
+
 // ********
 // FIRE!!!!
 // ********
-
-
-
-
 
 var lgBreakpoint = window.matchMedia('(min-width: 1024px)');
 var mdBreakpoint = window.matchMedia('(min-width: 768px)');
@@ -924,10 +994,18 @@ document.addEventListener('DOMContentLoaded', function(event) {
     pxhToggleLoginMenu('pxh-login__settings-link', 'pxh-login-menu--settings', 'pxh-login-menu--visible');
   });
 
+  pxhBindDrawerMediaQueryControls('pxh-navigation__link', lgBreakpoint);
+  pxhBindDrawerMediaQueryControls('pxh-navigation__sub-link', lgBreakpoint);
 
+  pxhOverlayDrawerControl();
 
+  pxhEscapeDrawerControl();
 
+  pxhAnywhereLoginMenuControl('pxh-login__profile-link', 'pxh-login-menu--profile', 'pxh-login-menu--visible');
+  pxhAnywhereLoginMenuControl('pxh-login__settings-link', 'pxh-login-menu--settings', 'pxh-login-menu--visible');
 
+  pxhToggleLoginMenu('pxh-login__profile-link', 'pxh-login-menu--profile', 'pxh-login-menu--visible');
+  pxhToggleLoginMenu('pxh-login__settings-link', 'pxh-login-menu--settings', 'pxh-login-menu--visible');
 });
 
 var pxhView = document.getElementById('js-view');
