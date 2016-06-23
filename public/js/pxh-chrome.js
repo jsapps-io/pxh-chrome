@@ -1,5 +1,5 @@
 'use strict';
-/*! pxh-chrome.js 0.13.4 */
+/*! pxh-chrome.js 0.14.0 */
 
 // **************
 // CONFIG OBJECTS
