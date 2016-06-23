@@ -95,7 +95,7 @@ var pxhStates = {
       'add' : 'pxh-view-header-drawer-toggle--hidden'
     }
   },
-  'narrowAtLarge' : {
+  'narrowAtLg' : {
     'pxh-drawer' : {
       'add' : 'pxh-drawer--hidden-until@md pxh-drawer--narrow@md pxh-drawer--narrow@lg',
       'remove' : 'pxh-drawer--wide@lg'
@@ -739,7 +739,8 @@ var pxhChangeClasses = function(targetClassName, changeType, classNamesToChange)
   }
 }
 
-function bindControl(controlName) {
+/* pxhChangeClasses() */
+var pxhBindControl = function(controlName) {
   var controlElements = document.getElementsByClassName(controlName);
   if (arrayExists(controlElements)) {
     for (var i = controlElements.length - 1; i >= 0; i--) {
@@ -752,7 +753,7 @@ function bindControl(controlName) {
         if ((window.matchMedia('(min-width: 1024px)').matches) && (drawerIsAtDefaultState)) {
           console.log('@lg - drawer default so narrow it');
           pxhLoadState(pxhTransitions, 'wideToNarrow');
-          pxhLoadState(pxhStates, 'narrowAtLarge');
+          pxhLoadState(pxhStates, 'narrowAtLg');
           document.dispatchEvent(pxhDrawerClosed);
           pxhCookies.set('pxh-drawer-narrow', 'true', { expires: 1, path: '/'});
           pxhCookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/'});
@@ -802,8 +803,8 @@ function bindControl(controlName) {
   }
 }
 
-function handleMdBreakpoint(breakpoint) {
   console.log('@md breakpoint - removing all transitions');
+var pxhBreakpointAtMd = function(breakpoint) {
   pxhLoadState(pxhTransitions, 'clearAll');
   var firstDrawer = document.getElementsByClassName('pxh-drawer')[0];
   var drawerIsAtDefaultState = firstDrawer.classList.contains('pxh-drawer--wide@lg');
@@ -825,11 +826,11 @@ function handleMdBreakpoint(breakpoint) {
   }
 }
 
-function handleLgBreakpoint(breakpoint) {
   console.log('@lg breakpoint - removing all transitions');
+var pxhBreakpointAtLg = function(breakpoint) {
   pxhLoadState(pxhTransitions, 'clearAll');
   var firstDrawer = document.getElementsByClassName('pxh-drawer')[0];
-  // var drawerIsAtNarrowAtLargeState = firstDrawer.classList.contains('pxh-drawer--narrow@lg');
+  // var drawerIsAtNarrowAtLgState = firstDrawer.classList.contains('pxh-drawer--narrow@lg');
   var drawerIsOpen = firstDrawer.classList.contains('pxh-drawer--wide@lg');
   if (breakpoint.matches) {
     console.log('entered @lg');
@@ -941,13 +942,13 @@ var pxhAnywhereLoginMenuControl = function(toggleControl, toggleTarget, removeCl
 var lgBreakpoint = window.matchMedia('(min-width: 1024px)');
 var mdBreakpoint = window.matchMedia('(min-width: 768px)');
 document.addEventListener('DOMContentLoaded', function(event) {
-  lgBreakpoint.addListener(handleLgBreakpoint);
-  mdBreakpoint.addListener(handleMdBreakpoint);
+  lgBreakpoint.addListener(pxhBreakpointAtLg);
+  mdBreakpoint.addListener(pxhMdBreakpont);
 });
 
 document.addEventListener('DOMContentLoaded', function(event) {
-  bindControl('pxh-view-header-drawer-toggle');
-  bindControl('pxh-drawer-toggle');
+  pxhBindControl('pxh-view-header-drawer-toggle');
+  pxhBindControl('pxh-drawer-toggle');
 
   if (pxhCookies.get('pxh-drawer-open') === null) {
     pxhCookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/'});
@@ -960,7 +961,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
   // check if the 'narrow' cookie is set and if we're currently at the desktop breakpoint
   if ((window.matchMedia('(min-width: 1024px)').matches) && (pxhCookies.get('pxh-drawer-narrow') === 'true')) {
     // toggle the drawer closed
-    pxhLoadState(pxhStates, 'narrowAtLarge');
+    pxhLoadState(pxhStates, 'narrowAtLg');
     document.dispatchEvent(pxhDrawerClosed);
     pxhCookies.set('pxh-drawer-narrow', 'true', { expires: 1, path: '/'});
   } 
