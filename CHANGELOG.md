@@ -1,6 +1,9 @@
 #pxh-chrome changelog
 
 ### 0.14.0 - June 23, 2016
+* Update font-awesome to 4.6.3 and mocha to 2.5.3
+* Update babel-core to 6.10.0 and browser-sync to 2.13.0
+* Ignore mocha when copying fonts from bower_components
 * Update drawer state object so it defines three states:
   * `default` (closed on mobile, narrow on tablet, wide on desktop)
   * `open` (open on mobile, open on tablet, wide on desktop)
