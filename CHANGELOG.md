@@ -1,5 +1,26 @@
 #pxh-chrome changelog
 
+### 0.14.0 - June 23, 2016
+* Update drawer state object so it defines three states:
+  * `default` (closed on mobile, narrow on tablet, wide on desktop)
+  * `open` (open on mobile, open on tablet, wide on desktop)
+  * `narrowAtLg` (closed on mobile, narrow on tablet, narrow on desktop)
+* Add a drawer transitions object that defines animation transitions between targeted drawer states
+  * `outToIn`, `inToOut`, `narrowToOpen`, `openToNarrow`, `outToNarrow`, `narrowToOut`, `wideToNarrow`, `narrowToWide`
+  * Add a `clearAll` drawer transition state that removes all animation classes from all targeted elements
+* Remove empty wrapper function around `pxhResizeSensor` function
+* Refine `arrayExists` and `getItemByPropertyName` functions
+* Refactor and streamline `pxhLoadState` and `pxhChangeClass` functions
+* Update `pxhBindControl` function, adding logic for responsive breakpoints and targeted animation transitions
+* Add `pxhBreakpointAtMd` and `pxhBreakpointAtLg` functions to change states and transitions when the `@md` and `@lg` breakpoints are crossed
+* Wrap all event listeners in a single `DOMContentLoaded` event
+* Remove nearly all CSS3 animations and transition properties from components' block classes, and move to state- and transition-based modifier classes
+* Apply state transition modifier classes only when animation is necessary (i.e. transitioning between states)
+* Refactor `--in`, `--out`, `--wide`, `--narrow` keyframe animations
+* Refactor `--in-state`, `--out-state`, `--in-state-opacity`, `out--state-scale`, etc. mixins for use in keyframe animations and non-animating `--in` and `--out` states
+* Consolidate all Sass variables into the settings ITCSS layer at `_components.settings.pxh-chrome.scss`
+* Make `pxh-badge` content bold to address legibility issues when used in `pxh-navigation`
+
 ### 0.13.4 - June 15, 2016
 * Fix a bug where login profile and settings dropdown menus wouldn't function after UI App Hub fired its `window.nav.refresh()` method to refresh the navigation
   * `window.nav.refresh()` now emits a `navRefreshed` event when it executes
