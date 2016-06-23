@@ -2,13 +2,6 @@
     #components.pxh-login
 \*------------------------------------*/
 
-$pxh-drawer-width-wide: 260px !default;
-$pxh-drawer-width-narrow: 60px !default;
-$pxh-login-height: 60px !default;
-$pxh-drawer-padding: 20px !default;
-$pxh-login-avatar-height-width: 30px !default;
-$pxh-login-magic-centering: 14px !default; // magic number, fix this
-
 @mixin pxh-login--in-state-scale {
   height: $pxh-login-height;
   font-size: $inuit-base-font-size;

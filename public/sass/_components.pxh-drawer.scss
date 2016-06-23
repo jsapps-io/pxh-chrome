@@ -2,12 +2,6 @@
     #components.pxh-drawer
 \*------------------------------------*/
 
-$pxh-drawer-width-wide: 260px !default; // magic number ... fix this
-$pxh-drawer-width-narrow: 60px !default; // magic number ... fix this
-$pxh-drawer-margin: 20px !default;
-$pxh-drawer-bg-color: $gray10 !default;
-$pxh-view-header-height: 61px !default; // locked to current height of px-context-browser
-
 // Set the default styles for the wide/open state of the drawer (as seen on mobile).
 .pxh-drawer {
   z-index: 750;
