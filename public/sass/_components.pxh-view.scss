@@ -2,27 +2,6 @@
     #components.pxh-view
 \*------------------------------------*/
 
-$pxh-drawer-width-wide: 260px !default; // magic number ... fix this
-$pxh-drawer-width-narrow: 60px !default; // magic number ... fix this
-$pxh-drawer-margin: 20px !default;
-$pxh-drawer-bg-color: $gray10 !default;
-$pxh-view-header-height: 61px !default; // locked to current height of px-context-browser + 1px for bottom border
-
-$pxh-view-background-colors: (
-  white: $white, 
-  gray1: $gray1, 
-  gray2: $gray2, 
-  gray3: $gray3, 
-  gray4: $gray4, 
-  gray5: $gray5, 
-  gray6: $gray6, 
-  gray7: $gray7, 
-  gray8: $gray8, 
-  gray9: $gray9, 
-  gray10: $gray10, 
-  black: $black
- );
-
 .pxh-wrapper {
   padding-top: $pxh-view-header-height;
   position: absolute;
@@ -32,11 +11,71 @@ $pxh-view-background-colors: (
   left: 0;
 }
 
+@keyframes pxh-view--animate-wide {
+  0% {
+    margin-left: $pxh-drawer-width-wide;
+  }
+  33% {
+    margin-left: $pxh-drawer-width-wide;
+  }
+  66% {
+    margin-left: $pxh-drawer-width-narrow;
+  }
+  100% {
+    margin-left: $pxh-drawer-width-narrow;
+  }
+}
+
+@keyframes pxh-view--animate-narrow {
+  0% {
+    margin-left: $pxh-drawer-width-narrow;
+  }
+  33% {
+    margin-left: $pxh-drawer-width-wide;
+  }
+  100% {
+    margin-left: $pxh-drawer-width-wide;
+  }
+}
+
+@keyframes pxh-view--animate-full-to-wide {
+  0% {
+    margin-left: 0;
+  }
+  50% {
+    margin-left: 0;
+  }
+  100% {
+    margin-left: $pxh-drawer-width-narrow;
+  }
+}
+
+.pxh-view {
+  &--animate-wide {
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+    animation-duration: 1000ms;
+    animation-name: pxh-view--animate-wide;
+  }
+  &--animate-narrow {
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+    animation-duration: 500ms;
+    animation-name: pxh-view--animate-narrow;
+  }
+  &--animate-full-to-wide {
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+    animation-duration: 250ms;
+    animation-name: pxh-view--animate-full-to-wide;
+  }
+}
+
 .pxh-view {
   height: 100%;
   overflow: auto;
   -webkit-overflow-scrolling: touch;
-  transition: all 300ms ease-in-out;
+  // transition: all 300ms ease-in-out;
 }
 
 @each $color-slug, $color-variable in $pxh-view-background-colors {
@@ -54,7 +93,7 @@ $pxh-view-background-colors: (
   @include mq($from: md) {
     .pxh-view--wide\@md {
       margin-left: $pxh-drawer-width-narrow;
-      transition-delay: 500ms;
+      // transition-delay: 500ms;
     }
   }
 
@@ -64,7 +103,7 @@ $pxh-view-background-colors: (
   @include mq($from: lg) {
     .pxh-view--narrow\@lg {
       margin-left: $pxh-drawer-width-wide;
-      transition-delay: 100ms;
+      // transition-delay: 100ms;
     }
   }
 
@@ -75,10 +114,69 @@ $pxh-view-background-colors: (
   }
 }
 
-
 /*------------------------------------*\
     #PXH-VIEW-HEADER
 \*------------------------------------*/
+
+@keyframes pxh-view-header--animate-wide {
+  0% {
+    left: $pxh-drawer-width-wide;
+  }
+  33% {
+    left: $pxh-drawer-width-wide;
+  }
+  66% {
+    left: $pxh-drawer-width-narrow;
+  }
+  100% {
+    left: $pxh-drawer-width-narrow;
+  }
+}
+
+@keyframes pxh-view-header--animate-narrow {
+  0% {
+    left: $pxh-drawer-width-narrow;
+  }
+  33% {
+    left: $pxh-drawer-width-wide;
+  }
+  100% {
+    left: $pxh-drawer-width-wide;
+  }
+}
+
+@keyframes pxh-view-header--animate-full-to-wide {
+  0% {
+    left: 0;
+  }
+  50% {
+    left: 0;
+  }
+  100% {
+    left: $pxh-drawer-width-narrow;
+  }
+}
+
+.pxh-view-header {
+  &--animate-wide {
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+    animation-duration: 1000ms;
+    animation-name: pxh-view-header--animate-wide;
+  }
+  &--animate-narrow {
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+    animation-duration: 500ms;
+    animation-name: pxh-view-header--animate-narrow;
+  }
+  &--animate-full-to-wide {
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+    animation-duration: 250ms;
+    animation-name: pxh-view-header--animate-full-to-wide;
+  }
+}
 
 .pxh-view-header {
   position: fixed;
@@ -88,7 +186,7 @@ $pxh-view-background-colors: (
   border-bottom: 1px solid rgba($gray7, 0.8);
   height: $pxh-view-header-height;
   background-color: $white;
-  transition: all 300ms ease-in-out;
+  // transition: all 300ms ease-in-out;
   z-index: 250;
 }
 
@@ -101,7 +199,7 @@ $pxh-view-background-colors: (
   @include mq($from: md) {
     .pxh-view-header--wide\@md {
       left: $pxh-drawer-width-narrow;
-      transition-delay: 500ms;
+      // transition-delay: 500ms;
     }
   }
 
@@ -123,7 +221,7 @@ $pxh-view-background-colors: (
   @include mq($from: lg) {
     .pxh-view-header--narrow\@lg {
       left: $pxh-drawer-width-wide;
-      transition-delay: 100ms;
+      // transition-delay: 100ms;
     }
   }
 }

@@ -1,19 +1,61 @@
 'use strict';
-/*! pxh-chrome.js 0.13.4 */
+/*! pxh-chrome.js 0.14.0 */
 
 // **************
 // CONFIG OBJECTS
 // **************
 
-var pxhStatesObject = {
-  'drawerOpen' : {
+var pxhStates = {
+  'default' : {
     'pxh-drawer' : {
-      'remove' : 'pxh-drawer--hidden-until@md pxh-drawer--narrow@md',
+      'add' : 'pxh-drawer--hidden-until@md pxh-drawer--narrow@md pxh-drawer--wide@lg',
+      'remove' : 'pxh-drawer--narrow@lg'
+    },
+    'pxh-drawer-header__link' : {
+      'remove' : 'pxh-drawer-header__link--wide@md',
+      'add' : 'pxh-drawer-header__link--narrow@md pxh-drawer-header__link--wide@lg'
+    },
+    'pxh-overlay' : {
+      'add' : 'pxh-overlay--hidden'
+    },
+    'pxh-navigation' : {
+      'add' : 'pxh-navigation--narrow@md pxh-navigation--wide@lg'
+    },
+    'pxh-login' : {
+      'add' : 'pxh-login--narrow@md pxh-login--wide@lg'
+    },
+    'pxh-login__name' : {
+      'add' : 'pxh-login__name--narrow@md pxh-login__name--wide@lg'
+    },
+    'pxh-login__link' : {
+      'add' : 'pxh-login__link--narrow@md pxh-login__link--wide@lg'
+    },
+    'pxh-login__settings' : {
+      'add' : 'pxh-login__settings--narrow@md pxh-login__settings--wide@lg'
+    },
+    'pxh-login__caret' : {
+      'add' : 'pxh-login__caret--narrow@md pxh-login__caret--wide@lg',
+    },
+    'pxh-view' : {
+      'remove' : 'pxh-disable-scroll-until@lg pxh-view--wide@lg',
+      'add' : 'pxh-view--narrow@lg'
+    },
+    'pxh-view-header' : {
+      'remove' : 'pxh-view-header--wide@lg',
+      'add' : 'pxh-view-header--narrow@lg'
+    },
+    'pxh-view-header-drawer-toggle' : {
+      'remove' : 'pxh-view-header-drawer-toggle--hidden'
+    }
+  },
+  'open' : {
+    'pxh-drawer' : {
+      'remove' : 'pxh-drawer--hidden-until@md pxh-drawer--narrow@md pxh-drawer--narrow@lg',
       'add' : 'pxh-drawer--wide@lg'
     },
     'pxh-drawer-header__link' : {
       'remove' : 'pxh-drawer-header__link--narrow@md',
-      'add' : 'pxh-drawer-header__link--wide@md'
+      'add' : 'pxh-drawer-header__link--wide@md pxh-drawer-header__link--wide@lg'
     },
     'pxh-overlay' : {
       'remove' : 'pxh-overlay--hidden'
@@ -31,8 +73,7 @@ var pxhStatesObject = {
       'add' : 'pxh-login__name--wide@lg'
     },
     'pxh-login__link' : {
-      'remove' : 'pxh-login__link--narrow@md',
-      'add' : 'pxh-login__link--narrow@lg'
+      'remove' : 'pxh-login__link--narrow@md pxh-login__link--narrow@lg'
     },
     'pxh-login__settings' : {
       'remove' : 'pxh-login__settings--narrow@md',
@@ -54,9 +95,9 @@ var pxhStatesObject = {
       'add' : 'pxh-view-header-drawer-toggle--hidden'
     }
   },
-  'drawerClosed' : {
+  'narrowAtLg' : {
     'pxh-drawer' : {
-      'add' : 'pxh-drawer--hidden-until@md pxh-drawer--narrow@md',
+      'add' : 'pxh-drawer--hidden-until@md pxh-drawer--narrow@md pxh-drawer--narrow@lg',
       'remove' : 'pxh-drawer--wide@lg'
     },
     'pxh-drawer-header__link' : {
@@ -104,8 +145,191 @@ var pxhStatesObject = {
   }
 }
 
-// TODO: lots of functions reach into this without explicitly taking it as an input parameter, and you should probably compartmentalize your code better than that
-var pxhLgBreakpoint = window.matchMedia('(min-width: 1024px)');
+var pxhTransitions = {
+  'outToIn' : {
+    'pxh-drawer' : {
+      'add' : 'pxh-drawer--animate-in',
+    }
+  },
+  'inToOut' : {
+    'pxh-drawer' : {
+      'add' : 'pxh-drawer--animate-out'
+    }
+  },
+  'narrowToOpen' : {
+    'pxh-drawer' : {
+      'add' : 'pxh-drawer--animate-wide'
+    },
+    'pxh-drawer-header__link' : {
+      'add' : 'pxh-drawer-header__link--animate-in'
+    },
+    'pxh-navigation__item-text' : {
+      'add' : 'pxh-navigation__item-text--animate-in'
+    },
+    'pxh-navigation__sub-link' : {
+      'add' : 'pxh-navigation__sub-link--animate-in'
+    },
+    'pxh-login' : {
+      'add' : 'pxh-navigation__sub-link--animate-wide'
+    },
+    'pxh-login__name' : {
+      'add' : 'pxh-login__name--animate-in'
+    },
+    'pxh-login__caret' : {
+      'add' : 'pxh-login__caret--animate-in'
+    },
+    'pxh-login__settings' : {
+      'add' : 'pxh-login__settings--animate-in'
+    }
+  },
+  'openToNarrow' : {
+    'pxh-drawer' : {
+      'add' : 'pxh-drawer--animate-narrow'
+    },
+    'pxh-drawer-header__link' : {
+      'add' : 'pxh-drawer-header__link--animate-out'
+    },
+    'pxh-navigation__item-text' : {
+      'add' : 'pxh-navigation__item-text--animate-out'
+    },
+    'pxh-navigation__sub-link' : {
+      'add' : 'pxh-navigation__sub-link--animate-out'
+    },
+    'pxh-login__name' : {
+      'add' : 'pxh-login__name--animate-out'
+    },
+    'pxh-login__caret' : {
+      'add' : 'pxh-login__caret--animate-out'
+    },
+    'pxh-login__settings' : {
+      'add' : 'pxh-login__settings--animate-out'
+    }
+  },
+  'outToNarrow' : {
+    'pxh-drawer' : {
+      'add' : 'pxh-drawer--animate-in'
+    },
+    'pxh-view' : {
+      'add' : 'pxh-view--animate-full-to-wide'
+    },
+    'pxh-view-header' : {
+      'add' : 'pxh-view-header--animate-full-to-wide'
+    }
+  },
+  'narrowToOut' : {
+    'pxh-drawer' : {
+      'add' : 'pxh-drawer--animate-out-wide'
+    },
+    'pxh-drawer-header__link' : {
+      'add' : 'pxh-drawer-header__link--animate-in'
+    },
+    'pxh-navigation__item-text' : {
+      'add' : 'pxh-navigation__item-text--animate-in'
+    },
+    'pxh-navigation__sub-link' : {
+      'add' : 'pxh-navigation__sub-link--animate-in'
+    },
+    'pxh-login' : {
+      'add' : 'pxh-navigation__sub-link--animate-wide'
+    },
+    'pxh-login__name' : {
+      'add' : 'pxh-login__name--animate-in'
+    },
+    'pxh-login__caret' : {
+      'add' : 'pxh-login__caret--animate-in'
+    },
+    'pxh-login__settings' : {
+      'add' : 'pxh-login__settings--animate-in'
+    }
+  },
+  'wideToNarrow' : {
+    'pxh-drawer' : {
+      'add' : 'pxh-drawer--animate-narrow'
+    },
+    'pxh-drawer-header__link' : {
+      'add' : 'pxh-drawer-header__link--animate-out'
+    },
+    'pxh-navigation__item-text' : {
+      'add' : 'pxh-navigation__item-text--animate-out'
+    },
+    'pxh-navigation__sub-link' : {
+      'add' : 'pxh-navigation__sub-link--animate-out'
+    },
+    'pxh-login__name' : {
+      'add' : 'pxh-login__name--animate-out'
+    },
+    'pxh-login__caret' : {
+      'add' : 'pxh-login__caret--animate-out'
+    },
+    'pxh-login__settings' : {
+      'add' : 'pxh-login__settings--animate-out'
+    },
+    'pxh-view' : {
+      'add' : 'pxh-view--animate-wide'
+    },
+    'pxh-view-header' : {
+      'add' : 'pxh-view-header--animate-wide'
+    }
+  },
+  'narrowToWide' : {
+    'pxh-drawer' : {
+      'add' : 'pxh-drawer--animate-wide'
+    },
+    'pxh-drawer-header__link' : {
+      'add' : 'pxh-drawer-header__link--animate-in'
+    },
+    'pxh-navigation__item-text' : {
+      'add' : 'pxh-navigation__item-text--animate-in'
+    },
+    'pxh-navigation__sub-link' : {
+      'add' : 'pxh-navigation__sub-link--animate-in'
+    },
+    'pxh-login__name' : {
+      'add' : 'pxh-login__name--animate-in'
+    },
+    'pxh-login__caret' : {
+      'add' : 'pxh-login__caret--animate-in'
+    },
+    'pxh-login__settings' : {
+      'add' : 'pxh-login__settings--animate-in'
+    },
+    'pxh-view' : {
+      'add' : 'pxh-view--animate-narrow'
+    },
+    'pxh-view-header' : {
+      'add' : 'pxh-view-header--animate-narrow'
+    }
+  },
+  'clearAll' : {
+    'pxh-drawer' : {
+      'remove' : 'pxh-drawer--animate-in pxh-drawer--animate-out pxh-drawer--animate-narrow pxh-drawer--animate-wide pxh-drawer--animate-out-wide'
+    },
+    'pxh-drawer-header__link' : {
+      'remove' : 'pxh-drawer-header__link--animate-in pxh-drawer-header__link--animate-out'
+    },
+    'pxh-navigation__item-text' : {
+      'remove' : 'pxh-navigation__item-text--animate-in pxh-navigation__item-text--animate-out'
+    },
+    'pxh-navigation__sub-link' : {
+      'remove' : 'pxh-navigation__sub-link--animate-in pxh-navigation__sub-link--animate-out'
+    },
+    'pxh-login__name' : {
+      'remove' : 'pxh-login__name--animate-in pxh-login__name--animate-out'
+    },
+    'pxh-login__caret' : {
+      'remove' : 'pxh-login__caret--animate-in pxh-login__caret--animate-out'
+    },
+    'pxh-login__settings' : {
+      'remove' : 'pxh-login__settings--animate-in pxh-login__settings--animate-out'
+    },
+    'pxh-view' : {
+      'remove' : 'pxh-view--animate-wide pxh-view--animate-narrow pxh-view--animate-full-to-wide'
+    },
+    'pxh-view-header' : {
+      'remove' : 'pxh-view-header--animate-wide pxh-view-header--animate-narrow pxh-view-header--animate-full-to-wide'
+    }
+  }
+}
 
 // *********
 // FUNCTIONS
@@ -120,7 +344,7 @@ var pxhLgBreakpoint = window.matchMedia('(min-width: 1024px)');
  * https://github.com/marcj/css-element-queries/blob/master/src/ResizeSensor.js
  */
 
-(function() {
+// (function() {
 
   /**
    * Class for dimension change detection.
@@ -287,7 +511,7 @@ var pxhLgBreakpoint = window.matchMedia('(min-width: 1024px)');
     window.pxhResizeSensor = pxhResizeSensor;
   }
 
-})();
+// })();
 
 /*!
  * JavaScript Cookie v2.1.1
@@ -454,64 +678,30 @@ var pxhLgBreakpoint = window.matchMedia('(min-width: 1024px)');
 
 var pxhCookies = Cookies.noConflict();
 
-// toggle classes
-var pxhChangeClasses = function(targetClassName, changeType, classNamesToChange) {
-  var targets = document.getElementsByClassName(targetClassName);
-  // if an element matches, work with it
-  if ((typeof targets !== 'undefined') && (targets.length > 0)) {
 
-    for (var j = targets.length - 1; j >= 0; j--) {
-
-      // if there are multiple classNamesToChange delimited by spaces, work with them
-      if (classNamesToChange.indexOf(' ')) {
-        // split multiple classNamesToChange into an array
-        var classes = classNamesToChange.split(' ');
-        // iterate through the array of classes
-        for (var k = classes.length - 1; k >= 0; k--) {
-          // if we're supposed to toggle the classNamesToChange on the target element, do it
-          if (changeType === 'toggle') {
-            targets[j].classList.toggle(classes[k]);
-          }
-          // if we're supposed to add the classNamesToChange to the target element, do it
-          else if (changeType === 'add') {
-            targets[j].classList.add(classes[k]);
-          }
-          // if we're supposed to remove the classNamesToChange from the target element, do it
-          else if (changeType === 'remove') {
-            targets[j].classList.remove(classes[k]);
-          }
-        }
-      }
-      // if there's just one class name, work with it
-      else if (classNamesToChange) {
-        // if we're supposed to toggle the class name on the target element, do it
-        if (changeType === 'toggle') {
-          targets[j].classList.toggle(classNamesToChange);
-        }
-        // if we're supposed to add the class name to the target element, do it
-        else if (changeType === 'add') {
-          targets[j].classList.add(classNamesToChange);
-        }
-        // if we're supposed to remove the class name from the target element, do it
-        else if (changeType === 'remove') {
-          targets[j].classList.remove(classNamesToChange);
-        }
-      }
-    }
+/* arrayExists() */
+var arrayExists = function(array) {
+  if ((typeof array !== 'undefined') && (array.length > 0)) {
+    return true;
+  }
+  else {
+    return false;
   }
 }
 
-var pxhFindObjectByLabel = function(obj, label) {
-  for (var i in obj) {
-    if (obj.hasOwnProperty(label)) {
-      return obj[label];
+/* getItemByPropertyName() */
+var getItemByPropertyName = function(haystack, propertyName) {
+  for (var i in haystack) {
+    if (haystack.hasOwnProperty(propertyName)) {
+      return haystack[propertyName];
     }
   }
 };
 
-var pxhLoadState = function(pxhStatesObject, targetStateName) {
+/* pxhLoadState() */
+var pxhLoadState = function(stateObject, targetStateName) {
   // grab the target state object from the master states object
-  var targetState = pxhFindObjectByLabel(pxhStatesObject, targetStateName);
+  var targetState = getItemByPropertyName(stateObject, targetStateName);
   // iterate through each target class in the target state object
   for (var targetClass in targetState) {
     // grab the target state for each class in the target state
@@ -526,29 +716,79 @@ var pxhLoadState = function(pxhStatesObject, targetStateName) {
   }
 }
 
-var pxhToggleDrawerOnLarge = function(mediaQuery) {
-  if (mediaQuery.matches) {
-    pxhLoadState(pxhStatesObject, 'drawerOpen');
-    document.dispatchEvent(pxhDrawerOpened);
-    pxhCookies.set('pxh-drawer-narrow', 'false', { expires: 1, path: '/'});
-    pxhCookies.set('pxh-drawer-open', 'true', { expires: 1, path: '/'});
-  } else {
-    pxhLoadState(pxhStatesObject, 'drawerClosed');
-    document.dispatchEvent(pxhDrawerClosed);
-    pxhCookies.set('pxh-drawer-narrow', 'true', { expires: 1, path: '/'});
-    pxhCookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/'});
+/* pxhChangeClasses() */
+// e.g. pxhChangeClasses('nav', 'add', 'hidden--until-@md')
+var pxhChangeClasses = function(targetClassName, changeType, classNamesToChange) {
+  var targetElements = document.getElementsByClassName(targetClassName);
+  if (arrayExists(targetElements) && (classNamesToChange)) {
+    classNamesToChange = classNamesToChange.replace(/  +/g, ' ');
+    var classNamesToChangeArray = classNamesToChange.split(' ');
+    for (var i = targetElements.length - 1; i >= 0; i--) {
+      for (var j = classNamesToChangeArray.length -1; j >= 0; j--) {
+        if (changeType === 'add') {
+          targetElements[i].classList.add(classNamesToChangeArray[j]);
+        }
+        else if (changeType === 'remove') {
+          targetElements[i].classList.remove(classNamesToChangeArray[j]);
+        }
+        else if (changeType === 'toggle') {
+          targetElements[i].classList.toggle(classNamesToChangeArray[j]);
+        }
+      }
+    }
   }
 }
 
-// make links automatically close the drawer when clicked
-var pxhBindDrawerMediaQueryControls = function(targetClass, mediaQuery) {
-  var targetElements = document.getElementsByClassName(targetClass);
-  if ((typeof targetElements !== 'undefined') && (targetElements.length > 0)) {
-    // iterate through drawer controls and fire the pxhToggleDrawer function when clicked
-    for (var i = targetElements.length - 1; i >= 0; i--) {
-      targetElements[i].addEventListener('click', function() {
-        if (!mediaQuery.matches) {
-          pxhLoadState(pxhStatesObject, 'drawerClosed');
+/* pxhChangeClasses() */
+var pxhBindControl = function(controlName) {
+  var controlElements = document.getElementsByClassName(controlName);
+  if (arrayExists(controlElements)) {
+    for (var i = controlElements.length - 1; i >= 0; i--) {
+      controlElements[i].addEventListener('click', function() {
+        var firstDrawer = document.getElementsByClassName('pxh-drawer')[0];
+        var drawerIsAtDefaultState = firstDrawer.classList.contains('pxh-drawer--wide@lg');
+        var drawerIsNarrowAtMedium = firstDrawer.classList.contains('pxh-drawer--narrow@md');
+        var drawerIsHiddenAtSmall = firstDrawer.classList.contains('pxh-drawer--hidden-until@md');
+        pxhLoadState(pxhTransitions, 'clearAll');
+        if ((window.matchMedia('(min-width: 1024px)').matches) && (drawerIsAtDefaultState)) {
+          pxhLoadState(pxhTransitions, 'wideToNarrow');
+          pxhLoadState(pxhStates, 'narrowAtLg');
+          document.dispatchEvent(pxhDrawerClosed);
+          pxhCookies.set('pxh-drawer-narrow', 'true', { expires: 1, path: '/'});
+          pxhCookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/'});
+        }
+        else if (window.matchMedia('(min-width: 1024px)').matches) {
+          pxhLoadState(pxhTransitions, 'narrowToWide');
+          pxhLoadState(pxhStates, 'default');
+          document.dispatchEvent(pxhDrawerOpened);
+          pxhCookies.set('pxh-drawer-narrow', 'false', { expires: 1, path: '/'});
+          pxhCookies.set('pxh-drawer-open', 'true', { expires: 1, path: '/'});
+        }
+        else if ((drawerIsNarrowAtMedium) && (window.matchMedia('(min-width: 768px)').matches)) {
+          pxhLoadState(pxhTransitions, 'narrowToOpen');
+          pxhLoadState(pxhStates, 'open');
+          document.dispatchEvent(pxhDrawerOpened);
+          pxhCookies.set('pxh-drawer-open', 'true', { expires: 1, path: '/'});
+          pxhCookies.set('pxh-drawer-narrow', 'false', { expires: 1, path: '/'});
+        }
+        else if (window.matchMedia('(min-width: 768px)').matches) {
+          pxhLoadState(pxhTransitions, 'openToNarrow');
+          pxhLoadState(pxhStates, 'default');
+          document.dispatchEvent(pxhDrawerClosed);
+          pxhCookies.set('pxh-drawer-narrow', 'true', { expires: 1, path: '/'});
+          pxhCookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/'});
+        }
+        else if (drawerIsHiddenAtSmall) {
+          pxhLoadState(pxhTransitions, 'outToIn');
+          pxhLoadState(pxhStates, 'open');
+          document.dispatchEvent(pxhDrawerOpened);
+          pxhCookies.set('pxh-drawer-narrow', 'false', { expires: 1, path: '/'});
+          pxhCookies.set('pxh-drawer-open', 'true', { expires: 1, path: '/'});
+        }
+        else {
+          pxhLoadState(pxhTransitions, 'inToOut');
+          pxhLoadState(pxhStates, 'default');
+          document.dispatchEvent(pxhDrawerClosed);
           pxhCookies.set('pxh-drawer-narrow', 'true', { expires: 1, path: '/'});
           pxhCookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/'});
         }
@@ -557,29 +797,68 @@ var pxhBindDrawerMediaQueryControls = function(targetClass, mediaQuery) {
   }
 }
 
-// toggle drawer-specific classes when drawer toggle is fired
-var pxhToggleDrawer = function(event) {
-  event.preventDefault();
-  if (pxhCookies.get('pxh-drawer-open') === 'true') {
-    pxhLoadState(pxhStatesObject, 'drawerClosed');
+var pxhBreakpointAtMd = function(breakpoint) {
+  pxhLoadState(pxhTransitions, 'clearAll');
+  var firstDrawer = document.getElementsByClassName('pxh-drawer')[0];
+  var drawerIsAtDefaultState = firstDrawer.classList.contains('pxh-drawer--wide@lg');
+  if (breakpoint.matches) {
+    if (drawerIsAtDefaultState) {
+      document.dispatchEvent(pxhDrawerClosed);
+      pxhCookies.set('pxh-drawer-narrow', 'true', { expires: 1, path: '/'});
+      pxhCookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/'});
+      pxhLoadState(pxhTransitions, 'outToNarrow');
+    }
+  } else {
+    if (drawerIsAtDefaultState) {
+      pxhLoadState(pxhTransitions, 'narrowToOut');
+    }
+  }
+}
+
+var pxhBreakpointAtLg = function(breakpoint) {
+  pxhLoadState(pxhTransitions, 'clearAll');
+  var firstDrawer = document.getElementsByClassName('pxh-drawer')[0];
+  // var drawerIsAtNarrowAtLgState = firstDrawer.classList.contains('pxh-drawer--narrow@lg');
+  var drawerIsOpen = firstDrawer.classList.contains('pxh-drawer--wide@lg');
+  if (breakpoint.matches) {
+    if (drawerIsOpen) {
+      pxhLoadState(pxhTransitions, 'narrowToWide');
+      pxhLoadState(pxhStates, 'default');
+      pxhCookies.set('pxh-drawer-narrow', 'false', { expires: 1, path: '/'});
+      pxhCookies.set('pxh-drawer-open', 'true', { expires: 1, path: '/'});
+    }
+    else {
+      pxhLoadState(pxhTransitions, 'narrowToWide');
+      pxhLoadState(pxhStates, 'default');
+      document.dispatchEvent(pxhDrawerOpened);
+      pxhCookies.set('pxh-drawer-narrow', 'false', { expires: 1, path: '/'});
+      pxhCookies.set('pxh-drawer-open', 'true', { expires: 1, path: '/'});
+    }
+  }
+  else {
+    if (drawerIsOpen) {
+      pxhLoadState(pxhTransitions, 'wideToNarrow');
+    };
+    pxhLoadState(pxhStates, 'default');
     document.dispatchEvent(pxhDrawerClosed);
     pxhCookies.set('pxh-drawer-narrow', 'true', { expires: 1, path: '/'});
     pxhCookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/'});
   }
-  else if (pxhCookies.get('pxh-drawer-open') === 'false') {
-    pxhLoadState(pxhStatesObject, 'drawerOpen');
-    document.dispatchEvent(pxhDrawerOpened);
-    pxhCookies.set('pxh-drawer-narrow', 'false', { expires: 1, path: '/'});
-    pxhCookies.set('pxh-drawer-open', 'true', { expires: 1, path: '/'});
-  }
 }
 
-var pxhBindDrawerControls = function(controlClass) {
-  var controlElement = document.getElementsByClassName(controlClass);
-  if ((typeof controlElement !== 'undefined') && (controlElement.length > 0)) {
+var pxhBindDrawerMediaQueryControls = function(targetClass, mediaQuery) {
+  var targetElements = document.getElementsByClassName(targetClass);
+  if ((typeof targetElements !== 'undefined') && (targetElements.length > 0)) {
     // iterate through drawer controls and fire the pxhToggleDrawer function when clicked
-    for (var i = controlElement.length - 1; i >= 0; i--) {
-      controlElement[i].addEventListener('click', pxhToggleDrawer);
+    for (var i = targetElements.length - 1; i >= 0; i--) {
+      targetElements[i].addEventListener('click', function() {
+        pxhLoadState(pxhTransitions, 'clearAll');
+        if (!mediaQuery.matches) {
+          pxhLoadState(pxhStates, 'default');
+          pxhCookies.set('pxh-drawer-narrow', 'true', { expires: 1, path: '/'});
+          pxhCookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/'});
+        }
+      })
     }
   }
 }
@@ -589,12 +868,12 @@ var pxhOverlayDrawerControl = function() {
   if ((typeof pxhOverlay !== 'undefined') && (pxhOverlay.length > 0)) {
     for (var i = pxhOverlay.length - 1; i >= 0; i--) {
       pxhOverlay[i].addEventListener('click', function(e) {
-        if ((!pxhLgBreakpoint.matches) && (pxhCookies.get('pxh-drawer-open') === 'true')) {
-          pxhLoadState(pxhStatesObject, 'drawerClosed');
+        if ((!lgBreakpoint.matches) && (pxhCookies.get('pxh-drawer-open') === 'true')) {
+          pxhLoadState(pxhTransitions, 'clearAll');
+          pxhLoadState(pxhStates, 'default');
           document.dispatchEvent(pxhDrawerClosed);
           pxhCookies.set('pxh-drawer-narrow', 'true', { expires: 1, path: '/'});
           pxhCookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/'});
-
         }
       })
     }
@@ -603,8 +882,9 @@ var pxhOverlayDrawerControl = function() {
 
 var pxhEscapeDrawerControl = function() {
   document.addEventListener('keyup', function(e) {
-     if ((e.keyCode == 27) && (!pxhLgBreakpoint.matches) && (pxhCookies.get('pxh-drawer-open') === 'true')) {
-      pxhLoadState(pxhStatesObject, 'drawerClosed');
+     if ((e.keyCode == 27) && (!lgBreakpoint.matches) && (pxhCookies.get('pxh-drawer-open') === 'true')) {
+      pxhLoadState(pxhTransitions, 'clearAll');
+      pxhLoadState(pxhStates, 'default');
       document.dispatchEvent(pxhDrawerClosed);
       pxhCookies.set('pxh-drawer-narrow', 'true', { expires: 1, path: '/'});
       pxhCookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/'});
@@ -639,13 +919,21 @@ var pxhAnywhereLoginMenuControl = function(toggleControl, toggleTarget, removeCl
   }
 }
 
-
 // ********
 // FIRE!!!!
 // ********
 
-// add an event listener for when the DOM content is ready
+var lgBreakpoint = window.matchMedia('(min-width: 1024px)');
+var mdBreakpoint = window.matchMedia('(min-width: 768px)');
 document.addEventListener('DOMContentLoaded', function(event) {
+  lgBreakpoint.addListener(pxhBreakpointAtLg);
+  mdBreakpoint.addListener(pxhBreakpointAtMd);
+});
+
+document.addEventListener('DOMContentLoaded', function(event) {
+  pxhBindControl('pxh-view-header-drawer-toggle');
+  pxhBindControl('pxh-drawer-toggle');
+
   if (pxhCookies.get('pxh-drawer-open') === null) {
     pxhCookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/'});
   }
@@ -655,13 +943,13 @@ document.addEventListener('DOMContentLoaded', function(event) {
   }
 
   // check if the 'narrow' cookie is set and if we're currently at the desktop breakpoint
-  if ((pxhLgBreakpoint.matches) && (pxhCookies.get('pxh-drawer-narrow') === 'true')) {
+  if ((window.matchMedia('(min-width: 1024px)').matches) && (pxhCookies.get('pxh-drawer-narrow') === 'true')) {
     // toggle the drawer closed
-    pxhLoadState(pxhStatesObject, 'drawerClosed');
+    pxhLoadState(pxhStates, 'narrowAtLg');
     document.dispatchEvent(pxhDrawerClosed);
     pxhCookies.set('pxh-drawer-narrow', 'true', { expires: 1, path: '/'});
   } 
-  else if (pxhLgBreakpoint.matches) {
+  else if (window.matchMedia('(min-width: 1024px)').matches) {
     pxhCookies.set('pxh-drawer-open', 'true', { expires: 1, path: '/'});
   } else {
     pxhCookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/'});
@@ -670,25 +958,20 @@ document.addEventListener('DOMContentLoaded', function(event) {
     pxhToggleLoginMenu('pxh-login__profile-link', 'pxh-login-menu--profile', 'pxh-login-menu--visible');
     pxhToggleLoginMenu('pxh-login__settings-link', 'pxh-login-menu--settings', 'pxh-login-menu--visible');
   });
+
+  pxhBindDrawerMediaQueryControls('pxh-navigation__link', lgBreakpoint);
+  pxhBindDrawerMediaQueryControls('pxh-navigation__sub-link', lgBreakpoint);
+
+  pxhOverlayDrawerControl();
+
+  pxhEscapeDrawerControl();
+
+  pxhAnywhereLoginMenuControl('pxh-login__profile-link', 'pxh-login-menu--profile', 'pxh-login-menu--visible');
+  pxhAnywhereLoginMenuControl('pxh-login__settings-link', 'pxh-login-menu--settings', 'pxh-login-menu--visible');
+
+  pxhToggleLoginMenu('pxh-login__profile-link', 'pxh-login-menu--profile', 'pxh-login-menu--visible');
+  pxhToggleLoginMenu('pxh-login__settings-link', 'pxh-login-menu--settings', 'pxh-login-menu--visible');
 });
-
-pxhLgBreakpoint.addListener(pxhToggleDrawerOnLarge);
-
-pxhBindDrawerMediaQueryControls('pxh-navigation__link', pxhLgBreakpoint);
-pxhBindDrawerMediaQueryControls('pxh-navigation__sub-link', pxhLgBreakpoint);
-
-pxhBindDrawerControls('pxh-drawer-toggle__link');
-pxhBindDrawerControls('pxh-view-header-drawer-toggle__link');
-
-pxhOverlayDrawerControl();
-
-pxhEscapeDrawerControl();
-
-pxhAnywhereLoginMenuControl('pxh-login__profile-link', 'pxh-login-menu--profile', 'pxh-login-menu--visible');
-pxhAnywhereLoginMenuControl('pxh-login__settings-link', 'pxh-login-menu--settings', 'pxh-login-menu--visible');
-
-pxhToggleLoginMenu('pxh-login__profile-link', 'pxh-login-menu--profile', 'pxh-login-menu--visible');
-pxhToggleLoginMenu('pxh-login__settings-link', 'pxh-login-menu--settings', 'pxh-login-menu--visible');
 
 var pxhView = document.getElementById('js-view');
 
@@ -712,15 +995,3 @@ if (pxhView) {
     document.dispatchEvent(pxhViewResized);
   });
 }
-
-// document.addEventListener('pxhViewResized', function(event) {
-//   console.log('pxhViewResized was fired!');
-// });
-
-// document.addEventListener('pxhDrawerOpened', function(event) {
-//   console.log('the drawer was opened!');
-// });
-
-// document.addEventListener('pxhDrawerClosed', function(event) {
-//   console.log('the drawer was closed!');
-// });

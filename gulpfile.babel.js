@@ -175,7 +175,7 @@ gulp.task('img', () => {
 });
 
 gulp.task('fonts', () => {
-  return gulp.src(['bower_components/**/*.{eot,svg,ttf,woff,woff2}', 'public/fonts/**/*'])
+  return gulp.src(['bower_components/**/*.{eot,svg,ttf,woff,woff2}', 'public/fonts/**/*', '!bower_components/mocha/**/*'])
     .pipe(gulp.dest('.tmp/fonts'))
     .pipe(gulp.dest('dist/fonts'))
 });

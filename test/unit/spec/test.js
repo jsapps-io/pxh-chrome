@@ -44,8 +44,8 @@ var testStatesObject = {
 }
 
 // assign individual test states from the test states object to variables
-var testStateOne = pxhFindObjectByLabel(testStatesObject, 'stateOne');
-var testStateTwo = pxhFindObjectByLabel(testStatesObject, 'stateTwo');
+var testStateOne = getItemByPropertyName(testStatesObject, 'stateOne');
+var testStateTwo = getItemByPropertyName(testStatesObject, 'stateTwo');
 
 // create item to manipulate by toggling state
 var stateItemOne = document.createElement('div');

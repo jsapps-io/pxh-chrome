@@ -1,4 +1,4 @@
-/*! pxh-prechrome.css 0.13.4 */
+/*! pxh-prechrome.css 0.14.0 */
 
 /*------------------------------------*\
     #pxh-prechrome
@@ -6,6 +6,7 @@
 
 // ** #SETTINGS
 @import "settings.defaults.scss";
+@import "settings.pxh-chrome.scss";
 
 // ** #GENERIC ** //
 @import "generic.normalize.scss";

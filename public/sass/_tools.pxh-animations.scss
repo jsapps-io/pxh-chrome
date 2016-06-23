@@ -2,6 +2,25 @@
     #tools.pxh-animations
 \*------------------------------------*/
 
+@mixin in-state-opacity {
+  opacity: 1;
+}
+
+@mixin out-state-opacity {
+  opacity: 0;
+}
+
+@mixin out-state-scale {
+  margin: 0;
+  padding: 0;
+  font-size: 0;
+}
+
+@mixin out-state {
+  @include out-state-scale;
+  @include out-state-opacity;
+}
+
 // mixin for embedding common animation declarations across pxh-navigation elements
 @mixin pxh-animation($name) {
   animation-name: $name;

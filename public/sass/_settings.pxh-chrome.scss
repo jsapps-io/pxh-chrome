@@ -1,0 +1,66 @@
+/*------------------------------------*\
+    #settings.pxh-chrome
+\*------------------------------------*/
+
+$pxh-drawer-width-wide: 260px !default; // magic number ... fix this
+$pxh-drawer-width-narrow: 60px !default; // magic number ... fix this
+$pxh-drawer-margin: 20px !default; // magic number ... fix this
+$pxh-drawer-bg-color: $gray10 !default;
+
+$pxh-navigation-color: $gray7 !default;
+$pxh-navigation-bg-color: transparent !default;
+
+$pxh-navigation-selected-bg-color: $gray9 !default;
+$pxh-navigation-selected-color: $white !default;
+
+$pxh-navigation-active-bg-color: $gray9 !default;
+$pxh-navigation-active-color: $white !default;
+
+$pxh-navigation-error-bg-color: $pxh-navigation-bg-color !default;
+$pxh-navigation-error-color: $pxh-navigation-color !default;
+$pxh-navigation-error-icon-color: $red !default;
+
+$pxh-navigation-sub-color: $gray7 !default;
+
+$pxh-navigation-sub-selected-bg-color: transparent !default;
+$pxh-navigation-sub-selected-color: $white !default;
+
+$pxh-navigation-hover-bg-color: $gray9 !default;
+$pxh-navigation-hover-color: $gray4 !default;
+
+$pxh-navigation-sub-hover-bg-color: transparent !default;
+$pxh-navigation-sub-hover-color: $gray4 !default;
+
+$pxh-navigation-link-height: 48px;
+$pxh-navigation-sub-link-height: 30px;
+$pxh-navigation-divider-margin: 10px;
+
+$pxh-login-height:  60px !default;
+$pxh-login-avatar-height-width: 30px !default;
+$pxh-login-magic-centering: 14px !default; // magic number, fix this
+
+$pxh-view-header-height: 61px !default; // locked to current height of px-context-browser + 1px for bottom border
+
+$pxh-view-background-colors: (
+  white: $white, 
+  gray1: $gray1, 
+  gray2: $gray2, 
+  gray3: $gray3, 
+  gray4: $gray4, 
+  gray5: $gray5, 
+  gray6: $gray6, 
+  gray7: $gray7, 
+  gray8: $gray8, 
+  gray9: $gray9, 
+  gray10: $gray10, 
+  black: $black
+ );
+
+$pxh-spinner-alpha: 0.7;
+
+$error-icon-color: $gray5 !default;
+$error-title-color: $gray6 !default;
+$error-description-color: $gray6 !default;
+$error-margin-top: $inuit-base-spacing-unit * 3 !default;
+$error-padding-top: $inuit-base-spacing-unit !default;
+$error-text-decoration: none !default;

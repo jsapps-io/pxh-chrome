@@ -2,41 +2,6 @@
     #components.pxh-navigation
 \*------------------------------------*/
 
-$pxh-navigation-color: $gray7 !default;
-$pxh-navigation-bg-color: transparent !default;
-
-$pxh-navigation-selected-bg-color: $gray9 !default;
-$pxh-navigation-selected-color: $white !default;
-
-$pxh-navigation-active-bg-color: $gray9 !default;
-$pxh-navigation-active-color: $white !default;
-
-$pxh-navigation-error-bg-color: $pxh-navigation-bg-color !default;
-$pxh-navigation-error-color: $pxh-navigation-color !default;
-$pxh-navigation-error-icon-color: $red !default;
-
-$pxh-navigation-sub-color: $gray7 !default;
-
-$pxh-navigation-sub-selected-bg-color: transparent !default;
-$pxh-navigation-sub-selected-color: $white !default;
-
-$pxh-navigation-hover-bg-color: $gray9 !default;
-$pxh-navigation-hover-color: $gray4 !default;
-
-$pxh-navigation-sub-hover-bg-color: transparent !default;
-$pxh-navigation-sub-hover-color: $gray4 !default;
-
-$pxh-drawer-margin: 20px !default; // magic number ... fix this
-$pxh-drawer-width-wide: 260px !default; // magic number ... fix this
-
-$pxh-view-header-height: 61px !default;
-
-$pxh-navigation-link-height: 48px;
-$pxh-navigation-sub-link-height: 30px;
-$pxh-navigation-divider-margin: 10px;
-
-$pxh-login-height:  60px !default;
-
 /*------------------------------------*\
     #pxh-navigation
 \*------------------------------------*/
@@ -51,7 +16,7 @@ $pxh-login-height:  60px !default;
   border-top: 1px solid rgba(0,0,0,0.15);
   max-height: 100%;
   overflow-y: auto;
-  animation-duration: 300ms;
+  // animation-duration: 300ms;
   scrollbar-base-color: $gray10;
   scrollbar-arrow-color: $gray8;
   scrollbar-track-color: $gray10;
@@ -98,95 +63,11 @@ $pxh-login-height:  60px !default;
     #pxh-badge
 \*------------------------------------*/
 
-// mixin for "animate in" styles
-//
-// These styles are applied at the end of an entrance animation
-// when the element toggles from hidden to visible, or at the
-// beginning of an exit animation when the elemenbt toggles from
-// visible to hidden.
-//
-// These styles are also applied to the element when it is visible
-// by default, absent an animation.
-@mixin pxh-badge--in-styles {
-  font-size: 12px;
-  opacity: 1;
-  visibility: visible;
-}
-
-// mixin for "animate out" styles
-//
-// These styles are applied at the end of an exit animation
-// when the element toggles from visible to hidden, or at the
-// beginning of an entrance animation when the element toggles from
-// hidden to visible.
-//
-// These styles are also applied to the element when it is hidden
-// by default, absent an animation.
-@mixin pxh-badge--out-styles {
-  font-size: 0;
-  opacity: 0;
-  visibility: hidden;
-}
-
-// keyframes for "animate in" styles
-//
-// This animation sequence is applied when the element
-// toggles from hidden to visible.
-@keyframes pxh-badge--in {
-  0% {
-    // start the entrance animation with the "hidden by default" styles
-    @include pxh-badge--out-styles;
-  }
-  1% {
-    font-size: 0;
-    opacity: 0;
-    visibility: visible;
-  }
-  50% {
-    font-size: 12px;
-    opacity: 0;
-    visibility: visible;
-  }
-  100% {
-    // end the entrance animation with the "visible by default" styles
-    @include pxh-badge--in-styles;
-  }
-}
-
-// keyframes for "animate out" styles
-//
-// This animation sequence is applied when the element
-// toggles from visible to hidden.
-@keyframes pxh-badge--out {
-  0% {
-    // start the exit animation with the "visible by default" styles
-    @include pxh-badge--in-styles;
-  }
-  50% {
-    font-size: 12px;
-    opacity: 0;
-    visibility: visible;
-  }
-  99% {
-    font-size: 0;
-    opacity: 0;
-    visibility: visible;
-  }
-  100% {
-    // end the exit animation with the "hidden by default" styles
-    @include pxh-badge--out-styles;
-  }
-}
-
 .pxh-badge {
   .pxh-navigation__link &,
   .pxh-navigation__sub-link & {
     position: absolute;
     right: 5px;
-    // include the animation boilerplate with corresponding keyframes
-    @include pxh-animation(pxh-badge--in);
-    // include the "visible by default" styles
-    @include pxh-badge--in-styles;
   }
   .pxh-navigation__link & {
     top: 33%; // magic number
@@ -200,93 +81,71 @@ $pxh-login-height:  60px !default;
     #pxh-navigation__item-text
 \*------------------------------------*/
 
-// mixin for "animate in" styles
-//
-// These styles are applied at the end of an entrance animation
-// when the element toggles from hidden to visible, or at the
-// beginning of an exit animation when the elemenbt toggles from
-// visible to hidden.
-//
-// These styles are also applied to the element when it is visible
-// by default, absent an animation.
-@mixin pxh-navigation__item-text--in-styles {
-  font-size: $inuit-base-font-size;
-  opacity: 1;
-  visibility: visible;
+@mixin pxh-navigation__item-text--in-state-scale {
+  padding-left: $pxh-drawer-margin;
+  font-size: 16px;
+}
+@mixin pxh-navigation__item-text--in-state-opacity {
+  @include in-state-opacity;
 }
 
-// mixin for "animate out" styles
-//
-// These styles are applied at the end of an exit animation
-// when the element toggles from visible to hidden, or at the
-// beginning of an entrance animation when the element toggles from
-// hidden to visible.
-//
-// These styles are also applied to the element when it is hidden
-// by default, absent an animation.
-@mixin pxh-navigation__item-text--out-styles {
-  font-size: 0;
-  opacity: 0;
-  visibility: hidden;
+@mixin pxh-navigation__item-text--in-state {
+  @include pxh-navigation__item-text--in-state-opacity;
+  @include pxh-navigation__item-text--in-state-scale;
 }
 
-// keyframes for "animate in" styles
-//
-// This animation sequence is applied when the element
-// toggles from hidden to visible.
-@keyframes pxh-navigation__item-text--in {
+@keyframes pxh-navigation__item-text--animate-in {
   0% {
-    @include pxh-navigation__item-text--out-styles;
+    @include out-state;
   }
-  1% {
-    font-size: 0;
-    opacity: 0;
-    visibility: visible;
-  }
-  50% {
-    font-size: $inuit-base-font-size;
-    opacity: 0;
-    visibility: visible;
+  33% {
+    @include pxh-navigation__item-text--in-state-scale;
+    @include out-state-opacity;
   }
   100% {
-    @include pxh-navigation__item-text--in-styles;
+    @include pxh-navigation__item-text--in-state;
   }
 }
 
-// keyframes for "animate out" styles
-//
-// This animation sequence is applied when the element
-// toggles from visible to hidden.
-@keyframes pxh-navigation__item-text--out {
+@keyframes pxh-navigation__item-text--animate-out {
   0% {
-    @include pxh-navigation__item-text--in-styles;
+    @include pxh-navigation__item-text--in-state;
   }
-  50% {
-    font-size: $inuit-base-font-size;
-    opacity: 0;
-    visibility: visible;
+  33% {
+    @include pxh-navigation__item-text--in-state-scale;
+    @include out-state-opacity;
   }
-  99% {
-    font-size: 0;
-    opacity: 0;
-    visibility: visible;
+  34% {
+    @include out-state;
   }
   100% {
-    @include pxh-navigation__item-text--out-styles;
+    @include out-state;
   }
 }
 
 .pxh-navigation__item-text {
-  @include pxh-navigation__item-text--in-styles;
-  @include pxh-animation(pxh-navigation__item-text--in);
+  &--animate-in {
+    animation-fill-mode: forwards;
+    animation-duration: 1000ms;
+    animation-name: pxh-navigation__item-text--animate-in;
+  }
+  &--animate-out {
+    animation-fill-mode: forwards;
+    animation-duration: 1000ms;
+    animation-name: pxh-navigation__item-text--animate-out;
+
+  }
+}
+
+.pxh-navigation__item-text {
+  @include pxh-navigation__item-text--in-state;
+  // @include pxh-animation(pxh-navigation__item-text--in);
   display: block;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  padding-left: $pxh-drawer-margin;
   max-width: $pxh-drawer-width-wide - ($pxh-drawer-margin * 3); // has to be narrower than you think to accomodate potential vertical scrollbar in IE11
   float: left;
-  opacity: 1;
 }
 
 // hide sub-lists (such as sub-navigation for microapps besides the one
@@ -300,96 +159,73 @@ $pxh-login-height:  60px !default;
     #pxh-navigation__sub-link
 \*------------------------------------*/
 
-// mixin for "animate in" styles
-//
-// These styles are applied at the end of an entrance animation
-// when the element toggles from hidden to visible, or at the
-// beginning of an exit animation when the elemenbt toggles from
-// visible to hidden.
-//
-// These styles are also applied to the element when it is visible
-// by default, absent an animation.
-@mixin pxh-navigation__sub-link--in-styles {
-  font-size: $inuit-base-font-size;
-  opacity: 1;
-  visibility: visible;
+@mixin pxh-navigation__sub-link--in-state-scale {
   height: $pxh-navigation-sub-link-height;
   padding: ($inuit-base-spacing-unit / 2) ($inuit-base-spacing-unit / 8) 0 $pxh-drawer-margin * 3;
+  font-size: 16px;
 }
 
-// mixin for "animate out" styles
-//
-// These styles are applied at the end of an exit animation
-// when the element toggles from visible to hidden, or at the
-// beginning of an entrance animation when the element toggles from
-// hidden to visible.
-//
-// These styles are also applied to the element when it is hidden
-// by default, absent an animation.
-@mixin pxh-navigation__sub-link--out-styles {
-  font-size: 0;
-  opacity: 0;
-  visibility: hidden;
+@mixin pxh-navigation__sub-link--in-state-opacity {
+  @include in-state-opacity;
+}
+
+@mixin pxh-navigation__sub-link__in-state {
+  @include pxh-navigation__sub-link--in-state-scale;
+  @include pxh-navigation__sub-link--in-state-opacity;
+}
+
+@mixin pxh-navigation__sub-link--out-state {
+  @include out-state;
   height: 0;
   padding: 0;
 }
 
-// keyframes for "animate in" styles
-//
-// This animation sequence is applied when the element
-// toggles from hidden to visible.
-@keyframes pxh-navigation__sub-link--in {
+@keyframes pxh-navigation__sub-link--animate-in {
   0% {
-    @include pxh-navigation__sub-link--out-styles;
+    @include pxh-navigation__sub-link--out-state;
   }
-  1% {
-    font-size: 0;
-    opacity: 0;
-    visibility: visible;
-    height: 0;
-    padding: 0;
-  }
-  75% {
-    font-size: $inuit-base-font-size;
-    opacity: 0;
-    visibility: visible;
-    height: $pxh-navigation-sub-link-height;
-    padding: ($inuit-base-spacing-unit / 2) ($inuit-base-spacing-unit / 8) 0 $pxh-drawer-margin * 3;
+  33% {
+    @include pxh-navigation__sub-link--in-state-scale;
+    @include out-state-opacity;
   }
   100% {
-    @include pxh-navigation__sub-link--in-styles;
+    @include pxh-navigation__sub-link--in-state;
   }
 }
 
-// keyframes for "animate out" styles
-//
-// This animation sequence is applied when the element
-// toggles from visible to hidden.
-@keyframes pxh-navigation__sub-link--out {
+@keyframes pxh-navigation__sub-link--animate-out {
   0% {
-    @include pxh-navigation__sub-link--in-styles;
+    @include pxh-navigation__sub-link--in-state;
   }
-  25% {
-    opacity: 0;
-    visibility: visible;
-    height: $pxh-navigation-sub-link-height;
-    padding: ($inuit-base-spacing-unit / 2) ($inuit-base-spacing-unit / 8) 0 $pxh-drawer-margin * 3;
+  20% {
+    @include pxh-navigation__sub-link--in-state-scale;
+    @include out-state-opacity;
   }
-  99% {
-    font-size: 0;
-    opacity: 0;
-    visibility: visible;
-    height: 0;
-    padding: 0;
+  40% {
+    @include pxh-navigation__sub-link--out-state;
   }
   100% {
-    @include pxh-navigation__sub-link--out-styles;
+    @include pxh-navigation__sub-link--out-state;
   }
 }
 
 .pxh-navigation__sub-link {
-  @include pxh-animation(pxh-navigation__sub-link--in);
-  @include pxh-navigation__sub-link--in-styles;
+  &--animate-in {
+    animation-fill-mode: forwards;
+    animation-duration: 1000ms;
+    animation-name: pxh-navigation__sub-link--animate-in;
+
+  }
+  &--animate-out {
+    animation-fill-mode: forwards;
+    animation-duration: 1000ms;
+    animation-name: pxh-navigation__sub-link--animate-out;
+  }
+}
+
+.pxh-navigation__sub-link {
+  // @include pxh-animation(pxh-navigation__sub-link--in);
+  @include pxh-navigation__sub-link--in-state;
   position: relative;
   display: block;
   overflow: hidden;
@@ -406,7 +242,6 @@ $pxh-login-height:  60px !default;
   text-overflow: ellipsis;
   max-width: $pxh-drawer-width-wide - ($pxh-drawer-margin * 3.25); // has to be narrower than the available space to accomodate potential pxh-badge
   float: left;
-  opacity: 1;
 }
 
 .pxh-navigation__sub-link--selected {
@@ -435,8 +270,8 @@ $pxh-login-height:  60px !default;
   display: block;
   height: 1px;
   background-color: $gray9;
-  transition: all 200ms linear;
-  transition-delay: 200ms;
+  // transition: all 200ms linear;
+  // transition-delay: 200ms;
 }
 
 /*------------------------------------*\
@@ -447,12 +282,12 @@ $pxh-login-height:  60px !default;
   .pxh-navigation--narrow\@md {
     width: 100%;
     .pxh-navigation__item-text {
-      @include pxh-animation(pxh-navigation__item-text--out);
-      @include pxh-navigation__item-text--out-styles;
+      // @include pxh-animation(pxh-navigation__item-text--out);
+      @include out-state;
     }
     .pxh-navigation__sub-link {
-      @include pxh-animation(pxh-navigation__sub-link--out);
-      @include pxh-navigation__sub-link--out-styles;
+      // @include pxh-animation(pxh-navigation__sub-link--out);
+      @include pxh-navigation__sub-link--out-state;
     }
     .pxh-navigation__sub-item:last-of-type {
       .pxh-navigation__sub-link { // really don't like nesting but don't know how else to target this
@@ -462,11 +297,10 @@ $pxh-login-height:  60px !default;
     .pxh-navigation__sub-item--divider {
       margin-top: 0;
       height: 0;
-      transition-delay: 0;
+      // transition-delay: 0;
     }
     .pxh-badge {
-      @include pxh-animation(pxh-badge--out);
-      @include pxh-badge--out-styles;
+      @include pxh-badge--out-state;
     }
   }
 }
@@ -474,12 +308,12 @@ $pxh-login-height:  60px !default;
 @include mq($from: lg) {
   .pxh-navigation--wide\@lg {
     .pxh-navigation__item-text {
-      @include pxh-animation(pxh-navigation__item-text--in);
-      @include pxh-navigation__item-text--in-styles;
+      // @include pxh-animation(pxh-navigation__item-text--in);
+      @include pxh-navigation__item-text--in-state;
     }
     .pxh-navigation__sub-link {
-      @include pxh-animation(pxh-navigation__sub-link--in);
-      @include pxh-navigation__sub-link--in-styles;
+      // @include pxh-animation(pxh-navigation__sub-link--in);
+      @include pxh-navigation__sub-link--in-state;
     }
     .pxh-navigation__sub-item:last-of-type {
       .pxh-navigation__sub-link { // really don't like nesting but don't know how else to target this
@@ -493,12 +327,11 @@ $pxh-login-height:  60px !default;
       display: block;
       height: 1px;
       background-color: $gray9;
-      transition: all 200ms linear;
-      transition-delay: 200ms;
+      // transition: all 200ms linear;
+      // transition-delay: 200ms;
     }
     .pxh-badge {
-      @include pxh-animation(pxh-badge--in);
-      @include pxh-badge--in-styles;
+      @include pxh-badge--in-state;
     }
   }
 }
