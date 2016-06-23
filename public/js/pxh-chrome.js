@@ -5,12 +5,6 @@
 // CONFIG OBJECTS
 // **************
 
-
-
-
-
-
-
 var pxhStates = {
   'default' : {
     'pxh-drawer' : {
@@ -337,24 +331,9 @@ var pxhTransitions = {
   }
 }
 
-
-
-
-
-
-
 // *********
 // FUNCTIONS
 // *********
-
-
-
-
-
-
-
-
-
 
 /*! css-element-queries/ResizeSensor.js 0.3.2 */
 
@@ -533,21 +512,6 @@ var pxhTransitions = {
   }
 
 // })();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /*!
  * JavaScript Cookie v2.1.1
@@ -959,11 +923,6 @@ document.addEventListener('DOMContentLoaded', function(event) {
     pxhToggleLoginMenu('pxh-login__profile-link', 'pxh-login-menu--profile', 'pxh-login-menu--visible');
     pxhToggleLoginMenu('pxh-login__settings-link', 'pxh-login-menu--settings', 'pxh-login-menu--visible');
   });
-
-
-
-
-
 
 
 
