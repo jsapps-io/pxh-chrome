@@ -933,13 +933,8 @@ document.addEventListener('DOMContentLoaded', function(event) {
 
 document.addEventListener('DOMContentLoaded', function(event) {
   bindControl('pxh-view-header-drawer-toggle');
-});
-
-document.addEventListener('DOMContentLoaded', function(event) {
   bindControl('pxh-drawer-toggle');
-});
 
-document.addEventListener('DOMContentLoaded', function(event) {
   if (pxhCookies.get('pxh-drawer-open') === null) {
     pxhCookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/'});
   }
@@ -964,15 +959,17 @@ document.addEventListener('DOMContentLoaded', function(event) {
     pxhToggleLoginMenu('pxh-login__profile-link', 'pxh-login-menu--profile', 'pxh-login-menu--visible');
     pxhToggleLoginMenu('pxh-login__settings-link', 'pxh-login-menu--settings', 'pxh-login-menu--visible');
   });
+
+
+
+
+
+
+
+
+
+
 });
-
-
-
-
-
-
-
-
 
 var pxhView = document.getElementById('js-view');
 
@@ -996,7 +993,3 @@ if (pxhView) {
     document.dispatchEvent(pxhViewResized);
   });
 }
-
-
-
-
