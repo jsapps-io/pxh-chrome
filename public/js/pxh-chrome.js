@@ -922,6 +922,15 @@ var pxhAnywhereLoginMenuControl = function(toggleControl, toggleTarget, removeCl
   }
 }
 
+var pxhAddResizeSensor = function(targetId) {
+  var targetElement = document.getElementById(targetId);
+  if (targetElement) {
+    new pxhResizeSensor(targetElement, function() {
+      document.dispatchEvent(pxhViewResized);
+    });
+  }
+}
+
 // ********
 // FIRE!!!!
 // ********
@@ -974,9 +983,6 @@ document.addEventListener('DOMContentLoaded', function(event) {
 
   pxhToggleLoginMenu('pxh-login__profile-link', 'pxh-login-menu--profile', 'pxh-login-menu--visible');
   pxhToggleLoginMenu('pxh-login__settings-link', 'pxh-login-menu--settings', 'pxh-login-menu--visible');
-});
-
-var pxhView = document.getElementById('js-view');
 
 var pxhViewResized = document.createEvent('CustomEvent');
 pxhViewResized.initCustomEvent('pxhViewResized', false, false, {
@@ -987,14 +993,9 @@ var pxhDrawerOpened = document.createEvent('CustomEvent');
 pxhDrawerOpened.initCustomEvent('pxhDrawerOpened', false, false, {
     'drawerOpened': true
 });
+  pxhAddResizeSensor('js-view');
 
 var pxhDrawerClosed = document.createEvent('CustomEvent');
 pxhDrawerClosed.initCustomEvent('pxhDrawerClosed', false, false, {
     'drawerClosed': true
 });
-
-if (pxhView) {
-  new pxhResizeSensor(pxhView, function() {
-    document.dispatchEvent(pxhViewResized);
-  });
-}
