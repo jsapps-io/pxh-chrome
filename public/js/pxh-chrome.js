@@ -848,7 +848,7 @@ var pxhBreakpointAtLg = function(breakpoint) {
 
 var pxhBindDrawerMediaQueryControls = function(targetClass, mediaQuery) {
   var targetElements = document.getElementsByClassName(targetClass);
-  if ((typeof targetElements !== 'undefined') && (targetElements.length > 0)) {
+  if (arrayExists(targetElements)) {
     // iterate through drawer controls and fire the pxhToggleDrawer function when clicked
     for (var i = targetElements.length - 1; i >= 0; i--) {
       targetElements[i].addEventListener('click', function() {
@@ -865,7 +865,7 @@ var pxhBindDrawerMediaQueryControls = function(targetClass, mediaQuery) {
 
 var pxhOverlayDrawerControl = function() {
   var pxhOverlay = document.getElementsByClassName('pxh-overlay');
-  if ((typeof pxhOverlay !== 'undefined') && (pxhOverlay.length > 0)) {
+  if (arrayExists(pxhOverlay)) {
     for (var i = pxhOverlay.length - 1; i >= 0; i--) {
       pxhOverlay[i].addEventListener('click', function(e) {
         if ((!lgBreakpoint.matches) && (pxhCookies.get('pxh-drawer-open') === 'true')) {
@@ -893,11 +893,11 @@ var pxhEscapeDrawerControl = function() {
 }
 
 var pxhToggleLoginMenu = function(toggleControl, toggleTarget, toggleClass) {
-  var toggleControlElement = document.getElementsByClassName(toggleControl);
-  var toggleTargetElement = document.getElementsByClassName(toggleTarget);
-  if ((typeof toggleControlElement !== 'undefined') && (toggleControlElement.length > 0) && (typeof toggleTargetElement !== 'undefined') && (toggleTargetElement.length > 0)) {
-    for (var i = toggleControlElement.length - 1; i >= 0; i--) {
-      toggleControlElement[i].addEventListener('click', function(e) {
+  var toggleControlElements = document.getElementsByClassName(toggleControl);
+  var toggleTargetElements = document.getElementsByClassName(toggleTarget);
+  if ((arrayExists(toggleControlElements)) && (arrayExists(toggleTargetElements))) {
+    for (var i = toggleControlElements.length - 1; i >= 0; i--) {
+      toggleControlElements[i].addEventListener('click', function(e) {
         e.preventDefault();
         toggleTargetElement[0].classList.toggle(toggleClass);
         e.stopPropagation();
@@ -910,7 +910,7 @@ var pxhToggleLoginMenu = function(toggleControl, toggleTarget, toggleClass) {
 var pxhAnywhereLoginMenuControl = function(toggleControl, toggleTarget, removeClass) {
   var controlElement = document.getElementsByClassName(toggleControl);
   var targetElement = document.getElementsByClassName(toggleTarget);
-  if ((typeof controlElement !== 'undefined') && (controlElement.length > 0) && (typeof targetElement !== 'undefined') && (targetElement.length > 0)) {
+  if ((arrayExists(controlElement)) && (arrayExists(targetElement))) {
     document.addEventListener('click', function(e) {
       for (var i = targetElement.length - 1; i >= 0; i--) {
         targetElement[i].classList.remove(removeClass);
