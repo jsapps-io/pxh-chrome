@@ -899,7 +899,12 @@ var pxhToggleLoginMenu = function(toggleControl, toggleTarget, toggleClass) {
     for (var i = toggleControlElements.length - 1; i >= 0; i--) {
       toggleControlElements[i].addEventListener('click', function(e) {
         e.preventDefault();
-        toggleTargetElement[0].classList.toggle(toggleClass);
+        var menuIsVisible = toggleTargetElements[0].classList.contains(toggleClass);
+        console.log('menu is visible: ' + menuIsVisible);
+        pxhChangeClasses('pxh-login-menu', 'remove', toggleClass);
+        if (!menuIsVisible) {
+          pxhChangeClasses(toggleTarget, 'toggle', toggleClass);
+        }
         e.stopPropagation();
       }); 
     }
@@ -912,9 +917,7 @@ var pxhAnywhereLoginMenuControl = function(toggleControl, toggleTarget, removeCl
   var targetElement = document.getElementsByClassName(toggleTarget);
   if ((arrayExists(controlElement)) && (arrayExists(targetElement))) {
     document.addEventListener('click', function(e) {
-      for (var i = targetElement.length - 1; i >= 0; i--) {
-        targetElement[i].classList.remove(removeClass);
-      }
+      pxhChangeClasses(toggleTarget, 'remove', removeClass);
     });
   }
 }
