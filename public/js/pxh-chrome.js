@@ -739,7 +739,7 @@ var pxhChangeClasses = function(targetClassName, changeType, classNamesToChange)
   }
 }
 
-/* pxhChangeClasses() */
+/* pxhBindControl() */
 var pxhBindControl = function(controlName) {
   var controlElements = document.getElementsByClassName(controlName);
   if (arrayExists(controlElements)) {
