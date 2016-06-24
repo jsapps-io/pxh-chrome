@@ -1,5 +1,12 @@
 #pxh-chrome changelog
 
+### 0.14.1 - June 24, 2016
+* Fix bug where two `pxh-login-menu`s could be visible at the same time
+  * Now, clicking one login menu toggle will automatically dismiss all others if they are open
+* Abstract `pxhAddResizeSensor` function and call within `DOMContentLoaded` event
+* Move all custom event initializations into the `DOMContentLoaded` event
+* Add CSS sourcemaps and JS sourcemaps to pxh-chrome `/dist` to aid in debugging
+
 ### 0.14.0 - June 23, 2016
 * Update font-awesome to 4.6.3 and mocha to 2.5.3
 * Update babel-core to 6.10.0 and browser-sync to 2.13.0
