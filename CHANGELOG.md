@@ -1,5 +1,11 @@
 #pxh-chrome changelog
 
+### Pending release
+
+* Revert `pxh-badge` font weight back to normal
+* Add `pxh-view-header--nudge-until@md` class to all view headers on all demos and documentation
+  * Microapps aren't required to use this class, but the spacing that results from using it is our design recommendation, and it is helpful for developers who don't want to write their own rules
+
 ### 0.14.1 - June 24, 2016
 * Fix bug where two `pxh-login-menu`s could be visible at the same time
   * Now, clicking one login menu toggle will automatically dismiss all others if they are open
