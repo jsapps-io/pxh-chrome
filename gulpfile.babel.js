@@ -85,7 +85,7 @@ gulp.task('sass', () => {
     }).on('error', $.sass.logError))
     .pipe($.sourcemaps.init())
     .pipe($.autoprefixer({browsers: ['> 1%', 'last 2 versions', 'Firefox ESR']}))
-    .pipe($.sourcemaps.write())
+    .pipe($.sourcemaps.write('.'))
     .pipe(gulp.dest('.tmp/css'))
     .pipe($.if('*.css', $.cssnano()))
     .pipe(gulp.dest('dist/css'))
