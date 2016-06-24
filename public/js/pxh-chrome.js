@@ -900,7 +900,6 @@ var pxhToggleLoginMenu = function(toggleControl, toggleTarget, toggleClass) {
       toggleControlElements[i].addEventListener('click', function(e) {
         e.preventDefault();
         var menuIsVisible = toggleTargetElements[0].classList.contains(toggleClass);
-        console.log('menu is visible: ' + menuIsVisible);
         pxhChangeClasses('pxh-login-menu', 'remove', toggleClass);
         if (!menuIsVisible) {
           pxhChangeClasses(toggleTarget, 'toggle', toggleClass);
