@@ -942,6 +942,21 @@ document.addEventListener('DOMContentLoaded', function(event) {
   mdBreakpoint.addListener(pxhBreakpointAtMd);
 });
 
+var pxhViewResized = document.createEvent('CustomEvent');
+pxhViewResized.initCustomEvent('pxhViewResized', false, false, {
+    'viewResized': true
+});
+
+var pxhDrawerOpened = document.createEvent('CustomEvent');
+pxhDrawerOpened.initCustomEvent('pxhDrawerOpened', false, false, {
+    'drawerOpened': true
+});
+
+var pxhDrawerClosed = document.createEvent('CustomEvent');
+pxhDrawerClosed.initCustomEvent('pxhDrawerClosed', false, false, {
+    'drawerClosed': true
+});
+
 document.addEventListener('DOMContentLoaded', function(event) {
   pxhBindControl('pxh-view-header-drawer-toggle');
   pxhBindControl('pxh-drawer-toggle');
@@ -984,18 +999,6 @@ document.addEventListener('DOMContentLoaded', function(event) {
   pxhToggleLoginMenu('pxh-login__profile-link', 'pxh-login-menu--profile', 'pxh-login-menu--visible');
   pxhToggleLoginMenu('pxh-login__settings-link', 'pxh-login-menu--settings', 'pxh-login-menu--visible');
 
-var pxhViewResized = document.createEvent('CustomEvent');
-pxhViewResized.initCustomEvent('pxhViewResized', false, false, {
-    'viewResized': true
-});
-
-var pxhDrawerOpened = document.createEvent('CustomEvent');
-pxhDrawerOpened.initCustomEvent('pxhDrawerOpened', false, false, {
-    'drawerOpened': true
-});
   pxhAddResizeSensor('js-view');
 
-var pxhDrawerClosed = document.createEvent('CustomEvent');
-pxhDrawerClosed.initCustomEvent('pxhDrawerClosed', false, false, {
-    'drawerClosed': true
 });
