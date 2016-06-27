@@ -9,6 +9,25 @@
   right: 0;
   left: 0;
   z-index: 225;
+  @include mq($from: md) {
+    &--wide\@md {
+      left: $pxh-drawer-width-narrow;
+    }
+  }
+
+  @include mq($from: lg) {
+    &--wide\@lg {
+      left: $pxh-drawer-width-narrow;
+    }
+  }
+
+  @include mq($from: lg) {
+    &--narrow\@lg {
+      left: $pxh-drawer-width-wide;
+    }
+  }
+}
+
 .pxh-alert-message {
   // width: 100%;
   display: flex;
