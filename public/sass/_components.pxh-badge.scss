@@ -3,7 +3,7 @@
 \*------------------------------------*/
 
 @mixin pxh-badge--in-state-scale {
-  padding: 2px 4px 0px 4px;
+  padding: 1px 4px 1px 4px;
   font-size: $inuit-base-font-size * 0.866666666666;
 }
 @mixin pxh-badge--in-state-opacity {
@@ -39,7 +39,7 @@
   font-weight: normal;
   color: $white;
   line-height: 1;
-  border-radius: 7px;
+  border-radius: 6px;
   text-decoration: none;
   transition: opacity 250ms ease-in-out;
   transition-delay: 250ms;

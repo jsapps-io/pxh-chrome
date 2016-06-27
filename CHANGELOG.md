@@ -3,6 +3,7 @@
 ### Pending release
 
 * Revert `pxh-badge` font weight back to normal
+* Adjust top and bottom padding of `pxh-badge` so it appears more vertically balanced in IE Edge and IE11
 * Add `pxh-view-header--nudge-until@md` class to all view headers on all demos and documentation
   * Microapps aren't required to use this class, but the spacing that results from using it is our design recommendation, and it is helpful for developers who don't want to write their own rules
 * Update README with instructions for installing WebDriver for running end-to-end tests
