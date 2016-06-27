@@ -70,6 +70,28 @@
   font-size: 36px;
   margin-left: 10px;
   margin-right: 10px;
+
+  &--primary {
+    color: $primary-blue;
+  }
+  &--important {
+    color: $alert-red;
+  }
+  &--warning {
+    color: $alert-orange;
+  }
+  &--error {
+    color: $alert-yellow;
+  }
+  &--info {
+    color: $alert-blue;
+  }
+  &--healthy-black {
+    color: $black;
+  }
+  &--healthy-white {
+    color: $white;
+  }
 }
 
 .pxh-alert-message__text {
