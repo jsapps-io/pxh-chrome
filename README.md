@@ -161,6 +161,7 @@ document.addEventListener('pxhViewResized', function(event) {
 P.S. If you look at the console output for this example, you'll realize you'll want to implement some debouncing on your event listener ... our current thinking is that the debouncing should be the responsibility of the microapp, not the event itself, but we're open to alternative perspectives.
 
 ##Running Tests
+
 **To run unit tests** type the following at the command line:
 
 ```bash
@@ -171,7 +172,13 @@ This will start a local testing server at [http://localhost:4040](http://localho
 
 Type `CTRL+C` to shut down the unit testing server.
 
-**To run end-to-end tests** type the following at the command line:
+**To run end-to-end tests,** first install a local version of Selenium WebDriver for Protractor by running the following command from the root of your project folder:
+
+```bash
+./node_modules/protractor/bin/webdriver-manager update
+```
+
+Then, type the following at the command line:
 
 ```bash
 gulp serve:e2e
