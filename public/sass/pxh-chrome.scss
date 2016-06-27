@@ -4,7 +4,7 @@
     #pxh-chrome
 \*------------------------------------*/
 
-// ** #SETTINGS
+// ** #SETTINGS ** //
 @import "settings.defaults.scss";
 @import "settings.pxh-chrome.scss";
 
@@ -22,7 +22,7 @@ $mq-breakpoints: (
     xl:  1200px,
 );
 @import "sass-mq/mq.scss";
-$fa-font-path       : "../fonts/font-awesome/fonts" !default;
+$fa-font-path : "../fonts/font-awesome/fonts";
 @import "font-awesome/scss/font-awesome.scss";
 @import "tools.pxh-animations.scss";
 
