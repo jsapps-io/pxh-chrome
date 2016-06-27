@@ -1,7 +1,6 @@
 #pxh-chrome changelog
 
-### Pending release
-
+### 0.14.2 - June 27, 2016
 * Revert `pxh-badge` font weight back to normal
 * Adjust top and bottom padding of `pxh-badge` so it appears more vertically balanced in IE Edge and IE11
 * Add `pxh-view-header--nudge-until@md` class to all view headers on all demos and documentation
