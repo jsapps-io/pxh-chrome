@@ -1,5 +1,15 @@
 #pxh-chrome changelog
 
+### Pending release
+* Remove unused breakpoints from manifest
+  * We were defining `@xs`, `@sm`, and `@xl` but weren't using them for anything
+* Add subtle drop shadow to `pxh-view-header` to distinguish it from view content and alert messages
+* Add pxh-alert-message component
+  * Responsive width based on alert queue container
+  * Optional action button
+  * Optional dismiss button
+  * Optional colors for icon
+
 ### 0.14.2 - June 27, 2016
 * Revert `pxh-badge` font weight back to normal
 * Adjust top and bottom padding of `pxh-badge` so it appears more vertically balanced in IE Edge and IE11
