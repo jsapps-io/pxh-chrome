@@ -6,6 +6,8 @@
 * Adjust top and bottom padding of `pxh-badge` so it appears more vertically balanced in IE Edge and IE11
 * Add `pxh-view-header--nudge-until@md` class to all view headers on all demos and documentation
   * Microapps aren't required to use this class, but the spacing that results from using it is our design recommendation, and it is helpful for developers who don't want to write their own rules
+* Refine logic for firing/not firing transitions when entering and leaving the @lg breakpoint
+* Fix bug when exiting the lower threshold of the @md breakpoint where an open drawer would move offscreen (it's supposed to remain onscreen)
 * Update README with instructions for installing WebDriver for running end-to-end tests
 
 ### 0.14.1 - June 24, 2016

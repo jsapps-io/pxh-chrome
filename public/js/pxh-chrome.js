@@ -800,16 +800,19 @@ var pxhBindControl = function(controlName) {
 var pxhBreakpointAtMd = function(breakpoint) {
   pxhLoadState(pxhTransitions, 'clearAll');
   var firstDrawer = document.getElementsByClassName('pxh-drawer')[0];
-  var drawerIsAtDefaultState = firstDrawer.classList.contains('pxh-drawer--wide@lg');
+  var drawerIsWideAtLg = firstDrawer.classList.contains('pxh-drawer--wide@lg');
+  var drawerIsNarrowAtMd = firstDrawer.classList.contains('pxh-drawer--narrow@md');
   if (breakpoint.matches) {
-    if (drawerIsAtDefaultState) {
-      document.dispatchEvent(pxhDrawerClosed);
-      pxhCookies.set('pxh-drawer-narrow', 'true', { expires: 1, path: '/'});
-      pxhCookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/'});
+    // we entered the @md breakpoint from the @sm breakpoint
+    if (drawerIsNarrowAtMd) {
+      // the drawer wasn't open @sm so open it to narrow @md
+      // fire the transition
       pxhLoadState(pxhTransitions, 'outToNarrow');
     }
   } else {
-    if (drawerIsAtDefaultState) {
+    // we exited the @md breakpoint into the @sm breakpoint
+    if (drawerIsNarrowAtMd) {
+      // the drawer was open to narrow @md to move it out @sm
       pxhLoadState(pxhTransitions, 'narrowToOut');
     }
   }
@@ -818,16 +821,20 @@ var pxhBreakpointAtMd = function(breakpoint) {
 var pxhBreakpointAtLg = function(breakpoint) {
   pxhLoadState(pxhTransitions, 'clearAll');
   var firstDrawer = document.getElementsByClassName('pxh-drawer')[0];
-  // var drawerIsAtNarrowAtLgState = firstDrawer.classList.contains('pxh-drawer--narrow@lg');
-  var drawerIsOpen = firstDrawer.classList.contains('pxh-drawer--wide@lg');
+  var drawerIsWideAtLg = firstDrawer.classList.contains('pxh-drawer--wide@lg');
+  var drawerIsNarrowAtMd = firstDrawer.classList.contains('pxh-drawer--narrow@md');
   if (breakpoint.matches) {
-    if (drawerIsOpen) {
-      pxhLoadState(pxhTransitions, 'narrowToWide');
+    // we entered the @lg breakpoint from the @md breakpoint
+    if ((drawerIsWideAtLg) && (!drawerIsNarrowAtMd)) {
+      // the drawer was open @md so keep it open @lg
+      // don't fire any transitions
       pxhLoadState(pxhStates, 'default');
       pxhCookies.set('pxh-drawer-narrow', 'false', { expires: 1, path: '/'});
       pxhCookies.set('pxh-drawer-open', 'true', { expires: 1, path: '/'});
     }
     else {
+      // drawer was narrow @md so transition it to wide @lg
+      // fire transitions
       pxhLoadState(pxhTransitions, 'narrowToWide');
       pxhLoadState(pxhStates, 'default');
       document.dispatchEvent(pxhDrawerOpened);
@@ -836,7 +843,10 @@ var pxhBreakpointAtLg = function(breakpoint) {
     }
   }
   else {
-    if (drawerIsOpen) {
+    // we exited the @lg breakpoint into the @md breakpoint
+    if (drawerIsWideAtLg) {
+      // the drawer was wide @lg so transition it to narrow @md
+      // fire transitions
       pxhLoadState(pxhTransitions, 'wideToNarrow');
     };
     pxhLoadState(pxhStates, 'default');
