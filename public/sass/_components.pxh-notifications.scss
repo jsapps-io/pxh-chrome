@@ -1,0 +1,161 @@
+/*------------------------------------*\
+    #components.pxh-notifications
+\*------------------------------------*/
+
+.pxh-toast-queue {
+  // pointer-events: none;
+  position: fixed;
+  top: 65px;
+  right: 5px;
+  left: 0;
+  z-index: 300;
+  @include mq($from: md) {
+    &--wide\@md {
+      left: 50%;
+    }
+  }
+
+  @include mq($from: lg) {
+    &--wide\@lg {
+      left: 66%;
+    }
+  }
+
+  @include mq($from: lg) {
+    &--narrow\@lg {
+      left: 66%;
+    }
+  }
+}
+
+.pxh-toast {
+  border-radius: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60px;
+  color: $gray5;
+  background: rgba($black, 0.9);
+  margin-bottom: 5px;
+}
+
+.pxh-toast__action {
+  text-align: center;
+  margin-left: 10px;
+}
+
+.pxh-toast__button {
+  text-decoration: none;
+  border: 1px solid $gray8;
+  padding: 8px;
+  background-color: transparent;
+  color: $gray5;
+  border-radius: 2px;
+}
+
+.pxh-toast__icon {
+  color: $white;
+  padding-top: 20px;
+  text-align: center;
+  height: 60px;
+  width: 60px;
+  font-size: 20px;
+  background-color: transparent;
+  &--primary {
+    background-color: $primary-blue;
+  }
+  &--important {
+    background-color: $alert-red;
+  }
+  &--warning {
+    background-color: $alert-orange;
+  }
+  &--error {
+    background-color: $alert-yellow;
+  }
+  &--info {
+    background-color: $alert-blue;
+  }
+  &--healthy-black {
+    background-color: $black;
+  }
+  &--healthy-white {
+    background-color: $white;
+  }
+}
+
+.pxh-toast__text {
+  padding-left: 10px;
+  flex-grow: 3;
+}
+.pxh-toast__dismiss {
+
+  text-align: center;
+  // height: 100px;
+  // width: 100px;
+  font-size: 18px;
+  .fa {
+    padding: 10px;
+    color: $gray5;
+    text-decoration: none;
+  }
+}
+
+.pxh-notifications {
+  position: fixed;
+  bottom: 60px;
+  left: 5px;
+  border-radius: 4px;
+  background-color: rgba($black, 0.9);
+  color: $white;
+  width: 300px;
+  max-height: 400px;
+}
+
+.pxh-notifications__header {
+
+}
+
+.pxh-notifications__title {
+
+}
+
+.pxh-notifications__action {
+
+}
+
+.pxh-notifications__clear {
+
+}
+
+.pxh-notifications__badge {
+
+}
+
+.pxh-notifications__icon {
+
+}
+
+.pxh-notification-item {
+
+}
+
+.pxh-notification-item__icon {
+
+}
+
+.pxh-notification-item__text {
+
+}
+
+.pxh-notification-item__timestamp {
+
+}
+
+.pxh-notification-item__dismiss {
+
+}
+
+.pxh-notification-item__action {
+
+}
