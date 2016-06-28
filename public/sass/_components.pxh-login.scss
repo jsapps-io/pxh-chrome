@@ -141,7 +141,8 @@
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  max-width: $pxh-drawer-width-wide - ($pxh-drawer-margin * 5.25);
+  // max-width: $pxh-drawer-width-wide - ($pxh-drawer-margin * 5.25);
+  max-width: $pxh-drawer-width-wide - ($pxh-drawer-margin * 7);
 }
 
 // From the @md (tablet) breakpoint and wider,
