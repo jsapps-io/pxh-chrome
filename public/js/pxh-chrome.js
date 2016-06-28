@@ -46,6 +46,9 @@ var pxhStates = {
     },
     'pxh-view-header-drawer-toggle' : {
       'remove' : 'pxh-view-header-drawer-toggle--hidden'
+    },
+    'pxh-notifications__icon' : {
+      'add' : 'pxh-notifications__icon--narrow@md pxh-notifications__icon--wide@lg'
     }
   },
   'open' : {
@@ -93,6 +96,10 @@ var pxhStates = {
     },
     'pxh-view-header-drawer-toggle' : {
       'add' : 'pxh-view-header-drawer-toggle--hidden'
+    },
+    'pxh-notifications__icon' : {
+      'remove' : 'pxh-notifications__icon--narrow@md',
+      'add' : 'pxh-notifications__icon--wide@lg'
     }
   },
   'narrowAtLg' : {
@@ -141,6 +148,10 @@ var pxhStates = {
     },
     'pxh-view-header-drawer-toggle' : {
       'remove' : 'pxh-view-header-drawer-toggle--hidden'
+    },
+    'pxh-notifications__icon' : {
+      'add' : 'pxh-notifications__icon--narrow@md',
+      'remove' : 'pxh-notifications__icon--wide@lg'
     }
   }
 }
@@ -940,6 +951,28 @@ var pxhAddResizeSensor = function(targetId) {
   }
 }
 
+
+
+
+
+
+
+
+// this is a total hack
+var pxhToggleNotifications = function(toggleControl, toggleTarget, toggleClass) {
+  var controlElement = document.getElementsByClassName(toggleControl);
+  var targetElement = document.getElementsByClassName(toggleTarget);
+  if ((arrayExists(controlElement)) && (arrayExists(targetElement))) {
+    controlElement[0].addEventListener('click', function(e) {
+      pxhChangeClasses(toggleTarget, 'toggle', toggleClass);
+    });
+  }
+}
+
+
+
+
+
 // ********
 // FIRE!!!!
 // ********
@@ -1007,6 +1040,9 @@ document.addEventListener('DOMContentLoaded', function(event) {
 
   pxhToggleLoginMenu('pxh-login__profile-link', 'pxh-login-menu--profile', 'pxh-login-menu--visible');
   pxhToggleLoginMenu('pxh-login__settings-link', 'pxh-login-menu--settings', 'pxh-login-menu--visible');
+
+  pxhToggleNotifications('pxh-notifications__icon', 'pxh-notifications', 'pxh-notifications--visible');
+
 
   pxhAddResizeSensor('js-view');
 
