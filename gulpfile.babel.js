@@ -6,6 +6,7 @@ import del from 'del';
 import path from 'path';
 import minimist from 'minimist';
 import replace from 'gulp-replace';
+import ext_replace from 'gulp-ext-replace';
 import shell from 'gulp-shell';
 import gulpsmith from 'gulpsmith';
 import layouts from 'metalsmith-layouts';
@@ -86,8 +87,12 @@ gulp.task('sass', () => {
     .pipe($.sourcemaps.init())
     .pipe($.autoprefixer({browsers: ['> 1%', 'last 2 versions', 'Firefox ESR']}))
     .pipe($.sourcemaps.write('.'))
+    .pipe(ext_replace('.map', '.css.map'))
     .pipe(gulp.dest('.tmp/css'))
+    .pipe(gulp.dest('dist/css'))
     .pipe($.if('*.css', $.cssnano()))
+    .pipe(ext_replace('.min.css', '.css'))
+    .pipe(gulp.dest('.tmp/css'))
     .pipe(gulp.dest('dist/css'))
     .pipe(reload({stream: true}));
 });
@@ -98,10 +103,14 @@ gulp.task('js', () => {
     .pipe($.sourcemaps.init())
     .pipe($.babel())
     .pipe($.sourcemaps.write('.'))
+    .pipe(ext_replace('.map', '.js.map'))
     .pipe(gulp.dest('.tmp/js'))
+    .pipe(gulp.dest('dist/js'))
     .pipe($.if('*.js', $.uglify({
       preserveComments: 'some'
     })))
+    .pipe(ext_replace('.min.js', '.js'))
+    .pipe(gulp.dest('.tmp/js'))
     .pipe(gulp.dest('dist/js'))
     .pipe(reload({stream: true}));
 });
