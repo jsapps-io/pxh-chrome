@@ -61,26 +61,17 @@
   width: 60px;
   font-size: 20px;
   background-color: transparent;
-  &--primary {
-    background-color: $primary-blue;
-  }
-  &--important {
-    background-color: $alert-red;
-  }
-  &--warning {
-    background-color: $alert-orange;
-  }
-  &--error {
-    background-color: $alert-yellow;
+  &--success {
+    background-color: $green;
   }
   &--info {
-    background-color: $alert-blue;
+    background-color: $blue;
   }
-  &--healthy-black {
-    background-color: $black;
+  &--warning {
+    background-color: $orange;
   }
-  &--healthy-white {
-    background-color: $white;
+  &--important {
+    background-color: $red;
   }
 }
 
@@ -186,7 +177,7 @@
 }
 
 .pxh-notifications__list {
-  max-height: 300px;
+  max-height: 270px;
   overflow: auto;
 }
 
@@ -207,26 +198,17 @@
   height: 59px;
   width: 60px;
   padding-top: 20px;
-  &--primary {
-    background-color: $primary-blue;
-  }
-  &--important {
-    background-color: $alert-red;
-  }
-  &--warning {
-    background-color: $alert-orange;
-  }
-  &--error {
-    background-color: $alert-yellow;
+  &--success {
+    background-color: $green;
   }
   &--info {
-    background-color: $alert-blue;
+    background-color: $blue;
   }
-  &--healthy-black {
-    background-color: $black;
+  &--important {
+    background-color: $red;
   }
-  &--healthy-white {
-    background-color: $white;
+  &--warning {
+    background-color: $orange;
   }
 }
 
