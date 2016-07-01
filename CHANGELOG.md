@@ -3,6 +3,9 @@
 ### Pending release
 * Remove unused breakpoints from manifest
   * We were defining `@xs`, `@sm`, and `@xl` but weren't using them for anything
+* Generate minified and unminified versions of CSS and JS
+  * All are now available in `/dist` along with sourcemaps
+  * `ui-app-hub` and any other apps that depend on pxh-chrome will now need to specify `*.min.css` or `*.min.js` to use the minified versions; otherwise, they will default to using the expanded files
 
 ### 0.14.2 - June 27, 2016
 * Revert `pxh-badge` font weight back to normal
