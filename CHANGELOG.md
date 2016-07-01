@@ -1,5 +1,13 @@
 #pxh-chrome changelog
 
+### 1.0.0 - July 1, 2016
+* Generate minified and unminified versions of CSS and JS
+  * All are now available in `/dist` along with sourcemaps
+  * `ui-app-hub` and any other apps that depend on pxh-chrome will now need to specify `*.min.css` or `*.min.js` to use the minified versions; otherwise, they will default to using the expanded files
+* Remove unused breakpoints from manifest
+  * We were defining `@xs`, `@sm`, and `@xl` but weren't using them for anything
+* App Hub is in production, so bump pxh-chrome to 1.0.0
+
 ### 0.14.2 - June 27, 2016
 * Revert `pxh-badge` font weight back to normal
 * Adjust top and bottom padding of `pxh-badge` so it appears more vertically balanced in IE Edge and IE11
