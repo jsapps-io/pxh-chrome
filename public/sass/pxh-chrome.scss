@@ -1,4 +1,4 @@
-/*! pxh-chrome.css 0.14.2 */
+/*! pxh-chrome.css 1.0.0 */
 
 /*------------------------------------*\
     #pxh-chrome
@@ -15,8 +15,8 @@
 
 // ** #TOOLS ** //
 $mq-breakpoints : (
-    md :  768px,
-    lg : 1024px,
+  md :  768px,
+  lg : 1024px,
 );
 @import "sass-mq/mq.scss";
 $fa-font-path : "../fonts/font-awesome/fonts";
