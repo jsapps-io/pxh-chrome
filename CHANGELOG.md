@@ -15,7 +15,6 @@
 * Remove unused breakpoints from manifest
   * We were defining `@xs`, `@sm`, and `@xl` but weren't using them for anything
 * App Hub is in production, so bump pxh-chrome to 1.0.0
->>>>>>> develop
 
 ### 0.14.2 - June 27, 2016
 * Revert `pxh-badge` font weight back to normal
