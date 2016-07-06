@@ -1022,7 +1022,7 @@ var toastItem4 = {
 
 function makeToast(toastObject) {
   var toastMarkup = document.createElement('section');
-  toastMarkup.className = 'pxh-toast';
+  toastMarkup.className = 'pxh-toast pxh-toast--animate-in';
   var toastInnards =  '  <div class="pxh-toast__icon pxh-toast__icon--' + toastObject.type + '">\n' + 
                       '    <i class="fa fa-' + toastObject.icon + '"></i>\n' + 
                       '  </div>\n' +
@@ -1033,7 +1033,7 @@ function makeToast(toastObject) {
                       '    <a class="pxh-toast__button" href="' + toastObject.actionLink + '">' + toastObject.actionText + '</a>\n' +
                       '  </div>\n' +
                       '  <div class="pxh-toast__dismiss">\n' +
-                      '    <a href="#"><i class="fa fa-times"></i></a>\n' +
+                      '    <a href="#" class="js-toast__dismiss-link"><i class="fa fa-times"></i></a>\n' +
                       '  </div>\n';
   toastMarkup.innerHTML = toastInnards;
   return toastMarkup;
@@ -1042,9 +1042,33 @@ function makeToast(toastObject) {
 function insertToast(toastList, toastItem) {
   if (document.getElementById(toastList)) {
     var parentElement = document.getElementById(toastList);
-    // update innerHTML
     var theFirstChild = parentElement.firstChild;
-    parentElement.insertBefore(makeToast(toastItem), theFirstChild);
+    var newToast = parentElement.insertBefore(makeToast(toastItem), theFirstChild);
+    var dismissControl = newToast.querySelector('.js-toast__dismiss-link');
+    if (dismissControl) {
+      dismissControl.addEventListener('click', function(event) {
+        event.preventDefault();
+        console.log('dismiss clicked!');
+        if (newToast) {
+          newToast.classList.add('pxh-toast--animate-out');
+          newToast.classList.remove('pxh-toast--animate-in');
+          setTimeout(function() {
+            newToast.remove()
+          }, 1000);
+        }
+      })
+    }
+    setTimeout(function() {
+      // after 2000ms animate the toast out
+      newToast.classList.add('pxh-toast--animate-out');
+      newToast.classList.remove('pxh-toast--animate-in');
+      // 1000ms after the animation, remove the toast from the DOM
+      setTimeout(function() {
+        if (newToast) {
+          newToast.remove()
+        }
+      }, 1000);
+    }, 5000);
   }
 }
 
