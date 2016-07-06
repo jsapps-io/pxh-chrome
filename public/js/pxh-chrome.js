@@ -973,6 +973,45 @@ var pxhToggleNotifications = function(toggleControl, toggleTarget, toggleClass) 
 
 
 
+
+var notificationItem1 = {
+  'type' : 'success', // success, info, warning, important
+  'persistent' : false,
+  'icon' : 'check-circle', // any FA icon
+  'text' : 'This is the text for this notification',
+  'textLength' : 'multiLine', // multiLine, singleLine
+  'action' : true, // true, false
+  'actionText' : 'View Alert',
+  'actionLink' : 'http://google.com'
+}
+function makeToast(toastObject) {
+  var toastMarkup = document.createElement('section');
+  toastMarkup.className = 'pxh-toast';
+  var toastInnards =  '  <div class="pxh-toast__icon pxh-toast__icon--' + toastObject.type + '">\n' + 
+                      '    <i class="fa fa-' + toastObject.icon + '"></i>\n' + 
+                      '  </div>\n' +
+                      '  <div class="pxh-toast__text">\n' +
+                      '    <p>' + toastObject.text + '</p>\n' +
+                      '  </div>\n' +
+                      '  <div class="pxh-toast__action">\n' +
+                      '    <a class="pxh-toast__button" href="' + toastObject.actionLink + '">' + toastObject.actionText + '</a>\n' +
+                      '  </div>\n' +
+                      '  <div class="pxh-toast__dismiss">\n' +
+                      '    <a href="#"><i class="fa fa-times"></i></a>\n' +
+                      '  </div>\n';
+  toastMarkup.innerHTML = toastInnards;
+  return toastMarkup;
+}
+
+// console.log(toastMarkup);
+
+if (document.getElementById('js-toast-list')) {
+  // update innerHTML
+  document.getElementById('js-toast-list').appendChild(makeToast(notificationItem1));
+}
+
+
+
 // ********
 // FIRE!!!!
 // ********
