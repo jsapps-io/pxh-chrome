@@ -984,6 +984,42 @@ var notificationItem1 = {
   'actionText' : 'View Alert',
   'actionLink' : 'http://google.com'
 }
+
+
+var notificationItem2 = {
+  'type' : 'warning', // success, info, warning, important
+  'persistent' : false,
+  'icon' : 'exclamation-circle', // any FA icon
+  'text' : 'Here is a second notification',
+  'textLength' : 'multiLine', // multiLine, singleLine
+  'action' : true, // true, false
+  'actionText' : 'Beef',
+  'actionLink' : 'http://beef.org'
+}
+
+var notificationItem3 = {
+  'type' : 'info', // success, info, warning, important
+  'persistent' : false,
+  'icon' : 'info-circle', // any FA icon
+  'text' : 'This is the text for this notification',
+  'textLength' : 'multiLine', // multiLine, singleLine
+  'action' : true, // true, false
+  'actionText' : 'View Alert',
+  'actionLink' : 'http://google.com'
+}
+
+
+var notificationItem4 = {
+  'type' : 'important', // success, info, warning, important
+  'persistent' : false,
+  'icon' : 'times-circle', // any FA icon
+  'text' : 'Here is a second notification',
+  'textLength' : 'multiLine', // multiLine, singleLine
+  'action' : true, // true, false
+  'actionText' : 'Beef',
+  'actionLink' : 'http://beef.org'
+}
+
 function makeToast(toastObject) {
   var toastMarkup = document.createElement('section');
   toastMarkup.className = 'pxh-toast';
@@ -1007,6 +1043,9 @@ function makeToast(toastObject) {
 
 if (document.getElementById('js-toast-list')) {
   // update innerHTML
+  document.getElementById('js-toast-list').appendChild(makeToast(notificationItem4));
+  document.getElementById('js-toast-list').appendChild(makeToast(notificationItem3));
+  document.getElementById('js-toast-list').appendChild(makeToast(notificationItem2));
   document.getElementById('js-toast-list').appendChild(makeToast(notificationItem1));
 }
 
@@ -1056,7 +1095,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
     pxhLoadState(pxhStates, 'narrowAtLg');
     document.dispatchEvent(pxhDrawerClosed);
     pxhCookies.set('pxh-drawer-narrow', 'true', { expires: 1, path: '/'});
-  } 
+  }
   else if (window.matchMedia('(min-width: 1024px)').matches) {
     pxhCookies.set('pxh-drawer-open', 'true', { expires: 1, path: '/'});
   } else {
@@ -1081,7 +1120,6 @@ document.addEventListener('DOMContentLoaded', function(event) {
   pxhToggleLoginMenu('pxh-login__settings-link', 'pxh-login-menu--settings', 'pxh-login-menu--visible');
 
   pxhToggleNotifications('pxh-notifications__icon', 'pxh-notifications', 'pxh-notifications--visible');
-
 
   pxhAddResizeSensor('js-view');
 
