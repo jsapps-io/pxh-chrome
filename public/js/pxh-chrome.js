@@ -974,11 +974,11 @@ var pxhToggleNotifications = function(toggleControl, toggleTarget, toggleClass) 
 
 
 
-var notificationItem1 = {
+var toastItem1 = {
   'type' : 'success', // success, info, warning, important
   'persistent' : false,
   'icon' : 'check-circle', // any FA icon
-  'text' : 'This is the text for this notification',
+  'text' : 'This is the text for notification #1',
   'textLength' : 'multiLine', // multiLine, singleLine
   'action' : true, // true, false
   'actionText' : 'View Alert',
@@ -986,22 +986,22 @@ var notificationItem1 = {
 }
 
 
-var notificationItem2 = {
+var toastItem2 = {
   'type' : 'warning', // success, info, warning, important
   'persistent' : false,
   'icon' : 'exclamation-circle', // any FA icon
-  'text' : 'Here is a second notification',
+  'text' : 'Here is the text for the second notification',
   'textLength' : 'multiLine', // multiLine, singleLine
   'action' : true, // true, false
   'actionText' : 'Beef',
   'actionLink' : 'http://beef.org'
 }
 
-var notificationItem3 = {
+var toastItem3 = {
   'type' : 'info', // success, info, warning, important
   'persistent' : false,
   'icon' : 'info-circle', // any FA icon
-  'text' : 'This is the text for this notification',
+  'text' : 'Need a third notification? It\'s right here!',
   'textLength' : 'multiLine', // multiLine, singleLine
   'action' : true, // true, false
   'actionText' : 'View Alert',
@@ -1009,11 +1009,11 @@ var notificationItem3 = {
 }
 
 
-var notificationItem4 = {
+var toastItem4 = {
   'type' : 'important', // success, info, warning, important
   'persistent' : false,
   'icon' : 'times-circle', // any FA icon
-  'text' : 'Here is a second notification',
+  'text' : 'Fourth notification? Coming right up!',
   'textLength' : 'multiLine', // multiLine, singleLine
   'action' : true, // true, false
   'actionText' : 'Beef',
@@ -1039,15 +1039,28 @@ function makeToast(toastObject) {
   return toastMarkup;
 }
 
-// console.log(toastMarkup);
-
-if (document.getElementById('js-toast-list')) {
-  // update innerHTML
-  document.getElementById('js-toast-list').appendChild(makeToast(notificationItem4));
-  document.getElementById('js-toast-list').appendChild(makeToast(notificationItem3));
-  document.getElementById('js-toast-list').appendChild(makeToast(notificationItem2));
-  document.getElementById('js-toast-list').appendChild(makeToast(notificationItem1));
+function insertToast(toastList, toastItem) {
+  if (document.getElementById(toastList)) {
+    var parentElement = document.getElementById(toastList);
+    // update innerHTML
+    var theFirstChild = parentElement.firstChild;
+    parentElement.insertBefore(makeToast(toastItem), theFirstChild);
+  }
 }
+
+document.addEventListener('DOMContentLoaded', function(event) {
+  insertToast('js-toast-list', toastItem1);
+  insertToast('js-toast-list', toastItem2);
+});
+
+if (document.getElementById('js-toast-emitter')) {
+  document.getElementById('js-toast-emitter').addEventListener('click', function() {
+    insertToast('js-toast-list', toastItem3);
+  })
+}
+
+
+
 
 
 
