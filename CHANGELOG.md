@@ -1,12 +1,17 @@
 #pxh-chrome changelog
 
 ### Pending release
+* Bump version on `gulp-eslint` to 3.0.0
 * Add subtle drop shadow to `pxh-view-header` to distinguish it from view content and alert messages
-* Add pxh-alert-message component
-  * Responsive width based on alert queue container
+* Add pxh-toast-list and pxh-toast components
+  * Responsive width based on toast list container
+  * Animate toast on entrance and exit
+  * Automatically dismiss toast after 5 seconds, or manually by clicking dismiss button
+  * Remove dismissed toast from DOM
   * Optional action button
   * Optional dismiss button
   * Optional colors for icon
+* Add pxh-notification-list and pxh-notification components
 
 ### 1.0.0 - July 1, 2016
 * Generate minified and unminified versions of CSS and JS
