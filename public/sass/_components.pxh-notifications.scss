@@ -2,8 +2,7 @@
     #components.pxh-notifications
 \*------------------------------------*/
 
-.pxh-toast-queue {
-  // pointer-events: none;
+.pxh-toast-list {
   position: fixed;
   top: 65px;
   right: 5px;
@@ -14,13 +13,11 @@
       left: 50%;
     }
   }
-
   @include mq($from: lg) {
     &--wide\@lg {
       left: 66%;
     }
   }
-
   @include mq($from: lg) {
     &--narrow\@lg {
       left: 66%;
