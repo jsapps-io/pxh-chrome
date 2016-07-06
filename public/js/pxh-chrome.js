@@ -985,7 +985,6 @@ var toastItem1 = {
   'actionLink' : 'http://google.com'
 }
 
-
 var toastItem2 = {
   'type' : 'warning', // success, info, warning, important
   'persistent' : false,
@@ -1007,7 +1006,6 @@ var toastItem3 = {
   'actionText' : 'View Alert',
   'actionLink' : 'http://google.com'
 }
-
 
 var toastItem4 = {
   'type' : 'important', // success, info, warning, important
@@ -1048,7 +1046,6 @@ function insertToast(toastList, toastItem) {
     if (dismissControl) {
       dismissControl.addEventListener('click', function(event) {
         event.preventDefault();
-        console.log('dismiss clicked!');
         if (newToast) {
           newToast.classList.add('pxh-toast--animate-out');
           newToast.classList.remove('pxh-toast--animate-in');

@@ -2,11 +2,17 @@
     #components.pxh-notifications
 \*------------------------------------*/
 
+$pxh-toast-height: 60px;
+$pxh-toast-margin: 5px;
+$pxh-toast-max-count: 4;
+
 .pxh-toast-list {
   position: fixed;
   top: 65px;
-  right: 5px;
-  left: 0;
+  right: $pxh-toast-margin;
+  left: $pxh-toast-margin;
+  max-height: ($pxh-toast-height * $pxh-toast-max-count) + ($pxh-toast-margin * ($pxh-toast-max-count - 1));
+  overflow: hidden;
   z-index: 300;
   @include mq($from: md) {
     &--wide\@md {
@@ -26,8 +32,8 @@
 }
 
 @mixin pxh-toast--in-state-scale {
-  height: 60px;
-  margin-bottom: 5px;
+  height: $pxh-toast-height;
+  margin-bottom: $pxh-toast-margin;
   font-size: 16px;
 }
 @mixin pxh-toast--in-state-opacity {
@@ -57,6 +63,9 @@
     @include pxh-toast--in-state-scale;
     @include out-state-opacity;
   }
+  66% {
+    @include pxh-toast--in-state;
+  }
   100% {
     @include pxh-toast--in-state;
   }
@@ -69,6 +78,9 @@
   33% {
     @include pxh-toast--in-state-scale;
     @include out-state-opacity;
+  }
+  66% {
+    @include pxh-toast--out-state;
   }
   100% {
     @include pxh-toast--out-state;
@@ -97,7 +109,7 @@
 
 .pxh-toast__action {
   text-align: center;
-  margin-left: 10px;
+  margin-left: $pxh-toast-margin * 2;
 }
 
 .pxh-toast__button {
@@ -111,10 +123,10 @@
 
 .pxh-toast__icon {
   color: $white;
-  padding-top: 20px;
+  padding-top: $pxh-toast-margin * 4;
   text-align: center;
-  height: 60px;
-  width: 60px;
+  height: $pxh-toast-height;
+  width: $pxh-toast-height;
   font-size: 20px;
   background-color: transparent;
   &--success {
@@ -132,14 +144,14 @@
 }
 
 .pxh-toast__text {
-  padding-left: 10px;
+  padding-left: $pxh-toast-margin * 2;
   flex-grow: 3;
 }
 .pxh-toast__dismiss {
   text-align: center;
   font-size: 18px;
   .fa {
-    padding: 10px;
+    padding: $pxh-toast-margin * 2;
     color: $gray7;
     text-decoration: none;
   }
@@ -149,8 +161,8 @@
   z-index: 800;
   position: fixed;
   bottom: 65px;
-  left: 5px;
-  right: 5px;
+  left: $pxh-toast-margin;
+  right: $pxh-toast-margin;
   border-radius: 4px;
   background-color: rgba($black, 0.9);
   color: $gray2;
@@ -170,7 +182,7 @@
 }
 
 .pxh-notifications__title {
-  padding-top: 10px;
+  padding-top: $pxh-toast-margin * 2;
   flex-grow: 1;
   text-align: center;
   text-transform: uppercase;
@@ -179,8 +191,8 @@
 
 .pxh-notifications__action {
   text-align: left;
-  padding-left: 10px;
-  padding-top: 10px;
+  padding-left: $pxh-toast-margin * 2;
+  padding-top: $pxh-toast-margin * 2;
   a {
     color: $gray5;
     text-decoration: none;
@@ -191,9 +203,9 @@
   color: $gray5;
   text-decoration: none;
   text-align: right;
-  padding-right: 10px;
-  padding-left: 10px;
-  padding-top: 10px;
+  padding-right: $pxh-toast-margin * 2;
+  padding-left: $pxh-toast-margin * 2;
+  padding-top: $pxh-toast-margin * 2;
   a {
     color: $gray5;
     text-decoration: none;
@@ -238,12 +250,12 @@
 }
 
 .pxh-notification-item {
-  height: 60px;
+  height: $pxh-toast-height;
   display: flex;
   border-top: 1px solid $gray10;
   &:first-child {
     border-top: 0;
-    height: 59px;
+    height: ($pxh-toast-height - 1); // subtract one pixel for missing border
   }
 }
 
@@ -251,9 +263,9 @@
   color: $white;
   font-size: 18px;
   text-align: center;
-  height: 59px;
-  width: 60px;
-  padding-top: 20px;
+  height: ($pxh-toast-height - 1); // subtract one pixel for missing border
+  width: $pxh-toast-height;
+  padding-top: $pxh-toast-margin * 4;
   &--success {
     background-color: $green;
   }
@@ -270,8 +282,8 @@
 
 .pxh-notification-item__text {
   flex-grow: 1;
-  padding-top: 20px;
-  padding-left: 10px;
+  padding-top: $pxh-toast-margin * 4;
+  padding-left: $pxh-toast-margin * 2;
 }
 
 .pxh-notification-item__timestamp {
@@ -279,11 +291,11 @@
 }
 
 .pxh-notification-item__dismiss {
-  padding-top: 10px;
+  padding-top: $pxh-toast-margin * 2;
   text-align: center;
   font-size: 18px;
   .fa {
-    padding: 10px;
+    padding: $pxh-toast-margin * 2;
     color: $gray7;
     text-decoration: none;
   }
