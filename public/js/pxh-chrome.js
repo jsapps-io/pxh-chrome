@@ -991,7 +991,7 @@ var toastObject2 = {
   isPersistent : true,
   icon : 'exclamation-circle', // any FA icon
   text : 'Here is the text for the second notification',
-  moreText : 'It can be this long or longer if you want.',
+  moreText : 'It can be this long or longer if you want. In fact, it can be really, really long if you have a lot you want to say. We kind of discourage this much content but knock yourself out! Just keep talking and talking and talking and this area will keep expanding and expanding.'
 }
 
 var toastObject3 = {
@@ -999,7 +999,7 @@ var toastObject3 = {
   isPersistent : false,
   icon : 'info-circle', // any FA icon
   text : 'Need a third notification? It\'s right here!',
-  moreText : 'It can be this long or longer if you want.',
+  moreText : 'It can be this long or longer if you want. In fact, it can be really, really long if you have a lot you want to say. We kind of discourage this much content but knock yourself out! Just keep talking and talking and talking and this area will keep expanding and expanding.',
   hasAction : true, // true, false
   actionLabel : 'View',
   actionLink : 'http://google.com'
@@ -1026,7 +1026,8 @@ window.toast.init = function(toastObject) {
       actionMarkup = '  <div class="pxh-toast__action">\n' +
                          '    <a class="pxh-toast__button" href="' + toastObject.actionLink + '">' + actionLabel + '</a>\n' +
                          '  </div>\n';
-    } else if (toastObject.actionCallback) {
+    }
+    else if (toastObject.actionCallback) {
       actionMarkup = '  <div class="pxh-toast__action">\n' +
                          '    <a class="pxh-toast__button" href="#">' + 'callback: ' + actionLabel + '</a>\n' +
                          '  </div>\n';
@@ -1034,17 +1035,33 @@ window.toast.init = function(toastObject) {
     return actionMarkup;
   })();
 
+  var toastText = (function() {
+    var textMarkup = '';
+    var textContent = (toastObject.text) ? toastObject.text : 'You have a new notification';
+    if (toastObject.moreText) {
+      textMarkup = '  <div class="pxh-toast__text">\n' +
+                   '    <div>' + textContent + '</div>' +
+                   '    <div class="pxh-toast__more-text pxh-toast__more-text--hidden js-toast__more-text">' + toastObject.moreText + '</div>\n' +
+                   '    <div><a href="#" class="pxh-toast__more-button js-toast__more-button">Show more</a></div>\n' +
+                   '  </div>\n';
+    }
+    else {
+      textMarkup = '  <div class="pxh-toast__text">\n' +
+                   '    <div>' + textContent + '</div>\n' +
+                   '  </div>\n';
+    }
+    return textMarkup;
+  })();
+
   var toastInnards = '';
-  toastMarkup.className = 'pxh-toast pxh-toast--animate-in';
+  toastMarkup.className = 'pxh-toast pxh-toast--animate-in pxh-toast--expanded';
   var toastInnards =  '  <div class="pxh-toast__icon pxh-toast__icon--' + toastObject.type + '">\n' + 
                       '    <i class="fa fa-' + toastObject.icon + '"></i>\n' + 
                       '  </div>\n' +
-                      '  <div class="pxh-toast__text">\n' +
-                      '    <p>' + toastObject.text + '</p>\n' +
-                      '  </div>\n' +
+                      toastText + 
                       toastAction + 
                       '  <div class="pxh-toast__dismiss">\n' +
-                      '    <a href="#" class="pxh-toast__dismiss-link js-toast__dismiss-link"><i class="fa fa-times"></i></a>\n' +
+                      '    <a href="#" class="pxh-toast__dismiss-button js-toast__dismiss-button"><i class="fa fa-times"></i></a>\n' +
                       '  </div>\n';
   toastMarkup.innerHTML = toastInnards;
   return toastMarkup;
@@ -1055,7 +1072,9 @@ window.toast.add = function(toastList, toastObject) {
     var parentElement = document.getElementById(toastList);
     var theFirstChild = parentElement.firstChild;
     var toastElement = parentElement.insertBefore(window.toast.init(toastObject), theFirstChild);
-    var dismissControl = toastElement.querySelector('.js-toast__dismiss-link');
+    var dismissControl = toastElement.querySelector('.js-toast__dismiss-button');
+    var moreControl = toastElement.querySelector('.js-toast__more-button');
+    var moreText = toastElement.querySelector('.js-toast__more-text');
     if (dismissControl) {
       dismissControl.addEventListener('click', function(event) {
         event.preventDefault();
@@ -1063,6 +1082,12 @@ window.toast.add = function(toastList, toastObject) {
         setTimeout(function() {
           window.toast.remove(toastElement);
         }, 1000);
+      })
+    }
+    if ((moreControl) && (moreText)) {
+      moreControl.addEventListener('click', function(event) {
+        event.preventDefault();
+        window.toast.toggleMore(toastElement, moreText);
       })
     }
     if (!toastObject.isPersistent) {
@@ -1088,6 +1113,22 @@ window.toast.remove = function(toastElement) {
   toastElement.remove();
 }
 
+window.toast.toggleMore = function(toastElement, moreText) {
+  if (moreText.classList.contains('pxh-toast__more-text--hidden')) {
+    toastElement.classList.add('pxh-toast--expanded');
+    toastElement.classList.remove('pxh-toast--animate-in');
+    moreText.classList.add('pxh-toast__more-text--animate-in');
+    moreText.classList.remove('pxh-toast__more-text--animate-out');
+    moreText.classList.remove('pxh-toast__more-text--hidden');
+    toastElement.querySelector('.pxh-toast__more-button').innerHTML = 'Show less';
+  }
+  else {
+    moreText.classList.remove('pxh-toast__more-text--animate-in');
+    moreText.classList.add('pxh-toast__more-text--animate-out');
+    moreText.classList.add('pxh-toast__more-text--hidden');
+    toastElement.querySelector('.pxh-toast__more-button').innerHTML = 'Show more';
+  }
+}
 
 document.addEventListener('DOMContentLoaded', function(event) {
   window.toast.add('js-toast-list', toastObject1);
