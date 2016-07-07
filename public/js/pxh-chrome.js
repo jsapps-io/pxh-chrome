@@ -1018,7 +1018,9 @@ var toastItem4 = {
   'actionLink' : 'http://beef.org'
 }
 
-function makeToast(toastObject) {
+if (!window.toast) window.toast = {};
+
+window.toast.init = function(toastObject) {
   var toastMarkup = document.createElement('section');
   toastMarkup.className = 'pxh-toast pxh-toast--animate-in';
   var toastInnards =  '  <div class="pxh-toast__icon pxh-toast__icon--' + toastObject.type + '">\n' + 
@@ -1037,48 +1039,58 @@ function makeToast(toastObject) {
   return toastMarkup;
 }
 
-function insertToast(toastList, toastItem) {
+window.toast.add = function(toastList, toastItem) {
   if (document.getElementById(toastList)) {
     var parentElement = document.getElementById(toastList);
     var theFirstChild = parentElement.firstChild;
-    var newToast = parentElement.insertBefore(makeToast(toastItem), theFirstChild);
+    var newToast = parentElement.insertBefore(window.toast.init(toastItem), theFirstChild);
     var dismissControl = newToast.querySelector('.js-toast__dismiss-link');
     if (dismissControl) {
       dismissControl.addEventListener('click', function(event) {
         event.preventDefault();
-        if (newToast) {
-          newToast.classList.add('pxh-toast--animate-out');
-          newToast.classList.remove('pxh-toast--animate-in');
-          setTimeout(function() {
-            newToast.remove()
-          }, 1000);
-        }
+        window.toast.hide(newToast);
+        setTimeout(function() {
+          window.toast.remove(newToast);
+        }, 1000);
       })
     }
-    setTimeout(function() {
-      // after 2000ms animate the toast out
-      newToast.classList.add('pxh-toast--animate-out');
-      newToast.classList.remove('pxh-toast--animate-in');
-      // 1000ms after the animation, remove the toast from the DOM
-      setTimeout(function() {
-        if (newToast) {
-          newToast.remove()
-        }
-      }, 1000);
-    }, 5000);
+    window.toast.show(newToast);
   }
 }
 
+window.toast.show = function(newToast) {
+  setTimeout(function() {
+    // after 2000ms animate the toast out
+    window.toast.hide(newToast);
+    // 1000ms after the animation, remove the toast from the DOM
+    setTimeout(function() {
+      window.toast.remove(newToast);
+    }, 1000);
+  }, 5000);
+}
+
+window.toast.hide = function(newToast) {
+  newToast.classList.add('pxh-toast--animate-out');
+  newToast.classList.remove('pxh-toast--animate-in');
+}
+
+window.toast.remove = function(newToast) {
+  if (newToast)
+  newToast.remove();
+}
+
+
 document.addEventListener('DOMContentLoaded', function(event) {
-  insertToast('js-toast-list', toastItem1);
-  insertToast('js-toast-list', toastItem2);
+  window.toast.add('js-toast-list', toastItem1);
+  window.toast.add('js-toast-list', toastItem2);
 });
 
 if (document.getElementById('js-toast-emitter')) {
   document.getElementById('js-toast-emitter').addEventListener('click', function() {
-    insertToast('js-toast-list', toastItem3);
+    window.toast.add('js-toast-list', toastItem3);
   })
 }
+
 
 
 
