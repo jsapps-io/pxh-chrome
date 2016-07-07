@@ -5621,12 +5621,6 @@ sub {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
   color: #b1b1bc;
   background: rgba(0, 0, 0, 0.9);
 }
@@ -5649,9 +5643,13 @@ sub {
           animation-name: pxh-toast--animate-out;
 }
 
+.pxh-toast--expanded {
+  height: auto;
+}
+
 .pxh-toast__action {
   text-align: center;
-  margin: 0 10px 0 10px;
+  margin: 20px 10px 0 10px;
 }
 
 .pxh-toast__button {
@@ -5667,7 +5665,6 @@ sub {
   color: white;
   padding-top: 20px;
   text-align: center;
-  height: 60px;
   width: 60px;
   min-width: 60px;
   font-size: 20px;
@@ -5691,10 +5688,134 @@ sub {
 }
 
 .pxh-toast__text {
+  padding-top: 20px;
   padding-left: 10px;
   -webkit-box-flex: 3;
       -ms-flex-positive: 3;
           flex-grow: 3;
+}
+
+@-webkit-keyframes pxh-toast__more-text--animate-in {
+  0% {
+    margin: 0;
+    padding: 0;
+    font-size: 0;
+    opacity: 0;
+  }
+  33% {
+    font-size: 16px;
+    opacity: 0;
+  }
+  66% {
+    opacity: 1;
+    font-size: 16px;
+  }
+  100% {
+    opacity: 1;
+    font-size: 16px;
+  }
+}
+
+@keyframes pxh-toast__more-text--animate-in {
+  0% {
+    margin: 0;
+    padding: 0;
+    font-size: 0;
+    opacity: 0;
+  }
+  33% {
+    font-size: 16px;
+    opacity: 0;
+  }
+  66% {
+    opacity: 1;
+    font-size: 16px;
+  }
+  100% {
+    opacity: 1;
+    font-size: 16px;
+  }
+}
+
+@-webkit-keyframes pxh-toast__more-text--animate-out {
+  0% {
+    opacity: 1;
+    font-size: 16px;
+  }
+  33% {
+    font-size: 16px;
+    opacity: 0;
+  }
+  66% {
+    margin: 0;
+    padding: 0;
+    font-size: 0;
+    opacity: 0;
+  }
+  100% {
+    margin: 0;
+    padding: 0;
+    font-size: 0;
+    opacity: 0;
+  }
+}
+
+@keyframes pxh-toast__more-text--animate-out {
+  0% {
+    opacity: 1;
+    font-size: 16px;
+  }
+  33% {
+    font-size: 16px;
+    opacity: 0;
+  }
+  66% {
+    margin: 0;
+    padding: 0;
+    font-size: 0;
+    opacity: 0;
+  }
+  100% {
+    margin: 0;
+    padding: 0;
+    font-size: 0;
+    opacity: 0;
+  }
+}
+
+.pxh-toast__more-text {
+  opacity: 1;
+  font-size: 16px;
+}
+
+.pxh-toast__more-text--animate-in {
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  -webkit-animation-duration: 1000ms;
+          animation-duration: 1000ms;
+  -webkit-animation-name: pxh-toast__more-text--animate-in;
+          animation-name: pxh-toast__more-text--animate-in;
+}
+
+.pxh-toast__more-text--animate-out {
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  -webkit-animation-duration: 1000ms;
+          animation-duration: 1000ms;
+  -webkit-animation-name: pxh-toast__more-text--animate-out;
+          animation-name: pxh-toast__more-text--animate-out;
+}
+
+.pxh-toast__more-text--hidden {
+  margin: 0;
+  padding: 0;
+  font-size: 0;
+  opacity: 0;
+}
+
+.pxh-toast__more-button {
+  text-transform: lowercase;
+  font-size: 14px;
 }
 
 .pxh-toast__dismiss {
@@ -5707,9 +5828,9 @@ sub {
   text-decoration: none;
 }
 
-.pxh-toast__dismiss-link {
+.pxh-toast__dismiss-button {
   display: block;
-  padding: 10px;
+  padding: 20px 10px 10px 10px;
 }
 
 .pxh-notifications {
