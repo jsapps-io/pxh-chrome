@@ -969,65 +969,73 @@ var pxhToggleNotifications = function(toggleControl, toggleTarget, toggleClass) 
   }
 }
 
-// what is its text length -> HTML/init
+// type : 'success' // success, info, warning, important
+// isPersistent : false // true, false
+// icon : 'check-circle' // any Font Awesome icon slug
+// text : 'This is the text for notification #1.'
+// fullText : 'It can be this long or longer if you want.'
+// actionLabel : 'View'
+// actionLink : 'http://google.com' // fully qualified link or route
+// actionCallback : // callback function
 
 var toastObject1 = {
-  'type' : 'success', // success, info, warning, important
-  'isPersistent' : false,
-  'icon' : 'check-circle', // any FA icon
-  'text' : 'This is the text for notification #1. It can be this long or longer if you want.',
-  'textLength' : 'multiLine', // multiLine, singleLine
-  'hasAction' : false, // true, false
-  'actionText' : 'View Alert',
-  'actionLink' : 'http://google.com'
+  type : 'success', // success, info, warning, important
+  isPersistent : false,
+  icon : 'check-circle', // any FA icon
+  text : 'This is the text for notification #1.',
+  actionLink : 'http://google.com'
 }
 
 var toastObject2 = {
-  'type' : 'warning', // success, info, warning, important
-  'isPersistent' : true,
-  'icon' : 'exclamation-circle', // any FA icon
-  'text' : 'Here is the text for the second notification',
-  'textLength' : 'multiLine', // multiLine, singleLine
-  'hasAction' : true, // true, false
-  'actionText' : 'Beef',
-  'actionLink' : 'http://beef.org'
+  type : 'warning', // success, info, warning, important
+  isPersistent : true,
+  icon : 'exclamation-circle', // any FA icon
+  text : 'Here is the text for the second notification',
+  moreText : 'It can be this long or longer if you want.',
 }
 
 var toastObject3 = {
-  'type' : 'info', // success, info, warning, important
-  'isPersistent' : false,
-  'icon' : 'info-circle', // any FA icon
-  'text' : 'Need a third notification? It\'s right here!',
-  'textLength' : 'multiLine', // multiLine, singleLine
-  'hasAction' : true, // true, false
-  'actionText' : 'View Alert',
-  'actionLink' : 'http://google.com'
+  type : 'info', // success, info, warning, important
+  isPersistent : false,
+  icon : 'info-circle', // any FA icon
+  text : 'Need a third notification? It\'s right here!',
+  moreText : 'It can be this long or longer if you want.',
+  hasAction : true, // true, false
+  actionLabel : 'View',
+  actionLink : 'http://google.com'
 }
 
 var toastObject4 = {
-  'type' : 'important', // success, info, warning, important
-  'isPersistent' : false,
-  'icon' : 'times-circle', // any FA icon
-  'text' : 'Fourth notification? Coming right up!',
-  'textLength' : 'multiLine', // multiLine, singleLine
-  'hasAction' : true, // true, false
-  'actionText' : 'Beef',
-  'actionLink' : 'http://beef.org'
+  type : 'important', // success, info, warning, important
+  isPersistent : false,
+  icon : 'times-circle', // any FA icon
+  text : 'Fourth notification? Coming right up!',
+  hasAction : true, // true, false
+  actionLabel : 'Beef',
+  actionLink : 'http://beef.org'
 }
 
 if (!window.toast) window.toast = {};
 
 window.toast.init = function(toastObject) {
   var toastMarkup = document.createElement('section');
-  var toastAction = '';
+  var toastAction = (function() {
+    var actionMarkup = '';
+    var actionLabel = (toastObject.actionLabel) ? toastObject.actionLabel : 'Action';
+    if (toastObject.actionLink) {
+      actionMarkup = '  <div class="pxh-toast__action">\n' +
+                         '    <a class="pxh-toast__button" href="' + toastObject.actionLink + '">' + actionLabel + '</a>\n' +
+                         '  </div>\n';
+    } else if (toastObject.actionCallback) {
+      actionMarkup = '  <div class="pxh-toast__action">\n' +
+                         '    <a class="pxh-toast__button" href="#">' + 'callback: ' + actionLabel + '</a>\n' +
+                         '  </div>\n';
+    }
+    return actionMarkup;
+  })();
+
   var toastInnards = '';
   toastMarkup.className = 'pxh-toast pxh-toast--animate-in';
-  if ((toastObject.hasAction) && (toastObject.actionLink) && (toastObject.actionText)) {
-    console.log('toast has an action');
-    var toastAction = '  <div class="pxh-toast__action">\n' +
-                      '    <a class="pxh-toast__button" href="' + toastObject.actionLink + '">' + toastObject.actionText + '</a>\n' +
-                      '  </div>\n';
-  };
   var toastInnards =  '  <div class="pxh-toast__icon pxh-toast__icon--' + toastObject.type + '">\n' + 
                       '    <i class="fa fa-' + toastObject.icon + '"></i>\n' + 
                       '  </div>\n' +
