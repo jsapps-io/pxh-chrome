@@ -937,98 +937,113 @@ var pxhToggleNotifications = function pxhToggleNotifications(toggleControl, togg
   }
 };
 
-var toastItem1 = {
+// what is its text length -> HTML/init
+
+var toastObject1 = {
   'type': 'success', // success, info, warning, important
-  'persistent': false,
+  'isPersistent': false,
   'icon': 'check-circle', // any FA icon
-  'text': 'This is the text for notification #1',
+  'text': 'This is the text for notification #1. It can be this long or longer if you want.',
   'textLength': 'multiLine', // multiLine, singleLine
-  'action': true, // true, false
+  'hasAction': false, // true, false
   'actionText': 'View Alert',
   'actionLink': 'http://google.com'
 };
 
-var toastItem2 = {
+var toastObject2 = {
   'type': 'warning', // success, info, warning, important
-  'persistent': false,
+  'isPersistent': true,
   'icon': 'exclamation-circle', // any FA icon
   'text': 'Here is the text for the second notification',
   'textLength': 'multiLine', // multiLine, singleLine
-  'action': true, // true, false
+  'hasAction': true, // true, false
   'actionText': 'Beef',
   'actionLink': 'http://beef.org'
 };
 
-var toastItem3 = {
+var toastObject3 = {
   'type': 'info', // success, info, warning, important
-  'persistent': false,
+  'isPersistent': false,
   'icon': 'info-circle', // any FA icon
   'text': 'Need a third notification? It\'s right here!',
   'textLength': 'multiLine', // multiLine, singleLine
-  'action': true, // true, false
+  'hasAction': true, // true, false
   'actionText': 'View Alert',
   'actionLink': 'http://google.com'
 };
 
-var toastItem4 = {
+var toastObject4 = {
   'type': 'important', // success, info, warning, important
-  'persistent': false,
+  'isPersistent': false,
   'icon': 'times-circle', // any FA icon
   'text': 'Fourth notification? Coming right up!',
   'textLength': 'multiLine', // multiLine, singleLine
-  'action': true, // true, false
+  'hasAction': true, // true, false
   'actionText': 'Beef',
   'actionLink': 'http://beef.org'
 };
 
-function makeToast(toastObject) {
+if (!window.toast) window.toast = {};
+
+window.toast.init = function (toastObject) {
   var toastMarkup = document.createElement('section');
+  var toastAction = '';
+  var toastInnards = '';
   toastMarkup.className = 'pxh-toast pxh-toast--animate-in';
-  var toastInnards = '  <div class="pxh-toast__icon pxh-toast__icon--' + toastObject.type + '">\n' + '    <i class="fa fa-' + toastObject.icon + '"></i>\n' + '  </div>\n' + '  <div class="pxh-toast__text">\n' + '    <p>' + toastObject.text + '</p>\n' + '  </div>\n' + '  <div class="pxh-toast__action">\n' + '    <a class="pxh-toast__button" href="' + toastObject.actionLink + '">' + toastObject.actionText + '</a>\n' + '  </div>\n' + '  <div class="pxh-toast__dismiss">\n' + '    <a href="#" class="js-toast__dismiss-link"><i class="fa fa-times"></i></a>\n' + '  </div>\n';
+  if (toastObject.hasAction && toastObject.actionLink && toastObject.actionText) {
+    console.log('toast has an action');
+    var toastAction = '  <div class="pxh-toast__action">\n' + '    <a class="pxh-toast__button" href="' + toastObject.actionLink + '">' + toastObject.actionText + '</a>\n' + '  </div>\n';
+  };
+  var toastInnards = '  <div class="pxh-toast__icon pxh-toast__icon--' + toastObject.type + '">\n' + '    <i class="fa fa-' + toastObject.icon + '"></i>\n' + '  </div>\n' + '  <div class="pxh-toast__text">\n' + '    <p>' + toastObject.text + '</p>\n' + '  </div>\n' + toastAction + '  <div class="pxh-toast__dismiss">\n' + '    <a href="#" class="pxh-toast__dismiss-link js-toast__dismiss-link"><i class="fa fa-times"></i></a>\n' + '  </div>\n';
   toastMarkup.innerHTML = toastInnards;
   return toastMarkup;
-}
+};
 
-function insertToast(toastList, toastItem) {
+window.toast.add = function (toastList, toastObject) {
   if (document.getElementById(toastList)) {
     var parentElement = document.getElementById(toastList);
     var theFirstChild = parentElement.firstChild;
-    var newToast = parentElement.insertBefore(makeToast(toastItem), theFirstChild);
-    var dismissControl = newToast.querySelector('.js-toast__dismiss-link');
+    var toastElement = parentElement.insertBefore(window.toast.init(toastObject), theFirstChild);
+    var dismissControl = toastElement.querySelector('.js-toast__dismiss-link');
     if (dismissControl) {
       dismissControl.addEventListener('click', function (event) {
         event.preventDefault();
-        if (newToast) {
-          newToast.classList.add('pxh-toast--animate-out');
-          newToast.classList.remove('pxh-toast--animate-in');
-          setTimeout(function () {
-            newToast.remove();
-          }, 1000);
-        }
+        window.toast.hide(toastElement);
+        setTimeout(function () {
+          window.toast.remove(toastElement);
+        }, 1000);
       });
     }
-    setTimeout(function () {
-      // after 2000ms animate the toast out
-      newToast.classList.add('pxh-toast--animate-out');
-      newToast.classList.remove('pxh-toast--animate-in');
-      // 1000ms after the animation, remove the toast from the DOM
+    if (!toastObject.isPersistent) {
       setTimeout(function () {
-        if (newToast) {
-          newToast.remove();
-        }
-      }, 1000);
-    }, 5000);
+        // after 2000ms animate the toast out
+        window.toast.hide(toastElement);
+        // 1000ms after the animation, remove the toast from the DOM
+        setTimeout(function () {
+          window.toast.remove(toastElement);
+        }, 1000);
+      }, 5000);
+    }
   }
-}
+};
+
+window.toast.hide = function (toastElement) {
+  toastElement.classList.add('pxh-toast--animate-out');
+  toastElement.classList.remove('pxh-toast--animate-in');
+};
+
+window.toast.remove = function (toastElement) {
+  if (toastElement) toastElement.remove();
+};
 
 document.addEventListener('DOMContentLoaded', function (event) {
-  insertToast('js-toast-list', toastItem1);
-  insertToast('js-toast-list', toastItem2);
+  window.toast.add('js-toast-list', toastObject1);
+  window.toast.add('js-toast-list', toastObject2);
 });
 
 if (document.getElementById('js-toast-emitter')) {
   document.getElementById('js-toast-emitter').addEventListener('click', function () {
-    insertToast('js-toast-list', toastItem3);
+    window.toast.add('js-toast-list', toastObject3);
   });
 }
 
