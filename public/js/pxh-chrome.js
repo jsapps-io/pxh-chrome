@@ -969,16 +969,13 @@ var pxhToggleNotifications = function(toggleControl, toggleTarget, toggleClass) 
   }
 }
 
-// is it persistent
-// does it have an action -> HTML/init
 // what is its text length -> HTML/init
-
 
 var toastObject1 = {
   'type' : 'success', // success, info, warning, important
   'isPersistent' : false,
   'icon' : 'check-circle', // any FA icon
-  'text' : 'This is the text for notification #1. It can be this long',
+  'text' : 'This is the text for notification #1. It can be this long or longer if you want.',
   'textLength' : 'multiLine', // multiLine, singleLine
   'hasAction' : false, // true, false
   'actionText' : 'View Alert',
@@ -1039,7 +1036,7 @@ window.toast.init = function(toastObject) {
                       '  </div>\n' +
                       toastAction + 
                       '  <div class="pxh-toast__dismiss">\n' +
-                      '    <a href="#" class="js-toast__dismiss-link"><i class="fa fa-times"></i></a>\n' +
+                      '    <a href="#" class="pxh-toast__dismiss-link js-toast__dismiss-link"><i class="fa fa-times"></i></a>\n' +
                       '  </div>\n';
   toastMarkup.innerHTML = toastInnards;
   return toastMarkup;

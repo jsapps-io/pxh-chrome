@@ -109,7 +109,7 @@ $pxh-toast-max-count: 4;
 
 .pxh-toast__action {
   text-align: center;
-  margin-left: $pxh-toast-margin * 2;
+  margin: 0 ($pxh-toast-margin * 2) 0 ($pxh-toast-margin * 2);
 }
 
 .pxh-toast__button {
@@ -127,6 +127,8 @@ $pxh-toast-max-count: 4;
   text-align: center;
   height: $pxh-toast-height;
   width: $pxh-toast-height;
+  min-width: $pxh-toast-height; // for flex-box
+  // max-width: $pxh-toast-height;
   font-size: 20px;
   background-color: transparent;
   &--success {
@@ -151,10 +153,14 @@ $pxh-toast-max-count: 4;
   text-align: center;
   font-size: 18px;
   .fa {
-    padding: $pxh-toast-margin * 2;
     color: $gray7;
     text-decoration: none;
   }
+}
+
+.pxh-toast__dismiss-link {
+  display: block;
+  padding: $pxh-toast-margin * 2;
 }
 
 .pxh-notifications {
