@@ -2,7 +2,7 @@
     #components.pxh-notifications
 \*------------------------------------*/
 
-$pxh-toast-height: 60px;
+$pxh-toast-height: 70px;
 $pxh-toast-margin: 5px;
 $pxh-toast-max-count: 4;
 
@@ -91,10 +91,10 @@ $pxh-toast-max-count: 4;
   @include pxh-toast--in-state;
   border-radius: 1px;
   display: flex;
-  // align-items: center;
-  // justify-content: center;
+  overflow: hidden;
+  position: relative;
   color: $gray5;
-  background: rgba($black, 0.9);
+  background: $gray10;
   &--animate-in {
     animation-fill-mode: forwards;
     animation-duration: 1000ms;
@@ -106,22 +106,32 @@ $pxh-toast-max-count: 4;
     animation-name: pxh-toast--animate-out;
   }
   &--expanded {
+    overflow: visible;
     height: auto;
   }
 }
 
 .pxh-toast__action {
   text-align: center;
-  margin: ($pxh-toast-margin * 4) ($pxh-toast-margin * 2) 0 ($pxh-toast-margin * 2);
+  margin: ($pxh-toast-margin * 3) ($pxh-toast-margin * 2) 0 ($pxh-toast-margin * 2);
 }
 
 .pxh-toast__button {
+  display: block;
+  overflow: hidden;
+  max-width: $pxh-toast-height * 2;
   text-decoration: none;
   border: 1px solid $gray8;
   padding: 8px;
   background-color: transparent;
   color: $gray5;
   border-radius: 2px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  background-color: transparent;
+  &:hover {
+    background-color: $gray9;
+  }
 }
 
 .pxh-toast__icon {
@@ -132,7 +142,7 @@ $pxh-toast-max-count: 4;
   width: $pxh-toast-height;
   min-width: $pxh-toast-height; // for flex-box
   // max-width: $pxh-toast-height;
-  font-size: 20px;
+  font-size: 28px;
   background-color: transparent;
   &--success {
     background-color: $green;
@@ -149,84 +159,36 @@ $pxh-toast-max-count: 4;
 }
 
 .pxh-toast__text {
-  padding-top: $pxh-toast-margin * 4;
+  margin: auto;
+  padding-top: $pxh-toast-margin;
   padding-left: $pxh-toast-margin * 2;
   flex-grow: 3;
+  overflow: hidden;
+  position: relative;
 }
 
-@mixin pxh-toast__more-text--in-state-scale {
-  font-size: 16px;
-}
-@mixin pxh-toast__more-text--in-state-opacity {
-  @include in-state-opacity;
-}
-
-@mixin pxh-toast__more-text--out-state-scale {
-    @include out-state-scale;
-}
-
-@mixin pxh-toast__more-text--in-state {
-  @include pxh-toast__more-text--in-state-opacity;
-  @include pxh-toast__more-text--in-state-scale;
-}
-
-@mixin pxh-toast__more-text--out-state {
-  @include pxh-toast__more-text--out-state-scale;
-  @include out-state-opacity;
-}
-
-@keyframes pxh-toast__more-text--animate-in {
-  0% {
-    @include pxh-toast__more-text--out-state;
-  }
-  33% {
-    @include pxh-toast__more-text--in-state-scale;
-    @include out-state-opacity;
-  }
-  66% {
-    @include pxh-toast__more-text--in-state;
-  }
-  100% {
-    @include pxh-toast__more-text--in-state;
-  }
-}
-
-@keyframes pxh-toast__more-text--animate-out {
-  0% {
-    @include pxh-toast__more-text--in-state;
-  }
-  33% {
-    @include pxh-toast__more-text--in-state-scale;
-    @include out-state-opacity;
-  }
-  66% {
-    @include pxh-toast__more-text--out-state;
-  }
-  100% {
-    @include pxh-toast__more-text--out-state;
-  }
-}
-
-.pxh-toast__more-text {
-  @include pxh-toast__more-text--in-state;
-  &--animate-in {
-    animation-fill-mode: forwards;
-    animation-duration: 1000ms;
-    animation-name: pxh-toast__more-text--animate-in;
-  }
-  &--animate-out {
-    animation-fill-mode: forwards;
-    animation-duration: 1000ms;
-    animation-name: pxh-toast__more-text--animate-out;
-  }
-  &--hidden {
-    @include pxh-toast__more-text--out-state;
-  }
+.pxh-toast__more {
+  position: absolute;
+  top: $pxh-toast-margin * 8;
+  width: 100%;
+  height: $pxh-toast-margin * 6;
+  padding: ($pxh-toast-margin * 2.5) 0 0 0;
+  background: linear-gradient(to bottom, rgba($gray10,0) 0%, rgba($gray10,1) 50%);
+  text-align: center;
 }
 
 .pxh-toast__more-button {
+  text-decoration: none;
   text-transform: lowercase;
   font-size: 14px;
+}
+
+.pxh-toast__more--expanded {
+  position: relative;
+  top: 0;
+  height: auto;
+  padding: 0;
+  background: transparent;
 }
 
 .pxh-toast__dismiss {
@@ -240,7 +202,7 @@ $pxh-toast-max-count: 4;
 
 .pxh-toast__dismiss-button {
   display: block;
-  padding: ($pxh-toast-margin * 4) ($pxh-toast-margin * 2) ($pxh-toast-margin * 2) ($pxh-toast-margin * 2);
+  padding: ($pxh-toast-margin * 5) ($pxh-toast-margin * 2) 0 ($pxh-toast-margin * 2);
 }
 
 .pxh-notifications {

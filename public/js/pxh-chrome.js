@@ -1036,23 +1036,14 @@ toast.init = function(toastObject) {
   var toastText = (function() {
     var textMarkup = '';
     var textContent = (toastObject.text) ? toastObject.text : 'You have a new notification';
-    if (toastObject.moreText) {
-      textMarkup = '  <div class="pxh-toast__text">\n' +
-                   '    <div>' + textContent + '</div>' +
-                   '    <div class="pxh-toast__more-text pxh-toast__more-text--hidden js-toast__more-text">' + toastObject.moreText + '</div>\n' +
-                   '    <div><a href="#" class="pxh-toast__more-button js-toast__more-button">Show more</a></div>\n' +
-                   '  </div>\n';
-    }
-    else {
-      textMarkup = '  <div class="pxh-toast__text">\n' +
-                   '    <div>' + textContent + '</div>\n' +
-                   '  </div>\n';
-    }
+    textMarkup = '  <div class="pxh-toast__text">' + textContent + '\n' +
+                 '    <div class="pxh-toast__more"><a href="#" class="pxh-toast__more-button js-toast__more-button">Show more</a></div>\n' +
+                 '  </div>\n';
     return textMarkup;
   })();
 
   var toastInnards = '';
-  toastMarkup.className = 'pxh-toast pxh-toast--animate-in pxh-toast--expanded';
+  toastMarkup.className = 'pxh-toast pxh-toast--animate-in';
   var toastInnards =  '  <div class="pxh-toast__icon pxh-toast__icon--' + toastObject.type + '">\n' + 
                       '    <i class="fa fa-' + toastObject.icon + '"></i>\n' + 
                       '  </div>\n' +
@@ -1069,10 +1060,9 @@ toast.add = function(toastList, toastObject) {
   if (document.getElementById(toastList)) {
     var parentElement = document.getElementById(toastList);
     var theFirstChild = parentElement.firstChild;
-    var toastElement = parentElement.insertBefore(window.toast.init(toastObject), theFirstChild);
+    var toastElement = parentElement.insertBefore(toast.init(toastObject), theFirstChild);
     var dismissControl = toastElement.querySelector('.js-toast__dismiss-button');
-    var moreControl = toastElement.querySelector('.js-toast__more-button');
-    var moreText = toastElement.querySelector('.js-toast__more-text');
+    var expandControl = toastElement.querySelector('.js-toast__more-button');
     if (dismissControl) {
       dismissControl.addEventListener('click', function(event) {
         event.preventDefault();
@@ -1082,8 +1072,8 @@ toast.add = function(toastList, toastObject) {
         }, 1000);
       })
     }
-    if ((moreControl) && (moreText)) {
-      moreControl.addEventListener('click', function(event) {
+    if (expandControl) {
+      expandControl.addEventListener('click', function(event) {
         event.preventDefault();
         toast.expand(toastElement);
       })
@@ -1111,20 +1101,17 @@ toast.remove = function(toastElement) {
   toastElement.remove();
 }
 
-window.toast.toggleMore = function(toastElement, moreText) {
-  if (moreText.classList.contains('pxh-toast__more-text--hidden')) {
-    toastElement.classList.add('pxh-toast--expanded');
-    toastElement.classList.remove('pxh-toast--animate-in');
-    moreText.classList.add('pxh-toast__more-text--animate-in');
-    moreText.classList.remove('pxh-toast__more-text--animate-out');
-    moreText.classList.remove('pxh-toast__more-text--hidden');
-    toastElement.querySelector('.pxh-toast__more-button').innerHTML = 'Show less';
+toast.expand = function(toastElement) {
+  if (toastElement.classList.contains('pxh-toast--expanded')) {
+    toastElement.classList.remove('pxh-toast--expanded');
+    toastElement.querySelector('.pxh-toast__more').classList.remove('pxh-toast__more--expanded');
+    toastElement.querySelector('.pxh-toast__more-button').innerHTML = 'Show more';
   }
   else {
-    moreText.classList.remove('pxh-toast__more-text--animate-in');
-    moreText.classList.add('pxh-toast__more-text--animate-out');
-    moreText.classList.add('pxh-toast__more-text--hidden');
-    toastElement.querySelector('.pxh-toast__more-button').innerHTML = 'Show more';
+    toastElement.classList.remove('pxh-toast--animate-in');
+    toastElement.classList.add('pxh-toast--expanded');
+    toastElement.querySelector('.pxh-toast__more').classList.add('pxh-toast__more--expanded');
+    toastElement.querySelector('.pxh-toast__more-button').innerHTML = 'Show less';
   }
 }
 
