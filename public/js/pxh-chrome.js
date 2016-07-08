@@ -980,7 +980,7 @@ var pxhToggleNotifications = function(toggleControl, toggleTarget, toggleClass) 
 
 var toastObject1 = {
   type : 'success', // success, info, warning, important
-  isPersistent : false,
+  isPersistent : true,
   icon : 'check-circle', // any FA icon
   text : 'This is the text for notification #1.',
   actionLink : 'http://google.com'
@@ -990,18 +990,16 @@ var toastObject2 = {
   type : 'warning', // success, info, warning, important
   isPersistent : true,
   icon : 'exclamation-circle', // any FA icon
-  text : 'Here is the text for the second notification',
-  moreText : 'It can be this long or longer if you want. In fact, it can be really, really long if you have a lot you want to say. We kind of discourage this much content but knock yourself out! Just keep talking and talking and talking and this area will keep expanding and expanding.'
+  text : 'It can be this long or longer if you want. In fact, it can be really, really long if you have a lot you want to say. We kind of discourage this much content but knock yourself out! Just keep talking and talking and talking and this area will keep expanding and expanding.'
 }
 
 var toastObject3 = {
   type : 'info', // success, info, warning, important
   isPersistent : false,
   icon : 'info-circle', // any FA icon
-  text : 'Need a third notification? It\'s right here!',
-  moreText : 'It can be this long or longer if you want. In fact, it can be really, really long if you have a lot you want to say. We kind of discourage this much content but knock yourself out! Just keep talking and talking and talking and this area will keep expanding and expanding.',
+  text : 'It can be this long or longer if you want. In fact, it can be really, really long if you have a lot you want to say. We kind of discourage this much content but knock yourself out! Just keep talking and talking and talking and this area will keep expanding and expanding.',
   hasAction : true, // true, false
-  actionLabel : 'View',
+  actionLabel : 'View a lot of things right now',
   actionLink : 'http://google.com'
 }
 
