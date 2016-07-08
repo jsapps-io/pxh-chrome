@@ -950,7 +950,7 @@ var toastObject1 = {
   type: 'success', // success, info, warning, important
   isPersistent: true,
   icon: 'check-circle', // any FA icon
-  text: 'This is the text for notification #1.',
+  text: 'This is the text for notification #1. text for notification #1.',
   actionLink: 'http://google.com'
 };
 
@@ -958,7 +958,9 @@ var toastObject2 = {
   type: 'warning', // success, info, warning, important
   isPersistent: true,
   icon: 'exclamation-circle', // any FA icon
-  text: 'It can be this long or longer if you want. In fact, it can be really, really long if you have a lot you want to say. We kind of discourage this much content but knock yourself out! Just keep talking and talking and talking and this area will keep expanding and expanding.'
+  text: 'It can be this long or longer if you want. In fact, it can be really, really long if you have a lot you want to say. We kind of discourage this much content but knock yourself out! Just keep talking and talking and talking and this area will keep expanding and expanding.',
+  actionLabel: 'View a lot of things right now',
+  actionLink: 'http://google.com'
 };
 
 var toastObject3 = {
@@ -966,7 +968,6 @@ var toastObject3 = {
   isPersistent: false,
   icon: 'info-circle', // any FA icon
   text: 'It can be this long or longer if you want. In fact, it can be really, really long if you have a lot you want to say. We kind of discourage this much content but knock yourself out! Just keep talking and talking and talking and this area will keep expanding and expanding.',
-  hasAction: true, // true, false
   actionLabel: 'View a lot of things right now',
   actionLink: 'http://google.com'
 };
@@ -976,7 +977,6 @@ var toastObject4 = {
   isPersistent: false,
   icon: 'times-circle', // any FA icon
   text: 'Fourth notification? Coming right up!',
-  hasAction: true, // true, false
   actionLabel: 'Beef',
   actionLink: 'http://beef.org'
 };
@@ -1059,11 +1059,13 @@ toast.expand = function (toastElement) {
     toastElement.classList.remove('pxh-toast--expanded');
     toastElement.querySelector('.pxh-toast__more').classList.remove('pxh-toast__more--expanded');
     toastElement.querySelector('.pxh-toast__more-button').innerHTML = 'Show more';
+    window.querySelector('.pxh-toast-list').classList.remove('pxh-toast-list--expanded');
   } else {
     toastElement.classList.remove('pxh-toast--animate-in');
     toastElement.classList.add('pxh-toast--expanded');
     toastElement.querySelector('.pxh-toast__more').classList.add('pxh-toast__more--expanded');
     toastElement.querySelector('.pxh-toast__more-button').innerHTML = 'Show less';
+    document.querySelector('.pxh-toast-list').classList.add('pxh-toast-list--expanded');
   }
 };
 
