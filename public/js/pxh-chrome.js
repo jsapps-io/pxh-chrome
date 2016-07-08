@@ -1015,9 +1015,9 @@ var toastObject4 = {
   actionLink : 'http://beef.org'
 }
 
-if (!window.toast) window.toast = {};
+var toast = {};
 
-window.toast.init = function(toastObject) {
+toast.init = function(toastObject) {
   var toastMarkup = document.createElement('section');
   var toastAction = (function() {
     var actionMarkup = '';
@@ -1067,7 +1067,7 @@ window.toast.init = function(toastObject) {
   return toastMarkup;
 }
 
-window.toast.add = function(toastList, toastObject) {
+toast.add = function(toastList, toastObject) {
   if (document.getElementById(toastList)) {
     var parentElement = document.getElementById(toastList);
     var theFirstChild = parentElement.firstChild;
@@ -1078,37 +1078,37 @@ window.toast.add = function(toastList, toastObject) {
     if (dismissControl) {
       dismissControl.addEventListener('click', function(event) {
         event.preventDefault();
-        window.toast.hide(toastElement);
+        toast.hide(toastElement);
         setTimeout(function() {
-          window.toast.remove(toastElement);
+          toast.remove(toastElement);
         }, 1000);
       })
     }
     if ((moreControl) && (moreText)) {
       moreControl.addEventListener('click', function(event) {
         event.preventDefault();
-        window.toast.toggleMore(toastElement, moreText);
+        toast.expand(toastElement);
       })
     }
     if (!toastObject.isPersistent) {
       setTimeout(function() {
         // after 2000ms animate the toast out
-        window.toast.hide(toastElement);
+        toast.hide(toastElement);
         // 1000ms after the animation, remove the toast from the DOM
         setTimeout(function() {
-          window.toast.remove(toastElement);
+          toast.remove(toastElement);
         }, 1000);
       }, 5000);
     }
   }
 }
 
-window.toast.hide = function(toastElement) {
+toast.hide = function(toastElement) {
   toastElement.classList.add('pxh-toast--animate-out');
   toastElement.classList.remove('pxh-toast--animate-in');
 }
 
-window.toast.remove = function(toastElement) {
+toast.remove = function(toastElement) {
   if (toastElement)
   toastElement.remove();
 }
@@ -1131,13 +1131,13 @@ window.toast.toggleMore = function(toastElement, moreText) {
 }
 
 document.addEventListener('DOMContentLoaded', function(event) {
-  window.toast.add('js-toast-list', toastObject1);
-  window.toast.add('js-toast-list', toastObject2);
+  toast.add('js-toast-list', toastObject1);
+  toast.add('js-toast-list', toastObject2);
 });
 
 if (document.getElementById('js-toast-emitter')) {
   document.getElementById('js-toast-emitter').addEventListener('click', function() {
-    window.toast.add('js-toast-list', toastObject3);
+    toast.add('js-toast-list', toastObject3);
   })
 }
 
