@@ -948,7 +948,7 @@ var pxhToggleNotifications = function pxhToggleNotifications(toggleControl, togg
 
 var toastObject1 = {
   type: 'success', // success, info, warning, important
-  isPersistent: false,
+  isPersistent: true,
   icon: 'check-circle', // any FA icon
   text: 'This is the text for notification #1.',
   actionLink: 'http://google.com'
@@ -958,18 +958,16 @@ var toastObject2 = {
   type: 'warning', // success, info, warning, important
   isPersistent: true,
   icon: 'exclamation-circle', // any FA icon
-  text: 'Here is the text for the second notification',
-  moreText: 'It can be this long or longer if you want. In fact, it can be really, really long if you have a lot you want to say. We kind of discourage this much content but knock yourself out! Just keep talking and talking and talking and this area will keep expanding and expanding.'
+  text: 'It can be this long or longer if you want. In fact, it can be really, really long if you have a lot you want to say. We kind of discourage this much content but knock yourself out! Just keep talking and talking and talking and this area will keep expanding and expanding.'
 };
 
 var toastObject3 = {
   type: 'info', // success, info, warning, important
   isPersistent: false,
   icon: 'info-circle', // any FA icon
-  text: 'Need a third notification? It\'s right here!',
-  moreText: 'It can be this long or longer if you want. In fact, it can be really, really long if you have a lot you want to say. We kind of discourage this much content but knock yourself out! Just keep talking and talking and talking and this area will keep expanding and expanding.',
+  text: 'It can be this long or longer if you want. In fact, it can be really, really long if you have a lot you want to say. We kind of discourage this much content but knock yourself out! Just keep talking and talking and talking and this area will keep expanding and expanding.',
   hasAction: true, // true, false
-  actionLabel: 'View',
+  actionLabel: 'View a lot of things right now',
   actionLink: 'http://google.com'
 };
 
@@ -983,9 +981,9 @@ var toastObject4 = {
   actionLink: 'http://beef.org'
 };
 
-if (!window.toast) window.toast = {};
+var toast = {};
 
-window.toast.init = function (toastObject) {
+toast.init = function (toastObject) {
   var toastMarkup = document.createElement('section');
   var toastAction = function () {
     var actionMarkup = '';
@@ -1001,90 +999,82 @@ window.toast.init = function (toastObject) {
   var toastText = function () {
     var textMarkup = '';
     var textContent = toastObject.text ? toastObject.text : 'You have a new notification';
-    if (toastObject.moreText) {
-      textMarkup = '  <div class="pxh-toast__text">\n' + '    <div>' + textContent + '</div>' + '    <div class="pxh-toast__more-text pxh-toast__more-text--hidden js-toast__more-text">' + toastObject.moreText + '</div>\n' + '    <div><a href="#" class="pxh-toast__more-button js-toast__more-button">Show more</a></div>\n' + '  </div>\n';
-    } else {
-      textMarkup = '  <div class="pxh-toast__text">\n' + '    <div>' + textContent + '</div>\n' + '  </div>\n';
-    }
+    textMarkup = '  <div class="pxh-toast__text">' + textContent + '\n' + '    <div class="pxh-toast__more"><a href="#" class="pxh-toast__more-button js-toast__more-button">Show more</a></div>\n' + '  </div>\n';
     return textMarkup;
   }();
 
   var toastInnards = '';
-  toastMarkup.className = 'pxh-toast pxh-toast--animate-in pxh-toast--expanded';
+  toastMarkup.className = 'pxh-toast pxh-toast--animate-in';
   var toastInnards = '  <div class="pxh-toast__icon pxh-toast__icon--' + toastObject.type + '">\n' + '    <i class="fa fa-' + toastObject.icon + '"></i>\n' + '  </div>\n' + toastText + toastAction + '  <div class="pxh-toast__dismiss">\n' + '    <a href="#" class="pxh-toast__dismiss-button js-toast__dismiss-button"><i class="fa fa-times"></i></a>\n' + '  </div>\n';
   toastMarkup.innerHTML = toastInnards;
   return toastMarkup;
 };
 
-window.toast.add = function (toastList, toastObject) {
+toast.add = function (toastList, toastObject) {
   if (document.getElementById(toastList)) {
     var parentElement = document.getElementById(toastList);
     var theFirstChild = parentElement.firstChild;
-    var toastElement = parentElement.insertBefore(window.toast.init(toastObject), theFirstChild);
+    var toastElement = parentElement.insertBefore(toast.init(toastObject), theFirstChild);
     var dismissControl = toastElement.querySelector('.js-toast__dismiss-button');
-    var moreControl = toastElement.querySelector('.js-toast__more-button');
-    var moreText = toastElement.querySelector('.js-toast__more-text');
+    var expandControl = toastElement.querySelector('.js-toast__more-button');
     if (dismissControl) {
       dismissControl.addEventListener('click', function (event) {
         event.preventDefault();
-        window.toast.hide(toastElement);
+        toast.hide(toastElement);
         setTimeout(function () {
-          window.toast.remove(toastElement);
+          toast.remove(toastElement);
         }, 1000);
       });
     }
-    if (moreControl && moreText) {
-      moreControl.addEventListener('click', function (event) {
+    if (expandControl) {
+      expandControl.addEventListener('click', function (event) {
         event.preventDefault();
-        window.toast.toggleMore(toastElement, moreText);
+        toast.expand(toastElement);
       });
     }
     if (!toastObject.isPersistent) {
       setTimeout(function () {
         // after 2000ms animate the toast out
-        window.toast.hide(toastElement);
+        toast.hide(toastElement);
         // 1000ms after the animation, remove the toast from the DOM
         setTimeout(function () {
-          window.toast.remove(toastElement);
+          toast.remove(toastElement);
         }, 1000);
       }, 5000);
     }
   }
 };
 
-window.toast.hide = function (toastElement) {
+toast.hide = function (toastElement) {
   toastElement.classList.add('pxh-toast--animate-out');
   toastElement.classList.remove('pxh-toast--animate-in');
 };
 
-window.toast.remove = function (toastElement) {
+toast.remove = function (toastElement) {
   if (toastElement) toastElement.remove();
 };
 
-window.toast.toggleMore = function (toastElement, moreText) {
-  if (moreText.classList.contains('pxh-toast__more-text--hidden')) {
-    toastElement.classList.add('pxh-toast--expanded');
-    toastElement.classList.remove('pxh-toast--animate-in');
-    moreText.classList.add('pxh-toast__more-text--animate-in');
-    moreText.classList.remove('pxh-toast__more-text--animate-out');
-    moreText.classList.remove('pxh-toast__more-text--hidden');
-    toastElement.querySelector('.pxh-toast__more-button').innerHTML = 'Show less';
-  } else {
-    moreText.classList.remove('pxh-toast__more-text--animate-in');
-    moreText.classList.add('pxh-toast__more-text--animate-out');
-    moreText.classList.add('pxh-toast__more-text--hidden');
+toast.expand = function (toastElement) {
+  if (toastElement.classList.contains('pxh-toast--expanded')) {
+    toastElement.classList.remove('pxh-toast--expanded');
+    toastElement.querySelector('.pxh-toast__more').classList.remove('pxh-toast__more--expanded');
     toastElement.querySelector('.pxh-toast__more-button').innerHTML = 'Show more';
+  } else {
+    toastElement.classList.remove('pxh-toast--animate-in');
+    toastElement.classList.add('pxh-toast--expanded');
+    toastElement.querySelector('.pxh-toast__more').classList.add('pxh-toast__more--expanded');
+    toastElement.querySelector('.pxh-toast__more-button').innerHTML = 'Show less';
   }
 };
 
 document.addEventListener('DOMContentLoaded', function (event) {
-  window.toast.add('js-toast-list', toastObject1);
-  window.toast.add('js-toast-list', toastObject2);
+  toast.add('js-toast-list', toastObject1);
+  toast.add('js-toast-list', toastObject2);
 });
 
 if (document.getElementById('js-toast-emitter')) {
   document.getElementById('js-toast-emitter').addEventListener('click', function () {
-    window.toast.add('js-toast-list', toastObject3);
+    toast.add('js-toast-list', toastObject3);
   });
 }
 

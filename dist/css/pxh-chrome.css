@@ -5475,7 +5475,7 @@ sub {
   top: 65px;
   right: 5px;
   left: 5px;
-  max-height: 255px;
+  max-height: 295px;
   overflow: hidden;
   z-index: 300;
 }
@@ -5507,20 +5507,20 @@ sub {
     opacity: 0;
   }
   33% {
-    height: 60px;
+    height: 70px;
     margin-bottom: 5px;
     font-size: 16px;
     opacity: 0;
   }
   66% {
     opacity: 1;
-    height: 60px;
+    height: 70px;
     margin-bottom: 5px;
     font-size: 16px;
   }
   100% {
     opacity: 1;
-    height: 60px;
+    height: 70px;
     margin-bottom: 5px;
     font-size: 16px;
   }
@@ -5535,20 +5535,20 @@ sub {
     opacity: 0;
   }
   33% {
-    height: 60px;
+    height: 70px;
     margin-bottom: 5px;
     font-size: 16px;
     opacity: 0;
   }
   66% {
     opacity: 1;
-    height: 60px;
+    height: 70px;
     margin-bottom: 5px;
     font-size: 16px;
   }
   100% {
     opacity: 1;
-    height: 60px;
+    height: 70px;
     margin-bottom: 5px;
     font-size: 16px;
   }
@@ -5557,12 +5557,12 @@ sub {
 @-webkit-keyframes pxh-toast--animate-out {
   0% {
     opacity: 1;
-    height: 60px;
+    height: 70px;
     margin-bottom: 5px;
     font-size: 16px;
   }
   33% {
-    height: 60px;
+    height: 70px;
     margin-bottom: 5px;
     font-size: 16px;
     opacity: 0;
@@ -5586,12 +5586,12 @@ sub {
 @keyframes pxh-toast--animate-out {
   0% {
     opacity: 1;
-    height: 60px;
+    height: 70px;
     margin-bottom: 5px;
     font-size: 16px;
   }
   33% {
-    height: 60px;
+    height: 70px;
     margin-bottom: 5px;
     font-size: 16px;
     opacity: 0;
@@ -5614,15 +5614,17 @@ sub {
 
 .pxh-toast {
   opacity: 1;
-  height: 60px;
+  height: 70px;
   margin-bottom: 5px;
   font-size: 16px;
   border-radius: 1px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  overflow: hidden;
+  position: relative;
   color: #b1b1bc;
-  background: rgba(0, 0, 0, 0.9);
+  background: #242326;
 }
 
 .pxh-toast--animate-in {
@@ -5644,30 +5646,41 @@ sub {
 }
 
 .pxh-toast--expanded {
+  overflow: visible;
   height: auto;
 }
 
 .pxh-toast__action {
   text-align: center;
-  margin: 20px 10px 0 10px;
+  margin: 15px 10px 0 10px;
 }
 
 .pxh-toast__button {
+  display: block;
+  overflow: hidden;
+  max-width: 140px;
   text-decoration: none;
   border: 1px solid #525156;
   padding: 8px;
   background-color: transparent;
   color: #b1b1bc;
   border-radius: 2px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  background-color: transparent;
+}
+
+.pxh-toast__button:hover {
+  background-color: #3b3b3f;
 }
 
 .pxh-toast__icon {
   color: white;
   padding-top: 20px;
   text-align: center;
-  width: 60px;
-  min-width: 60px;
-  font-size: 20px;
+  width: 70px;
+  min-width: 70px;
+  font-size: 28px;
   background-color: transparent;
 }
 
@@ -5688,134 +5701,39 @@ sub {
 }
 
 .pxh-toast__text {
-  padding-top: 20px;
+  margin: auto;
+  padding-top: 5px;
   padding-left: 10px;
   -webkit-box-flex: 3;
       -ms-flex-positive: 3;
           flex-grow: 3;
+  overflow: hidden;
+  position: relative;
 }
 
-@-webkit-keyframes pxh-toast__more-text--animate-in {
-  0% {
-    margin: 0;
-    padding: 0;
-    font-size: 0;
-    opacity: 0;
-  }
-  33% {
-    font-size: 16px;
-    opacity: 0;
-  }
-  66% {
-    opacity: 1;
-    font-size: 16px;
-  }
-  100% {
-    opacity: 1;
-    font-size: 16px;
-  }
-}
-
-@keyframes pxh-toast__more-text--animate-in {
-  0% {
-    margin: 0;
-    padding: 0;
-    font-size: 0;
-    opacity: 0;
-  }
-  33% {
-    font-size: 16px;
-    opacity: 0;
-  }
-  66% {
-    opacity: 1;
-    font-size: 16px;
-  }
-  100% {
-    opacity: 1;
-    font-size: 16px;
-  }
-}
-
-@-webkit-keyframes pxh-toast__more-text--animate-out {
-  0% {
-    opacity: 1;
-    font-size: 16px;
-  }
-  33% {
-    font-size: 16px;
-    opacity: 0;
-  }
-  66% {
-    margin: 0;
-    padding: 0;
-    font-size: 0;
-    opacity: 0;
-  }
-  100% {
-    margin: 0;
-    padding: 0;
-    font-size: 0;
-    opacity: 0;
-  }
-}
-
-@keyframes pxh-toast__more-text--animate-out {
-  0% {
-    opacity: 1;
-    font-size: 16px;
-  }
-  33% {
-    font-size: 16px;
-    opacity: 0;
-  }
-  66% {
-    margin: 0;
-    padding: 0;
-    font-size: 0;
-    opacity: 0;
-  }
-  100% {
-    margin: 0;
-    padding: 0;
-    font-size: 0;
-    opacity: 0;
-  }
-}
-
-.pxh-toast__more-text {
-  opacity: 1;
-  font-size: 16px;
-}
-
-.pxh-toast__more-text--animate-in {
-  -webkit-animation-fill-mode: forwards;
-          animation-fill-mode: forwards;
-  -webkit-animation-duration: 1000ms;
-          animation-duration: 1000ms;
-  -webkit-animation-name: pxh-toast__more-text--animate-in;
-          animation-name: pxh-toast__more-text--animate-in;
-}
-
-.pxh-toast__more-text--animate-out {
-  -webkit-animation-fill-mode: forwards;
-          animation-fill-mode: forwards;
-  -webkit-animation-duration: 1000ms;
-          animation-duration: 1000ms;
-  -webkit-animation-name: pxh-toast__more-text--animate-out;
-          animation-name: pxh-toast__more-text--animate-out;
-}
-
-.pxh-toast__more-text--hidden {
-  margin: 0;
-  padding: 0;
-  font-size: 0;
-  opacity: 0;
+.pxh-toast__more {
+  position: absolute;
+  top: 40px;
+  width: 100%;
+  height: 30px;
+  padding: 12.5px 0 0 0;
+  background: -webkit-linear-gradient(top, rgba(36, 35, 38, 0) 0%, #242326 50%);
+  background: linear-gradient(to bottom, rgba(36, 35, 38, 0) 0%, #242326 50%);
+  text-align: center;
 }
 
 .pxh-toast__more-button {
+  text-decoration: none;
   text-transform: lowercase;
   font-size: 14px;
+}
+
+.pxh-toast__more--expanded {
+  position: relative;
+  top: 0;
+  height: auto;
+  padding: 0;
+  background: transparent;
 }
 
 .pxh-toast__dismiss {
@@ -5830,7 +5748,7 @@ sub {
 
 .pxh-toast__dismiss-button {
   display: block;
-  padding: 20px 10px 10px 10px;
+  padding: 25px 10px 0 10px;
 }
 
 .pxh-notifications {
@@ -5930,7 +5848,7 @@ sub {
 }
 
 .pxh-notification-item {
-  height: 60px;
+  height: 70px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -5939,15 +5857,15 @@ sub {
 
 .pxh-notification-item:first-child {
   border-top: 0;
-  height: 59px;
+  height: 69px;
 }
 
 .pxh-notification-item__icon {
   color: white;
   font-size: 18px;
   text-align: center;
-  height: 59px;
-  width: 60px;
+  height: 69px;
+  width: 70px;
   padding-top: 20px;
 }
 
