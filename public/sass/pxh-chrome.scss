@@ -18,9 +18,9 @@ $mq-breakpoints : (
   md :  768px,
   lg : 1024px,
 );
-@import "sass-mq/mq.scss";
+@import "sass-mq/mq.scss"; // our sass task includes /bower_components automatically so we don't need to specify it
 $fa-font-path : "../fonts/font-awesome/fonts";
-@import "font-awesome/scss/font-awesome.scss";
+@import "font-awesome/scss/font-awesome.scss"; // our sass task includes /bower_components automatically so we don't need to specify it
 @import "tools.pxh-animations.scss";
 
 // ** #ELEMENTS ** //
@@ -39,8 +39,10 @@ $fa-font-path : "../fonts/font-awesome/fonts";
 @import "components.pxh-overlay.scss";
 @import "components.pxh-view.scss";
 @import "components.pxh-spinner.scss";
+@import "components.pxh-notification.scss";
+@import "components.pxh-toast.scss";
 @import "components.pxh-error.scss";
-@import "components.pxh-notifications.scss";
+
 
 // ** #OVERRIDES ** //
 @import "overrides.px-theme.scss";
