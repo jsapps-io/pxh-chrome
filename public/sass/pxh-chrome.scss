@@ -10,6 +10,8 @@
 
 // ** #GENERIC ** //
 @import "generic.normalize.scss";
+// $webfont-path: '../fonts/ge/type' !default;
+$webfont-path: '//dzlpbrbc7yvq0.cloudfront.net/pxh-chrome/1.0.1-cdn/dist/fonts/ge/type' !default;
 @import "generic.fonts.scss";
 @import "generic.defaults.scss";
 
@@ -19,7 +21,8 @@ $mq-breakpoints : (
   lg : 1024px,
 );
 @import "sass-mq/mq.scss"; // our sass task includes /bower_components automatically so we don't need to specify it
-$fa-font-path : "../fonts/font-awesome/fonts";
+// $fa-font-path : "../fonts/font-awesome/fonts" !default;
+$fa-font-path : "//dzlpbrbc7yvq0.cloudfront.net/pxh-chrome/1.0.1-cdn/dist/fonts/font-awesome/fonts" !default;
 @import "font-awesome/scss/font-awesome.scss"; // our sass task includes /bower_components automatically so we don't need to specify it
 @import "tools.pxh-animations.scss";
 
@@ -44,7 +47,6 @@ $pxh-toasts-enabled : false;
 @import "components.pxh-notification.scss";
 @import "components.pxh-toast.scss";
 @import "components.pxh-error.scss";
-
 
 // ** #OVERRIDES ** //
 @import "overrides.px-theme.scss";
