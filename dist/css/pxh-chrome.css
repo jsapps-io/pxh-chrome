@@ -5415,60 +5415,163 @@ sub {
   }
 }
 
-/*------------------------------------*    #components.pxh-error
+/*------------------------------------*    #components.pxh-notification
 \*------------------------------------*/
-.pxh-error {
-  width: 100%;
-  max-width: 1200px;
+.pxh-notifications {
+  z-index: 800;
+  position: fixed;
+  bottom: 65px;
+  left: 5px;
+  right: 5px;
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, 0.9);
+  color: #efeff4;
+  border: 1px solid #7c7c84;
+  max-width: 480px;
+  display: none;
+}
+
+.pxh-notifications--visible {
+  display: block;
+}
+
+.pxh-notifications__header {
+  height: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border-bottom: 1px solid #7c7c84;
+}
+
+.pxh-notifications__title {
+  padding-top: 10px;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
   text-align: center;
-  margin: 45px 0 0 0;
-  padding: 15px 15px 120px 15px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.pxh-notifications__action {
+  text-align: left;
+  padding-left: 10px;
+  padding-top: 10px;
+}
+
+.pxh-notifications__action a {
+  color: #b1b1bc;
+  text-decoration: none;
+}
+
+.pxh-notifications__clear {
+  color: #b1b1bc;
+  text-decoration: none;
+  text-align: right;
+  padding-right: 10px;
+  padding-left: 10px;
+  padding-top: 10px;
+}
+
+.pxh-notifications__clear a {
+  color: #b1b1bc;
+  text-decoration: none;
+}
+
+.pxh-notifications__icon {
+  margin-left: 10px;
+  margin-right: 10px;
+  float: right;
+  padding-top: 14px;
+  height: 60px;
+  font-size: 15px;
+  opacity: 1;
+}
+
+.pxh-notifications__icon--important a {
+  color: #e32533;
 }
 
 @media (min-width: 48em) {
-  .pxh-error\@md {
-    margin-left: auto;
-    margin-right: auto;
-    width: 90%;
+  .pxh-notifications__icon--narrow\@md {
+    height: 0;
+    font-size: 0;
+    opacity: 0;
   }
 }
 
 @media (min-width: 64em) {
-  .pxh-error\@lg {
-    margin-left: auto;
-    margin-right: auto;
-    width: 70%;
+  .pxh-notifications__icon--wide\@lg {
+    height: 60px;
+    font-size: 15px;
+    opacity: 1;
   }
 }
 
-.pxh-error__icon {
-  font-size: 60px;
-  color: #b1b1bc;
-  line-height: 1;
+.pxh-notifications__list {
+  max-height: 270px;
+  overflow: auto;
 }
 
-.pxh-error__title {
-  font-size: 20px;
-  font-weight: bold;
-  color: #9999a3;
+.pxh-notification-item {
+  height: 70px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border-top: 1px solid #242326;
 }
 
-.pxh-error__title a,
-.pxh-error__title a:link {
+.pxh-notification-item:first-child {
+  border-top: 0;
+  height: 69px;
+}
+
+.pxh-notification-item__icon {
+  color: white;
+  font-size: 18px;
+  text-align: center;
+  height: 69px;
+  width: 70px;
+  padding-top: 20px;
+}
+
+.pxh-notification-item__icon--success {
+  background-color: #46ad00;
+}
+
+.pxh-notification-item__icon--info {
+  background-color: #005cb9;
+}
+
+.pxh-notification-item__icon--important {
+  background-color: #e32533;
+}
+
+.pxh-notification-item__icon--warning {
+  background-color: #ff9821;
+}
+
+.pxh-notification-item__text {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  padding-top: 20px;
+  padding-left: 10px;
+}
+
+.pxh-notification-item__dismiss {
+  padding-top: 10px;
+  text-align: center;
+  font-size: 18px;
+}
+
+.pxh-notification-item__dismiss .fa {
+  padding: 10px;
+  color: #7c7c84;
   text-decoration: none;
 }
 
-.pxh-error__description {
-  font-size: 15px;
-  color: #9999a3;
-}
-
-.pxh-error__description a,
-.pxh-error__description a:link {
-  text-decoration: none;
-}
-
-/*------------------------------------*    #components.pxh-notifications
+/*------------------------------------*    #components.pxh-toast
 \*------------------------------------*/
 .pxh-toast-list {
   position: fixed;
@@ -5485,20 +5588,15 @@ sub {
 }
 
 @media (min-width: 48em) {
-  .pxh-toast-list--wide\@md {
-    left: 50%;
+  .pxh-toast-list--narrow\@md {
+    left: auto;
+    max-width: 420px;
   }
 }
 
 @media (min-width: 64em) {
   .pxh-toast-list--wide\@lg {
-    left: 66%;
-  }
-}
-
-@media (min-width: 64em) {
-  .pxh-toast-list--narrow\@lg {
-    left: 66%;
+    max-width: 520px;
   }
 }
 
@@ -5654,6 +5752,8 @@ sub {
 }
 
 .pxh-toast__action {
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
   text-align: center;
   margin: 15px 10px 0 10px;
 }
@@ -5681,8 +5781,10 @@ sub {
   color: white;
   padding-top: 20px;
   text-align: center;
-  width: 70px;
-  min-width: 70px;
+  -ms-flex-preferred-size: 70px;
+      flex-basis: 70px;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
   font-size: 28px;
   background-color: transparent;
 }
@@ -5706,9 +5808,6 @@ sub {
 .pxh-toast__text {
   margin: auto;
   padding: 5px 0 5px 10px;
-  -webkit-box-flex: 3;
-      -ms-flex-positive: 3;
-          flex-grow: 3;
   overflow: hidden;
   position: relative;
 }
@@ -5741,6 +5840,10 @@ sub {
 .pxh-toast__dismiss {
   text-align: center;
   font-size: 18px;
+  -ms-flex-preferred-size: 40px;
+      flex-basis: 40px;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
 }
 
 .pxh-toast__dismiss .fa {
@@ -5753,157 +5856,56 @@ sub {
   padding: 25px 10px 0 10px;
 }
 
-.pxh-notifications {
-  z-index: 800;
-  position: fixed;
-  bottom: 65px;
-  left: 5px;
-  right: 5px;
-  border-radius: 4px;
-  background-color: rgba(0, 0, 0, 0.9);
-  color: #efeff4;
-  border: 1px solid #7c7c84;
-  max-width: 480px;
-  display: none;
-}
-
-.pxh-notifications--visible {
-  display: block;
-}
-
-.pxh-notifications__header {
-  height: 40px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  border-bottom: 1px solid #7c7c84;
-}
-
-.pxh-notifications__title {
-  padding-top: 10px;
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
+/*------------------------------------*    #components.pxh-error
+\*------------------------------------*/
+.pxh-error {
+  width: 100%;
+  max-width: 1200px;
   text-align: center;
-  text-transform: uppercase;
-  font-weight: bold;
-}
-
-.pxh-notifications__action {
-  text-align: left;
-  padding-left: 10px;
-  padding-top: 10px;
-}
-
-.pxh-notifications__action a {
-  color: #b1b1bc;
-  text-decoration: none;
-}
-
-.pxh-notifications__clear {
-  color: #b1b1bc;
-  text-decoration: none;
-  text-align: right;
-  padding-right: 10px;
-  padding-left: 10px;
-  padding-top: 10px;
-}
-
-.pxh-notifications__clear a {
-  color: #b1b1bc;
-  text-decoration: none;
-}
-
-.pxh-notifications__icon {
-  margin-left: 10px;
-  margin-right: 10px;
-  float: right;
-  padding-top: 14px;
-  height: 60px;
-  font-size: 15px;
-  opacity: 1;
-}
-
-.pxh-notifications__icon--important a {
-  color: #e32533;
+  margin: 45px 0 0 0;
+  padding: 15px 15px 120px 15px;
 }
 
 @media (min-width: 48em) {
-  .pxh-notifications__icon--narrow\@md {
-    height: 0;
-    font-size: 0;
-    opacity: 0;
+  .pxh-error\@md {
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
   }
 }
 
 @media (min-width: 64em) {
-  .pxh-notifications__icon--wide\@lg {
-    height: 60px;
-    font-size: 15px;
-    opacity: 1;
+  .pxh-error\@lg {
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
   }
 }
 
-.pxh-notifications__list {
-  max-height: 270px;
-  overflow: auto;
+.pxh-error__icon {
+  font-size: 60px;
+  color: #b1b1bc;
+  line-height: 1;
 }
 
-.pxh-notification-item {
-  height: 70px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  border-top: 1px solid #242326;
+.pxh-error__title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #9999a3;
 }
 
-.pxh-notification-item:first-child {
-  border-top: 0;
-  height: 69px;
+.pxh-error__title a,
+.pxh-error__title a:link {
+  text-decoration: none;
 }
 
-.pxh-notification-item__icon {
-  color: white;
-  font-size: 18px;
-  text-align: center;
-  height: 69px;
-  width: 70px;
-  padding-top: 20px;
+.pxh-error__description {
+  font-size: 15px;
+  color: #9999a3;
 }
 
-.pxh-notification-item__icon--success {
-  background-color: #46ad00;
-}
-
-.pxh-notification-item__icon--info {
-  background-color: #005cb9;
-}
-
-.pxh-notification-item__icon--important {
-  background-color: #e32533;
-}
-
-.pxh-notification-item__icon--warning {
-  background-color: #ff9821;
-}
-
-.pxh-notification-item__text {
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
-  padding-top: 20px;
-  padding-left: 10px;
-}
-
-.pxh-notification-item__dismiss {
-  padding-top: 10px;
-  text-align: center;
-  font-size: 18px;
-}
-
-.pxh-notification-item__dismiss .fa {
-  padding: 10px;
-  color: #7c7c84;
+.pxh-error__description a,
+.pxh-error__description a:link {
   text-decoration: none;
 }
 
