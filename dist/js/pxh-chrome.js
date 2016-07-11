@@ -941,7 +941,6 @@ var pxhToggleNotifications = function pxhToggleNotifications(toggleControl, togg
 // isPersistent : false // true, false
 // icon : 'check-circle' // any Font Awesome icon slug
 // text : 'This is the text for notification #1.'
-// fullText : 'It can be this long or longer if you want.'
 // actionLabel : 'View'
 // actionLink : 'http://google.com' // fully qualified link or route
 // actionCallback : // callback function
@@ -1034,12 +1033,14 @@ toast.add = function (toastList, toastObject) {
     }
     if (!toastObject.isPersistent) {
       setTimeout(function () {
-        // after 2000ms animate the toast out
-        toast.hide(toastElement);
-        // 1000ms after the animation, remove the toast from the DOM
-        setTimeout(function () {
-          toast.remove(toastElement);
-        }, 1000);
+        if (!toastElement.classList.contains('pxh-toast--expanded')) {
+          // after 2000ms animate the toast out
+          toast.hide(toastElement);
+          // 1000ms after the animation, remove the toast from the DOM
+          setTimeout(function () {
+            toast.remove(toastElement);
+          }, 1000);
+        }
       }, 5000);
     }
   }
