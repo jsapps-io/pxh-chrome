@@ -35,7 +35,7 @@ $pxh-toast-max-count: 4;
 @if $pxh-toasts-enabled == true {
   .pxh-toasts {
     position: fixed;
-    top: 65px;
+    top: 60px + 1px + 5px;
     right: $pxh-toast-margin;
     left: $pxh-toast-margin;
     max-height: ($pxh-toast-height * $pxh-toast-max-count) + ($pxh-toast-margin * ($pxh-toast-max-count - 1));
