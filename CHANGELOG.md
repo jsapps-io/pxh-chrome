@@ -1,5 +1,18 @@
 #pxh-chrome changelog
 
+### 1.0.1 CDN - July 11, 2016
+* Add hard-coded CDN links for CSS font paths
+* Bump version on `gulp-eslint` to 3.0.0
+* Add (currently disabled via flags) pxh-toasts and pxh-toast components
+  * Responsive width based on toast list container
+  * Animate toast on entrance and exit
+  * Automatically dismiss toast after 5 seconds, or manually by clicking dismiss button
+  * Remove dismissed toast from DOM
+  * Optional action button
+  * Optional dismiss button
+  * Optional colors for icon
+* Add (currently disabled via flags) pxh-notifications and pxh-notification components
+
 ### 1.0.0 - July 1, 2016
 * Generate minified and unminified versions of CSS and JS
   * All are now available in `/dist` along with sourcemaps

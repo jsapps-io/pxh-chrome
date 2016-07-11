@@ -1,0 +1,210 @@
+/*------------------------------------*\
+    #components.pxh-toast
+\*------------------------------------*/
+
+$pxh-toasts-enabled : false !default;
+
+$pxh-toast-height: 70px;
+$pxh-toast-margin: 5px;
+$pxh-toast-max-count: 4;
+
+@mixin pxh-toast--in-state-scale {
+  height: $pxh-toast-height;
+  margin-bottom: $pxh-toast-margin;
+  font-size: 16px;
+}
+@mixin pxh-toast--in-state-opacity {
+  @include in-state-opacity;
+}
+
+@mixin pxh-toast--out-state-scale {
+    @include out-state-scale;
+    height: 0;
+}
+
+@mixin pxh-toast--in-state {
+  @include pxh-toast--in-state-opacity;
+  @include pxh-toast--in-state-scale;
+}
+
+@mixin pxh-toast--out-state {
+  @include pxh-toast--out-state-scale;
+  @include out-state-opacity;
+}
+
+@if $pxh-toasts-enabled == true {
+  .pxh-toasts {
+    position: fixed;
+    top: 60px + 1px + 5px;
+    right: $pxh-toast-margin;
+    left: $pxh-toast-margin;
+    max-height: ($pxh-toast-height * $pxh-toast-max-count) + ($pxh-toast-margin * ($pxh-toast-max-count - 1));
+    overflow: auto;
+    z-index: 300;
+    @include mq($from: md) {
+      &--narrow\@md {
+        left: auto;
+        max-width: 420px;
+      }
+    }
+    @include mq($from: lg) {
+      &--wide\@lg {
+        max-width: 520px;
+      }
+    }
+  }
+
+  @keyframes pxh-toast--animate-in {
+    0% {
+      @include pxh-toast--out-state;
+    }
+    33% {
+      @include pxh-toast--in-state-scale;
+      @include out-state-opacity;
+    }
+    66% {
+      @include pxh-toast--in-state;
+    }
+    100% {
+      @include pxh-toast--in-state;
+    }
+  }
+
+  @keyframes pxh-toast--animate-out {
+    0% {
+      @include pxh-toast--in-state;
+    }
+    33% {
+      @include pxh-toast--in-state-scale;
+      @include out-state-opacity;
+    }
+    66% {
+      @include pxh-toast--out-state;
+    }
+    100% {
+      @include pxh-toast--out-state;
+    }
+  }
+
+  .pxh-toast {
+    @include pxh-toast--in-state;
+    border-radius: 1px;
+    display: flex;
+    overflow: hidden;
+    position: relative;
+    color: $gray5;
+    background: $gray10;
+    &--animate-in {
+      animation-fill-mode: forwards;
+      animation-duration: 1000ms;
+      animation-name: pxh-toast--animate-in;
+    }
+    &--animate-out {
+      animation-fill-mode: forwards;
+      animation-duration: 1000ms;
+      animation-name: pxh-toast--animate-out;
+    }
+    &--expanded {
+      height: auto;
+    }
+  }
+
+  .pxh-toast__action {
+    flex-shrink: 0;
+    text-align: center;
+    margin: ($pxh-toast-margin * 3) ($pxh-toast-margin * 2) 0 ($pxh-toast-margin * 2);
+  }
+
+  .pxh-toast__button {
+    display: block;
+    overflow: hidden;
+    max-width: $pxh-toast-height * 2;
+    text-decoration: none;
+    border: 1px solid $gray8;
+    padding: 8px;
+    background-color: transparent;
+    color: $gray5;
+    border-radius: 2px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    background-color: transparent;
+    &:hover {
+      background-color: $gray9;
+    }
+  }
+
+  .pxh-toast__icon {
+    color: $white;
+    padding-top: $pxh-toast-margin * 4;
+    text-align: center;
+    flex-basis: $pxh-toast-height;
+    flex-shrink: 0;
+    font-size: 28px;
+    background-color: transparent;
+    &--success {
+      background-color: $green;
+    }
+    &--info {
+      background-color: $blue;
+    }
+    &--warning {
+      background-color: $orange;
+    }
+    &--important {
+      background-color: $red;
+    }
+  }
+
+  .pxh-toast__text {
+    margin: auto;
+    padding: $pxh-toast-margin 0 $pxh-toast-margin ($pxh-toast-margin * 2);
+    overflow: hidden;
+    position: relative;
+  }
+
+  .pxh-toast__more {
+    position: absolute;
+    top: $pxh-toast-margin * 8;
+    width: 100%;
+    height: $pxh-toast-margin * 6;
+    padding: ($pxh-toast-margin * 2) 0 0 0;
+    background: linear-gradient(to bottom, rgba($gray10,0) 0%, rgba($gray10,1) 50%);
+    text-align: center;
+    &--expanded {
+      position: relative;
+      top: 0;
+      height: auto;
+      // padding: 0;
+      background: transparent;
+    }
+  }
+
+  .pxh-toast__more-button {
+    color: $white;
+    text-decoration: none;
+    text-transform: lowercase;
+    font-size: 14px;
+  }
+
+  .pxh-toast__dismiss {
+    text-align: center;
+    font-size: 18px;
+    flex-basis: $pxh-toast-margin * 8;
+    flex-shrink: 0;
+    .fa {
+      color: $gray7;
+      text-decoration: none;
+    }
+  }
+
+  .pxh-toast__dismiss-button {
+    display: block;
+    padding: ($pxh-toast-margin * 5) ($pxh-toast-margin * 2) 0 ($pxh-toast-margin * 2);
+  }
+}
+
+@else {
+  .pxh-toasts {
+    display: none;
+  }
+}

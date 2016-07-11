@@ -1,5 +1,5 @@
 'use strict';
-/*! pxh-chrome.js 1.0.0 */
+/*! pxh-chrome.js 1.0.1-cdn */
 
 // **************
 // CONFIG OBJECTS
@@ -46,6 +46,9 @@ var pxhStates = {
     },
     'pxh-view-header-drawer-toggle' : {
       'remove' : 'pxh-view-header-drawer-toggle--hidden'
+    },
+    'pxh-notifications__icon' : {
+      'add' : 'pxh-notifications__icon--narrow@md pxh-notifications__icon--wide@lg'
     }
   },
   'open' : {
@@ -93,6 +96,10 @@ var pxhStates = {
     },
     'pxh-view-header-drawer-toggle' : {
       'add' : 'pxh-view-header-drawer-toggle--hidden'
+    },
+    'pxh-notifications__icon' : {
+      'remove' : 'pxh-notifications__icon--narrow@md',
+      'add' : 'pxh-notifications__icon--wide@lg'
     }
   },
   'narrowAtLg' : {
@@ -141,6 +148,10 @@ var pxhStates = {
     },
     'pxh-view-header-drawer-toggle' : {
       'remove' : 'pxh-view-header-drawer-toggle--hidden'
+    },
+    'pxh-notifications__icon' : {
+      'add' : 'pxh-notifications__icon--narrow@md',
+      'remove' : 'pxh-notifications__icon--wide@lg'
     }
   }
 }
@@ -940,6 +951,188 @@ var pxhAddResizeSensor = function(targetId) {
   }
 }
 
+
+
+
+
+
+
+
+// this is a total hack
+var pxhToggleNotifications = function(toggleControl, toggleTarget, toggleClass) {
+  var controlElement = document.getElementsByClassName(toggleControl);
+  var targetElement = document.getElementsByClassName(toggleTarget);
+  if ((arrayExists(controlElement)) && (arrayExists(targetElement))) {
+    controlElement[0].addEventListener('click', function(e) {
+      pxhChangeClasses(toggleTarget, 'toggle', toggleClass);
+    });
+  }
+}
+
+// type : 'success' // success, info, warning, important
+// isPersistent : false // true, false
+// icon : 'check-circle' // any Font Awesome icon slug
+// text : 'This is the text for notification #1.'
+// actionLabel : 'View'
+// actionLink : 'http://google.com' // fully qualified link or route
+// actionCallback : // callback function
+
+var toastObject1 = {
+  type : 'success', // success, info, warning, important
+  isPersistent : true,
+  icon : 'check-circle', // any FA icon
+  text : 'This is the text for notification #1. text for notification #1.',
+  actionLink : 'http://google.com'
+}
+
+var toastObject2 = {
+  type : 'warning', // success, info, warning, important
+  isPersistent : true,
+  icon : 'exclamation-circle', // any FA icon
+  text : 'It can be this long or longer if you want. In fact, it can be really, really long if you have a lot you want to say. We kind of discourage this much content but knock yourself out! Just keep talking and talking and talking and this area will keep expanding and expanding.',
+  actionLabel : 'View a lot of things right now',
+  actionLink : 'http://google.com'
+}
+
+var toastObject3 = {
+  type : 'info', // success, info, warning, important
+  isPersistent : false,
+  icon : 'info-circle', // any FA icon
+  text : 'It can be this long or longer if you want. In fact, it can be really, really long if you have a lot you want to say. We kind of discourage this much content but knock yourself out! Just keep talking and talking and talking and this area will keep expanding and expanding.',
+  actionLabel : 'View a lot of things right now',
+  actionLink : 'http://google.com'
+}
+
+var toastObject4 = {
+  type : 'important', // success, info, warning, important
+  isPersistent : false,
+  icon : 'times-circle', // any FA icon
+  text : 'Fourth notification? Coming right up!',
+  actionLabel : 'Beef',
+  actionLink : 'http://beef.org'
+}
+
+var toast = {};
+
+toast.init = function(toastObject) {
+  var toastMarkup = document.createElement('section');
+  var toastAction = (function() {
+    var actionMarkup = '';
+    var actionLabel = (toastObject.actionLabel) ? toastObject.actionLabel : 'Action';
+    if (toastObject.actionLink) {
+      actionMarkup = '  <div class="pxh-toast__action">\n' +
+                         '    <a class="pxh-toast__button" href="' + toastObject.actionLink + '">' + actionLabel + '</a>\n' +
+                         '  </div>\n';
+    }
+    else if (toastObject.actionCallback) {
+      actionMarkup = '  <div class="pxh-toast__action">\n' +
+                         '    <a class="pxh-toast__button" href="#">' + 'callback: ' + actionLabel + '</a>\n' +
+                         '  </div>\n';
+    }
+    return actionMarkup;
+  })();
+
+  var toastText = (function() {
+    var textMarkup = '';
+    var textContent = (toastObject.text) ? toastObject.text : 'You have a new notification';
+    textMarkup = '  <div class="pxh-toast__text">' + textContent + '\n' +
+                 '    <div class="pxh-toast__more"><a href="#" class="pxh-toast__more-button js-toast__more-button">Show more</a></div>\n' +
+                 '  </div>\n';
+    return textMarkup;
+  })();
+
+  var toastInnards = '';
+  toastMarkup.className = 'pxh-toast pxh-toast--animate-in';
+  var toastInnards =  '  <div class="pxh-toast__icon pxh-toast__icon--' + toastObject.type + '">\n' + 
+                      '    <i class="fa fa-' + toastObject.icon + '"></i>\n' + 
+                      '  </div>\n' +
+                      toastText + 
+                      toastAction + 
+                      '  <div class="pxh-toast__dismiss">\n' +
+                      '    <a href="#" class="pxh-toast__dismiss-button js-toast__dismiss-button"><i class="fa fa-times"></i></a>\n' +
+                      '  </div>\n';
+  toastMarkup.innerHTML = toastInnards;
+  return toastMarkup;
+}
+
+toast.add = function(toastList, toastObject) {
+  if (document.getElementById(toastList)) {
+    var parentElement = document.getElementById(toastList);
+    var theFirstChild = parentElement.firstChild;
+    var toastElement = parentElement.insertBefore(toast.init(toastObject), theFirstChild);
+    var dismissControl = toastElement.querySelector('.js-toast__dismiss-button');
+    var expandControl = toastElement.querySelector('.js-toast__more-button');
+    if (dismissControl) {
+      dismissControl.addEventListener('click', function(event) {
+        event.preventDefault();
+        toast.hide(toastElement);
+        setTimeout(function() {
+          toast.remove(toastElement);
+        }, 1000);
+      })
+    }
+    if (expandControl) {
+      expandControl.addEventListener('click', function(event) {
+        event.preventDefault();
+        toast.expand(toastElement);
+      })
+    }
+    if (!toastObject.isPersistent) {
+      setTimeout(function() {
+        if (!toastElement.classList.contains('pxh-toast--expanded')) {
+          // after 2000ms animate the toast out
+          toast.hide(toastElement);
+          // 1000ms after the animation, remove the toast from the DOM
+          setTimeout(function() {
+            toast.remove(toastElement);
+          }, 1000);
+        }
+      }, 5000);
+    }
+  }
+}
+
+toast.hide = function(toastElement) {
+  toastElement.classList.add('pxh-toast--animate-out');
+  toastElement.classList.remove('pxh-toast--animate-in');
+}
+
+toast.remove = function(toastElement) {
+  if (toastElement)
+  toastElement.remove();
+}
+
+toast.expand = function(toastElement) {
+  if (toastElement.classList.contains('pxh-toast--expanded')) {
+    toastElement.classList.remove('pxh-toast--expanded');
+    toastElement.querySelector('.pxh-toast__more').classList.remove('pxh-toast__more--expanded');
+    toastElement.querySelector('.pxh-toast__more-button').innerHTML = 'Show more';
+  }
+  else {
+    toastElement.classList.remove('pxh-toast--animate-in');
+    toastElement.classList.add('pxh-toast--expanded');
+    toastElement.querySelector('.pxh-toast__more').classList.add('pxh-toast__more--expanded');
+    toastElement.querySelector('.pxh-toast__more-button').innerHTML = 'Show less';
+  }
+}
+
+document.addEventListener('DOMContentLoaded', function(event) {
+  toast.add('js-toasts', toastObject1);
+  toast.add('js-toasts', toastObject2);
+});
+
+if (document.getElementById('js-toast-emitter')) {
+  document.getElementById('js-toast-emitter').addEventListener('click', function() {
+    toast.add('js-toasts', toastObject3);
+  })
+}
+
+
+
+
+
+
+
 // ********
 // FIRE!!!!
 // ********
@@ -984,7 +1177,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
     pxhLoadState(pxhStates, 'narrowAtLg');
     document.dispatchEvent(pxhDrawerClosed);
     pxhCookies.set('pxh-drawer-narrow', 'true', { expires: 1, path: '/'});
-  } 
+  }
   else if (window.matchMedia('(min-width: 1024px)').matches) {
     pxhCookies.set('pxh-drawer-open', 'true', { expires: 1, path: '/'});
   } else {
@@ -1007,6 +1200,8 @@ document.addEventListener('DOMContentLoaded', function(event) {
 
   pxhToggleLoginMenu('pxh-login__profile-link', 'pxh-login-menu--profile', 'pxh-login-menu--visible');
   pxhToggleLoginMenu('pxh-login__settings-link', 'pxh-login-menu--settings', 'pxh-login-menu--visible');
+
+  pxhToggleNotifications('pxh-notifications__icon', 'pxh-notifications', 'pxh-notifications--visible');
 
   pxhAddResizeSensor('js-view');
 
