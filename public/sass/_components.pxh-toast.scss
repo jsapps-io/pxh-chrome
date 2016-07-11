@@ -6,7 +6,6 @@ $pxh-toast-height: 70px;
 $pxh-toast-margin: 5px;
 $pxh-toast-max-count: 4;
 
-.pxh-toast-list {
   position: fixed;
   top: 65px;
   right: $pxh-toast-margin;
@@ -58,6 +57,7 @@ $pxh-toast-max-count: 4;
   33% {
     @include pxh-toast--in-state-scale;
     @include out-state-opacity;
+  .pxh-toasts {
   }
   66% {
     @include pxh-toast--in-state;

@@ -1117,13 +1117,13 @@ toast.expand = function(toastElement) {
 }
 
 document.addEventListener('DOMContentLoaded', function(event) {
-  toast.add('js-toast-list', toastObject1);
-  toast.add('js-toast-list', toastObject2);
+  toast.add('js-toasts', toastObject1);
+  toast.add('js-toasts', toastObject2);
 });
 
 if (document.getElementById('js-toast-emitter')) {
   document.getElementById('js-toast-emitter').addEventListener('click', function() {
-    toast.add('js-toast-list', toastObject3);
+    toast.add('js-toasts', toastObject3);
   })
 }
 
