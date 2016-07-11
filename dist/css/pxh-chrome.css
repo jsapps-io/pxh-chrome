@@ -5579,12 +5579,8 @@ sub {
   right: 5px;
   left: 5px;
   max-height: 295px;
-  overflow: hidden;
-  z-index: 300;
-}
-
-.pxh-toast-list--expanded {
   overflow: auto;
+  z-index: 300;
 }
 
 @media (min-width: 48em) {

@@ -12,11 +12,8 @@ $pxh-toast-max-count: 4;
   right: $pxh-toast-margin;
   left: $pxh-toast-margin;
   max-height: ($pxh-toast-height * $pxh-toast-max-count) + ($pxh-toast-margin * ($pxh-toast-max-count - 1));
-  overflow: hidden;
+  overflow: auto;
   z-index: 300;
-  &--expanded {
-    overflow: auto;
-  }
   @include mq($from: md) {
     &--narrow\@md {
       left: auto;

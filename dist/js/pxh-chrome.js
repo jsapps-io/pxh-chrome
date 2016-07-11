@@ -1059,13 +1059,11 @@ toast.expand = function (toastElement) {
     toastElement.classList.remove('pxh-toast--expanded');
     toastElement.querySelector('.pxh-toast__more').classList.remove('pxh-toast__more--expanded');
     toastElement.querySelector('.pxh-toast__more-button').innerHTML = 'Show more';
-    window.querySelector('.pxh-toast-list').classList.remove('pxh-toast-list--expanded');
   } else {
     toastElement.classList.remove('pxh-toast--animate-in');
     toastElement.classList.add('pxh-toast--expanded');
     toastElement.querySelector('.pxh-toast__more').classList.add('pxh-toast__more--expanded');
     toastElement.querySelector('.pxh-toast__more-button').innerHTML = 'Show less';
-    document.querySelector('.pxh-toast-list').classList.add('pxh-toast-list--expanded');
   }
 };
 
