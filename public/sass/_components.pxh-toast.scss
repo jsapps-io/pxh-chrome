@@ -18,18 +18,14 @@ $pxh-toast-max-count: 4;
     overflow: auto;
   }
   @include mq($from: md) {
-    &--wide\@md {
-      left: 50%;
+    &--narrow\@md {
+      left: auto;
+      max-width: 420px;
     }
   }
   @include mq($from: lg) {
     &--wide\@lg {
-      left: 66%;
-    }
-  }
-  @include mq($from: lg) {
-    &--narrow\@lg {
-      left: 66%;
+      max-width: 520px;
     }
   }
 }
