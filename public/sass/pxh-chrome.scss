@@ -32,6 +32,7 @@ $fa-font-path : "../fonts/font-awesome/fonts";
 // ** #OBJECTS ** //
 
 // ** #COMPONENTS ** //
+$pxh-notifications-enabled : true;
 @import "components.pxh-badge.scss";
 @import "components.pxh-drawer.scss";
 @import "components.pxh-login.scss";
