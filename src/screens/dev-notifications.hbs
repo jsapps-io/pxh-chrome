@@ -46,7 +46,7 @@ layout: "dev-notifications.hbs"
     </section>
 
 
-  <section class="pxh-notifications">
+  <aside class="pxh-notifications">
     <header class="pxh-notifications__header">
       <div class="pxh-notifications__action">
         <a href="#">View Log</a>
@@ -58,138 +58,17 @@ layout: "dev-notifications.hbs"
         <a href="#">Clear</a>
       </div>
     </header>
-    <div class="pxh-notifications__list">
-      <div class="pxh-notification-item">
-        <div class="pxh-notification-item__icon pxh-notification-item__icon--success">
-          <i class="fa fa-check-circle"></i>
+    <section class="pxh-notifications__list">
+      <div class="pxh-notification">
+        <div class="pxh-notification__icon pxh-notification__icon--high">
+          <i class="fa fa-exclamation-circle"></i>
         </div>
-        <div class="pxh-notification-item__text">
-          Stacy closed Case 123456
-        </div>
-        <div class="pxh-notification-item__dismiss">
-          <a href="#"><i class="fa fa-times"></i></a>
+        <div class="pxh-notification__text"><a href="#" class="pxh-notification__link">It can be this long or longer if you want. In fact, it can be really, really long if you have a lot you want to say. We kind of discourage this much content but knock yourself out! Just keep talking and talking and talking and this area will keep expanding and expanding.</a>
+          <div class="pxh-notification__more"><a href="#" class="pxh-toast__notification-button js-notification__more-button">Show more</a>
         </div>
       </div>
-      <div class="pxh-notification-item">
-        <div class="pxh-notification-item__icon pxh-notification-item__icon--info">
-          <i class="fa fa-briefcase"></i>
-        </div>
-        <div class="pxh-notification-item__text">
-          Case 234567 has been assigned to you
-        </div>
-        <div class="pxh-notification-item__dismiss">
-          <a href="#"><i class="fa fa-times"></i></a>
-        </div>
-      </div>
-      <div class="pxh-notification-item">
-        <div class="pxh-notification-item__icon pxh-notification-item__icon--warning">
-          <i class="fa fa-exclamation-triangle"></i>
-        </div>
-        <div class="pxh-notification-item__text">
-          Jennifer escalated Case 345678
-        </div>
-        <div class="pxh-notification-item__dismiss">
-          <a href="#"><i class="fa fa-times"></i></a>
-        </div>
-      </div>
-      <div class="pxh-notification-item">
-        <div class="pxh-notification-item__icon pxh-notification-item__icon--important">
-          <i class="fa fa-times-circle"></i>
-        </div>
-        <div class="pxh-notification-item__text">
-          Your analytic run failed with errors
-        </div>
-        <div class="pxh-notification-item__dismiss">
-          <a href="#"><i class="fa fa-times"></i></a>
-        </div>
-      </div>
-      <div class="pxh-notification-item">
-        <div class="pxh-notification-item__icon pxh-notification-item__icon--success">
-          <i class="fa fa-check-circle"></i>
-        </div>
-        <div class="pxh-notification-item__text">
-          Stacy closed Case 123456
-        </div>
-        <div class="pxh-notification-item__dismiss">
-          <a href="#"><i class="fa fa-times"></i></a>
-        </div>
-      </div>
-      <div class="pxh-notification-item">
-        <div class="pxh-notification-item__icon pxh-notification-item__icon--info">
-          <i class="fa fa-briefcase"></i>
-        </div>
-        <div class="pxh-notification-item__text">
-          Case 234567 has been assigned to you
-        </div>
-        <div class="pxh-notification-item__dismiss">
-          <a href="#"><i class="fa fa-times"></i></a>
-        </div>
-      </div>
-      <div class="pxh-notification-item">
-        <div class="pxh-notification-item__icon pxh-notification-item__icon--warning">
-          <i class="fa fa-exclamation-triangle"></i>
-        </div>
-        <div class="pxh-notification-item__text">
-          Jennifer escalated Case 345678
-        </div>
-        <div class="pxh-notification-item__dismiss">
-          <a href="#"><i class="fa fa-times"></i></a>
-        </div>
-      </div>
-      <div class="pxh-notification-item">
-        <div class="pxh-notification-item__icon pxh-notification-item__icon--important">
-          <i class="fa fa-times-circle"></i>
-        </div>
-        <div class="pxh-notification-item__text">
-          Your analytic run failed with errors
-        </div>
-        <div class="pxh-notification-item__dismiss">
-          <a href="#"><i class="fa fa-times"></i></a>
-        </div>
-      </div>
-      <div class="pxh-notification-item">
-        <div class="pxh-notification-item__icon pxh-notification-item__icon--success">
-          <i class="fa fa-check-circle"></i>
-        </div>
-        <div class="pxh-notification-item__text">
-          Stacy closed Case 123456
-        </div>
-        <div class="pxh-notification-item__dismiss">
-          <a href="#"><i class="fa fa-times"></i></a>
-        </div>
-      </div>
-      <div class="pxh-notification-item">
-        <div class="pxh-notification-item__icon pxh-notification-item__icon--info">
-          <i class="fa fa-briefcase"></i>
-        </div>
-        <div class="pxh-notification-item__text">
-          Case 234567 has been assigned to you
-        </div>
-        <div class="pxh-notification-item__dismiss">
-          <a href="#"><i class="fa fa-times"></i></a>
-        </div>
-      </div>
-      <div class="pxh-notification-item">
-        <div class="pxh-notification-item__icon pxh-notification-item__icon--warning">
-          <i class="fa fa-exclamation-triangle"></i>
-        </div>
-        <div class="pxh-notification-item__text">
-          Jennifer escalated Case 345678
-        </div>
-        <div class="pxh-notification-item__dismiss">
-          <a href="#"><i class="fa fa-times"></i></a>
-        </div>
-      </div>
-      <div class="pxh-notification-item">
-        <div class="pxh-notification-item__icon pxh-notification-item__icon--important">
-          <i class="fa fa-times-circle"></i>
-        </div>
-        <div class="pxh-notification-item__text">
-          Your analytic run failed with errors
-        </div>
-        <div class="pxh-notification-item__dismiss">
-          <a href="#"><i class="fa fa-times"></i></a>
-        </div>
+      <div class="pxh-notification__dismiss">
+        <a href="#" class="pxh-notification__dismiss-button js-notification__dismiss-button"><i class="fa fa-times"></i></a>
       </div>
     </div>
-  </section>
+  </aside>
