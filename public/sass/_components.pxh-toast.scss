@@ -48,6 +48,21 @@ $pxh-toast-max-count: 4;
   }
 }
 
+@mixin pxh-toast__more-button {
+  color: $gray7;
+  background-color: $gray10;
+  border: 1px solid $gray8;
+  border-radius: 5px;
+  padding: 1px 5px 0 5px;
+  display: inline-block;
+  text-decoration: none;
+  text-transform: lowercase;
+  font-size: 14px;
+  &:hover {
+    color: $primary-blue;
+  }
+}
+
 @mixin pxh-toast__action {
   flex-shrink: 0;
   text-align: center;
@@ -71,11 +86,16 @@ $pxh-toast-max-count: 4;
   }
 }
 
-@mixin pxh-toast__more-button {
-  color: $white;
-  text-decoration: none;
-  text-transform: lowercase;
-  font-size: 14px;
+
+
+@mixin pxh-toast__timestamp {
+  margin-left: $pxh-toast-margin;
+  color: $gray8;
+  flex-shrink: 0;
+  text-align: right;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 @mixin pxh-toast__dismiss {
