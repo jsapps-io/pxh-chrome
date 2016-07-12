@@ -946,15 +946,14 @@ var pxhToggleNotifications = function pxhToggleNotifications(toggleControl, togg
 // actionCallback : // callback function
 
 var toastObject1 = {
-  type: 'success', // success, info, warning, important
+  type: 'low', // low, medium, high, severe
   isPersistent: true,
   icon: 'check-circle', // any FA icon
-  text: 'This is the text for notification #1. text for notification #1.',
-  actionLink: 'http://google.com'
+  text: 'This is the text for notification #1. text for notification #1.'
 };
 
 var toastObject2 = {
-  type: 'warning', // success, info, warning, important
+  type: 'high', // low, medium, high, severe
   isPersistent: true,
   icon: 'exclamation-circle', // any FA icon
   text: 'It can be this long or longer if you want. In fact, it can be really, really long if you have a lot you want to say. We kind of discourage this much content but knock yourself out! Just keep talking and talking and talking and this area will keep expanding and expanding.',
@@ -963,7 +962,7 @@ var toastObject2 = {
 };
 
 var toastObject3 = {
-  type: 'info', // success, info, warning, important
+  type: 'medium', // low, medium, high, severe
   isPersistent: false,
   icon: 'info-circle', // any FA icon
   text: 'It can be this long or longer if you want. In fact, it can be really, really long if you have a lot you want to say. We kind of discourage this much content but knock yourself out! Just keep talking and talking and talking and this area will keep expanding and expanding.',
@@ -972,13 +971,111 @@ var toastObject3 = {
 };
 
 var toastObject4 = {
-  type: 'important', // success, info, warning, important
+  type: 'severe', // low, medium, high, severe
   isPersistent: false,
   icon: 'times-circle', // any FA icon
   text: 'Fourth notification? Coming right up!',
   actionLabel: 'Beef',
   actionLink: 'http://beef.org'
 };
+
+// This is just a copy-and-paste of toast for now
+// This is a really bad way of doing this
+// it should be refactored so toast and notification are the same thing
+var notification = {};
+
+notification.init = function (notificationObject) {
+  var notificationMarkup = document.createElement('section');
+  var notificationText = function () {
+    var textMarkup = '';
+    var textContent = notificationObject.text ? notificationObject.text : 'You have a new notification';
+    // var actionLabel = (notificationObject.actionLabel) ? notificationObject.actionLabel : 'Action';
+    if (notificationObject.actionLink) {
+      textMarkup = '<div class="pxh-notification__text">\n' + '  <a class="pxh-notification__link" href="' + notificationObject.actionLink + '">' + textContent + '\n' + '  </a>\n' + '  <div class="pxh-notification__more">\n' + '    <a href="#" class="pxh-notification__more-button js-notification__more-button">' + '      Show more\n' + '    </a>' + '  </div>\n' + '</div>\n';
+    } else if (notificationObject.actionCallback) {
+      textMarkup = '<div class="pxh-notification__text">\n' + '  <a class="pxh-notification__link" href="#">' + '    callback: ' + textContent + '\n' + '  </a>\n' + '  <div class="pxh-notification__more">\n' + '    <a href="#" class="pxh-notification__more-button js-notification__more-button">' + '      Show more\n' + '    </a>' + '  </div>\n' + '</div>\n';
+    } else {
+      textMarkup = '<div class="pxh-notification__text">\n' + textContent + '\n' + '  <div class="pxh-notification__more">\n' + '    <a href="#" class="pxh-notification__more-button js-notification__more-button">' + '      Show more\n' + '    </a>' + '  </div>\n' + '</div>\n';
+    }
+    return textMarkup;
+  }();
+
+  var notificationInnards = '';
+  notificationMarkup.className = 'pxh-notification pxh-notification--animate-in';
+  var notificationInnards = '  <div class="pxh-notification__icon pxh-notification__icon--' + notificationObject.type + '">\n' + '    <i class="fa fa-' + notificationObject.icon + '"></i>\n' + '  </div>\n' + notificationText + '  <div class="pxh-notification__timestamp">\n' + '    9:35 AM\n' + '  </div>\n' + '  <div class="pxh-notification__dismiss">\n' + '    <a href="#" class="pxh-notification__dismiss-button js-notification__dismiss-button"><i class="fa fa-times"></i></a>\n' + '  </div>\n';
+  notificationMarkup.innerHTML = notificationInnards;
+  return notificationMarkup;
+};
+
+notification.add = function (notificationList, notificationObject) {
+  if (document.getElementById(notificationList)) {
+    var parentElement = document.getElementById(notificationList);
+    var theFirstChild = parentElement.firstChild;
+    var notificationElement = parentElement.insertBefore(notification.init(notificationObject), theFirstChild);
+    var dismissControl = notificationElement.querySelector('.js-notification__dismiss-button');
+    var expandControl = notificationElement.querySelector('.js-notification__more-button');
+    if (dismissControl) {
+      dismissControl.addEventListener('click', function (event) {
+        event.preventDefault();
+        notification.hide(notificationElement);
+        setTimeout(function () {
+          notification.remove(notificationElement);
+        }, 1000);
+      });
+    }
+    if (expandControl) {
+      expandControl.addEventListener('click', function (event) {
+        event.preventDefault();
+        notification.expand(notificationElement);
+      });
+    }
+    if (!notificationObject.isPersistent) {
+      setTimeout(function () {
+        if (!notificationElement.classList.contains('pxh-notification--expanded')) {
+          // after 2000ms animate the notification out
+          notification.hide(notificationElement);
+          // 1000ms after the animation, remove the notification from the DOM
+          setTimeout(function () {
+            notification.remove(notificationElement);
+          }, 1000);
+        }
+      }, 5000);
+    }
+  }
+};
+
+notification.hide = function (notificationElement) {
+  notificationElement.classList.add('pxh-notification--animate-out');
+  notificationElement.classList.remove('pxh-notification--animate-in');
+};
+
+notification.remove = function (notificationElement) {
+  if (notificationElement) notificationElement.remove();
+};
+
+notification.expand = function (notificationElement) {
+  if (notificationElement.classList.contains('pxh-notification--expanded')) {
+    notificationElement.classList.remove('pxh-notification--expanded');
+    notificationElement.querySelector('.pxh-notification__more').classList.remove('pxh-notification__more--expanded');
+    notificationElement.querySelector('.pxh-notification__more-button').innerHTML = 'Show more';
+  } else {
+    notificationElement.classList.remove('pxh-notification--animate-in');
+    notificationElement.classList.add('pxh-notification--expanded');
+    notificationElement.querySelector('.pxh-notification__more').classList.add('pxh-notification__more--expanded');
+    notificationElement.querySelector('.pxh-notification__more-button').innerHTML = 'Show less';
+  }
+};
+
+document.addEventListener('DOMContentLoaded', function (event) {
+  notification.add('js-notifications__list', toastObject1);
+  notification.add('js-notifications__list', toastObject2);
+});
+
+if (document.getElementById('js-toast-emitter')) {
+  document.getElementById('js-toast-emitter').addEventListener('click', function () {
+    notification.add('js-notifications__list', toastObject3);
+  });
+}
 
 var toast = {};
 
