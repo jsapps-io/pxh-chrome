@@ -123,7 +123,7 @@ $pxh-notification-max-count: 4;
     position: absolute;
     bottom: $pxh-drawer-margin * 2;
     left: $pxh-drawer-margin / 4;
-    padding: 3px;
+    padding: 3px 3px 1px 3px;
     &--low {
       background-color: $green;
     }
