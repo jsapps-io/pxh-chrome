@@ -11,6 +11,7 @@ $pxh-notification-max-count: 4;
 @mixin pxh-notification--in-state-scale {
   height: $pxh-toast-height;
   font-size: 16px;
+  border-bottom: 1px solid $gray9;
 }
 
 @mixin pxh-notification--in-state-opacity {
@@ -39,7 +40,7 @@ $pxh-notification-max-count: 4;
     bottom: 65px;
     left: $pxh-notification-margin;
     right: $pxh-notification-margin;
-    border-radius: 4px;
+    border-radius: 2px;
     background-color: $gray10;
     color: $gray2;
     border: 1px solid $gray7;
@@ -163,6 +164,11 @@ $pxh-notification-max-count: 4;
   }
   .pxh-notification__more-button {
     @include pxh-toast__more-button;
+  }
+  .pxh-notification__timestamp {
+    @include pxh-toast__timestamp;
+    padding-top: $pxh-toast-margin * 5.5;
+    max-width: $pxh-toast-height * 2;
   }
   .pxh-notification__dismiss {
     @include pxh-toast__dismiss;
