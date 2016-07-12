@@ -103,15 +103,16 @@ $pxh-toast-max-count: 4;
   font-size: 18px;
   flex-basis: $pxh-toast-margin * 8;
   flex-shrink: 0;
-  .fa {
-    color: $gray7;
-    text-decoration: none;
-  }
 }
 
 @mixin pxh-toast__dismiss-button {
+  color: $gray7;
+  text-decoration: none;
   display: block;
   padding: ($pxh-toast-margin * 5) ($pxh-toast-margin * 2) 0 ($pxh-toast-margin * 2);
+  &:hover {
+    color: $primary-blue;
+  }
 }
 
 @mixin pxh-toast--in-state-scale {

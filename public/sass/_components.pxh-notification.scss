@@ -169,6 +169,7 @@ $pxh-notification-max-count: 4;
   }
   .pxh-notification__dismiss-button {
     @include pxh-toast__dismiss-button;
+    color: $gray8;
   }
 }
 
