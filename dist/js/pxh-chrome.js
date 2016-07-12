@@ -348,6 +348,17 @@ var pxhTransitions = {
 // FUNCTIONS
 // *********
 
+// polyfill to support .remove() in IE11
+// https://developer.mozilla.org/en-US/docs/Web/API/ChildNode/remove
+
+if (!('remove' in Element.prototype)) {
+  Element.prototype.remove = function () {
+    if (this.parentNode) {
+      this.parentNode.removeChild(this);
+    }
+  };
+}
+
 /*! css-element-queries/ResizeSensor.js 0.3.2 */
 
 /**
