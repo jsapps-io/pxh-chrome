@@ -978,7 +978,7 @@ var pxhToggleNotifications = function(toggleControl, toggleTarget, toggleClass) 
 // actionCallback : // callback function
 
 var toastObject1 = {
-  type : 'success', // success, info, warning, important
+  type : 'low', // low, medium, high, severe
   isPersistent : true,
   icon : 'check-circle', // any FA icon
   text : 'This is the text for notification #1. text for notification #1.',
@@ -986,7 +986,7 @@ var toastObject1 = {
 }
 
 var toastObject2 = {
-  type : 'warning', // success, info, warning, important
+  type : 'high', // low, medium, high, severe
   isPersistent : true,
   icon : 'exclamation-circle', // any FA icon
   text : 'It can be this long or longer if you want. In fact, it can be really, really long if you have a lot you want to say. We kind of discourage this much content but knock yourself out! Just keep talking and talking and talking and this area will keep expanding and expanding.',
@@ -995,7 +995,7 @@ var toastObject2 = {
 }
 
 var toastObject3 = {
-  type : 'info', // success, info, warning, important
+  type : 'medium', // low, medium, high, severe
   isPersistent : false,
   icon : 'info-circle', // any FA icon
   text : 'It can be this long or longer if you want. In fact, it can be really, really long if you have a lot you want to say. We kind of discourage this much content but knock yourself out! Just keep talking and talking and talking and this area will keep expanding and expanding.',
@@ -1004,7 +1004,7 @@ var toastObject3 = {
 }
 
 var toastObject4 = {
-  type : 'important', // success, info, warning, important
+  type : 'severe', // low, medium, high, severe
   isPersistent : false,
   icon : 'times-circle', // any FA icon
   text : 'Fourth notification? Coming right up!',
