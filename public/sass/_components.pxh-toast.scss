@@ -22,6 +22,8 @@ $pxh-toast-max-count: 4;
 @mixin pxh-toast__icon {
   text-align: center;
   flex-shrink: 0;
+  align-self: stretch;
+  min-height: $pxh-toast-height;
 }
 
 @mixin pxh-toast__text {
@@ -84,8 +86,6 @@ $pxh-toast-max-count: 4;
     background-color: $gray9;
   }
 }
-
-
 
 @mixin pxh-toast__timestamp {
   margin-left: $pxh-toast-margin;
