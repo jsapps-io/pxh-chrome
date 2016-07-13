@@ -12,6 +12,7 @@ $pxh-toast-max-count: 4;
   display: flex;
   overflow: hidden;
   position: relative;
+  width: 100%;
   color: $gray5;
   background: $gray10;
   &--expanded {
@@ -153,12 +154,13 @@ $pxh-toast-max-count: 4;
     @include mq($from: md) {
       &--narrow\@md {
         left: auto;
-        max-width: 420px;
+        width: 420px;
       }
     }
     @include mq($from: lg) {
       &--wide\@lg {
-        max-width: 520px;
+        left: auto;
+        width: 480px;
       }
     }
   }
