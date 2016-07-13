@@ -78,6 +78,7 @@ $pxh-notification-max-count: 4;
     &:hover {
       color: $primary-blue;
     }
+    @include pxh-override-px-theme-color('pxh-notifications__link');
   }
 
   .pxh-notifications__clear {
@@ -108,6 +109,7 @@ $pxh-notification-max-count: 4;
     .pxh-notifications__icon:hover & {
       color: $white;
     }
+    @include pxh-override-px-theme-color('pxh-notifications__icon-link');
   }
 
   .pxh-notifications__icon-badge {
@@ -124,17 +126,22 @@ $pxh-notification-max-count: 4;
     bottom: $pxh-drawer-margin * 2;
     left: $pxh-drawer-margin / 4;
     padding: 3px 3px 1px 3px;
+    @include pxh-override-px-theme-color('pxh-notifications__icon-badge', $white);
     &--low {
       background-color: $green;
+      @include pxh-override-px-theme-background-color('pxh-notifications__icon-badge--low', $green);
     }
     &--medium {
       background-color: $blue;
+      @include pxh-override-px-theme-background-color('pxh-notifications__icon-badge--medium', $blue);
     }
     &--high {
       background-color: $orange;
+      @include pxh-override-px-theme-background-color('pxh-notifications__icon-badge--high', $orange);
     }
     &--severe {
       background-color: $red;
+      @include pxh-override-px-theme-background-color('pxh-notifications__icon-badge--severe', $red);
     }
   }
 
@@ -191,12 +198,14 @@ $pxh-notification-max-count: 4;
     &:hover {
       color: $primary-blue;
     }
+    @include pxh-override-px-theme-color('pxh-notification__link', $gray4, $primary-blue);
   }
   .pxh-notification__more {
     @include pxh-toast__more;
   }
   .pxh-notification__more-button {
     @include pxh-toast__more-button;
+    @include pxh-override-px-theme-color('pxh-notification__more-button');
   }
   .pxh-notification__timestamp {
     @include pxh-toast__timestamp;
@@ -209,6 +218,7 @@ $pxh-notification-max-count: 4;
   .pxh-notification__dismiss-button {
     @include pxh-toast__dismiss-button;
     color: $gray8;
+    @include pxh-override-px-theme-color('pxh-notification__dismiss-button', $gray8, $primary-blue);
   }
 }
 

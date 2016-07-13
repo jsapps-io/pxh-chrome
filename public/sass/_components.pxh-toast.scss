@@ -251,6 +251,7 @@ $pxh-toast-max-count: 4;
   .pxh-toast__button {
     max-width: $pxh-toast-height * 2;
     @include pxh-toast__button;
+    @include pxh-override-px-theme-color('pxh-toast__button');
   }
 
   .pxh-toast__icon {
@@ -283,6 +284,7 @@ $pxh-toast-max-count: 4;
 
   .pxh-toast__more-button {
     @include pxh-toast__more-button;
+    @include pxh-override-px-theme-color('pxh-toast__more-button');
   }
 
   .pxh-toast__dismiss {
@@ -291,6 +293,7 @@ $pxh-toast-max-count: 4;
 
   .pxh-toast__dismiss-button {
     @include pxh-toast__dismiss-button;
+    @include pxh-override-px-theme-color('pxh-toast__dismiss-button');
   }
 }
 
