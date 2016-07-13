@@ -100,7 +100,8 @@ $pxh-toast-max-count: 4;
 @mixin pxh-toast__dismiss {
   text-align: center;
   font-size: 18px;
-  flex-basis: $pxh-toast-margin * 8;
+  flex-basis: auto;
+  width: $pxh-toast-margin * 8;
   flex-shrink: 0;
 }
 
