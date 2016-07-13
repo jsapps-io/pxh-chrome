@@ -3439,6 +3439,8 @@ html {
 
 /*------------------------------------*    #tools.pxh-animations
 \*------------------------------------*/
+/*------------------------------------*    #tools.pxh-mixins
+\*------------------------------------*/
 /*------------------------------------*    #elements.body
 \*------------------------------------*/
 html, body {
@@ -4401,6 +4403,11 @@ sub {
 /*------------------------------------*    #pxh-navigation
 \*------------------------------------*/
 .pxh-navigation {
+  scrollbar-base-color: #242326;
+  scrollbar-arrow-color: #525156;
+  scrollbar-track-color: #242326;
+  scrollbar-face-color: #525156;
+  -webkit-overflow-scrolling: touch;
   position: absolute;
   top: 61px;
   left: 0;
@@ -4410,11 +4417,6 @@ sub {
   border-top: 1px solid rgba(0, 0, 0, 0.15);
   max-height: 100%;
   overflow-y: auto;
-  scrollbar-base-color: #242326;
-  scrollbar-arrow-color: #525156;
-  scrollbar-track-color: #242326;
-  scrollbar-face-color: #525156;
-  -webkit-overflow-scrolling: touch;
 }
 
 .pxh-navigation::-webkit-scrollbar {
@@ -5417,6 +5419,11 @@ sub {
 /*------------------------------------*    #components.pxh-toast
 \*------------------------------------*/
 .pxh-toasts {
+  scrollbar-base-color: #242326;
+  scrollbar-arrow-color: #525156;
+  scrollbar-track-color: #242326;
+  scrollbar-face-color: #525156;
+  -webkit-overflow-scrolling: touch;
   position: fixed;
   top: 66px;
   right: 5px;
@@ -5426,16 +5433,32 @@ sub {
   z-index: 300;
 }
 
+.pxh-toasts::-webkit-scrollbar {
+  width: 7px;
+}
+
+.pxh-toasts::-webkit-scrollbar-track {
+  background-color: #242326;
+  border: 2px solid #242326;
+}
+
+.pxh-toasts::-webkit-scrollbar-thumb {
+  border-left: 2px solid #242326;
+  border-right: 2px solid #242326;
+  background-color: #7c7c84;
+}
+
 @media (min-width: 48em) {
   .pxh-toasts--narrow\@md {
     left: auto;
-    max-width: 420px;
+    width: 420px;
   }
 }
 
 @media (min-width: 64em) {
   .pxh-toasts--wide\@lg {
-    max-width: 520px;
+    left: auto;
+    width: 480px;
   }
 }
 
@@ -5563,6 +5586,7 @@ sub {
   display: flex;
   overflow: hidden;
   position: relative;
+  width: 100%;
   color: #b1b1bc;
   background: #242326;
 }
@@ -5619,6 +5643,9 @@ sub {
   text-align: center;
   -ms-flex-negative: 0;
       flex-shrink: 0;
+  -ms-flex-item-align: stretch;
+      align-self: stretch;
+  min-height: 70px;
   color: white;
   padding-top: 20px;
   -ms-flex-preferred-size: 70px;
@@ -5686,8 +5713,9 @@ sub {
 .pxh-toast__dismiss {
   text-align: center;
   font-size: 18px;
-  -ms-flex-preferred-size: 40px;
-      flex-basis: 40px;
+  -ms-flex-preferred-size: auto;
+      flex-basis: auto;
+  width: 40px;
   -ms-flex-negative: 0;
       flex-shrink: 0;
 }
@@ -5839,8 +5867,28 @@ sub {
 }
 
 .pxh-notifications__list {
+  scrollbar-base-color: #242326;
+  scrollbar-arrow-color: #525156;
+  scrollbar-track-color: #242326;
+  scrollbar-face-color: #525156;
+  -webkit-overflow-scrolling: touch;
   max-height: 270px;
   overflow: auto;
+}
+
+.pxh-notifications__list::-webkit-scrollbar {
+  width: 7px;
+}
+
+.pxh-notifications__list::-webkit-scrollbar-track {
+  background-color: #242326;
+  border: 2px solid #242326;
+}
+
+.pxh-notifications__list::-webkit-scrollbar-thumb {
+  border-left: 2px solid #242326;
+  border-right: 2px solid #242326;
+  background-color: #7c7c84;
 }
 
 .pxh-notification {
@@ -5849,6 +5897,7 @@ sub {
   display: flex;
   overflow: hidden;
   position: relative;
+  width: 100%;
   color: #b1b1bc;
   background: #242326;
   opacity: 1;
@@ -5865,6 +5914,9 @@ sub {
   text-align: center;
   -ms-flex-negative: 0;
       flex-shrink: 0;
+  -ms-flex-item-align: stretch;
+      align-self: stretch;
+  min-height: 70px;
   padding-top: 20px;
   padding-left: 5px;
   -ms-flex-preferred-size: 40px;
@@ -5954,8 +6006,9 @@ sub {
 .pxh-notification__dismiss {
   text-align: center;
   font-size: 18px;
-  -ms-flex-preferred-size: 40px;
-      flex-basis: 40px;
+  -ms-flex-preferred-size: auto;
+      flex-basis: auto;
+  width: 40px;
   -ms-flex-negative: 0;
       flex-shrink: 0;
 }
