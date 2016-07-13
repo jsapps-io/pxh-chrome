@@ -1040,7 +1040,7 @@ var toastObject4 = {
 var notification = {};
 
 notification.init = function(notificationObject) {
-  var notificationMarkup = document.createElement('section');
+  var notificationMarkup = document.createElement('div');
   var notificationText = (function() {
     var textMarkup = '';
     var textContent = (notificationObject.text) ? notificationObject.text : 'You have a new notification';
@@ -1182,7 +1182,7 @@ if (document.getElementById('js-toast-emitter')) {
 var toast = {};
 
 toast.init = function(toastObject) {
-  var toastMarkup = document.createElement('section');
+  var toastMarkup = document.createElement('div');
   var toastAction = (function() {
     var actionMarkup = '';
     var actionLabel = (toastObject.actionLabel) ? toastObject.actionLabel : 'Action';
