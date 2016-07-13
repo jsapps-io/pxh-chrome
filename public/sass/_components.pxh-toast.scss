@@ -142,6 +142,7 @@ $pxh-toast-max-count: 4;
 
 @if $pxh-toasts-enabled == true {
   .pxh-toasts {
+    @include pxh-fancy-scrollbar;
     position: fixed;
     top: 60px + 1px + 5px;
     right: $pxh-toast-margin;

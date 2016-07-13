@@ -35,6 +35,7 @@ $pxh-notification-max-count: 4;
 
 @if $pxh-notifications-enabled == true {
   .pxh-notifications {
+    @include pxh-fancy-scrollbar;
     z-index: 800;
     position: fixed;
     bottom: 65px;

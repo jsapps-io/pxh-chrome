@@ -25,6 +25,7 @@ $fa-font-path : "../fonts/font-awesome/fonts" !default;
 // $fa-font-path : "//dzlpbrbc7yvq0.cloudfront.net/pxh-chrome/1.0.1/dist/fonts/font-awesome/fonts" !default;
 @import "font-awesome/scss/font-awesome.scss"; // our sass task includes /bower_components automatically so we don't need to specify it
 @import "tools.pxh-animations.scss";
+@import "tools.pxh-mixins.scss";
 
 // ** #ELEMENTS ** //
 @import "elements.body.scss";
