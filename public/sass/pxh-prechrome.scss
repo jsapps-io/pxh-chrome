@@ -33,6 +33,15 @@ $fa-font-path : "../fonts/font-awesome/fonts" !default;
 @import "elements.hr.scss";
 @import "elements.typography.scss";
 
+html {
+  background-color: $gray10;
+  color: $white;
+}
+
+a {
+  text-decoration: none;
+}
+
 // ** #OBJECTS ** //
 
 // ** #COMPONENTS ** //
