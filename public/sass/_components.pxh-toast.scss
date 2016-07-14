@@ -48,6 +48,7 @@ $pxh-toast-max-count: 4;
   padding: $pxh-toast-margin 0 0 ($pxh-toast-margin * 2);
   overflow: hidden;
   position: relative;
+  line-height: 1.2;
 }
 
 @mixin pxh-toast__more {
@@ -127,6 +128,7 @@ $pxh-toast-max-count: 4;
   text-decoration: none;
   display: block;
   padding: ($pxh-toast-margin * 5) ($pxh-toast-margin * 2) 0 ($pxh-toast-margin * 2);
+  height: $pxh-toast-height;
   &:hover {
     color: $primary-blue;
   }
@@ -165,7 +167,8 @@ $pxh-toast-max-count: 4;
     right: $pxh-toast-margin;
     left: $pxh-toast-margin;
     max-height: ($pxh-toast-height * $pxh-toast-max-count) + ($pxh-toast-margin * ($pxh-toast-max-count - 1));
-    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    overflow-y: auto;
     z-index: 300;
     @include mq($from: md) {
       &--narrow\@md {
@@ -236,6 +239,7 @@ $pxh-toast-max-count: 4;
     max-width: $pxh-toast-height * 2;
     @include pxh-toast__button;
     @include pxh-override-px-theme-color('pxh-toast__button', $gray5);
+    @include pxh-override-px-theme-background-color('pxh-toast__button', $gray10, $gray9);
   }
 
   .pxh-toast__icon {
@@ -269,7 +273,7 @@ $pxh-toast-max-count: 4;
   .pxh-toast__more-button {
     @include pxh-toast__more-button;
     @include pxh-override-px-theme-color('pxh-toast__more-button');
-    @include pxh-override-px-theme-background-color('pxh-toast__more-button', $gray10);
+    @include pxh-override-px-theme-background-color('pxh-toast__more-button', $gray10, $gray9);
   }
 
   .pxh-toast__dismiss {
