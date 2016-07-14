@@ -163,7 +163,8 @@ $pxh-notification-max-count: 4;
   .pxh-notifications__list {
     @include pxh-fancy-scrollbar;
     max-height: 270px;
-    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    overflow-y: auto;
   }
 
   .pxh-notification {
