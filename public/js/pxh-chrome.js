@@ -1032,222 +1032,29 @@ var toastObject4 = {
   actionLink : 'http://beef.org'
 }
 
-// This is just a copy-and-paste of toast for now
-// This is a really bad way of doing this
-// it should be refactored so toast and notification are the same thing
-var notification = {};
-
-notification.init = function(notificationObject) {
-  var notificationMarkup = document.createElement('div');
-  var notificationText = (function() {
-    var textMarkup = '';
-    var textContent = (notificationObject.text) ? notificationObject.text : 'You have a new notification';
-    // var actionLabel = (notificationObject.actionLabel) ? notificationObject.actionLabel : 'Action';
-    if (notificationObject.actionLink) {
-      textMarkup = '<div class="pxh-notification__text">\n' +
-                   '  <a class="pxh-notification__link" href="' + notificationObject.actionLink + '">' + 
-                        textContent + '\n' +
-                   '  </a>\n' +
-                   '  <div class="pxh-notification__more">\n' + 
-                   '    <a href="#" class="pxh-notification__more-button js-notification__more-button">' + 
-                   '      Show more\n' + 
-                   '    </a>' + 
-                   '  </div>\n' +
-                   '</div>\n';
-    }
-    else if (notificationObject.actionCallback) {
-      textMarkup = '<div class="pxh-notification__text">\n' +
-                   '  <a class="pxh-notification__link" href="#">' + 
-                   '    callback: ' + textContent + '\n' +
-                   '  </a>\n' +
-                   '  <div class="pxh-notification__more">\n' + 
-                   '    <a href="#" class="pxh-notification__more-button js-notification__more-button">' + 
-                   '      Show more\n' + 
-                   '    </a>' + 
-                   '  </div>\n' +
-                   '</div>\n';
-    }
-    else {
-      textMarkup = '<div class="pxh-notification__text">\n' +
-                      textContent + '\n' +
-                   '  <div class="pxh-notification__more">\n' + 
-                   '    <a href="#" class="pxh-notification__more-button js-notification__more-button">' + 
-                   '      Show more\n' + 
-                   '    </a>' + 
-                   '  </div>\n' +
-                   '</div>\n';
-    }
-    return textMarkup;
-  })();
-  var notificationTimestamp = (function() {
-    var timestampContent = (notificationObject.timestamp) ? notificationObject.timestamp : '';
-    var timestampMarkup = '';
-    if (notificationObject.timestamp) {
-      timestampMarkup = ' <div class="pxh-notification__timestamp">\n' +
-                            timestampContent + '\n' +
-                        ' </div>\n';
-    }
-    return timestampMarkup;
-  })();
-
-  var notificationInnards = '';
-  notificationMarkup.className = 'pxh-notification pxh-notification--animate-in';
-  var notificationInnards =  '  <div class="pxh-notification__icon pxh-notification__icon--' + notificationObject.type + '">\n' + 
-                             '    <i class="fa fa-' + notificationObject.icon + '"></i>\n' + 
-                             '  </div>\n' +
-                                notificationText +
-                                notificationTimestamp + 
-
-                             '  <div class="pxh-notification__dismiss">\n' +
-                             '    <a href="#" class="pxh-notification__dismiss-button js-notification__dismiss-button"><i class="fa fa-times"></i></a>\n' +
-                             '  </div>\n';
-  notificationMarkup.innerHTML = notificationInnards;
-  return notificationMarkup;
-}
-
-notification.add = function(notificationList, notificationObject) {
-  if (document.getElementById(notificationList)) {
-    var parentElement = document.getElementById(notificationList);
-    var theFirstChild = parentElement.firstChild;
-    var notificationElement = parentElement.insertBefore(notification.init(notificationObject), theFirstChild);
-    var dismissControl = notificationElement.querySelector('.js-notification__dismiss-button');
-    var expandControl = notificationElement.querySelector('.js-notification__more-button');
-    if (dismissControl) {
-      dismissControl.addEventListener('click', function(event) {
-        event.preventDefault();
-        notification.hide(notificationElement);
-        setTimeout(function() {
-          notification.remove(notificationElement);
-        }, 1000);
-      })
-    }
-    if (expandControl) {
-      expandControl.addEventListener('click', function(event) {
-        event.preventDefault();
-        notification.expand(notificationElement);
-      })
-    }
-    if (!notificationObject.isPersistent) {
-      setTimeout(function() {
-        if (!notificationElement.classList.contains('pxh-notification--expanded')) {
-          // after 2000ms animate the notification out
-          notification.hide(notificationElement);
-          // 1000ms after the animation, remove the notification from the DOM
-          setTimeout(function() {
-            notification.remove(notificationElement);
-          }, 1000);
-        }
-      }, 5000);
-    }
-  }
-}
-
-notification.hide = function(notificationElement) {
-  notificationElement.classList.add('pxh-notification--animate-out');
-  notificationElement.classList.remove('pxh-notification--animate-in');
-}
-
-notification.remove = function(notificationElement) {
-  if (notificationElement)
-  notificationElement.remove();
-}
-
-notification.expand = function(notificationElement) {
-  if (notificationElement.classList.contains('pxh-notification--expanded')) {
-    notificationElement.classList.remove('pxh-notification--expanded');
-    notificationElement.querySelector('.pxh-notification__more').classList.remove('pxh-notification__more--expanded');
-    notificationElement.querySelector('.pxh-notification__more-button').innerHTML = 'Show more';
-  }
-  else {
-    notificationElement.classList.remove('pxh-notification--animate-in');
-    notificationElement.classList.add('pxh-notification--expanded');
-    notificationElement.querySelector('.pxh-notification__more').classList.add('pxh-notification__more--expanded');
-    notificationElement.querySelector('.pxh-notification__more-button').innerHTML = 'Show less';
-  }
-}
-
-document.addEventListener('DOMContentLoaded', function(event) {
-  notification.add('js-notifications__list', toastObject1);
-  notification.add('js-notifications__list', toastObject2);
-});
-
-if (document.getElementById('js-toast-emitter')) {
-  document.getElementById('js-toast-emitter').addEventListener('click', function() {
-    notification.add('js-notifications__list', toastObject3);
-  })
-}
-
 var toast = {};
+toast.markup = {};
 
-toast.init = function(toastObject) {
-  var toastMarkup = document.createElement('div');
-  var toastAction = (function() {
-    var actionMarkup = '';
-    var actionLabel = (toastObject.actionLabel) ? toastObject.actionLabel : 'Action';
-    if (toastObject.actionLink) {
-      actionMarkup = '  <div class="pxh-toast__action">\n' +
-                         '    <a class="pxh-toast__button" href="' + toastObject.actionLink + '">' + actionLabel + '</a>\n' +
-                         '  </div>\n';
-    }
-    else if (toastObject.actionCallback) {
-      actionMarkup = '  <div class="pxh-toast__action">\n' +
-                         '    <a class="pxh-toast__button" href="#">' + 'callback: ' + actionLabel + '</a>\n' +
-                         '  </div>\n';
-    }
-    return actionMarkup;
-  })();
-
-  var toastText = (function() {
-    var textMarkup = '';
-    var textContent = (toastObject.text) ? toastObject.text : 'You have a new notification';
-    textMarkup = '  <div class="pxh-toast__text">' + textContent + '\n' +
-                 '    <div class="pxh-toast__more"><a href="#" class="pxh-toast__more-button js-toast__more-button">Show more</a></div>\n' +
-                 '  </div>\n';
-    return textMarkup;
-  })();
-
-  var toastInnards = '';
-  toastMarkup.className = 'pxh-toast pxh-toast--animate-in';
-  var toastInnards =  '  <div class="pxh-toast__icon pxh-toast__icon--' + toastObject.type + '">\n' + 
-                      '    <i class="fa fa-' + toastObject.icon + '"></i>\n' + 
-                      '  </div>\n' +
-                      toastText + 
-                      toastAction + 
-                      '  <div class="pxh-toast__dismiss">\n' +
-                      '    <a href="#" class="pxh-toast__dismiss-button js-toast__dismiss-button"><i class="fa fa-times"></i></a>\n' +
-                      '  </div>\n';
-  toastMarkup.innerHTML = toastInnards;
-  return toastMarkup;
-}
-
-toast.add = function(toastList, toastObject) {
-  if (document.getElementById(toastList)) {
-    var parentElement = document.getElementById(toastList);
-    var theFirstChild = parentElement.firstChild;
-    var toastElement = parentElement.insertBefore(toast.init(toastObject), theFirstChild);
-    var dismissControl = toastElement.querySelector('.js-toast__dismiss-button');
-    var expandControl = toastElement.querySelector('.js-toast__more-button');
-    if (dismissControl) {
-      dismissControl.addEventListener('click', function(event) {
-        event.preventDefault();
-        toast.hide(toastElement);
-        setTimeout(function() {
-          toast.remove(toastElement);
-        }, 1000);
-      })
-    }
-    if (expandControl) {
-      expandControl.addEventListener('click', function(event) {
-        event.preventDefault();
-        toast.expand(toastElement);
-      })
-    }
-    if (!toastObject.isPersistent) {
+toast.add = function(object) {
+  var notificationList = '';
+  var toastList = '';
+  if ((notificationList = document.getElementById('js-notifications__list')) && ((object.actionLink) || (object.actionCallback))) {
+    var notificationFirstChild = notificationList.firstChild;
+    var notificationElement = notificationList.insertBefore(toast.markup.createNotification(object), notificationFirstChild);
+    toast.action.dismissButton(notificationElement, 'notification');
+    toast.action.expandButton(notificationElement, 'notification');
+  }
+  if (toastList = document.getElementById('js-toasts')) {
+    var toastFirstChild = toastList.firstChild;
+    var toastElement = toastList.insertBefore(toast.markup.createToast(object), toastFirstChild);
+    toast.action.dismissButton(toastElement, 'toast');
+    toast.action.expandButton(toastElement, 'toast');
+    if (!object.isPersistent) {
       setTimeout(function() {
         if (!toastElement.classList.contains('pxh-toast--expanded')) {
           // after 2000ms animate the toast out
-          toast.hide(toastElement);
-          // 1000ms after the animation, remove the toast from the DOM
+          toast.hide(toastElement, 'toast');
+          // 1000ms after the animation, remove the notification from the DOM
           setTimeout(function() {
             toast.remove(toastElement);
           }, 1000);
@@ -1257,41 +1064,187 @@ toast.add = function(toastList, toastObject) {
   }
 }
 
-toast.hide = function(toastElement) {
-  toastElement.classList.add('pxh-toast--animate-out');
-  toastElement.classList.remove('pxh-toast--animate-in');
+toast.action = {};
+
+toast.action.dismissButton = function(element, slug) {
+  var button = element.querySelector('.js-' + slug + '__dismiss-button');
+  if (button) {
+    button.addEventListener('click', function(event) {
+      event.preventDefault();
+      toast.hide(element, slug);
+      setTimeout(function() {
+        toast.remove(element);
+      }, 1000);
+    })
+  }
 }
 
-toast.remove = function(toastElement) {
-  if (toastElement)
-  toastElement.remove();
+toast.action.expandButton = function(element, slug) {
+  var button = element.querySelector('.js-' + slug + '__more-button');
+  if (button) {
+    button.addEventListener('click', function(event) {
+      event.preventDefault();
+      toast.expand(element, slug);
+    })
+  }
 }
 
-toast.expand = function(toastElement) {
-  if (toastElement.classList.contains('pxh-toast--expanded')) {
-    toastElement.classList.remove('pxh-toast--expanded');
-    toastElement.querySelector('.pxh-toast__more').classList.remove('pxh-toast__more--expanded');
-    toastElement.querySelector('.pxh-toast__more-button').innerHTML = 'Show more';
+toast.hide = function(element, slug) {
+  element.classList.add('pxh-' + slug + '--animate-out');
+  element.classList.remove('pxh-' + slug + '--animate-in');
+}
+
+toast.remove = function(element) {
+  if (element)
+  element.remove();
+}
+
+toast.expand = function(element, slug) {
+  if (element.classList.contains('pxh-' + slug + '--expanded')) {
+    element.classList.remove('pxh-' + slug + '--expanded');
+    element.querySelector('.pxh-' + slug + '__more').classList.remove('pxh-' + slug + '__more--expanded');
+    element.querySelector('.pxh-' + slug + '__more-button').innerHTML = 'Show more';
   }
   else {
-    toastElement.classList.remove('pxh-toast--animate-in');
-    toastElement.classList.add('pxh-toast--expanded');
-    toastElement.querySelector('.pxh-toast__more').classList.add('pxh-toast__more--expanded');
-    toastElement.querySelector('.pxh-toast__more-button').innerHTML = 'Show less';
+    element.classList.remove('pxh-' + slug + '--animate-in');
+    element.classList.add('pxh-' + slug + '--expanded');
+    element.querySelector('.pxh-' + slug + '__more').classList.add('pxh-' + slug + '__more--expanded');
+    element.querySelector('.pxh-' + slug + '__more-button').innerHTML = 'Show less';
   }
+}
+
+toast.markup.icon = function(object, slug) {
+  var icon = object.icon ? object.icon : 'info-circle';
+  var type = object.type ? object.type : 'blue';
+  var markup = [];
+  markup.push('<div class="pxh-' + slug + '__icon pxh-' + slug + '__icon--' + type + '">\n');
+  markup.push('  <i class="fa fa-' + icon + '"></i>\n');
+  markup.push('</div>\n');
+  markup = markup.join('');
+  return markup;
+}
+
+toast.markup.toastText = function(object, slug) {
+  var text = object.text ? object.text : 'You received a new notification';
+  var markup = [];
+  markup.push('<div class="pxh-' + slug + '__text">\n');
+  markup.push('  ' + text + '\n');
+  markup.push(toast.markup.more(object, slug));
+  markup.push('</div>\n');
+  markup = markup.join('');
+  return markup;
+}
+
+toast.markup.notificationText = function(object, slug) {
+  var text = object.text ? object.text : 'You received a new notification';
+  var markup = [];
+  markup.push('<div class="pxh-' + slug + '__text">\n');
+  if (object.actionLink) {
+    markup.push('  <a class="pxh-' + slug + '__link" href="' + object.actionLink + '">\n');
+  } else if (object.actionCallback) {
+    markup.push('  <a class="pxh-' + slug + '__link" href="#">actionCallback: ' + object.actionCallback + ' ' + '\n');
+  }
+  markup.push('  ' + text + '\n');
+  if ((object.actionLink) || (object.actionCallback)) {
+    markup.push('  </a>\n');
+  }
+  markup.push(toast.markup.more(object, slug));
+  markup.push('</div>\n');
+  markup = markup.join('');
+  return markup;
+}
+
+
+toast.markup.more = function(object, slug) {
+  var markup = [];
+  markup.push('  <div class="pxh-' + slug + '__more">\n');
+  markup.push('    <a href="#" class="pxh-' + slug + '__more-button js-' + slug + '__more-button">\n');
+  markup.push('      Show more\n');
+  markup.push('    </a>\n');
+  markup.push('  </div>\n');
+  markup = markup.join('');
+  return markup;
+}
+
+toast.markup.timestamp = function(object, slug) {
+  var timestamp = object.timestamp ? object.timestamp : false;
+  var markup = [];
+  if (timestamp) {
+    markup.push('<div class="pxh-' + slug + '__timestamp">\n');
+    markup.push('  ' + timestamp + '\n');
+    markup.push('</div>\n');
+  }
+  markup = markup.join('');
+  return markup;
+}
+
+toast.markup.dismiss = function(object, slug) {
+  var markup = [];
+  markup.push('<div class="pxh-' + slug + '__dismiss">\n');
+  markup.push('  <a href="#" class="pxh-' + slug + '__dismiss-button js-' + slug + '__dismiss-button">\n');
+  markup.push('    <i class="fa fa-times"></i>\n');
+  markup.push('  </a>\n');
+  markup.push('</div>\n');
+  markup = markup.join('');
+  return markup;
+}
+
+toast.markup.button = function(object, slug) {
+  var markup = [];
+  if (object.actionLink) {
+    markup.push('<div class="pxh-' + slug + '__action">\n');
+    markup.push('  <a class="pxh-' + slug + '__button" href="' + object.actionLink + '">' + object.actionLabel + '</a>\n');
+    markup.push('</div>\n');
+  } else if (object.actionCallback) {
+    markup.push('<div class="pxh-' + slug + '__action">\n');
+    markup.push('  <a class="pxh-' + slug + '__button" href="#">actionCallback: ' + object.actionCallback + object.actionLabel + '</a>\n');
+    markup.push('</div>\n');
+  }
+  markup = markup.join('');
+  return markup;
+}
+
+toast.markup.createToast = function(object) {
+  var slug = 'toast';
+  var element = document.createElement('div');
+  element.className = 'pxh-' + slug + ' pxh-' + slug + '--animate-in';
+  var markup = [];
+  markup.push(toast.markup.icon(object, slug));
+  markup.push(toast.markup.toastText(object, slug));
+  markup.push(toast.markup.button(object, slug));
+  // if (object.timestamp) {
+  //   markup.push(toast.markup.timestamp(object, slug));
+  // }
+  markup.push(toast.markup.dismiss(object, slug));
+  markup = markup.join('');
+  element.innerHTML = markup;
+  return element;
+}
+
+toast.markup.createNotification = function(object) {
+  var slug = 'notification';
+  var element = document.createElement('div');
+  element.className = 'pxh-' + slug + ' ' + slug + '--animate-in';
+  var markup = [];
+  markup.push(toast.markup.icon(object, slug));
+  markup.push(toast.markup.notificationText(object, slug));
+  markup.push(toast.markup.timestamp(object, slug));
+  markup.push(toast.markup.dismiss(object, slug));
+  markup = markup.join('');
+  element.innerHTML = markup;
+  return element;
 }
 
 document.addEventListener('DOMContentLoaded', function(event) {
-  toast.add('js-toasts', toastObject1);
-  toast.add('js-toasts', toastObject2);
+  toast.add(toastObject1);
+  toast.add(toastObject2);
 });
 
 if (document.getElementById('js-toast-emitter')) {
   document.getElementById('js-toast-emitter').addEventListener('click', function() {
-    toast.add('js-toasts', toastObject3);
+  toast.add(toastObject3);
   })
 }
-
 
 
 
