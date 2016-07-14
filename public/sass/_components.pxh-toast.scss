@@ -248,16 +248,16 @@ $pxh-toast-max-count: 3;
     padding-top: $pxh-toast-margin * 4;
     flex-basis: $pxh-toast-height;
     font-size: 28px;
-    &--low {
+    &--green {
       background-color: $green;
     }
-    &--medium {
+    &--blue {
       background-color: $blue;
     }
-    &--high {
+    &--orange {
       background-color: $orange;
     }
-    &--severe {
+    &--red {
       background-color: $red;
     }
   }

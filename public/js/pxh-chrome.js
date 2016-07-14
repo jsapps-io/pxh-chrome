@@ -978,8 +978,6 @@ var pxhAddResizeSensor = function(targetId) {
 
 
 
-
-
 // this is a total hack
 var pxhToggleNotifications = function(toggleControl, toggleTarget, toggleClass) {
   var controlElement = document.getElementsByClassName(toggleControl);
@@ -991,7 +989,7 @@ var pxhToggleNotifications = function(toggleControl, toggleTarget, toggleClass) 
   }
 }
 
-// type : 'success' // success, info, warning, important
+// type : 'green' // green, blue, orange, red
 // isPersistent : false // true, false
 // icon : 'check-circle' // any Font Awesome icon slug
 // text : 'This is the text for notification #1.'
@@ -1007,7 +1005,7 @@ var toastObject1 = {
 }
 
 var toastObject2 = {
-  type : 'high', // low, medium, high, severe
+  type : 'orange',
   isPersistent : true,
   icon : 'exclamation-circle', // any FA icon
   text : 'It can be this long or longer if you want. In fact, it can be really, really long if you have a lot you want to say. We kind of discourage this much content but knock yourself out! Just keep talking and talking and talking and this area will keep expanding and expanding.',
@@ -1017,7 +1015,7 @@ var toastObject2 = {
 }
 
 var toastObject3 = {
-  type : 'medium', // low, medium, high, severe
+  type : 'blue',
   isPersistent : false,
   icon : 'info-circle', // any FA icon
   text : 'It can be this long or longer if you want. In fact, it can be really, really long if you have a lot you want to say. We kind of discourage this much content but knock yourself out! Just keep talking and talking and talking and this area will keep expanding and expanding.',
@@ -1026,7 +1024,7 @@ var toastObject3 = {
 }
 
 var toastObject4 = {
-  type : 'severe', // low, medium, high, severe
+  type : 'red',
   isPersistent : false,
   icon : 'times-circle', // any FA icon
   text : 'Fourth notification? Coming right up!',
