@@ -6,7 +6,7 @@ $pxh-notifications-enabled : false !default;
 
 $pxh-notification-height: 70px;
 $pxh-notification-margin: 5px;
-$pxh-notification-max-count: 4;
+$pxh-notification-max-count: 5;
 
 @mixin pxh-notification--in-state-scale {
   height: $pxh-toast-height;
@@ -37,7 +37,7 @@ $pxh-notification-max-count: 4;
   .pxh-notifications {
     z-index: 800;
     position: fixed;
-    bottom: 65px;
+    bottom: 40px;
     left: $pxh-notification-margin;
     right: $pxh-notification-margin;
     border-radius: 2px;
@@ -162,7 +162,7 @@ $pxh-notification-max-count: 4;
 
   .pxh-notifications__list {
     @include pxh-fancy-scrollbar;
-    max-height: 270px;
+    max-height: ($pxh-notification-height * $pxh-notification-max-count) + ($pxh-notification-height / 2);
     -webkit-overflow-scrolling: touch;
     overflow-y: auto;
   }

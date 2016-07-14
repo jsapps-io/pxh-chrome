@@ -6,7 +6,7 @@ $pxh-toasts-enabled : false !default;
 
 $pxh-toast-height: 70px;
 $pxh-toast-margin: 5px;
-$pxh-toast-max-count: 4;
+$pxh-toast-max-count: 3;
 
 @mixin pxh-override-px-theme-background-color($class-to-chain, $link-color : $primary-blue, $hover-color : $link-color) {
   &.#{$class-to-chain} { // override px-theme
@@ -166,7 +166,7 @@ $pxh-toast-max-count: 4;
     top: 60px + 1px + 5px;
     right: $pxh-toast-margin;
     left: $pxh-toast-margin;
-    max-height: ($pxh-toast-height * $pxh-toast-max-count) + ($pxh-toast-margin * ($pxh-toast-max-count - 1));
+    max-height: ($pxh-toast-height * $pxh-toast-max-count) + ($pxh-toast-height / 2) + ($pxh-toast-margin * ($pxh-toast-max-count - 1));
     -webkit-overflow-scrolling: touch;
     overflow-y: auto;
     z-index: 300;
