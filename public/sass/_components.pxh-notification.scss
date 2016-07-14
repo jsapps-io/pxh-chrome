@@ -207,6 +207,7 @@ $pxh-notification-max-count: 4;
   .pxh-notification__more-button {
     @include pxh-toast__more-button;
     @include pxh-override-px-theme-color('pxh-notification__more-button');
+    @include pxh-override-px-theme-background-color('pxh-notification__more-button', $gray10, $gray9);
   }
   .pxh-notification__timestamp {
     @include pxh-toast__timestamp;
