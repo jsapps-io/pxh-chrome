@@ -48,6 +48,7 @@ $pxh-toast-max-count: 4;
   padding: $pxh-toast-margin 0 0 ($pxh-toast-margin * 2);
   overflow: hidden;
   position: relative;
+  line-height: 1.2;
 }
 
 @mixin pxh-toast__more {
