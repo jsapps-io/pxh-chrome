@@ -128,6 +128,7 @@ $pxh-toast-max-count: 4;
   text-decoration: none;
   display: block;
   padding: ($pxh-toast-margin * 5) ($pxh-toast-margin * 2) 0 ($pxh-toast-margin * 2);
+  height: $pxh-toast-height;
   &:hover {
     color: $primary-blue;
   }
