@@ -991,7 +991,7 @@ var pxhToggleNotifications = function(toggleControl, toggleTarget, toggleClass) 
 
 // type : 'green' // green, blue, orange, red
 // isPersistent : false // true, false
-// icon : 'check-circle' // any Font Awesome icon slug
+// icon : 'info-circle' // any Font Awesome icon slug
 // text : 'This is the text for notification #1.'
 // actionLabel : 'View'
 // actionLink : 'http://google.com' // fully qualified link or route
@@ -1007,7 +1007,7 @@ var toastObject1 = {
 var toastObject2 = {
   type : 'orange',
   isPersistent : true,
-  icon : 'exclamation-circle', // any FA icon
+  icon : 'exclamation-circle',
   text : 'It can be this long or longer if you want. In fact, it can be really, really long if you have a lot you want to say. We kind of discourage this much content but knock yourself out! Just keep talking and talking and talking and this area will keep expanding and expanding.',
   actionLabel : 'View a lot of things right now',
   actionLink : 'http://google.com',
@@ -1017,7 +1017,7 @@ var toastObject2 = {
 var toastObject3 = {
   type : 'blue',
   isPersistent : false,
-  icon : 'info-circle', // any FA icon
+  icon : 'info-circle',
   text : 'It can be this long or longer if you want. In fact, it can be really, really long if you have a lot you want to say. We kind of discourage this much content but knock yourself out! Just keep talking and talking and talking and this area will keep expanding and expanding.',
   actionLabel : 'View a lot of things right now',
   actionLink : 'http://google.com'
@@ -1026,7 +1026,7 @@ var toastObject3 = {
 var toastObject4 = {
   type : 'red',
   isPersistent : false,
-  icon : 'times-circle', // any FA icon
+  icon : 'times-circle',
   text : 'Fourth notification? Coming right up!',
   actionLabel : 'Beef',
   actionLink : 'http://beef.org'
