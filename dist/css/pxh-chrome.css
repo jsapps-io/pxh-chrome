@@ -5491,7 +5491,8 @@ sub {
   right: 5px;
   left: 5px;
   max-height: 295px;
-  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  overflow-y: auto;
   z-index: 300;
 }
 
@@ -5721,6 +5722,18 @@ sub {
   color: white;
 }
 
+.pxh-toast__button.pxh-toast__button.pxh-toast__button.pxh-toast__button {
+  background-color: #242326;
+}
+
+.pxh-toast__button.pxh-toast__button.pxh-toast__button.pxh-toast__button:link {
+  background-color: #242326;
+}
+
+.pxh-toast__button.pxh-toast__button.pxh-toast__button.pxh-toast__button:hover {
+  background-color: #3b3b3f;
+}
+
 .pxh-toast__icon {
   text-align: center;
   -ms-flex-negative: 0;
@@ -5756,6 +5769,7 @@ sub {
   padding: 5px 0 0 10px;
   overflow: hidden;
   position: relative;
+  line-height: 1.2;
 }
 
 .pxh-toast__more {
@@ -5821,7 +5835,7 @@ sub {
 }
 
 .pxh-toast__more-button.pxh-toast__more-button.pxh-toast__more-button.pxh-toast__more-button:hover {
-  background-color: #242326;
+  background-color: #3b3b3f;
 }
 
 .pxh-toast__dismiss {
@@ -5839,6 +5853,7 @@ sub {
   text-decoration: none;
   display: block;
   padding: 25px 10px 0 10px;
+  height: 70px;
 }
 
 .pxh-toast__dismiss-button:hover {
@@ -6115,7 +6130,8 @@ sub {
   scrollbar-face-color: #525156;
   -webkit-overflow-scrolling: touch;
   max-height: 270px;
-  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  overflow-y: auto;
 }
 
 .pxh-notifications__list::-webkit-scrollbar {
@@ -6187,6 +6203,7 @@ sub {
   padding: 5px 0 0 10px;
   overflow: hidden;
   position: relative;
+  line-height: 1.2;
 }
 
 .pxh-notification__link {
@@ -6272,6 +6289,18 @@ sub {
   color: white;
 }
 
+.pxh-notification__more-button.pxh-notification__more-button.pxh-notification__more-button.pxh-notification__more-button {
+  background-color: #242326;
+}
+
+.pxh-notification__more-button.pxh-notification__more-button.pxh-notification__more-button.pxh-notification__more-button:link {
+  background-color: #242326;
+}
+
+.pxh-notification__more-button.pxh-notification__more-button.pxh-notification__more-button.pxh-notification__more-button:hover {
+  background-color: #3b3b3f;
+}
+
 .pxh-notification__timestamp {
   margin-left: 5px;
   color: #525156;
@@ -6300,6 +6329,7 @@ sub {
   text-decoration: none;
   display: block;
   padding: 25px 10px 0 10px;
+  height: 70px;
   color: #525156;
 }
 
