@@ -90,6 +90,10 @@ $pxh-notifications-enabled : false !default;
   width: 100%;
 }
 
+.pxh-login__link {
+  @include pxh-override-px-theme-color('pxh-login__link');
+}
+
 .pxh-login__profile-link {
   display: block;
   text-decoration: none;
@@ -263,7 +267,7 @@ $pxh-notifications-enabled : false !default;
 }
 
 .pxh-login-menu__link {
-  @include pxh-override-px-theme-color('pxh-login__profile-link', $white, $white);
+  @include pxh-override-px-theme-color('pxh-login-menu__link ', $white, $white);
 }
 
 .pxh-login-menu__link:hover.pxh-login-menu__link:hover.pxh-login-menu__link:hover { // chained to override px-theme
