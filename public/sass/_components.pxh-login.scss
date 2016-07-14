@@ -90,24 +90,17 @@ $pxh-notifications-enabled : false !default;
   width: 100%;
 }
 
+.pxh-login__link {
+  @include pxh-override-px-theme-color('pxh-login__link');
+}
+
 .pxh-login__profile-link {
   display: block;
   text-decoration: none;
 }
 
-.pxh-login__profile-link.pxh-login__profile-link.pxh-login__profile-link,
-.pxh-login__profile-link:link.pxh-login__profile-link:link.pxh-login__profile-link:link,
-.pxh-login__profile-link:visited.pxh-login__profile-link:visited.pxh-login__profile-link:visited,
-.pxh-login__link.pxh-login__link.pxh-login__link,
-.pxh-login__link:link.pxh-login__link:link.pxh-login__link:link,
-.pxh-login__link:visited.pxh-login__link:visited.pxh-login__link:visited { // chained to override px-theme
-  color: $gray7;
-}
-
-.pxh-login__profile-link:hover.pxh-login__profile-link:hover.pxh-login__profile-link:hover,
-.pxh-login__link:hover.pxh-login__link:hover.pxh-login__link:hover,
- { // chained to override px-theme
-  color: $white;
+.pxh-login__profile-link {
+  @include pxh-override-px-theme-color('pxh-login__profile-link');
 }
 
 .pxh-login__avatar {
@@ -116,7 +109,7 @@ $pxh-notifications-enabled : false !default;
   float: left;
 }
 
-.pxh-login__avatar-icon.pxh-login__avatar-icon.pxh-login__avatar-icon.pxh-login__avatar-icon.pxh-login__avatar-icon {  // yes, in fact, it DOES take a five-deep class chain to override px-theme here
+.pxh-login__avatar-icon.pxh-login__avatar-icon.pxh-login__avatar-icon.pxh-login__avatar-icon.pxh-login__avatar-icon {  // it takes a five-deep class chain to override px-theme here
   height: $pxh-login-avatar-height-width;
   width: $pxh-login-avatar-height-width;
   text-align: center;
@@ -273,10 +266,8 @@ $pxh-notifications-enabled : false !default;
   color: $white;
 }
 
-.pxh-login-menu__link:link.pxh-login-menu__link:link.pxh-login-menu__link:link,
-.pxh-login-menu__link:visited.pxh-login-menu__link:visited.pxh-login-menu__link:visited,
-.pxh-login-menu__link:active.pxh-login-menu__link:active.pxh-login-menu__link:active { // chained to override px-theme
-  color: $white;
+.pxh-login-menu__link {
+  @include pxh-override-px-theme-color('pxh-login-menu__link ', $white, $white);
 }
 
 .pxh-login-menu__link:hover.pxh-login-menu__link:hover.pxh-login-menu__link:hover { // chained to override px-theme

@@ -8,22 +8,6 @@ $pxh-toast-height: 70px;
 $pxh-toast-margin: 5px;
 $pxh-toast-max-count: 4;
 
-@mixin pxh-override-px-theme-color($class-to-chain, $link-color : $gray7, $hover-color : $white) {
-  &.#{$class-to-chain} { // override px-theme
-    &.#{$class-to-chain} { // override px-theme
-      &.#{$class-to-chain} { // override px-theme
-        color: $link-color;
-        &:link {
-          color: $link-color;
-        }
-        &:hover {
-          color: $hover-color;
-        }
-      }
-    }
-  }
-}
-
 @mixin pxh-override-px-theme-background-color($class-to-chain, $link-color : $primary-blue, $hover-color : $link-color) {
   &.#{$class-to-chain} { // override px-theme
     &.#{$class-to-chain} { // override px-theme
@@ -251,7 +235,7 @@ $pxh-toast-max-count: 4;
   .pxh-toast__button {
     max-width: $pxh-toast-height * 2;
     @include pxh-toast__button;
-    @include pxh-override-px-theme-color('pxh-toast__button');
+    @include pxh-override-px-theme-color('pxh-toast__button', $gray5);
   }
 
   .pxh-toast__icon {
@@ -285,6 +269,7 @@ $pxh-toast-max-count: 4;
   .pxh-toast__more-button {
     @include pxh-toast__more-button;
     @include pxh-override-px-theme-color('pxh-toast__more-button');
+    @include pxh-override-px-theme-background-color('pxh-toast__more-button', $gray10);
   }
 
   .pxh-toast__dismiss {

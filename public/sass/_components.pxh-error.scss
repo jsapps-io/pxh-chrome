@@ -28,7 +28,6 @@
 
 .pxh-error__icon {
   font-size: $px-font-size-beta;
-  // color: $gray5;
   color: $error-icon-color;
   line-height: 1;
 }
@@ -36,7 +35,6 @@
 .pxh-error__title {
   font-size: $px-font-size-epsilon;
   font-weight: bold;
-  // color: $white;
   color: $error-title-color;
   a, 
   a:link {
@@ -46,7 +44,6 @@
 
 .pxh-error__description {
   font-size: $px-font-size-regular;
-  // color: $white;
   color: $error-description-color;
   a, 
   a:link {
