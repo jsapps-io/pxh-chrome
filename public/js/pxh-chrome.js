@@ -998,10 +998,8 @@ var pxhToggleNotifications = function(toggleControl, toggleTarget, toggleClass) 
 // actionCallback : // callback function
 
 var toastObject1 = {
-  type : 'low', // low, medium, high, severe
-  isPersistent : true,
-  icon : 'check-circle', // any FA icon
-  text : 'This is the text for notification #1. text for notification #1.',
+  value : 'something',
+  isPersistent : true
 }
 
 var toastObject2 = {

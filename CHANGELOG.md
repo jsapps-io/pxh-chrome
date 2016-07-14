@@ -2,6 +2,8 @@
 
 ### 1.0.1 - July 11, 2016 (pre-release)
 * Bump version on `gulp-eslint` to 3.0.0
+* Remove GE Inspira and GE Inspira Serif fonts
+  * pxh-chrome now ships with GE Inspira Sans exclusively
 * Add (currently disabled via flags) pxh-toasts and pxh-toast components
   * Responsive width based on width of toasts container
   * Animate toast on entrance and exit
