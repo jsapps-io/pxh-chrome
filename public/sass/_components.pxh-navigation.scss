@@ -387,12 +387,6 @@
   color: $pxh-navigation-sub-selected-color;
 }
 
-.pxh-navigation__sub-link--settings.pxh-navigation__sub-link--settings.pxh-navigation__sub-link--settings,
-.pxh-navigation__sub-link--settings:link.pxh-navigation__sub-link--settings:link.pxh-navigation__sub-link--settings:link,
-.pxh-navigation__sub-link--settings:visited.pxh-navigation__sub-link--settings:visited.pxh-navigation__sub-link--settings:visited { // chained to override px-theme
-  color: $primary-blue;
-}
-
-.pxh-navigation__sub-link--settings:hover.pxh-navigation__sub-link--settings:hover.pxh-navigation__sub-link--settings:hover { // chained to override px-theme
-  color: $white;
+.pxh-navigation__sub-link--settings {
+  @include pxh-override-px-theme-color('pxh-navigation__sub-link--settings', $primary-blue);
 }
