@@ -999,8 +999,7 @@ var pxhToggleNotifications = function(toggleControl, toggleTarget, toggleClass) 
 // timestamp: '9:36 AM'
 
 var toastObject1 = {
-  value : 'something',
-  isPersistent : true
+  value : 'something'
 }
 
 var toastObject2 = {
