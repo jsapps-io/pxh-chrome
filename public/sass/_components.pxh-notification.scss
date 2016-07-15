@@ -177,13 +177,7 @@ $pxh-notification-max-count: 5;
       background-color: $red;
       @include pxh-override-px-theme-background-color('pxh-notifications__icon-badge--severe', $red);
     }
-  }
-
-  // From the @md (tablet) breakpoint and wider,
-  // display pxh-login__settings in its narrow state.
-  // Remove this class to display the drawer in its wide state.
-  @include mq($from: md) {
-    .pxh-notifications__icon--narrow\@md {
+    &--hidden {
       @include pxh-login--out-state;
     }
   }
