@@ -135,6 +135,21 @@ $pxh-notification-max-count: 5;
     @include pxh-login--in-state;
   }
 
+  // From the @md (tablet) breakpoint and wider,
+  // display pxh-login__settings in its narrow state.
+  // Remove this class to display the drawer in its wide state.
+  @include mq($from: md) {
+    .pxh-notifications__icon--narrow\@md {
+      @include pxh-login--out-state;
+    }
+  }
+
+  @include mq($from: lg) {
+    .pxh-notifications__icon--wide\@lg {
+    @include pxh-login--in-state;
+    }
+  }
+  
   .pxh-notifications__icon-link {
     color: $gray7;
     &:hover,
@@ -179,12 +194,6 @@ $pxh-notification-max-count: 5;
     }
     &--hidden {
       @include pxh-login--out-state;
-    }
-  }
-
-  @include mq($from: lg) {
-    .pxh-notifications__icon--wide\@lg {
-    @include pxh-login--in-state;
     }
   }
 
