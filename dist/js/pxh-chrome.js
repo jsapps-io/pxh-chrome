@@ -1024,9 +1024,19 @@ toast.badge.decrement = function () {
 };
 
 toast.badge.update = function () {
+  var notificationIcon = '';
   var notificationBadge = '';
   if (notificationBadge = document.getElementById('js-notifications__icon-badge')) {
-    notificationBadge.innerHTML = toast.badge.text;
+    if (toast.badge.count > 0) {
+      notificationBadge.innerHTML = toast.badge.text;
+      notificationBadge.classList.remove('pxh-notifications__icon-badge--hidden');
+      if (notificationIcon = document.getElementById('js-notifications__icon')) {
+        // notificationIcon.classList.remove('pxh-notifications__icon--narrow@md');
+      }
+    } else {
+      notificationBadge.classList.add('pxh-notifications__icon-badge--hidden');
+      // notificationIcon.classList.add('pxh-notifications__icon--narrow@md');
+    }
   }
 };
 

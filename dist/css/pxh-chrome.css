@@ -6027,6 +6027,22 @@ sub {
   opacity: 1;
 }
 
+@media (min-width: 48em) {
+  .pxh-notifications__icon--narrow\@md {
+    height: 0;
+    font-size: 0;
+    opacity: 0;
+  }
+}
+
+@media (min-width: 64em) {
+  .pxh-notifications__icon--wide\@lg {
+    height: 60px;
+    font-size: 15px;
+    opacity: 1;
+  }
+}
+
 .pxh-notifications__icon-link {
   color: #7c7c84;
 }
@@ -6158,20 +6174,10 @@ sub {
   background-color: #e32533;
 }
 
-@media (min-width: 48em) {
-  .pxh-notifications__icon--narrow\@md {
-    height: 0;
-    font-size: 0;
-    opacity: 0;
-  }
-}
-
-@media (min-width: 64em) {
-  .pxh-notifications__icon--wide\@lg {
-    height: 60px;
-    font-size: 15px;
-    opacity: 1;
-  }
+.pxh-notifications__icon-badge--hidden {
+  height: 0;
+  font-size: 0;
+  opacity: 0;
 }
 
 .pxh-notifications__list {
