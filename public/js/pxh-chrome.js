@@ -1242,7 +1242,7 @@ toast.markup.createToast = function(object, id) {
 toast.markup.createNotification = function(object, id) {
   var slug = 'notification';
   var element = document.createElement('div');
-  element.className = 'pxh-' + slug + ' ' + slug + '--animate-in';
+  element.className = 'pxh-' + slug + ' pxh-' + slug + '--animate-in';
   element.id = 'js-' + slug + '--' + id;
   var markup = [];
   markup.push(toast.markup.icon(object, slug));
