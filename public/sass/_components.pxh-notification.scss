@@ -110,7 +110,7 @@ $pxh-notification-max-count: 5;
     &:hover {
       color: $primary-blue;
     }
-    @include pxh-override-px-theme-color('pxh-notifications__link');
+    @include pxh-override-px-theme-color('pxh-notifications__link', $gray5, $primary-blue);
   }
 
   .pxh-notifications__clear {

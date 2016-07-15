@@ -1117,6 +1117,17 @@ toast.remove = function(id) {
   }
 }
 
+toast.removeAll = function() {
+  var notificationList = '';
+  var notifications = [];
+  if ((notificationList = document.getElementById('js-notifications__list')) && (notifications = document.getElementsByClassName('pxh-notification'))) {
+    for (var i = notifications.length - 1; i >= 0; i--) {
+      var id = notifications[i].id.replace('js-notification--', '');
+      toast.remove(id);
+    }
+  }
+}
+
 toast.expand = function(element, slug) {
   if (element.classList.contains('pxh-' + slug + '--expanded')) {
     element.classList.remove('pxh-' + slug + '--expanded');
@@ -1267,6 +1278,11 @@ if (document.getElementById('js-toast-emitter')) {
   })
 }
 
+if (document.getElementById('js-notifications__link--clear')) {
+  document.getElementById('js-notifications__link--clear').addEventListener('click', function() {
+  toast.removeAll();
+  })
+}
 
 
 
