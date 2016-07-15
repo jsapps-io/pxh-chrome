@@ -5818,6 +5818,119 @@ sub {
 
 /*------------------------------------*    #components.pxh-notification
 \*------------------------------------*/
+@-webkit-keyframes pxh-notification--animate-in {
+  0% {
+    margin: 0;
+    padding: 0;
+    font-size: 0;
+    height: 0;
+    opacity: 0;
+  }
+  33% {
+    height: 70px;
+    font-size: 16px;
+    border-bottom: 1px solid #3b3b3f;
+    opacity: 0;
+  }
+  66% {
+    opacity: 1;
+    height: 70px;
+    font-size: 16px;
+    border-bottom: 1px solid #3b3b3f;
+  }
+  100% {
+    opacity: 1;
+    height: 70px;
+    font-size: 16px;
+    border-bottom: 1px solid #3b3b3f;
+  }
+}
+@keyframes pxh-notification--animate-in {
+  0% {
+    margin: 0;
+    padding: 0;
+    font-size: 0;
+    height: 0;
+    opacity: 0;
+  }
+  33% {
+    height: 70px;
+    font-size: 16px;
+    border-bottom: 1px solid #3b3b3f;
+    opacity: 0;
+  }
+  66% {
+    opacity: 1;
+    height: 70px;
+    font-size: 16px;
+    border-bottom: 1px solid #3b3b3f;
+  }
+  100% {
+    opacity: 1;
+    height: 70px;
+    font-size: 16px;
+    border-bottom: 1px solid #3b3b3f;
+  }
+}
+
+@-webkit-keyframes pxh-notification--animate-out {
+  0% {
+    opacity: 1;
+    height: 70px;
+    font-size: 16px;
+    border-bottom: 1px solid #3b3b3f;
+  }
+  33% {
+    height: 70px;
+    font-size: 16px;
+    border-bottom: 1px solid #3b3b3f;
+    opacity: 0;
+  }
+  66% {
+    margin: 0;
+    padding: 0;
+    font-size: 0;
+    height: 0;
+    opacity: 0;
+  }
+  100% {
+    margin: 0;
+    padding: 0;
+    font-size: 0;
+    height: 0;
+    opacity: 0;
+  }
+}
+
+@keyframes pxh-notification--animate-out {
+  0% {
+    opacity: 1;
+    height: 70px;
+    font-size: 16px;
+    border-bottom: 1px solid #3b3b3f;
+  }
+  33% {
+    height: 70px;
+    font-size: 16px;
+    border-bottom: 1px solid #3b3b3f;
+    opacity: 0;
+  }
+  66% {
+    margin: 0;
+    padding: 0;
+    font-size: 0;
+    height: 0;
+    opacity: 0;
+  }
+  100% {
+    margin: 0;
+    padding: 0;
+    font-size: 0;
+    height: 0;
+    opacity: 0;
+  }
+}
+
 .pxh-notifications {
   z-index: 800;
   position: fixed;
@@ -6102,6 +6215,24 @@ sub {
 
 .pxh-notification--expanded {
   height: auto;
+}
+
+.pxh-notification--animate-in {
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  -webkit-animation-duration: 1000ms;
+          animation-duration: 1000ms;
+  -webkit-animation-name: pxh-notification--animate-in;
+          animation-name: pxh-notification--animate-in;
+}
+
+.pxh-notification--animate-out {
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  -webkit-animation-duration: 1000ms;
+          animation-duration: 1000ms;
+  -webkit-animation-name: pxh-notification--animate-out;
+          animation-name: pxh-notification--animate-out;
 }
 
 .pxh-notification__icon {
