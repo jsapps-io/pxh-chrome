@@ -282,7 +282,7 @@ $pxh-toast-max-count: 3;
 
   .pxh-toast__dismiss-button {
     @include pxh-toast__dismiss-button;
-    @include pxh-override-px-theme-color('pxh-toast__dismiss-button');
+    @include pxh-override-px-theme-color('pxh-toast__dismiss-button', $gray7, $primary-blue);
   }
 }
 
