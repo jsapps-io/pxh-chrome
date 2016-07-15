@@ -1034,27 +1034,28 @@ var toast = {};
 toast.markup = {};
 
 toast.add = function(object) {
+  var id = Math.floor(Math.random()*16777215).toString(16);
   var notificationList = '';
   var toastList = '';
   if ((notificationList = document.getElementById('js-notifications__list')) && ((object.actionLink) || (object.actionCallback))) {
     var notificationFirstChild = notificationList.firstChild;
-    var notificationElement = notificationList.insertBefore(toast.markup.createNotification(object), notificationFirstChild);
-    toast.action.dismissButton(notificationElement, 'notification');
+    var notificationElement = notificationList.insertBefore(toast.markup.createNotification(object, id), notificationFirstChild);
+    toast.action.dismissButton(notificationElement, 'notification', id);
     toast.action.expandButton(notificationElement, 'notification');
   }
   if (toastList = document.getElementById('js-toasts')) {
     var toastFirstChild = toastList.firstChild;
-    var toastElement = toastList.insertBefore(toast.markup.createToast(object), toastFirstChild);
-    toast.action.dismissButton(toastElement, 'toast');
+    var toastElement = toastList.insertBefore(toast.markup.createToast(object, id), toastFirstChild);
+    toast.action.dismissButton(toastElement, 'toast', id);
     toast.action.expandButton(toastElement, 'toast');
     if (!object.isPersistent) {
       setTimeout(function() {
         if (!toastElement.classList.contains('pxh-toast--expanded')) {
           // after 2000ms animate the toast out
-          toast.hide(toastElement, 'toast');
+          toast.hide(toastElement, 'toast', id);
           // 1000ms after the animation, remove the notification from the DOM
           setTimeout(function() {
-            toast.remove(toastElement);
+            toast.remove(toastElement, id);
           }, 1000);
         }
       }, 5000);
@@ -1064,14 +1065,14 @@ toast.add = function(object) {
 
 toast.action = {};
 
-toast.action.dismissButton = function(element, slug) {
-  var button = element.querySelector('.js-' + slug + '__dismiss-button');
+toast.action.dismissButton = function(element, slug, id) {
+  var button = document.getElementById('js-' + slug + '__dismiss-button--' + id);
   if (button) {
     button.addEventListener('click', function(event) {
       event.preventDefault();
-      toast.hide(element, slug);
+      toast.hide(id);
       setTimeout(function() {
-        toast.remove(element);
+        toast.remove(id);
       }, 1000);
     })
   }
@@ -1087,14 +1088,32 @@ toast.action.expandButton = function(element, slug) {
   }
 }
 
-toast.hide = function(element, slug) {
-  element.classList.add('pxh-' + slug + '--animate-out');
-  element.classList.remove('pxh-' + slug + '--animate-in');
+toast.hide = function(id) {
+  var toastList = '';
+  var toast = '';
+  var notificationList = '';
+  var notification = '';
+  if ((toastList = document.getElementById('js-toasts')) && (toast = document.getElementById('js-toast--' + id))) {
+    toast.classList.add('pxh-toast--animate-out');
+    toast.classList.remove('pxh-toast--animate-in');
+  }
+  if ((notificationList = document.getElementById('js-notifications__list')) && (notification = document.getElementById('js-notification--' + id))) {
+    notification.classList.add('pxh-notification--animate-out');
+    notification.classList.remove('pxh-notification--animate-in');
+  }
 }
 
-toast.remove = function(element) {
-  if (element)
-  element.remove();
+toast.remove = function(id) {
+  var toastList = '';
+  var toast = '';
+  var notificationList = '';
+  var notification = '';
+  if ((toastList = document.getElementById('js-toasts')) && (toast = document.getElementById('js-toast--' + id))) {
+    toast.remove();
+  }
+  if ((notificationList = document.getElementById('js-notifications__list')) && (notification = document.getElementById('js-notification--' + id))) {
+    notification.remove();
+  }
 }
 
 toast.expand = function(element, slug) {
@@ -1176,10 +1195,10 @@ toast.markup.timestamp = function(object, slug) {
   return markup;
 }
 
-toast.markup.dismiss = function(object, slug) {
+toast.markup.dismiss = function(object, slug, id) {
   var markup = [];
   markup.push('<div class="pxh-' + slug + '__dismiss">\n');
-  markup.push('  <a href="#" class="pxh-' + slug + '__dismiss-button js-' + slug + '__dismiss-button">\n');
+  markup.push('  <a href="#" class="pxh-' + slug + '__dismiss-button js-' + slug + '__dismiss-button" id="js-' + slug + '__dismiss-button--' + id + '">\n');
   markup.push('    <i class="fa fa-times"></i>\n');
   markup.push('  </a>\n');
   markup.push('</div>\n');
@@ -1202,10 +1221,11 @@ toast.markup.button = function(object, slug) {
   return markup;
 }
 
-toast.markup.createToast = function(object) {
+toast.markup.createToast = function(object, id) {
   var slug = 'toast';
   var element = document.createElement('div');
   element.className = 'pxh-' + slug + ' pxh-' + slug + '--animate-in';
+  element.id = 'js-' + slug + '--' + id;
   var markup = [];
   markup.push(toast.markup.icon(object, slug));
   markup.push(toast.markup.toastText(object, slug));
@@ -1213,21 +1233,22 @@ toast.markup.createToast = function(object) {
   // if (object.timestamp) {
   //   markup.push(toast.markup.timestamp(object, slug));
   // }
-  markup.push(toast.markup.dismiss(object, slug));
+  markup.push(toast.markup.dismiss(object, slug, id));
   markup = markup.join('');
   element.innerHTML = markup;
   return element;
 }
 
-toast.markup.createNotification = function(object) {
+toast.markup.createNotification = function(object, id) {
   var slug = 'notification';
   var element = document.createElement('div');
   element.className = 'pxh-' + slug + ' ' + slug + '--animate-in';
+  element.id = 'js-' + slug + '--' + id;
   var markup = [];
   markup.push(toast.markup.icon(object, slug));
   markup.push(toast.markup.notificationText(object, slug));
   markup.push(toast.markup.timestamp(object, slug));
-  markup.push(toast.markup.dismiss(object, slug));
+  markup.push(toast.markup.dismiss(object, slug, id));
   markup = markup.join('');
   element.innerHTML = markup;
   return element;
