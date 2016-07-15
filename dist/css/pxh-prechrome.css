@@ -461,38 +461,6 @@ textarea {
  *
  */
 @font-face {
-  font-family: "GE Inspira";
-  font-weight: normal;
-  font-style: normal;
-  src: url("../fonts/ge/type/GEInspMd.eot");
-  src: url("../fonts/ge/type/GEInspMd.eot?#iefix") format("embedded-opentype"), url("../fonts/ge/type/GEInspMd.woff") format("woff"), url("../fonts/ge/type/GEInspMd.ttf") format("truetype"), url("../fonts/ge/type/GEInspMd.svg#GE Inspira") format("svg");
-}
-
-@font-face {
-  font-family: "GE Inspira";
-  font-weight: normal;
-  font-style: italic;
-  src: url("../fonts/ge/type/GEInspMdIt.eot");
-  src: url("../fonts/ge/type/GEInspMdIt.eot?#iefix") format("embedded-opentype"), url("../fonts/ge/type/GEInspMdIt.woff") format("woff"), url("../fonts/ge/type/GEInspMdIt.ttf") format("truetype"), url("../fonts/ge/type/GEInspMdIt.svg#GE Inspira") format("svg");
-}
-
-@font-face {
-  font-family: "GE Inspira";
-  font-weight: bold;
-  font-style: normal;
-  src: url("../fonts/ge/type/GEInspBd.eot");
-  src: url("../fonts/ge/type/GEInspBd.eot?#iefix") format("embedded-opentype"), url("../fonts/ge/type/GEInspBd.woff") format("woff"), url("../fonts/ge/type/GEInspBd.ttf") format("truetype"), url("../fonts/ge/type/GEInspBd.svg#GE Inspira") format("svg");
-}
-
-@font-face {
-  font-family: "GE Inspira";
-  font-weight: bold;
-  font-style: italic;
-  src: url("../fonts/ge/type/GEInspBI.eot");
-  src: url("../fonts/ge/type/GEInspBI.eot?#iefix") format("embedded-opentype"), url("../fonts/ge/type/GEInspBI.woff") format("woff"), url("../fonts/ge/type/GEInspBI.ttf") format("truetype"), url("../fonts/ge/type/GEInspBI.svg#GE Inspira") format("svg");
-}
-
-@font-face {
   font-family: "GE Inspira Sans";
   font-weight: normal;
   font-style: normal;
@@ -522,38 +490,6 @@ textarea {
   font-style: italic;
   src: url("../fonts/ge/type/GEInspiraSans-BoldItalic-v01.eot");
   src: url("../fonts/ge/type/GEInspiraSans-BoldItalic-v01.eot?#iefix") format("embedded-opentype"), url("../fonts/ge/type/GEInspiraSans-BoldItalic-v01.woff") format("woff"), url("../fonts/ge/type/GEInspiraSans-BoldItalic-v01.ttf") format("truetype"), url("../fonts/ge/type/GEInspiraSans-BoldItalic-v01.svg#GE Inspira Sans") format("svg");
-}
-
-@font-face {
-  font-family: "GE Inspira Serif";
-  font-weight: normal;
-  font-style: normal;
-  src: url("../fonts/ge/type/GEInspiraSerif-Regular-v01.eot");
-  src: url("../fonts/ge/type/GEInspiraSerif-Regular-v01.eot?#iefix") format("embedded-opentype"), url("../fonts/ge/type/GEInspiraSerif-Regular-v01.woff") format("woff"), url("../fonts/ge/type/GEInspiraSerif-Regular-v01.ttf") format("truetype"), url("../fonts/ge/type/GEInspiraSerif-Regular-v01.svg#GE Inspira Serif") format("svg");
-}
-
-@font-face {
-  font-family: "GE Inspira Serif";
-  font-weight: normal;
-  font-style: italic;
-  src: url("../fonts/ge/type/GEInspiraSerif-Italic-v01.eot");
-  src: url("../fonts/ge/type/GEInspiraSerif-Italic-v01.eot?#iefix") format("embedded-opentype"), url("../fonts/ge/type/GEInspiraSerif-Italic-v01.woff") format("woff"), url("../fonts/ge/type/GEInspiraSerif-Italic-v01.ttf") format("truetype"), url("../fonts/ge/type/GEInspiraSerif-Italic-v01.svg#GE Inspira Serif") format("svg");
-}
-
-@font-face {
-  font-family: "GE Inspira Serif";
-  font-weight: bold;
-  font-style: normal;
-  src: url("../fonts/ge/type/GEInspiraSerif-Bold-v01.eot");
-  src: url("../fonts/ge/type/GEInspiraSerif-Bold-v01.eot?#iefix") format("embedded-opentype"), url("../fonts/ge/type/GEInspiraSerif-Bold-v01.woff") format("woff"), url("../fonts/ge/type/GEInspiraSerif-Bold-v01.ttf") format("truetype"), url("../fonts/ge/type/GEInspiraSerif-Bold-v01.svg#GE Inspira Serif") format("svg");
-}
-
-@font-face {
-  font-family: "GE Inspira Serif";
-  font-weight: bold;
-  font-style: italic;
-  src: url("../fonts/ge/type/GEInspiraSerif-BoldItalic-v01.eot");
-  src: url("../fonts/ge/type/GEInspiraSerif-BoldItalic-v01.eot?#iefix") format("embedded-opentype"), url("../fonts/ge/type/GEInspiraSerif-BoldItalic-v01.woff") format("woff"), url("../fonts/ge/type/GEInspiraSerif-BoldItalic-v01.ttf") format("truetype"), url("../fonts/ge/type/GEInspiraSerif-BoldItalic-v01.svg#GE Inspira Serif") format("svg");
 }
 
 /*------------------------------------*    #generic.defaults

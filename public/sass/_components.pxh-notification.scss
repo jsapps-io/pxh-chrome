@@ -6,7 +6,7 @@ $pxh-notifications-enabled : false !default;
 
 $pxh-notification-height: 70px;
 $pxh-notification-margin: 5px;
-$pxh-notification-max-count: 4;
+$pxh-notification-max-count: 5;
 
 @mixin pxh-notification--in-state-scale {
   height: $pxh-toast-height;
@@ -33,11 +33,43 @@ $pxh-notification-max-count: 4;
   @include out-state-opacity;
 }
 
+  @keyframes pxh-notification--animate-in {
+    0% {
+      @include pxh-notification--out-state;
+    }
+    33% {
+      @include pxh-notification--in-state-scale;
+      @include out-state-opacity;
+    }
+    66% {
+      @include pxh-notification--in-state;
+    }
+    100% {
+      @include pxh-notification--in-state;
+    }
+  }
+
+  @keyframes pxh-notification--animate-out {
+    0% {
+      @include pxh-notification--in-state;
+    }
+    33% {
+      @include pxh-notification--in-state-scale;
+      @include out-state-opacity;
+    }
+    66% {
+      @include pxh-notification--out-state;
+    }
+    100% {
+      @include pxh-notification--out-state;
+    }
+  }
+
 @if $pxh-notifications-enabled == true {
   .pxh-notifications {
     z-index: 800;
     position: fixed;
-    bottom: 65px;
+    bottom: 40px;
     left: $pxh-notification-margin;
     right: $pxh-notification-margin;
     border-radius: 2px;
@@ -127,19 +159,19 @@ $pxh-notification-max-count: 4;
     left: $pxh-drawer-margin / 4;
     padding: 3px 3px 1px 3px;
     @include pxh-override-px-theme-color('pxh-notifications__icon-badge', $white);
-    &--low {
+    &--green {
       background-color: $green;
       @include pxh-override-px-theme-background-color('pxh-notifications__icon-badge--low', $green);
     }
-    &--medium {
+    &--blue {
       background-color: $blue;
       @include pxh-override-px-theme-background-color('pxh-notifications__icon-badge--medium', $blue);
     }
-    &--high {
+    &--orange {
       background-color: $orange;
       @include pxh-override-px-theme-background-color('pxh-notifications__icon-badge--high', $orange);
     }
-    &--severe {
+    &--red {
       background-color: $red;
       @include pxh-override-px-theme-background-color('pxh-notifications__icon-badge--severe', $red);
     }
@@ -162,7 +194,7 @@ $pxh-notification-max-count: 4;
 
   .pxh-notifications__list {
     @include pxh-fancy-scrollbar;
-    max-height: 270px;
+    max-height: ($pxh-notification-height * $pxh-notification-max-count) + ($pxh-notification-height / 2);
     -webkit-overflow-scrolling: touch;
     overflow-y: auto;
   }
@@ -170,23 +202,34 @@ $pxh-notification-max-count: 4;
   .pxh-notification {
     @include pxh-toast;
     @include pxh-notification--in-state;
+    &--animate-in {
+      animation-fill-mode: forwards;
+      animation-duration: 1000ms;
+      animation-name: pxh-notification--animate-in;
+    }
+    &--animate-out {
+      animation-fill-mode: forwards;
+      animation-duration: 1000ms;
+      animation-name: pxh-notification--animate-out;
+    }
   }
+  
   .pxh-notification__icon {
     @include pxh-toast__icon;
     padding-top: $pxh-toast-margin * 4;
     padding-left: $pxh-toast-margin;
     flex-basis: $pxh-toast-margin * 8;
     font-size: 24px;
-    &--low {
+    &--green {
       color: $green;
     }
-    &--medium {
+    &--blue {
       color: $blue;
     }
-    &--high {
+    &--orange {
       color: $orange;
     }
-    &--severe {
+    &--red {
       color: $red;
     }
   }

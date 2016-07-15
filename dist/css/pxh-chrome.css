@@ -461,38 +461,6 @@ textarea {
  *
  */
 @font-face {
-  font-family: "GE Inspira";
-  font-weight: normal;
-  font-style: normal;
-  src: url("../fonts/ge/type/GEInspMd.eot");
-  src: url("../fonts/ge/type/GEInspMd.eot?#iefix") format("embedded-opentype"), url("../fonts/ge/type/GEInspMd.woff") format("woff"), url("../fonts/ge/type/GEInspMd.ttf") format("truetype"), url("../fonts/ge/type/GEInspMd.svg#GE Inspira") format("svg");
-}
-
-@font-face {
-  font-family: "GE Inspira";
-  font-weight: normal;
-  font-style: italic;
-  src: url("../fonts/ge/type/GEInspMdIt.eot");
-  src: url("../fonts/ge/type/GEInspMdIt.eot?#iefix") format("embedded-opentype"), url("../fonts/ge/type/GEInspMdIt.woff") format("woff"), url("../fonts/ge/type/GEInspMdIt.ttf") format("truetype"), url("../fonts/ge/type/GEInspMdIt.svg#GE Inspira") format("svg");
-}
-
-@font-face {
-  font-family: "GE Inspira";
-  font-weight: bold;
-  font-style: normal;
-  src: url("../fonts/ge/type/GEInspBd.eot");
-  src: url("../fonts/ge/type/GEInspBd.eot?#iefix") format("embedded-opentype"), url("../fonts/ge/type/GEInspBd.woff") format("woff"), url("../fonts/ge/type/GEInspBd.ttf") format("truetype"), url("../fonts/ge/type/GEInspBd.svg#GE Inspira") format("svg");
-}
-
-@font-face {
-  font-family: "GE Inspira";
-  font-weight: bold;
-  font-style: italic;
-  src: url("../fonts/ge/type/GEInspBI.eot");
-  src: url("../fonts/ge/type/GEInspBI.eot?#iefix") format("embedded-opentype"), url("../fonts/ge/type/GEInspBI.woff") format("woff"), url("../fonts/ge/type/GEInspBI.ttf") format("truetype"), url("../fonts/ge/type/GEInspBI.svg#GE Inspira") format("svg");
-}
-
-@font-face {
   font-family: "GE Inspira Sans";
   font-weight: normal;
   font-style: normal;
@@ -522,38 +490,6 @@ textarea {
   font-style: italic;
   src: url("../fonts/ge/type/GEInspiraSans-BoldItalic-v01.eot");
   src: url("../fonts/ge/type/GEInspiraSans-BoldItalic-v01.eot?#iefix") format("embedded-opentype"), url("../fonts/ge/type/GEInspiraSans-BoldItalic-v01.woff") format("woff"), url("../fonts/ge/type/GEInspiraSans-BoldItalic-v01.ttf") format("truetype"), url("../fonts/ge/type/GEInspiraSans-BoldItalic-v01.svg#GE Inspira Sans") format("svg");
-}
-
-@font-face {
-  font-family: "GE Inspira Serif";
-  font-weight: normal;
-  font-style: normal;
-  src: url("../fonts/ge/type/GEInspiraSerif-Regular-v01.eot");
-  src: url("../fonts/ge/type/GEInspiraSerif-Regular-v01.eot?#iefix") format("embedded-opentype"), url("../fonts/ge/type/GEInspiraSerif-Regular-v01.woff") format("woff"), url("../fonts/ge/type/GEInspiraSerif-Regular-v01.ttf") format("truetype"), url("../fonts/ge/type/GEInspiraSerif-Regular-v01.svg#GE Inspira Serif") format("svg");
-}
-
-@font-face {
-  font-family: "GE Inspira Serif";
-  font-weight: normal;
-  font-style: italic;
-  src: url("../fonts/ge/type/GEInspiraSerif-Italic-v01.eot");
-  src: url("../fonts/ge/type/GEInspiraSerif-Italic-v01.eot?#iefix") format("embedded-opentype"), url("../fonts/ge/type/GEInspiraSerif-Italic-v01.woff") format("woff"), url("../fonts/ge/type/GEInspiraSerif-Italic-v01.ttf") format("truetype"), url("../fonts/ge/type/GEInspiraSerif-Italic-v01.svg#GE Inspira Serif") format("svg");
-}
-
-@font-face {
-  font-family: "GE Inspira Serif";
-  font-weight: bold;
-  font-style: normal;
-  src: url("../fonts/ge/type/GEInspiraSerif-Bold-v01.eot");
-  src: url("../fonts/ge/type/GEInspiraSerif-Bold-v01.eot?#iefix") format("embedded-opentype"), url("../fonts/ge/type/GEInspiraSerif-Bold-v01.woff") format("woff"), url("../fonts/ge/type/GEInspiraSerif-Bold-v01.ttf") format("truetype"), url("../fonts/ge/type/GEInspiraSerif-Bold-v01.svg#GE Inspira Serif") format("svg");
-}
-
-@font-face {
-  font-family: "GE Inspira Serif";
-  font-weight: bold;
-  font-style: italic;
-  src: url("../fonts/ge/type/GEInspiraSerif-BoldItalic-v01.eot");
-  src: url("../fonts/ge/type/GEInspiraSerif-BoldItalic-v01.eot?#iefix") format("embedded-opentype"), url("../fonts/ge/type/GEInspiraSerif-BoldItalic-v01.woff") format("woff"), url("../fonts/ge/type/GEInspiraSerif-BoldItalic-v01.ttf") format("truetype"), url("../fonts/ge/type/GEInspiraSerif-BoldItalic-v01.svg#GE Inspira Serif") format("svg");
 }
 
 /*------------------------------------*    #generic.defaults
@@ -5490,7 +5426,7 @@ sub {
   top: 66px;
   right: 5px;
   left: 5px;
-  max-height: 295px;
+  max-height: 255px;
   -webkit-overflow-scrolling: touch;
   overflow-y: auto;
   z-index: 300;
@@ -5748,19 +5684,19 @@ sub {
   font-size: 28px;
 }
 
-.pxh-toast__icon--low {
+.pxh-toast__icon--green {
   background-color: #46ad00;
 }
 
-.pxh-toast__icon--medium {
+.pxh-toast__icon--blue {
   background-color: #005cb9;
 }
 
-.pxh-toast__icon--high {
+.pxh-toast__icon--orange {
   background-color: #ff9821;
 }
 
-.pxh-toast__icon--severe {
+.pxh-toast__icon--red {
   background-color: #e32533;
 }
 
@@ -5882,10 +5818,123 @@ sub {
 
 /*------------------------------------*    #components.pxh-notification
 \*------------------------------------*/
+@-webkit-keyframes pxh-notification--animate-in {
+  0% {
+    margin: 0;
+    padding: 0;
+    font-size: 0;
+    height: 0;
+    opacity: 0;
+  }
+  33% {
+    height: 70px;
+    font-size: 16px;
+    border-bottom: 1px solid #3b3b3f;
+    opacity: 0;
+  }
+  66% {
+    opacity: 1;
+    height: 70px;
+    font-size: 16px;
+    border-bottom: 1px solid #3b3b3f;
+  }
+  100% {
+    opacity: 1;
+    height: 70px;
+    font-size: 16px;
+    border-bottom: 1px solid #3b3b3f;
+  }
+}
+@keyframes pxh-notification--animate-in {
+  0% {
+    margin: 0;
+    padding: 0;
+    font-size: 0;
+    height: 0;
+    opacity: 0;
+  }
+  33% {
+    height: 70px;
+    font-size: 16px;
+    border-bottom: 1px solid #3b3b3f;
+    opacity: 0;
+  }
+  66% {
+    opacity: 1;
+    height: 70px;
+    font-size: 16px;
+    border-bottom: 1px solid #3b3b3f;
+  }
+  100% {
+    opacity: 1;
+    height: 70px;
+    font-size: 16px;
+    border-bottom: 1px solid #3b3b3f;
+  }
+}
+
+@-webkit-keyframes pxh-notification--animate-out {
+  0% {
+    opacity: 1;
+    height: 70px;
+    font-size: 16px;
+    border-bottom: 1px solid #3b3b3f;
+  }
+  33% {
+    height: 70px;
+    font-size: 16px;
+    border-bottom: 1px solid #3b3b3f;
+    opacity: 0;
+  }
+  66% {
+    margin: 0;
+    padding: 0;
+    font-size: 0;
+    height: 0;
+    opacity: 0;
+  }
+  100% {
+    margin: 0;
+    padding: 0;
+    font-size: 0;
+    height: 0;
+    opacity: 0;
+  }
+}
+
+@keyframes pxh-notification--animate-out {
+  0% {
+    opacity: 1;
+    height: 70px;
+    font-size: 16px;
+    border-bottom: 1px solid #3b3b3f;
+  }
+  33% {
+    height: 70px;
+    font-size: 16px;
+    border-bottom: 1px solid #3b3b3f;
+    opacity: 0;
+  }
+  66% {
+    margin: 0;
+    padding: 0;
+    font-size: 0;
+    height: 0;
+    opacity: 0;
+  }
+  100% {
+    margin: 0;
+    padding: 0;
+    font-size: 0;
+    height: 0;
+    opacity: 0;
+  }
+}
+
 .pxh-notifications {
   z-index: 800;
   position: fixed;
-  bottom: 65px;
+  bottom: 40px;
   left: 5px;
   right: 5px;
   border-radius: 2px;
@@ -6043,67 +6092,67 @@ sub {
   color: white;
 }
 
-.pxh-notifications__icon-badge--low {
+.pxh-notifications__icon-badge--green {
   background-color: #46ad00;
 }
 
-.pxh-notifications__icon-badge--low.pxh-notifications__icon-badge--low.pxh-notifications__icon-badge--low.pxh-notifications__icon-badge--low {
+.pxh-notifications__icon-badge--green.pxh-notifications__icon-badge--low.pxh-notifications__icon-badge--low.pxh-notifications__icon-badge--low {
   background-color: #46ad00;
 }
 
-.pxh-notifications__icon-badge--low.pxh-notifications__icon-badge--low.pxh-notifications__icon-badge--low.pxh-notifications__icon-badge--low:link {
+.pxh-notifications__icon-badge--green.pxh-notifications__icon-badge--low.pxh-notifications__icon-badge--low.pxh-notifications__icon-badge--low:link {
   background-color: #46ad00;
 }
 
-.pxh-notifications__icon-badge--low.pxh-notifications__icon-badge--low.pxh-notifications__icon-badge--low.pxh-notifications__icon-badge--low:hover {
+.pxh-notifications__icon-badge--green.pxh-notifications__icon-badge--low.pxh-notifications__icon-badge--low.pxh-notifications__icon-badge--low:hover {
   background-color: #46ad00;
 }
 
-.pxh-notifications__icon-badge--medium {
+.pxh-notifications__icon-badge--blue {
   background-color: #005cb9;
 }
 
-.pxh-notifications__icon-badge--medium.pxh-notifications__icon-badge--medium.pxh-notifications__icon-badge--medium.pxh-notifications__icon-badge--medium {
+.pxh-notifications__icon-badge--blue.pxh-notifications__icon-badge--medium.pxh-notifications__icon-badge--medium.pxh-notifications__icon-badge--medium {
   background-color: #005cb9;
 }
 
-.pxh-notifications__icon-badge--medium.pxh-notifications__icon-badge--medium.pxh-notifications__icon-badge--medium.pxh-notifications__icon-badge--medium:link {
+.pxh-notifications__icon-badge--blue.pxh-notifications__icon-badge--medium.pxh-notifications__icon-badge--medium.pxh-notifications__icon-badge--medium:link {
   background-color: #005cb9;
 }
 
-.pxh-notifications__icon-badge--medium.pxh-notifications__icon-badge--medium.pxh-notifications__icon-badge--medium.pxh-notifications__icon-badge--medium:hover {
+.pxh-notifications__icon-badge--blue.pxh-notifications__icon-badge--medium.pxh-notifications__icon-badge--medium.pxh-notifications__icon-badge--medium:hover {
   background-color: #005cb9;
 }
 
-.pxh-notifications__icon-badge--high {
+.pxh-notifications__icon-badge--orange {
   background-color: #ff9821;
 }
 
-.pxh-notifications__icon-badge--high.pxh-notifications__icon-badge--high.pxh-notifications__icon-badge--high.pxh-notifications__icon-badge--high {
+.pxh-notifications__icon-badge--orange.pxh-notifications__icon-badge--high.pxh-notifications__icon-badge--high.pxh-notifications__icon-badge--high {
   background-color: #ff9821;
 }
 
-.pxh-notifications__icon-badge--high.pxh-notifications__icon-badge--high.pxh-notifications__icon-badge--high.pxh-notifications__icon-badge--high:link {
+.pxh-notifications__icon-badge--orange.pxh-notifications__icon-badge--high.pxh-notifications__icon-badge--high.pxh-notifications__icon-badge--high:link {
   background-color: #ff9821;
 }
 
-.pxh-notifications__icon-badge--high.pxh-notifications__icon-badge--high.pxh-notifications__icon-badge--high.pxh-notifications__icon-badge--high:hover {
+.pxh-notifications__icon-badge--orange.pxh-notifications__icon-badge--high.pxh-notifications__icon-badge--high.pxh-notifications__icon-badge--high:hover {
   background-color: #ff9821;
 }
 
-.pxh-notifications__icon-badge--severe {
+.pxh-notifications__icon-badge--red {
   background-color: #e32533;
 }
 
-.pxh-notifications__icon-badge--severe.pxh-notifications__icon-badge--severe.pxh-notifications__icon-badge--severe.pxh-notifications__icon-badge--severe {
+.pxh-notifications__icon-badge--red.pxh-notifications__icon-badge--severe.pxh-notifications__icon-badge--severe.pxh-notifications__icon-badge--severe {
   background-color: #e32533;
 }
 
-.pxh-notifications__icon-badge--severe.pxh-notifications__icon-badge--severe.pxh-notifications__icon-badge--severe.pxh-notifications__icon-badge--severe:link {
+.pxh-notifications__icon-badge--red.pxh-notifications__icon-badge--severe.pxh-notifications__icon-badge--severe.pxh-notifications__icon-badge--severe:link {
   background-color: #e32533;
 }
 
-.pxh-notifications__icon-badge--severe.pxh-notifications__icon-badge--severe.pxh-notifications__icon-badge--severe.pxh-notifications__icon-badge--severe:hover {
+.pxh-notifications__icon-badge--red.pxh-notifications__icon-badge--severe.pxh-notifications__icon-badge--severe.pxh-notifications__icon-badge--severe:hover {
   background-color: #e32533;
 }
 
@@ -6129,7 +6178,7 @@ sub {
   scrollbar-track-color: #242326;
   scrollbar-face-color: #525156;
   -webkit-overflow-scrolling: touch;
-  max-height: 270px;
+  max-height: 385px;
   -webkit-overflow-scrolling: touch;
   overflow-y: auto;
 }
@@ -6168,6 +6217,24 @@ sub {
   height: auto;
 }
 
+.pxh-notification--animate-in {
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  -webkit-animation-duration: 1000ms;
+          animation-duration: 1000ms;
+  -webkit-animation-name: pxh-notification--animate-in;
+          animation-name: pxh-notification--animate-in;
+}
+
+.pxh-notification--animate-out {
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  -webkit-animation-duration: 1000ms;
+          animation-duration: 1000ms;
+  -webkit-animation-name: pxh-notification--animate-out;
+          animation-name: pxh-notification--animate-out;
+}
+
 .pxh-notification__icon {
   text-align: center;
   -ms-flex-negative: 0;
@@ -6182,19 +6249,19 @@ sub {
   font-size: 24px;
 }
 
-.pxh-notification__icon--low {
+.pxh-notification__icon--green {
   color: #46ad00;
 }
 
-.pxh-notification__icon--medium {
+.pxh-notification__icon--blue {
   color: #005cb9;
 }
 
-.pxh-notification__icon--high {
+.pxh-notification__icon--orange {
   color: #ff9821;
 }
 
-.pxh-notification__icon--severe {
+.pxh-notification__icon--red {
   color: #e32533;
 }
 
