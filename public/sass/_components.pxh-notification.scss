@@ -194,14 +194,29 @@ $pxh-notification-max-count: 5;
 
   .pxh-notifications__list {
     @include pxh-fancy-scrollbar;
+    position: relative;
     max-height: ($pxh-notification-height * $pxh-notification-max-count) + ($pxh-notification-height / 2);
+    min-height: $pxh-notification-height;
     -webkit-overflow-scrolling: touch;
     overflow-y: auto;
+  }
+
+  .pxh-notifications__empty {
+    position: absolute;
+    bottom: 0;
+    height: $pxh-notification-height;
+    z-index: 850;
+    font-style: italic;
+    color: $gray7;
+    width: 100%;
+    text-align: center;
+    padding-top: $pxh-notification-height / 3;
   }
 
   .pxh-notification {
     @include pxh-toast;
     @include pxh-notification--in-state;
+    z-index: 900;
     &--animate-in {
       animation-fill-mode: forwards;
       animation-duration: 1000ms;
@@ -268,7 +283,7 @@ $pxh-notification-max-count: 5;
 }
 
 @else {
-  .pxh-notification-list {
+  .pxh-notifications {
     display: none;
   }
 }
