@@ -4309,6 +4309,7 @@ sub {
 /*------------------------------------*    #PXH-LOGIN-MENU
 \*------------------------------------*/
 .pxh-login-menu {
+  z-index: 799;
   position: absolute;
   bottom: 40px;
   left: -9999px;
@@ -6073,6 +6074,7 @@ sub {
 }
 
 .pxh-notifications__icon-badge {
+  z-index: 775;
   text-align: center;
   background-color: #b1b1bc;
   display: inline-block;

@@ -223,6 +223,7 @@ $pxh-notifications-enabled : false !default;
 \*------------------------------------*/
 
 .pxh-login-menu {
+  z-index: 799;
   position: absolute;
   bottom: ($pxh-login-height / 2) + 10px; // magic number to position above name
   left: -9999px;

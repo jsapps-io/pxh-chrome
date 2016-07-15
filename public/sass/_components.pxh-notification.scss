@@ -160,6 +160,7 @@ $pxh-notification-max-count: 5;
   }
 
   .pxh-notifications__icon-badge {
+    z-index: 775;
     text-align: center;
     background-color: $gray5;
     display: inline-block;
