@@ -996,6 +996,7 @@ var pxhToggleNotifications = function(toggleControl, toggleTarget, toggleClass) 
 // actionLabel : 'View'
 // actionLink : 'http://google.com' // fully qualified link or route
 // actionCallback : // callback function
+// timestamp: '9:36 AM'
 
 var toastObject1 = {
   value : 'something',
@@ -1142,7 +1143,7 @@ toast.markup.icon = function(object, slug) {
 }
 
 toast.markup.toastText = function(object, slug) {
-  var text = object.text ? object.text : 'You received a new notification';
+  var text = object.text ? object.text : 'You received a new notification.';
   var markup = [];
   markup.push('<div class="pxh-' + slug + '__text">\n');
   markup.push('  ' + text + '\n');
@@ -1153,7 +1154,7 @@ toast.markup.toastText = function(object, slug) {
 }
 
 toast.markup.notificationText = function(object, slug) {
-  var text = object.text ? object.text : 'You received a new notification';
+  var text = object.text ? object.text : 'You received a new notification.';
   var markup = [];
   markup.push('<div class="pxh-' + slug + '__text">\n');
   if (object.actionLink) {
@@ -1242,7 +1243,8 @@ toast.markup.createToast = function(object, id) {
 toast.markup.createNotification = function(object, id) {
   var slug = 'notification';
   var element = document.createElement('div');
-  element.className = 'pxh-' + slug + ' pxh-' + slug + '--animate-in';
+  // element.className = 'pxh-' + slug + ' pxh-' + slug + '--animate-in';
+  element.className = 'pxh-' + slug;
   element.id = 'js-' + slug + '--' + id;
   var markup = [];
   markup.push(toast.markup.icon(object, slug));
@@ -1264,7 +1266,6 @@ if (document.getElementById('js-toast-emitter')) {
   toast.add(toastObject3);
   })
 }
-
 
 
 
