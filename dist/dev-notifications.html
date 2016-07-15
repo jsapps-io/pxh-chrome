@@ -61,9 +61,10 @@
         <div class="pxh-login__settings pxh-login__settings--narrow@md pxh-login__settings--wide@lg">
           <a class="pxh-login__settings-link" href="#" title="Settings"><i class="fa fa-cog"></i></a>
         </div>
-        <div class="pxh-notifications__icon pxh-notifications__icon--narrow@md pxh-notifications__icon--wide@lg pxh-notifications__icon--important">
+    
+        <div class="pxh-notifications__icon pxh-notifications__icon--narrow@md pxh-notifications__icon--wide@lg" id="js-notifications__icon">
           <a href="#" class="pxh-notifications__icon-link" title="Notifications"><i class="fa fa-bell"></i></a>
-          <a href="#" class="pxh-notifications__icon-badge pxh-notifications__icon-badge--red">88</a>
+          <a href="#" class="pxh-notifications__icon-badge pxh-notifications__icon-badge--red pxh-notifications__icon-badge--hidden" id="js-notifications__icon-badge">0</a>
         </div>
       </div>
     </aside>
@@ -124,10 +125,11 @@
           Notifications
         </div>
         <div class="pxh-notifications__clear">
-          <a href="#" class="pxh-notifications__link">Clear</a>
+          <a href="#" class="pxh-notifications__link" id="js-notifications__link--clear">Clear</a>
         </div>
       </div>
       <div class="pxh-notifications__list" id="js-notifications__list">
+        <div class="pxh-notifications__empty">There are no new notifications.</div>
       </div>
     </div>
 

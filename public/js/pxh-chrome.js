@@ -996,10 +996,10 @@ var pxhToggleNotifications = function(toggleControl, toggleTarget, toggleClass) 
 // actionLabel : 'View'
 // actionLink : 'http://google.com' // fully qualified link or route
 // actionCallback : // callback function
+// timestamp: '9:36 AM'
 
 var toastObject1 = {
-  value : 'something',
-  isPersistent : true
+  value : 'something'
 }
 
 var toastObject2 = {
@@ -1030,228 +1030,327 @@ var toastObject4 = {
   actionLink : 'http://beef.org'
 }
 
-var toast = {};
-toast.markup = {};
-
-toast.add = function(object) {
-  var id = Math.floor(Math.random()*16777215).toString(16);
-  var notificationList = '';
-  var toastList = '';
-  if ((notificationList = document.getElementById('js-notifications__list')) && ((object.actionLink) || (object.actionCallback))) {
-    var notificationFirstChild = notificationList.firstChild;
-    var notificationElement = notificationList.insertBefore(toast.markup.createNotification(object, id), notificationFirstChild);
-    toast.action.dismissButton(notificationElement, 'notification', id);
-    toast.action.expandButton(notificationElement, 'notification');
-  }
-  if (toastList = document.getElementById('js-toasts')) {
-    var toastFirstChild = toastList.firstChild;
-    var toastElement = toastList.insertBefore(toast.markup.createToast(object, id), toastFirstChild);
-    toast.action.dismissButton(toastElement, 'toast', id);
-    toast.action.expandButton(toastElement, 'toast');
-    if (!object.isPersistent) {
-      setTimeout(function() {
-        if (!toastElement.classList.contains('pxh-toast--expanded')) {
-          // after 2000ms animate the toast out
-          toast.hide(toastElement, 'toast', id);
-          // 1000ms after the animation, remove the notification from the DOM
-          setTimeout(function() {
-            toast.remove(toastElement, id);
-          }, 1000);
+var toast = {
+  badge : {
+    count : 0,
+    increment : function() {
+      toast.badge.count = toast.badge.count + 1;
+      if (toast.badge.count > 9) {
+        toast.badge.text = '9+';
+      }
+      else if (toast.badge.count < 0) {
+        toast.badge.count = 0;
+        toast.badge.text = 0;
+      }
+      else {
+        toast.badge.text = toast.badge.count;
+      }
+      toast.badge.update();
+    },
+    decrement : function() {
+      toast.badge.count = toast.badge.count - 1;
+      if (toast.badge.count > 9) {
+        toast.badge.text = '9+';
+      }
+      else if (toast.badge.count < 0) {
+        toast.badge.count = 0;
+        toast.badge.text = 0;
+      }
+       else {
+        toast.badge.text = toast.badge.count;
+      }
+      toast.badge.update();
+    },
+    update : function() {
+      var notificationIcon = '';
+      var notificationBadge = '';
+      if (notificationBadge = document.getElementById('js-notifications__icon-badge')) {
+        if (toast.badge.count > 0) {
+          notificationBadge.innerHTML = toast.badge.text;
+          notificationBadge.classList.remove('pxh-notifications__icon-badge--hidden');
+          if (notificationIcon = document.getElementById('js-notifications__icon')) {
+            // notificationIcon.classList.remove('pxh-notifications__icon--narrow@md');
+          }
         }
-      }, 5000);
+        else {
+          notificationBadge.classList.add('pxh-notifications__icon-badge--hidden');
+          // notificationIcon.classList.add('pxh-notifications__icon--narrow@md');
+        }
+      }
+    }
+  },
+
+  add : function(object) {
+    var id = Math.floor(Math.random()*16777215).toString(16);
+    var notificationList = '';
+    var toastList = '';
+    if ((notificationList = document.getElementById('js-notifications__list')) && ((object.actionLink) || (object.actionCallback))) {
+      var notificationFirstChild = notificationList.firstChild;
+      var notificationElement = notificationList.insertBefore(toast.markup.createNotification(object, id), notificationFirstChild);
+      toast.badge.increment();
+      toast.action.dismissButton(notificationElement, 'notification', id);
+      toast.action.expandButton(notificationElement, 'notification');
+    }
+    if (toastList = document.getElementById('js-toasts')) {
+      var toastFirstChild = toastList.firstChild;
+      var toastElement = toastList.insertBefore(toast.markup.createToast(object, id), toastFirstChild);
+      toast.action.dismissButton(toastElement, 'toast', id);
+      toast.action.expandButton(toastElement, 'toast');
+      if (!object.isPersistent) {
+        setTimeout(function() {
+          if (!toastElement.classList.contains('pxh-toast--expanded')) {
+            // after 2000ms animate the toast out
+            toast.autoHide(id);
+            // 1000ms after the animation, remove the notification from the DOM
+            setTimeout(function() {
+              toast.autoRemove(id);
+            }, 1000);
+          }
+        }, 5000);
+      }
+    }
+  },
+
+  action : {
+    dismissButton : function(element, slug, id) {
+      var button = document.getElementById('js-' + slug + '__dismiss-button--' + id);
+      if (button) {
+        button.addEventListener('click', function(event) {
+          event.preventDefault();
+          toast.hide(id);
+          setTimeout(function() {
+            toast.remove(id);
+          }, 1000);
+        })
+      }
+    },
+
+    expandButton : function(element, slug) {
+      var button = element.querySelector('.js-' + slug + '__more-button');
+      if (button) {
+        button.addEventListener('click', function(event) {
+          event.preventDefault();
+          toast.expand(element, slug);
+        })
+      }
+    },
+
+    removeAllButton : function() {
+      toast.hideAll();
+      setTimeout(function() {
+        toast.removeAll();
+      }, 1000);
+    }
+  },
+
+  hide : function(id) {
+    var toastList = '';
+    var toast = '';
+    var notificationList = '';
+    var notification = '';
+    if ((toastList = document.getElementById('js-toasts')) && (toast = document.getElementById('js-toast--' + id))) {
+      toast.classList.add('pxh-toast--animate-out');
+      toast.classList.remove('pxh-toast--animate-in');
+    }
+    if ((notificationList = document.getElementById('js-notifications__list')) && (notification = document.getElementById('js-notification--' + id))) {
+      notification.classList.add('pxh-notification--animate-out');
+      notification.classList.remove('pxh-notification--animate-in');
+    }
+  },
+
+  hideAll : function() {
+    var notificationList = '';
+    var notifications = [];
+    if ((notificationList = document.getElementById('js-notifications__list')) && (notifications = document.getElementsByClassName('pxh-notification'))) {
+      for (var i = notifications.length - 1; i >= 0; i--) {
+        var id = notifications[i].id.replace('js-notification--', '');
+        toast.hide(id);
+      }
+    }
+  },
+
+  autoHide : function(id) {
+    var toastList = '';
+    var toast = '';
+    if ((toastList = document.getElementById('js-toasts')) && (toast = document.getElementById('js-toast--' + id))) {
+      toast.classList.add('pxh-toast--animate-out');
+      toast.classList.remove('pxh-toast--animate-in');
+    }
+  },
+
+  remove : function(id) {
+    var toastList = '';
+    var toastElement = '';
+    var notificationList = '';
+    var notification = '';
+    if ((toastList = document.getElementById('js-toasts')) && (toastElement = document.getElementById('js-toast--' + id))) {
+      toastElement.remove();
+
+    }
+    if ((notificationList = document.getElementById('js-notifications__list')) && (notification = document.getElementById('js-notification--' + id))) {
+      notification.remove();
+      toast.badge.decrement();
+    }
+  },
+
+  autoRemove : function(id) {
+    var toastList = '';
+    var toastElement = '';
+    if ((toastList = document.getElementById('js-toasts')) && (toastElement = document.getElementById('js-toast--' + id))) {
+      toastElement.remove();
+    }
+  },
+
+  removeAll : function() {
+    var notificationList = '';
+    var notifications = [];
+    if ((notificationList = document.getElementById('js-notifications__list')) && (notifications = document.getElementsByClassName('pxh-notification'))) {
+      for (var i = notifications.length - 1; i >= 0; i--) {
+        var id = notifications[i].id.replace('js-notification--', '');
+        toast.remove(id);
+      }
+    }
+  },
+
+  expand : function(element, slug) {
+    if (element.classList.contains('pxh-' + slug + '--expanded')) {
+      element.classList.remove('pxh-' + slug + '--expanded');
+      element.querySelector('.pxh-' + slug + '__more').classList.remove('pxh-' + slug + '__more--expanded');
+      element.querySelector('.pxh-' + slug + '__more-button').innerHTML = 'Show more';
+    }
+    else {
+      element.classList.remove('pxh-' + slug + '--animate-in');
+      element.classList.add('pxh-' + slug + '--expanded');
+      element.querySelector('.pxh-' + slug + '__more').classList.add('pxh-' + slug + '__more--expanded');
+      element.querySelector('.pxh-' + slug + '__more-button').innerHTML = 'Show less';
+    }
+  },
+
+  markup : {
+    icon : function(object, slug) {
+      var icon = object.icon ? object.icon : 'info-circle';
+      var type = object.type ? object.type : 'blue';
+      var markup = [];
+      markup.push('<div class="pxh-' + slug + '__icon pxh-' + slug + '__icon--' + type + '">\n');
+      markup.push('  <i class="fa fa-' + icon + '"></i>\n');
+      markup.push('</div>\n');
+      markup = markup.join('');
+      return markup;
+    },
+
+    toastText : function(object, slug) {
+      var text = object.text ? object.text : 'You received a new notification.';
+      var markup = [];
+      markup.push('<div class="pxh-' + slug + '__text">\n');
+      markup.push('  ' + text + '\n');
+      markup.push(toast.markup.more(object, slug));
+      markup.push('</div>\n');
+      markup = markup.join('');
+      return markup;
+    },
+
+    notificationText : function(object, slug) {
+      var text = object.text ? object.text : 'You received a new notification.';
+      var markup = [];
+      markup.push('<div class="pxh-' + slug + '__text">\n');
+      if (object.actionLink) {
+        markup.push('  <a class="pxh-' + slug + '__link" href="' + object.actionLink + '">\n');
+      } else if (object.actionCallback) {
+        markup.push('  <a class="pxh-' + slug + '__link" href="#">actionCallback: ' + object.actionCallback + ' ' + '\n');
+      }
+      markup.push('  ' + text + '\n');
+      if ((object.actionLink) || (object.actionCallback)) {
+        markup.push('  </a>\n');
+      }
+      markup.push(toast.markup.more(object, slug));
+      markup.push('</div>\n');
+      markup = markup.join('');
+      return markup;
+    },
+
+    more : function(object, slug) {
+      var markup = [];
+      markup.push('  <div class="pxh-' + slug + '__more">\n');
+      markup.push('    <a href="#" class="pxh-' + slug + '__more-button js-' + slug + '__more-button">\n');
+      markup.push('      Show more\n');
+      markup.push('    </a>\n');
+      markup.push('  </div>\n');
+      markup = markup.join('');
+      return markup;
+    },
+
+    timestamp : function(object, slug) {
+      var timestamp = object.timestamp ? object.timestamp : false;
+      var markup = [];
+      if (timestamp) {
+        markup.push('<div class="pxh-' + slug + '__timestamp">\n');
+        markup.push('  ' + timestamp + '\n');
+        markup.push('</div>\n');
+      }
+      markup = markup.join('');
+      return markup;
+    },
+
+    dismiss : function(object, slug, id) {
+      var markup = [];
+      markup.push('<div class="pxh-' + slug + '__dismiss">\n');
+      markup.push('  <a href="#" class="pxh-' + slug + '__dismiss-button js-' + slug + '__dismiss-button" id="js-' + slug + '__dismiss-button--' + id + '">\n');
+      markup.push('    <i class="fa fa-times"></i>\n');
+      markup.push('  </a>\n');
+      markup.push('</div>\n');
+      markup = markup.join('');
+      return markup;
+    },
+
+    button : function(object, slug) {
+      var markup = [];
+      if (object.actionLink) {
+        markup.push('<div class="pxh-' + slug + '__action">\n');
+        markup.push('  <a class="pxh-' + slug + '__button" href="' + object.actionLink + '">' + object.actionLabel + '</a>\n');
+        markup.push('</div>\n');
+      } else if (object.actionCallback) {
+        markup.push('<div class="pxh-' + slug + '__action">\n');
+        markup.push('  <a class="pxh-' + slug + '__button" href="#">actionCallback: ' + object.actionCallback + object.actionLabel + '</a>\n');
+        markup.push('</div>\n');
+      }
+      markup = markup.join('');
+      return markup;
+    },
+
+    createToast : function(object, id) {
+      var slug = 'toast';
+      var element = document.createElement('div');
+      element.className = 'pxh-' + slug + ' pxh-' + slug + '--animate-in';
+      element.id = 'js-' + slug + '--' + id;
+      var markup = [];
+      markup.push(toast.markup.icon(object, slug));
+      markup.push(toast.markup.toastText(object, slug));
+      markup.push(toast.markup.button(object, slug));
+      // if (object.timestamp) {
+      //   markup.push(toast.markup.timestamp(object, slug));
+      // }
+      markup.push(toast.markup.dismiss(object, slug, id));
+      markup = markup.join('');
+      element.innerHTML = markup;
+      return element;
+    },
+
+    createNotification : function(object, id) {
+      var slug = 'notification';
+      var element = document.createElement('div');
+      // element.className = 'pxh-' + slug + ' pxh-' + slug + '--animate-in';
+      element.className = 'pxh-' + slug;
+      element.id = 'js-' + slug + '--' + id;
+      var markup = [];
+      markup.push(toast.markup.icon(object, slug));
+      markup.push(toast.markup.notificationText(object, slug));
+      markup.push(toast.markup.timestamp(object, slug));
+      markup.push(toast.markup.dismiss(object, slug, id));
+      markup = markup.join('');
+      element.innerHTML = markup;
+      return element;
     }
   }
-}
-
-toast.action = {};
-
-toast.action.dismissButton = function(element, slug, id) {
-  var button = document.getElementById('js-' + slug + '__dismiss-button--' + id);
-  if (button) {
-    button.addEventListener('click', function(event) {
-      event.preventDefault();
-      toast.hide(id);
-      setTimeout(function() {
-        toast.remove(id);
-      }, 1000);
-    })
-  }
-}
-
-toast.action.expandButton = function(element, slug) {
-  var button = element.querySelector('.js-' + slug + '__more-button');
-  if (button) {
-    button.addEventListener('click', function(event) {
-      event.preventDefault();
-      toast.expand(element, slug);
-    })
-  }
-}
-
-toast.hide = function(id) {
-  var toastList = '';
-  var toast = '';
-  var notificationList = '';
-  var notification = '';
-  if ((toastList = document.getElementById('js-toasts')) && (toast = document.getElementById('js-toast--' + id))) {
-    toast.classList.add('pxh-toast--animate-out');
-    toast.classList.remove('pxh-toast--animate-in');
-  }
-  if ((notificationList = document.getElementById('js-notifications__list')) && (notification = document.getElementById('js-notification--' + id))) {
-    notification.classList.add('pxh-notification--animate-out');
-    notification.classList.remove('pxh-notification--animate-in');
-  }
-}
-
-toast.remove = function(id) {
-  var toastList = '';
-  var toast = '';
-  var notificationList = '';
-  var notification = '';
-  if ((toastList = document.getElementById('js-toasts')) && (toast = document.getElementById('js-toast--' + id))) {
-    toast.remove();
-  }
-  if ((notificationList = document.getElementById('js-notifications__list')) && (notification = document.getElementById('js-notification--' + id))) {
-    notification.remove();
-  }
-}
-
-toast.expand = function(element, slug) {
-  if (element.classList.contains('pxh-' + slug + '--expanded')) {
-    element.classList.remove('pxh-' + slug + '--expanded');
-    element.querySelector('.pxh-' + slug + '__more').classList.remove('pxh-' + slug + '__more--expanded');
-    element.querySelector('.pxh-' + slug + '__more-button').innerHTML = 'Show more';
-  }
-  else {
-    element.classList.remove('pxh-' + slug + '--animate-in');
-    element.classList.add('pxh-' + slug + '--expanded');
-    element.querySelector('.pxh-' + slug + '__more').classList.add('pxh-' + slug + '__more--expanded');
-    element.querySelector('.pxh-' + slug + '__more-button').innerHTML = 'Show less';
-  }
-}
-
-toast.markup.icon = function(object, slug) {
-  var icon = object.icon ? object.icon : 'info-circle';
-  var type = object.type ? object.type : 'blue';
-  var markup = [];
-  markup.push('<div class="pxh-' + slug + '__icon pxh-' + slug + '__icon--' + type + '">\n');
-  markup.push('  <i class="fa fa-' + icon + '"></i>\n');
-  markup.push('</div>\n');
-  markup = markup.join('');
-  return markup;
-}
-
-toast.markup.toastText = function(object, slug) {
-  var text = object.text ? object.text : 'You received a new notification';
-  var markup = [];
-  markup.push('<div class="pxh-' + slug + '__text">\n');
-  markup.push('  ' + text + '\n');
-  markup.push(toast.markup.more(object, slug));
-  markup.push('</div>\n');
-  markup = markup.join('');
-  return markup;
-}
-
-toast.markup.notificationText = function(object, slug) {
-  var text = object.text ? object.text : 'You received a new notification';
-  var markup = [];
-  markup.push('<div class="pxh-' + slug + '__text">\n');
-  if (object.actionLink) {
-    markup.push('  <a class="pxh-' + slug + '__link" href="' + object.actionLink + '">\n');
-  } else if (object.actionCallback) {
-    markup.push('  <a class="pxh-' + slug + '__link" href="#">actionCallback: ' + object.actionCallback + ' ' + '\n');
-  }
-  markup.push('  ' + text + '\n');
-  if ((object.actionLink) || (object.actionCallback)) {
-    markup.push('  </a>\n');
-  }
-  markup.push(toast.markup.more(object, slug));
-  markup.push('</div>\n');
-  markup = markup.join('');
-  return markup;
-}
-
-
-toast.markup.more = function(object, slug) {
-  var markup = [];
-  markup.push('  <div class="pxh-' + slug + '__more">\n');
-  markup.push('    <a href="#" class="pxh-' + slug + '__more-button js-' + slug + '__more-button">\n');
-  markup.push('      Show more\n');
-  markup.push('    </a>\n');
-  markup.push('  </div>\n');
-  markup = markup.join('');
-  return markup;
-}
-
-toast.markup.timestamp = function(object, slug) {
-  var timestamp = object.timestamp ? object.timestamp : false;
-  var markup = [];
-  if (timestamp) {
-    markup.push('<div class="pxh-' + slug + '__timestamp">\n');
-    markup.push('  ' + timestamp + '\n');
-    markup.push('</div>\n');
-  }
-  markup = markup.join('');
-  return markup;
-}
-
-toast.markup.dismiss = function(object, slug, id) {
-  var markup = [];
-  markup.push('<div class="pxh-' + slug + '__dismiss">\n');
-  markup.push('  <a href="#" class="pxh-' + slug + '__dismiss-button js-' + slug + '__dismiss-button" id="js-' + slug + '__dismiss-button--' + id + '">\n');
-  markup.push('    <i class="fa fa-times"></i>\n');
-  markup.push('  </a>\n');
-  markup.push('</div>\n');
-  markup = markup.join('');
-  return markup;
-}
-
-toast.markup.button = function(object, slug) {
-  var markup = [];
-  if (object.actionLink) {
-    markup.push('<div class="pxh-' + slug + '__action">\n');
-    markup.push('  <a class="pxh-' + slug + '__button" href="' + object.actionLink + '">' + object.actionLabel + '</a>\n');
-    markup.push('</div>\n');
-  } else if (object.actionCallback) {
-    markup.push('<div class="pxh-' + slug + '__action">\n');
-    markup.push('  <a class="pxh-' + slug + '__button" href="#">actionCallback: ' + object.actionCallback + object.actionLabel + '</a>\n');
-    markup.push('</div>\n');
-  }
-  markup = markup.join('');
-  return markup;
-}
-
-toast.markup.createToast = function(object, id) {
-  var slug = 'toast';
-  var element = document.createElement('div');
-  element.className = 'pxh-' + slug + ' pxh-' + slug + '--animate-in';
-  element.id = 'js-' + slug + '--' + id;
-  var markup = [];
-  markup.push(toast.markup.icon(object, slug));
-  markup.push(toast.markup.toastText(object, slug));
-  markup.push(toast.markup.button(object, slug));
-  // if (object.timestamp) {
-  //   markup.push(toast.markup.timestamp(object, slug));
-  // }
-  markup.push(toast.markup.dismiss(object, slug, id));
-  markup = markup.join('');
-  element.innerHTML = markup;
-  return element;
-}
-
-toast.markup.createNotification = function(object, id) {
-  var slug = 'notification';
-  var element = document.createElement('div');
-  element.className = 'pxh-' + slug + ' pxh-' + slug + '--animate-in';
-  element.id = 'js-' + slug + '--' + id;
-  var markup = [];
-  markup.push(toast.markup.icon(object, slug));
-  markup.push(toast.markup.notificationText(object, slug));
-  markup.push(toast.markup.timestamp(object, slug));
-  markup.push(toast.markup.dismiss(object, slug, id));
-  markup = markup.join('');
-  element.innerHTML = markup;
-  return element;
 }
 
 document.addEventListener('DOMContentLoaded', function(event) {
@@ -1265,9 +1364,11 @@ if (document.getElementById('js-toast-emitter')) {
   })
 }
 
-
-
-
+if (document.getElementById('js-notifications__link--clear')) {
+  document.getElementById('js-notifications__link--clear').addEventListener('click', function() {
+  toast.action.removeAllButton();
+  })
+}
 
 
 // ********

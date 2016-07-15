@@ -4309,6 +4309,7 @@ sub {
 /*------------------------------------*    #PXH-LOGIN-MENU
 \*------------------------------------*/
 .pxh-login-menu {
+  z-index: 799;
   position: absolute;
   bottom: 40px;
   left: -9999px;
@@ -5809,11 +5810,11 @@ sub {
 }
 
 .pxh-toast__dismiss-button.pxh-toast__dismiss-button.pxh-toast__dismiss-button.pxh-toast__dismiss-button:hover {
-  color: white;
+  color: #3e87e8;
 }
 
 .pxh-toast__dismiss-button.pxh-toast__dismiss-button.pxh-toast__dismiss-button.pxh-toast__dismiss-button:active {
-  color: white;
+  color: #3e87e8;
 }
 
 /*------------------------------------*    #components.pxh-notification
@@ -5983,23 +5984,23 @@ sub {
 }
 
 .pxh-notifications__link.pxh-notifications__link.pxh-notifications__link.pxh-notifications__link {
-  color: #7c7c84;
+  color: #b1b1bc;
 }
 
 .pxh-notifications__link.pxh-notifications__link.pxh-notifications__link.pxh-notifications__link:link {
-  color: #7c7c84;
+  color: #b1b1bc;
 }
 
 .pxh-notifications__link.pxh-notifications__link.pxh-notifications__link.pxh-notifications__link:visited {
-  color: #7c7c84;
+  color: #b1b1bc;
 }
 
 .pxh-notifications__link.pxh-notifications__link.pxh-notifications__link.pxh-notifications__link:hover {
-  color: white;
+  color: #3e87e8;
 }
 
 .pxh-notifications__link.pxh-notifications__link.pxh-notifications__link.pxh-notifications__link:active {
-  color: white;
+  color: #3e87e8;
 }
 
 .pxh-notifications__clear {
@@ -6025,6 +6026,22 @@ sub {
   height: 60px;
   font-size: 15px;
   opacity: 1;
+}
+
+@media (min-width: 48em) {
+  .pxh-notifications__icon--narrow\@md {
+    height: 0;
+    font-size: 0;
+    opacity: 0;
+  }
+}
+
+@media (min-width: 64em) {
+  .pxh-notifications__icon--wide\@lg {
+    height: 60px;
+    font-size: 15px;
+    opacity: 1;
+  }
 }
 
 .pxh-notifications__icon-link {
@@ -6057,11 +6074,15 @@ sub {
 }
 
 .pxh-notifications__icon-badge {
+  z-index: 775;
   text-align: center;
   background-color: #b1b1bc;
   display: inline-block;
+  min-width: 20px;
+  height: 20px;
   font-weight: normal;
   color: white;
+  font-size: 12px;
   line-height: 1;
   border-radius: 12px;
   box-shadow: 0px 0px 0px 2px rgba(0, 0, 0, 0.25);
@@ -6069,7 +6090,7 @@ sub {
   position: absolute;
   bottom: 40px;
   left: 5px;
-  padding: 3px 3px 1px 3px;
+  padding: 4px 2px 0px 1px;
 }
 
 .pxh-notifications__icon-badge.pxh-notifications__icon-badge.pxh-notifications__icon-badge.pxh-notifications__icon-badge {
@@ -6096,15 +6117,15 @@ sub {
   background-color: #46ad00;
 }
 
-.pxh-notifications__icon-badge--green.pxh-notifications__icon-badge--low.pxh-notifications__icon-badge--low.pxh-notifications__icon-badge--low {
+.pxh-notifications__icon-badge--green.pxh-notifications__icon-badge--green.pxh-notifications__icon-badge--green.pxh-notifications__icon-badge--green {
   background-color: #46ad00;
 }
 
-.pxh-notifications__icon-badge--green.pxh-notifications__icon-badge--low.pxh-notifications__icon-badge--low.pxh-notifications__icon-badge--low:link {
+.pxh-notifications__icon-badge--green.pxh-notifications__icon-badge--green.pxh-notifications__icon-badge--green.pxh-notifications__icon-badge--green:link {
   background-color: #46ad00;
 }
 
-.pxh-notifications__icon-badge--green.pxh-notifications__icon-badge--low.pxh-notifications__icon-badge--low.pxh-notifications__icon-badge--low:hover {
+.pxh-notifications__icon-badge--green.pxh-notifications__icon-badge--green.pxh-notifications__icon-badge--green.pxh-notifications__icon-badge--green:hover {
   background-color: #46ad00;
 }
 
@@ -6112,15 +6133,15 @@ sub {
   background-color: #005cb9;
 }
 
-.pxh-notifications__icon-badge--blue.pxh-notifications__icon-badge--medium.pxh-notifications__icon-badge--medium.pxh-notifications__icon-badge--medium {
+.pxh-notifications__icon-badge--blue.pxh-notifications__icon-badge--blue.pxh-notifications__icon-badge--blue.pxh-notifications__icon-badge--blue {
   background-color: #005cb9;
 }
 
-.pxh-notifications__icon-badge--blue.pxh-notifications__icon-badge--medium.pxh-notifications__icon-badge--medium.pxh-notifications__icon-badge--medium:link {
+.pxh-notifications__icon-badge--blue.pxh-notifications__icon-badge--blue.pxh-notifications__icon-badge--blue.pxh-notifications__icon-badge--blue:link {
   background-color: #005cb9;
 }
 
-.pxh-notifications__icon-badge--blue.pxh-notifications__icon-badge--medium.pxh-notifications__icon-badge--medium.pxh-notifications__icon-badge--medium:hover {
+.pxh-notifications__icon-badge--blue.pxh-notifications__icon-badge--blue.pxh-notifications__icon-badge--blue.pxh-notifications__icon-badge--blue:hover {
   background-color: #005cb9;
 }
 
@@ -6128,15 +6149,15 @@ sub {
   background-color: #ff9821;
 }
 
-.pxh-notifications__icon-badge--orange.pxh-notifications__icon-badge--high.pxh-notifications__icon-badge--high.pxh-notifications__icon-badge--high {
+.pxh-notifications__icon-badge--orange.pxh-notifications__icon-badge--orange.pxh-notifications__icon-badge--orange.pxh-notifications__icon-badge--orange {
   background-color: #ff9821;
 }
 
-.pxh-notifications__icon-badge--orange.pxh-notifications__icon-badge--high.pxh-notifications__icon-badge--high.pxh-notifications__icon-badge--high:link {
+.pxh-notifications__icon-badge--orange.pxh-notifications__icon-badge--orange.pxh-notifications__icon-badge--orange.pxh-notifications__icon-badge--orange:link {
   background-color: #ff9821;
 }
 
-.pxh-notifications__icon-badge--orange.pxh-notifications__icon-badge--high.pxh-notifications__icon-badge--high.pxh-notifications__icon-badge--high:hover {
+.pxh-notifications__icon-badge--orange.pxh-notifications__icon-badge--orange.pxh-notifications__icon-badge--orange.pxh-notifications__icon-badge--orange:hover {
   background-color: #ff9821;
 }
 
@@ -6144,32 +6165,22 @@ sub {
   background-color: #e32533;
 }
 
-.pxh-notifications__icon-badge--red.pxh-notifications__icon-badge--severe.pxh-notifications__icon-badge--severe.pxh-notifications__icon-badge--severe {
+.pxh-notifications__icon-badge--red.pxh-notifications__icon-badge--red.pxh-notifications__icon-badge--red.pxh-notifications__icon-badge--red {
   background-color: #e32533;
 }
 
-.pxh-notifications__icon-badge--red.pxh-notifications__icon-badge--severe.pxh-notifications__icon-badge--severe.pxh-notifications__icon-badge--severe:link {
+.pxh-notifications__icon-badge--red.pxh-notifications__icon-badge--red.pxh-notifications__icon-badge--red.pxh-notifications__icon-badge--red:link {
   background-color: #e32533;
 }
 
-.pxh-notifications__icon-badge--red.pxh-notifications__icon-badge--severe.pxh-notifications__icon-badge--severe.pxh-notifications__icon-badge--severe:hover {
+.pxh-notifications__icon-badge--red.pxh-notifications__icon-badge--red.pxh-notifications__icon-badge--red.pxh-notifications__icon-badge--red:hover {
   background-color: #e32533;
 }
 
-@media (min-width: 48em) {
-  .pxh-notifications__icon--narrow\@md {
-    height: 0;
-    font-size: 0;
-    opacity: 0;
-  }
-}
-
-@media (min-width: 64em) {
-  .pxh-notifications__icon--wide\@lg {
-    height: 60px;
-    font-size: 15px;
-    opacity: 1;
-  }
+.pxh-notifications__icon-badge--hidden {
+  height: 0;
+  font-size: 0;
+  opacity: 0;
 }
 
 .pxh-notifications__list {
@@ -6178,7 +6189,9 @@ sub {
   scrollbar-track-color: #242326;
   scrollbar-face-color: #525156;
   -webkit-overflow-scrolling: touch;
+  position: relative;
   max-height: 385px;
+  min-height: 70px;
   -webkit-overflow-scrolling: touch;
   overflow-y: auto;
 }
@@ -6198,6 +6211,18 @@ sub {
   background-color: #7c7c84;
 }
 
+.pxh-notifications__empty {
+  position: absolute;
+  bottom: 0;
+  height: 70px;
+  z-index: 850;
+  font-style: italic;
+  color: #7c7c84;
+  width: 100%;
+  text-align: center;
+  padding-top: 23.3333333333px;
+}
+
 .pxh-notification {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -6211,6 +6236,7 @@ sub {
   height: 70px;
   font-size: 16px;
   border-bottom: 1px solid #3b3b3f;
+  z-index: 900;
 }
 
 .pxh-notification--expanded {

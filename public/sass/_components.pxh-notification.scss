@@ -110,7 +110,7 @@ $pxh-notification-max-count: 5;
     &:hover {
       color: $primary-blue;
     }
-    @include pxh-override-px-theme-color('pxh-notifications__link');
+    @include pxh-override-px-theme-color('pxh-notifications__link', $gray5, $primary-blue);
   }
 
   .pxh-notifications__clear {
@@ -135,48 +135,6 @@ $pxh-notification-max-count: 5;
     @include pxh-login--in-state;
   }
 
-  .pxh-notifications__icon-link {
-    color: $gray7;
-    &:hover,
-    .pxh-notifications__icon:hover & {
-      color: $white;
-    }
-    @include pxh-override-px-theme-color('pxh-notifications__icon-link');
-  }
-
-  .pxh-notifications__icon-badge {
-    text-align: center;
-    background-color: $gray5;
-    display: inline-block;
-    font-weight: normal;
-    color: $white;
-    line-height: 1;
-    border-radius: 12px;
-    box-shadow: 0px 0px 0px 2px rgba($black, 0.25);
-    text-decoration: none;
-    position: absolute;
-    bottom: $pxh-drawer-margin * 2;
-    left: $pxh-drawer-margin / 4;
-    padding: 3px 3px 1px 3px;
-    @include pxh-override-px-theme-color('pxh-notifications__icon-badge', $white);
-    &--green {
-      background-color: $green;
-      @include pxh-override-px-theme-background-color('pxh-notifications__icon-badge--low', $green);
-    }
-    &--blue {
-      background-color: $blue;
-      @include pxh-override-px-theme-background-color('pxh-notifications__icon-badge--medium', $blue);
-    }
-    &--orange {
-      background-color: $orange;
-      @include pxh-override-px-theme-background-color('pxh-notifications__icon-badge--high', $orange);
-    }
-    &--red {
-      background-color: $red;
-      @include pxh-override-px-theme-background-color('pxh-notifications__icon-badge--severe', $red);
-    }
-  }
-
   // From the @md (tablet) breakpoint and wider,
   // display pxh-login__settings in its narrow state.
   // Remove this class to display the drawer in its wide state.
@@ -191,17 +149,81 @@ $pxh-notification-max-count: 5;
     @include pxh-login--in-state;
     }
   }
+  
+  .pxh-notifications__icon-link {
+    color: $gray7;
+    &:hover,
+    .pxh-notifications__icon:hover & {
+      color: $white;
+    }
+    @include pxh-override-px-theme-color('pxh-notifications__icon-link');
+  }
+
+  .pxh-notifications__icon-badge {
+    z-index: 775;
+    text-align: center;
+    background-color: $gray5;
+    display: inline-block;
+    min-width: $pxh-drawer-margin;
+    height: $pxh-drawer-margin;
+    font-weight: normal;
+    color: $white;
+    font-size: 12px;
+    line-height: 1;
+    border-radius: 12px;
+    box-shadow: 0px 0px 0px 2px rgba($black, 0.25);
+    text-decoration: none;
+    position: absolute;
+    bottom: $pxh-drawer-margin * 2;
+    left: $pxh-drawer-margin / 4;
+    padding: 4px 2px 0px 1px;
+    @include pxh-override-px-theme-color('pxh-notifications__icon-badge', $white);
+    &--green {
+      background-color: $green;
+      @include pxh-override-px-theme-background-color('pxh-notifications__icon-badge--green', $green);
+    }
+    &--blue {
+      background-color: $blue;
+      @include pxh-override-px-theme-background-color('pxh-notifications__icon-badge--blue', $blue);
+    }
+    &--orange {
+      background-color: $orange;
+      @include pxh-override-px-theme-background-color('pxh-notifications__icon-badge--orange', $orange);
+    }
+    &--red {
+      background-color: $red;
+      @include pxh-override-px-theme-background-color('pxh-notifications__icon-badge--red', $red);
+    }
+    &--hidden {
+      @include pxh-login--out-state;
+    }
+  }
 
   .pxh-notifications__list {
     @include pxh-fancy-scrollbar;
+    position: relative;
     max-height: ($pxh-notification-height * $pxh-notification-max-count) + ($pxh-notification-height / 2);
+    min-height: $pxh-notification-height;
     -webkit-overflow-scrolling: touch;
     overflow-y: auto;
+  }
+
+  .pxh-notifications__empty {
+    position: absolute;
+    bottom: 0;
+    height: $pxh-notification-height;
+    z-index: 850;
+    font-style: italic;
+    color: $gray7;
+    width: 100%;
+    text-align: center;
+    padding-top: $pxh-notification-height / 3;
   }
 
   .pxh-notification {
     @include pxh-toast;
     @include pxh-notification--in-state;
+    z-index: 900;
     &--animate-in {
       animation-fill-mode: forwards;
       animation-duration: 1000ms;
@@ -268,7 +290,7 @@ $pxh-notification-max-count: 5;
 }
 
 @else {
-  .pxh-notification-list {
+  .pxh-notifications {
     display: none;
   }
 }

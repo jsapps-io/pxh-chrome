@@ -173,13 +173,13 @@ $pxh-notifications-enabled : false !default;
 // Remove this class to display the drawer in its wide state.
 @include mq($from: md) {
   .pxh-login__caret--narrow\@md {
-  @include pxh-login--out-state;
+    @include pxh-login--out-state;
   }
 }
 
 @include mq($from: lg) {
   .pxh-login__caret--wide\@lg {
-  @include pxh-login--in-state;
+    @include pxh-login--in-state;
   }
 }
 
@@ -223,6 +223,7 @@ $pxh-notifications-enabled : false !default;
 \*------------------------------------*/
 
 .pxh-login-menu {
+  z-index: 799;
   position: absolute;
   bottom: ($pxh-login-height / 2) + 10px; // magic number to position above name
   left: -9999px;
