@@ -1096,10 +1096,10 @@ toast.add = function(object) {
       setTimeout(function() {
         if (!toastElement.classList.contains('pxh-toast--expanded')) {
           // after 2000ms animate the toast out
-          toast.hide(toastElement, 'toast', id);
+          toast.autoHide(id);
           // 1000ms after the animation, remove the notification from the DOM
           setTimeout(function() {
-            toast.remove(toastElement, id);
+            toast.autoRemove(id);
           }, 1000);
         }
       }, 5000);
@@ -1132,6 +1132,13 @@ toast.action.expandButton = function(element, slug) {
   }
 }
 
+toast.action.removeAllButton = function() {
+  toast.hideAll();
+  setTimeout(function() {
+    toast.removeAll();
+  }, 1000);
+}
+
 toast.hide = function(id) {
   var toastList = '';
   var toast = '';
@@ -1147,16 +1154,46 @@ toast.hide = function(id) {
   }
 }
 
-toast.remove = function(id) {
+toast.hideAll = function() {
+  var notificationList = '';
+  var notifications = [];
+  if ((notificationList = document.getElementById('js-notifications__list')) && (notifications = document.getElementsByClassName('pxh-notification'))) {
+    for (var i = notifications.length - 1; i >= 0; i--) {
+      var id = notifications[i].id.replace('js-notification--', '');
+      toast.hide(id);
+    }
+  }
+}
+
+toast.autoHide = function(id) {
   var toastList = '';
   var toast = '';
+  if ((toastList = document.getElementById('js-toasts')) && (toast = document.getElementById('js-toast--' + id))) {
+    toast.classList.add('pxh-toast--animate-out');
+    toast.classList.remove('pxh-toast--animate-in');
+  }
+}
+
+toast.remove = function(id) {
+  var toastList = '';
+  var toastElement = '';
   var notificationList = '';
   var notification = '';
-  if ((toastList = document.getElementById('js-toasts')) && (toast = document.getElementById('js-toast--' + id))) {
-    toast.remove();
+  if ((toastList = document.getElementById('js-toasts')) && (toastElement = document.getElementById('js-toast--' + id))) {
+    toastElement.remove();
+
   }
   if ((notificationList = document.getElementById('js-notifications__list')) && (notification = document.getElementById('js-notification--' + id))) {
     notification.remove();
+    toast.badge.decrement();
+  }
+}
+
+toast.autoRemove = function(id) {
+  var toastList = '';
+  var toastElement = '';
+  if ((toastList = document.getElementById('js-toasts')) && (toastElement = document.getElementById('js-toast--' + id))) {
+    toastElement.remove();
   }
 }
 
@@ -1323,7 +1360,7 @@ if (document.getElementById('js-toast-emitter')) {
 
 if (document.getElementById('js-notifications__link--clear')) {
   document.getElementById('js-notifications__link--clear').addEventListener('click', function() {
-  toast.removeAll();
+  toast.action.removeAllButton();
   })
 }
 
