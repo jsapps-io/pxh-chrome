@@ -148,6 +148,8 @@ $pxh-notification-max-count: 5;
     text-align: center;
     background-color: $gray5;
     display: inline-block;
+    min-width: $pxh-drawer-margin;
+    height: $pxh-drawer-margin;
     font-weight: normal;
     color: $white;
     line-height: 1;
@@ -157,7 +159,7 @@ $pxh-notification-max-count: 5;
     position: absolute;
     bottom: $pxh-drawer-margin * 2;
     left: $pxh-drawer-margin / 4;
-    padding: 3px 3px 1px 3px;
+    padding: 3px 3px 1px 2px;
     @include pxh-override-px-theme-color('pxh-notifications__icon-badge', $white);
     &--green {
       background-color: $green;

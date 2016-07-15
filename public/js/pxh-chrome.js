@@ -1033,6 +1033,47 @@ var toastObject4 = {
 
 var toast = {};
 toast.markup = {};
+toast.action = {};
+toast.badge = {};
+toast.badge.count = 0;
+
+toast.badge.increment = function() {
+  console.log('incrementing');
+  toast.badge.count = toast.badge.count + 1;
+  if (toast.badge.count > 9) {
+    toast.badge.text = '9+';
+  }
+  else if (toast.badge.count < 0) {
+    toast.badge.count = 0;
+    toast.badge.text = 0;
+  }
+  else {
+    toast.badge.text = toast.badge.count;
+  }
+  toast.badge.update();
+}
+
+toast.badge.decrement = function() {
+  toast.badge.count = toast.badge.count - 1;
+  if (toast.badge.count > 9) {
+    toast.badge.text = '9+';
+  }
+  else if (toast.badge.count < 0) {
+    toast.badge.count = 0;
+    toast.badge.text = 0;
+  }
+   else {
+    toast.badge.text = toast.badge.count;
+  }
+  toast.badge.update();
+}
+
+toast.badge.update = function() {
+  var notificationBadge = '';
+  if (notificationBadge = document.getElementById('js-notifications__icon-badge')) {
+    notificationBadge.innerHTML = toast.badge.text;
+  }
+}
 
 toast.add = function(object) {
   var id = Math.floor(Math.random()*16777215).toString(16);
@@ -1041,6 +1082,8 @@ toast.add = function(object) {
   if ((notificationList = document.getElementById('js-notifications__list')) && ((object.actionLink) || (object.actionCallback))) {
     var notificationFirstChild = notificationList.firstChild;
     var notificationElement = notificationList.insertBefore(toast.markup.createNotification(object, id), notificationFirstChild);
+    toast.badge.increment();
+    console.log(toast.badge.text);
     toast.action.dismissButton(notificationElement, 'notification', id);
     toast.action.expandButton(notificationElement, 'notification');
   }
@@ -1064,7 +1107,7 @@ toast.add = function(object) {
   }
 }
 
-toast.action = {};
+
 
 toast.action.dismissButton = function(element, slug, id) {
   var button = document.getElementById('js-' + slug + '__dismiss-button--' + id);
