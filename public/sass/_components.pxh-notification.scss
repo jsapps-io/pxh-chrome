@@ -180,19 +180,19 @@ $pxh-notification-max-count: 5;
     @include pxh-override-px-theme-color('pxh-notifications__icon-badge', $white);
     &--green {
       background-color: $green;
-      @include pxh-override-px-theme-background-color('pxh-notifications__icon-badge--low', $green);
+      @include pxh-override-px-theme-background-color('pxh-notifications__icon-badge--green', $green);
     }
     &--blue {
       background-color: $blue;
-      @include pxh-override-px-theme-background-color('pxh-notifications__icon-badge--medium', $blue);
+      @include pxh-override-px-theme-background-color('pxh-notifications__icon-badge--blue', $blue);
     }
     &--orange {
       background-color: $orange;
-      @include pxh-override-px-theme-background-color('pxh-notifications__icon-badge--high', $orange);
+      @include pxh-override-px-theme-background-color('pxh-notifications__icon-badge--orange', $orange);
     }
     &--red {
       background-color: $red;
-      @include pxh-override-px-theme-background-color('pxh-notifications__icon-badge--severe', $red);
+      @include pxh-override-px-theme-background-color('pxh-notifications__icon-badge--red', $red);
     }
     &--hidden {
       @include pxh-login--out-state;
