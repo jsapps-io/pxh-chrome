@@ -955,6 +955,7 @@ var pxhToggleNotifications = function pxhToggleNotifications(toggleControl, togg
 // actionLabel : 'View'
 // actionLink : 'http://google.com' // fully qualified link or route
 // actionCallback : // callback function
+// timestamp: '9:36 AM'
 
 var toastObject1 = {
   value: 'something',
@@ -991,6 +992,43 @@ var toastObject4 = {
 
 var toast = {};
 toast.markup = {};
+toast.action = {};
+toast.badge = {};
+toast.badge.count = 0;
+
+toast.badge.increment = function () {
+  console.log('incrementing');
+  toast.badge.count = toast.badge.count + 1;
+  if (toast.badge.count > 9) {
+    toast.badge.text = '9+';
+  } else if (toast.badge.count < 0) {
+    toast.badge.count = 0;
+    toast.badge.text = 0;
+  } else {
+    toast.badge.text = toast.badge.count;
+  }
+  toast.badge.update();
+};
+
+toast.badge.decrement = function () {
+  toast.badge.count = toast.badge.count - 1;
+  if (toast.badge.count > 9) {
+    toast.badge.text = '9+';
+  } else if (toast.badge.count < 0) {
+    toast.badge.count = 0;
+    toast.badge.text = 0;
+  } else {
+    toast.badge.text = toast.badge.count;
+  }
+  toast.badge.update();
+};
+
+toast.badge.update = function () {
+  var notificationBadge = '';
+  if (notificationBadge = document.getElementById('js-notifications__icon-badge')) {
+    notificationBadge.innerHTML = toast.badge.text;
+  }
+};
 
 toast.add = function (object) {
   var id = Math.floor(Math.random() * 16777215).toString(16);
@@ -999,6 +1037,8 @@ toast.add = function (object) {
   if ((notificationList = document.getElementById('js-notifications__list')) && (object.actionLink || object.actionCallback)) {
     var notificationFirstChild = notificationList.firstChild;
     var notificationElement = notificationList.insertBefore(toast.markup.createNotification(object, id), notificationFirstChild);
+    toast.badge.increment();
+    console.log(toast.badge.text);
     toast.action.dismissButton(notificationElement, 'notification', id);
     toast.action.expandButton(notificationElement, 'notification');
   }
@@ -1011,18 +1051,16 @@ toast.add = function (object) {
       setTimeout(function () {
         if (!toastElement.classList.contains('pxh-toast--expanded')) {
           // after 2000ms animate the toast out
-          toast.hide(toastElement, 'toast', id);
+          toast.autoHide(id);
           // 1000ms after the animation, remove the notification from the DOM
           setTimeout(function () {
-            toast.remove(toastElement, id);
+            toast.autoRemove(id);
           }, 1000);
         }
       }, 5000);
     }
   }
 };
-
-toast.action = {};
 
 toast.action.dismissButton = function (element, slug, id) {
   var button = document.getElementById('js-' + slug + '__dismiss-button--' + id);
@@ -1047,6 +1085,13 @@ toast.action.expandButton = function (element, slug) {
   }
 };
 
+toast.action.removeAllButton = function () {
+  toast.hideAll();
+  setTimeout(function () {
+    toast.removeAll();
+  }, 1000);
+};
+
 toast.hide = function (id) {
   var toastList = '';
   var toast = '';
@@ -1062,16 +1107,56 @@ toast.hide = function (id) {
   }
 };
 
-toast.remove = function (id) {
+toast.hideAll = function () {
+  var notificationList = '';
+  var notifications = [];
+  if ((notificationList = document.getElementById('js-notifications__list')) && (notifications = document.getElementsByClassName('pxh-notification'))) {
+    for (var i = notifications.length - 1; i >= 0; i--) {
+      var id = notifications[i].id.replace('js-notification--', '');
+      toast.hide(id);
+    }
+  }
+};
+
+toast.autoHide = function (id) {
   var toastList = '';
   var toast = '';
+  if ((toastList = document.getElementById('js-toasts')) && (toast = document.getElementById('js-toast--' + id))) {
+    toast.classList.add('pxh-toast--animate-out');
+    toast.classList.remove('pxh-toast--animate-in');
+  }
+};
+
+toast.remove = function (id) {
+  var toastList = '';
+  var toastElement = '';
   var notificationList = '';
   var notification = '';
-  if ((toastList = document.getElementById('js-toasts')) && (toast = document.getElementById('js-toast--' + id))) {
-    toast.remove();
+  if ((toastList = document.getElementById('js-toasts')) && (toastElement = document.getElementById('js-toast--' + id))) {
+    toastElement.remove();
   }
   if ((notificationList = document.getElementById('js-notifications__list')) && (notification = document.getElementById('js-notification--' + id))) {
     notification.remove();
+    toast.badge.decrement();
+  }
+};
+
+toast.autoRemove = function (id) {
+  var toastList = '';
+  var toastElement = '';
+  if ((toastList = document.getElementById('js-toasts')) && (toastElement = document.getElementById('js-toast--' + id))) {
+    toastElement.remove();
+  }
+};
+
+toast.removeAll = function () {
+  var notificationList = '';
+  var notifications = [];
+  if ((notificationList = document.getElementById('js-notifications__list')) && (notifications = document.getElementsByClassName('pxh-notification'))) {
+    for (var i = notifications.length - 1; i >= 0; i--) {
+      var id = notifications[i].id.replace('js-notification--', '');
+      toast.remove(id);
+    }
   }
 };
 
@@ -1100,7 +1185,7 @@ toast.markup.icon = function (object, slug) {
 };
 
 toast.markup.toastText = function (object, slug) {
-  var text = object.text ? object.text : 'You received a new notification';
+  var text = object.text ? object.text : 'You received a new notification.';
   var markup = [];
   markup.push('<div class="pxh-' + slug + '__text">\n');
   markup.push('  ' + text + '\n');
@@ -1111,7 +1196,7 @@ toast.markup.toastText = function (object, slug) {
 };
 
 toast.markup.notificationText = function (object, slug) {
-  var text = object.text ? object.text : 'You received a new notification';
+  var text = object.text ? object.text : 'You received a new notification.';
   var markup = [];
   markup.push('<div class="pxh-' + slug + '__text">\n');
   if (object.actionLink) {
@@ -1199,7 +1284,8 @@ toast.markup.createToast = function (object, id) {
 toast.markup.createNotification = function (object, id) {
   var slug = 'notification';
   var element = document.createElement('div');
-  element.className = 'pxh-' + slug + ' pxh-' + slug + '--animate-in';
+  // element.className = 'pxh-' + slug + ' pxh-' + slug + '--animate-in';
+  element.className = 'pxh-' + slug;
   element.id = 'js-' + slug + '--' + id;
   var markup = [];
   markup.push(toast.markup.icon(object, slug));
@@ -1219,6 +1305,12 @@ document.addEventListener('DOMContentLoaded', function (event) {
 if (document.getElementById('js-toast-emitter')) {
   document.getElementById('js-toast-emitter').addEventListener('click', function () {
     toast.add(toastObject3);
+  });
+}
+
+if (document.getElementById('js-notifications__link--clear')) {
+  document.getElementById('js-notifications__link--clear').addEventListener('click', function () {
+    toast.action.removeAllButton();
   });
 }
 

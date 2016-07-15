@@ -5983,23 +5983,23 @@ sub {
 }
 
 .pxh-notifications__link.pxh-notifications__link.pxh-notifications__link.pxh-notifications__link {
-  color: #7c7c84;
+  color: #b1b1bc;
 }
 
 .pxh-notifications__link.pxh-notifications__link.pxh-notifications__link.pxh-notifications__link:link {
-  color: #7c7c84;
+  color: #b1b1bc;
 }
 
 .pxh-notifications__link.pxh-notifications__link.pxh-notifications__link.pxh-notifications__link:visited {
-  color: #7c7c84;
+  color: #b1b1bc;
 }
 
 .pxh-notifications__link.pxh-notifications__link.pxh-notifications__link.pxh-notifications__link:hover {
-  color: white;
+  color: #3e87e8;
 }
 
 .pxh-notifications__link.pxh-notifications__link.pxh-notifications__link.pxh-notifications__link:active {
-  color: white;
+  color: #3e87e8;
 }
 
 .pxh-notifications__clear {
@@ -6060,6 +6060,8 @@ sub {
   text-align: center;
   background-color: #b1b1bc;
   display: inline-block;
+  min-width: 20px;
+  height: 20px;
   font-weight: normal;
   color: white;
   line-height: 1;
@@ -6069,7 +6071,7 @@ sub {
   position: absolute;
   bottom: 40px;
   left: 5px;
-  padding: 3px 3px 1px 3px;
+  padding: 3px 3px 1px 2px;
 }
 
 .pxh-notifications__icon-badge.pxh-notifications__icon-badge.pxh-notifications__icon-badge.pxh-notifications__icon-badge {
@@ -6178,7 +6180,9 @@ sub {
   scrollbar-track-color: #242326;
   scrollbar-face-color: #525156;
   -webkit-overflow-scrolling: touch;
+  position: relative;
   max-height: 385px;
+  min-height: 70px;
   -webkit-overflow-scrolling: touch;
   overflow-y: auto;
 }
@@ -6198,6 +6202,18 @@ sub {
   background-color: #7c7c84;
 }
 
+.pxh-notifications__empty {
+  position: absolute;
+  bottom: 0;
+  height: 70px;
+  z-index: 850;
+  font-style: italic;
+  color: #7c7c84;
+  width: 100%;
+  text-align: center;
+  padding-top: 23.3333333333px;
+}
+
 .pxh-notification {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -6211,6 +6227,7 @@ sub {
   height: 70px;
   font-size: 16px;
   border-bottom: 1px solid #3b3b3f;
+  z-index: 900;
 }
 
 .pxh-notification--expanded {
