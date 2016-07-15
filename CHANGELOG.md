@@ -1,7 +1,7 @@
 #pxh-chrome changelog
 
-### 1.0.1 - July 11, 2016 (pre-release)
-* Bump version on `gulp-eslint` to 3.0.0
+### pending release
+* Bump versions on `gulp-eslint` to 3.0.0, `protractor` to 4.0.0
 * Remove GE Inspira and GE Inspira Serif fonts
   * pxh-chrome now ships with GE Inspira Sans exclusively
 * Add (currently disabled via flags) pxh-toasts and pxh-toast components
@@ -13,7 +13,10 @@
   * Color options for icon
   * Automatically overflow long toast messages
 * Add (currently disabled via flags) pxh-notifications and pxh-notification components
-  * _Currently under development_
+
+### 1.0.1 - July 11, 2016 (pre-release)
+* Add source code for in-development pxh-notification and pxh-toast components
+  * Components are disabled in the `/dist` of this pre-release version
 
 ### 1.0.1 CDN - July 11, 2016 (pre-release)
 * _See release notes for 1.0.1_
