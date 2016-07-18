@@ -5424,13 +5424,13 @@ sub {
   scrollbar-face-color: #525156;
   -webkit-overflow-scrolling: touch;
   position: fixed;
-  top: 66px;
+  bottom: 0;
   right: 5px;
   left: 5px;
-  max-height: 255px;
   -webkit-overflow-scrolling: touch;
   overflow-y: auto;
   z-index: 300;
+  max-height: 180px;
 }
 
 .pxh-toasts::-webkit-scrollbar {
@@ -5450,6 +5450,8 @@ sub {
 
 @media (min-width: 48em) {
   .pxh-toasts--narrow\@md {
+    max-height: 255px;
+    top: 66px;
     left: auto;
     width: 420px;
   }

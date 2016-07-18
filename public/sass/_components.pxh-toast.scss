@@ -163,15 +163,17 @@ $pxh-toast-max-count: 3;
   .pxh-toasts {
     @include pxh-fancy-scrollbar;
     position: fixed;
-    top: 60px + 1px + 5px;
+    bottom: 0;
     right: $pxh-toast-margin;
     left: $pxh-toast-margin;
-    max-height: ($pxh-toast-height * $pxh-toast-max-count) + ($pxh-toast-height / 2) + ($pxh-toast-margin * ($pxh-toast-max-count - 1));
     -webkit-overflow-scrolling: touch;
     overflow-y: auto;
     z-index: 300;
+    max-height: ($pxh-toast-height * 2) + ($pxh-toast-height / 2) + $pxh-toast-margin;
     @include mq($from: md) {
       &--narrow\@md {
+        max-height: ($pxh-toast-height * $pxh-toast-max-count) + ($pxh-toast-height / 2) + ($pxh-toast-margin * ($pxh-toast-max-count - 1));
+        top: 60px + 1px + 5px;
         left: auto;
         width: 420px;
       }
