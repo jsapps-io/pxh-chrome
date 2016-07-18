@@ -39,7 +39,6 @@
     "metalsmith": "^2.1.0",
     "metalsmith-copy": "^0.2.1",
     "metalsmith-layouts": "^1.6.5",
-    "minimist": "^1.2.0",
     "mocha": "^2.5.3",
     "protractor": "^4.0.0"
   },

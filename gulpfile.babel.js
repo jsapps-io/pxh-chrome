@@ -4,7 +4,6 @@ import gulpLoadPlugins from 'gulp-load-plugins';
 import browserSync from 'browser-sync';
 import del from 'del';
 import path from 'path';
-import minimist from 'minimist';
 import replace from 'gulp-replace';
 import ext_replace from 'gulp-ext-replace';
 import shell from 'gulp-shell';
@@ -22,59 +21,6 @@ var componentConfig = {
     title:            'pxh-chrome'
   }
 };
-
-var replaceOptions = {
-  string: 'old',
-  string: 'new',
-  default: { 
-    old: '0.0.0',
-    new: '0.0.1'
-  }
-};
-
-var options = minimist(process.argv.slice(3), replaceOptions);
-console.log(options.new);
-
-// replace
-// Update version numbers on all relevant files
-// Usage:
-// $ gulp replace --old 0.0.1 --new 0.0.2
-gulp.task('bump', () => {
-  // list of files with static version numbers
-  var files = [
-    'bower.json',
-    'package.json',
-    'README.md',
-    'public/sass/pxh-chrome.scss',
-    'public/sass/pxh-prechrome.scss',
-    'src/screens/chromeless.hbs',
-    'src/screens/index.hbs',
-    'src/layouts/chromeless.hbs',
-    'src/layouts/default.hbs',
-    'src/layouts/error.hbs',
-    'src/layouts/loading.hbs',
-    'public/js/pxh-chrome.js',
-    'test/e2e/spec/smoke/baseline.spec.js'
-  ];
-  var regex = new RegExp('^\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}(\\.\\d{1,3})?$');
-  if ((options.old.search(regex) !== -1) && (options.new.search(regex) !== -1)) {
-    console.log(`Attempting to update version numbers from ${options.old} to ${options.new}...`);
-    files.forEach(function(file) {
-      console.log(`Reading (and maybe updating) ${file}...`);
-      gulp.src(file)
-      .pipe(replace(options.old, options.new))
-      .pipe(gulp.dest(path.dirname(file)));
-    })
-  } else {
-    console.log('');
-    console.log(`The values --old ${options.old} and --new ${options.new} don't look like version numbers.`);
-    console.log('');
-    console.log('Please follow the format {major}.{minor}.{patch} (with an optional .{hotfix})');
-    console.log('');
-    console.log('Examples: 0.1.1, 0.1.2, 0.1.2.1, etc.')
-    console.log('');
-  }
-});
 
 gulp.task('sass', () => {
   return gulp.src('public/sass/*.scss')
