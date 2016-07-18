@@ -1093,15 +1093,22 @@ var pxhBindDrawerMediaQueryControls = function(targetClass, mediaQuery) {
 
 var pxhOverlayDrawerControl = function() {
   var pxhOverlay = document.getElementsByClassName('pxh-overlay');
+  var pxhNotifications = document.getElementsByClassName('pxh-notifications');
   if (arrayExists(pxhOverlay)) {
     for (var i = pxhOverlay.length - 1; i >= 0; i--) {
       pxhOverlay[i].addEventListener('click', function(e) {
         if ((!lgBreakpoint.matches) && (pxhCookies.get('pxh-drawer-open') === 'true')) {
-          pxhLoadState(pxhTransitions, 'clearAll');
-          pxhLoadState(pxhStates, 'default');
-          document.dispatchEvent(pxhDrawerClosed);
-          pxhCookies.set('pxh-drawer-narrow', 'true', { expires: 1, path: '/'});
-          pxhCookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/'});
+          // if the notifications list is visible, close it when clicking the overlay but don't close the drawer
+          if ((arrayExists(pxhNotifications)) && (pxhNotifications[0].classList.contains('pxh-notifications--visible'))) {
+            pxhNotifications[0].classList.remove('pxh-notifications--visible');
+          } 
+          else {
+            pxhLoadState(pxhTransitions, 'clearAll');
+            pxhLoadState(pxhStates, 'default');
+            document.dispatchEvent(pxhDrawerClosed);
+            pxhCookies.set('pxh-drawer-narrow', 'true', { expires: 1, path: '/'});
+            pxhCookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/'});
+          }
         }
       })
     }
