@@ -9,6 +9,7 @@ var PREFIX = 'pxh-',
     NARROW = '--narrow',
     WIDE = '--wide',
     HIDDEN = '--hidden',
+    VISIBLE = '--visible',
     UNTIL = '-until',
     AT_MD = '@md',
     AT_LG = '@lg',
@@ -116,6 +117,9 @@ var NOTIFICATIONS_ICON = PREFIX + 'notifications__icon',
     NOTIFICATIONS_ICON_NARROW_AT_MD = NOTIFICATIONS_ICON + NARROW + AT_MD,
     NOTIFICATIONS_ICON_WIDE_AT_LG = NOTIFICATIONS_ICON + WIDE + AT_LG;
 
+var NOTIFICATIONS = PREFIX + 'notifications',
+    NOTIFICATIONS_VISIBLE = NOTIFICATIONS + VISIBLE;
+
 // disable-scroll
 var DISABLE_SCROLL = PREFIX + 'disable-scroll',
     DISABLE_SCROLL_UNTIL_AT_LG = DISABLE_SCROLL + UNTIL + AT_LG;
@@ -164,6 +168,9 @@ var pxhStates = {
     },
     'pxh-notifications__icon' : {
       'add' : NOTIFICATIONS_ICON_NARROW_AT_MD + ' ' + NOTIFICATIONS_ICON_WIDE_AT_LG
+    },
+    'pxh-notifications' : {
+      'remove' : NOTIFICATIONS_VISIBLE
     }
   },
   'open' : {
@@ -267,6 +274,9 @@ var pxhStates = {
     'pxh-notifications__icon' : {
       'add' : NOTIFICATIONS_ICON_NARROW_AT_MD,
       'remove' : NOTIFICATIONS_ICON_WIDE_AT_LG
+    },
+    'pxh-notifications' : {
+      'remove' : NOTIFICATIONS_VISIBLE
     }
   }
 }
