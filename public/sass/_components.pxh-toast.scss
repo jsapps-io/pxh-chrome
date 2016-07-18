@@ -163,7 +163,7 @@ $pxh-toast-max-count: 3;
   .pxh-toasts {
     @include pxh-fancy-scrollbar;
     position: fixed;
-    top: 60px + 1px + 5px;
+    bottom: 0;
     right: $pxh-toast-margin;
     left: $pxh-toast-margin;
     max-height: ($pxh-toast-height * $pxh-toast-max-count) + ($pxh-toast-height / 2) + ($pxh-toast-margin * ($pxh-toast-max-count - 1));
@@ -172,6 +172,7 @@ $pxh-toast-max-count: 3;
     z-index: 300;
     @include mq($from: md) {
       &--narrow\@md {
+        top: 60px + 1px + 5px;
         left: auto;
         width: 420px;
       }
