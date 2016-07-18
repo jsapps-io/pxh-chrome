@@ -5,153 +5,253 @@
 // CONFIG OBJECTS
 // **************
 
+var PREFIX = 'pxh-',
+    NARROW = '--narrow',
+    WIDE = '--wide',
+    HIDDEN = '--hidden',
+    UNTIL = '-until',
+    AT_MD = '@md',
+    AT_LG = '@lg',
+    ANIMATE = '--animate',
+    ANIMATE_IN = ANIMATE + '-in',
+    ANIMATE_OUT = ANIMATE + '-out',
+    ANIMATE_NARROW = ANIMATE + '-narrow',
+    ANIMATE_WIDE = ANIMATE + '-wide',
+    ANIMATE_FULL_TO_WIDE = ANIMATE + '-full-to-wide',
+    ANIMATE_OUT_WIDE = ANIMATE + '-out-wide';
+
+var DRAWER = PREFIX + 'drawer',
+    DRAWER_HIDDEN_UNTIL_AT_MD = DRAWER + HIDDEN + UNTIL + AT_MD,
+    DRAWER_NARROW_AT_MD = DRAWER + NARROW + AT_MD,
+    DRAWER_WIDE_AT_LG = DRAWER + WIDE + AT_LG,
+    DRAWER_NARROW_AT_LG = DRAWER + NARROW + AT_LG,
+    DRAWER_ANIMATE_IN = DRAWER + ANIMATE_IN,
+    DRAWER_ANIMATE_OUT = DRAWER + ANIMATE_OUT,
+    DRAWER_ANIMATE_WIDE = DRAWER + ANIMATE_WIDE,
+    DRAWER_ANIMATE_NARROW = DRAWER + ANIMATE_NARROW,
+    DRAWER_ANIMATE_OUT_WIDE = DRAWER + ANIMATE_OUT_WIDE;
+
+var DRAWER_HEADER_LINK = PREFIX + 'drawer-header__link',
+    DRAWER_HEADER_LINK_WIDE_AT_MD = DRAWER_HEADER_LINK + WIDE + AT_MD,
+    DRAWER_HEADER_LINK_NARROW_AT_MD = DRAWER_HEADER_LINK + NARROW + AT_MD,
+    DRAWER_HEADER_LINK_WIDE_AT_LG = DRAWER_HEADER_LINK + WIDE + AT_LG,
+    DRAWER_HEADER_LINK_ANIMATE_IN = DRAWER_HEADER_LINK + ANIMATE_IN,
+    DRAWER_HEADER_LINK_ANIMATE_OUT = DRAWER_HEADER_LINK + ANIMATE_OUT;
+
+var OVERLAY = PREFIX + 'overlay',
+    OVERLAY_HIDDEN = OVERLAY + HIDDEN;
+
+var NAVIGATION = PREFIX + 'navigation',
+    NAVIGATION_NARROW_AT_MD = NAVIGATION + NARROW + AT_MD,
+    NAVIGATION_WIDE_AT_LG = NAVIGATION + WIDE + AT_LG;
+
+var NAVIGATION_ITEM_TEXT = PREFIX + 'navigation__item-text',
+    NAVIGATION_ITEM_TEXT_ANIMATE_IN = NAVIGATION_ITEM_TEXT + ANIMATE_IN,
+    NAVIGATION_ITEM_TEXT_ANIMATE_OUT = NAVIGATION_ITEM_TEXT + ANIMATE_OUT;
+
+var NAVIGATION_SUB_LINK = PREFIX + 'navigation__sub-link',
+    NAVIGATION_SUB_LINK_ANIMATE_IN = NAVIGATION_SUB_LINK + ANIMATE_IN,
+    NAVIGATION_SUB_LINK_ANIMATE_OUT = NAVIGATION_SUB_LINK + ANIMATE_OUT;
+    // NAVIGATION_SUB_LINK_ANIMATE_WIDE = NAVIGATION_SUB_LINK + ANIMATE_WIDE;
+
+var LOGIN = PREFIX + 'login',
+    LOGIN_NARROW_AT_MD = LOGIN + NARROW + AT_MD,
+    LOGIN_WIDE_AT_LG = LOGIN + WIDE + AT_LG;
+
+var LOGIN_NAME = PREFIX + 'login__name',
+    LOGIN_NAME_NARROW_AT_MD = LOGIN_NAME + NARROW + AT_MD,
+    LOGIN_NAME_WIDE_AT_LG = LOGIN_NAME + WIDE + AT_LG,
+    LOGIN_NAME_ANIMATE_IN = LOGIN_NAME + ANIMATE_IN,
+    LOGIN_NAME_ANIMATE_OUT = LOGIN_NAME + ANIMATE_OUT;
+
+var LOGIN_LINK = PREFIX + 'login__link',
+    LOGIN_LINK_NARROW_AT_MD = LOGIN_LINK + NARROW + AT_MD,
+    LOGIN_LINK_WIDE_AT_LG = LOGIN_LINK + WIDE + AT_LG,
+    LOGIN_LINK_NARROW_AT_LG = LOGIN_LINK + NARROW + AT_LG;
+
+var LOGIN_SETTINGS = PREFIX + 'login__settings',
+    LOGIN_SETTINGS_NARROW_AT_MD = LOGIN_SETTINGS + NARROW + AT_MD,
+    LOGIN_SETTINGS_WIDE_AT_LG = LOGIN_SETTINGS + WIDE + AT_LG,
+    LOGIN_SETTINGS_ANIMATE_IN = LOGIN_SETTINGS + ANIMATE_IN,
+    LOGIN_SETTINGS_ANIMATE_OUT = LOGIN_SETTINGS + ANIMATE_OUT;
+
+var LOGIN_CARET = PREFIX + 'login__caret',
+    LOGIN_CARET_NARROW_AT_MD = LOGIN_CARET + NARROW + AT_MD,
+    LOGIN_CARET_WIDE_AT_LG = LOGIN_CARET + WIDE + AT_LG,
+    LOGIN_CARET_ANIMATE_IN = LOGIN_CARET + ANIMATE_IN,
+    LOGIN_CARET_ANIMATE_OUT = LOGIN_CARET + ANIMATE_OUT;
+
+var VIEW = PREFIX + 'view',
+    VIEW_NARROW_AT_LG = VIEW + NARROW + AT_LG,
+    VIEW_WIDE_AT_LG = VIEW + WIDE + AT_LG,
+    VIEW_ANIMATE_FULL_TO_WIDE = VIEW + ANIMATE_FULL_TO_WIDE,
+    VIEW_ANIMATE_WIDE = VIEW + ANIMATE_WIDE,
+    VIEW_ANIMATE_NARROW = VIEW + ANIMATE_NARROW;
+
+var VIEW_HEADER = PREFIX + 'view-header',
+    VIEW_HEADER_NARROW_AT_LG = VIEW_HEADER + NARROW + AT_LG,
+    VIEW_HEADER_WIDE_AT_LG = VIEW_HEADER + WIDE + AT_LG,
+    VIEW_HEADER_ANIMATE_WIDE = VIEW_HEADER + ANIMATE_WIDE,
+    VIEW_HEADER_ANIMATE_NARROW = VIEW_HEADER + ANIMATE_NARROW,
+    VIEW_HEADER_ANIMATE_FULL_TO_WIDE = VIEW_HEADER + ANIMATE_FULL_TO_WIDE;
+
+var VIEW_HEADER_DRAWER_TOGGLE = PREFIX + 'view-header-drawer-toggle',
+    VIEW_HEADER_DRAWER_TOGGLE_HIDDEN = VIEW_HEADER_DRAWER_TOGGLE + HIDDEN;
+
+var NOTIFICATIONS_ICON = PREFIX + 'notifications__icon',
+    NOTIFICATIONS_ICON_NARROW_AT_MD = NOTIFICATIONS_ICON + NARROW + AT_MD,
+    NOTIFICATIONS_ICON_WIDE_AT_LG = NOTIFICATIONS_ICON + WIDE + AT_LG;
+
+var DISABLE_SCROLL = PREFIX + 'disable-scroll',
+    DISABLE_SCROLL_UNTIL_AT_LG = DISABLE_SCROLL + UNTIL + AT_LG;
+
 var pxhStates = {
   'default' : {
     'pxh-drawer' : {
-      'add' : 'pxh-drawer--hidden-until@md pxh-drawer--narrow@md pxh-drawer--wide@lg',
-      'remove' : 'pxh-drawer--narrow@lg'
+      'add' : DRAWER_HIDDEN_UNTIL_AT_MD + ' ' + DRAWER_NARROW_AT_MD + ' ' + DRAWER_WIDE_AT_LG,
+      'remove' : DRAWER_NARROW_AT_LG
     },
     'pxh-drawer-header__link' : {
-      'remove' : 'pxh-drawer-header__link--wide@md',
-      'add' : 'pxh-drawer-header__link--narrow@md pxh-drawer-header__link--wide@lg'
+      'remove' : DRAWER_HEADER_LINK_WIDE_AT_MD,
+      'add' : DRAWER_HEADER_LINK_NARROW_AT_MD + ' ' + DRAWER_HEADER_LINK_WIDE_AT_LG
     },
     'pxh-overlay' : {
-      'add' : 'pxh-overlay--hidden'
+      'add' : OVERLAY_HIDDEN
     },
     'pxh-navigation' : {
-      'add' : 'pxh-navigation--narrow@md pxh-navigation--wide@lg'
+      'add' : NAVIGATION_NARROW_AT_MD + ' ' + NAVIGATION_WIDE_AT_LG
     },
     'pxh-login' : {
-      'add' : 'pxh-login--narrow@md pxh-login--wide@lg'
+      'add' : LOGIN_NARROW_AT_MD + ' ' + LOGIN_WIDE_AT_LG
     },
     'pxh-login__name' : {
-      'add' : 'pxh-login__name--narrow@md pxh-login__name--wide@lg'
+      'add' : LOGIN_NAME_NARROW_AT_MD + ' ' + LOGIN_NAME_WIDE_AT_LG
     },
     'pxh-login__link' : {
-      'add' : 'pxh-login__link--narrow@md pxh-login__link--wide@lg'
+      'add' : LOGIN_LINK_NARROW_AT_MD + ' ' + LOGIN_LINK_WIDE_AT_LG
     },
     'pxh-login__settings' : {
-      'add' : 'pxh-login__settings--narrow@md pxh-login__settings--wide@lg'
+      'add' : LOGIN_SETTINGS_NARROW_AT_MD + ' ' + LOGIN_SETTINGS_WIDE_AT_LG
     },
     'pxh-login__caret' : {
-      'add' : 'pxh-login__caret--narrow@md pxh-login__caret--wide@lg',
+      'add' : LOGIN_CARET_NARROW_AT_MD + ' ' + LOGIN_CARET_WIDE_AT_LG,
     },
     'pxh-view' : {
-      'remove' : 'pxh-disable-scroll-until@lg pxh-view--wide@lg',
-      'add' : 'pxh-view--narrow@lg'
+      'remove' : DISABLE_SCROLL_UNTIL_AT_LG + ' ' + VIEW_WIDE_AT_LG,
+      'add' : VIEW_NARROW_AT_LG
     },
     'pxh-view-header' : {
-      'remove' : 'pxh-view-header--wide@lg',
-      'add' : 'pxh-view-header--narrow@lg'
+      'remove' : VIEW_HEADER_WIDE_AT_LG,
+      'add' : VIEW_HEADER_NARROW_AT_LG
     },
     'pxh-view-header-drawer-toggle' : {
-      'remove' : 'pxh-view-header-drawer-toggle--hidden'
+      'remove' : VIEW_HEADER_DRAWER_TOGGLE_HIDDEN
     },
     'pxh-notifications__icon' : {
-      'add' : 'pxh-notifications__icon--narrow@md pxh-notifications__icon--wide@lg'
+      'add' : NOTIFICATIONS_ICON_NARROW_AT_MD + ' ' + NOTIFICATIONS_ICON_WIDE_AT_LG
     }
   },
   'open' : {
     'pxh-drawer' : {
-      'remove' : 'pxh-drawer--hidden-until@md pxh-drawer--narrow@md pxh-drawer--narrow@lg',
-      'add' : 'pxh-drawer--wide@lg'
+      'remove' : DRAWER_HIDDEN_UNTIL_AT_MD + ' ' + DRAWER_NARROW_AT_MD + ' ' + DRAWER_NARROW_AT_LG,
+      'add' : DRAWER_WIDE_AT_LG
     },
     'pxh-drawer-header__link' : {
-      'remove' : 'pxh-drawer-header__link--narrow@md',
-      'add' : 'pxh-drawer-header__link--wide@md pxh-drawer-header__link--wide@lg'
+      'remove' : DRAWER_HEADER_LINK_NARROW_AT_MD,
+      'add' : DRAWER_HEADER_LINK_WIDE_AT_MD + ' ' + DRAWER_HEADER_LINK_WIDE_AT_LG
     },
     'pxh-overlay' : {
-      'remove' : 'pxh-overlay--hidden'
+      'remove' : OVERLAY_HIDDEN
     },
     'pxh-navigation' : {
-      'remove' : 'pxh-navigation--narrow@md',
-      'add' : 'pxh-navigation--wide@lg'
+      'remove' : NAVIGATION_NARROW_AT_MD,
+      'add' : NAVIGATION_WIDE_AT_LG
     },
     'pxh-login' : {
-      'add' : 'pxh-login--wide@lg',
-      'remove' : 'pxh-login--narrow@md'
+      'add' : LOGIN_WIDE_AT_LG,
+      'remove' : LOGIN_NARROW_AT_MD
     },
     'pxh-login__name' : {
-      'remove' : 'pxh-login__name--narrow@md',
-      'add' : 'pxh-login__name--wide@lg'
+      'remove' : LOGIN_NAME_NARROW_AT_MD,
+      'add' : LOGIN_NAME_WIDE_AT_LG
     },
     'pxh-login__link' : {
-      'remove' : 'pxh-login__link--narrow@md pxh-login__link--narrow@lg'
+      'remove' : LOGIN_LINK_NARROW_AT_MD + ' ' + LOGIN_LINK_NARROW_AT_LG
     },
     'pxh-login__settings' : {
-      'remove' : 'pxh-login__settings--narrow@md',
-      'add' : 'pxh-login__settings--wide@lg'
+      'remove' : LOGIN_SETTINGS_NARROW_AT_MD,
+      'add' : LOGIN_SETTINGS_WIDE_AT_LG
     },
     'pxh-login__caret' : {
-      'remove' : 'pxh-login__caret--narrow@md',
-      'add' : 'pxh-login__caret--wide@lg'
+      'remove' : LOGIN_CARET_NARROW_AT_MD,
+      'add' : LOGIN_CARET_WIDE_AT_LG
     },
     'pxh-view' : {
-      'add' : 'pxh-disable-scroll-until@lg pxh-view--narrow@lg',
-      'remove' : 'pxh-view--wide@lg'
+      'add' : DISABLE_SCROLL_UNTIL_AT_LG + ' ' + VIEW_NARROW_AT_LG,
+      'remove' : VIEW_WIDE_AT_LG
     },
     'pxh-view-header' : {
-      'add' : 'pxh-view-header--narrow@lg',
-      'remove' : 'pxh-view-header--wide@lg'
+      'add' : VIEW_HEADER_NARROW_AT_LG,
+      'remove' : VIEW_HEADER_WIDE_AT_LG
     },
     'pxh-view-header-drawer-toggle' : {
-      'add' : 'pxh-view-header-drawer-toggle--hidden'
+      'add' : VIEW_HEADER_DRAWER_TOGGLE_HIDDEN
     },
     'pxh-notifications__icon' : {
-      'remove' : 'pxh-notifications__icon--narrow@md',
-      'add' : 'pxh-notifications__icon--wide@lg'
+      'remove' : NOTIFICATIONS_ICON_NARROW_AT_MD,
+      'add' : NOTIFICATIONS_ICON_WIDE_AT_LG
     }
   },
   'narrowAtLg' : {
     'pxh-drawer' : {
-      'add' : 'pxh-drawer--hidden-until@md pxh-drawer--narrow@md pxh-drawer--narrow@lg',
-      'remove' : 'pxh-drawer--wide@lg'
+      'add' : DRAWER_HIDDEN_UNTIL_AT_MD + ' ' + DRAWER_NARROW_AT_MD + ' ' + DRAWER_NARROW_AT_LG,
+      'remove' : DRAWER_WIDE_AT_LG
     },
     'pxh-drawer-header__link' : {
-      'remove' : 'pxh-drawer-header__link--wide@md pxh-drawer-header__link--wide@lg',
-      'add' : 'pxh-drawer-header__link--narrow@md'
+      'remove' : DRAWER_HEADER_LINK_WIDE_AT_MD + ' ' + DRAWER_HEADER_LINK_WIDE_AT_LG,
+      'add' : DRAWER_HEADER_LINK_NARROW_AT_MD
     },
     'pxh-overlay' : {
-      'add' : 'pxh-overlay--hidden'
+      'add' : OVERLAY_HIDDEN
     },
     'pxh-navigation' : {
-      'add' : 'pxh-navigation--narrow@md',
-      'remove' : 'pxh-navigation--wide@lg'
+      'add' : NAVIGATION_NARROW_AT_MD,
+      'remove' : NAVIGATION_WIDE_AT_LG
     },
     'pxh-login' : {
-      'add' : 'pxh-login--narrow@md',
-      'remove' : 'pxh-login--wide@lg'
+      'add' : LOGIN_NARROW_AT_MD,
+      'remove' : LOGIN_WIDE_AT_LG
     },
     'pxh-login__name' : {
-      'add' : 'pxh-login__name--narrow@md',
-      'remove' : 'pxh-login__name--wide@lg'
+      'add' : LOGIN_NAME_NARROW_AT_MD,
+      'remove' : LOGIN_NAME_WIDE_AT_LG
     },
     'pxh-login__link' : {
-      'add' : 'pxh-login__link--narrow@md',
-      'remove' : 'pxh-login__link--wide@lg'
+      'add' : LOGIN_LINK_NARROW_AT_MD,
+      'remove' : LOGIN_LINK_WIDE_AT_LG
     },
     'pxh-login__settings' : {
-      'add' : 'pxh-login__settings--narrow@md',
-      'remove' : 'pxh-login__settings--wide@lg'
+      'add' : LOGIN_SETTINGS_NARROW_AT_MD,
+      'remove' : LOGIN_SETTINGS_WIDE_AT_LG
     },
     'pxh-login__caret' : {
-      'add' : 'pxh-login__caret--narrow@md',
-      'remove' : 'pxh-login__caret--wide@lg'
+      'add' : LOGIN_CARET_NARROW_AT_MD,
+      'remove' : LOGIN_CARET_WIDE_AT_LG
     },
     'pxh-view' : {
-      'remove' : 'pxh-disable-scroll-until@lg pxh-view--narrow@lg',
-      'add' : 'pxh-view--wide@lg'
+      'remove' : DISABLE_SCROLL_UNTIL_AT_LG + ' ' + VIEW_NARROW_AT_LG,
+      'add' : VIEW_WIDE_AT_LG
     },
     'pxh-view-header' : {
-      'remove' : 'pxh-view-header--narrow@lg',
-      'add' : 'pxh-view-header--wide@lg'
+      'remove' : VIEW_HEADER_NARROW_AT_LG,
+      'add' : VIEW_HEADER_WIDE_AT_LG
     },
     'pxh-view-header-drawer-toggle' : {
-      'remove' : 'pxh-view-header-drawer-toggle--hidden'
+      'remove' : VIEW_HEADER_DRAWER_TOGGLE_HIDDEN
     },
     'pxh-notifications__icon' : {
-      'add' : 'pxh-notifications__icon--narrow@md',
-      'remove' : 'pxh-notifications__icon--wide@lg'
+      'add' : NOTIFICATIONS_ICON_NARROW_AT_MD,
+      'remove' : NOTIFICATIONS_ICON_WIDE_AT_LG
     }
   }
 }
@@ -159,185 +259,185 @@ var pxhStates = {
 var pxhTransitions = {
   'outToIn' : {
     'pxh-drawer' : {
-      'add' : 'pxh-drawer--animate-in',
+      'add' : DRAWER_ANIMATE_IN,
     }
   },
   'inToOut' : {
     'pxh-drawer' : {
-      'add' : 'pxh-drawer--animate-out'
+      'add' : DRAWER_ANIMATE_OUT,
     }
   },
   'narrowToOpen' : {
     'pxh-drawer' : {
-      'add' : 'pxh-drawer--animate-wide'
+      'add' : DRAWER_ANIMATE_WIDE,
     },
     'pxh-drawer-header__link' : {
-      'add' : 'pxh-drawer-header__link--animate-in'
+      'add' : DRAWER_HEADER_LINK_ANIMATE_IN
     },
     'pxh-navigation__item-text' : {
-      'add' : 'pxh-navigation__item-text--animate-in'
+      'add' : NAVIGATION_ITEM_TEXT_ANIMATE_IN
     },
     'pxh-navigation__sub-link' : {
-      'add' : 'pxh-navigation__sub-link--animate-in'
+      'add' : NAVIGATION_SUB_LINK_ANIMATE_IN
     },
-    'pxh-login' : {
-      'add' : 'pxh-navigation__sub-link--animate-wide'
-    },
+    // 'pxh-login' : {
+    //   'add' : LOGIN_ANIMATE_WIDE
+    // },
     'pxh-login__name' : {
-      'add' : 'pxh-login__name--animate-in'
+      'add' : LOGIN_NAME_ANIMATE_IN
     },
     'pxh-login__caret' : {
-      'add' : 'pxh-login__caret--animate-in'
+      'add' : LOGIN_CARET_ANIMATE_IN
     },
     'pxh-login__settings' : {
-      'add' : 'pxh-login__settings--animate-in'
+      'add' : LOGIN_SETTINGS_ANIMATE_IN
     }
   },
   'openToNarrow' : {
     'pxh-drawer' : {
-      'add' : 'pxh-drawer--animate-narrow'
+      'add' : DRAWER_ANIMATE_NARROW
     },
     'pxh-drawer-header__link' : {
-      'add' : 'pxh-drawer-header__link--animate-out'
+      'add' : DRAWER_HEADER_LINK_ANIMATE_OUT
     },
     'pxh-navigation__item-text' : {
-      'add' : 'pxh-navigation__item-text--animate-out'
+      'add' : NAVIGATION_ITEM_TEXT_ANIMATE_OUT
     },
     'pxh-navigation__sub-link' : {
-      'add' : 'pxh-navigation__sub-link--animate-out'
+      'add' : NAVIGATION_SUB_LINK_ANIMATE_OUT
     },
     'pxh-login__name' : {
-      'add' : 'pxh-login__name--animate-out'
+      'add' : LOGIN_NAME_ANIMATE_OUT
     },
     'pxh-login__caret' : {
-      'add' : 'pxh-login__caret--animate-out'
+      'add' : LOGIN_CARET_ANIMATE_OUT
     },
     'pxh-login__settings' : {
-      'add' : 'pxh-login__settings--animate-out'
+      'add' : LOGIN_SETTINGS_ANIMATE_OUT
     }
   },
   'outToNarrow' : {
     'pxh-drawer' : {
-      'add' : 'pxh-drawer--animate-in'
+      'add' : DRAWER_ANIMATE_IN
     },
     'pxh-view' : {
-      'add' : 'pxh-view--animate-full-to-wide'
+      'add' : VIEW_ANIMATE_FULL_TO_WIDE
     },
     'pxh-view-header' : {
-      'add' : 'pxh-view-header--animate-full-to-wide'
+      'add' : VIEW_HEADER_ANIMATE_FULL_TO_WIDE
     }
   },
   'narrowToOut' : {
     'pxh-drawer' : {
-      'add' : 'pxh-drawer--animate-out-wide'
+      'add' : DRAWER_ANIMATE_OUT_WIDE
     },
     'pxh-drawer-header__link' : {
-      'add' : 'pxh-drawer-header__link--animate-in'
+      'add' : DRAWER_HEADER_LINK_ANIMATE_IN
     },
     'pxh-navigation__item-text' : {
-      'add' : 'pxh-navigation__item-text--animate-in'
+      'add' : NAVIGATION_ITEM_TEXT_ANIMATE_IN
     },
     'pxh-navigation__sub-link' : {
-      'add' : 'pxh-navigation__sub-link--animate-in'
+      'add' : NAVIGATION_SUB_LINK_ANIMATE_IN
     },
-    'pxh-login' : {
-      'add' : 'pxh-navigation__sub-link--animate-wide'
-    },
+    // 'pxh-login' : {
+    //   'add' : NAVIGATION_SUB_LINK_ANIMATE_WIDE
+    // },
     'pxh-login__name' : {
-      'add' : 'pxh-login__name--animate-in'
+      'add' : LOGIN_NAME_ANIMATE_IN
     },
     'pxh-login__caret' : {
-      'add' : 'pxh-login__caret--animate-in'
+      'add' : LOGIN_CARET_ANIMATE_IN
     },
     'pxh-login__settings' : {
-      'add' : 'pxh-login__settings--animate-in'
+      'add' : LOGIN_SETTINGS_ANIMATE_IN
     }
   },
   'wideToNarrow' : {
     'pxh-drawer' : {
-      'add' : 'pxh-drawer--animate-narrow'
+      'add' : DRAWER_ANIMATE_NARROW
     },
     'pxh-drawer-header__link' : {
-      'add' : 'pxh-drawer-header__link--animate-out'
+      'add' : DRAWER_HEADER_LINK_ANIMATE_OUT
     },
     'pxh-navigation__item-text' : {
-      'add' : 'pxh-navigation__item-text--animate-out'
+      'add' : NAVIGATION_ITEM_TEXT_ANIMATE_OUT
     },
     'pxh-navigation__sub-link' : {
-      'add' : 'pxh-navigation__sub-link--animate-out'
+      'add' : NAVIGATION_SUB_LINK_ANIMATE_OUT
     },
     'pxh-login__name' : {
-      'add' : 'pxh-login__name--animate-out'
+      'add' : LOGIN_NAME_ANIMATE_OUT
     },
     'pxh-login__caret' : {
-      'add' : 'pxh-login__caret--animate-out'
+      'add' : LOGIN_CARET_ANIMATE_OUT
     },
     'pxh-login__settings' : {
-      'add' : 'pxh-login__settings--animate-out'
+      'add' : LOGIN_SETTINGS_ANIMATE_OUT
     },
     'pxh-view' : {
-      'add' : 'pxh-view--animate-wide'
+      'add' : VIEW_ANIMATE_WIDE
     },
     'pxh-view-header' : {
-      'add' : 'pxh-view-header--animate-wide'
+      'add' : VIEW_HEADER_ANIMATE_WIDE
     }
   },
   'narrowToWide' : {
     'pxh-drawer' : {
-      'add' : 'pxh-drawer--animate-wide'
+      'add' : DRAWER_ANIMATE_WIDE
     },
     'pxh-drawer-header__link' : {
-      'add' : 'pxh-drawer-header__link--animate-in'
+      'add' : DRAWER_HEADER_LINK_ANIMATE_IN
     },
     'pxh-navigation__item-text' : {
-      'add' : 'pxh-navigation__item-text--animate-in'
+      'add' : NAVIGATION_ITEM_TEXT_ANIMATE_IN
     },
     'pxh-navigation__sub-link' : {
-      'add' : 'pxh-navigation__sub-link--animate-in'
+      'add' : NAVIGATION_SUB_LINK_ANIMATE_IN
     },
     'pxh-login__name' : {
-      'add' : 'pxh-login__name--animate-in'
+      'add' : LOGIN_NAME_ANIMATE_IN
     },
     'pxh-login__caret' : {
-      'add' : 'pxh-login__caret--animate-in'
+      'add' : LOGIN_CARET_ANIMATE_IN
     },
     'pxh-login__settings' : {
-      'add' : 'pxh-login__settings--animate-in'
+      'add' : LOGIN_SETTINGS_ANIMATE_IN
     },
     'pxh-view' : {
-      'add' : 'pxh-view--animate-narrow'
+      'add' : VIEW_ANIMATE_NARROW
     },
     'pxh-view-header' : {
-      'add' : 'pxh-view-header--animate-narrow'
+      'add' : VIEW_HEADER_ANIMATE_NARROW
     }
   },
   'clearAll' : {
     'pxh-drawer' : {
-      'remove' : 'pxh-drawer--animate-in pxh-drawer--animate-out pxh-drawer--animate-narrow pxh-drawer--animate-wide pxh-drawer--animate-out-wide'
+      'remove' : DRAWER_ANIMATE_IN + ' ' + DRAWER_ANIMATE_OUT + ' ' + DRAWER_ANIMATE_NARROW  + ' ' + DRAWER_ANIMATE_WIDE + ' ' + DRAWER_ANIMATE_OUT_WIDE
     },
     'pxh-drawer-header__link' : {
-      'remove' : 'pxh-drawer-header__link--animate-in pxh-drawer-header__link--animate-out'
+      'remove' : DRAWER_HEADER_LINK_ANIMATE_IN + ' ' + DRAWER_HEADER_LINK_ANIMATE_OUT
     },
     'pxh-navigation__item-text' : {
-      'remove' : 'pxh-navigation__item-text--animate-in pxh-navigation__item-text--animate-out'
+      'remove' : NAVIGATION_ITEM_TEXT_ANIMATE_IN + ' ' + NAVIGATION_ITEM_TEXT_ANIMATE_OUT
     },
     'pxh-navigation__sub-link' : {
-      'remove' : 'pxh-navigation__sub-link--animate-in pxh-navigation__sub-link--animate-out'
+      'remove' : NAVIGATION_SUB_LINK_ANIMATE_IN + ' ' + NAVIGATION_SUB_LINK_ANIMATE_OUT
     },
     'pxh-login__name' : {
-      'remove' : 'pxh-login__name--animate-in pxh-login__name--animate-out'
+      'remove' : LOGIN_NAME_ANIMATE_IN + ' ' + LOGIN_NAME_ANIMATE_OUT
     },
     'pxh-login__caret' : {
-      'remove' : 'pxh-login__caret--animate-in pxh-login__caret--animate-out'
+      'remove' : LOGIN_CARET_ANIMATE_IN  + ' ' + LOGIN_CARET_ANIMATE_OUT
     },
     'pxh-login__settings' : {
-      'remove' : 'pxh-login__settings--animate-in pxh-login__settings--animate-out'
+      'remove' : LOGIN_SETTINGS_ANIMATE_IN + ' ' + LOGIN_SETTINGS_ANIMATE_OUT
     },
     'pxh-view' : {
-      'remove' : 'pxh-view--animate-wide pxh-view--animate-narrow pxh-view--animate-full-to-wide'
+      'remove' : VIEW_ANIMATE_WIDE + ' ' + VIEW_ANIMATE_NARROW + ' ' + VIEW_ANIMATE_FULL_TO_WIDE
     },
     'pxh-view-header' : {
-      'remove' : 'pxh-view-header--animate-wide pxh-view-header--animate-narrow pxh-view-header--animate-full-to-wide'
+      'remove' : VIEW_HEADER_ANIMATE_WIDE + ' ' + VIEW_HEADER_ANIMATE_NARROW + ' ' + VIEW_HEADER_ANIMATE_FULL_TO_WIDE
     }
   }
 }
