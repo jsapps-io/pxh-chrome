@@ -1158,11 +1158,11 @@ pxh.anywhereLoginMenuControl = function(toggleControl, toggleTarget, removeClass
   }
 }
 
-var pxhAddResizeSensor = function(targetId) {
+pxh.addResizeSensor = function(targetId) {
   var targetElement = document.getElementById(targetId);
   if (targetElement) {
     new pxhResizeSensor(targetElement, function() {
-      document.dispatchEvent(pxhViewResized);
+      document.dispatchEvent(pxh.viewResized);
     });
   }
 }
@@ -1576,8 +1576,8 @@ document.addEventListener('DOMContentLoaded', function(event) {
   mdBreakpoint.addListener(pxh.breakpointAtMd);
 });
 
-var pxhViewResized = document.createEvent('CustomEvent');
-pxhViewResized.initCustomEvent('pxhViewResized', false, false, {
+pxh.viewResized = document.createEvent('CustomEvent');
+pxh.viewResized.initCustomEvent('pxhviewResized', false, false, {
     'viewResized': true
 });
 
@@ -1635,6 +1635,6 @@ document.addEventListener('DOMContentLoaded', function(event) {
 
   pxh.toggleNotifications('pxh-notifications__icon', 'pxh-notifications', 'pxh-notifications--visible');
 
-  pxhAddResizeSensor('js-view');
+  pxh.addResizeSensor('js-view');
 
 });
