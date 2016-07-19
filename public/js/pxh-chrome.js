@@ -1228,39 +1228,39 @@ pxh.toast = {
   badge : {
     count : 0,
     increment : function() {
-      toast.badge.count = toast.badge.count + 1;
-      if (toast.badge.count > 9) {
-        toast.badge.text = '9+';
+      pxh.toast.badge.count = pxh.toast.badge.count + 1;
+      if (pxh.toast.badge.count > 9) {
+        pxh.toast.badge.text = '9+';
       }
-      else if (toast.badge.count < 0) {
-        toast.badge.count = 0;
-        toast.badge.text = 0;
+      else if (pxh.toast.badge.count < 0) {
+        pxh.toast.badge.count = 0;
+        pxh.toast.badge.text = 0;
       }
       else {
-        toast.badge.text = toast.badge.count;
+        pxh.toast.badge.text = pxh.toast.badge.count;
       }
-      toast.badge.update();
+      pxh.toast.badge.update();
     },
     decrement : function() {
-      toast.badge.count = toast.badge.count - 1;
-      if (toast.badge.count > 9) {
-        toast.badge.text = '9+';
+      pxh.toast.badge.count = pxh.toast.badge.count - 1;
+      if (pxh.toast.badge.count > 9) {
+        pxh.toast.badge.text = '9+';
       }
-      else if (toast.badge.count < 0) {
-        toast.badge.count = 0;
-        toast.badge.text = 0;
+      else if (pxh.toast.badge.count < 0) {
+        pxh.toast.badge.count = 0;
+        pxh.toast.badge.text = 0;
       }
        else {
-        toast.badge.text = toast.badge.count;
+        pxh.toast.badge.text = pxh.toast.badge.count;
       }
-      toast.badge.update();
+      pxh.toast.badge.update();
     },
     update : function() {
       var notificationIcon = '';
       var notificationBadge = '';
       if (notificationBadge = document.getElementById('js-notifications__icon-badge')) {
-        if (toast.badge.count > 0) {
-          notificationBadge.innerHTML = toast.badge.text;
+        if (pxh.toast.badge.count > 0) {
+          notificationBadge.innerHTML = pxh.toast.badge.text;
           notificationBadge.classList.remove('pxh-notifications__icon-badge--hidden');
           if (notificationIcon = document.getElementById('js-notifications__icon')) {
             // notificationIcon.classList.remove('pxh-notifications__icon--narrow@md');
@@ -1280,24 +1280,24 @@ pxh.toast = {
     var toastList = '';
     if ((notificationList = document.getElementById('js-notifications__list')) && ((object.actionLink) || (object.actionCallback))) {
       var notificationFirstChild = notificationList.firstChild;
-      var notificationElement = notificationList.insertBefore(toast.markup.createNotification(object, id), notificationFirstChild);
-      toast.badge.increment();
-      toast.action.dismissButton(notificationElement, 'notification', id);
-      toast.action.expandButton(notificationElement, 'notification');
+      var notificationElement = notificationList.insertBefore(pxh.toast.markup.createNotification(object, id), notificationFirstChild);
+      pxh.toast.badge.increment();
+      pxh.toast.action.dismissButton(notificationElement, 'notification', id);
+      pxh.toast.action.expandButton(notificationElement, 'notification');
     }
     if (toastList = document.getElementById('js-toasts')) {
       var toastFirstChild = toastList.firstChild;
-      var toastElement = toastList.insertBefore(toast.markup.createToast(object, id), toastFirstChild);
-      toast.action.dismissButton(toastElement, 'toast', id);
-      toast.action.expandButton(toastElement, 'toast');
+      var toastElement = toastList.insertBefore(pxh.toast.markup.createToast(object, id), toastFirstChild);
+      pxh.toast.action.dismissButton(toastElement, 'toast', id);
+      pxh.toast.action.expandButton(toastElement, 'toast');
       if (!object.isPersistent) {
         setTimeout(function() {
           if (!toastElement.classList.contains('pxh-toast--expanded')) {
             // after 2000ms animate the toast out
-            toast.autoHide(id);
+            pxh.toast.autoHide(id);
             // 1000ms after the animation, remove the notification from the DOM
             setTimeout(function() {
-              toast.autoRemove(id);
+              pxh.toast.autoRemove(id);
             }, 1000);
           }
         }, 5000);
@@ -1311,9 +1311,9 @@ pxh.toast = {
       if (button) {
         button.addEventListener('click', function(event) {
           event.preventDefault();
-          toast.hide(id);
+          pxh.toast.hide(id);
           setTimeout(function() {
-            toast.remove(id);
+            pxh.toast.remove(id);
           }, 1000);
         })
       }
@@ -1324,27 +1324,27 @@ pxh.toast = {
       if (button) {
         button.addEventListener('click', function(event) {
           event.preventDefault();
-          toast.expand(element, slug);
+          pxh.toast.expand(element, slug);
         })
       }
     },
 
     removeAllButton : function() {
-      toast.hideAll();
+      pxh.toast.hideAll();
       setTimeout(function() {
-        toast.removeAll();
+        pxh.toast.removeAll();
       }, 1000);
     }
   },
 
   hide : function(id) {
     var toastList = '';
-    var toast = '';
+    var toastItem = '';
     var notificationList = '';
     var notification = '';
-    if ((toastList = document.getElementById('js-toasts')) && (toast = document.getElementById('js-toast--' + id))) {
-      toast.classList.add('pxh-toast--animate-out');
-      toast.classList.remove('pxh-toast--animate-in');
+    if ((toastList = document.getElementById('js-toasts')) && (toastItem = document.getElementById('js-toast--' + id))) {
+      toastItem.classList.add('pxh-toast--animate-out');
+      toastItem.classList.remove('pxh-toast--animate-in');
     }
     if ((notificationList = document.getElementById('js-notifications__list')) && (notification = document.getElementById('js-notification--' + id))) {
       notification.classList.add('pxh-notification--animate-out');
@@ -1358,17 +1358,17 @@ pxh.toast = {
     if ((notificationList = document.getElementById('js-notifications__list')) && (notifications = document.getElementsByClassName('pxh-notification'))) {
       for (var i = notifications.length - 1; i >= 0; i--) {
         var id = notifications[i].id.replace('js-notification--', '');
-        toast.hide(id);
+        pxh.toast.hide(id);
       }
     }
   },
 
   autoHide : function(id) {
     var toastList = '';
-    var toast = '';
-    if ((toastList = document.getElementById('js-toasts')) && (toast = document.getElementById('js-toast--' + id))) {
-      toast.classList.add('pxh-toast--animate-out');
-      toast.classList.remove('pxh-toast--animate-in');
+    var toastItem = '';
+    if ((toastList = document.getElementById('js-toasts')) && (toastItem = document.getElementById('js-toast--' + id))) {
+      toastItem.classList.add('pxh-toast--animate-out');
+      toastItem.classList.remove('pxh-toast--animate-in');
     }
   },
 
@@ -1383,7 +1383,7 @@ pxh.toast = {
     }
     if ((notificationList = document.getElementById('js-notifications__list')) && (notification = document.getElementById('js-notification--' + id))) {
       notification.remove();
-      toast.badge.decrement();
+      pxh.toast.badge.decrement();
     }
   },
 
@@ -1401,7 +1401,7 @@ pxh.toast = {
     if ((notificationList = document.getElementById('js-notifications__list')) && (notifications = document.getElementsByClassName('pxh-notification'))) {
       for (var i = notifications.length - 1; i >= 0; i--) {
         var id = notifications[i].id.replace('js-notification--', '');
-        toast.remove(id);
+        pxh.toast.remove(id);
       }
     }
   },
@@ -1437,7 +1437,7 @@ pxh.toast = {
       var markup = [];
       markup.push('<div class="pxh-' + slug + '__text">\n');
       markup.push('  ' + text + '\n');
-      markup.push(toast.markup.more(object, slug));
+      markup.push(pxh.toast.markup.more(object, slug));
       markup.push('</div>\n');
       markup = markup.join('');
       return markup;
@@ -1456,7 +1456,7 @@ pxh.toast = {
       if ((object.actionLink) || (object.actionCallback)) {
         markup.push('  </a>\n');
       }
-      markup.push(toast.markup.more(object, slug));
+      markup.push(pxh.toast.markup.more(object, slug));
       markup.push('</div>\n');
       markup = markup.join('');
       return markup;
@@ -1517,13 +1517,13 @@ pxh.toast = {
       element.className = 'pxh-' + slug + ' pxh-' + slug + '--animate-in';
       element.id = 'js-' + slug + '--' + id;
       var markup = [];
-      markup.push(toast.markup.icon(object, slug));
-      markup.push(toast.markup.toastText(object, slug));
-      markup.push(toast.markup.button(object, slug));
+      markup.push(pxh.toast.markup.icon(object, slug));
+      markup.push(pxh.toast.markup.toastText(object, slug));
+      markup.push(pxh.toast.markup.button(object, slug));
       // if (object.timestamp) {
-      //   markup.push(toast.markup.timestamp(object, slug));
+      //   markup.push(pxh.toast.markup.timestamp(object, slug));
       // }
-      markup.push(toast.markup.dismiss(object, slug, id));
+      markup.push(pxh.toast.markup.dismiss(object, slug, id));
       markup = markup.join('');
       element.innerHTML = markup;
       return element;
@@ -1536,10 +1536,10 @@ pxh.toast = {
       element.className = 'pxh-' + slug;
       element.id = 'js-' + slug + '--' + id;
       var markup = [];
-      markup.push(toast.markup.icon(object, slug));
-      markup.push(toast.markup.notificationText(object, slug));
-      markup.push(toast.markup.timestamp(object, slug));
-      markup.push(toast.markup.dismiss(object, slug, id));
+      markup.push(pxh.toast.markup.icon(object, slug));
+      markup.push(pxh.toast.markup.notificationText(object, slug));
+      markup.push(pxh.toast.markup.timestamp(object, slug));
+      markup.push(pxh.toast.markup.dismiss(object, slug, id));
       markup = markup.join('');
       element.innerHTML = markup;
       return element;
@@ -1577,18 +1577,18 @@ document.addEventListener('DOMContentLoaded', function(event) {
 });
 
 pxh.viewResized = document.createEvent('CustomEvent');
-pxh.viewResized.initCustomEvent('pxhviewResized', false, false, {
-    'viewResized': true
+pxh.viewResized.initCustomEvent('pxhViewResized', false, false, {
+  'viewResized': true
 });
 
 pxh.drawerOpened = document.createEvent('CustomEvent');
 pxh.drawerOpened.initCustomEvent('pxh.drawerOpened', false, false, {
-    'drawerOpened': true
+  'drawerOpened': true
 });
 
 pxh.drawerClosed = document.createEvent('CustomEvent');
 pxh.drawerClosed.initCustomEvent('pxh.drawerClosed', false, false, {
-    'drawerClosed': true
+  'drawerClosed': true
 });
 
 document.addEventListener('DOMContentLoaded', function(event) {
