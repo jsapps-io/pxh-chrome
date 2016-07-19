@@ -7,458 +7,468 @@
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
 
-var PREFIX = 'pxh-',
-    NARROW = '--narrow',
-    WIDE = '--wide',
-    HIDDEN = '--hidden',
-    VISIBLE = '--visible',
-    UNTIL = '-until',
-    AT_MD = '@md',
-    AT_LG = '@lg',
-    ANIMATE = '--animate',
-    ANIMATE_IN = ANIMATE + '-in',
-    ANIMATE_OUT = ANIMATE + '-out',
-    ANIMATE_NARROW = ANIMATE + '-narrow',
-    ANIMATE_WIDE = ANIMATE + '-wide',
-    ANIMATE_FULL_TO_WIDE = ANIMATE + '-full-to-wide',
-    ANIMATE_OUT_WIDE = ANIMATE + '-out-wide';
+var pxh = {};
+
+pxh.PREFIX = 'pxh-';
+pxh.NARROW = '--narrow';
+pxh.WIDE = '--wide';
+pxh.HIDDEN = '--hidden';
+pxh.VISIBLE = '--visible';
+pxh.UNTIL = '-until';
+pxh.AT_MD = '@md';
+pxh.AT_LG = '@lg';
+pxh.ANIMATE = '--animate';
+pxh.ANIMATE_IN = pxh.ANIMATE + '-in';
+pxh.ANIMATE_OUT = pxh.ANIMATE + '-out';
+pxh.ANIMATE_NARROW = pxh.ANIMATE + '-narrow';
+pxh.ANIMATE_WIDE = pxh.ANIMATE + '-wide';
+pxh.ANIMATE_FULL_TO_WIDE = pxh.ANIMATE + '-full-to-wide';
+pxh.ANIMATE_OUT_WIDE = pxh.ANIMATE + '-out-wide';
 
 // drawer
-var DRAWER = PREFIX + 'drawer',
-    DRAWER_HIDDEN_UNTIL_AT_MD = DRAWER + HIDDEN + UNTIL + AT_MD,
-    DRAWER_NARROW_AT_MD = DRAWER + NARROW + AT_MD,
-    DRAWER_WIDE_AT_LG = DRAWER + WIDE + AT_LG,
-    DRAWER_NARROW_AT_LG = DRAWER + NARROW + AT_LG,
-    DRAWER_ANIMATE_IN = DRAWER + ANIMATE_IN,
-    DRAWER_ANIMATE_OUT = DRAWER + ANIMATE_OUT,
-    DRAWER_ANIMATE_WIDE = DRAWER + ANIMATE_WIDE,
-    DRAWER_ANIMATE_NARROW = DRAWER + ANIMATE_NARROW,
-    DRAWER_ANIMATE_OUT_WIDE = DRAWER + ANIMATE_OUT_WIDE;
+pxh.DRAWER = pxh.PREFIX + 'drawer';
+pxh.DRAWER_HIDDEN_UNTIL_AT_MD = pxh.DRAWER + pxh.HIDDEN + pxh.UNTIL + pxh.AT_MD;
+pxh.DRAWER_NARROW_AT_MD = pxh.DRAWER + pxh.NARROW + pxh.AT_MD;
+pxh.DRAWER_WIDE_AT_LG = pxh.DRAWER + pxh.WIDE + pxh.AT_LG;
+pxh.DRAWER_NARROW_AT_LG = pxh.DRAWER + pxh.NARROW + pxh.AT_LG;
+pxh.DRAWER_ANIMATE_IN = pxh.DRAWER + pxh.ANIMATE_IN;
+pxh.DRAWER_ANIMATE_OUT = pxh.DRAWER + pxh.ANIMATE_OUT;
+pxh.DRAWER_ANIMATE_WIDE = pxh.DRAWER + pxh.ANIMATE_WIDE;
+pxh.DRAWER_ANIMATE_NARROW = pxh.DRAWER + pxh.ANIMATE_NARROW;
+pxh.DRAWER_ANIMATE_OUT_WIDE = pxh.DRAWER + pxh.ANIMATE_OUT_WIDE;
 
 // drawer-header__link
-var DRAWER_HEADER_LINK = PREFIX + 'drawer-header__link',
-    DRAWER_HEADER_LINK_WIDE_AT_MD = DRAWER_HEADER_LINK + WIDE + AT_MD,
-    DRAWER_HEADER_LINK_NARROW_AT_MD = DRAWER_HEADER_LINK + NARROW + AT_MD,
-    DRAWER_HEADER_LINK_WIDE_AT_LG = DRAWER_HEADER_LINK + WIDE + AT_LG,
-    DRAWER_HEADER_LINK_ANIMATE_IN = DRAWER_HEADER_LINK + ANIMATE_IN,
-    DRAWER_HEADER_LINK_ANIMATE_OUT = DRAWER_HEADER_LINK + ANIMATE_OUT;
+pxh.DRAWER_HEADER_LINK = pxh.PREFIX + 'drawer-header__link';
+pxh.DRAWER_HEADER_LINK_WIDE_AT_MD = pxh.DRAWER_HEADER_LINK + pxh.WIDE + pxh.AT_MD;
+pxh.DRAWER_HEADER_LINK_NARROW_AT_MD = pxh.DRAWER_HEADER_LINK + pxh.NARROW + pxh.AT_MD;
+pxh.DRAWER_HEADER_LINK_WIDE_AT_LG = pxh.DRAWER_HEADER_LINK + pxh.WIDE + pxh.AT_LG;
+pxh.DRAWER_HEADER_LINK_ANIMATE_IN = pxh.DRAWER_HEADER_LINK + pxh.ANIMATE_IN;
+pxh.DRAWER_HEADER_LINK_ANIMATE_OUT = pxh.DRAWER_HEADER_LINK + pxh.ANIMATE_OUT;
 
 // overlay
-var OVERLAY = PREFIX + 'overlay',
-    OVERLAY_HIDDEN = OVERLAY + HIDDEN;
+pxh.OVERLAY = pxh.PREFIX + 'overlay';
+pxh.OVERLAY_HIDDEN = pxh.OVERLAY + pxh.HIDDEN;
 
 // navigation
-var NAVIGATION = PREFIX + 'navigation',
-    NAVIGATION_NARROW_AT_MD = NAVIGATION + NARROW + AT_MD,
-    NAVIGATION_WIDE_AT_LG = NAVIGATION + WIDE + AT_LG;
+pxh.NAVIGATION = pxh.PREFIX + 'navigation';
+pxh.NAVIGATION_NARROW_AT_MD = pxh.NAVIGATION + pxh.NARROW + pxh.AT_MD;
+pxh.NAVIGATION_WIDE_AT_LG = pxh.NAVIGATION + pxh.WIDE + pxh.AT_LG;
 
 // navigation__item-text
-var NAVIGATION_ITEM_TEXT = PREFIX + 'navigation__item-text',
-    NAVIGATION_ITEM_TEXT_ANIMATE_IN = NAVIGATION_ITEM_TEXT + ANIMATE_IN,
-    NAVIGATION_ITEM_TEXT_ANIMATE_OUT = NAVIGATION_ITEM_TEXT + ANIMATE_OUT;
+pxh.NAVIGATION_ITEM_TEXT = pxh.PREFIX + 'navigation__item-text';
+pxh.NAVIGATION_ITEM_TEXT_ANIMATE_IN = pxh.NAVIGATION_ITEM_TEXT + pxh.ANIMATE_IN;
+pxh.NAVIGATION_ITEM_TEXT_ANIMATE_OUT = pxh.NAVIGATION_ITEM_TEXT + pxh.ANIMATE_OUT;
 
 // navigation__sub-link
-var NAVIGATION_SUB_LINK = PREFIX + 'navigation__sub-link',
-    NAVIGATION_SUB_LINK_ANIMATE_IN = NAVIGATION_SUB_LINK + ANIMATE_IN,
-    NAVIGATION_SUB_LINK_ANIMATE_OUT = NAVIGATION_SUB_LINK + ANIMATE_OUT;
+pxh.NAVIGATION_SUB_LINK = pxh.PREFIX + 'navigation__sub-link';
+pxh.NAVIGATION_SUB_LINK_ANIMATE_IN = pxh.NAVIGATION_SUB_LINK + pxh.ANIMATE_IN;
+pxh.NAVIGATION_SUB_LINK_ANIMATE_OUT = pxh.NAVIGATION_SUB_LINK + pxh.ANIMATE_OUT;
 
 // login
-var LOGIN = PREFIX + 'login',
-    LOGIN_NARROW_AT_MD = LOGIN + NARROW + AT_MD,
-    LOGIN_WIDE_AT_LG = LOGIN + WIDE + AT_LG;
+pxh.LOGIN = pxh.PREFIX + 'login';
+pxh.LOGIN_NARROW_AT_MD = pxh.LOGIN + pxh.NARROW + pxh.AT_MD;
+pxh.LOGIN_WIDE_AT_LG = pxh.LOGIN + pxh.WIDE + pxh.AT_LG;
 
 // login__name
-var LOGIN_NAME = PREFIX + 'login__name',
-    LOGIN_NAME_NARROW_AT_MD = LOGIN_NAME + NARROW + AT_MD,
-    LOGIN_NAME_WIDE_AT_LG = LOGIN_NAME + WIDE + AT_LG,
-    LOGIN_NAME_ANIMATE_IN = LOGIN_NAME + ANIMATE_IN,
-    LOGIN_NAME_ANIMATE_OUT = LOGIN_NAME + ANIMATE_OUT;
+pxh.LOGIN_NAME = pxh.PREFIX + 'login__name';
+pxh.LOGIN_NAME_NARROW_AT_MD = pxh.LOGIN_NAME + pxh.NARROW + pxh.AT_MD;
+pxh.LOGIN_NAME_WIDE_AT_LG = pxh.LOGIN_NAME + pxh.WIDE + pxh.AT_LG;
+pxh.LOGIN_NAME_ANIMATE_IN = pxh.LOGIN_NAME + pxh.ANIMATE_IN;
+pxh.LOGIN_NAME_ANIMATE_OUT = pxh.LOGIN_NAME + pxh.ANIMATE_OUT;
 
 // login__link
-var LOGIN_LINK = PREFIX + 'login__link',
-    LOGIN_LINK_NARROW_AT_MD = LOGIN_LINK + NARROW + AT_MD,
-    LOGIN_LINK_WIDE_AT_LG = LOGIN_LINK + WIDE + AT_LG,
-    LOGIN_LINK_NARROW_AT_LG = LOGIN_LINK + NARROW + AT_LG;
+pxh.LOGIN_LINK = pxh.PREFIX + 'login__link';
+pxh.LOGIN_LINK_NARROW_AT_MD = pxh.LOGIN_LINK + pxh.NARROW + pxh.AT_MD;
+pxh.LOGIN_LINK_WIDE_AT_LG = pxh.LOGIN_LINK + pxh.WIDE + pxh.AT_LG;
+pxh.LOGIN_LINK_NARROW_AT_LG = pxh.LOGIN_LINK + pxh.NARROW + pxh.AT_LG;
+
+pxh.LOGIN_PROFILE_LINK = pxh.PREFIX + 'login__profile-link';
+pxh.LOGIN_SETTINGS_LINK = pxh.PREFIX + 'login__settings-link';
+
+pxh.LOGIN_MENU = pxh.PREFIX + 'login-menu';
+pxh.LOGIN_MENU_PROFILE = pxh.LOGIN_MENU + '--profile';
+pxh.LOGIN_MENU_SETTINGS = pxh.LOGIN_MENU + '--settings';
+pxh.LOGIN_MENU_VISIBLE = pxh.LOGIN_MENU + pxh.VISIBLE;
 
 // login__settings
-var LOGIN_SETTINGS = PREFIX + 'login__settings',
-    LOGIN_SETTINGS_NARROW_AT_MD = LOGIN_SETTINGS + NARROW + AT_MD,
-    LOGIN_SETTINGS_WIDE_AT_LG = LOGIN_SETTINGS + WIDE + AT_LG,
-    LOGIN_SETTINGS_ANIMATE_IN = LOGIN_SETTINGS + ANIMATE_IN,
-    LOGIN_SETTINGS_ANIMATE_OUT = LOGIN_SETTINGS + ANIMATE_OUT;
+pxh.LOGIN_SETTINGS = pxh.PREFIX + 'login__settings';
+pxh.LOGIN_SETTINGS_NARROW_AT_MD = pxh.LOGIN_SETTINGS + pxh.NARROW + pxh.AT_MD;
+pxh.LOGIN_SETTINGS_WIDE_AT_LG = pxh.LOGIN_SETTINGS + pxh.WIDE + pxh.AT_LG;
+pxh.LOGIN_SETTINGS_ANIMATE_IN = pxh.LOGIN_SETTINGS + pxh.ANIMATE_IN;
+pxh.LOGIN_SETTINGS_ANIMATE_OUT = pxh.LOGIN_SETTINGS + pxh.ANIMATE_OUT;
 
 // login__caret
-var LOGIN_CARET = PREFIX + 'login__caret',
-    LOGIN_CARET_NARROW_AT_MD = LOGIN_CARET + NARROW + AT_MD,
-    LOGIN_CARET_WIDE_AT_LG = LOGIN_CARET + WIDE + AT_LG,
-    LOGIN_CARET_ANIMATE_IN = LOGIN_CARET + ANIMATE_IN,
-    LOGIN_CARET_ANIMATE_OUT = LOGIN_CARET + ANIMATE_OUT;
+pxh.LOGIN_CARET = pxh.PREFIX + 'login__caret';
+pxh.LOGIN_CARET_NARROW_AT_MD = pxh.LOGIN_CARET + pxh.NARROW + pxh.AT_MD;
+pxh.LOGIN_CARET_WIDE_AT_LG = pxh.LOGIN_CARET + pxh.WIDE + pxh.AT_LG;
+pxh.LOGIN_CARET_ANIMATE_IN = pxh.LOGIN_CARET + pxh.ANIMATE_IN;
+pxh.LOGIN_CARET_ANIMATE_OUT = pxh.LOGIN_CARET + pxh.ANIMATE_OUT;
 
 // view
-var VIEW = PREFIX + 'view',
-    VIEW_NARROW_AT_LG = VIEW + NARROW + AT_LG,
-    VIEW_WIDE_AT_LG = VIEW + WIDE + AT_LG,
-    VIEW_ANIMATE_FULL_TO_WIDE = VIEW + ANIMATE_FULL_TO_WIDE,
-    VIEW_ANIMATE_WIDE = VIEW + ANIMATE_WIDE,
-    VIEW_ANIMATE_NARROW = VIEW + ANIMATE_NARROW;
+pxh.VIEW = pxh.PREFIX + 'view';
+pxh.VIEW_NARROW_AT_LG = pxh.VIEW + pxh.NARROW + pxh.AT_LG;
+pxh.VIEW_WIDE_AT_LG = pxh.VIEW + pxh.WIDE + pxh.AT_LG;
+pxh.VIEW_ANIMATE_FULL_TO_WIDE = pxh.VIEW + pxh.ANIMATE_FULL_TO_WIDE;
+pxh.VIEW_ANIMATE_WIDE = pxh.VIEW + pxh.ANIMATE_WIDE;
+pxh.VIEW_ANIMATE_NARROW = pxh.VIEW + pxh.ANIMATE_NARROW;
 
 // view-header
-var VIEW_HEADER = PREFIX + 'view-header',
-    VIEW_HEADER_NARROW_AT_LG = VIEW_HEADER + NARROW + AT_LG,
-    VIEW_HEADER_WIDE_AT_LG = VIEW_HEADER + WIDE + AT_LG,
-    VIEW_HEADER_ANIMATE_WIDE = VIEW_HEADER + ANIMATE_WIDE,
-    VIEW_HEADER_ANIMATE_NARROW = VIEW_HEADER + ANIMATE_NARROW,
-    VIEW_HEADER_ANIMATE_FULL_TO_WIDE = VIEW_HEADER + ANIMATE_FULL_TO_WIDE;
+pxh.VIEW_HEADER = pxh.PREFIX + 'view-header';
+pxh.VIEW_HEADER_NARROW_AT_LG = pxh.VIEW_HEADER + pxh.NARROW + pxh.AT_LG;
+pxh.VIEW_HEADER_WIDE_AT_LG = pxh.VIEW_HEADER + pxh.WIDE + pxh.AT_LG;
+pxh.VIEW_HEADER_ANIMATE_WIDE = pxh.VIEW_HEADER + pxh.ANIMATE_WIDE;
+pxh.VIEW_HEADER_ANIMATE_NARROW = pxh.VIEW_HEADER + pxh.ANIMATE_NARROW;
+pxh.VIEW_HEADER_ANIMATE_FULL_TO_WIDE = pxh.VIEW_HEADER + pxh.ANIMATE_FULL_TO_WIDE;
 
 // view-header-drawer-toggle
-var VIEW_HEADER_DRAWER_TOGGLE = PREFIX + 'view-header-drawer-toggle',
-    VIEW_HEADER_DRAWER_TOGGLE_HIDDEN = VIEW_HEADER_DRAWER_TOGGLE + HIDDEN;
+pxh.VIEW_HEADER_DRAWER_TOGGLE = pxh.PREFIX + 'view-header-drawer-toggle';
+pxh.VIEW_HEADER_DRAWER_TOGGLE_HIDDEN = pxh.VIEW_HEADER_DRAWER_TOGGLE + pxh.HIDDEN;
 
 // notifications__icon
-var NOTIFICATIONS_ICON = PREFIX + 'notifications__icon',
-    NOTIFICATIONS_ICON_NARROW_AT_MD = NOTIFICATIONS_ICON + NARROW + AT_MD,
-    NOTIFICATIONS_ICON_WIDE_AT_LG = NOTIFICATIONS_ICON + WIDE + AT_LG;
+pxh.NOTIFICATIONS_ICON = pxh.PREFIX + 'notifications__icon';
+pxh.NOTIFICATIONS_ICON_NARROW_AT_MD = pxh.NOTIFICATIONS_ICON + pxh.NARROW + pxh.AT_MD;
+pxh.NOTIFICATIONS_ICON_WIDE_AT_LG = pxh.NOTIFICATIONS_ICON + pxh.WIDE + pxh.AT_LG;
 
-var NOTIFICATIONS = PREFIX + 'notifications',
-    NOTIFICATIONS_VISIBLE = NOTIFICATIONS + VISIBLE;
+pxh.NOTIFICATIONS = pxh.PREFIX + 'notifications';
+pxh.NOTIFICATIONS_VISIBLE = pxh.NOTIFICATIONS + pxh.VISIBLE;
 
 // disable-scroll
-var DISABLE_SCROLL = PREFIX + 'disable-scroll',
-    DISABLE_SCROLL_UNTIL_AT_LG = DISABLE_SCROLL + UNTIL + AT_LG;
+pxh.DISABLE_SCROLL = pxh.PREFIX + 'disable-scroll';
+pxh.DISABLE_SCROLL_UNTIL_AT_LG = pxh.DISABLE_SCROLL + pxh.UNTIL + pxh.AT_LG;
 
-var pxhStates = {
+pxh.states = {
   'default': {
     'pxh-drawer': {
-      'add': DRAWER_HIDDEN_UNTIL_AT_MD + ' ' + DRAWER_NARROW_AT_MD + ' ' + DRAWER_WIDE_AT_LG,
-      'remove': DRAWER_NARROW_AT_LG
+      'add': pxh.DRAWER_HIDDEN_UNTIL_AT_MD + ' ' + pxh.DRAWER_NARROW_AT_MD + ' ' + pxh.DRAWER_WIDE_AT_LG,
+      'remove': pxh.DRAWER_NARROW_AT_LG
     },
     'pxh-drawer-header__link': {
-      'remove': DRAWER_HEADER_LINK_WIDE_AT_MD,
-      'add': DRAWER_HEADER_LINK_NARROW_AT_MD + ' ' + DRAWER_HEADER_LINK_WIDE_AT_LG
+      'remove': pxh.DRAWER_HEADER_LINK_WIDE_AT_MD,
+      'add': pxh.DRAWER_HEADER_LINK_NARROW_AT_MD + ' ' + pxh.DRAWER_HEADER_LINK_WIDE_AT_LG
     },
     'pxh-overlay': {
-      'add': OVERLAY_HIDDEN
+      'add': pxh.OVERLAY_HIDDEN
     },
     'pxh-navigation': {
-      'add': NAVIGATION_NARROW_AT_MD + ' ' + NAVIGATION_WIDE_AT_LG
+      'add': pxh.NAVIGATION_NARROW_AT_MD + ' ' + pxh.NAVIGATION_WIDE_AT_LG
     },
     'pxh-login': {
-      'add': LOGIN_NARROW_AT_MD + ' ' + LOGIN_WIDE_AT_LG
+      'add': pxh.LOGIN_NARROW_AT_MD + ' ' + pxh.LOGIN_WIDE_AT_LG
     },
     'pxh-login__name': {
-      'add': LOGIN_NAME_NARROW_AT_MD + ' ' + LOGIN_NAME_WIDE_AT_LG
+      'add': pxh.LOGIN_NAME_NARROW_AT_MD + ' ' + pxh.LOGIN_NAME_WIDE_AT_LG
     },
     'pxh-login__link': {
-      'add': LOGIN_LINK_NARROW_AT_MD + ' ' + LOGIN_LINK_WIDE_AT_LG
+      'add': pxh.LOGIN_LINK_NARROW_AT_MD + ' ' + pxh.LOGIN_LINK_WIDE_AT_LG
     },
     'pxh-login__settings': {
-      'add': LOGIN_SETTINGS_NARROW_AT_MD + ' ' + LOGIN_SETTINGS_WIDE_AT_LG
+      'add': pxh.LOGIN_SETTINGS_NARROW_AT_MD + ' ' + pxh.LOGIN_SETTINGS_WIDE_AT_LG
     },
     'pxh-login__caret': {
-      'add': LOGIN_CARET_NARROW_AT_MD + ' ' + LOGIN_CARET_WIDE_AT_LG
+      'add': pxh.LOGIN_CARET_NARROW_AT_MD + ' ' + pxh.LOGIN_CARET_WIDE_AT_LG
     },
     'pxh-view': {
-      'remove': DISABLE_SCROLL_UNTIL_AT_LG + ' ' + VIEW_WIDE_AT_LG,
-      'add': VIEW_NARROW_AT_LG
+      'remove': pxh.DISABLE_SCROLL_UNTIL_AT_LG + ' ' + pxh.VIEW_WIDE_AT_LG,
+      'add': pxh.VIEW_NARROW_AT_LG
     },
     'pxh-view-header': {
-      'remove': VIEW_HEADER_WIDE_AT_LG,
-      'add': VIEW_HEADER_NARROW_AT_LG
+      'remove': pxh.VIEW_HEADER_WIDE_AT_LG,
+      'add': pxh.VIEW_HEADER_NARROW_AT_LG
     },
     'pxh-view-header-drawer-toggle': {
-      'remove': VIEW_HEADER_DRAWER_TOGGLE_HIDDEN
+      'remove': pxh.VIEW_HEADER_DRAWER_TOGGLE_HIDDEN
     },
     'pxh-notifications__icon': {
-      'add': NOTIFICATIONS_ICON_NARROW_AT_MD + ' ' + NOTIFICATIONS_ICON_WIDE_AT_LG
+      'add': pxh.NOTIFICATIONS_ICON_NARROW_AT_MD + ' ' + pxh.NOTIFICATIONS_ICON_WIDE_AT_LG
     },
     'pxh-notifications': {
-      'remove': NOTIFICATIONS_VISIBLE
+      'remove': pxh.NOTIFICATIONS_VISIBLE
     }
   },
   'open': {
     'pxh-drawer': {
-      'remove': DRAWER_HIDDEN_UNTIL_AT_MD + ' ' + DRAWER_NARROW_AT_MD + ' ' + DRAWER_NARROW_AT_LG,
-      'add': DRAWER_WIDE_AT_LG
+      'remove': pxh.DRAWER_HIDDEN_UNTIL_AT_MD + ' ' + pxh.DRAWER_NARROW_AT_MD + ' ' + pxh.DRAWER_NARROW_AT_LG,
+      'add': pxh.DRAWER_WIDE_AT_LG
     },
     'pxh-drawer-header__link': {
-      'remove': DRAWER_HEADER_LINK_NARROW_AT_MD,
-      'add': DRAWER_HEADER_LINK_WIDE_AT_MD + ' ' + DRAWER_HEADER_LINK_WIDE_AT_LG
+      'remove': pxh.DRAWER_HEADER_LINK_NARROW_AT_MD,
+      'add': pxh.DRAWER_HEADER_LINK_WIDE_AT_MD + ' ' + pxh.DRAWER_HEADER_LINK_WIDE_AT_LG
     },
     'pxh-overlay': {
-      'remove': OVERLAY_HIDDEN
+      'remove': pxh.OVERLAY_HIDDEN
     },
     'pxh-navigation': {
-      'remove': NAVIGATION_NARROW_AT_MD,
-      'add': NAVIGATION_WIDE_AT_LG
+      'remove': pxh.NAVIGATION_NARROW_AT_MD,
+      'add': pxh.NAVIGATION_WIDE_AT_LG
     },
     'pxh-login': {
-      'add': LOGIN_WIDE_AT_LG,
-      'remove': LOGIN_NARROW_AT_MD
+      'add': pxh.LOGIN_WIDE_AT_LG,
+      'remove': pxh.LOGIN_NARROW_AT_MD
     },
     'pxh-login__name': {
-      'remove': LOGIN_NAME_NARROW_AT_MD,
-      'add': LOGIN_NAME_WIDE_AT_LG
+      'remove': pxh.LOGIN_NAME_NARROW_AT_MD,
+      'add': pxh.LOGIN_NAME_WIDE_AT_LG
     },
     'pxh-login__link': {
-      'remove': LOGIN_LINK_NARROW_AT_MD + ' ' + LOGIN_LINK_NARROW_AT_LG
+      'remove': pxh.LOGIN_LINK_NARROW_AT_MD + ' ' + pxh.LOGIN_LINK_NARROW_AT_LG
     },
     'pxh-login__settings': {
-      'remove': LOGIN_SETTINGS_NARROW_AT_MD,
-      'add': LOGIN_SETTINGS_WIDE_AT_LG
+      'remove': pxh.LOGIN_SETTINGS_NARROW_AT_MD,
+      'add': pxh.LOGIN_SETTINGS_WIDE_AT_LG
     },
     'pxh-login__caret': {
-      'remove': LOGIN_CARET_NARROW_AT_MD,
-      'add': LOGIN_CARET_WIDE_AT_LG
+      'remove': pxh.LOGIN_CARET_NARROW_AT_MD,
+      'add': pxh.LOGIN_CARET_WIDE_AT_LG
     },
     'pxh-view': {
-      'add': DISABLE_SCROLL_UNTIL_AT_LG + ' ' + VIEW_NARROW_AT_LG,
-      'remove': VIEW_WIDE_AT_LG
+      'add': pxh.DISABLE_SCROLL_UNTIL_AT_LG + ' ' + pxh.VIEW_NARROW_AT_LG,
+      'remove': pxh.VIEW_WIDE_AT_LG
     },
     'pxh-view-header': {
-      'add': VIEW_HEADER_NARROW_AT_LG,
-      'remove': VIEW_HEADER_WIDE_AT_LG
+      'add': pxh.VIEW_HEADER_NARROW_AT_LG,
+      'remove': pxh.VIEW_HEADER_WIDE_AT_LG
     },
     'pxh-view-header-drawer-toggle': {
-      'add': VIEW_HEADER_DRAWER_TOGGLE_HIDDEN
+      'add': pxh.VIEW_HEADER_DRAWER_TOGGLE_HIDDEN
     },
     'pxh-notifications__icon': {
-      'remove': NOTIFICATIONS_ICON_NARROW_AT_MD,
-      'add': NOTIFICATIONS_ICON_WIDE_AT_LG
+      'remove': pxh.NOTIFICATIONS_ICON_NARROW_AT_MD,
+      'add': pxh.NOTIFICATIONS_ICON_WIDE_AT_LG
     }
   },
   'narrowAtLg': {
     'pxh-drawer': {
-      'add': DRAWER_HIDDEN_UNTIL_AT_MD + ' ' + DRAWER_NARROW_AT_MD + ' ' + DRAWER_NARROW_AT_LG,
-      'remove': DRAWER_WIDE_AT_LG
+      'add': pxh.DRAWER_HIDDEN_UNTIL_AT_MD + ' ' + pxh.DRAWER_NARROW_AT_MD + ' ' + pxh.DRAWER_NARROW_AT_LG,
+      'remove': pxh.DRAWER_WIDE_AT_LG
     },
     'pxh-drawer-header__link': {
-      'remove': DRAWER_HEADER_LINK_WIDE_AT_MD + ' ' + DRAWER_HEADER_LINK_WIDE_AT_LG,
-      'add': DRAWER_HEADER_LINK_NARROW_AT_MD
+      'remove': pxh.DRAWER_HEADER_LINK_WIDE_AT_MD + ' ' + pxh.DRAWER_HEADER_LINK_WIDE_AT_LG,
+      'add': pxh.DRAWER_HEADER_LINK_NARROW_AT_MD
     },
     'pxh-overlay': {
-      'add': OVERLAY_HIDDEN
+      'add': pxh.OVERLAY_HIDDEN
     },
     'pxh-navigation': {
-      'add': NAVIGATION_NARROW_AT_MD,
-      'remove': NAVIGATION_WIDE_AT_LG
+      'add': pxh.NAVIGATION_NARROW_AT_MD,
+      'remove': pxh.NAVIGATION_WIDE_AT_LG
     },
     'pxh-login': {
-      'add': LOGIN_NARROW_AT_MD,
-      'remove': LOGIN_WIDE_AT_LG
+      'add': pxh.LOGIN_NARROW_AT_MD,
+      'remove': pxh.LOGIN_WIDE_AT_LG
     },
     'pxh-login__name': {
-      'add': LOGIN_NAME_NARROW_AT_MD,
-      'remove': LOGIN_NAME_WIDE_AT_LG
+      'add': pxh.LOGIN_NAME_NARROW_AT_MD,
+      'remove': pxh.LOGIN_NAME_WIDE_AT_LG
     },
     'pxh-login__link': {
-      'add': LOGIN_LINK_NARROW_AT_MD,
-      'remove': LOGIN_LINK_WIDE_AT_LG
+      'add': pxh.LOGIN_LINK_NARROW_AT_MD,
+      'remove': pxh.LOGIN_LINK_WIDE_AT_LG
     },
     'pxh-login__settings': {
-      'add': LOGIN_SETTINGS_NARROW_AT_MD,
-      'remove': LOGIN_SETTINGS_WIDE_AT_LG
+      'add': pxh.LOGIN_SETTINGS_NARROW_AT_MD,
+      'remove': pxh.LOGIN_SETTINGS_WIDE_AT_LG
     },
     'pxh-login__caret': {
-      'add': LOGIN_CARET_NARROW_AT_MD,
-      'remove': LOGIN_CARET_WIDE_AT_LG
+      'add': pxh.LOGIN_CARET_NARROW_AT_MD,
+      'remove': pxh.LOGIN_CARET_WIDE_AT_LG
     },
     'pxh-view': {
-      'remove': DISABLE_SCROLL_UNTIL_AT_LG + ' ' + VIEW_NARROW_AT_LG,
-      'add': VIEW_WIDE_AT_LG
+      'remove': pxh.DISABLE_SCROLL_UNTIL_AT_LG + ' ' + pxh.VIEW_NARROW_AT_LG,
+      'add': pxh.VIEW_WIDE_AT_LG
     },
     'pxh-view-header': {
-      'remove': VIEW_HEADER_NARROW_AT_LG,
-      'add': VIEW_HEADER_WIDE_AT_LG
+      'remove': pxh.VIEW_HEADER_NARROW_AT_LG,
+      'add': pxh.VIEW_HEADER_WIDE_AT_LG
     },
     'pxh-view-header-drawer-toggle': {
-      'remove': VIEW_HEADER_DRAWER_TOGGLE_HIDDEN
+      'remove': pxh.VIEW_HEADER_DRAWER_TOGGLE_HIDDEN
     },
     'pxh-notifications__icon': {
-      'add': NOTIFICATIONS_ICON_NARROW_AT_MD,
-      'remove': NOTIFICATIONS_ICON_WIDE_AT_LG
+      'add': pxh.NOTIFICATIONS_ICON_NARROW_AT_MD,
+      'remove': pxh.NOTIFICATIONS_ICON_WIDE_AT_LG
     },
     'pxh-notifications': {
-      'remove': NOTIFICATIONS_VISIBLE
+      'remove': pxh.NOTIFICATIONS_VISIBLE
     }
   }
 };
 
-var pxhTransitions = {
+pxh.transitions = {
   'outToIn': {
     'pxh-drawer': {
-      'add': DRAWER_ANIMATE_IN
+      'add': pxh.DRAWER_ANIMATE_IN
     }
   },
   'inToOut': {
     'pxh-drawer': {
-      'add': DRAWER_ANIMATE_OUT
+      'add': pxh.DRAWER_ANIMATE_OUT
     }
   },
   'narrowToOpen': {
     'pxh-drawer': {
-      'add': DRAWER_ANIMATE_WIDE
+      'add': pxh.DRAWER_ANIMATE_WIDE
     },
     'pxh-drawer-header__link': {
-      'add': DRAWER_HEADER_LINK_ANIMATE_IN
+      'add': pxh.DRAWER_HEADER_LINK_ANIMATE_IN
     },
     'pxh-navigation__item-text': {
-      'add': NAVIGATION_ITEM_TEXT_ANIMATE_IN
+      'add': pxh.NAVIGATION_ITEM_TEXT_ANIMATE_IN
     },
     'pxh-navigation__sub-link': {
-      'add': NAVIGATION_SUB_LINK_ANIMATE_IN
+      'add': pxh.NAVIGATION_SUB_LINK_ANIMATE_IN
     },
     'pxh-login__name': {
-      'add': LOGIN_NAME_ANIMATE_IN
+      'add': pxh.LOGIN_NAME_ANIMATE_IN
     },
     'pxh-login__caret': {
-      'add': LOGIN_CARET_ANIMATE_IN
+      'add': pxh.LOGIN_CARET_ANIMATE_IN
     },
     'pxh-login__settings': {
-      'add': LOGIN_SETTINGS_ANIMATE_IN
+      'add': pxh.LOGIN_SETTINGS_ANIMATE_IN
     }
   },
   'openToNarrow': {
     'pxh-drawer': {
-      'add': DRAWER_ANIMATE_NARROW
+      'add': pxh.DRAWER_ANIMATE_NARROW
     },
     'pxh-drawer-header__link': {
-      'add': DRAWER_HEADER_LINK_ANIMATE_OUT
+      'add': pxh.DRAWER_HEADER_LINK_ANIMATE_OUT
     },
     'pxh-navigation__item-text': {
-      'add': NAVIGATION_ITEM_TEXT_ANIMATE_OUT
+      'add': pxh.NAVIGATION_ITEM_TEXT_ANIMATE_OUT
     },
     'pxh-navigation__sub-link': {
-      'add': NAVIGATION_SUB_LINK_ANIMATE_OUT
+      'add': pxh.NAVIGATION_SUB_LINK_ANIMATE_OUT
     },
     'pxh-login__name': {
-      'add': LOGIN_NAME_ANIMATE_OUT
+      'add': pxh.LOGIN_NAME_ANIMATE_OUT
     },
     'pxh-login__caret': {
-      'add': LOGIN_CARET_ANIMATE_OUT
+      'add': pxh.LOGIN_CARET_ANIMATE_OUT
     },
     'pxh-login__settings': {
-      'add': LOGIN_SETTINGS_ANIMATE_OUT
+      'add': pxh.LOGIN_SETTINGS_ANIMATE_OUT
     }
   },
   'outToNarrow': {
     'pxh-drawer': {
-      'add': DRAWER_ANIMATE_IN
+      'add': pxh.DRAWER_ANIMATE_IN
     },
     'pxh-view': {
-      'add': VIEW_ANIMATE_FULL_TO_WIDE
+      'add': pxh.VIEW_ANIMATE_FULL_TO_WIDE
     },
     'pxh-view-header': {
-      'add': VIEW_HEADER_ANIMATE_FULL_TO_WIDE
+      'add': pxh.VIEW_HEADER_ANIMATE_FULL_TO_WIDE
     }
   },
   'narrowToOut': {
     'pxh-drawer': {
-      'add': DRAWER_ANIMATE_OUT_WIDE
+      'add': pxh.DRAWER_ANIMATE_OUT_WIDE
     },
     'pxh-drawer-header__link': {
-      'add': DRAWER_HEADER_LINK_ANIMATE_IN
+      'add': pxh.DRAWER_HEADER_LINK_ANIMATE_IN
     },
     'pxh-navigation__item-text': {
-      'add': NAVIGATION_ITEM_TEXT_ANIMATE_IN
+      'add': pxh.NAVIGATION_ITEM_TEXT_ANIMATE_IN
     },
     'pxh-navigation__sub-link': {
-      'add': NAVIGATION_SUB_LINK_ANIMATE_IN
+      'add': pxh.NAVIGATION_SUB_LINK_ANIMATE_IN
     },
     'pxh-login__name': {
-      'add': LOGIN_NAME_ANIMATE_IN
+      'add': pxh.LOGIN_NAME_ANIMATE_IN
     },
     'pxh-login__caret': {
-      'add': LOGIN_CARET_ANIMATE_IN
+      'add': pxh.LOGIN_CARET_ANIMATE_IN
     },
     'pxh-login__settings': {
-      'add': LOGIN_SETTINGS_ANIMATE_IN
+      'add': pxh.LOGIN_SETTINGS_ANIMATE_IN
     }
   },
   'wideToNarrow': {
     'pxh-drawer': {
-      'add': DRAWER_ANIMATE_NARROW
+      'add': pxh.DRAWER_ANIMATE_NARROW
     },
     'pxh-drawer-header__link': {
-      'add': DRAWER_HEADER_LINK_ANIMATE_OUT
+      'add': pxh.DRAWER_HEADER_LINK_ANIMATE_OUT
     },
     'pxh-navigation__item-text': {
-      'add': NAVIGATION_ITEM_TEXT_ANIMATE_OUT
+      'add': pxh.NAVIGATION_ITEM_TEXT_ANIMATE_OUT
     },
     'pxh-navigation__sub-link': {
-      'add': NAVIGATION_SUB_LINK_ANIMATE_OUT
+      'add': pxh.NAVIGATION_SUB_LINK_ANIMATE_OUT
     },
     'pxh-login__name': {
-      'add': LOGIN_NAME_ANIMATE_OUT
+      'add': pxh.LOGIN_NAME_ANIMATE_OUT
     },
     'pxh-login__caret': {
-      'add': LOGIN_CARET_ANIMATE_OUT
+      'add': pxh.LOGIN_CARET_ANIMATE_OUT
     },
     'pxh-login__settings': {
-      'add': LOGIN_SETTINGS_ANIMATE_OUT
+      'add': pxh.LOGIN_SETTINGS_ANIMATE_OUT
     },
     'pxh-view': {
-      'add': VIEW_ANIMATE_WIDE
+      'add': pxh.VIEW_ANIMATE_WIDE
     },
     'pxh-view-header': {
-      'add': VIEW_HEADER_ANIMATE_WIDE
+      'add': pxh.VIEW_HEADER_ANIMATE_WIDE
     }
   },
   'narrowToWide': {
     'pxh-drawer': {
-      'add': DRAWER_ANIMATE_WIDE
+      'add': pxh.DRAWER_ANIMATE_WIDE
     },
     'pxh-drawer-header__link': {
-      'add': DRAWER_HEADER_LINK_ANIMATE_IN
+      'add': pxh.DRAWER_HEADER_LINK_ANIMATE_IN
     },
     'pxh-navigation__item-text': {
-      'add': NAVIGATION_ITEM_TEXT_ANIMATE_IN
+      'add': pxh.NAVIGATION_ITEM_TEXT_ANIMATE_IN
     },
     'pxh-navigation__sub-link': {
-      'add': NAVIGATION_SUB_LINK_ANIMATE_IN
+      'add': pxh.NAVIGATION_SUB_LINK_ANIMATE_IN
     },
     'pxh-login__name': {
-      'add': LOGIN_NAME_ANIMATE_IN
+      'add': pxh.LOGIN_NAME_ANIMATE_IN
     },
     'pxh-login__caret': {
-      'add': LOGIN_CARET_ANIMATE_IN
+      'add': pxh.LOGIN_CARET_ANIMATE_IN
     },
     'pxh-login__settings': {
-      'add': LOGIN_SETTINGS_ANIMATE_IN
+      'add': pxh.LOGIN_SETTINGS_ANIMATE_IN
     },
     'pxh-view': {
-      'add': VIEW_ANIMATE_NARROW
+      'add': pxh.VIEW_ANIMATE_NARROW
     },
     'pxh-view-header': {
-      'add': VIEW_HEADER_ANIMATE_NARROW
+      'add': pxh.VIEW_HEADER_ANIMATE_NARROW
     }
   },
   'clearAll': {
     'pxh-drawer': {
-      'remove': DRAWER_ANIMATE_IN + ' ' + DRAWER_ANIMATE_OUT + ' ' + DRAWER_ANIMATE_NARROW + ' ' + DRAWER_ANIMATE_WIDE + ' ' + DRAWER_ANIMATE_OUT_WIDE
+      'remove': pxh.DRAWER_ANIMATE_IN + ' ' + pxh.DRAWER_ANIMATE_OUT + ' ' + pxh.DRAWER_ANIMATE_NARROW + ' ' + pxh.DRAWER_ANIMATE_WIDE + ' ' + pxh.DRAWER_ANIMATE_OUT_WIDE
     },
     'pxh-drawer-header__link': {
-      'remove': DRAWER_HEADER_LINK_ANIMATE_IN + ' ' + DRAWER_HEADER_LINK_ANIMATE_OUT
+      'remove': pxh.DRAWER_HEADER_LINK_ANIMATE_IN + ' ' + pxh.DRAWER_HEADER_LINK_ANIMATE_OUT
     },
     'pxh-navigation__item-text': {
-      'remove': NAVIGATION_ITEM_TEXT_ANIMATE_IN + ' ' + NAVIGATION_ITEM_TEXT_ANIMATE_OUT
+      'remove': pxh.NAVIGATION_ITEM_TEXT_ANIMATE_IN + ' ' + pxh.NAVIGATION_ITEM_TEXT_ANIMATE_OUT
     },
     'pxh-navigation__sub-link': {
-      'remove': NAVIGATION_SUB_LINK_ANIMATE_IN + ' ' + NAVIGATION_SUB_LINK_ANIMATE_OUT
+      'remove': pxh.NAVIGATION_SUB_LINK_ANIMATE_IN + ' ' + pxh.NAVIGATION_SUB_LINK_ANIMATE_OUT
     },
     'pxh-login__name': {
-      'remove': LOGIN_NAME_ANIMATE_IN + ' ' + LOGIN_NAME_ANIMATE_OUT
+      'remove': pxh.LOGIN_NAME_ANIMATE_IN + ' ' + pxh.LOGIN_NAME_ANIMATE_OUT
     },
     'pxh-login__caret': {
-      'remove': LOGIN_CARET_ANIMATE_IN + ' ' + LOGIN_CARET_ANIMATE_OUT
+      'remove': pxh.LOGIN_CARET_ANIMATE_IN + ' ' + pxh.LOGIN_CARET_ANIMATE_OUT
     },
     'pxh-login__settings': {
-      'remove': LOGIN_SETTINGS_ANIMATE_IN + ' ' + LOGIN_SETTINGS_ANIMATE_OUT
+      'remove': pxh.LOGIN_SETTINGS_ANIMATE_IN + ' ' + pxh.LOGIN_SETTINGS_ANIMATE_OUT
     },
     'pxh-view': {
-      'remove': VIEW_ANIMATE_WIDE + ' ' + VIEW_ANIMATE_NARROW + ' ' + VIEW_ANIMATE_FULL_TO_WIDE
+      'remove': pxh.VIEW_ANIMATE_WIDE + ' ' + pxh.VIEW_ANIMATE_NARROW + ' ' + pxh.VIEW_ANIMATE_FULL_TO_WIDE
     },
     'pxh-view-header': {
-      'remove': VIEW_HEADER_ANIMATE_WIDE + ' ' + VIEW_HEADER_ANIMATE_NARROW + ' ' + VIEW_HEADER_ANIMATE_FULL_TO_WIDE
+      'remove': pxh.VIEW_HEADER_ANIMATE_WIDE + ' ' + pxh.VIEW_HEADER_ANIMATE_NARROW + ' ' + pxh.VIEW_HEADER_ANIMATE_FULL_TO_WIDE
     }
   }
 };
@@ -792,7 +802,7 @@ if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
   return init(function () {});
 });
 
-var pxhCookies = Cookies.noConflict();
+pxh.Cookies = Cookies.noConflict();
 
 // *********
 // GENERIC FUNCTIONS
@@ -810,7 +820,7 @@ if (!('remove' in Element.prototype)) {
 }
 
 /* arrayExists() */
-var arrayExists = function arrayExists(array) {
+pxh.arrayExists = function (array) {
   if (typeof array !== 'undefined' && array.length > 0) {
     return true;
   } else {
@@ -819,7 +829,7 @@ var arrayExists = function arrayExists(array) {
 };
 
 /* getItemByPropertyName() */
-var getItemByPropertyName = function getItemByPropertyName(haystack, propertyName) {
+pxh.getItemByPropertyName = function (haystack, propertyName) {
   for (var i in haystack) {
     if (haystack.hasOwnProperty(propertyName)) {
       return haystack[propertyName];
@@ -827,10 +837,20 @@ var getItemByPropertyName = function getItemByPropertyName(haystack, propertyNam
   }
 };
 
-/* pxhLoadState() */
-var pxhLoadState = function pxhLoadState(stateObject, targetStateName) {
+pxh.getStyle = function (id, property) {
+  var element = document.getElementById(id);
+  if (window.getComputedStyle) {
+    var style = document.defaultView.getComputedStyle(element, null).getPropertyValue(property);
+  } else if (element.currentStyle) {
+    var style = element.currentStyle[property];
+  }
+  return style;
+};
+
+/* pxh.loadState() */
+pxh.loadState = function (stateObject, targetStateName) {
   // grab the target state object from the master states object
-  var targetState = getItemByPropertyName(stateObject, targetStateName);
+  var targetState = pxh.getItemByPropertyName(stateObject, targetStateName);
   // iterate through each target class in the target state object
   for (var targetClass in targetState) {
     // grab the target state for each class in the target state
@@ -840,16 +860,16 @@ var pxhLoadState = function pxhLoadState(stateObject, targetStateName) {
       // grab the target state change classes (e.g. which classes to add, remove, or toggle)
       var stateChangeClasses = stateChangeTarget[stateChangeType];
       // change the classes of each target element based on its target class, the type of change to make, and its target classes
-      pxhChangeClasses(targetClass, stateChangeType, stateChangeClasses);
+      pxh.changeClasses(targetClass, stateChangeType, stateChangeClasses);
     }
   }
 };
 
-/* pxhChangeClasses() */
-// e.g. pxhChangeClasses('nav', 'add', 'hidden--until-@md')
-var pxhChangeClasses = function pxhChangeClasses(targetClassName, changeType, classNamesToChange) {
+/* pxh.changeClasses() */
+// e.g. pxh.changeClasses('nav', 'add', 'hidden--until-@md')
+pxh.changeClasses = function (targetClassName, changeType, classNamesToChange) {
   var targetElements = document.getElementsByClassName(targetClassName);
-  if (arrayExists(targetElements) && classNamesToChange) {
+  if (pxh.arrayExists(targetElements) && classNamesToChange) {
     classNamesToChange = classNamesToChange.replace(/  +/g, ' ');
     var classNamesToChangeArray = classNamesToChange.split(' ');
     for (var i = targetElements.length - 1; i >= 0; i--) {
@@ -866,61 +886,61 @@ var pxhChangeClasses = function pxhChangeClasses(targetClassName, changeType, cl
   }
 };
 
-/* pxhBindControl() */
-var pxhBindControl = function pxhBindControl(controlName) {
+/* pxh.bindControl() */
+pxh.bindControl = function (controlName) {
   var controlElements = document.getElementsByClassName(controlName);
-  if (arrayExists(controlElements)) {
+  if (pxh.arrayExists(controlElements)) {
     for (var i = controlElements.length - 1; i >= 0; i--) {
       controlElements[i].addEventListener('click', function () {
         var firstDrawer = document.getElementsByClassName('pxh-drawer')[0];
         var drawerIsAtDefaultState = firstDrawer.classList.contains('pxh-drawer--wide@lg');
         var drawerIsNarrowAtMd = firstDrawer.classList.contains('pxh-drawer--narrow@md');
         var drawerIsHiddenAtSm = firstDrawer.classList.contains('pxh-drawer--hidden-until@md');
-        pxhLoadState(pxhTransitions, 'clearAll');
+        pxh.loadState(pxh.transitions, 'clearAll');
         if (window.matchMedia('(min-width: 1024px)').matches && drawerIsAtDefaultState) {
-          pxhLoadState(pxhTransitions, 'wideToNarrow');
-          pxhLoadState(pxhStates, 'narrowAtLg');
-          document.dispatchEvent(pxhDrawerClosed);
-          pxhCookies.set('pxh-drawer-narrow', 'true', { expires: 1, path: '/' });
-          pxhCookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/' });
+          pxh.loadState(pxh.transitions, 'wideToNarrow');
+          pxh.loadState(pxh.states, 'narrowAtLg');
+          document.dispatchEvent(pxh.drawerClosed);
+          pxh.Cookies.set('pxh-drawer-narrow', 'true', { expires: 1, path: '/' });
+          pxh.Cookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/' });
         } else if (window.matchMedia('(min-width: 1024px)').matches) {
-          pxhLoadState(pxhTransitions, 'narrowToWide');
-          pxhLoadState(pxhStates, 'default');
-          document.dispatchEvent(pxhDrawerOpened);
-          pxhCookies.set('pxh-drawer-narrow', 'false', { expires: 1, path: '/' });
-          pxhCookies.set('pxh-drawer-open', 'true', { expires: 1, path: '/' });
+          pxh.loadState(pxh.transitions, 'narrowToWide');
+          pxh.loadState(pxh.states, 'default');
+          document.dispatchEvent(pxh.drawerOpened);
+          pxh.Cookies.set('pxh-drawer-narrow', 'false', { expires: 1, path: '/' });
+          pxh.Cookies.set('pxh-drawer-open', 'true', { expires: 1, path: '/' });
         } else if (drawerIsNarrowAtMd && window.matchMedia('(min-width: 768px)').matches) {
-          pxhLoadState(pxhTransitions, 'narrowToOpen');
-          pxhLoadState(pxhStates, 'open');
-          document.dispatchEvent(pxhDrawerOpened);
-          pxhCookies.set('pxh-drawer-open', 'true', { expires: 1, path: '/' });
-          pxhCookies.set('pxh-drawer-narrow', 'false', { expires: 1, path: '/' });
+          pxh.loadState(pxh.transitions, 'narrowToOpen');
+          pxh.loadState(pxh.states, 'open');
+          document.dispatchEvent(pxh.drawerOpened);
+          pxh.Cookies.set('pxh-drawer-open', 'true', { expires: 1, path: '/' });
+          pxh.Cookies.set('pxh-drawer-narrow', 'false', { expires: 1, path: '/' });
         } else if (window.matchMedia('(min-width: 768px)').matches) {
-          pxhLoadState(pxhTransitions, 'openToNarrow');
-          pxhLoadState(pxhStates, 'default');
-          document.dispatchEvent(pxhDrawerClosed);
-          pxhCookies.set('pxh-drawer-narrow', 'true', { expires: 1, path: '/' });
-          pxhCookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/' });
+          pxh.loadState(pxh.transitions, 'openToNarrow');
+          pxh.loadState(pxh.states, 'default');
+          document.dispatchEvent(pxh.drawerClosed);
+          pxh.Cookies.set('pxh-drawer-narrow', 'true', { expires: 1, path: '/' });
+          pxh.Cookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/' });
         } else if (drawerIsHiddenAtSm) {
-          pxhLoadState(pxhTransitions, 'outToIn');
-          pxhLoadState(pxhStates, 'open');
-          document.dispatchEvent(pxhDrawerOpened);
-          pxhCookies.set('pxh-drawer-narrow', 'false', { expires: 1, path: '/' });
-          pxhCookies.set('pxh-drawer-open', 'true', { expires: 1, path: '/' });
+          pxh.loadState(pxh.transitions, 'outToIn');
+          pxh.loadState(pxh.states, 'open');
+          document.dispatchEvent(pxh.drawerOpened);
+          pxh.Cookies.set('pxh-drawer-narrow', 'false', { expires: 1, path: '/' });
+          pxh.Cookies.set('pxh-drawer-open', 'true', { expires: 1, path: '/' });
         } else {
-          pxhLoadState(pxhTransitions, 'inToOut');
-          pxhLoadState(pxhStates, 'default');
-          document.dispatchEvent(pxhDrawerClosed);
-          pxhCookies.set('pxh-drawer-narrow', 'true', { expires: 1, path: '/' });
-          pxhCookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/' });
+          pxh.loadState(pxh.transitions, 'inToOut');
+          pxh.loadState(pxh.states, 'default');
+          document.dispatchEvent(pxh.drawerClosed);
+          pxh.Cookies.set('pxh-drawer-narrow', 'true', { expires: 1, path: '/' });
+          pxh.Cookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/' });
         }
       });
     }
   }
 };
 
-var pxhBreakpointAtMd = function pxhBreakpointAtMd(breakpoint) {
-  pxhLoadState(pxhTransitions, 'clearAll');
+pxh.breakpointAtMd = function (breakpoint) {
+  pxh.loadState(pxh.transitions, 'clearAll');
   var firstDrawer = document.getElementsByClassName('pxh-drawer')[0];
   var drawerIsWideAtLg = firstDrawer.classList.contains('pxh-drawer--wide@lg');
   var drawerIsNarrowAtMd = firstDrawer.classList.contains('pxh-drawer--narrow@md');
@@ -929,19 +949,19 @@ var pxhBreakpointAtMd = function pxhBreakpointAtMd(breakpoint) {
     if (drawerIsNarrowAtMd) {
       // the drawer wasn't open @sm so open it to narrow @md
       // fire the transition
-      pxhLoadState(pxhTransitions, 'outToNarrow');
+      pxh.loadState(pxh.transitions, 'outToNarrow');
     }
   } else {
     // we exited the @md breakpoint into the @sm breakpoint
     if (drawerIsNarrowAtMd) {
       // the drawer was open to narrow @md to move it out @sm
-      pxhLoadState(pxhTransitions, 'narrowToOut');
+      pxh.loadState(pxh.transitions, 'narrowToOut');
     }
   }
 };
 
-var pxhBreakpointAtLg = function pxhBreakpointAtLg(breakpoint) {
-  pxhLoadState(pxhTransitions, 'clearAll');
+pxh.breakpointAtLg = function (breakpoint) {
+  pxh.loadState(pxh.transitions, 'clearAll');
   var firstDrawer = document.getElementsByClassName('pxh-drawer')[0];
   var drawerIsWideAtLg = firstDrawer.classList.contains('pxh-drawer--wide@lg');
   var drawerIsNarrowAtMd = firstDrawer.classList.contains('pxh-drawer--narrow@md');
@@ -950,65 +970,65 @@ var pxhBreakpointAtLg = function pxhBreakpointAtLg(breakpoint) {
     if (drawerIsWideAtLg && !drawerIsNarrowAtMd) {
       // the drawer was open @md so keep it open @lg
       // don't fire any transitions
-      pxhLoadState(pxhStates, 'default');
-      pxhCookies.set('pxh-drawer-narrow', 'false', { expires: 1, path: '/' });
-      pxhCookies.set('pxh-drawer-open', 'true', { expires: 1, path: '/' });
+      pxh.loadState(pxh.states, 'default');
+      pxh.Cookies.set('pxh-drawer-narrow', 'false', { expires: 1, path: '/' });
+      pxh.Cookies.set('pxh-drawer-open', 'true', { expires: 1, path: '/' });
     } else {
       // drawer was narrow @md so transition it to wide @lg
       // fire transitions
-      pxhLoadState(pxhTransitions, 'narrowToWide');
-      pxhLoadState(pxhStates, 'default');
-      document.dispatchEvent(pxhDrawerOpened);
-      pxhCookies.set('pxh-drawer-narrow', 'false', { expires: 1, path: '/' });
-      pxhCookies.set('pxh-drawer-open', 'true', { expires: 1, path: '/' });
+      pxh.loadState(pxh.transitions, 'narrowToWide');
+      pxh.loadState(pxh.states, 'default');
+      document.dispatchEvent(pxh.drawerOpened);
+      pxh.Cookies.set('pxh-drawer-narrow', 'false', { expires: 1, path: '/' });
+      pxh.Cookies.set('pxh-drawer-open', 'true', { expires: 1, path: '/' });
     }
   } else {
     // we exited the @lg breakpoint into the @md breakpoint
     if (drawerIsWideAtLg) {
       // the drawer was wide @lg so transition it to narrow @md
       // fire transitions
-      pxhLoadState(pxhTransitions, 'wideToNarrow');
+      pxh.loadState(pxh.transitions, 'wideToNarrow');
     };
-    pxhLoadState(pxhStates, 'default');
-    document.dispatchEvent(pxhDrawerClosed);
-    pxhCookies.set('pxh-drawer-narrow', 'true', { expires: 1, path: '/' });
-    pxhCookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/' });
+    pxh.loadState(pxh.states, 'default');
+    document.dispatchEvent(pxh.drawerClosed);
+    pxh.Cookies.set('pxh-drawer-narrow', 'true', { expires: 1, path: '/' });
+    pxh.Cookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/' });
   }
 };
 
-var pxhBindDrawerMediaQueryControls = function pxhBindDrawerMediaQueryControls(targetClass, mediaQuery) {
+pxh.bindDrawerMediaQueryControls = function (targetClass, mediaQuery) {
   var targetElements = document.getElementsByClassName(targetClass);
-  if (arrayExists(targetElements)) {
+  if (pxh.arrayExists(targetElements)) {
     // iterate through drawer controls and fire the pxhToggleDrawer function when clicked
     for (var i = targetElements.length - 1; i >= 0; i--) {
       targetElements[i].addEventListener('click', function () {
-        pxhLoadState(pxhTransitions, 'clearAll');
+        pxh.loadState(pxh.transitions, 'clearAll');
         if (!mediaQuery.matches) {
-          pxhLoadState(pxhStates, 'default');
-          pxhCookies.set('pxh-drawer-narrow', 'true', { expires: 1, path: '/' });
-          pxhCookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/' });
+          pxh.loadState(pxh.states, 'default');
+          pxh.Cookies.set('pxh-drawer-narrow', 'true', { expires: 1, path: '/' });
+          pxh.Cookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/' });
         }
       });
     }
   }
 };
 
-var pxhOverlayDrawerControl = function pxhOverlayDrawerControl() {
-  var pxhOverlay = document.getElementsByClassName('pxh-overlay');
-  var pxhNotifications = document.getElementsByClassName('pxh-notifications');
-  if (arrayExists(pxhOverlay)) {
-    for (var i = pxhOverlay.length - 1; i >= 0; i--) {
-      pxhOverlay[i].addEventListener('click', function (e) {
-        if (!lgBreakpoint.matches && pxhCookies.get('pxh-drawer-open') === 'true') {
+pxh.overlayDrawerControl = function () {
+  var overlay = document.getElementsByClassName('pxh-overlay');
+  var notifications = document.getElementsByClassName('pxh-notifications');
+  if (pxh.arrayExists(overlay)) {
+    for (var i = overlay.length - 1; i >= 0; i--) {
+      overlay[i].addEventListener('click', function (e) {
+        if (!lgBreakpoint.matches && pxh.Cookies.get('pxh-drawer-open') === 'true') {
           // if the notifications list is visible, close it when clicking the overlay but don't close the drawer
-          if (arrayExists(pxhNotifications) && pxhNotifications[0].classList.contains('pxh-notifications--visible')) {
-            pxhNotifications[0].classList.remove('pxh-notifications--visible');
+          if (pxh.arrayExists(notifications) && notifications[0].classList.contains('pxh-notifications--visible')) {
+            notifications[0].classList.remove('pxh-notifications--visible');
           } else {
-            pxhLoadState(pxhTransitions, 'clearAll');
-            pxhLoadState(pxhStates, 'default');
-            document.dispatchEvent(pxhDrawerClosed);
-            pxhCookies.set('pxh-drawer-narrow', 'true', { expires: 1, path: '/' });
-            pxhCookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/' });
+            pxh.loadState(pxh.transitions, 'clearAll');
+            pxh.loadState(pxh.states, 'default');
+            document.dispatchEvent(pxh.drawerClosed);
+            pxh.Cookies.set('pxh-drawer-narrow', 'true', { expires: 1, path: '/' });
+            pxh.Cookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/' });
           }
         }
       });
@@ -1016,29 +1036,29 @@ var pxhOverlayDrawerControl = function pxhOverlayDrawerControl() {
   }
 };
 
-var pxhEscapeDrawerControl = function pxhEscapeDrawerControl() {
+pxh.escapeDrawerControl = function () {
   document.addEventListener('keyup', function (e) {
-    if (e.keyCode == 27 && !lgBreakpoint.matches && pxhCookies.get('pxh-drawer-open') === 'true') {
-      pxhLoadState(pxhTransitions, 'clearAll');
-      pxhLoadState(pxhStates, 'default');
-      document.dispatchEvent(pxhDrawerClosed);
-      pxhCookies.set('pxh-drawer-narrow', 'true', { expires: 1, path: '/' });
-      pxhCookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/' });
+    if (e.keyCode == 27 && !lgBreakpoint.matches && pxh.Cookies.get('pxh-drawer-open') === 'true') {
+      pxh.loadState(pxh.transitions, 'clearAll');
+      pxh.loadState(pxh.states, 'default');
+      document.dispatchEvent(pxh.drawerClosed);
+      pxh.Cookies.set('pxh-drawer-narrow', 'true', { expires: 1, path: '/' });
+      pxh.Cookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/' });
     }
   });
 };
 
-var pxhToggleLoginMenu = function pxhToggleLoginMenu(toggleControl, toggleTarget, toggleClass) {
+pxh.toggleLoginMenu = function (toggleControl, toggleTarget, toggleClass) {
   var toggleControlElements = document.getElementsByClassName(toggleControl);
   var toggleTargetElements = document.getElementsByClassName(toggleTarget);
-  if (arrayExists(toggleControlElements) && arrayExists(toggleTargetElements)) {
+  if (pxh.arrayExists(toggleControlElements) && pxh.arrayExists(toggleTargetElements)) {
     for (var i = toggleControlElements.length - 1; i >= 0; i--) {
       toggleControlElements[i].addEventListener('click', function (e) {
         e.preventDefault();
         var menuIsVisible = toggleTargetElements[0].classList.contains(toggleClass);
-        pxhChangeClasses('pxh-login-menu', 'remove', toggleClass);
+        pxh.changeClasses('pxh-login-menu', 'remove', toggleClass);
         if (!menuIsVisible) {
-          pxhChangeClasses(toggleTarget, 'toggle', toggleClass);
+          pxh.changeClasses(toggleTarget, 'toggle', toggleClass);
         }
         e.stopPropagation();
       });
@@ -1046,33 +1066,58 @@ var pxhToggleLoginMenu = function pxhToggleLoginMenu(toggleControl, toggleTarget
   }
 };
 
-// dismiss the login menu if the user clicks anywhere
-var pxhAnywhereLoginMenuControl = function pxhAnywhereLoginMenuControl(toggleControl, toggleTarget, removeClass) {
-  var controlElement = document.getElementsByClassName(toggleControl);
-  var targetElement = document.getElementsByClassName(toggleTarget);
-  if (arrayExists(controlElement) && arrayExists(targetElement)) {
-    document.addEventListener('click', function (e) {
-      pxhChangeClasses(toggleTarget, 'remove', removeClass);
-    });
-  }
-};
-
-var pxhAddResizeSensor = function pxhAddResizeSensor(targetId) {
+pxh.addResizeSensor = function (targetId) {
   var targetElement = document.getElementById(targetId);
   if (targetElement) {
     new pxhResizeSensor(targetElement, function () {
-      document.dispatchEvent(pxhViewResized);
+      document.dispatchEvent(pxh.viewResized);
     });
   }
 };
 
+pxh.action = {};
+
+// toggles classes on an element onclick, and immediately fires any event on the click target area
+pxh.action.clickToCloseAndFire = function (control, target, change, className) {
+  var controlElement = document.getElementsByClassName(control);
+  var targetElement = document.getElementsByClassName(target);
+  if (pxh.arrayExists(controlElement) && pxh.arrayExists(targetElement)) {
+    document.addEventListener('click', function (e) {
+      pxh.changeClasses(target, change, className);
+    });
+  }
+};
+
+// toggles classes on an element onclick, and does not fire any event tied to the click target area
+pxh.action.clickToCloseAndHold = function (control, target, className) {
+  console.log('just bound this');
+  var controlElement = document.getElementById(control);
+  var closeElement = document.getElementById('js-closer');
+  var targetElement = document.getElementById(target);
+  var zIndex = pxh.getStyle(target, 'z-index') - 1;
+  if (controlElement && targetElement && !closeElement) {
+    var closeElement = document.createElement('div');
+    closeElement.id = 'js-closer';
+    closeElement.setAttribute('style', 'height: 100%; width: 100%; position: absolute; z-index: ' + zIndex + ';');
+    var insertedCloser = document.body.appendChild(closeElement);
+    insertedCloser.addEventListener('click', function (event) {
+      targetElement.classList.remove(className);
+      insertedCloser.remove();
+    });
+  }
+};
+
+document.getElementById('js-notifications__icon').addEventListener('click', function (event) {
+  pxh.action.clickToCloseAndHold('js-notifications__icon', 'js-notifications', 'pxh-notifications--visible');
+});
+
 // this is a total hack
-var pxhToggleNotifications = function pxhToggleNotifications(toggleControl, toggleTarget, toggleClass) {
+pxh.toggleNotifications = function (toggleControl, toggleTarget, toggleClass) {
   var controlElement = document.getElementsByClassName(toggleControl);
   var targetElement = document.getElementsByClassName(toggleTarget);
-  if (arrayExists(controlElement) && arrayExists(targetElement)) {
+  if (pxh.arrayExists(controlElement) && pxh.arrayExists(targetElement)) {
     controlElement[0].addEventListener('click', function (e) {
-      pxhChangeClasses(toggleTarget, 'toggle', toggleClass);
+      pxh.changeClasses(toggleTarget, 'toggle', toggleClass);
     });
   }
 };
@@ -1118,39 +1163,39 @@ var toastObject4 = {
   actionLink: 'http://beef.org'
 };
 
-var toast = {
+pxh.toast = {
   badge: {
     count: 0,
     increment: function increment() {
-      toast.badge.count = toast.badge.count + 1;
-      if (toast.badge.count > 9) {
-        toast.badge.text = '9+';
-      } else if (toast.badge.count < 0) {
-        toast.badge.count = 0;
-        toast.badge.text = 0;
+      pxh.toast.badge.count = pxh.toast.badge.count + 1;
+      if (pxh.toast.badge.count > 9) {
+        pxh.toast.badge.text = '9+';
+      } else if (pxh.toast.badge.count < 0) {
+        pxh.toast.badge.count = 0;
+        pxh.toast.badge.text = 0;
       } else {
-        toast.badge.text = toast.badge.count;
+        pxh.toast.badge.text = pxh.toast.badge.count;
       }
-      toast.badge.update();
+      pxh.toast.badge.update();
     },
     decrement: function decrement() {
-      toast.badge.count = toast.badge.count - 1;
-      if (toast.badge.count > 9) {
-        toast.badge.text = '9+';
-      } else if (toast.badge.count < 0) {
-        toast.badge.count = 0;
-        toast.badge.text = 0;
+      pxh.toast.badge.count = pxh.toast.badge.count - 1;
+      if (pxh.toast.badge.count > 9) {
+        pxh.toast.badge.text = '9+';
+      } else if (pxh.toast.badge.count < 0) {
+        pxh.toast.badge.count = 0;
+        pxh.toast.badge.text = 0;
       } else {
-        toast.badge.text = toast.badge.count;
+        pxh.toast.badge.text = pxh.toast.badge.count;
       }
-      toast.badge.update();
+      pxh.toast.badge.update();
     },
     update: function update() {
       var notificationIcon = '';
       var notificationBadge = '';
       if (notificationBadge = document.getElementById('js-notifications__icon-badge')) {
-        if (toast.badge.count > 0) {
-          notificationBadge.innerHTML = toast.badge.text;
+        if (pxh.toast.badge.count > 0) {
+          notificationBadge.innerHTML = pxh.toast.badge.text;
           notificationBadge.classList.remove('pxh-notifications__icon-badge--hidden');
           if (notificationIcon = document.getElementById('js-notifications__icon')) {
             // notificationIcon.classList.remove('pxh-notifications__icon--narrow@md');
@@ -1169,24 +1214,24 @@ var toast = {
     var toastList = '';
     if ((notificationList = document.getElementById('js-notifications__list')) && (object.actionLink || object.actionCallback)) {
       var notificationFirstChild = notificationList.firstChild;
-      var notificationElement = notificationList.insertBefore(toast.markup.createNotification(object, id), notificationFirstChild);
-      toast.badge.increment();
-      toast.action.dismissButton(notificationElement, 'notification', id);
-      toast.action.expandButton(notificationElement, 'notification');
+      var notificationElement = notificationList.insertBefore(pxh.toast.markup.createNotification(object, id), notificationFirstChild);
+      pxh.toast.badge.increment();
+      pxh.toast.action.dismissButton(notificationElement, 'notification', id);
+      pxh.toast.action.expandButton(notificationElement, 'notification');
     }
     if (toastList = document.getElementById('js-toasts')) {
       var toastFirstChild = toastList.firstChild;
-      var toastElement = toastList.insertBefore(toast.markup.createToast(object, id), toastFirstChild);
-      toast.action.dismissButton(toastElement, 'toast', id);
-      toast.action.expandButton(toastElement, 'toast');
+      var toastElement = toastList.insertBefore(pxh.toast.markup.createToast(object, id), toastFirstChild);
+      pxh.toast.action.dismissButton(toastElement, 'toast', id);
+      pxh.toast.action.expandButton(toastElement, 'toast');
       if (!object.isPersistent) {
         setTimeout(function () {
           if (!toastElement.classList.contains('pxh-toast--expanded')) {
             // after 2000ms animate the toast out
-            toast.autoHide(id);
+            pxh.toast.autoHide(id);
             // 1000ms after the animation, remove the notification from the DOM
             setTimeout(function () {
-              toast.autoRemove(id);
+              pxh.toast.autoRemove(id);
             }, 1000);
           }
         }, 5000);
@@ -1200,9 +1245,9 @@ var toast = {
       if (button) {
         button.addEventListener('click', function (event) {
           event.preventDefault();
-          toast.hide(id);
+          pxh.toast.hide(id);
           setTimeout(function () {
-            toast.remove(id);
+            pxh.toast.remove(id);
           }, 1000);
         });
       }
@@ -1213,27 +1258,27 @@ var toast = {
       if (button) {
         button.addEventListener('click', function (event) {
           event.preventDefault();
-          toast.expand(element, slug);
+          pxh.toast.expand(element, slug);
         });
       }
     },
 
     removeAllButton: function removeAllButton() {
-      toast.hideAll();
+      pxh.toast.hideAll();
       setTimeout(function () {
-        toast.removeAll();
+        pxh.toast.removeAll();
       }, 1000);
     }
   },
 
   hide: function hide(id) {
     var toastList = '';
-    var toast = '';
+    var toastItem = '';
     var notificationList = '';
     var notification = '';
-    if ((toastList = document.getElementById('js-toasts')) && (toast = document.getElementById('js-toast--' + id))) {
-      toast.classList.add('pxh-toast--animate-out');
-      toast.classList.remove('pxh-toast--animate-in');
+    if ((toastList = document.getElementById('js-toasts')) && (toastItem = document.getElementById('js-toast--' + id))) {
+      toastItem.classList.add('pxh-toast--animate-out');
+      toastItem.classList.remove('pxh-toast--animate-in');
     }
     if ((notificationList = document.getElementById('js-notifications__list')) && (notification = document.getElementById('js-notification--' + id))) {
       notification.classList.add('pxh-notification--animate-out');
@@ -1247,17 +1292,17 @@ var toast = {
     if ((notificationList = document.getElementById('js-notifications__list')) && (notifications = document.getElementsByClassName('pxh-notification'))) {
       for (var i = notifications.length - 1; i >= 0; i--) {
         var id = notifications[i].id.replace('js-notification--', '');
-        toast.hide(id);
+        pxh.toast.hide(id);
       }
     }
   },
 
   autoHide: function autoHide(id) {
     var toastList = '';
-    var toast = '';
-    if ((toastList = document.getElementById('js-toasts')) && (toast = document.getElementById('js-toast--' + id))) {
-      toast.classList.add('pxh-toast--animate-out');
-      toast.classList.remove('pxh-toast--animate-in');
+    var toastItem = '';
+    if ((toastList = document.getElementById('js-toasts')) && (toastItem = document.getElementById('js-toast--' + id))) {
+      toastItem.classList.add('pxh-toast--animate-out');
+      toastItem.classList.remove('pxh-toast--animate-in');
     }
   },
 
@@ -1271,7 +1316,7 @@ var toast = {
     }
     if ((notificationList = document.getElementById('js-notifications__list')) && (notification = document.getElementById('js-notification--' + id))) {
       notification.remove();
-      toast.badge.decrement();
+      pxh.toast.badge.decrement();
     }
   },
 
@@ -1289,7 +1334,7 @@ var toast = {
     if ((notificationList = document.getElementById('js-notifications__list')) && (notifications = document.getElementsByClassName('pxh-notification'))) {
       for (var i = notifications.length - 1; i >= 0; i--) {
         var id = notifications[i].id.replace('js-notification--', '');
-        toast.remove(id);
+        pxh.toast.remove(id);
       }
     }
   },
@@ -1324,7 +1369,7 @@ var toast = {
       var markup = [];
       markup.push('<div class="pxh-' + slug + '__text">\n');
       markup.push('  ' + text + '\n');
-      markup.push(toast.markup.more(object, slug));
+      markup.push(pxh.toast.markup.more(object, slug));
       markup.push('</div>\n');
       markup = markup.join('');
       return markup;
@@ -1343,7 +1388,7 @@ var toast = {
       if (object.actionLink || object.actionCallback) {
         markup.push('  </a>\n');
       }
-      markup.push(toast.markup.more(object, slug));
+      markup.push(pxh.toast.markup.more(object, slug));
       markup.push('</div>\n');
       markup = markup.join('');
       return markup;
@@ -1404,13 +1449,13 @@ var toast = {
       element.className = 'pxh-' + slug + ' pxh-' + slug + '--animate-in';
       element.id = 'js-' + slug + '--' + id;
       var markup = [];
-      markup.push(toast.markup.icon(object, slug));
-      markup.push(toast.markup.toastText(object, slug));
-      markup.push(toast.markup.button(object, slug));
+      markup.push(pxh.toast.markup.icon(object, slug));
+      markup.push(pxh.toast.markup.toastText(object, slug));
+      markup.push(pxh.toast.markup.button(object, slug));
       // if (object.timestamp) {
-      //   markup.push(toast.markup.timestamp(object, slug));
+      //   markup.push(pxh.toast.markup.timestamp(object, slug));
       // }
-      markup.push(toast.markup.dismiss(object, slug, id));
+      markup.push(pxh.toast.markup.dismiss(object, slug, id));
       markup = markup.join('');
       element.innerHTML = markup;
       return element;
@@ -1423,10 +1468,10 @@ var toast = {
       element.className = 'pxh-' + slug;
       element.id = 'js-' + slug + '--' + id;
       var markup = [];
-      markup.push(toast.markup.icon(object, slug));
-      markup.push(toast.markup.notificationText(object, slug));
-      markup.push(toast.markup.timestamp(object, slug));
-      markup.push(toast.markup.dismiss(object, slug, id));
+      markup.push(pxh.toast.markup.icon(object, slug));
+      markup.push(pxh.toast.markup.notificationText(object, slug));
+      markup.push(pxh.toast.markup.timestamp(object, slug));
+      markup.push(pxh.toast.markup.dismiss(object, slug, id));
       markup = markup.join('');
       element.innerHTML = markup;
       return element;
@@ -1435,19 +1480,19 @@ var toast = {
 };
 
 document.addEventListener('DOMContentLoaded', function (event) {
-  toast.add(toastObject1);
-  toast.add(toastObject2);
+  pxh.toast.add(toastObject1);
+  pxh.toast.add(toastObject2);
 });
 
 if (document.getElementById('js-toast-emitter')) {
   document.getElementById('js-toast-emitter').addEventListener('click', function () {
-    toast.add(toastObject3);
+    pxh.toast.add(toastObject3);
   });
 }
 
 if (document.getElementById('js-notifications__link--clear')) {
   document.getElementById('js-notifications__link--clear').addEventListener('click', function () {
-    toast.action.removeAllButton();
+    pxh.toast.action.removeAllButton();
   });
 }
 
@@ -1458,68 +1503,68 @@ if (document.getElementById('js-notifications__link--clear')) {
 var lgBreakpoint = window.matchMedia('(min-width: 1024px)');
 var mdBreakpoint = window.matchMedia('(min-width: 768px)');
 document.addEventListener('DOMContentLoaded', function (event) {
-  lgBreakpoint.addListener(pxhBreakpointAtLg);
-  mdBreakpoint.addListener(pxhBreakpointAtMd);
+  lgBreakpoint.addListener(pxh.breakpointAtLg);
+  mdBreakpoint.addListener(pxh.breakpointAtMd);
 });
 
-var pxhViewResized = document.createEvent('CustomEvent');
-pxhViewResized.initCustomEvent('pxhViewResized', false, false, {
+pxh.viewResized = document.createEvent('CustomEvent');
+pxh.viewResized.initCustomEvent('pxhViewResized', false, false, {
   'viewResized': true
 });
 
-var pxhDrawerOpened = document.createEvent('CustomEvent');
-pxhDrawerOpened.initCustomEvent('pxhDrawerOpened', false, false, {
+pxh.drawerOpened = document.createEvent('CustomEvent');
+pxh.drawerOpened.initCustomEvent('pxh.drawerOpened', false, false, {
   'drawerOpened': true
 });
 
-var pxhDrawerClosed = document.createEvent('CustomEvent');
-pxhDrawerClosed.initCustomEvent('pxhDrawerClosed', false, false, {
+pxh.drawerClosed = document.createEvent('CustomEvent');
+pxh.drawerClosed.initCustomEvent('pxh.drawerClosed', false, false, {
   'drawerClosed': true
 });
 
 document.addEventListener('DOMContentLoaded', function (event) {
-  pxhBindControl('pxh-view-header-drawer-toggle');
-  pxhBindControl('pxh-drawer-toggle');
+  pxh.bindControl('pxh-view-header-drawer-toggle');
+  pxh.bindControl('pxh-drawer-toggle');
 
-  if (pxhCookies.get('pxh-drawer-open') === null) {
-    pxhCookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/' });
+  if (pxh.Cookies.get('pxh-drawer-open') === null) {
+    pxh.Cookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/' });
   }
 
-  if (pxhCookies.get('pxh-drawer-narrow') === null) {
-    pxhCookies.set('pxh-drawer-narrow', 'false', { expires: 1, path: '/' });
+  if (pxh.Cookies.get('pxh-drawer-narrow') === null) {
+    pxh.Cookies.set('pxh-drawer-narrow', 'false', { expires: 1, path: '/' });
   }
 
   // check if the 'narrow' cookie is set and if we're currently at the desktop breakpoint
-  if (window.matchMedia('(min-width: 1024px)').matches && pxhCookies.get('pxh-drawer-narrow') === 'true') {
+  if (window.matchMedia('(min-width: 1024px)').matches && pxh.Cookies.get('pxh-drawer-narrow') === 'true') {
     // toggle the drawer closed
-    pxhLoadState(pxhStates, 'narrowAtLg');
-    document.dispatchEvent(pxhDrawerClosed);
-    pxhCookies.set('pxh-drawer-narrow', 'true', { expires: 1, path: '/' });
+    pxh.loadState(pxh.states, 'narrowAtLg');
+    document.dispatchEvent(pxh.drawerClosed);
+    pxh.Cookies.set('pxh-drawer-narrow', 'true', { expires: 1, path: '/' });
   } else if (window.matchMedia('(min-width: 1024px)').matches) {
-    pxhCookies.set('pxh-drawer-open', 'true', { expires: 1, path: '/' });
+    pxh.Cookies.set('pxh-drawer-open', 'true', { expires: 1, path: '/' });
   } else {
-    pxhCookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/' });
+    pxh.Cookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/' });
   }
   document.addEventListener('navRefreshed', function (event) {
-    pxhToggleLoginMenu('pxh-login__profile-link', 'pxh-login-menu--profile', 'pxh-login-menu--visible');
-    pxhToggleLoginMenu('pxh-login__settings-link', 'pxh-login-menu--settings', 'pxh-login-menu--visible');
+    pxh.toggleLoginMenu('pxh-login__profile-link', 'pxh-login-menu--profile', 'pxh-login-menu--visible');
+    pxh.toggleLoginMenu('pxh-login__settings-link', 'pxh-login-menu--settings', 'pxh-login-menu--visible');
   });
 
-  pxhBindDrawerMediaQueryControls('pxh-navigation__link', lgBreakpoint);
-  pxhBindDrawerMediaQueryControls('pxh-navigation__sub-link', lgBreakpoint);
+  pxh.bindDrawerMediaQueryControls('pxh-navigation__link', lgBreakpoint);
+  pxh.bindDrawerMediaQueryControls('pxh-navigation__sub-link', lgBreakpoint);
 
-  pxhOverlayDrawerControl();
+  pxh.overlayDrawerControl();
 
-  pxhEscapeDrawerControl();
+  pxh.escapeDrawerControl();
 
-  pxhAnywhereLoginMenuControl('pxh-login__profile-link', 'pxh-login-menu--profile', 'pxh-login-menu--visible');
-  pxhAnywhereLoginMenuControl('pxh-login__settings-link', 'pxh-login-menu--settings', 'pxh-login-menu--visible');
+  pxh.action.clickToCloseAndFire(pxh.LOGIN_PROFILE_LINK, pxh.LOGIN_MENU_PROFILE, 'remove', pxh.LOGIN_MENU_VISIBLE);
+  pxh.action.clickToCloseAndFire(pxh.LOGIN_SETTINGS_LINK, pxh.LOGIN_MENU_SETTINGS, 'remove', pxh.LOGIN_MENU_VISIBLE);
 
-  pxhToggleLoginMenu('pxh-login__profile-link', 'pxh-login-menu--profile', 'pxh-login-menu--visible');
-  pxhToggleLoginMenu('pxh-login__settings-link', 'pxh-login-menu--settings', 'pxh-login-menu--visible');
+  pxh.toggleLoginMenu('pxh-login__profile-link', 'pxh-login-menu--profile', 'pxh-login-menu--visible');
+  pxh.toggleLoginMenu('pxh-login__settings-link', 'pxh-login-menu--settings', 'pxh-login-menu--visible');
 
-  pxhToggleNotifications('pxh-notifications__icon', 'pxh-notifications', 'pxh-notifications--visible');
+  pxh.toggleNotifications('pxh-notifications__icon', 'pxh-notifications', 'pxh-notifications--visible');
 
-  pxhAddResizeSensor('js-view');
+  pxh.addResizeSensor('js-view');
 });
 //# sourceMappingURL=pxh-chrome.js.map
