@@ -5415,6 +5415,28 @@ sub {
   }
 }
 
+/*------------------------------------*    #components.pxh-closer
+\*------------------------------------*/
+.pxh-closer {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  background-color: black;
+  opacity: 0;
+}
+
+.pxh-closer--invisible {
+  opacity: 0;
+}
+
+.pxh-closer--opaque {
+  opacity: 1;
+}
+
+.pxh-closer--transparent {
+  opacity: 0.5;
+}
+
 /*------------------------------------*    #components.pxh-toast
 \*------------------------------------*/
 .pxh-toasts {

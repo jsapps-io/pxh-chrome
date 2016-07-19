@@ -1098,7 +1098,9 @@ pxh.action.clickToCloseAndHold = function (control, target, className) {
   if (controlElement && targetElement && !closeElement) {
     var closeElement = document.createElement('div');
     closeElement.id = 'js-closer';
-    closeElement.setAttribute('style', 'height: 100%; width: 100%; position: absolute; z-index: ' + zIndex + ';');
+    closeElement.classList.add('pxh-closer');
+    closeElement.classList.add('pxh-closer--transparent');
+    closeElement.setAttribute('style', 'z-index: ' + zIndex + ';');
     var insertedCloser = document.body.appendChild(closeElement);
     insertedCloser.addEventListener('click', function (event) {
       targetElement.classList.remove(className);
