@@ -157,7 +157,6 @@ $pxh-notifications-enabled : false !default;
 @include mq($from: lg) {
   .pxh-login__name--wide\@lg {
     @include pxh-login--in-state;
-
   }
 }
 
@@ -184,10 +183,7 @@ $pxh-notifications-enabled : false !default;
 }
 
 .pxh-login__settings {
-  margin-left: $pxh-drawer-margin / 2;
-  margin-right: $pxh-drawer-margin / 2;
   float: right;
-  padding-top: $pxh-login-magic-centering;
   @include pxh-login--in-state;
 }
 
@@ -210,6 +206,7 @@ $pxh-notifications-enabled : false !default;
 .pxh-login__settings-link:link.pxh-login__settings-link:link.pxh-login__settings-link:link,
 .pxh-login__settings-link:visited.pxh-login__settings-link:visited.pxh-login__settings-link:visited { // chained to override px-theme
   float: right;
+  padding: $pxh-login-magic-centering ($pxh-drawer-margin / 2) ($pxh-drawer-margin / 2) ($pxh-drawer-margin / 2);
   color: $gray7;
   text-decoration: none;
 }

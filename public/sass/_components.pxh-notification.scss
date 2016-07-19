@@ -127,11 +127,10 @@ $pxh-notification-max-count: 5;
   }
 
   .pxh-notifications__icon {
+    text-align: center;
+    margin-top: $pxh-login-magic-centering;
     position: relative;
-    margin-left: $pxh-drawer-margin / 2;
-    margin-right: $pxh-drawer-margin / 2;
     float: right;
-    padding-top: $pxh-login-magic-centering;
     @include pxh-login--in-state;
   }
 
@@ -151,6 +150,7 @@ $pxh-notification-max-count: 5;
   }
   
   .pxh-notifications__icon-link {
+    padding: $pxh-login-magic-centering ($pxh-drawer-margin / 2) ($pxh-drawer-margin / 2) ($pxh-drawer-margin / 2);
     color: $gray7;
     &:hover,
     .pxh-notifications__icon:hover & {
@@ -163,7 +163,7 @@ $pxh-notification-max-count: 5;
     z-index: 775;
     text-align: center;
     background-color: $gray5;
-    display: inline-block;
+    display: block;
     min-width: $pxh-drawer-margin;
     height: $pxh-drawer-margin;
     font-weight: normal;
@@ -174,8 +174,8 @@ $pxh-notification-max-count: 5;
     box-shadow: 0px 0px 0px 2px rgba($black, 0.25);
     text-decoration: none;
     position: absolute;
-    bottom: $pxh-drawer-margin * 2;
-    left: $pxh-drawer-margin / 4;
+    top: -($pxh-drawer-margin / 2) - 5px;
+    right: -$pxh-drawer-margin / 4;
     padding: 4px 2px 0px 1px;
     @include pxh-override-px-theme-color('pxh-notifications__icon-badge', $white);
     &--green {
