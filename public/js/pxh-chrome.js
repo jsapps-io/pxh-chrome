@@ -1207,7 +1207,31 @@ pxh.action.clickToCloseAndFire = function(control, target, change, className)
   }
 }
 
+// toggles classes on an element onclick, and does not fire any event tied to the click target area
+pxh.action.clickToCloseAndHold = function(control, target, className)
+{
+  console.log('just bound this');
+  var controlElement = document.getElementById(control);
+  var closeElement = document.getElementById('js-closer');
+  var targetElement = document.getElementById(target);
+  var zIndex = (pxh.getStyle(target, 'z-index') - 1);
+  if ((controlElement) && (targetElement) && (!closeElement))
+  {
+    var closeElement = document.createElement('div');
+    closeElement.id = 'js-closer';
+    closeElement.setAttribute('style', 'height: 100%; width: 100%; position: absolute; z-index: ' + zIndex + ';');
+    var insertedCloser = document.body.appendChild(closeElement);
+    insertedCloser.addEventListener('click', function(event)
+    {
+      targetElement.classList.remove(className);
+      insertedCloser.remove();
+    })
+  }
+}
 
+document.getElementById('js-notifications__icon').addEventListener('click', function(event) {
+  pxh.action.clickToCloseAndHold('js-notifications__icon', 'js-notifications', 'pxh-notifications--visible');
+});
 
 
 
