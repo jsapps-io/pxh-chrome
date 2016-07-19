@@ -884,33 +884,40 @@ pxh.Cookies = Cookies.noConflict();
 // polyfill to support .remove() in IE11
 // https://developer.mozilla.org/en-US/docs/Web/API/ChildNode/remove
 
-if (!('remove' in Element.prototype)) {
-  Element.prototype.remove = function() {
+if (!('remove' in Element.prototype))
+{
+  Element.prototype.remove = function()
+  {
     if (this.parentNode) {
       this.parentNode.removeChild(this);
     }
-  };
+  }
 }
 
 /* arrayExists() */
-pxh.arrayExists = function(array) {
-  if ((typeof array !== 'undefined') && (array.length > 0)) {
+pxh.arrayExists = function(array) 
+{
+  if ((typeof array !== 'undefined') && (array.length > 0)) 
+  {
     return true;
   }
-  else {
+  else 
+  {
     return false;
   }
 }
 
 /* getItemByPropertyName() */
-pxh.getItemByPropertyName = function(haystack, propertyName) {
-  for (var i in haystack) {
-    if (haystack.hasOwnProperty(propertyName)) {
+pxh.getItemByPropertyName = function(haystack, propertyName)
+{
+  for (var i in haystack)
+  {
+    if (haystack.hasOwnProperty(propertyName)) 
+    {
       return haystack[propertyName];
     }
   }
-};
-
+}
 
 
 
@@ -927,15 +934,18 @@ pxh.getItemByPropertyName = function(haystack, propertyName) {
 
 
 /* pxh.loadState() */
-pxh.loadState = function(stateObject, targetStateName) {
+pxh.loadState = function(stateObject, targetStateName)
+{
   // grab the target state object from the master states object
   var targetState = pxh.getItemByPropertyName(stateObject, targetStateName);
   // iterate through each target class in the target state object
-  for (var targetClass in targetState) {
+  for (var targetClass in targetState)
+  {
     // grab the target state for each class in the target state
     var stateChangeTarget = targetState[targetClass];
     // iterate through each target state change (e.g. whether to add, remove, toggle)
-    for (var stateChangeType in stateChangeTarget) {
+    for (var stateChangeType in stateChangeTarget)
+    {
       // grab the target state change classes (e.g. which classes to add, remove, or toggle)
       var stateChangeClasses = stateChangeTarget[stateChangeType];
       // change the classes of each target element based on its target class, the type of change to make, and its target classes
@@ -946,13 +956,17 @@ pxh.loadState = function(stateObject, targetStateName) {
 
 /* pxh.changeClasses() */
 // e.g. pxh.changeClasses('nav', 'add', 'hidden--until-@md')
-pxh.changeClasses = function(targetClassName, changeType, classNamesToChange) {
+pxh.changeClasses = function(targetClassName, changeType, classNamesToChange)
+{
   var targetElements = document.getElementsByClassName(targetClassName);
-  if (pxh.arrayExists(targetElements) && (classNamesToChange)) {
+  if (pxh.arrayExists(targetElements) && (classNamesToChange))
+  {
     classNamesToChange = classNamesToChange.replace(/  +/g, ' ');
     var classNamesToChangeArray = classNamesToChange.split(' ');
-    for (var i = targetElements.length - 1; i >= 0; i--) {
-      for (var j = classNamesToChangeArray.length -1; j >= 0; j--) {
+    for (var i = targetElements.length - 1; i >= 0; i--)
+    {
+      for (var j = classNamesToChangeArray.length -1; j >= 0; j--)
+      {
         if (changeType === 'add') {
           targetElements[i].classList.add(classNamesToChangeArray[j]);
         }
@@ -1185,11 +1199,14 @@ pxh.action.clickToCloseAndFire = function(control, target, change, className)
 
 
 // this is a total hack
-pxh.toggleNotifications = function(toggleControl, toggleTarget, toggleClass) {
+pxh.toggleNotifications = function(toggleControl, toggleTarget, toggleClass)
+{
   var controlElement = document.getElementsByClassName(toggleControl);
   var targetElement = document.getElementsByClassName(toggleTarget);
-  if ((pxh.arrayExists(controlElement)) && (pxh.arrayExists(targetElement))) {
-    controlElement[0].addEventListener('click', function(e) {
+  if ((pxh.arrayExists(controlElement)) && (pxh.arrayExists(targetElement)))
+  {
+    controlElement[0].addEventListener('click', function(e)
+    {
       pxh.changeClasses(toggleTarget, 'toggle', toggleClass);
     });
   }
