@@ -919,6 +919,19 @@ pxh.getItemByPropertyName = function(haystack, propertyName)
   }
 }
 
+pxh.getStyle = function(id, property)
+{
+  var element = document.getElementById(id);
+  if (window.getComputedStyle)
+  {
+    var style = document.defaultView.getComputedStyle(element, null).getPropertyValue(property); 
+  }
+  else if (element.currentStyle)
+  {
+    var style = element.currentStyle[property];
+  }
+  return style;
+}
 
 
 
