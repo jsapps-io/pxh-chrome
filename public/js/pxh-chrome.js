@@ -80,6 +80,14 @@ pxh.LOGIN_LINK_NARROW_AT_MD = pxh.LOGIN_LINK + pxh.NARROW + pxh.AT_MD;
 pxh.LOGIN_LINK_WIDE_AT_LG = pxh.LOGIN_LINK + pxh.WIDE + pxh.AT_LG;
 pxh.LOGIN_LINK_NARROW_AT_LG = pxh.LOGIN_LINK + pxh.NARROW + pxh.AT_LG;
 
+pxh.LOGIN_PROFILE_LINK = pxh.PREFIX + 'login__profile-link';
+pxh.LOGIN_SETTINGS_LINK = pxh.PREFIX + 'login__settings-link';
+
+pxh.LOGIN_MENU = pxh.PREFIX + 'login-menu';
+pxh.LOGIN_MENU_PROFILE = pxh.LOGIN_MENU + '--profile';
+pxh.LOGIN_MENU_SETTINGS = pxh.LOGIN_MENU + '--settings';
+pxh.LOGIN_MENU_VISIBLE = pxh.LOGIN_MENU + pxh.VISIBLE;
+
 // login__settings
 pxh.LOGIN_SETTINGS = pxh.PREFIX + 'login__settings';
 pxh.LOGIN_SETTINGS_NARROW_AT_MD = pxh.LOGIN_SETTINGS + pxh.NARROW + pxh.AT_MD;
@@ -1147,17 +1155,6 @@ pxh.toggleLoginMenu = function(toggleControl, toggleTarget, toggleClass) {
   }
 }
 
-// dismiss the login menu if the user clicks anywhere
-pxh.anywhereLoginMenuControl = function(toggleControl, toggleTarget, removeClass) {
-  var controlElement = document.getElementsByClassName(toggleControl);
-  var targetElement = document.getElementsByClassName(toggleTarget);
-  if ((pxh.arrayExists(controlElement)) && (pxh.arrayExists(targetElement))) {
-    document.addEventListener('click', function(e) {
-      pxh.changeClasses(toggleTarget, 'remove', removeClass);
-    });
-  }
-}
-
 pxh.addResizeSensor = function(targetId) {
   var targetElement = document.getElementById(targetId);
   if (targetElement) {
@@ -1167,6 +1164,21 @@ pxh.addResizeSensor = function(targetId) {
   }
 }
 
+pxh.action = {};
+
+// toggles classes on an element onclick, and immediately fires any event on the click target area
+pxh.action.clickToCloseAndFire = function(control, target, change, className)
+{
+  var controlElement = document.getElementsByClassName(control);
+  var targetElement = document.getElementsByClassName(target);
+  if ((pxh.arrayExists(controlElement)) && (pxh.arrayExists(targetElement))) 
+  {
+    document.addEventListener('click', function(e)
+    {
+      pxh.changeClasses(target, change, className);
+    });
+  }
+}
 
 
 
@@ -1182,6 +1194,12 @@ pxh.toggleNotifications = function(toggleControl, toggleTarget, toggleClass) {
     });
   }
 }
+
+
+
+
+
+
 
 // type : 'green' // green, blue, orange, red
 // isPersistent : false // true, false
@@ -1627,8 +1645,8 @@ document.addEventListener('DOMContentLoaded', function(event) {
 
   pxh.escapeDrawerControl();
 
-  pxh.anywhereLoginMenuControl('pxh-login__profile-link', 'pxh-login-menu--profile', 'pxh-login-menu--visible');
-  pxh.anywhereLoginMenuControl('pxh-login__settings-link', 'pxh-login-menu--settings', 'pxh-login-menu--visible');
+  pxh.action.clickToCloseAndFire(pxh.LOGIN_PROFILE_LINK, pxh.LOGIN_MENU_PROFILE, 'remove', pxh.LOGIN_MENU_VISIBLE);
+  pxh.action.clickToCloseAndFire(pxh.LOGIN_SETTINGS_LINK, pxh.LOGIN_MENU_SETTINGS, 'remove', pxh.LOGIN_MENU_VISIBLE);
 
   pxh.toggleLoginMenu('pxh-login__profile-link', 'pxh-login-menu--profile', 'pxh-login-menu--visible');
   pxh.toggleLoginMenu('pxh-login__settings-link', 'pxh-login-menu--settings', 'pxh-login-menu--visible');
