@@ -182,6 +182,78 @@ $pxh-notifications-enabled : false !default;
   }
 }
 
+  .pxh-login__notifications {
+    text-align: center;
+    position: relative;
+    flex-shrink: 0;
+    flex-basis: auto;
+  }
+
+  // From the @md (tablet) breakpoint and wider,
+  // display pxh-login__settings in its narrow state.
+  // Remove this class to display the drawer in its wide state.
+  @include mq($from: md) {
+    .pxh-login__notifications--narrow\@md {
+    }
+  }
+
+  @include mq($from: lg) {
+    .pxh-login__notifications--wide\@lg {
+    }
+  }
+  
+  .pxh-login__notifications-link {
+    padding: $pxh-login-magic-centering ($pxh-drawer-margin / 2) ($pxh-drawer-margin / 2) ($pxh-drawer-margin / 2);
+    color: $gray7;
+    &:hover,
+    .pxh-login__notifications:hover & {
+      color: $white;
+    }
+    @include pxh-override-px-theme-color('pxh-login__notifications-link');
+  }
+
+  .pxh-login__notifications-badge {
+    z-index: 775;
+    text-align: center;
+    background-color: $gray5;
+    display: block;
+    min-width: $pxh-drawer-margin;
+    height: $pxh-drawer-margin;
+    font-weight: normal;
+    color: $white;
+    font-size: 12px;
+    line-height: 1;
+    border-radius: 12px;
+    box-shadow: 0px 0px 0px 2px rgba($black, 0.25);
+    text-decoration: none;
+    position: absolute;
+    top: -($pxh-drawer-margin / 2) - 5px;
+    right: -$pxh-drawer-margin / 4;
+    padding: 4px 2px 0px 1px;
+    @include pxh-override-px-theme-color('pxh-login__notifications-badge', $white);
+    &--green {
+      background-color: $green;
+      @include pxh-override-px-theme-background-color('pxh-login__notifications-badge--green', $green);
+    }
+    &--blue {
+      background-color: $blue;
+      @include pxh-override-px-theme-background-color('pxh-login__notifications-badge--blue', $blue);
+    }
+    &--orange {
+      background-color: $orange;
+      @include pxh-override-px-theme-background-color('pxh-notifications-badge--orange', $orange);
+    }
+    &--red {
+      background-color: $red;
+      @include pxh-override-px-theme-background-color('pxh-notifications-badge--red', $red);
+    }
+    &--hidden {
+    }
+    &:hover + .pxh-login__notifications-link {
+      color: $white !important; // !important is the only way to override the px-theme override chaining
+    } 
+  }
+
 .pxh-login__settings {
   float: right;
   @include pxh-login--in-state;
