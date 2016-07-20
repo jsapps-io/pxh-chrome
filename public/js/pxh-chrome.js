@@ -45,7 +45,7 @@ pxh.DRAWER_HEADER_LINK_ANIMATE_OUT = pxh.DRAWER_HEADER_LINK + pxh.ANIMATE_OUT;
 
 // overlay
 pxh.OVERLAY = pxh.PREFIX + 'overlay';
-    pxh.OVERLAY_HIDDEN = pxh.OVERLAY + pxh.HIDDEN;
+pxh.OVERLAY_HIDDEN = pxh.OVERLAY + pxh.HIDDEN;
 
 // navigation
 pxh.NAVIGATION = pxh.PREFIX + 'navigation';
@@ -102,6 +102,14 @@ pxh.LOGIN_CARET_WIDE_AT_LG = pxh.LOGIN_CARET + pxh.WIDE + pxh.AT_LG;
 pxh.LOGIN_CARET_ANIMATE_IN = pxh.LOGIN_CARET + pxh.ANIMATE_IN;
 pxh.LOGIN_CARET_ANIMATE_OUT = pxh.LOGIN_CARET + pxh.ANIMATE_OUT;
 
+// login__notifications
+
+pxh.LOGIN_NOTIFICATIONS = pxh.PREFIX + 'login__notifications';
+pxh.LOGIN_NOTIFICATIONS_NARROW_AT_MD = pxh.LOGIN_NOTIFICATIONS + pxh.NARROW + pxh.AT_MD;
+pxh.LOGIN_NOTIFICATIONS_WIDE_AT_LG = pxh.LOGIN_NOTIFICATIONS + pxh.WIDE + pxh.AT_LG;
+pxh.LOGIN_NOTIFICATIONS_ANIMATE_IN = pxh.LOGIN_NOTIFICATIONS + pxh.ANIMATE_IN;
+pxh.LOGIN_NOTIFICATIONS_ANIMATE_OUT = pxh.LOGIN_NOTIFICATIONS + pxh.ANIMATE_OUT;
+
 // view
 pxh.VIEW = pxh.PREFIX + 'view';
 pxh.VIEW_NARROW_AT_LG = pxh.VIEW + pxh.NARROW + pxh.AT_LG;
@@ -122,11 +130,7 @@ pxh.VIEW_HEADER_ANIMATE_FULL_TO_WIDE = pxh.VIEW_HEADER + pxh.ANIMATE_FULL_TO_WID
 pxh.VIEW_HEADER_DRAWER_TOGGLE = pxh.PREFIX + 'view-header-drawer-toggle';
 pxh.VIEW_HEADER_DRAWER_TOGGLE_HIDDEN = pxh.VIEW_HEADER_DRAWER_TOGGLE + pxh.HIDDEN;
 
-// notifications__icon
-pxh.NOTIFICATIONS_ICON = pxh.PREFIX + 'notifications__icon';
-pxh.NOTIFICATIONS_ICON_NARROW_AT_MD = pxh.NOTIFICATIONS_ICON + pxh.NARROW + pxh.AT_MD;
-pxh.NOTIFICATIONS_ICON_WIDE_AT_LG = pxh.NOTIFICATIONS_ICON + pxh.WIDE + pxh.AT_LG;
-
+// notifications
 pxh.NOTIFICATIONS = pxh.PREFIX + 'notifications';
 pxh.NOTIFICATIONS_VISIBLE = pxh.NOTIFICATIONS + pxh.VISIBLE;
 
@@ -165,6 +169,9 @@ pxh.states = {
     'pxh-login__caret' : {
       'add' : pxh.LOGIN_CARET_NARROW_AT_MD + ' ' + pxh.LOGIN_CARET_WIDE_AT_LG,
     },
+    'pxh-login__notifications' : {
+      'add' : pxh.LOGIN_NOTIFICATIONS_NARROW_AT_MD + ' ' + pxh.LOGIN_NOTIFICATIONS_WIDE_AT_LG,
+    },
     'pxh-view' : {
       'remove' : pxh.DISABLE_SCROLL_UNTIL_AT_LG + ' ' + pxh.VIEW_WIDE_AT_LG,
       'add' : pxh.VIEW_NARROW_AT_LG
@@ -175,9 +182,6 @@ pxh.states = {
     },
     'pxh-view-header-drawer-toggle' : {
       'remove' : pxh.VIEW_HEADER_DRAWER_TOGGLE_HIDDEN
-    },
-    'pxh-notifications__icon' : {
-      'add' : pxh.NOTIFICATIONS_ICON_NARROW_AT_MD + ' ' + pxh.NOTIFICATIONS_ICON_WIDE_AT_LG
     },
     'pxh-notifications' : {
       'remove' : pxh.NOTIFICATIONS_VISIBLE
@@ -218,6 +222,10 @@ pxh.states = {
       'remove' : pxh.LOGIN_CARET_NARROW_AT_MD,
       'add' : pxh.LOGIN_CARET_WIDE_AT_LG
     },
+    'pxh-login__notifications' : {
+      'remove' : pxh.LOGIN_NOTIFICATIONS_NARROW_AT_MD,
+      'add' : pxh.LOGIN_NOTIFICATIONS_WIDE_AT_LG
+    },
     'pxh-view' : {
       'add' : pxh.DISABLE_SCROLL_UNTIL_AT_LG + ' ' + pxh.VIEW_NARROW_AT_LG,
       'remove' : pxh.VIEW_WIDE_AT_LG
@@ -228,10 +236,6 @@ pxh.states = {
     },
     'pxh-view-header-drawer-toggle' : {
       'add' : pxh.VIEW_HEADER_DRAWER_TOGGLE_HIDDEN
-    },
-    'pxh-notifications__icon' : {
-      'remove' : pxh.NOTIFICATIONS_ICON_NARROW_AT_MD,
-      'add' : pxh.NOTIFICATIONS_ICON_WIDE_AT_LG
     }
   },
   'narrowAtLg' : {
@@ -270,6 +274,10 @@ pxh.states = {
       'add' : pxh.LOGIN_CARET_NARROW_AT_MD,
       'remove' : pxh.LOGIN_CARET_WIDE_AT_LG
     },
+    'pxh-login__notifications' : {
+      'add' : pxh.LOGIN_NOTIFICATIONS_NARROW_AT_MD,
+      'remove' : pxh.LOGIN_NOTIFICATIONS_WIDE_AT_LG
+    },
     'pxh-view' : {
       'remove' : pxh.DISABLE_SCROLL_UNTIL_AT_LG + ' ' + pxh.VIEW_NARROW_AT_LG,
       'add' : pxh.VIEW_WIDE_AT_LG
@@ -280,10 +288,6 @@ pxh.states = {
     },
     'pxh-view-header-drawer-toggle' : {
       'remove' : pxh.VIEW_HEADER_DRAWER_TOGGLE_HIDDEN
-    },
-    'pxh-notifications__icon' : {
-      'add' : pxh.NOTIFICATIONS_ICON_NARROW_AT_MD,
-      'remove' : pxh.NOTIFICATIONS_ICON_WIDE_AT_LG
     },
     'pxh-notifications' : {
       'remove' : pxh.NOTIFICATIONS_VISIBLE
@@ -323,6 +327,9 @@ pxh.transitions = {
     },
     'pxh-login__settings' : {
       'add' : pxh.LOGIN_SETTINGS_ANIMATE_IN
+    },
+    'pxh-login__notifications' : {
+      'add' : pxh.LOGIN_NOTIFICATIONS_ANIMATE_IN
     }
   },
   'openToNarrow' : {
@@ -346,6 +353,9 @@ pxh.transitions = {
     },
     'pxh-login__settings' : {
       'add' : pxh.LOGIN_SETTINGS_ANIMATE_OUT
+    },
+    'pxh-login__notifications' : {
+      'add' : pxh.LOGIN_NOTIFICATIONS_ANIMATE_OUT
     }
   },
   'outToNarrow' : {
@@ -380,6 +390,9 @@ pxh.transitions = {
     },
     'pxh-login__settings' : {
       'add' : pxh.LOGIN_SETTINGS_ANIMATE_IN
+    },
+    'pxh-login__notifications' : {
+      'add' : pxh.LOGIN_NOTIFICATIONS_ANIMATE_IN
     }
   },
   'wideToNarrow' : {
@@ -403,6 +416,9 @@ pxh.transitions = {
     },
     'pxh-login__settings' : {
       'add' : pxh.LOGIN_SETTINGS_ANIMATE_OUT
+    },
+    'pxh-login__notifications' : {
+      'add' : pxh.LOGIN_NOTIFICATIONS_ANIMATE_OUT
     },
     'pxh-view' : {
       'add' : pxh.VIEW_ANIMATE_WIDE
@@ -433,6 +449,9 @@ pxh.transitions = {
     'pxh-login__settings' : {
       'add' : pxh.LOGIN_SETTINGS_ANIMATE_IN
     },
+    'pxh-login__notifications' : {
+      'add' : pxh.LOGIN_NOTIFICATIONS_ANIMATE_IN
+    },
     'pxh-view' : {
       'add' : pxh.VIEW_ANIMATE_NARROW
     },
@@ -461,6 +480,9 @@ pxh.transitions = {
     },
     'pxh-login__settings' : {
       'remove' : pxh.LOGIN_SETTINGS_ANIMATE_IN + ' ' + pxh.LOGIN_SETTINGS_ANIMATE_OUT
+    },
+    'pxh-login__notifications' : {
+      'remove' : pxh.LOGIN_NOTIFICATIONS_ANIMATE_IN + ' ' + pxh.LOGIN_NOTIFICATIONS_ANIMATE_OUT
     },
     'pxh-view' : {
       'remove' : pxh.VIEW_ANIMATE_WIDE + ' ' + pxh.VIEW_ANIMATE_NARROW + ' ' + pxh.VIEW_ANIMATE_FULL_TO_WIDE
@@ -1231,8 +1253,8 @@ pxh.action.clickToCloseAndHold = function(control, target, className)
   }
 }
 
-document.getElementById('js-notifications__icon').addEventListener('click', function(event) {
-  pxh.action.clickToCloseAndHold('js-notifications__icon', 'js-notifications', 'pxh-notifications--visible');
+document.getElementById('js-login__notifications').addEventListener('click', function(event) {
+  pxh.action.clickToCloseAndHold('js-login__notifications', 'js-notifications', 'pxh-notifications--visible');
 });
 
 
@@ -1332,17 +1354,13 @@ pxh.toast = {
     update : function() {
       var notificationIcon = '';
       var notificationBadge = '';
-      if (notificationBadge = document.getElementById('js-notifications__icon-badge')) {
+      if (notificationBadge = document.getElementById('js-login__notifications-badge')) {
         if (pxh.toast.badge.count > 0) {
           notificationBadge.innerHTML = pxh.toast.badge.text;
-          notificationBadge.classList.remove('pxh-notifications__icon-badge--hidden');
-          if (notificationIcon = document.getElementById('js-notifications__icon')) {
-            // notificationIcon.classList.remove('pxh-notifications__icon--narrow@md');
-          }
+          notificationBadge.classList.remove('pxh-login__notifications-badge--hidden');
         }
         else {
-          notificationBadge.classList.add('pxh-notifications__icon-badge--hidden');
-          // notificationIcon.classList.add('pxh-notifications__icon--narrow@md');
+          notificationBadge.classList.add('pxh-login__notifications-badge--hidden');
         }
       }
     }
@@ -1707,7 +1725,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
   pxh.toggleLoginMenu('pxh-login__profile-link', 'pxh-login-menu--profile', 'pxh-login-menu--visible');
   pxh.toggleLoginMenu('pxh-login__settings-link', 'pxh-login-menu--settings', 'pxh-login-menu--visible');
 
-  pxh.toggleNotifications('pxh-notifications__icon', 'pxh-notifications', 'pxh-notifications--visible');
+  pxh.toggleNotifications('pxh-login__notifications', 'pxh-notifications', 'pxh-notifications--visible');
 
   pxh.addResizeSensor('js-view');
 
