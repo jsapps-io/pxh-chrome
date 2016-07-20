@@ -955,7 +955,18 @@ pxh.getStyle = function(id, property)
   return style;
 }
 
-
+pxh.stripHtml = function(html)
+{
+  if (html) {
+    var tmp = document.createElement('div');
+    tmp.innerHTML = html;
+    return tmp.textContent || tmp.innerText || '';
+  }
+  else
+  {
+    return false;
+  }
+}
 
 
 
@@ -1525,7 +1536,7 @@ pxh.toast = {
     },
 
     toastText : function(object, slug) {
-      var text = object.text ? object.text : 'You received a new notification.';
+      var text = object.text ? pxh.stripHtml(object.text) : 'You received a new notification.';
       var markup = [];
       markup.push('<div class="pxh-' + slug + '__text">\n');
       markup.push('  ' + text + '\n');
@@ -1536,7 +1547,7 @@ pxh.toast = {
     },
 
     notificationText : function(object, slug) {
-      var text = object.text ? object.text : 'You received a new notification.';
+      var text = object.text ? pxh.stripHtml(object.text) : 'You received a new notification.';
       var markup = [];
       markup.push('<div class="pxh-' + slug + '__text">\n');
       if (object.actionLink) {
