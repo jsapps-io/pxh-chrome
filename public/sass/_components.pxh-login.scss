@@ -4,78 +4,30 @@
 
 $pxh-notifications-enabled : false !default;
 
-@mixin pxh-login--in-state-scale {
-  height: $pxh-login-height;
-  font-size: $inuit-base-font-size;
-}
+$pxh-login-animate-config: (
+  font-size-in : $inuit-base-font-size,
+  margin-in : 0,
+  padding-in : 0,
+  border-in : 0,
+  height-in : auto,
+  opacity-in : 1,
+  animation-name-in : animate-in,
+  font-size-out : 0,
+  margin-out : 0,
+  padding-out : 0,
+  border-out : 0,
+  height-out : auto,
+  opacity-out : 0,
+  animation-name-out : animate-out,
+  animation-duration : 500ms,
+  block-class : pxh-login
+);
 
-@mixin pxh-login--in-state-opacity {
-  opacity: 1;
-}
-
-@mixin pxh-login--in-state {
-  @include pxh-login--in-state-scale;
-  @include pxh-login--in-state-opacity;
-}
-
-@mixin pxh-login--out-state-scale {
-  height: 0;
-  font-size: 0;
-}
-
-@mixin pxh-login--out-state-opacity {
-  opacity: 0;
-}
-
-@mixin pxh-login--out-state {
-  @include pxh-login--out-state-scale;
-  @include pxh-login--out-state-opacity;
-}
-
-@keyframes pxh-login--animate-in {
-  0% {
-    @include pxh-login--out-state;
-  }
-  33% {
-    @include pxh-login--in-state-scale;
-    @include out-state-opacity;
-  }
-  100% {
-    @include pxh-login--in-state;
-  }
-}
-
-@keyframes pxh-login--animate-out {
-  0% {
-    @include pxh-login--in-state;
-  }
-  33% {
-    @include out-state-opacity;
-    @include pxh-login--in-state-scale;
-  }
-  34% {
-    @include out-state-opacity;
-    @include pxh-login--in-state-scale;
-  }
-  100% {
-    @include pxh-login--out-state;
-  }
-}
+@include mega-keyframes($pxh-login-animate-config);
 
 .pxh-login {
-  &, &__name, &__caret, &__settings {
-    &--animate-in {
-      animation-timing-function: ease-in-out;
-      animation-fill-mode: forwards;
-      animation-duration: 500ms;
-      animation-name: pxh-login--animate-in;
-    }
-    &--animate-out {
-      animation-timing-function: ease-in-out;
-      animation-fill-mode: forwards;
-      animation-duration: 500ms;
-      animation-name: pxh-login--animate-out;
-    }
+  &__name, &__caret, &__settings, &__notifications {
+    @include mega-animate($pxh-login-animate-config);
   }
 }
 
@@ -252,13 +204,11 @@ $pxh-notifications-enabled : false !default;
 // Remove this class to display the drawer in its wide state.
 @include mq($from: md) {
   .pxh-login__settings--narrow\@md {
-    @include pxh-login--out-state;
   }
 }
 
 @include mq($from: lg) {
   .pxh-login__settings--wide\@lg {
-  @include pxh-login--in-state;
   }
 }
 
