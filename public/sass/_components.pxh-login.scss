@@ -182,6 +182,7 @@ $pxh-login-animate-config: (
     @include pxh-override-px-theme-background-color('pxh-notifications-badge--red', $red);
   }
   &--hidden {
+    display: none;
   }
   &:hover + .pxh-login__notifications-link {
     color: $white !important; // !important is the only way to override the px-theme override chaining

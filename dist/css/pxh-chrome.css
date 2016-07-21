@@ -4455,6 +4455,10 @@ sub {
   background-color: #e32533 !important;
 }
 
+.pxh-login__notifications-badge--hidden {
+  display: none;
+}
+
 .pxh-login__notifications-badge:hover + .pxh-login__notifications-link {
   color: white !important;
 }
