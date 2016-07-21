@@ -23,39 +23,35 @@
 }
 
 @mixin pxh-override-px-theme-color($class-to-chain, $link-color : $gray7, $hover-color : $white) {
-  &.#{$class-to-chain} { // override px-theme
-    &.#{$class-to-chain} { // override px-theme
-      &.#{$class-to-chain} { // override px-theme
-        color: $link-color;
-        &:link {
-          color: $link-color;
-        }
-        &:visited {
-          color: $link-color;
-        }
-        &:hover {
-          color: $hover-color;
-        }
-        &:active {
-          color: $hover-color;
-        }
-      }
-    }
+  // resigned to using !important instead of chained identical selectors because it takes so many darn nested selectors to override polymer's a:not([style-scope]):not(.style-scope):link
+  color: $link-color !important;
+  &:link {
+    color: $link-color !important;
+  }
+  &:visited {
+    color: $link-color !important;
+  }
+  &:hover {
+    color: $hover-color !important;
+  }
+  &:active {
+    color: $hover-color !important;
   }
 }
 
 @mixin pxh-override-px-theme-background-color($class-to-chain, $link-color : $primary-blue, $hover-color : $link-color) {
-  &.#{$class-to-chain} { // override px-theme
-    &.#{$class-to-chain} { // override px-theme
-      &.#{$class-to-chain} { // override px-theme
-          background-color: $link-color;
-        &:link {
-          background-color: $link-color;
-        }
-        &:hover {
-          background-color: $hover-color;
-        }
-      }
-    }
+  // resigned to using !important instead of chained identical selectors because it takes so many darn nested selectors to override polymer's a:not([style-scope]):not(.style-scope):link
+  background-color: $link-color !important;
+  &:link {
+    background-color: $link-color !important;
+  }
+  &:visited {
+    background-color: $link-color !important;
+  }
+  &:hover {
+    background-color: $hover-color !important;
+  }
+  &:active {
+    background-color: $hover-color !important;
   }
 }
