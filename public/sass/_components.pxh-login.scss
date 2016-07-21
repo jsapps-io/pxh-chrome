@@ -4,88 +4,41 @@
 
 $pxh-notifications-enabled : false !default;
 
-@mixin pxh-login--in-state-scale {
-  height: $pxh-login-height;
-  font-size: $inuit-base-font-size;
-}
+$pxh-login-animate-config: (
+  font-size-in : $inuit-base-font-size,
+  margin-in : 0,
+  padding-in : 0,
+  border-in : 0,
+  height-in : auto,
+  opacity-in : 1,
+  animation-name-in : animate-in,
+  font-size-out : 0,
+  margin-out : 0,
+  padding-out : 0,
+  border-out : 0,
+  height-out : auto,
+  opacity-out : 0,
+  animation-name-out : animate-out,
+  animation-duration : 500ms,
+  block-class : pxh-login
+);
 
-@mixin pxh-login--in-state-opacity {
-  opacity: 1;
-}
+@include mega-keyframes($pxh-login-animate-config);
 
-@mixin pxh-login--in-state {
-  @include pxh-login--in-state-scale;
-  @include pxh-login--in-state-opacity;
-}
-
-@mixin pxh-login--out-state-scale {
-  height: 0;
-  font-size: 0;
-}
-
-@mixin pxh-login--out-state-opacity {
-  opacity: 0;
-}
-
-@mixin pxh-login--out-state {
-  @include pxh-login--out-state-scale;
-  @include pxh-login--out-state-opacity;
-}
-
-@keyframes pxh-login--animate-in {
-  0% {
-    @include pxh-login--out-state;
-  }
-  33% {
-    @include pxh-login--in-state-scale;
-    @include out-state-opacity;
-  }
-  100% {
-    @include pxh-login--in-state;
-  }
-}
-
-@keyframes pxh-login--animate-out {
-  0% {
-    @include pxh-login--in-state;
-  }
-  33% {
-    @include out-state-opacity;
-    @include pxh-login--in-state-scale;
-  }
-  34% {
-    @include out-state-opacity;
-    @include pxh-login--in-state-scale;
-  }
-  100% {
-    @include pxh-login--out-state;
+.pxh-login {
+  &__name, &__caret, &__settings, &__notifications {
+    @include mega-animate($pxh-login-animate-config);
   }
 }
 
 .pxh-login {
-  &, &__name, &__caret, &__settings {
-    &--animate-in {
-      animation-timing-function: ease-in-out;
-      animation-fill-mode: forwards;
-      animation-duration: 500ms;
-      animation-name: pxh-login--animate-in;
-    }
-    &--animate-out {
-      animation-timing-function: ease-in-out;
-      animation-fill-mode: forwards;
-      animation-duration: 500ms;
-      animation-name: pxh-login--animate-out;
-    }
-  }
-}
-
-.pxh-login {
+  display: flex;
+  align-items: center;
   font-size: $inuit-base-font-size;
   border-top: 1px solid $gray9;
   background-color: $pxh-drawer-bg-color;
   position: absolute;
   bottom: 0;
-  padding-top: $inuit-base-spacing-unit / 2;
   height: $pxh-login-height;
   width: 100%;
 }
@@ -95,26 +48,23 @@ $pxh-notifications-enabled : false !default;
 }
 
 .pxh-login__profile-link {
-  display: block;
+  display: flex;
+  align-items: center;
+  flex-grow: 3;
   text-decoration: none;
-}
-
-.pxh-login__profile-link {
   @include pxh-override-px-theme-color('pxh-login__profile-link');
 }
 
 .pxh-login__avatar {
+  height: $pxh-login-avatar-height-width;
+  width: $pxh-login-avatar-height-width + $pxh-drawer-margin / 2;
   margin-left: $pxh-drawer-margin - 6px;
-  margin-top: $pxh-login-magic-centering - 5px; // magic number
-  float: left;
 }
 
 .pxh-login__avatar-icon.pxh-login__avatar-icon.pxh-login__avatar-icon.pxh-login__avatar-icon.pxh-login__avatar-icon {  // it takes a five-deep class chain to override px-theme here
   height: $pxh-login-avatar-height-width;
   width: $pxh-login-avatar-height-width;
   text-align: center;
-  padding-top: 5px; // magic number to center icon vertically 
-  padding-right: 1px; // magic number to correct text-align and center icon horizontally
   font-size: $inuit-base-font-size * 1.1; // needs a !important with anything less than a five-deep class chain
   background-color: transparent;
   color: $gray7;
@@ -129,19 +79,14 @@ $pxh-notifications-enabled : false !default;
 }
 
 .pxh-login__name {
-  @include pxh-login--in-state;
-  margin-left: $pxh-drawer-margin / 2;
-  padding-top: $pxh-login-magic-centering; // magic number that centers it vertically
-  float: left;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
   @if ($pxh-notifications-enabled == true) {
-    max-width: $pxh-drawer-width-wide - ($pxh-drawer-margin * 7);
+    max-width: $pxh-drawer-width-wide - ($pxh-drawer-margin * 6.5);
   }
   @else {
     max-width: $pxh-drawer-width-wide - ($pxh-drawer-margin * 5.25);
-
   }
 }
 
@@ -150,22 +95,12 @@ $pxh-notifications-enabled : false !default;
 // Remove this class to display the drawer in its wide state.
 @include mq($from: md) {
   .pxh-login__name--narrow\@md {
-    @include pxh-login--out-state;
   }
 }
 
 @include mq($from: lg) {
   .pxh-login__name--wide\@lg {
-    @include pxh-login--in-state;
-
   }
-}
-
-.pxh-login__caret {
-  @include pxh-login--in-state;
-  float: left;
-  padding-top: $pxh-login-magic-centering; // magic number that keeps it vertically centered
-  margin-left: $pxh-drawer-margin / 4;
 }
 
 // From the @md (tablet) breakpoint and wider,
@@ -173,22 +108,89 @@ $pxh-notifications-enabled : false !default;
 // Remove this class to display the drawer in its wide state.
 @include mq($from: md) {
   .pxh-login__caret--narrow\@md {
-    @include pxh-login--out-state;
   }
 }
 
 @include mq($from: lg) {
   .pxh-login__caret--wide\@lg {
-    @include pxh-login--in-state;
   }
 }
 
+.pxh-login__notifications {
+  text-align: center;
+  position: relative;
+  flex-shrink: 0;
+  flex-basis: auto;
+}
+
+// From the @md (tablet) breakpoint and wider,
+// display pxh-login__settings in its narrow state.
+// Remove this class to display the drawer in its wide state.
+@include mq($from: md) {
+  .pxh-login__notifications--narrow\@md {
+  }
+}
+
+@include mq($from: lg) {
+  .pxh-login__notifications--wide\@lg {
+  }
+}
+
+.pxh-login__notifications-link {
+  padding: $pxh-login-magic-centering ($pxh-drawer-margin / 2) ($pxh-drawer-margin / 2) ($pxh-drawer-margin / 2);
+  color: $gray7;
+  &:hover,
+  .pxh-login__notifications:hover & {
+    color: $white;
+  }
+  @include pxh-override-px-theme-color('pxh-login__notifications-link');
+}
+
+.pxh-login__notifications-badge {
+  z-index: 775;
+  text-align: center;
+  background-color: $gray5;
+  display: block;
+  min-width: $pxh-drawer-margin;
+  height: $pxh-drawer-margin;
+  font-weight: normal;
+  color: $white;
+  font-size: 12px;
+  line-height: 1;
+  border-radius: 12px;
+  box-shadow: 0px 0px 0px 2px rgba($black, 0.25);
+  text-decoration: none;
+  position: absolute;
+  top: -($pxh-drawer-margin / 2) - 5px;
+  right: -$pxh-drawer-margin / 4;
+  padding: 4px 2px 0px 1px;
+  @include pxh-override-px-theme-color('pxh-login__notifications-badge', $white);
+  &--green {
+    background-color: $green;
+    @include pxh-override-px-theme-background-color('pxh-login__notifications-badge--green', $green);
+  }
+  &--blue {
+    background-color: $blue;
+    @include pxh-override-px-theme-background-color('pxh-login__notifications-badge--blue', $blue);
+  }
+  &--orange {
+    background-color: $orange;
+    @include pxh-override-px-theme-background-color('pxh-notifications-badge--orange', $orange);
+  }
+  &--red {
+    background-color: $red;
+    @include pxh-override-px-theme-background-color('pxh-notifications-badge--red', $red);
+  }
+  &--hidden {
+  }
+  &:hover + .pxh-login__notifications-link {
+    color: $white !important; // !important is the only way to override the px-theme override chaining
+  } 
+}
+
 .pxh-login__settings {
-  margin-left: $pxh-drawer-margin / 2;
-  margin-right: $pxh-drawer-margin / 2;
-  float: right;
-  padding-top: $pxh-login-magic-centering;
-  @include pxh-login--in-state;
+  flex-shrink: 0;
+  flex-basis: auto;
 }
 
 // From the @md (tablet) breakpoint and wider,
@@ -196,13 +198,11 @@ $pxh-notifications-enabled : false !default;
 // Remove this class to display the drawer in its wide state.
 @include mq($from: md) {
   .pxh-login__settings--narrow\@md {
-    @include pxh-login--out-state;
   }
 }
 
 @include mq($from: lg) {
   .pxh-login__settings--wide\@lg {
-  @include pxh-login--in-state;
   }
 }
 
@@ -210,6 +210,7 @@ $pxh-notifications-enabled : false !default;
 .pxh-login__settings-link:link.pxh-login__settings-link:link.pxh-login__settings-link:link,
 .pxh-login__settings-link:visited.pxh-login__settings-link:visited.pxh-login__settings-link:visited { // chained to override px-theme
   float: right;
+  padding: $pxh-login-magic-centering ($pxh-drawer-margin / 2) ($pxh-drawer-margin / 2) ($pxh-drawer-margin / 2);
   color: $gray7;
   text-decoration: none;
 }

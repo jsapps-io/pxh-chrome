@@ -43,3 +43,19 @@
     }
   }
 }
+
+@mixin pxh-override-px-theme-background-color($class-to-chain, $link-color : $primary-blue, $hover-color : $link-color) {
+  &.#{$class-to-chain} { // override px-theme
+    &.#{$class-to-chain} { // override px-theme
+      &.#{$class-to-chain} { // override px-theme
+          background-color: $link-color;
+        &:link {
+          background-color: $link-color;
+        }
+        &:hover {
+          background-color: $hover-color;
+        }
+      }
+    }
+  }
+}
