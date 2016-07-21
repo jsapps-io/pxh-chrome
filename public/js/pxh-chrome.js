@@ -1243,7 +1243,6 @@ pxh.action.clickToCloseAndFire = function(control, target, change, className)
 // toggles classes on an element onclick, and does not fire any event tied to the click target area
 pxh.action.clickToCloseAndHold = function(control, target, className)
 {
-  console.log('just bound this');
   var controlElement = document.getElementById(control);
   var closeElement = document.getElementById('js-closer');
   var targetElement = document.getElementById(target);
@@ -1264,9 +1263,13 @@ pxh.action.clickToCloseAndHold = function(control, target, className)
   }
 }
 
-document.getElementById('js-login__notifications').addEventListener('click', function(event) {
-  pxh.action.clickToCloseAndHold('js-login__notifications', 'js-notifications', 'pxh-notifications--visible');
-});
+var notificationsIcon;
+
+if (notificationsIcon = document.getElementById('js-login__notifications')) {
+  notificationsIcon.addEventListener('click', function(event) {
+    pxh.action.clickToCloseAndHold('js-login__notifications', 'js-notifications', 'pxh-notifications--visible');
+  })
+}
 
 
 
@@ -1280,7 +1283,7 @@ pxh.toggleNotifications = function(toggleControl, toggleTarget, toggleClass)
     controlElement[0].addEventListener('click', function(e)
     {
       pxh.changeClasses(toggleTarget, 'toggle', toggleClass);
-    });
+    })
   }
 }
 
@@ -1309,7 +1312,10 @@ var toastObject2 = {
   icon : 'exclamation-circle',
   text : 'It can be this long or longer if you want. In fact, it can be really, really long if you have a lot you want to say. We kind of discourage this much content but knock yourself out! Just keep talking and talking and talking and this area will keep expanding and expanding.',
   actionLabel : 'View a lot of things right now',
-  actionLink : 'http://google.com',
+  // actionLink : 'http://google.com',
+  actionCallback : function() {
+    console.log('this was called from actionCallback')
+  },
   timestamp: '9:36 AM'
 }
 
@@ -1387,12 +1393,18 @@ pxh.toast = {
       pxh.toast.badge.increment();
       pxh.toast.action.dismissButton(notificationElement, 'notification', id);
       pxh.toast.action.expandButton(notificationElement, 'notification');
+      if (object.actionCallback) {
+        pxh.toast.action.bindCallback(toastElement, 'notification__link', id, object.actionCallback);
+      }
     }
     if (toastList = document.getElementById('js-toasts')) {
       var toastFirstChild = toastList.firstChild;
       var toastElement = toastList.insertBefore(pxh.toast.markup.createToast(object, id), toastFirstChild);
       pxh.toast.action.dismissButton(toastElement, 'toast', id);
       pxh.toast.action.expandButton(toastElement, 'toast');
+      if (object.actionCallback) {
+        pxh.toast.action.bindCallback(toastElement, 'toast__button', id, object.actionCallback);
+      }
       if (!object.isPersistent) {
         setTimeout(function() {
           if (!toastElement.classList.contains('pxh-toast--expanded')) {
@@ -1437,6 +1449,20 @@ pxh.toast = {
       setTimeout(function() {
         pxh.toast.removeAll();
       }, 1000);
+    },
+
+    bindCallback : function(element, slug, id, callback) {
+      var button = document.getElementById('js-' + slug + '--' + id);
+      if (button) {
+        button.addEventListener('click', function(event) {
+          event.preventDefault();
+          pxh.toast.action.fireCallback(callback);
+        })
+      }
+    },
+
+    fireCallback : function(callback) {
+      callback();
     }
   },
 
@@ -1546,14 +1572,14 @@ pxh.toast = {
       return markup;
     },
 
-    notificationText : function(object, slug) {
+    notificationText : function(object, slug, id) {
       var text = object.text ? pxh.stripHtml(object.text) : 'You received a new notification.';
       var markup = [];
       markup.push('<div class="pxh-' + slug + '__text">\n');
       if (object.actionLink) {
         markup.push('  <a class="pxh-' + slug + '__link" href="' + object.actionLink + '">\n');
       } else if (object.actionCallback) {
-        markup.push('  <a class="pxh-' + slug + '__link" href="#">actionCallback: ' + object.actionCallback + ' ' + '\n');
+        markup.push('  <a class="pxh-' + slug + '__link" href="#" id="js-' + slug + '__link--' + id + '">\n');
       }
       markup.push('  ' + text + '\n');
       if ((object.actionLink) || (object.actionCallback)) {
@@ -1599,7 +1625,7 @@ pxh.toast = {
       return markup;
     },
 
-    button : function(object, slug) {
+    button : function(object, slug, id) {
       var markup = [];
       if (object.actionLink) {
         markup.push('<div class="pxh-' + slug + '__action">\n');
@@ -1607,7 +1633,7 @@ pxh.toast = {
         markup.push('</div>\n');
       } else if (object.actionCallback) {
         markup.push('<div class="pxh-' + slug + '__action">\n');
-        markup.push('  <a class="pxh-' + slug + '__button" href="#">actionCallback: ' + object.actionCallback + object.actionLabel + '</a>\n');
+        markup.push('  <a class="pxh-' + slug + '__button" href="#" id="js-' + slug + '__button--' + id + '">' + object.actionLabel + '</a>\n');
         markup.push('</div>\n');
       }
       markup = markup.join('');
@@ -1622,7 +1648,7 @@ pxh.toast = {
       var markup = [];
       markup.push(pxh.toast.markup.icon(object, slug));
       markup.push(pxh.toast.markup.toastText(object, slug));
-      markup.push(pxh.toast.markup.button(object, slug));
+      markup.push(pxh.toast.markup.button(object, slug, id));
       // if (object.timestamp) {
       //   markup.push(pxh.toast.markup.timestamp(object, slug));
       // }
@@ -1640,7 +1666,7 @@ pxh.toast = {
       element.id = 'js-' + slug + '--' + id;
       var markup = [];
       markup.push(pxh.toast.markup.icon(object, slug));
-      markup.push(pxh.toast.markup.notificationText(object, slug));
+      markup.push(pxh.toast.markup.notificationText(object, slug, id));
       markup.push(pxh.toast.markup.timestamp(object, slug));
       markup.push(pxh.toast.markup.dismiss(object, slug, id));
       markup = markup.join('');
