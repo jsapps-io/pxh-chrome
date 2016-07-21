@@ -1,6 +1,8 @@
 #pxh-chrome changelog
 
 ### pending release
+* Add mixin for overriding Polymer's `a:not([style-scope]):not(.style-scope):link` styles from px-theme for text colors and background colors
+  * Mixin regrettably uses `!important` instead of chained classes, because it simply required too many chained classes (five in some cases) to override Polymer
 * Arrange login components using flexbox instead of floats
 * Add a mega-animations mixin that does everything
   * animate-in
