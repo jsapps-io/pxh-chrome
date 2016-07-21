@@ -1,6 +1,8 @@
 #pxh-chrome changelog
 
 ### pending release
+* Automatically hide notifications icon if notifications aren't present in the current App Hub/Microapp context
+* Add ability to fire a callback (rather than follow a hyperlink) when clicking on a toast/notification's action
 * Add mixin for overriding Polymer's `a:not([style-scope]):not(.style-scope):link` styles from px-theme for text colors and background colors
   * Mixin regrettably uses `!important` instead of chained classes, because it simply required too many chained classes (five in some cases) to override Polymer
 * Arrange login components using flexbox instead of floats
