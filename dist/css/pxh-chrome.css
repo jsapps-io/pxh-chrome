@@ -4298,6 +4298,30 @@ sub {
   max-width: 130px;
 }
 
+@media (min-width: 48em) {
+  .pxh-login__name--narrow\@md {
+    display: none;
+  }
+}
+
+@media (min-width: 64em) {
+  .pxh-login__name--wide\@lg {
+    display: block;
+  }
+}
+
+@media (min-width: 48em) {
+  .pxh-login__caret--narrow\@md {
+    display: none;
+  }
+}
+
+@media (min-width: 64em) {
+  .pxh-login__caret--wide\@lg {
+    display: block;
+  }
+}
+
 .pxh-login__notifications {
   text-align: center;
   position: relative;
@@ -4305,6 +4329,18 @@ sub {
       flex-shrink: 0;
   -ms-flex-preferred-size: auto;
       flex-basis: auto;
+}
+
+@media (min-width: 48em) {
+  .pxh-login__notifications--narrow\@md {
+    display: none;
+  }
+}
+
+@media (min-width: 64em) {
+  .pxh-login__notifications--wide\@lg {
+    display: block;
+  }
 }
 
 .pxh-login__notifications-link {
@@ -4468,6 +4504,18 @@ sub {
       flex-shrink: 0;
   -ms-flex-preferred-size: auto;
       flex-basis: auto;
+}
+
+@media (min-width: 48em) {
+  .pxh-login__settings--narrow\@md {
+    display: none;
+  }
+}
+
+@media (min-width: 64em) {
+  .pxh-login__settings--wide\@lg {
+    display: block;
+  }
 }
 
 .pxh-login__settings-link.pxh-login__settings-link.pxh-login__settings-link,
@@ -6570,6 +6618,10 @@ body {
 
 .pxh-clear-both {
   clear: both;
+}
+
+.pxh-display-none {
+  display: none;
 }
 
 /*------------------------------------*    #overrides.pxh-docs

@@ -1233,11 +1233,13 @@ pxh.toast = {
     update: function update() {
       var notificationIcon = '';
       var notificationBadge = '';
-      if (notificationBadge = document.getElementById('js-login__notifications-badge')) {
+      if ((notificationIcon = document.getElementById('js-login__notifications')) && (notificationBadge = document.getElementById('js-login__notifications-badge'))) {
         if (pxh.toast.badge.count > 0) {
           notificationBadge.innerHTML = pxh.toast.badge.text;
+          notificationIcon.classList.remove('pxh-display-none');
           notificationBadge.classList.remove('pxh-login__notifications-badge--hidden');
         } else {
+          notificationIcon.classList.add('pxh-display-none');
           notificationBadge.classList.add('pxh-login__notifications-badge--hidden');
         }
       }
