@@ -1312,20 +1312,19 @@ var toastObject2 = {
   icon : 'exclamation-circle',
   text : 'It can be this long or longer if you want. In fact, it can be really, really long if you have a lot you want to say. We kind of discourage this much content but knock yourself out! Just keep talking and talking and talking and this area will keep expanding and expanding.',
   actionLabel : 'View a lot of things right now',
-  // actionLink : 'http://google.com',
-  actionCallback : function() {
-    console.log('this was called from actionCallback')
-  },
+  actionLink : 'http://predix.com',
   timestamp: '9:36 AM'
 }
 
 var toastObject3 = {
-  type : 'blue',
+  type : 'red',
   isPersistent : false,
-  icon : 'info-circle',
-  text : 'It can be this long or longer if you want. In fact, it can be really, really long if you have a lot you want to say. We kind of discourage this much content but knock yourself out! Just keep talking and talking and talking and this area will keep expanding and expanding.',
-  actionLabel : 'View a lot of things right now',
-  actionLink : 'http://google.com'
+  icon : 'exclamation-triangle',
+  text : 'This is going to fire a callback.',
+  actionLabel : 'Callback, yo!',
+  actionCallback : function() {
+    console.log('this was called from actionCallback')
+  }
 }
 
 var toastObject4 = {
