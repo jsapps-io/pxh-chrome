@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>{{site.title}} 1.0.1 | {{title}}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link rel="shortcut icon" type="image/png" href="favicon.ico">
+    <!-- build:css css/pxh-chrome.css -->
+    <link rel="stylesheet" href="css/pxh-chrome.css">
+    <!-- endbuild -->
+  </head>
+  <body{{#if bodyClass}} class="{{bodyClass}}"{{/if}}>
+    {{> demo-drawer-toasts }}
+    {{> overlay }}
+    {{> view-header-drawer-toggle }}
+    {{{contents}}}
+    {{> scripts }}
+    <script>
+
+      var toastObject1 = {
+        value : 'something'
+      }
+
+      var toastObject2 = {
+        type : 'orange',
+        isPersistent : true,
+        icon : 'exclamation-circle',
+        text : 'It can be this long or longer if you want. In fact, it can be really, really long if you have a lot you want to say. We kind of discourage this much content but knock yourself out! Just keep talking and talking and talking and this area will keep expanding and expanding.',
+        actionLabel : 'View a lot of things right now',
+        actionLink : 'http://predix.com',
+        timestamp: '9:36 AM'
+      }
+
+      var toastObject3 = {
+        type : 'red',
+        isPersistent : false,
+        icon : 'exclamation-triangle',
+        text : 'This is going to fire a callback.',
+        actionLabel : 'Callback, yo!',
+        actionCallback : function() {
+          console.log('this was called from actionCallback')
+        }
+      }
+
+      var toastObject4 = {
+        type : 'red',
+        isPersistent : false,
+        icon : 'times-circle',
+        text : 'Fourth notification? Coming right up!',
+        actionLabel : 'Beef',
+        actionLink : 'http://beef.org'
+      }
+
+      document.addEventListener('DOMContentLoaded', function(event) {
+        pxh.toast.add(toastObject1);
+        pxh.toast.add(toastObject2, true);
+      });
+
+      if (document.getElementById('js-toast-emitter')) {
+        document.getElementById('js-toast-emitter').addEventListener('click', function() {
+        pxh.toast.add(toastObject3);
+        })
+      }
+
+    </script>
+  </body>
+</html>

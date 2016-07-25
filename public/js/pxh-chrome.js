@@ -1257,40 +1257,6 @@ pxh.toggleNotifications = function(toggleControl, toggleTarget, toggleClass) {
 // actionCallback : // callback function
 // timestamp: '9:36 AM'
 
-var toastObject1 = {
-  value : 'something'
-}
-
-var toastObject2 = {
-  type : 'orange',
-  isPersistent : true,
-  icon : 'exclamation-circle',
-  text : 'It can be this long or longer if you want. In fact, it can be really, really long if you have a lot you want to say. We kind of discourage this much content but knock yourself out! Just keep talking and talking and talking and this area will keep expanding and expanding.',
-  actionLabel : 'View a lot of things right now',
-  actionLink : 'http://predix.com',
-  timestamp: '9:36 AM'
-}
-
-var toastObject3 = {
-  type : 'red',
-  isPersistent : false,
-  icon : 'exclamation-triangle',
-  text : 'This is going to fire a callback.',
-  actionLabel : 'Callback, yo!',
-  actionCallback : function() {
-    console.log('this was called from actionCallback')
-  }
-}
-
-var toastObject4 = {
-  type : 'red',
-  isPersistent : false,
-  icon : 'times-circle',
-  text : 'Fourth notification? Coming right up!',
-  actionLabel : 'Beef',
-  actionLink : 'http://beef.org'
-}
-
 pxh.toast = {
   badge : {
     count : 0,
@@ -1668,17 +1634,6 @@ pxh.toast = {
     }
   }
 }
-
-// document.addEventListener('DOMContentLoaded', function(event) {
-//   pxh.toast.add(toastObject1);
-//   pxh.toast.add(toastObject2, true);
-// });
-
-// if (document.getElementById('js-toast-emitter')) {
-//   document.getElementById('js-toast-emitter').addEventListener('click', function() {
-//   pxh.toast.add(toastObject3);
-//   })
-// }
 
 if (document.getElementById('js-notifications__link--clear'))
 {
