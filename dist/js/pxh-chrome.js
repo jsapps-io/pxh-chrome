@@ -1,5 +1,5 @@
 'use strict';
-/*! pxh-chrome.js 1.0.1 */
+/*! pxh-chrome.js 1.1.0 */
 
 // **************
 // CONFIG OBJECTS
@@ -1251,6 +1251,7 @@ pxh.toast = {
         }, 5000);
       }
     }
+    return id;
   },
 
   action: {

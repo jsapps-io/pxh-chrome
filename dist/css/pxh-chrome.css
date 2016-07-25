@@ -1,5 +1,5 @@
 @charset "UTF-8";
-/*! pxh-chrome.css 1.0.1 */
+/*! pxh-chrome.css 1.1.0 */
 /*------------------------------------*    #pxh-chrome
 \*------------------------------------*/
 /*------------------------------------*    #settings.defaults
@@ -4277,6 +4277,7 @@ sub {
 .pxh-login__avatar-icon.pxh-login__avatar-icon.pxh-login__avatar-icon.pxh-login__avatar-icon.pxh-login__avatar-icon {
   height: 30px;
   width: 30px;
+  padding-top: 4px;
   text-align: center;
   font-size: 16.5px;
   background-color: transparent;

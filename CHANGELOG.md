@@ -49,7 +49,7 @@
 * Bump version of javascript-cookies to 2.1.2
 * Remove Gulp task for bumping pxh-chrome version number
   * It hasn't worked for months, so we're removing it until we replace it with something that works
-* Bump versions on `gulp-eslint` to 3.0.0, `protractor` to 4.0.0
+* Bump versions on `gulp-eslint` to 3.0.0, `protractor` to 4.0.0, `babel-core` to 6.11.0, lodash to `4.14.0`
 * Remove GE Inspira and GE Inspira Serif fonts
   * pxh-chrome now ships with GE Inspira Sans exclusively
 
