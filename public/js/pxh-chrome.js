@@ -847,8 +847,7 @@ pxh.Cookies = Cookies.noConflict();
 // polyfill to support .remove() in IE11
 // https://developer.mozilla.org/en-US/docs/Web/API/ChildNode/remove
 
-if (!('remove' in Element.prototype))
-{
+if (!('remove' in Element.prototype)) {
   Element.prototype.remove = function()
   {
     if (this.parentNode) {
@@ -858,8 +857,7 @@ if (!('remove' in Element.prototype))
 }
 
 /* arrayExists() */
-pxh.arrayExists = function(array) 
-{
+pxh.arrayExists = function(array) {
   if ((typeof array !== 'undefined') && (array.length > 0)) 
   {
     return true;
@@ -871,8 +869,7 @@ pxh.arrayExists = function(array)
 }
 
 /* getItemByPropertyName() */
-pxh.getItemByPropertyName = function(haystack, propertyName)
-{
+pxh.getItemByPropertyName = function(haystack, propertyName) {
   for (var i in haystack)
   {
     if (haystack.hasOwnProperty(propertyName)) 
@@ -882,8 +879,7 @@ pxh.getItemByPropertyName = function(haystack, propertyName)
   }
 }
 
-pxh.getStyle = function(id, property)
-{
+pxh.getStyle = function(id, property) {
   var element = document.getElementById(id);
   if (window.getComputedStyle)
   {
@@ -896,9 +892,9 @@ pxh.getStyle = function(id, property)
   return style;
 }
 
-pxh.stripHTML = function(html)
-{
-  if (html) {
+pxh.stripHTML = function(html) {
+  if (html) 
+  {
     var tmp = document.createElement('div');
     tmp.innerHTML = html;
     return tmp.textContent || tmp.innerText || '';
@@ -943,13 +939,16 @@ pxh.changeClasses = function(targetClassName, changeType, classNamesToChange)
     {
       for (var j = classNamesToChangeArray.length -1; j >= 0; j--)
       {
-        if (changeType === 'add') {
+        if (changeType === 'add') 
+        {
           targetElements[i].classList.add(classNamesToChangeArray[j]);
         }
-        else if (changeType === 'remove') {
+        else if (changeType === 'remove') 
+        {
           targetElements[i].classList.remove(classNamesToChangeArray[j]);
         }
-        else if (changeType === 'toggle') {
+        else if (changeType === 'toggle') 
+        {
           targetElements[i].classList.toggle(classNamesToChangeArray[j]);
         }
       }
@@ -960,50 +959,58 @@ pxh.changeClasses = function(targetClassName, changeType, classNamesToChange)
 /* pxh.bindControl() */
 pxh.bindControl = function(controlName) {
   var controlElements = document.getElementsByClassName(controlName);
-  if (pxh.arrayExists(controlElements)) {
-    for (var i = controlElements.length - 1; i >= 0; i--) {
+  if (pxh.arrayExists(controlElements)) 
+  {
+    for (var i = controlElements.length - 1; i >= 0; i--) 
+    {
       controlElements[i].addEventListener('click', function() {
         var firstDrawer = document.getElementsByClassName('pxh-drawer')[0];
         var drawerIsAtDefaultState = firstDrawer.classList.contains('pxh-drawer--wide@lg');
         var drawerIsNarrowAtMd = firstDrawer.classList.contains('pxh-drawer--narrow@md');
         var drawerIsHiddenAtSm = firstDrawer.classList.contains('pxh-drawer--hidden-until@md');
         pxh.loadState(pxh.transitions, 'clearAll');
-        if ((window.matchMedia('(min-width: 1024px)').matches) && (drawerIsAtDefaultState)) {
+        if ((window.matchMedia('(min-width: 1024px)').matches) && (drawerIsAtDefaultState)) 
+        {
           pxh.loadState(pxh.transitions, 'wideToNarrow');
           pxh.loadState(pxh.states, 'narrowAtLg');
           document.dispatchEvent(pxh.drawerClosed);
           pxh.Cookies.set('pxh-drawer-narrow', 'true', { expires: 1, path: '/'});
           pxh.Cookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/'});
         }
-        else if (window.matchMedia('(min-width: 1024px)').matches) {
+        else if (window.matchMedia('(min-width: 1024px)').matches) 
+        {
           pxh.loadState(pxh.transitions, 'narrowToWide');
           pxh.loadState(pxh.states, 'default');
           document.dispatchEvent(pxh.drawerOpened);
           pxh.Cookies.set('pxh-drawer-narrow', 'false', { expires: 1, path: '/'});
           pxh.Cookies.set('pxh-drawer-open', 'true', { expires: 1, path: '/'});
         }
-        else if ((drawerIsNarrowAtMd) && (window.matchMedia('(min-width: 768px)').matches)) {
+        else if ((drawerIsNarrowAtMd) && (window.matchMedia('(min-width: 768px)').matches)) 
+        {
           pxh.loadState(pxh.transitions, 'narrowToOpen');
           pxh.loadState(pxh.states, 'open');
           document.dispatchEvent(pxh.drawerOpened);
           pxh.Cookies.set('pxh-drawer-open', 'true', { expires: 1, path: '/'});
           pxh.Cookies.set('pxh-drawer-narrow', 'false', { expires: 1, path: '/'});
         }
-        else if (window.matchMedia('(min-width: 768px)').matches) {
+        else if (window.matchMedia('(min-width: 768px)').matches) 
+        {
           pxh.loadState(pxh.transitions, 'openToNarrow');
           pxh.loadState(pxh.states, 'default');
           document.dispatchEvent(pxh.drawerClosed);
           pxh.Cookies.set('pxh-drawer-narrow', 'true', { expires: 1, path: '/'});
           pxh.Cookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/'});
         }
-        else if (drawerIsHiddenAtSm) {
+        else if (drawerIsHiddenAtSm) 
+        {
           pxh.loadState(pxh.transitions, 'outToIn');
           pxh.loadState(pxh.states, 'open');
           document.dispatchEvent(pxh.drawerOpened);
           pxh.Cookies.set('pxh-drawer-narrow', 'false', { expires: 1, path: '/'});
           pxh.Cookies.set('pxh-drawer-open', 'true', { expires: 1, path: '/'});
         }
-        else {
+        else 
+        {
           pxh.loadState(pxh.transitions, 'inToOut');
           pxh.loadState(pxh.states, 'default');
           document.dispatchEvent(pxh.drawerClosed);
@@ -1020,16 +1027,20 @@ pxh.breakpointAtMd = function(breakpoint) {
   var firstDrawer = document.getElementsByClassName('pxh-drawer')[0];
   var drawerIsWideAtLg = firstDrawer.classList.contains('pxh-drawer--wide@lg');
   var drawerIsNarrowAtMd = firstDrawer.classList.contains('pxh-drawer--narrow@md');
-  if (breakpoint.matches) {
+  if (breakpoint.matches) 
+  {
     // we entered the @md breakpoint from the @sm breakpoint
-    if (drawerIsNarrowAtMd) {
+    if (drawerIsNarrowAtMd) 
+    {
       // the drawer wasn't open @sm so open it to narrow @md
       // fire the transition
       pxh.loadState(pxh.transitions, 'outToNarrow');
     }
-  } else {
+  } else 
+  {
     // we exited the @md breakpoint into the @sm breakpoint
-    if (drawerIsNarrowAtMd) {
+    if (drawerIsNarrowAtMd) 
+    {
       // the drawer was open to narrow @md so move it out @sm
       pxh.loadState(pxh.transitions, 'narrowToOut');
     }
@@ -1041,16 +1052,19 @@ pxh.breakpointAtLg = function(breakpoint) {
   var firstDrawer = document.getElementsByClassName('pxh-drawer')[0];
   var drawerIsWideAtLg = firstDrawer.classList.contains('pxh-drawer--wide@lg');
   var drawerIsNarrowAtMd = firstDrawer.classList.contains('pxh-drawer--narrow@md');
-  if (breakpoint.matches) {
+  if (breakpoint.matches) 
+  {
     // we entered the @lg breakpoint from the @md breakpoint
-    if ((drawerIsWideAtLg) && (!drawerIsNarrowAtMd)) {
+    if ((drawerIsWideAtLg) && (!drawerIsNarrowAtMd)) 
+    {
       // the drawer was open @md so keep it open @lg
       // don't fire any transitions
       pxh.loadState(pxh.states, 'default');
       pxh.Cookies.set('pxh-drawer-narrow', 'false', { expires: 1, path: '/'});
       pxh.Cookies.set('pxh-drawer-open', 'true', { expires: 1, path: '/'});
     }
-    else {
+    else 
+    {
       // drawer was narrow @md so transition it to wide @lg
       // fire transitions
       pxh.loadState(pxh.transitions, 'narrowToWide');
@@ -1060,9 +1074,11 @@ pxh.breakpointAtLg = function(breakpoint) {
       pxh.Cookies.set('pxh-drawer-open', 'true', { expires: 1, path: '/'});
     }
   }
-  else {
+  else 
+  {
     // we exited the @lg breakpoint into the @md breakpoint
-    if (drawerIsWideAtLg) {
+    if (drawerIsWideAtLg) 
+    {
       // the drawer was wide @lg so transition it to narrow @md
       // close the notifications list if it's open
       // fire transitions
@@ -1077,12 +1093,15 @@ pxh.breakpointAtLg = function(breakpoint) {
 
 pxh.bindDrawerMediaQueryControls = function(targetClass, mediaQuery) {
   var targetElements = document.getElementsByClassName(targetClass);
-  if (pxh.arrayExists(targetElements)) {
+  if (pxh.arrayExists(targetElements)) 
+  {
     // iterate through drawer controls and fire the pxhToggleDrawer function when clicked
-    for (var i = targetElements.length - 1; i >= 0; i--) {
+    for (var i = targetElements.length - 1; i >= 0; i--) 
+    {
       targetElements[i].addEventListener('click', function() {
         pxh.loadState(pxh.transitions, 'clearAll');
-        if (!mediaQuery.matches) {
+        if (!mediaQuery.matches) 
+        {
           pxh.loadState(pxh.states, 'default');
           pxh.Cookies.set('pxh-drawer-narrow', 'true', { expires: 1, path: '/'});
           pxh.Cookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/'});
@@ -1095,15 +1114,19 @@ pxh.bindDrawerMediaQueryControls = function(targetClass, mediaQuery) {
 pxh.overlayDrawerControl = function() {
   var overlay = document.getElementsByClassName('pxh-overlay');
   var notifications = document.getElementsByClassName('pxh-notifications');
-  if (pxh.arrayExists(overlay)) {
-    for (var i = overlay.length - 1; i >= 0; i--) {
+  if (pxh.arrayExists(overlay)) 
+  {
+    for (var i = overlay.length - 1; i >= 0; i--) 
+    {
       overlay[i].addEventListener('click', function(e) {
         if ((!lgBreakpoint.matches) && (pxh.Cookies.get('pxh-drawer-open') === 'true')) {
           // if the notifications list is visible, close it when clicking the overlay but don't close the drawer
-          if ((pxh.arrayExists(notifications)) && (notifications[0].classList.contains('pxh-notifications--visible'))) {
+          if ((pxh.arrayExists(notifications)) && (notifications[0].classList.contains('pxh-notifications--visible'))) 
+          {
             notifications[0].classList.remove('pxh-notifications--visible');
           } 
-          else {
+          else 
+          {
             pxh.loadState(pxh.transitions, 'clearAll');
             pxh.loadState(pxh.states, 'default');
             document.dispatchEvent(pxh.drawerClosed);
@@ -1118,7 +1141,8 @@ pxh.overlayDrawerControl = function() {
 
 pxh.escapeDrawerControl = function() {
   document.addEventListener('keyup', function(e) {
-     if ((e.keyCode == 27) && (!lgBreakpoint.matches) && (pxh.Cookies.get('pxh-drawer-open') === 'true')) {
+    if ((e.keyCode == 27) && (!lgBreakpoint.matches) && (pxh.Cookies.get('pxh-drawer-open') === 'true')) 
+    {
       pxh.loadState(pxh.transitions, 'clearAll');
       pxh.loadState(pxh.states, 'default');
       document.dispatchEvent(pxh.drawerClosed);
@@ -1131,13 +1155,16 @@ pxh.escapeDrawerControl = function() {
 pxh.toggleLoginMenu = function(toggleControl, toggleTarget, toggleClass) {
   var toggleControlElements = document.getElementsByClassName(toggleControl);
   var toggleTargetElements = document.getElementsByClassName(toggleTarget);
-  if ((pxh.arrayExists(toggleControlElements)) && (pxh.arrayExists(toggleTargetElements))) {
-    for (var i = toggleControlElements.length - 1; i >= 0; i--) {
+  if ((pxh.arrayExists(toggleControlElements)) && (pxh.arrayExists(toggleTargetElements))) 
+  {
+    for (var i = toggleControlElements.length - 1; i >= 0; i--) 
+    {
       toggleControlElements[i].addEventListener('click', function(e) {
         e.preventDefault();
         var menuIsVisible = toggleTargetElements[0].classList.contains(toggleClass);
         pxh.changeClasses('pxh-login-menu', 'remove', toggleClass);
-        if (!menuIsVisible) {
+        if (!menuIsVisible) 
+        {
           pxh.changeClasses(toggleTarget, 'toggle', toggleClass);
         }
         e.stopPropagation();
@@ -1164,8 +1191,7 @@ pxh.action.clickToCloseAndFire = function(control, target, change, className)
   var targetElement = document.getElementsByClassName(target);
   if ((pxh.arrayExists(controlElement)) && (pxh.arrayExists(targetElement))) 
   {
-    document.addEventListener('click', function(e)
-    {
+    document.addEventListener('click', function(e) {
       pxh.changeClasses(target, change, className);
     });
   }
@@ -1278,28 +1304,34 @@ pxh.toast = {
     count : 0,
     increment : function() {
       pxh.toast.badge.count = pxh.toast.badge.count + 1;
-      if (pxh.toast.badge.count > 9) {
+      if (pxh.toast.badge.count > 9) 
+      {
         pxh.toast.badge.text = '9+';
       }
-      else if (pxh.toast.badge.count < 0) {
+      else if (pxh.toast.badge.count < 0) 
+      {
         pxh.toast.badge.count = 0;
         pxh.toast.badge.text = 0;
       }
-      else {
+      else 
+      {
         pxh.toast.badge.text = pxh.toast.badge.count;
       }
       pxh.toast.badge.update();
     },
     decrement : function() {
       pxh.toast.badge.count = pxh.toast.badge.count - 1;
-      if (pxh.toast.badge.count > 9) {
+      if (pxh.toast.badge.count > 9) 
+      {
         pxh.toast.badge.text = '9+';
       }
-      else if (pxh.toast.badge.count < 0) {
+      else if (pxh.toast.badge.count < 0) 
+      {
         pxh.toast.badge.count = 0;
         pxh.toast.badge.text = 0;
       }
-       else {
+      else 
+      {
         pxh.toast.badge.text = pxh.toast.badge.count;
       }
       pxh.toast.badge.update();
@@ -1307,13 +1339,16 @@ pxh.toast = {
     update : function() {
       var notificationIcon = '';
       var notificationBadge = '';
-      if ((notificationIcon = document.getElementById('js-login__notifications')) && (notificationBadge = document.getElementById('js-login__notifications-badge'))) {
-        if (pxh.toast.badge.count > 0) {
+      if ((notificationIcon = document.getElementById('js-login__notifications')) && (notificationBadge = document.getElementById('js-login__notifications-badge'))) 
+      {
+        if (pxh.toast.badge.count > 0) 
+        {
           notificationBadge.innerHTML = pxh.toast.badge.text;
           notificationIcon.classList.remove('pxh-display-none');
           notificationBadge.classList.remove('pxh-login__notifications-badge--hidden');
         }
-        else {
+        else 
+        {
           notificationIcon.classList.add('pxh-display-none');
           notificationBadge.classList.add('pxh-login__notifications-badge--hidden');
         }
@@ -1321,31 +1356,37 @@ pxh.toast = {
     }
   },
 
-  add : function(object) {
+  add : function(object, suppressToast) {
     var id = Math.floor(Math.random()*16777215).toString(16);
     var notificationList = '';
     var toastList = '';
-    if ((notificationList = document.getElementById('js-notifications__list')) && ((object.actionLink) || (object.actionCallback))) {
+    if ((notificationList = document.getElementById('js-notifications__list')) && ((object.actionLink) || (object.actionCallback))) 
+    {
       var notificationFirstChild = notificationList.firstChild;
       var notificationElement = notificationList.insertBefore(pxh.toast.markup.createNotification(object, id), notificationFirstChild);
       pxh.toast.badge.increment();
       pxh.toast.action.dismissButton(notificationElement, 'notification', id);
       pxh.toast.action.expandButton(notificationElement, 'notification');
-      if (object.actionCallback) {
+      if (object.actionCallback) 
+      {
         pxh.toast.action.bindCallback(toastElement, 'notification__link', id, object.actionCallback);
       }
     }
-    if (toastList = document.getElementById('js-toasts')) {
+    if ((toastList = document.getElementById('js-toasts')) && (!suppressToast)) 
+    {
       var toastFirstChild = toastList.firstChild;
       var toastElement = toastList.insertBefore(pxh.toast.markup.createToast(object, id), toastFirstChild);
       pxh.toast.action.dismissButton(toastElement, 'toast', id);
       pxh.toast.action.expandButton(toastElement, 'toast');
-      if (object.actionCallback) {
+      if (object.actionCallback) 
+      {
         pxh.toast.action.bindCallback(toastElement, 'toast__button', id, object.actionCallback);
       }
-      if (!object.isPersistent) {
+      if (!object.isPersistent) 
+      {
         setTimeout(function() {
-          if (!toastElement.classList.contains('pxh-toast--expanded')) {
+          if (!toastElement.classList.contains('pxh-toast--expanded')) 
+          {
             // after 2000ms animate the toast out
             pxh.toast.autoHide(id);
             // 1000ms after the animation, remove the notification from the DOM
@@ -1361,7 +1402,8 @@ pxh.toast = {
   action : {
     dismissButton : function(element, slug, id) {
       var button = document.getElementById('js-' + slug + '__dismiss-button--' + id);
-      if (button) {
+      if (button) 
+      {
         button.addEventListener('click', function(event) {
           event.preventDefault();
           pxh.toast.hide(id);
@@ -1374,7 +1416,8 @@ pxh.toast = {
 
     expandButton : function(element, slug) {
       var button = element.querySelector('.js-' + slug + '__more-button');
-      if (button) {
+      if (button) 
+      {
         button.addEventListener('click', function(event) {
           event.preventDefault();
           pxh.toast.expand(element, slug);
@@ -1382,16 +1425,19 @@ pxh.toast = {
       }
     },
 
-    removeAllButton : function() {
+    removeAllButton : function() 
+    {
       pxh.toast.hideAll();
-      setTimeout(function() {
+      setTimeout(function() 
+      {
         pxh.toast.removeAll();
       }, 1000);
     },
 
     bindCallback : function(element, slug, id, callback) {
       var button = document.getElementById('js-' + slug + '--' + id);
-      if (button) {
+      if (button) 
+      {
         button.addEventListener('click', function(event) {
           event.preventDefault();
           pxh.toast.action.fireCallback(callback);
@@ -1404,7 +1450,8 @@ pxh.toast = {
     }
   },
 
-  hide : function(id) {
+  hide : function(id) 
+  {
     var toastList = '';
     var toastItem = '';
     var notificationList = '';
@@ -1419,7 +1466,8 @@ pxh.toast = {
     }
   },
 
-  hideAll : function() {
+  hideAll : function() 
+  {
     var notificationList = '';
     var notifications = [];
     if ((notificationList = document.getElementById('js-notifications__list')) && (notifications = document.getElementsByClassName('pxh-notification'))) {
@@ -1430,7 +1478,8 @@ pxh.toast = {
     }
   },
 
-  autoHide : function(id) {
+  autoHide : function(id) 
+  {
     var toastList = '';
     var toastItem = '';
     if ((toastList = document.getElementById('js-toasts')) && (toastItem = document.getElementById('js-toast--' + id))) {
@@ -1439,7 +1488,8 @@ pxh.toast = {
     }
   },
 
-  remove : function(id) {
+  remove : function(id) 
+  {
     var toastList = '';
     var toastElement = '';
     var notificationList = '';
@@ -1454,7 +1504,8 @@ pxh.toast = {
     }
   },
 
-  autoRemove : function(id) {
+  autoRemove : function(id) 
+  {
     var toastList = '';
     var toastElement = '';
     if ((toastList = document.getElementById('js-toasts')) && (toastElement = document.getElementById('js-toast--' + id))) {
@@ -1462,7 +1513,8 @@ pxh.toast = {
     }
   },
 
-  removeAll : function() {
+  removeAll : function() 
+  {
     var notificationList = '';
     var notifications = [];
     if ((notificationList = document.getElementById('js-notifications__list')) && (notifications = document.getElementsByClassName('pxh-notification'))) {
@@ -1473,7 +1525,8 @@ pxh.toast = {
     }
   },
 
-  expand : function(element, slug) {
+  expand : function(element, slug) 
+  {
     if (element.classList.contains('pxh-' + slug + '--expanded')) {
       element.classList.remove('pxh-' + slug + '--expanded');
       element.querySelector('.pxh-' + slug + '__more').classList.remove('pxh-' + slug + '__more--expanded');
@@ -1488,7 +1541,8 @@ pxh.toast = {
   },
 
   markup : {
-    icon : function(object, slug) {
+    icon : function(object, slug) 
+    {
       var icon = object.icon ? object.icon : 'info-circle';
       var type = object.type ? object.type : 'blue';
       var markup = [];
@@ -1499,7 +1553,8 @@ pxh.toast = {
       return markup;
     },
 
-    toastText : function(object, slug) {
+    toastText : function(object, slug) 
+    {
       var text = object.text ? pxh.stripHTML(object.text) : 'You received a new notification.';
       var markup = [];
       markup.push('<div class="pxh-' + slug + '__text">\n');
@@ -1510,7 +1565,8 @@ pxh.toast = {
       return markup;
     },
 
-    notificationText : function(object, slug, id) {
+    notificationText : function(object, slug, id) 
+    {
       var text = object.text ? pxh.stripHTML(object.text) : 'You received a new notification.';
       var markup = [];
       markup.push('<div class="pxh-' + slug + '__text">\n');
@@ -1529,7 +1585,8 @@ pxh.toast = {
       return markup;
     },
 
-    more : function(object, slug) {
+    more : function(object, slug) 
+    {
       var markup = [];
       markup.push('  <div class="pxh-' + slug + '__more">\n');
       markup.push('    <a href="#" class="pxh-' + slug + '__more-button js-' + slug + '__more-button">\n');
@@ -1540,10 +1597,12 @@ pxh.toast = {
       return markup;
     },
 
-    timestamp : function(object, slug) {
+    timestamp : function(object, slug) 
+    {
       var timestamp = object.timestamp ? object.timestamp : false;
       var markup = [];
-      if (timestamp) {
+      if (timestamp) 
+      {
         markup.push('<div class="pxh-' + slug + '__timestamp">\n');
         markup.push('  ' + timestamp + '\n');
         markup.push('</div>\n');
@@ -1552,7 +1611,8 @@ pxh.toast = {
       return markup;
     },
 
-    dismiss : function(object, slug, id) {
+    dismiss : function(object, slug, id) 
+    {
       var markup = [];
       markup.push('<div class="pxh-' + slug + '__dismiss">\n');
       markup.push('  <a href="#" class="pxh-' + slug + '__dismiss-button js-' + slug + '__dismiss-button" id="js-' + slug + '__dismiss-button--' + id + '">\n');
@@ -1563,13 +1623,17 @@ pxh.toast = {
       return markup;
     },
 
-    button : function(object, slug, id) {
+    button : function(object, slug, id) 
+    {
       var markup = [];
-      if (object.actionLink) {
+      if (object.actionLink) 
+      {
         markup.push('<div class="pxh-' + slug + '__action">\n');
         markup.push('  <a class="pxh-' + slug + '__button" href="' + object.actionLink + '">' + object.actionLabel + '</a>\n');
         markup.push('</div>\n');
-      } else if (object.actionCallback) {
+      } 
+      else if (object.actionCallback) 
+      {
         markup.push('<div class="pxh-' + slug + '__action">\n');
         markup.push('  <a class="pxh-' + slug + '__button" href="#" id="js-' + slug + '__button--' + id + '">' + object.actionLabel + '</a>\n');
         markup.push('</div>\n');
@@ -1578,7 +1642,8 @@ pxh.toast = {
       return markup;
     },
 
-    createToast : function(object, id) {
+    createToast : function(object, id) 
+    {
       var slug = 'toast';
       var element = document.createElement('div');
       element.className = 'pxh-' + slug + ' pxh-' + slug + '--animate-in';
@@ -1596,7 +1661,8 @@ pxh.toast = {
       return element;
     },
 
-    createNotification : function(object, id) {
+    createNotification : function(object, id) 
+    {
       var slug = 'notification';
       var element = document.createElement('div');
       // element.className = 'pxh-' + slug + ' pxh-' + slug + '--animate-in';
@@ -1614,18 +1680,19 @@ pxh.toast = {
   }
 }
 
-document.addEventListener('DOMContentLoaded', function(event) {
-  pxh.toast.add(toastObject1);
-  pxh.toast.add(toastObject2);
-});
+// document.addEventListener('DOMContentLoaded', function(event) {
+//   pxh.toast.add(toastObject1);
+//   pxh.toast.add(toastObject2, true);
+// });
 
-if (document.getElementById('js-toast-emitter')) {
-  document.getElementById('js-toast-emitter').addEventListener('click', function() {
-  pxh.toast.add(toastObject3);
-  })
-}
+// if (document.getElementById('js-toast-emitter')) {
+//   document.getElementById('js-toast-emitter').addEventListener('click', function() {
+//   pxh.toast.add(toastObject3);
+//   })
+// }
 
-if (document.getElementById('js-notifications__link--clear')) {
+if (document.getElementById('js-notifications__link--clear')) 
+{
   document.getElementById('js-notifications__link--clear').addEventListener('click', function() {
   pxh.toast.action.removeAllButton();
   })
@@ -1643,45 +1710,55 @@ document.addEventListener('DOMContentLoaded', function(event) {
 });
 
 pxh.viewResized = document.createEvent('CustomEvent');
-pxh.viewResized.initCustomEvent('pxhViewResized', false, false, {
+pxh.viewResized.initCustomEvent('pxhViewResized', false, false, 
+{
   'viewResized': true
 });
 
 pxh.drawerOpened = document.createEvent('CustomEvent');
-pxh.drawerOpened.initCustomEvent('pxh.drawerOpened', false, false, {
+pxh.drawerOpened.initCustomEvent('pxh.drawerOpened', false, false, 
+{
   'drawerOpened': true
 });
 
 pxh.drawerClosed = document.createEvent('CustomEvent');
-pxh.drawerClosed.initCustomEvent('pxh.drawerClosed', false, false, {
+pxh.drawerClosed.initCustomEvent('pxh.drawerClosed', false, false, 
+{
   'drawerClosed': true
 });
 
-document.addEventListener('DOMContentLoaded', function(event) {
+document.addEventListener('DOMContentLoaded', function(event) 
+{
   pxh.bindControl('pxh-view-header-drawer-toggle');
   pxh.bindControl('pxh-drawer-toggle');
 
-  if (pxh.Cookies.get('pxh-drawer-open') === null) {
+  if (pxh.Cookies.get('pxh-drawer-open') === null) 
+  {
     pxh.Cookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/'});
   }
 
-  if (pxh.Cookies.get('pxh-drawer-narrow') === null)  {
+  if (pxh.Cookies.get('pxh-drawer-narrow') === null)
+  {
     pxh.Cookies.set('pxh-drawer-narrow', 'false', { expires: 1, path: '/'});
   }
 
   // check if the 'narrow' cookie is set and if we're currently at the desktop breakpoint
-  if ((window.matchMedia('(min-width: 1024px)').matches) && (pxh.Cookies.get('pxh-drawer-narrow') === 'true')) {
+  if ((window.matchMedia('(min-width: 1024px)').matches) && (pxh.Cookies.get('pxh-drawer-narrow') === 'true')) 
+  {
     // toggle the drawer closed
     pxh.loadState(pxh.states, 'narrowAtLg');
     document.dispatchEvent(pxh.drawerClosed);
     pxh.Cookies.set('pxh-drawer-narrow', 'true', { expires: 1, path: '/'});
   }
-  else if (window.matchMedia('(min-width: 1024px)').matches) {
+  else if (window.matchMedia('(min-width: 1024px)').matches) 
+  {
     pxh.Cookies.set('pxh-drawer-open', 'true', { expires: 1, path: '/'});
-  } else {
+  } else 
+  {
     pxh.Cookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/'});
   }
-  document.addEventListener('navRefreshed', function(event) {
+  document.addEventListener('navRefreshed', function(event) 
+  {
     pxh.toggleLoginMenu('pxh-login__profile-link', 'pxh-login-menu--profile', 'pxh-login-menu--visible');
     pxh.toggleLoginMenu('pxh-login__settings-link', 'pxh-login-menu--settings', 'pxh-login-menu--visible');
   });
