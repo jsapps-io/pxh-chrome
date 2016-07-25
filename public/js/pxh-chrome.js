@@ -493,28 +493,6 @@ pxh.transitions = {
   }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // *********
 // THIRD PARTY LIBRARIES
 // *********
@@ -697,16 +675,6 @@ pxh.transitions = {
 
 // })();
 
-
-
-
-
-
-
-
-
-
-
 /*!
  * JavaScript Cookie v2.1.1
  * https://github.com/js-cookie/js-cookie
@@ -872,33 +840,6 @@ pxh.transitions = {
 
 pxh.Cookies = Cookies.noConflict();
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // *********
 // GENERIC FUNCTIONS
 // *********
@@ -967,17 +908,6 @@ pxh.stripHTML = function(html)
     return false;
   }
 }
-
-
-
-
-
-
-
-
-
-
-
 
 /* pxh.loadState() */
 pxh.loadState = function(stateObject, targetStateName)
@@ -1701,7 +1631,6 @@ if (document.getElementById('js-notifications__link--clear')) {
   })
 }
 
-
 // ********
 // FIRE!!!!
 // ********
@@ -1773,5 +1702,4 @@ document.addEventListener('DOMContentLoaded', function(event) {
   pxh.toggleNotifications('pxh-login__notifications', 'pxh-notifications', 'pxh-notifications--visible');
 
   pxh.addResizeSensor('js-view');
-
 });
