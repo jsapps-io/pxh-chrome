@@ -1,8 +1,24 @@
 #pxh-chrome changelog
 
 ### pending release
-* Automatically hide notifications icon if notifications aren't present in the current App Hub/Microapp context
-* Add ability to fire a callback (rather than follow a hyperlink) when clicking on a toast/notification's action
+* Add pxh-toasts and pxh-toast components
+  * Responsive width based on width of toasts container
+  * Animate toast on entrance and exit
+  * Automatically dismiss toast after 5 seconds, or manually by clicking dismiss button
+  * Remove dismissed toast from DOM
+  * Optional action button
+  * Optional action callback
+  * Add ability to fire a callback (rather than follow a hyperlink) when clicking on a toast/notification's action
+  * If a toast has an action, populate the notification list with it
+  * If a toast has an action, allow it to be persistent (i.e. it doesn't automatically dismiss after 5 seconds)
+  * Icon options for toast icon (any font awesome icon)
+  * Color options for icon (green, blue, orange, red)
+  * Automatically overflow long toast messages
+* Add pxh-notifications and pxh-notification components
+  * Notifications are toasts that are persistent or non-persistent, and have actions (either URL-based or callback-based) on them
+  * _Only toasts with actions appear in the notification list_
+  * When calling `pxh.toast.add()` to insert a new toast, the optional second parameter `suppressToast` allows you to bypass the toast list and send a toast directly to the notification list without triggering a toast (assuming the toast has an action)
+  * Automatically hide notifications icon if notifications aren't present in the current App Hub/Microapp context
 * Add mixin for overriding Polymer's `a:not([style-scope]):not(.style-scope):link` styles from px-theme for text colors and background colors
   * Mixin regrettably uses `!important` instead of chained classes, because it simply required too many chained classes (five in some cases) to override Polymer
 * Arrange login components using flexbox instead of floats
@@ -15,20 +31,13 @@
   * keyframes-out
   * state-hidden
 * Increase size of tap targets on login module icons
+* Bump version of javascript-cookies to 2.1.2
 * Remove Gulp task for bumping pxh-chrome version number
   * It hasn't worked for months, so we're removing it until we replace it with something that works
 * Bump versions on `gulp-eslint` to 3.0.0, `protractor` to 4.0.0
 * Remove GE Inspira and GE Inspira Serif fonts
   * pxh-chrome now ships with GE Inspira Sans exclusively
-* Add (currently disabled via flags) pxh-toasts and pxh-toast components
-  * Responsive width based on width of toasts container
-  * Animate toast on entrance and exit
-  * Automatically dismiss toast after 5 seconds, or manually by clicking dismiss button
-  * Remove dismissed toast from DOM
-  * Optional action button
-  * Color options for icon
-  * Automatically overflow long toast messages
-* Add (currently disabled via flags) pxh-notifications and pxh-notification components
+
 
 ### 1.0.1 - July 11, 2016 (pre-release)
 * Add source code for in-development pxh-notification and pxh-toast components
