@@ -28,7 +28,9 @@ $pxh-toast-max-count: 3;
 }
 
 @mixin pxh-toast__text {
-  margin: auto;
+  text-align: left;
+  flex-grow: 2;
+  margin: auto $pxh-toast-margin auto $pxh-toast-margin;
   padding: $pxh-toast-margin 0 0 ($pxh-toast-margin * 2);
   overflow: hidden;
   position: relative;
