@@ -120,6 +120,9 @@ $pxh-login-animate-config: (
   }
 }
 
+.pxh-login__caret-icon {
+  padding-left: $pxh-drawer-margin / 4;
+}
 .pxh-login__notifications {
   text-align: center;
   position: relative;
