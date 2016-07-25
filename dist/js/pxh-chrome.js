@@ -986,7 +986,7 @@ pxh.breakpointAtMd = function (breakpoint) {
   } else {
     // we exited the @md breakpoint into the @sm breakpoint
     if (drawerIsNarrowAtMd) {
-      // the drawer was open to narrow @md to move it out @sm
+      // the drawer was open to narrow @md so move it out @sm
       pxh.loadState(pxh.transitions, 'narrowToOut');
     }
   }
@@ -1018,6 +1018,7 @@ pxh.breakpointAtLg = function (breakpoint) {
     // we exited the @lg breakpoint into the @md breakpoint
     if (drawerIsWideAtLg) {
       // the drawer was wide @lg so transition it to narrow @md
+      // close the notifications list if it's open
       // fire transitions
       pxh.loadState(pxh.transitions, 'wideToNarrow');
     };
@@ -1126,17 +1127,21 @@ pxh.action.clickToCloseAndHold = function (control, target, className) {
   var closeElement = document.getElementById('js-closer');
   var targetElement = document.getElementById(target);
   var zIndex = pxh.getStyle(target, 'z-index') - 1;
-  if (controlElement && targetElement && !closeElement) {
-    var closeElement = document.createElement('div');
-    closeElement.id = 'js-closer';
-    closeElement.classList.add('pxh-closer');
-    closeElement.classList.add('pxh-closer--transparent');
-    closeElement.setAttribute('style', 'z-index: ' + zIndex + ';');
-    var insertedCloser = document.body.appendChild(closeElement);
-    insertedCloser.addEventListener('click', function (event) {
-      targetElement.classList.remove(className);
-      insertedCloser.remove();
-    });
+  if (controlElement && targetElement) {
+    if (!closeElement) {
+      var closeElement = document.createElement('div');
+      closeElement.id = 'js-closer';
+      closeElement.classList.add('pxh-closer');
+      closeElement.classList.add('pxh-closer--transparent');
+      closeElement.setAttribute('style', 'z-index: ' + zIndex + ';');
+      var insertedCloser = document.body.appendChild(closeElement);
+      insertedCloser.addEventListener('click', function (event) {
+        targetElement.classList.remove(className);
+        insertedCloser.remove();
+      });
+    } else {
+      closeElement.remove();
+    }
   }
 };
 

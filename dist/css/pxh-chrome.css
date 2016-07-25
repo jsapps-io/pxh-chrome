@@ -3576,7 +3576,7 @@ sub {
 
 @media (max-width: 47.99em) {
   .pxh-drawer--hidden-until\@md {
-    left: -260px;
+    left: -270px;
   }
 }
 
@@ -3594,7 +3594,7 @@ sub {
 
 @-webkit-keyframes pxh-drawer--animate-in {
   0% {
-    left: -260px;
+    left: -270px;
   }
   85% {
     left: 0;
@@ -3606,7 +3606,7 @@ sub {
 
 @keyframes pxh-drawer--animate-in {
   0% {
-    left: -260px;
+    left: -270px;
   }
   85% {
     left: 0;
@@ -3621,10 +3621,10 @@ sub {
     left: 0;
   }
   85% {
-    left: -260px;
+    left: -270px;
   }
   100% {
-    left: -260px;
+    left: -270px;
   }
 }
 
@@ -3633,10 +3633,10 @@ sub {
     left: 0;
   }
   85% {
-    left: -260px;
+    left: -270px;
   }
   100% {
-    left: -260px;
+    left: -270px;
   }
 }
 
@@ -3670,11 +3670,11 @@ sub {
     width: 60px;
   }
   33% {
-    left: -260px;
+    left: -270px;
     width: 60px;
   }
   66% {
-    left: -260px;
+    left: -270px;
     width: 260px;
   }
   100% {
@@ -3689,11 +3689,11 @@ sub {
     width: 60px;
   }
   33% {
-    left: -260px;
+    left: -270px;
     width: 60px;
   }
   66% {
-    left: -260px;
+    left: -270px;
     width: 260px;
   }
   100% {
@@ -5649,7 +5649,7 @@ sub {
   height: 100%;
   width: 100%;
   position: absolute;
-  background-color: black;
+  background-color: transparent;
   opacity: 0;
 }
 
@@ -5873,7 +5873,7 @@ sub {
 }
 
 .pxh-toast__button {
-  max-width: 140px;
+  max-width: 122.5px;
   display: block;
   overflow: hidden;
   text-decoration: none;
@@ -5956,7 +5956,11 @@ sub {
 }
 
 .pxh-toast__text {
-  margin: auto;
+  text-align: left;
+  -webkit-box-flex: 2;
+      -ms-flex-positive: 2;
+          flex-grow: 2;
+  margin: auto 5px auto 5px;
   padding: 5px 0 0 10px;
   overflow: hidden;
   position: relative;
@@ -6222,6 +6226,7 @@ sub {
 }
 
 .pxh-notifications__action {
+  min-width: 80px;
   text-align: left;
   padding-left: 10px;
   padding-top: 10px;
@@ -6254,6 +6259,7 @@ sub {
 }
 
 .pxh-notifications__clear {
+  min-width: 80px;
   color: #b1b1bc;
   text-decoration: none;
   text-align: right;
@@ -6376,7 +6382,11 @@ sub {
 }
 
 .pxh-notification__text {
-  margin: auto;
+  text-align: left;
+  -webkit-box-flex: 2;
+      -ms-flex-positive: 2;
+          flex-grow: 2;
+  margin: auto 5px auto 5px;
   padding: 5px 0 0 10px;
   overflow: hidden;
   position: relative;
