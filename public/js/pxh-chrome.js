@@ -1557,18 +1557,18 @@ pxh.toast = {
       return markup;
     },
 
-    timestamp : function(object, slug) {
-      var timestamp = object.timestamp ? object.timestamp : false;
-      var markup = [];
-      if (timestamp)
-      {
-        markup.push('<div class="pxh-' + slug + '__timestamp">\n');
-        markup.push('  ' + timestamp + '\n');
-        markup.push('</div>\n');
-      }
-      markup = markup.join('');
-      return markup;
-    },
+    // timestamp : function(object, slug) {
+    //   var timestamp = object.timestamp ? object.timestamp : false;
+    //   var markup = [];
+    //   if (timestamp)
+    //   {
+    //     markup.push('<div class="pxh-' + slug + '__timestamp">\n');
+    //     markup.push('  ' + timestamp + '\n');
+    //     markup.push('</div>\n');
+    //   }
+    //   markup = markup.join('');
+    //   return markup;
+    // },
 
     dismiss : function(object, slug, id) {
       var markup = [];
@@ -1608,9 +1608,6 @@ pxh.toast = {
       markup.push(pxh.toast.markup.icon(object, slug));
       markup.push(pxh.toast.markup.toastText(object, slug));
       markup.push(pxh.toast.markup.button(object, slug, id));
-      // if (object.timestamp) {
-      //   markup.push(pxh.toast.markup.timestamp(object, slug));
-      // }
       markup.push(pxh.toast.markup.dismiss(object, slug, id));
       markup = markup.join('');
       element.innerHTML = markup;
@@ -1626,7 +1623,6 @@ pxh.toast = {
       var markup = [];
       markup.push(pxh.toast.markup.icon(object, slug));
       markup.push(pxh.toast.markup.notificationText(object, slug, id));
-      markup.push(pxh.toast.markup.timestamp(object, slug));
       markup.push(pxh.toast.markup.dismiss(object, slug, id));
       markup = markup.join('');
       element.innerHTML = markup;
