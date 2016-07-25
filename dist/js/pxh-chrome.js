@@ -670,7 +670,7 @@ if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
 // })();
 
 /*!
- * JavaScript Cookie v2.1.1
+ * JavaScript Cookie v2.1.2
  * https://github.com/js-cookie/js-cookie
  *
  * Copyright 2006, 2015 Klaus Hartl & Fagner Brack
@@ -758,7 +758,6 @@ if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
 
       for (; i < cookies.length; i++) {
         var parts = cookies[i].split('=');
-        var name = parts[0].replace(rdecode, decodeURIComponent);
         var cookie = parts.slice(1).join('=');
 
         if (cookie.charAt(0) === '"') {
@@ -766,6 +765,7 @@ if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
         }
 
         try {
+          var name = parts[0].replace(rdecode, decodeURIComponent);
           cookie = converter.read ? converter.read(cookie, name) : converter(cookie, name) || cookie.replace(rdecode, decodeURIComponent);
 
           if (this.json) {
@@ -788,11 +788,11 @@ if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
       return result;
     }
 
-    api.get = api.set = api;
     // api.set = api;
     // api.get = function (key) {
     //   return api(key);
     // };
+    api.get = api.set = api;
     api.getJSON = function () {
       return api.apply({
         json: true
@@ -1153,7 +1153,7 @@ if (notificationsIcon = document.getElementById('js-login__notifications')) {
   });
 }
 
-// this is a total hack
+// this is a hack
 pxh.toggleNotifications = function (toggleControl, toggleTarget, toggleClass) {
   var controlElement = document.getElementsByClassName(toggleControl);
   var targetElement = document.getElementsByClassName(toggleTarget);
@@ -1172,40 +1172,6 @@ pxh.toggleNotifications = function (toggleControl, toggleTarget, toggleClass) {
 // actionLink : 'http://google.com' // fully qualified link or route
 // actionCallback : // callback function
 // timestamp: '9:36 AM'
-
-var toastObject1 = {
-  value: 'something'
-};
-
-var toastObject2 = {
-  type: 'orange',
-  isPersistent: true,
-  icon: 'exclamation-circle',
-  text: 'It can be this long or longer if you want. In fact, it can be really, really long if you have a lot you want to say. We kind of discourage this much content but knock yourself out! Just keep talking and talking and talking and this area will keep expanding and expanding.',
-  actionLabel: 'View a lot of things right now',
-  actionLink: 'http://predix.com',
-  timestamp: '9:36 AM'
-};
-
-var toastObject3 = {
-  type: 'red',
-  isPersistent: false,
-  icon: 'exclamation-triangle',
-  text: 'This is going to fire a callback.',
-  actionLabel: 'Callback, yo!',
-  actionCallback: function actionCallback() {
-    console.log('this was called from actionCallback');
-  }
-};
-
-var toastObject4 = {
-  type: 'red',
-  isPersistent: false,
-  icon: 'times-circle',
-  text: 'Fourth notification? Coming right up!',
-  actionLabel: 'Beef',
-  actionLink: 'http://beef.org'
-};
 
 pxh.toast = {
   badge: {
@@ -1250,7 +1216,7 @@ pxh.toast = {
     }
   },
 
-  add: function add(object) {
+  add: function add(object, suppressToast) {
     var id = Math.floor(Math.random() * 16777215).toString(16);
     var notificationList = '';
     var toastList = '';
@@ -1264,7 +1230,7 @@ pxh.toast = {
         pxh.toast.action.bindCallback(toastElement, 'notification__link', id, object.actionCallback);
       }
     }
-    if (toastList = document.getElementById('js-toasts')) {
+    if ((toastList = document.getElementById('js-toasts')) && !suppressToast) {
       var toastFirstChild = toastList.firstChild;
       var toastElement = toastList.insertBefore(pxh.toast.markup.createToast(object, id), toastFirstChild);
       pxh.toast.action.dismissButton(toastElement, 'toast', id);
@@ -1467,17 +1433,18 @@ pxh.toast = {
       return markup;
     },
 
-    timestamp: function timestamp(object, slug) {
-      var timestamp = object.timestamp ? object.timestamp : false;
-      var markup = [];
-      if (timestamp) {
-        markup.push('<div class="pxh-' + slug + '__timestamp">\n');
-        markup.push('  ' + timestamp + '\n');
-        markup.push('</div>\n');
-      }
-      markup = markup.join('');
-      return markup;
-    },
+    // timestamp : function(object, slug) {
+    //   var timestamp = object.timestamp ? object.timestamp : false;
+    //   var markup = [];
+    //   if (timestamp)
+    //   {
+    //     markup.push('<div class="pxh-' + slug + '__timestamp">\n');
+    //     markup.push('  ' + timestamp + '\n');
+    //     markup.push('</div>\n');
+    //   }
+    //   markup = markup.join('');
+    //   return markup;
+    // },
 
     dismiss: function dismiss(object, slug, id) {
       var markup = [];
@@ -1514,9 +1481,6 @@ pxh.toast = {
       markup.push(pxh.toast.markup.icon(object, slug));
       markup.push(pxh.toast.markup.toastText(object, slug));
       markup.push(pxh.toast.markup.button(object, slug, id));
-      // if (object.timestamp) {
-      //   markup.push(pxh.toast.markup.timestamp(object, slug));
-      // }
       markup.push(pxh.toast.markup.dismiss(object, slug, id));
       markup = markup.join('');
       element.innerHTML = markup;
@@ -1526,13 +1490,11 @@ pxh.toast = {
     createNotification: function createNotification(object, id) {
       var slug = 'notification';
       var element = document.createElement('div');
-      // element.className = 'pxh-' + slug + ' pxh-' + slug + '--animate-in';
       element.className = 'pxh-' + slug;
       element.id = 'js-' + slug + '--' + id;
       var markup = [];
       markup.push(pxh.toast.markup.icon(object, slug));
       markup.push(pxh.toast.markup.notificationText(object, slug, id));
-      markup.push(pxh.toast.markup.timestamp(object, slug));
       markup.push(pxh.toast.markup.dismiss(object, slug, id));
       markup = markup.join('');
       element.innerHTML = markup;
@@ -1540,17 +1502,6 @@ pxh.toast = {
     }
   }
 };
-
-document.addEventListener('DOMContentLoaded', function (event) {
-  pxh.toast.add(toastObject1);
-  pxh.toast.add(toastObject2);
-});
-
-if (document.getElementById('js-toast-emitter')) {
-  document.getElementById('js-toast-emitter').addEventListener('click', function () {
-    pxh.toast.add(toastObject3);
-  });
-}
 
 if (document.getElementById('js-notifications__link--clear')) {
   document.getElementById('js-notifications__link--clear').addEventListener('click', function () {
