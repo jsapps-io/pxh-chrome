@@ -64,6 +64,7 @@ $pxh-login-animate-config: (
 .pxh-login__avatar-icon.pxh-login__avatar-icon.pxh-login__avatar-icon.pxh-login__avatar-icon.pxh-login__avatar-icon {  // it takes a five-deep class chain to override px-theme here
   height: $pxh-login-avatar-height-width;
   width: $pxh-login-avatar-height-width;
+  padding-top: 4px; // magic number
   text-align: center;
   font-size: $inuit-base-font-size * 1.1; // needs a !important with anything less than a five-deep class chain
   background-color: transparent;
