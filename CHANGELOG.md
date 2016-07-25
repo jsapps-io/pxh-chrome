@@ -1,17 +1,61 @@
 #pxh-chrome changelog
 
-### 1.0.1 - July 11, 2016 (pre-release)
-* Bump version on `gulp-eslint` to 3.0.0
-* Add (currently disabled via flags) pxh-toasts and pxh-toast components
-  * Responsive width based on width of toasts container
-  * Animate toast on entrance and exit
+### pending release
+* _nothing yet..._
+
+### 1.1.0 - July 25, 2016
+* **Add pxh-toasts and pxh-toast components**
+  * A toast includes:
+    * An icon (any keyword for any font-awesome icon is available)
+    * Icon/toast color options (green, blue, orange, red)
+    * Toast text (including default text if no text is provided)
+    * "More" text button, which allows user to expand long toast messages
+    * Dismiss button
+    * Optional action button which navigates the user to a URL when clicked, or fires a javascript callback when clicked
+    * Responsive layout based on browser width, and width of toasts container
   * Automatically dismiss toast after 5 seconds, or manually by clicking dismiss button
-  * Remove dismissed toast from DOM
-  * Optional action button
-  * Color options for icon
+    * All non-actionable toasts automatically dismiss after 5 seconds
+    * Actionable toasts can be configured to "persist" until they are manually dismissed by the user
   * Automatically overflow long toast messages
-* Add (currently disabled via flags) pxh-notifications and pxh-notification components
-  * _Currently under development_
+  * Animate toast on entrance and exit
+  * Remove dismissed toast from DOM
+  * If a toast has an action, populate the notification list with it
+  * If a toast has an action, allow it to be persistent (i.e. the toast does not automatically dismiss after 5 seconds)
+  * Return the `id` of a toast after it is added with `pxh.toast.add()`
+* **Add pxh-notifications and pxh-notification components**
+  * Notifications are toasts that have actions (either URL-based or callback-based) on them, and can be persistent or non-persistent
+  * _Only toasts with actions appear in the notification list_
+  * When calling `pxh.toast.add()` to insert a new toast, the optional second parameter `suppressToast` allows you to bypass the toast list and send a toast directly to the notification list without triggering a toast (assuming the toast has an action)
+    * This is helpful if you need to rebuild a list of notifications after a page refresh, but don't want to bother the user by displaying the toasts again
+  * Automatically hide notifications icon if notifications aren't present in the current App Hub/Microapp context
+* Add flag for toggling Sass for toasts and notifications on and off
+* Add polyfill to allow `element.remove()` in IE11
+* Remove all HTML5 elements that are inheriting default styles from px-theme
+  * default `display: block` declarations conflict with `display: flex`
+* Add mixin for overriding Polymer's `a:not([style-scope]):not(.style-scope):link` styles from px-theme for text colors and background colors
+  * Mixin regrettably uses `!important` instead of chained classes, because it simply required too many chained classes (five in some cases) to override Polymer
+* Arrange login components using flexbox instead of floats
+* Add a mega-animations mixin that does everything:
+  * animate-in
+  * keyframes-in
+  * state-visible
+  * state-default
+  * animate-out
+  * keyframes-out
+  * state-hidden
+* Increase size of tap targets on login module icons
+* Wrap all pxh-chrome JavaScript functions in a `pxh.` object to isolate them from the global namespace
+* Replace all CSS class names with variables for toggling between states in javascript
+* Bump version of javascript-cookies to 2.1.2
+* Remove Gulp task for bumping pxh-chrome version number
+  * It hasn't worked for months, so we're removing it until we replace it with something that works
+* Bump versions on `gulp-eslint` to 3.0.0, `protractor` to 4.0.0, `babel-core` to 6.11.0, lodash to `4.14.0`
+* Remove GE Inspira and GE Inspira Serif fonts
+  * pxh-chrome now ships with GE Inspira Sans exclusively
+
+### 1.0.1 - July 11, 2016 (pre-release)
+* Add source code for in-development pxh-notification and pxh-toast components
+  * Components are disabled in the `/dist` of this pre-release version
 
 ### 1.0.1 CDN - July 11, 2016 (pre-release)
 * _See release notes for 1.0.1_

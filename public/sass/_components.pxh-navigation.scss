@@ -7,6 +7,7 @@
 \*------------------------------------*/
 
 .pxh-navigation {
+  @include pxh-fancy-scrollbar;
   position: absolute;
   top: $pxh-view-header-height;
   left: 0;
@@ -16,24 +17,6 @@
   border-top: 1px solid rgba(0,0,0,0.15);
   max-height: 100%;
   overflow-y: auto;
-  // animation-duration: 300ms;
-  scrollbar-base-color: $gray10;
-  scrollbar-arrow-color: $gray8;
-  scrollbar-track-color: $gray10;
-  scrollbar-face-color: $gray8;
-  -webkit-overflow-scrolling: touch;
-  &::-webkit-scrollbar {
-    width: 7px;
-  }
-  &::-webkit-scrollbar-track {
-      background-color: $gray10;
-      border: 2px solid $gray10;
-  }
-  &::-webkit-scrollbar-thumb {
-      border-left: 2px solid $gray10;
-      border-right: 2px solid $gray10;
-      background-color: $gray7;
-  }
 }
 
 .pxh-navigation__item-icon {
@@ -404,12 +387,6 @@
   color: $pxh-navigation-sub-selected-color;
 }
 
-.pxh-navigation__sub-link--settings.pxh-navigation__sub-link--settings.pxh-navigation__sub-link--settings,
-.pxh-navigation__sub-link--settings:link.pxh-navigation__sub-link--settings:link.pxh-navigation__sub-link--settings:link,
-.pxh-navigation__sub-link--settings:visited.pxh-navigation__sub-link--settings:visited.pxh-navigation__sub-link--settings:visited { // chained to override px-theme
-  color: $primary-blue;
-}
-
-.pxh-navigation__sub-link--settings:hover.pxh-navigation__sub-link--settings:hover.pxh-navigation__sub-link--settings:hover { // chained to override px-theme
-  color: $white;
+.pxh-navigation__sub-link--settings {
+  @include pxh-override-px-theme-color('pxh-navigation__sub-link--settings', $primary-blue);
 }

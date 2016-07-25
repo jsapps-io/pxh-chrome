@@ -6,13 +6,126 @@ $pxh-toasts-enabled : false !default;
 
 $pxh-toast-height: 70px;
 $pxh-toast-margin: 5px;
-$pxh-toast-max-count: 4;
+$pxh-toast-max-count: 3;
+
+@mixin pxh-toast {
+  display: flex;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  color: $gray5;
+  background: $gray10;
+  &--expanded {
+    height: auto;
+  }
+}
+
+@mixin pxh-toast__icon {
+  text-align: center;
+  flex-shrink: 0;
+  align-self: stretch;
+  min-height: $pxh-toast-height;
+}
+
+@mixin pxh-toast__text {
+  text-align: left;
+  flex-grow: 2;
+  margin: auto $pxh-toast-margin auto $pxh-toast-margin;
+  padding: $pxh-toast-margin 0 0 ($pxh-toast-margin * 2);
+  overflow: hidden;
+  position: relative;
+  line-height: 1.2;
+}
+
+@mixin pxh-toast__more {
+  position: absolute;
+  top: $pxh-toast-margin * 8;
+  width: 100%;
+  height: $pxh-toast-margin * 6;
+  padding: ($pxh-toast-margin + 2px) 0 $pxh-toast-margin 0;
+  background: linear-gradient(to bottom, rgba($gray10,0) 0%, rgba($gray10,1) 50%);
+  text-align: center;
+  &--expanded {
+    position: relative;
+    top: 0;
+    height: auto;
+    background: transparent;
+  }
+}
+
+@mixin pxh-toast__more-button {
+  color: $gray7;
+  background-color: $gray10;
+  border: 1px solid $gray8;
+  border-radius: 5px;
+  padding: 1px 5px 0 5px;
+  display: inline-block;
+  text-decoration: none;
+  text-transform: lowercase;
+  font-size: 14px;
+  &:hover {
+    color: $primary-blue;
+  }
+}
+
+@mixin pxh-toast__action {
+  flex-shrink: 0;
+  text-align: center;
+  margin: ($pxh-toast-margin * 3) ($pxh-toast-margin * 2) 0 ($pxh-toast-margin * 2);
+}
+
+@mixin pxh-toast__button {
+  display: block;
+  overflow: hidden;
+  text-decoration: none;
+  border: 1px solid $gray8;
+  padding: 8px;
+  background-color: transparent;
+  color: $gray5;
+  border-radius: 2px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  background-color: transparent;
+  &:hover {
+    background-color: $gray9;
+  }
+}
+
+@mixin pxh-toast__timestamp {
+  margin-left: $pxh-toast-margin;
+  color: $gray8;
+  flex-shrink: 0;
+  text-align: right;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+@mixin pxh-toast__dismiss {
+  text-align: center;
+  font-size: 18px;
+  flex-basis: auto;
+  width: $pxh-toast-margin * 8;
+  flex-shrink: 0;
+}
+
+@mixin pxh-toast__dismiss-button {
+  color: $gray7;
+  text-decoration: none;
+  display: block;
+  padding: ($pxh-toast-margin * 5) ($pxh-toast-margin * 2) 0 ($pxh-toast-margin * 2);
+  height: $pxh-toast-height;
+  &:hover {
+    color: $primary-blue;
+  }
+}
 
 @mixin pxh-toast--in-state-scale {
   height: $pxh-toast-height;
   margin-bottom: $pxh-toast-margin;
   font-size: 16px;
 }
+
 @mixin pxh-toast--in-state-opacity {
   @include in-state-opacity;
 }
@@ -34,22 +147,27 @@ $pxh-toast-max-count: 4;
 
 @if $pxh-toasts-enabled == true {
   .pxh-toasts {
+    @include pxh-fancy-scrollbar;
     position: fixed;
-    top: 60px + 1px + 5px;
+    bottom: 0;
     right: $pxh-toast-margin;
     left: $pxh-toast-margin;
-    max-height: ($pxh-toast-height * $pxh-toast-max-count) + ($pxh-toast-margin * ($pxh-toast-max-count - 1));
-    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    overflow-y: auto;
     z-index: 300;
+    max-height: ($pxh-toast-height * 2) + ($pxh-toast-height / 2) + $pxh-toast-margin;
     @include mq($from: md) {
       &--narrow\@md {
+        max-height: ($pxh-toast-height * $pxh-toast-max-count) + ($pxh-toast-height / 2) + ($pxh-toast-margin * ($pxh-toast-max-count - 1));
+        top: 60px + 1px + 5px;
         left: auto;
-        max-width: 420px;
+        width: 420px;
       }
     }
     @include mq($from: lg) {
       &--wide\@lg {
-        max-width: 520px;
+        left: auto;
+        width: 480px;
       }
     }
   }
@@ -88,12 +206,7 @@ $pxh-toast-max-count: 4;
 
   .pxh-toast {
     @include pxh-toast--in-state;
-    border-radius: 1px;
-    display: flex;
-    overflow: hidden;
-    position: relative;
-    color: $gray5;
-    background: $gray10;
+    @include pxh-toast;
     &--animate-in {
       animation-fill-mode: forwards;
       animation-duration: 1000ms;
@@ -104,102 +217,60 @@ $pxh-toast-max-count: 4;
       animation-duration: 1000ms;
       animation-name: pxh-toast--animate-out;
     }
-    &--expanded {
-      height: auto;
-    }
   }
 
   .pxh-toast__action {
-    flex-shrink: 0;
-    text-align: center;
-    margin: ($pxh-toast-margin * 3) ($pxh-toast-margin * 2) 0 ($pxh-toast-margin * 2);
+    @include pxh-toast__action;
   }
 
   .pxh-toast__button {
-    display: block;
-    overflow: hidden;
-    max-width: $pxh-toast-height * 2;
-    text-decoration: none;
-    border: 1px solid $gray8;
-    padding: 8px;
-    background-color: transparent;
-    color: $gray5;
-    border-radius: 2px;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    background-color: transparent;
-    &:hover {
-      background-color: $gray9;
-    }
+    max-width: $pxh-toast-height * 1.75;
+    @include pxh-toast__button;
+    @include pxh-override-px-theme-color('pxh-toast__button', $gray5);
+    @include pxh-override-px-theme-background-color('pxh-toast__button', $gray10, $gray9);
   }
 
   .pxh-toast__icon {
+    @include pxh-toast__icon;
     color: $white;
     padding-top: $pxh-toast-margin * 4;
-    text-align: center;
     flex-basis: $pxh-toast-height;
-    flex-shrink: 0;
     font-size: 28px;
-    background-color: transparent;
-    &--success {
+    &--green {
       background-color: $green;
     }
-    &--info {
+    &--blue {
       background-color: $blue;
     }
-    &--warning {
+    &--orange {
       background-color: $orange;
     }
-    &--important {
+    &--red {
       background-color: $red;
     }
   }
 
   .pxh-toast__text {
-    margin: auto;
-    padding: $pxh-toast-margin 0 $pxh-toast-margin ($pxh-toast-margin * 2);
-    overflow: hidden;
-    position: relative;
+    @include pxh-toast__text;
   }
 
   .pxh-toast__more {
-    position: absolute;
-    top: $pxh-toast-margin * 8;
-    width: 100%;
-    height: $pxh-toast-margin * 6;
-    padding: ($pxh-toast-margin * 2) 0 0 0;
-    background: linear-gradient(to bottom, rgba($gray10,0) 0%, rgba($gray10,1) 50%);
-    text-align: center;
-    &--expanded {
-      position: relative;
-      top: 0;
-      height: auto;
-      // padding: 0;
-      background: transparent;
-    }
+    @include pxh-toast__more;
   }
 
   .pxh-toast__more-button {
-    color: $white;
-    text-decoration: none;
-    text-transform: lowercase;
-    font-size: 14px;
+    @include pxh-toast__more-button;
+    @include pxh-override-px-theme-color('pxh-toast__more-button');
+    @include pxh-override-px-theme-background-color('pxh-toast__more-button', $gray10, $gray9);
   }
 
   .pxh-toast__dismiss {
-    text-align: center;
-    font-size: 18px;
-    flex-basis: $pxh-toast-margin * 8;
-    flex-shrink: 0;
-    .fa {
-      color: $gray7;
-      text-decoration: none;
-    }
+    @include pxh-toast__dismiss;
   }
 
   .pxh-toast__dismiss-button {
-    display: block;
-    padding: ($pxh-toast-margin * 5) ($pxh-toast-margin * 2) 0 ($pxh-toast-margin * 2);
+    @include pxh-toast__dismiss-button;
+    @include pxh-override-px-theme-color('pxh-toast__dismiss-button', $gray7, $primary-blue);
   }
 }
 

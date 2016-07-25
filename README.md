@@ -1,4 +1,4 @@
-#pxh-chrome 1.0.1
+#pxh-chrome 1.1.0
 Application chrome for the Predix UI App Hub
 
 ##[Live Demo](https://github.build.ge.com/pages/hubs/pxh-chrome-demo)
@@ -120,6 +120,30 @@ To trigger "chromeless" mode, which hides the drawer, drawer toggle, navigation,
   * `pxh-chrome.js` is not required for chromeless view, as the JavaScript is only necessary for managing drawer state between breakpoints, page refreshes and toggle events... if there's no drawer, there's no need for JavaScript!
 
 
+## Working with toasts and notifications
+
+Toasts are little messages for the user that appear at the bottom of the viewport on mobile, and at the upper-right corner of the browser window on tablet and mobile.
+
+### Adding a new toast
+
+Here's the most basic example:
+
+```
+toast.add({ key : 'value'});
+```
+
+Here it is in some event logic, which will create a new toast when the page loads:
+
+```
+document.addEventListener('DOMContentLoaded', function(event) {
+  toast.add({ key : 'value'});
+});
+```
+
+
+
+
+
 ## Listening for resize events
 
 Since pxh-chrome is mobile-first and responsive, there may be cases where you need to rerender your microapp content based on changes in width to the `pxh-view` wrapping element. This is common with SVGs or other types of content that need to render at a specific and known pixel width.
@@ -199,29 +223,6 @@ When you're done, type `CTRL+C` to shut down the development server.
 ##Browser Support
 pxh-chrome is tested in the most recent major releases of Chrome, Firefox, Safari, iOS Safari, and Internet Explorer (IE11 on Windows 7 and IE Edge on Windows 10).
 
-##Bumping your version of pxh-chrome
-
-The pxh-chrome version number is hard-coded in a number of files to help with documentation and debugging. These files are:
-
-  * `bower.json`
-  * `package.json`
-  * `README.md`
-  * `public/sass/pxh-chrome.scss`
-  * `public/js/pxh-chrome.js`
-  * `public/chromeless.html`
-  * `public/index.html`
-
-When you cut a new version of pxh-chrome you will want to bump the version number in all these files. If you try to do this manually, however, you're almost _always_ going to miss one or two.
-
-We added a convenient gulp task to help you search and replace the version numbers across all these files. At the command line:
-
-```bash
-gulp bump --old 0.8.0 --new 0.8.1
-```
-
-This will find all instances of your old version number in the relevant files and replace it with your new version number. The next time you run the default gulp task these changes will compile to your `/dist` folder.
-
-This task **does not** create a new Git tag, update the CHANGELOG, merge your develop branch into master, or push to remote. Please follow your team's process when performing these tasks. A recommended distribution workflow is included below.
 
 ##Distributing pxh-chrome
 1. Run `gulp` to compile your local version of pxh-chrome to your `/dist` folder

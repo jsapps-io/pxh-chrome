@@ -1,0 +1,57 @@
+/*------------------------------------*\
+    #tools.pxh-mixins
+\*------------------------------------*/
+
+@mixin pxh-fancy-scrollbar {
+  scrollbar-base-color: $gray10;
+  scrollbar-arrow-color: $gray8;
+  scrollbar-track-color: $gray10;
+  scrollbar-face-color: $gray8;
+  -webkit-overflow-scrolling: touch;
+  &::-webkit-scrollbar {
+    width: 7px;
+  }
+  &::-webkit-scrollbar-track {
+      background-color: $gray10;
+      border: 2px solid $gray10;
+  }
+  &::-webkit-scrollbar-thumb {
+      border-left: 2px solid $gray10;
+      border-right: 2px solid $gray10;
+      background-color: $gray7;
+  }
+}
+
+@mixin pxh-override-px-theme-color($class-to-chain, $link-color : $gray7, $hover-color : $white) {
+  // resigned to using !important instead of chained identical selectors because it takes so many darn nested selectors to override polymer's a:not([style-scope]):not(.style-scope):link
+  color: $link-color !important;
+  &:link {
+    color: $link-color !important;
+  }
+  &:visited {
+    color: $link-color !important;
+  }
+  &:hover {
+    color: $hover-color !important;
+  }
+  &:active {
+    color: $hover-color !important;
+  }
+}
+
+@mixin pxh-override-px-theme-background-color($class-to-chain, $link-color : $primary-blue, $hover-color : $link-color) {
+  // resigned to using !important instead of chained identical selectors because it takes so many darn nested selectors to override polymer's a:not([style-scope]):not(.style-scope):link
+  background-color: $link-color !important;
+  &:link {
+    background-color: $link-color !important;
+  }
+  &:visited {
+    background-color: $link-color !important;
+  }
+  &:hover {
+    background-color: $hover-color !important;
+  }
+  &:active {
+    background-color: $hover-color !important;
+  }
+}

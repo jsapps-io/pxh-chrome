@@ -1,4 +1,4 @@
-/*! pxh-chrome.css 1.0.1 */
+/*! pxh-chrome.css 1.1.0 */
 
 /*------------------------------------*\
     #pxh-chrome
@@ -11,7 +11,7 @@
 // ** #GENERIC ** //
 @import "generic.normalize.scss";
 $webfont-path: '../fonts/ge/type' !default;
-// $webfont-path: '//dzlpbrbc7yvq0.cloudfront.net/pxh-chrome/1.0.1/dist/fonts/ge/type' !default;
+// $webfont-path: '//dzlpbrbc7yvq0.cloudfront.net/pxh-chrome/1.1.0/dist/fonts/ge/type' !default;
 @import "generic.fonts.scss";
 @import "generic.defaults.scss";
 
@@ -22,9 +22,10 @@ $mq-breakpoints : (
 );
 @import "sass-mq/mq.scss"; // our sass task includes /bower_components automatically so we don't need to specify it
 $fa-font-path : "../fonts/font-awesome/fonts" !default;
-// $fa-font-path : "//dzlpbrbc7yvq0.cloudfront.net/pxh-chrome/1.0.1/dist/fonts/font-awesome/fonts" !default;
+// $fa-font-path : "//dzlpbrbc7yvq0.cloudfront.net/pxh-chrome/1.1.0/dist/fonts/font-awesome/fonts" !default;
 @import "font-awesome/scss/font-awesome.scss"; // our sass task includes /bower_components automatically so we don't need to specify it
 @import "tools.pxh-animations.scss";
+@import "tools.pxh-mixins.scss";
 
 // ** #ELEMENTS ** //
 @import "elements.body.scss";
@@ -35,8 +36,8 @@ $fa-font-path : "../fonts/font-awesome/fonts" !default;
 // ** #OBJECTS ** //
 
 // ** #COMPONENTS ** //
-$pxh-notifications-enabled : false;
-$pxh-toasts-enabled : false;
+$pxh-notifications-enabled : true;
+$pxh-toasts-enabled : true;
 @import "components.pxh-badge.scss";
 @import "components.pxh-drawer.scss";
 @import "components.pxh-login.scss";
@@ -44,8 +45,9 @@ $pxh-toasts-enabled : false;
 @import "components.pxh-overlay.scss";
 @import "components.pxh-view.scss";
 @import "components.pxh-spinner.scss";
-@import "components.pxh-notification.scss";
+@import "components.pxh-closer.scss";
 @import "components.pxh-toast.scss";
+@import "components.pxh-notification.scss";
 @import "components.pxh-error.scss";
 
 // ** #OVERRIDES ** //
