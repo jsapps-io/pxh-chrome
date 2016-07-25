@@ -224,7 +224,7 @@ $pxh-toast-max-count: 3;
   }
 
   .pxh-toast__button {
-    max-width: $pxh-toast-height * 2;
+    max-width: $pxh-toast-height * 1.75;
     @include pxh-toast__button;
     @include pxh-override-px-theme-color('pxh-toast__button', $gray5);
     @include pxh-override-px-theme-background-color('pxh-toast__button', $gray10, $gray9);
