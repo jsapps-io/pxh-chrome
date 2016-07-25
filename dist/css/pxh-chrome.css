@@ -4322,6 +4322,10 @@ sub {
   }
 }
 
+.pxh-login__caret-icon {
+  padding-left: 5px;
+}
+
 .pxh-login__notifications {
   text-align: center;
   position: relative;
@@ -4382,7 +4386,6 @@ sub {
   font-size: 12px;
   line-height: 1;
   border-radius: 12px;
-  box-shadow: 0px 0px 0px 2px rgba(0, 0, 0, 0.25);
   text-decoration: none;
   position: absolute;
   top: -15px;

@@ -869,7 +869,7 @@ pxh.getStyle = function (id, property) {
   return style;
 };
 
-pxh.stripHtml = function (html) {
+pxh.stripHTML = function (html) {
   if (html) {
     var tmp = document.createElement('div');
     tmp.innerHTML = html;
@@ -1178,20 +1178,19 @@ var toastObject2 = {
   icon: 'exclamation-circle',
   text: 'It can be this long or longer if you want. In fact, it can be really, really long if you have a lot you want to say. We kind of discourage this much content but knock yourself out! Just keep talking and talking and talking and this area will keep expanding and expanding.',
   actionLabel: 'View a lot of things right now',
-  // actionLink : 'http://google.com',
-  actionCallback: function actionCallback() {
-    console.log('this was called from actionCallback');
-  },
+  actionLink: 'http://predix.com',
   timestamp: '9:36 AM'
 };
 
 var toastObject3 = {
-  type: 'blue',
+  type: 'red',
   isPersistent: false,
-  icon: 'info-circle',
-  text: 'It can be this long or longer if you want. In fact, it can be really, really long if you have a lot you want to say. We kind of discourage this much content but knock yourself out! Just keep talking and talking and talking and this area will keep expanding and expanding.',
-  actionLabel: 'View a lot of things right now',
-  actionLink: 'http://google.com'
+  icon: 'exclamation-triangle',
+  text: 'This is going to fire a callback.',
+  actionLabel: 'Callback, yo!',
+  actionCallback: function actionCallback() {
+    console.log('this was called from actionCallback');
+  }
 };
 
 var toastObject4 = {
@@ -1423,7 +1422,7 @@ pxh.toast = {
     },
 
     toastText: function toastText(object, slug) {
-      var text = object.text ? pxh.stripHtml(object.text) : 'You received a new notification.';
+      var text = object.text ? pxh.stripHTML(object.text) : 'You received a new notification.';
       var markup = [];
       markup.push('<div class="pxh-' + slug + '__text">\n');
       markup.push('  ' + text + '\n');
@@ -1434,7 +1433,7 @@ pxh.toast = {
     },
 
     notificationText: function notificationText(object, slug, id) {
-      var text = object.text ? pxh.stripHtml(object.text) : 'You received a new notification.';
+      var text = object.text ? pxh.stripHTML(object.text) : 'You received a new notification.';
       var markup = [];
       markup.push('<div class="pxh-' + slug + '__text">\n');
       if (object.actionLink) {
