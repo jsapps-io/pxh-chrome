@@ -1617,7 +1617,6 @@ pxh.toast = {
     createNotification : function(object, id) {
       var slug = 'notification';
       var element = document.createElement('div');
-      // element.className = 'pxh-' + slug + ' pxh-' + slug + '--animate-in';
       element.className = 'pxh-' + slug;
       element.id = 'js-' + slug + '--' + id;
       var markup = [];
