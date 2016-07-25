@@ -676,7 +676,7 @@ pxh.transitions = {
 // })();
 
 /*!
- * JavaScript Cookie v2.1.1
+ * JavaScript Cookie v2.1.2
  * https://github.com/js-cookie/js-cookie
  *
  * Copyright 2006, 2015 Klaus Hartl & Fagner Brack
@@ -770,7 +770,6 @@ pxh.transitions = {
 
       for (; i < cookies.length; i++) {
         var parts = cookies[i].split('=');
-        var name = parts[0].replace(rdecode, decodeURIComponent);
         var cookie = parts.slice(1).join('=');
 
         if (cookie.charAt(0) === '"') {
@@ -778,6 +777,7 @@ pxh.transitions = {
         }
 
         try {
+          var name = parts[0].replace(rdecode, decodeURIComponent);
           cookie = converter.read ?
             converter.read(cookie, name) : converter(cookie, name) ||
             cookie.replace(rdecode, decodeURIComponent);
@@ -802,11 +802,11 @@ pxh.transitions = {
       return result;
     }
 
-    api.get = api.set = api;
     // api.set = api;
     // api.get = function (key) {
     //   return api(key);
     // };
+    api.get = api.set = api;
     api.getJSON = function () {
       return api.apply({
         json: true
