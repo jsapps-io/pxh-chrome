@@ -16,7 +16,7 @@
 // Keep the inactive drawer hidden off-screen until the @md (tablet) breakpoint.
 @include mq($until: md) {
   .pxh-drawer--hidden-until\@md {
-    left: -$pxh-drawer-width-wide;
+    left: -$pxh-drawer-width-wide - 10px;
   }
 }
 
@@ -37,7 +37,7 @@
 
 @keyframes pxh-drawer--animate-in {
   0% {
-    left: -$pxh-drawer-width-wide;
+    left: -$pxh-drawer-width-wide - 10px;
   }
   85% {
     left: 0;
@@ -52,10 +52,10 @@
     left: 0;
   }
   85% {
-    left: -$pxh-drawer-width-wide;
+    left: -$pxh-drawer-width-wide - 10px;
   }
   100% {
-    left: -$pxh-drawer-width-wide;
+    left: -$pxh-drawer-width-wide - 10px;
   }
 }
 
@@ -79,12 +79,12 @@
   }
   33% {
     // transform: translateX(-$pxh-drawer-width-wide);
-    left: -$pxh-drawer-width-wide;
+    left: -$pxh-drawer-width-wide - 10px;
     width: $pxh-drawer-width-narrow;
   }
   66% {
     // transform: translateX(-$pxh-drawer-width-wide);
-    left: -$pxh-drawer-width-wide;
+    left: -$pxh-drawer-width-wide - 10px;
     width: $pxh-drawer-width-wide;
   }
   100% {
