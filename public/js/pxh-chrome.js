@@ -1355,6 +1355,7 @@ pxh.toast = {
         }, 5000);
       }
     }
+    return id;
   },
 
   action : {
