@@ -84,7 +84,7 @@ $pxh-login-animate-config: (
   white-space: nowrap;
   text-overflow: ellipsis;
   @if ($pxh-notifications-enabled == true) {
-    max-width: $pxh-drawer-width-wide - ($pxh-drawer-margin * 6.5);
+    max-width: $pxh-drawer-width-wide - ($pxh-drawer-margin * 7);
   }
   @else {
     max-width: $pxh-drawer-width-wide - ($pxh-drawer-margin * 5.25);
@@ -222,7 +222,8 @@ $pxh-login-animate-config: (
 .pxh-login__settings-link:link.pxh-login__settings-link:link.pxh-login__settings-link:link,
 .pxh-login__settings-link:visited.pxh-login__settings-link:visited.pxh-login__settings-link:visited { // chained to override px-theme
   float: right;
-  padding: $pxh-login-magic-centering ($pxh-drawer-margin / 2) ($pxh-drawer-margin / 2) ($pxh-drawer-margin / 2);
+  padding: 0 ($pxh-drawer-margin / 2) 0 ($pxh-drawer-margin / 2);
+  // padding: $pxh-login-magic-centering ($pxh-drawer-margin / 2) ($pxh-drawer-margin / 2) ($pxh-drawer-margin / 2);
   color: $gray7;
   text-decoration: none;
 }
