@@ -1,6 +1,9 @@
 #pxh-chrome changelog
 
 ### pending release
+* _nothing yet..._
+
+### 1.2.0 - July 26, 2016
 * Adjust width and spacing of pxh-login user name and settings cog icon
 * Add a `pxh.toast.getNotifications()` method which returns an array of IDs of notifications in the notification list (if any)
 
@@ -22,6 +25,7 @@
   * Remove dismissed toast from DOM
   * If a toast has an action, populate the notification list with it
   * If a toast has an action, allow it to be persistent (i.e. the toast does not automatically dismiss after 5 seconds)
+  * Strip HTML tags, if any, from toast text
   * Return the `id` of a toast after it is added with `pxh.toast.add()`
 * **Add pxh-notifications and pxh-notification components**
   * Notifications are toasts that have actions (either URL-based or callback-based) on them, and can be persistent or non-persistent
