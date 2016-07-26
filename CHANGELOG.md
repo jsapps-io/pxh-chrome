@@ -1,7 +1,10 @@
 #pxh-chrome changelog
 
 ### pending release
-* Add JSDoc-formatted code comments to `pxh-chrome.js`
+* Automatically dismiss a toast/notification when the user clicks its action button (either link or callback)
+* Patch bug where clicking the notifications icon would redirect the user off their current route
+* Patch bug where clicking to clear all notifications would redirect the user off their current route
+* Begin adding JSDoc-formatted code comments to `pxh-chrome.js`
 
 ### 1.2.0 - July 26, 2016
 * Adjust width and spacing of pxh-login user name and settings cog icon
