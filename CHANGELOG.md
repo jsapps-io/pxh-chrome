@@ -1,7 +1,7 @@
 #pxh-chrome changelog
 
 ### pending release
-* _nothing yet..._
+* Add JSDoc-formatted code comments to `pxh-chrome.js`
 
 ### 1.2.0 - July 26, 2016
 * Adjust width and spacing of pxh-login user name and settings cog icon
