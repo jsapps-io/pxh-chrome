@@ -1,6 +1,6 @@
 #pxh-chrome changelog
 
-### pending release
+### 1.2.1 - July 26, 2016
 * Automatically dismiss a toast/notification when the user clicks its action button (either link or callback)
 * Patch bug where clicking the notifications icon would redirect the user off their current route
 * Patch bug where clicking to clear all notifications would redirect the user off their current route
