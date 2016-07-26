@@ -4296,7 +4296,7 @@ sub {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  max-width: 130px;
+  max-width: 120px;
 }
 
 @media (min-width: 48em) {
@@ -4526,7 +4526,7 @@ sub {
 .pxh-login__settings-link:link.pxh-login__settings-link:link.pxh-login__settings-link:link,
 .pxh-login__settings-link:visited.pxh-login__settings-link:visited.pxh-login__settings-link:visited {
   float: right;
-  padding: 14px 10px 10px 10px;
+  padding: 0 10px 0 10px;
   color: #7c7c84;
   text-decoration: none;
 }
