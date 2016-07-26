@@ -844,9 +844,10 @@ pxh.Cookies = Cookies.noConflict();
 // GENERIC FUNCTIONS
 // *********
 
-// polyfill to support .remove() in IE11
-// https://developer.mozilla.org/en-US/docs/Web/API/ChildNode/remove
-
+/**
+ * polyfill to support .remove() in IE11
+ * https://developer.mozilla.org/en-US/docs/Web/API/ChildNode/remove
+ */
 if (!('remove' in Element.prototype)) {
   Element.prototype.remove = function()
   {
@@ -856,7 +857,11 @@ if (!('remove' in Element.prototype)) {
   }
 }
 
-/* arrayExists() */
+/**
+ * checks if an array exists
+ * @param {Array} array
+ * @returns {Boolean} true if array exists, false if it does not
+ */
 pxh.arrayExists = function(array) {
   if ((typeof array !== 'undefined') && (array.length > 0))
   {
@@ -868,7 +873,12 @@ pxh.arrayExists = function(array) {
   }
 }
 
-/* getItemByPropertyName() */
+/**
+ * Returns an item from an object based on its property name
+ * @param {Object} haystack
+ * @param {String} propertyName
+ * @returns {Object|Boolean} Object that corresponds to the property name if found, false if not
+ */
 pxh.getItemByPropertyName = function(haystack, propertyName) {
   for (var i in haystack)
   {
@@ -876,11 +886,21 @@ pxh.getItemByPropertyName = function(haystack, propertyName) {
     {
       return haystack[propertyName];
     }
+    else {
+      return false;
+    }
   }
 }
 
+/**
+ * Returns the value of a particular CSS property of an HTML element
+ * @param {String} id The id="" attribute of the HTML element
+ * @param {String} property The CSS property to query, e.g. z-index
+ * @returns {String|Boolean} CSS property value if found, false if not
+ */
 pxh.getStyle = function(id, property) {
   var element = document.getElementById(id);
+  var style = '';
   if (window.getComputedStyle)
   {
     var style = document.defaultView.getComputedStyle(element, null).getPropertyValue(property);
@@ -892,6 +912,11 @@ pxh.getStyle = function(id, property) {
   return style;
 }
 
+/**
+ * Strips HTML tags from a given string
+ * @param {String} html A string that may contain HTML tags
+ * @returns {String|Boolean} Input string's text with HTML removed, false if no input parameter provided
+ */
 pxh.stripHTML = function(html) {
   if (html)
   {
