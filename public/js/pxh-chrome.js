@@ -5,6 +5,7 @@
 // CONFIG OBJECTS
 // **************
 
+/** @class pxh */
 var pxh = {};
 
 pxh.PREFIX = 'pxh-';
@@ -855,6 +856,7 @@ pxh.Cookies = Cookies.noConflict();
 /**
  * polyfill to support .remove() in IE11
  * https://developer.mozilla.org/en-US/docs/Web/API/ChildNode/remove
+ * 
  */
 if (!('remove' in Element.prototype)) {
   Element.prototype.remove = function()
@@ -867,6 +869,7 @@ if (!('remove' in Element.prototype)) {
 
 /**
  * checks if an array exists
+ * 
  * @param {Array} array
  * @returns {Boolean} true if array exists, false if it does not
  */
@@ -883,6 +886,7 @@ pxh.arrayExists = function(array) {
 
 /**
  * Returns an item from an object based on its property name
+ * 
  * @param {Object} haystack
  * @param {String} propertyName
  * @returns {Object|Boolean} Object that corresponds to the property name if found, false if not
@@ -902,6 +906,7 @@ pxh.getItemByPropertyName = function(haystack, propertyName) {
 
 /**
  * Returns the value of a particular CSS property of an HTML element
+ * 
  * @param {String} id The id="" attribute of the HTML element
  * @param {String} property The CSS property to query, e.g. z-index
  * @returns {String|Boolean} CSS property value if found, false if not
@@ -922,6 +927,7 @@ pxh.getStyle = function(id, property) {
 
 /**
  * Strips HTML tags from a given string
+ * 
  * @param {String} html A string that may contain HTML tags
  * @returns {String|Boolean} Input string's text with HTML removed, false if no input parameter provided
  */
@@ -938,7 +944,12 @@ pxh.stripHTML = function(html) {
   }
 }
 
-/* pxh.loadState() */
+/**
+ * Load a state from a state object, and change the CSS classes on all relevant HTML elements
+ * 
+ * @param {Object} stateObject An object containing the states of your application
+ * @param {String} targetStateName The name of the desired state to load from the state object
+ */
 pxh.loadState = function(stateObject, targetStateName) {
   // grab the target state object from the master states object
   var targetState = pxh.getItemByPropertyName(stateObject, targetStateName);
@@ -958,8 +969,14 @@ pxh.loadState = function(stateObject, targetStateName) {
   }
 }
 
-/* pxh.changeClasses() */
-// e.g. pxh.changeClasses('nav', 'add', 'hidden--until-@md')
+/**
+ * Change the classes on a target HTML element
+ * 
+ * e.g. pxh.changeClasses('nav', 'add', 'hidden--until-@md')
+ * @param {String} targetClassName Base CSS class of the targeted HTML elements to be changed
+ * @param {String} changeType Type of change to apply. Options are `add`, `remove`, `toggle` 
+ * @param {String} classNamesToChange List of classes to change on the targeted HTML elements, separated by spaces
+ */
 pxh.changeClasses = function(targetClassName, changeType, classNamesToChange) {
   var targetElements = document.getElementsByClassName(targetClassName);
   if (pxh.arrayExists(targetElements) && (classNamesToChange))
@@ -987,7 +1004,11 @@ pxh.changeClasses = function(targetClassName, changeType, classNamesToChange) {
   }
 }
 
-/* pxh.bindControl() */
+/**
+ * Bind drawer state change events to toggle buttons, which will change the state of the drawer depending on the current drawer and responsive contexts
+ * 
+ * @param {String} controlName CSS class name of control to bind events to
+ */
 pxh.bindControl = function(controlName) {
   var controlElements = document.getElementsByClassName(controlName);
   if (pxh.arrayExists(controlElements))
@@ -1053,6 +1074,11 @@ pxh.bindControl = function(controlName) {
   }
 }
 
+/**
+ * Create drawer state change events that should fire when the browser transitions between the medium breakpoint
+ * 
+ * @param {String} breakpoint 
+ */
 pxh.breakpointAtMd = function(breakpoint) {
   pxh.loadState(pxh.transitions, 'clearAll');
   var firstDrawer = document.getElementsByClassName('pxh-drawer')[0];
@@ -1078,6 +1104,11 @@ pxh.breakpointAtMd = function(breakpoint) {
   }
 }
 
+/**
+ * Create drawer state change events that should fire when the browser transitions between the medium breakpoint
+ * 
+ * @param {String} breakpoint 
+ */
 pxh.breakpointAtLg = function(breakpoint) {
   pxh.loadState(pxh.transitions, 'clearAll');
   var firstDrawer = document.getElementsByClassName('pxh-drawer')[0];
@@ -1122,6 +1153,12 @@ pxh.breakpointAtLg = function(breakpoint) {
   }
 }
 
+/**
+ * Bind media queries to drawer controls or something
+ * 
+ * @param {String} targetClass CSS class name of elements to bind to
+ * @param {Object} window.matchMedia object
+ */
 pxh.bindDrawerMediaQueryControls = function(targetClass, mediaQuery) {
   var targetElements = document.getElementsByClassName(targetClass);
   if (pxh.arrayExists(targetElements))
@@ -1142,6 +1179,11 @@ pxh.bindDrawerMediaQueryControls = function(targetClass, mediaQuery) {
   }
 }
 
+/**
+ * When the user clicks the overlay, hide the drawer at the small breakpoint, or collapse the drawer at the narrow breakpoint
+ * If the notification list is displayed, hide it when the user clicks the overlay but don't hide or collapse the drawer
+ * 
+ */
 pxh.overlayDrawerControl = function() {
   var overlay = document.getElementsByClassName('pxh-overlay');
   var notifications = document.getElementsByClassName('pxh-notifications');
@@ -1171,6 +1213,10 @@ pxh.overlayDrawerControl = function() {
   }
 }
 
+/**
+ * When the user hits the "ESC" key on the keyboard, hide the drawer at the small breakpoint, or collapse the drawer at the narrow breakpoint
+ * 
+ */
 pxh.escapeDrawerControl = function() {
   document.addEventListener('keyup', function(e) {
     if ((e.keyCode == 27) && (!lgBreakpoint.matches) && (pxh.Cookies.get('pxh-drawer-open') === 'true'))
@@ -1184,6 +1230,13 @@ pxh.escapeDrawerControl = function() {
   })
 }
 
+/**
+ * Toggle visibility of a login menu
+ * 
+ * @param {String} toggleControl CSS class name of the HTML elements to turn into controls that will fire this event
+ * @param {String} toggleTarget CSS class name of the login menu HTML elements that should have their visibility toggled
+ * @param {string} toggleClass Space-delimited list of CSS class names to toggle on the target HTML elements when this event fires
+ */
 pxh.toggleLoginMenu = function(toggleControl, toggleTarget, toggleClass) {
   var toggleControlElements = document.getElementsByClassName(toggleControl);
   var toggleTargetElements = document.getElementsByClassName(toggleTarget);
@@ -1205,6 +1258,11 @@ pxh.toggleLoginMenu = function(toggleControl, toggleTarget, toggleClass) {
   }
 }
 
+/**
+ * Add a sensor that will fire a viewResized event every time its corresponding element changes size
+ * 
+ * @param {string} targetId The id of the target HTML element that should fire an event when it resizes
+ */
 pxh.addResizeSensor = function(targetId) {
   var targetElement = document.getElementById(targetId);
   if (targetElement)
@@ -1217,7 +1275,15 @@ pxh.addResizeSensor = function(targetId) {
 
 pxh.action = {};
 
-// toggles classes on an element onclick, and immediately fires any event on the click target area
+/**
+ * Toggle classes on an element when clicked, and immediately fires any event on the click target area
+ * 
+ * @param {string} control CSS class name of the HTML elements that should act as controls for firing this event
+ * @param {string} target CSS class name of the target HTML elements that should be changed when this event is fired
+ * @param {string} change Type of change to perform on the target HTML elements. Options are `add`, `remove`, `toggle`
+ * @param {string} className Space-delimited list of CSS classes to change on the target HTML elements
+ */
+
 pxh.action.clickToCloseAndFire = function(control, target, change, className)
 {
   var controlElement = document.getElementsByClassName(control);
@@ -1230,7 +1296,13 @@ pxh.action.clickToCloseAndFire = function(control, target, change, className)
   }
 }
 
-// toggles classes on an element onclick, and does not fire any event tied to the click target area
+/**
+ * Toggle classes on an element when clicked, but do not fire any event tied to the click target area
+ * 
+ * @param {string} control Unique ID of the HTML element that should act as controls for firing this event
+ * @param {string} target Unique ID of the target HTML element that should be changed when this event is fired
+ * @param {string} className The class to be removed from the target HTML element
+ */
 pxh.action.clickToCloseAndHold = function(control, target, className) {
   var controlElement = document.getElementById(control);
   var closeElement = document.getElementById('js-closer');
