@@ -1439,7 +1439,11 @@ pxh.toast = {
       pxh.toast.badge.increment();
       pxh.toast.action.dismissButton(notificationElement, 'notification', id);
       pxh.toast.action.expandButton(notificationElement, 'notification');
-      if (object.actionCallback)
+      if (object.actionLink)
+      {
+        pxh.toast.action.bindLink(toastElement, 'notification__link', id);
+      }
+      else if (object.actionCallback)
       {
         pxh.toast.action.bindCallback(toastElement, 'notification__link', id, object.actionCallback);
       }
@@ -1450,7 +1454,11 @@ pxh.toast = {
       var toastElement = toastList.insertBefore(pxh.toast.markup.createToast(object, id), toastFirstChild);
       pxh.toast.action.dismissButton(toastElement, 'toast', id);
       pxh.toast.action.expandButton(toastElement, 'toast');
-      if (object.actionCallback)
+      if (object.actionLink) 
+      {
+        pxh.toast.action.bindLink(toastElement, 'toast__button', id);
+      }
+      else if (object.actionCallback)
       {
         pxh.toast.action.bindCallback(toastElement, 'toast__button', id, object.actionCallback);
       }
@@ -1512,6 +1520,23 @@ pxh.toast = {
         button.addEventListener('click', function(event) {
           event.preventDefault();
           pxh.toast.action.fireCallback(callback);
+          pxh.toast.hide(id);
+          setTimeout(function() {
+            pxh.toast.remove(id);
+          }, 1000);
+        })
+      }
+    },
+
+    bindLink : function(element, slug, id) {
+      var button = document.getElementById('js-' + slug + '--' + id);
+      if (button)
+      {
+        button.addEventListener('click', function(event) {
+          pxh.toast.hide(id);
+          setTimeout(function() {
+            pxh.toast.remove(id);
+          }, 1000);
         })
       }
     },
@@ -1645,7 +1670,7 @@ pxh.toast = {
       var markup = [];
       markup.push('<div class="pxh-' + slug + '__text">\n');
       if (object.actionLink) {
-        markup.push('  <a class="pxh-' + slug + '__link" href="' + object.actionLink + '">\n');
+        markup.push('  <a class="pxh-' + slug + '__link" href="' + object.actionLink + '" id="js-' + slug + '__link--' + id + '">\n');
       } else if (object.actionCallback)
       {
         markup.push('  <a class="pxh-' + slug + '__link" href="#" id="js-' + slug + '__link--' + id + '">\n');
