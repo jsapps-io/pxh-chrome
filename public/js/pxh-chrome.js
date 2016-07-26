@@ -1191,7 +1191,7 @@ pxh.overlayDrawerControl = function() {
   {
     for (var i = overlay.length - 1; i >= 0; i--)
     {
-      overlay[i].addEventListener('click', function(e) {
+      overlay[i].addEventListener('click', function(event) {
         if ((!lgBreakpoint.matches) && (pxh.Cookies.get('pxh-drawer-open') === 'true'))
         {
           // if the notifications list is visible, close it when clicking the overlay but don't close the drawer
@@ -1218,8 +1218,8 @@ pxh.overlayDrawerControl = function() {
  * 
  */
 pxh.escapeDrawerControl = function() {
-  document.addEventListener('keyup', function(e) {
-    if ((e.keyCode == 27) && (!lgBreakpoint.matches) && (pxh.Cookies.get('pxh-drawer-open') === 'true'))
+  document.addEventListener('keyup', function(event) {
+    if ((event.keyCode == 27) && (!lgBreakpoint.matches) && (pxh.Cookies.get('pxh-drawer-open') === 'true'))
     {
       pxh.loadState(pxh.transitions, 'clearAll');
       pxh.loadState(pxh.states, 'default');
@@ -1244,15 +1244,15 @@ pxh.toggleLoginMenu = function(toggleControl, toggleTarget, toggleClass) {
   {
     for (var i = toggleControlElements.length - 1; i >= 0; i--)
     {
-      toggleControlElements[i].addEventListener('click', function(e) {
-        e.preventDefault();
+      toggleControlElements[i].addEventListener('click', function(event) {
+        event.preventDefault();
         var menuIsVisible = toggleTargetElements[0].classList.contains(toggleClass);
         pxh.changeClasses('pxh-login-menu', 'remove', toggleClass);
         if (!menuIsVisible)
         {
           pxh.changeClasses(toggleTarget, 'toggle', toggleClass);
         }
-        e.stopPropagation();
+        event.stopPropagation();
       });
     }
   }
@@ -1290,7 +1290,7 @@ pxh.action.clickToCloseAndFire = function(control, target, change, className)
   var targetElement = document.getElementsByClassName(target);
   if ((pxh.arrayExists(controlElement)) && (pxh.arrayExists(targetElement)))
   {
-    document.addEventListener('click', function(e) {
+    document.addEventListener('click', function(event) {
       pxh.changeClasses(target, change, className);
     });
   }
