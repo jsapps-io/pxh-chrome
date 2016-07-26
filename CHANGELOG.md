@@ -1,7 +1,8 @@
 #pxh-chrome changelog
 
 ### pending release
-* _nothing yet..._
+* Adjust width and spacing of pxh-login user name and settings cog icon
+* Add a `pxh.toast.getNotifications()` method which returns an array of IDs of notifications in the notification list (if any)
 
 ### 1.1.0 - July 25, 2016
 * **Add pxh-toasts and pxh-toast components**

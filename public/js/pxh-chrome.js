@@ -1628,6 +1628,25 @@ pxh.toast = {
       element.innerHTML = markup;
       return element;
     }
+  },
+  getNotifications : function() {
+    var notifications = [];
+    var notificationList = document.getElementById('js-notifications__list');
+    var notificationElements = '';
+    if (notificationList) 
+    {
+      notificationElements = notificationList.getElementsByClassName('pxh-notification');
+    }
+    if (notificationElements.length > 0) {
+      for (var i = notificationElements.length - 1; i >= 0; i--) 
+      {
+        notifications.push(notificationElements[i].id)
+      }
+      return notifications;
+    }
+    else {
+      return false;
+    }
   }
 }
 
