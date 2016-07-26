@@ -35,6 +35,9 @@ pxh.DRAWER_ANIMATE_WIDE = pxh.DRAWER + pxh.ANIMATE_WIDE;
 pxh.DRAWER_ANIMATE_NARROW = pxh.DRAWER + pxh.ANIMATE_NARROW;
 pxh.DRAWER_ANIMATE_OUT_WIDE = pxh.DRAWER + pxh.ANIMATE_OUT_WIDE;
 
+// drawer__toggle
+pxh.DRAWER_TOGGLE = pxh.PREFIX + 'drawer-toggle';
+
 // drawer-header__link
 pxh.DRAWER_HEADER_LINK = pxh.PREFIX + 'drawer-header__link';
 pxh.DRAWER_HEADER_LINK_WIDE_AT_MD = pxh.DRAWER_HEADER_LINK + pxh.WIDE + pxh.AT_MD;
@@ -56,6 +59,11 @@ pxh.NAVIGATION_WIDE_AT_LG = pxh.NAVIGATION + pxh.WIDE + pxh.AT_LG;
 pxh.NAVIGATION_ITEM_TEXT = pxh.PREFIX + 'navigation__item-text';
 pxh.NAVIGATION_ITEM_TEXT_ANIMATE_IN = pxh.NAVIGATION_ITEM_TEXT + pxh.ANIMATE_IN;
 pxh.NAVIGATION_ITEM_TEXT_ANIMATE_OUT = pxh.NAVIGATION_ITEM_TEXT + pxh.ANIMATE_OUT;
+
+// navigation__link
+pxh.NAVIGATION_LINK = pxh.PREFIX + 'navigation__link';
+pxh.NAVIGATION_LINK_ANIMATE_IN = pxh.NAVIGATION_LINK + pxh.ANIMATE_IN;
+pxh.NAVIGATION_LINK_ANIMATE_OUT = pxh.NAVIGATION_LINK + pxh.ANIMATE_OUT;
 
 // navigation__sub-link
 pxh.NAVIGATION_SUB_LINK = pxh.PREFIX + 'navigation__sub-link';
@@ -1709,8 +1717,8 @@ pxh.drawerClosed.initCustomEvent('pxh.drawerClosed', false, false, {
 });
 
 document.addEventListener('DOMContentLoaded', function(event) {
-  pxh.bindControl('pxh-view-header-drawer-toggle');
-  pxh.bindControl('pxh-drawer-toggle');
+  pxh.bindControl(pxh.VIEW_HEADER_DRAWER_TOGGLE);
+  pxh.bindControl(pxh.DRAWER_TOGGLE);
 
   if (pxh.Cookies.get('pxh-drawer-open') === null)
   {
@@ -1739,12 +1747,12 @@ document.addEventListener('DOMContentLoaded', function(event) {
   }
   document.addEventListener('navRefreshed', function(event)
   {
-    pxh.toggleLoginMenu('pxh-login__profile-link', 'pxh-login-menu--profile', 'pxh-login-menu--visible');
-    pxh.toggleLoginMenu('pxh-login__settings-link', 'pxh-login-menu--settings', 'pxh-login-menu--visible');
+    pxh.toggleLoginMenu(pxh.LOGIN_PROFILE_LINK, pxh.LOGIN_MENU_PROFILE, pxh.LOGIN_MENU_VISIBLE);
+    pxh.toggleLoginMenu(pxh.LOGIN_SETTINGS_LINK, pxh.LOGIN_MENU_SETTINGS, pxh.LOGIN_MENU_VISIBLE);
   });
 
-  pxh.bindDrawerMediaQueryControls('pxh-navigation__link', lgBreakpoint);
-  pxh.bindDrawerMediaQueryControls('pxh-navigation__sub-link', lgBreakpoint);
+  pxh.bindDrawerMediaQueryControls(pxh.NAVIGATION_LINK, lgBreakpoint);
+  pxh.bindDrawerMediaQueryControls(pxh.NAVIGATION_SUB_LINK, lgBreakpoint);
 
   pxh.overlayDrawerControl();
 
@@ -1753,10 +1761,10 @@ document.addEventListener('DOMContentLoaded', function(event) {
   pxh.action.clickToCloseAndFire(pxh.LOGIN_PROFILE_LINK, pxh.LOGIN_MENU_PROFILE, 'remove', pxh.LOGIN_MENU_VISIBLE);
   pxh.action.clickToCloseAndFire(pxh.LOGIN_SETTINGS_LINK, pxh.LOGIN_MENU_SETTINGS, 'remove', pxh.LOGIN_MENU_VISIBLE);
 
-  pxh.toggleLoginMenu('pxh-login__profile-link', 'pxh-login-menu--profile', 'pxh-login-menu--visible');
-  pxh.toggleLoginMenu('pxh-login__settings-link', 'pxh-login-menu--settings', 'pxh-login-menu--visible');
+  pxh.toggleLoginMenu(pxh.LOGIN_PROFILE_LINK, pxh.LOGIN_MENU_PROFILE, pxh.LOGIN_MENU_VISIBLE);
+  pxh.toggleLoginMenu(pxh.LOGIN_SETTINGS_LINK, pxh.LOGIN_MENU_SETTINGS, pxh.LOGIN_MENU_VISIBLE);
 
-  pxh.toggleNotifications('pxh-login__notifications', 'pxh-notifications', 'pxh-notifications--visible');
+  pxh.toggleNotifications(pxh.LOGIN_NOTIFICATIONS, pxh.NOTIFICATIONS, pxh.NOTIFICATIONS_VISIBLE);
 
   pxh.addResizeSensor('js-view');
 });
