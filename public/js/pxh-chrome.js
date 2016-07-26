@@ -1340,16 +1340,25 @@ if (notificationsIcon = document.getElementById('js-login__notifications'))
   })
 }
 
-// this is a hack
-pxh.toggleNotifications = function(toggleControl, toggleTarget, toggleClass) {
-  var controlElement = document.getElementsByClassName(toggleControl);
-  var targetElement = document.getElementsByClassName(toggleTarget);
-  if ((pxh.arrayExists(controlElement)) && (pxh.arrayExists(targetElement)))
+/**
+ * Toggle classes on an element when clicked
+ * 
+ * @param {string} control CSS class name of the HTML elements that should act as controls for firing this event
+ * @param {string} target CSS class name of the target HTML elements that should be changed when this event is fired
+ * @param {string} className The class to be removed from the target HTML element
+ */
+pxh.toggleMenu = function(control, target, className) {
+  var controlElements = document.getElementsByClassName(control);
+  var targetElements = document.getElementsByClassName(target);
+  if ((pxh.arrayExists(controlElements)) && (pxh.arrayExists(targetElements)))
   {
-    controlElement[0].addEventListener('click', function(e)
+    for (var i = controlElements.length - 1; i >= 0; i--)
     {
-      pxh.changeClasses(toggleTarget, 'toggle', toggleClass);
-    })
+      controlElements[i].addEventListener('click', function(event) {
+        event.preventDefault();
+        pxh.changeClasses(target, 'toggle', className);
+      })
+    }
   }
 }
 
@@ -1836,7 +1845,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
   pxh.toggleLoginMenu(pxh.LOGIN_PROFILE_LINK, pxh.LOGIN_MENU_PROFILE, pxh.LOGIN_MENU_VISIBLE);
   pxh.toggleLoginMenu(pxh.LOGIN_SETTINGS_LINK, pxh.LOGIN_MENU_SETTINGS, pxh.LOGIN_MENU_VISIBLE);
 
-  pxh.toggleNotifications(pxh.LOGIN_NOTIFICATIONS, pxh.NOTIFICATIONS, pxh.NOTIFICATIONS_VISIBLE);
+  pxh.toggleMenu(pxh.LOGIN_NOTIFICATIONS, pxh.NOTIFICATIONS, pxh.NOTIFICATIONS_VISIBLE);
 
   pxh.addResizeSensor('js-view');
 });
