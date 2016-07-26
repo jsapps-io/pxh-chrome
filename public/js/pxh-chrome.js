@@ -1791,8 +1791,9 @@ pxh.toast = {
 
 if (document.getElementById('js-notifications__link--clear'))
 {
-  document.getElementById('js-notifications__link--clear').addEventListener('click', function() {
-  pxh.toast.action.removeAllButton();
+  document.getElementById('js-notifications__link--clear').addEventListener('click', function(event) {
+    event.preventDefault();
+    pxh.toast.action.removeAllButton();
   })
 }
 
