@@ -1800,6 +1800,12 @@ pxh.toast = {
       return markup;
     },
 
+    /**
+     * Generates the HTML markup for displaying a toast's text
+     * 
+     * @param {Object} object The JavaScript object of the toast that is being created
+     * @param {String} slug The text slug to be used when generating class names and targets
+     */
     toastText : function(object, slug)
     {
       var text = object.text ? pxh.stripHTML(object.text) : 'You received a new notification.';
@@ -1812,6 +1818,13 @@ pxh.toast = {
       return markup;
     },
 
+    /**
+     * Generates the HTML markup for displaying a notification's text
+     * 
+     * @param {Object} object The JavaScript object of the notification that is being created
+     * @param {String} slug The text slug to be used when generating class names and targets
+     * @param {String} id The unique ID of the notification being created
+     */
     notificationText : function(object, slug, id)
     {
       var text = object.text ? pxh.stripHTML(object.text) : 'You received a new notification.';
@@ -1834,6 +1847,12 @@ pxh.toast = {
       return markup;
     },
 
+    /**
+     * Generates the HTML markup for displaying a toast/notification's "show more" button
+     * 
+     * @param {Object} object The JavaScript object of the toast/notification that is being created
+     * @param {String} slug The text slug to be used when generating class names and targets
+     */
     more : function(object, slug) {
       var markup = [];
       markup.push('  <div class="pxh-' + slug + '__more">\n');
@@ -1845,6 +1864,13 @@ pxh.toast = {
       return markup;
     },
 
+    /**
+     * DISABLED: Generates the HTML markup for displaying a notification's timestamp
+     * 
+     * This is disabled until we determine how we want to handle time zones, date formatting, and relative dates
+     * @param {Object} object The JavaScript object of the notification that is being created
+     * @param {String} slug The text slug to be used when generating class names and targets
+     */
     // timestamp : function(object, slug) {
     //   var timestamp = object.timestamp ? object.timestamp : false;
     //   var markup = [];
@@ -1858,6 +1884,13 @@ pxh.toast = {
     //   return markup;
     // },
 
+    /**
+     * Generates the HTML markup for displaying a toast/notification's "dismiss" button
+     * 
+     * @param {Object} object The JavaScript object of the toast/notification that is being created
+     * @param {String} slug The text slug to be used when generating class names and targets
+     * @param {String} id The unique ID of the toast/notification being created, and that will be dismissed
+     */
     dismiss : function(object, slug, id) {
       var markup = [];
       markup.push('<div class="pxh-' + slug + '__dismiss">\n');
@@ -1869,6 +1902,13 @@ pxh.toast = {
       return markup;
     },
 
+    /**
+     * Generates the HTML markup for displaying a toast/'s action button, which can be either a hyperlink (relative or absolute) or a callback
+     * 
+     * @param {Object} object The JavaScript object of the toast that is being created
+     * @param {String} slug The text slug to be used when generating class names and targets
+     * @param {String} id The unique ID of the toast/notification being created
+     */
     button : function(object, slug, id) {
       var markup = [];
       if (object.actionLink)
@@ -1887,6 +1927,13 @@ pxh.toast = {
       return markup;
     },
 
+    /**
+     * Generate the complete HTML markup for creating a new toast
+     * 
+     * @param {Object} object The JavaScript object of the toast that should be created
+     * @param {String} id The unique ID of the toast being created
+     * @returns {Element} element A toast element that can be inserted into the DOM
+     */
     createToast : function(object, id) {
       var slug = 'toast';
       var element = document.createElement('div');
@@ -1902,6 +1949,13 @@ pxh.toast = {
       return element;
     },
 
+    /**
+     * Generate the complete HTML markup for creating a new notification
+     * 
+     * @param {Object} object The JavaScript object of the notification that should be created
+     * @param {String} id The unique ID of the toast/notification being created, and that will be dismissed
+     * @returns {Element} element A notification element that can be inserted into the DOM
+     */
     createNotification : function(object, id) {
       var slug = 'notification';
       var element = document.createElement('div');
@@ -1916,6 +1970,11 @@ pxh.toast = {
       return element;
     }
   },
+  /**
+   * Returns an array of all notifications currently displayed in the notification list
+   * 
+   * @returns {Array|Boolean} notifications An array of notification IDs, or false if no notifications are currently displayed in the notification list
+   */
   getNotifications : function() {
     var notifications = [];
     var notificationList = document.getElementById('js-notifications__list');
