@@ -1996,14 +1996,6 @@ pxh.toast = {
   }
 }
 
-if (document.getElementById('js-notifications__link--clear'))
-{
-  document.getElementById('js-notifications__link--clear').addEventListener('click', function(event) {
-    event.preventDefault();
-    pxh.toast.action.removeAllButton();
-  })
-}
-
 // ********
 // FIRE!!!!
 // ********
@@ -2081,4 +2073,12 @@ document.addEventListener('DOMContentLoaded', function(event) {
   pxh.toggleMenu(pxh.LOGIN_NOTIFICATIONS, pxh.NOTIFICATIONS, pxh.NOTIFICATIONS_VISIBLE);
 
   pxh.addResizeSensor('js-view');
+
+  if (document.getElementById('js-notifications__link--clear'))
+  {
+    document.getElementById('js-notifications__link--clear').addEventListener('click', function(event) {
+      event.preventDefault();
+      pxh.toast.action.removeAllButton();
+    })
+  }
 });
