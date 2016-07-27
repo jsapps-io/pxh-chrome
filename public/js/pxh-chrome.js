@@ -1499,44 +1499,44 @@ pxh.toast = {
    *   pxh.toast.add(toastObject3);
    *   pxh.toast.add(toastObject4);
    * });
-   * @param {object} toastObject An object containing the parameters for the toast (and notification, if applicable) that will be created
-   * @param {Boolean} [suppressToast=false] An optional parameter that, if true, will only create a notification (if applicable) from the toastObject, and will display a corresponding toast to the user
+   * @param {object} object An object containing the parameters for the toast (and notification, if applicable) that will be created
+   * @param {Boolean} [suppressToast=false] An optional parameter that, if true, will only create a notification (if applicable) from the object, and will display a corresponding toast to the user
    */
-  add : function(toastObject, suppressToast) {
+  add : function(object, suppressToast) {
     var id = Math.floor(Math.random()*16777215).toString(16);
     var notificationList = '';
     var toastList = '';
-    if ((notificationList = document.getElementById('js-notifications__list')) && ((toastObject.actionLink) || (toastObject.actionCallback)))
+    if ((notificationList = document.getElementById('js-notifications__list')) && ((object.actionLink) || (object.actionCallback)))
     {
       var notificationFirstChild = notificationList.firstChild;
-      var notificationElement = notificationList.insertBefore(pxh.toast.markup.createNotification(toastObject, id), notificationFirstChild);
+      var notificationElement = notificationList.insertBefore(pxh.toast.markup.createNotification(object, id), notificationFirstChild);
       pxh.toast.badge.increment();
       pxh.toast.action.dismissButton(notificationElement, 'notification', id);
       pxh.toast.action.expandButton(notificationElement, 'notification');
-      if (toastObject.actionLink)
+      if (object.actionLink)
       {
         pxh.toast.action.bindLink(toastElement, 'notification__link', id);
       }
-      else if (toastObject.actionCallback)
+      else if (object.actionCallback)
       {
-        pxh.toast.action.bindCallback(toastElement, 'notification__link', id, toastObject.actionCallback);
+        pxh.toast.action.bindCallback(toastElement, 'notification__link', id, object.actionCallback);
       }
     }
     if ((toastList = document.getElementById('js-toasts')) && (!suppressToast))
     {
       var toastFirstChild = toastList.firstChild;
-      var toastElement = toastList.insertBefore(pxh.toast.markup.createToast(toastObject, id), toastFirstChild);
+      var toastElement = toastList.insertBefore(pxh.toast.markup.createToast(object, id), toastFirstChild);
       pxh.toast.action.dismissButton(toastElement, 'toast', id);
       pxh.toast.action.expandButton(toastElement, 'toast');
-      if (toastObject.actionLink) 
+      if (object.actionLink) 
       {
         pxh.toast.action.bindLink(toastElement, 'toast__button', id);
       }
-      else if (toastObject.actionCallback)
+      else if (object.actionCallback)
       {
-        pxh.toast.action.bindCallback(toastElement, 'toast__button', id, toastObject.actionCallback);
+        pxh.toast.action.bindCallback(toastElement, 'toast__button', id, object.actionCallback);
       }
-      if (!toastObject.isPersistent)
+      if (!object.isPersistent)
       {
         setTimeout(function() {
           if (!toastElement.classList.contains('pxh-toast--expanded'))
@@ -1785,13 +1785,13 @@ pxh.toast = {
     /**
      * Generates the HTML markup for displaying a toast/notification's icon
      * 
-     * @param {Object} toastObject The JavaScript object of the toast that should be created
+     * @param {Object} object The JavaScript object of the toast/notification that is being created
      * @param {String} slug The text slug to be used when generating class names and targets
      */
-    icon : function(toastObject, slug)
+    icon : function(object, slug)
     {
-      var icon = toastObject.icon ? toastObject.icon : 'info-circle';
-      var type = toastObject.type ? toastObject.type : 'blue';
+      var icon = object.icon ? object.icon : 'info-circle';
+      var type = object.type ? object.type : 'blue';
       var markup = [];
       markup.push('<div class="pxh-' + slug + '__icon pxh-' + slug + '__icon--' + type + '">\n');
       markup.push('  <i class="fa fa-' + icon + '"></i>\n');
