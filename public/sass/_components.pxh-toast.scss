@@ -2,10 +2,24 @@
     #components.pxh-toast
 \*------------------------------------*/
 
+/// Flag to enable or disable pxh-toasts
+/// @group pxh-toast
+/// @type Boolean
 $pxh-toasts-enabled : false !default;
 
+/// Height of a (non-expanded) toast
+/// @group pxh-toast
+/// @type Number
 $pxh-toast-height: 70px;
+
+/// Default margin for toast components
+/// @group pxh-toast
+/// @type Number
 $pxh-toast-margin: 5px;
+
+/// Maximum number of toasts to display at once
+/// @group pxh-toast
+/// @type Number
 $pxh-toast-max-count: 3;
 
 @mixin pxh-toast {

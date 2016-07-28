@@ -38,7 +38,7 @@
   color: $error-title-color;
   a, 
   a:link {
-    text-decoration: $error-text-decoration;
+    text-decoration: $error-link-text-decoration;
   }
 }
 
@@ -47,6 +47,6 @@
   color: $error-description-color;
   a, 
   a:link {
-    text-decoration: $error-text-decoration;
+    text-decoration: $error-link-text-decoration;
   }
 }
