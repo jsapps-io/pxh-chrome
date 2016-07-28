@@ -5,7 +5,7 @@
 // CONFIG OBJECTS
 // **************
 
-/** @class pxh */
+/** @namespace pxh */
 var pxh = {};
 
 pxh.PREFIX = 'pxh-';
@@ -520,7 +520,7 @@ pxh.transitions = {
   /**
    * Class for dimension change detection.
    *
-   * @param {Element|Element[]|Elements|jQuery} element
+   * @param {HTMLElement|Element[]|Elements|jQuery} element
    * @param {Function} callback
    *
    * @constructor
@@ -867,7 +867,7 @@ if (!('remove' in Element.prototype)) {
   }
 }
 
-/**
+/** 
  * Checks if an array exists
  * 
  * @param {Array} array
@@ -1367,9 +1367,9 @@ pxh.toggleMenu = function(control, target, className) {
 
 
 
-/** @class pxh.toast */
+/** @namespace pxh.toast */
 pxh.toast = {
-  /** @class pxh.toast.badge */
+  /** @namespace pxh.toast.badge */
   badge : {
     count : 0,
 
@@ -1553,12 +1553,12 @@ pxh.toast = {
     }
     return id;
   },
-  /** @class pxh.toast.action */
+  /** @namespace pxh.toast.action */
   action : {
     /** 
      * Binds an event to an element that will dismiss a toast/notification (and its correponding toast/notification, if applicable) when clicked
      * 
-     * @param {Element} element The element of the toast/notification to be dismissed
+     * @param {HTMLElement} element The element of the toast/notification to be dismissed
      * @param {String} slug The text slug to be used when generating class names and targets
      * @param {String} id The unique ID of the toast/notification combination associated with the target dismiss button
      */
@@ -1578,7 +1578,7 @@ pxh.toast = {
     /** 
      * Binds an event to an element that will expand its corresponding toast/notification when clicked
      * 
-     * @param {Element} element The element of the toast/notification to be dismissed
+     * @param {HTMLElement} element The element of the toast/notification to be dismissed
      * @param {String} slug The text slug to be used when generating class names and targets
      */
     expandButton : function(element, slug) {
@@ -1604,7 +1604,7 @@ pxh.toast = {
     /** 
      * Binds an callback to an element that will fire when clicked, and automatically hide and remove the corresponding toast/notification from the application
      * 
-     * @param {Element} element The element of the toast/notification to be dismissed
+     * @param {HTMLElement} element The element of the toast/notification to be dismissed
      * @param {String} slug The text slug to be used when generating class names and targets
      * @param {String} id The unique ID of the toast/notification combination associated with the callback action
      * @param {Function} callback The callback to fire
@@ -1627,7 +1627,7 @@ pxh.toast = {
     /** 
      * Binds a hyperlink to an element that will fire when clicked, and automatically hide and remove the corresponding toast/notification from the application
      * 
-     * @param {Element} element The element of the toast/notification to be dismissed
+     * @param {HTMLElement} element The element of the toast/notification to be dismissed
      * @param {String} slug The text slug to be used when generating class names and targets
      * @param {String} id The unique ID of the toast/notification combination associated with the link action
      * @param {Function} callback The callback to fire
@@ -1762,7 +1762,7 @@ pxh.toast = {
   /**
    * Expands the targeted toast/notification so all its text is visible to the user, or collapses it if it is already expanded
    * 
-   * @param {Element} element The element to expand
+   * @param {HTMLElement} element The element to expand
    * @param {String} slug The text slug to be used when generating class names and targets
    */
   expand : function(element, slug) {
@@ -1780,7 +1780,7 @@ pxh.toast = {
       element.querySelector('.pxh-' + slug + '__more-button').innerHTML = 'Show less';
     }
   },
-  /** @class pxh.toast.markup */
+  /** @namespace pxh.toast.markup */
   markup : {
     /**
      * Generates the HTML markup for displaying a toast/notification's icon
@@ -1928,11 +1928,11 @@ pxh.toast = {
     },
 
     /**
-     * Generate the complete HTML markup for creating a new toast
+     * Generates the complete HTML markup for creating a new toast
      * 
      * @param {Object} object The JavaScript object of the toast that should be created
      * @param {String} id The unique ID of the toast being created
-     * @returns {Element} element A toast element that can be inserted into the DOM
+     * @returns {HTMLElement} element A toast element that can be inserted into the DOM
      */
     createToast : function(object, id) {
       var slug = 'toast';
@@ -1950,11 +1950,11 @@ pxh.toast = {
     },
 
     /**
-     * Generate the complete HTML markup for creating a new notification
+     * Generates the complete HTML markup for creating a new notification
      * 
      * @param {Object} object The JavaScript object of the notification that should be created
      * @param {String} id The unique ID of the toast/notification being created, and that will be dismissed
-     * @returns {Element} element A notification element that can be inserted into the DOM
+     * @returns {HTMLElement} element A notification element that can be inserted into the DOM
      */
     createNotification : function(object, id) {
       var slug = 'notification';
