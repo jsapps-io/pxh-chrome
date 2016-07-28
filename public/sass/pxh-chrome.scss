@@ -1,4 +1,4 @@
-/*! pxh-chrome.css 1.2.1 */
+/*! pxh-chrome.css 1.3.0 */
 
 /*------------------------------------*\
     #pxh-chrome
@@ -10,19 +10,27 @@
 
 // ** #GENERIC ** //
 @import "generic.normalize.scss";
+/// Relative path to GE web fonts
+/// @group pxh-settings
+/// @type String [default] - Webfont path
 $webfont-path: '../fonts/ge/type' !default;
-// $webfont-path: '//dzlpbrbc7yvq0.cloudfront.net/pxh-chrome/1.2.1/dist/fonts/ge/type' !default;
+// $webfont-path: '//dzlpbrbc7yvq0.cloudfront.net/pxh-chrome/1.3.0/dist/fonts/ge/type' !default;
 @import "generic.fonts.scss";
 @import "generic.defaults.scss";
 
 // ** #TOOLS ** //
+/// List of media query breakpoints
+/// @group pxh-settings
 $mq-breakpoints : (
   md :  768px,
   lg : 1024px,
 );
 @import "sass-mq/mq.scss"; // our sass task includes /bower_components automatically so we don't need to specify it
+/// Relative path to Font Awesome fonts
+/// @group pxh-settings
+/// @type String
 $fa-font-path : "../fonts/font-awesome/fonts" !default;
-// $fa-font-path : "//dzlpbrbc7yvq0.cloudfront.net/pxh-chrome/1.2.1/dist/fonts/font-awesome/fonts" !default;
+// $fa-font-path : "//dzlpbrbc7yvq0.cloudfront.net/pxh-chrome/1.3.0/dist/fonts/font-awesome/fonts" !default;
 @import "font-awesome/scss/font-awesome.scss"; // our sass task includes /bower_components automatically so we don't need to specify it
 @import "tools.pxh-animations.scss";
 @import "tools.pxh-mixins.scss";
@@ -36,7 +44,13 @@ $fa-font-path : "../fonts/font-awesome/fonts" !default;
 // ** #OBJECTS ** //
 
 // ** #COMPONENTS ** //
+/// Flag to enable or disable pxh-notifications
+/// @group pxh-notification
+/// @type Boolean
 $pxh-notifications-enabled : true;
+/// Flag to enable or disable pxh-toasts
+/// @group pxh-toast
+/// @type Boolean
 $pxh-toasts-enabled : true;
 @import "components.pxh-badge.scss";
 @import "components.pxh-drawer.scss";

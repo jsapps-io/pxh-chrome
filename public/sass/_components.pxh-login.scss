@@ -2,8 +2,13 @@
     #components.pxh-login
 \*------------------------------------*/
 
-$pxh-notifications-enabled : false !default;
+/// Flag to enable or disable pxh-notifications
+/// @group pxh-notification
+/// @type Boolean
+$pxh-notifications-enabled : true !default;
 
+/// Massive animation config object for pxh-login components
+/// @group pxh-login
 $pxh-login-animate-config: (
   font-size-in : $inuit-base-font-size,
   margin-in : 0,

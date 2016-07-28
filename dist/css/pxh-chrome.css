@@ -1,5 +1,5 @@
 @charset "UTF-8";
-/*! pxh-chrome.css 1.2.1 */
+/*! pxh-chrome.css 1.3.0 */
 /*------------------------------------*    #pxh-chrome
 \*------------------------------------*/
 /*------------------------------------*    #settings.defaults
@@ -6597,7 +6597,7 @@ sub {
 /*------------------------------------*    #overrides.pxh-theme
 \*------------------------------------*/
 html {
-  background-color: #b1b1bc !important;
+  background-color: #525156 !important;
   overflow: hidden !important;
 }
 

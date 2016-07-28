@@ -1,5 +1,13 @@
 #pxh-chrome changelog
 
+### pending release
+* _nothing yet..._
+
+### 1.3.0 - July 28, 2016
+* Darken default `<html>` background color by changing it from `$gray5` to `$gray8` to better support spine content
+* Add SassDoc-formatted code comments to pxh-chrome's Sass source files
+* Finish initial pass at adding JSDoc-formatted code comments to `pxh-chrome.js`
+
 ### 1.2.1 - July 26, 2016
 * Automatically dismiss a toast/notification when the user clicks its action button (either link or callback)
 * Patch bug where clicking the notifications icon would redirect the user off their current route
