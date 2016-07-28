@@ -1,7 +1,7 @@
 #pxh-chrome changelog
 
 ### pending release
-* Darken default background color by changing it from `$gray5` to `$gray8`
+* Darken default `<html>` background color by changing it from `$gray5` to `$gray8` to better support spine content
 
 ### 1.2.1 - July 26, 2016
 * Automatically dismiss a toast/notification when the user clicks its action button (either link or callback)
