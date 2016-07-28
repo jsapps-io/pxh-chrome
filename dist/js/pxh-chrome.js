@@ -5,7 +5,7 @@
 // CONFIG OBJECTS
 // **************
 
-/** @class pxh */
+/** @namespace pxh */
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
 
@@ -523,7 +523,7 @@ pxh.transitions = {
 /**
  * Class for dimension change detection.
  *
- * @param {Element|Element[]|Elements|jQuery} element
+ * @param {HTMLElement|Element[]|Elements|jQuery} element
  * @param {Function} callback
  *
  * @constructor
@@ -841,7 +841,7 @@ pxh.Cookies = Cookies.noConflict();
 // *********
 
 /**
- * polyfill to support .remove() in IE11
+ * Polyfill to support .remove() in IE11
  * https://developer.mozilla.org/en-US/docs/Web/API/ChildNode/remove
  * 
  */
@@ -853,8 +853,8 @@ if (!('remove' in Element.prototype)) {
   };
 }
 
-/**
- * checks if an array exists
+/** 
+ * Checks if an array exists
  * 
  * @param {Array} array
  * @returns {Boolean} true if array exists, false if it does not
@@ -885,9 +885,9 @@ pxh.getItemByPropertyName = function (haystack, propertyName) {
 };
 
 /**
- * Returns the value of a particular CSS property of an HTML element
+ * Returns the value of a particular CSS property of an element
  * 
- * @param {String} id The id="" attribute of the HTML element
+ * @param {String} id The id="" attribute of the element
  * @param {String} property The CSS property to query, e.g. z-index
  * @returns {String|Boolean} CSS property value if found, false if not
  */
@@ -903,7 +903,7 @@ pxh.getStyle = function (id, property) {
 };
 
 /**
- * Strips HTML tags from a given string
+ * Strips HTML tags from the given string
  * 
  * @param {String} html A string that may contain HTML tags
  * @returns {String|Boolean} Input string's text with HTML removed, false if no input parameter provided
@@ -919,7 +919,7 @@ pxh.stripHTML = function (html) {
 };
 
 /**
- * Load a state from a state object, and change the CSS classes on all relevant HTML elements
+ * Loads a state from a state object, and changes the CSS classes on all relevant elements
  * 
  * @param {Object} stateObject An object containing the states of your application
  * @param {String} targetStateName The name of the desired state to load from the state object
@@ -942,12 +942,14 @@ pxh.loadState = function (stateObject, targetStateName) {
 };
 
 /**
- * Change the classes on a target HTML element
+ * Changes classes on the targeted elements
  * 
- * e.g. pxh.changeClasses('nav', 'add', 'hidden--until-@md')
- * @param {String} targetClassName Base CSS class of the targeted HTML elements to be changed
+ * @example
+ * // finds all elements with class `nav` and adds the class `nav--hidden` to them
+ * pxh.changeClasses('nav', 'add', 'nav--hidden');
+ * @param {String} targetClassName Base CSS class of the targeted elements to be changed
  * @param {String} changeType Type of change to apply. Options are `add`, `remove`, `toggle` 
- * @param {String} classNamesToChange List of classes to change on the targeted HTML elements, separated by spaces
+ * @param {String} classNamesToChange List of classes to change on the targeted elements, separated by spaces
  */
 pxh.changeClasses = function (targetClassName, changeType, classNamesToChange) {
   var targetElements = document.getElementsByClassName(targetClassName);
@@ -969,7 +971,7 @@ pxh.changeClasses = function (targetClassName, changeType, classNamesToChange) {
 };
 
 /**
- * Bind drawer state change events to toggle buttons, which will change the state of the drawer depending on the current drawer and responsive contexts
+ * Binds drawer state change events to toggle buttons, which will change the state of the drawer depending on the current drawer and responsive contexts
  * 
  * @param {String} controlName CSS class name of control to bind events to
  */
@@ -1026,7 +1028,7 @@ pxh.bindControl = function (controlName) {
 };
 
 /**
- * Create drawer state change events that should fire when the browser transitions between the medium breakpoint
+ * Creates drawer state change events that should fire when the browser transitions between the medium breakpoint
  * 
  * @param {String} breakpoint 
  */
@@ -1052,7 +1054,7 @@ pxh.breakpointAtMd = function (breakpoint) {
 };
 
 /**
- * Create drawer state change events that should fire when the browser transitions between the medium breakpoint
+ * Creates drawer state change events that should fire when the browser transitions between the large breakpoint
  * 
  * @param {String} breakpoint 
  */
@@ -1094,7 +1096,7 @@ pxh.breakpointAtLg = function (breakpoint) {
 };
 
 /**
- * Bind media queries to drawer controls or something
+ * Binds media queries to drawer controls or something
  * 
  * @param {String} targetClass CSS class name of elements to bind to
  * @param {Object} window.matchMedia object
@@ -1117,8 +1119,9 @@ pxh.bindDrawerMediaQueryControls = function (targetClass, mediaQuery) {
 };
 
 /**
- * When the user clicks the overlay, hide the drawer at the small breakpoint, or collapse the drawer at the narrow breakpoint
- * If the notification list is displayed, hide it when the user clicks the overlay but don't hide or collapse the drawer
+ * When the user clicks the overlay, hides the drawer at the small breakpoint, or collapses the drawer at the narrow breakpoint
+ * 
+ * If the notification list is displayed, hides it when the user clicks the overlay but doesn't hide or collapse the drawer
  * 
  */
 pxh.overlayDrawerControl = function () {
@@ -1145,7 +1148,7 @@ pxh.overlayDrawerControl = function () {
 };
 
 /**
- * When the user hits the "ESC" key on the keyboard, hide the drawer at the small breakpoint, or collapse the drawer at the narrow breakpoint
+ * When the user hits the "ESC" key on the keyboard, hides the drawer at the small breakpoint, or collapses the drawer at the narrow breakpoint
  * 
  */
 pxh.escapeDrawerControl = function () {
@@ -1161,11 +1164,11 @@ pxh.escapeDrawerControl = function () {
 };
 
 /**
- * Toggle visibility of a login menu
+ * Toggles the visibility of a login menu
  * 
- * @param {String} toggleControl CSS class name of the HTML elements to turn into controls that will fire this event
- * @param {String} toggleTarget CSS class name of the login menu HTML elements that should have their visibility toggled
- * @param {string} toggleClass Space-delimited list of CSS class names to toggle on the target HTML elements when this event fires
+ * @param {String} toggleControl CSS class name of the elements to turn into controls that will fire this event
+ * @param {String} toggleTarget CSS class name of the login menu elements that should have their visibility toggled
+ * @param {string} toggleClass Space-delimited list of CSS class names to toggle on the target elements when this event fires
  */
 pxh.toggleLoginMenu = function (toggleControl, toggleTarget, toggleClass) {
   var toggleControlElements = document.getElementsByClassName(toggleControl);
@@ -1186,9 +1189,9 @@ pxh.toggleLoginMenu = function (toggleControl, toggleTarget, toggleClass) {
 };
 
 /**
- * Add a sensor that will fire a viewResized event every time its corresponding element changes size
+ * Adds a sensor that will fire a viewResized event every time its corresponding element changes size
  * 
- * @param {string} targetId The id of the target HTML element that should fire an event when it resizes
+ * @param {string} targetId The id of the target element that should fire an event when it resizes
  */
 pxh.addResizeSensor = function (targetId) {
   var targetElement = document.getElementById(targetId);
@@ -1202,12 +1205,12 @@ pxh.addResizeSensor = function (targetId) {
 pxh.action = {};
 
 /**
- * Toggle classes on an element when clicked, and immediately fires any event on the click target area
+ * Toggles classes on an element when clicked, and immediately fires any event in the clicked target area
  * 
- * @param {string} control CSS class name of the HTML elements that should act as controls for firing this event
- * @param {string} target CSS class name of the target HTML elements that should be changed when this event is fired
- * @param {string} change Type of change to perform on the target HTML elements. Options are `add`, `remove`, `toggle`
- * @param {string} className Space-delimited list of CSS classes to change on the target HTML elements
+ * @param {string} control CSS class name of the elements that should act as controls for firing this event
+ * @param {string} target CSS class name of the target elements that should be changed when this event is fired
+ * @param {string} change Type of change to perform on the target elements. Options are `add`, `remove`, `toggle`
+ * @param {string} className Space-delimited list of CSS classes to change on the target elements
  */
 
 pxh.action.clickToCloseAndFire = function (control, target, change, className) {
@@ -1221,11 +1224,11 @@ pxh.action.clickToCloseAndFire = function (control, target, change, className) {
 };
 
 /**
- * Toggle classes on an element when clicked, but do not fire any event tied to the click target area
+ * Toggles classes on an element when clicked, but does not fire any event in the clicked target area
  * 
- * @param {string} control Unique ID of the HTML element that should act as controls for firing this event
- * @param {string} target Unique ID of the target HTML element that should be changed when this event is fired
- * @param {string} className The class to be removed from the target HTML element
+ * @param {string} control Unique ID of the element that should act as controls for firing this event
+ * @param {string} target Unique ID of the target element that should be changed when this event is fired
+ * @param {string} className The class to be removed from the target element
  */
 pxh.action.clickToCloseAndHold = function (control, target, className) {
   var controlElement = document.getElementById(control);
@@ -1259,11 +1262,11 @@ if (notificationsIcon = document.getElementById('js-login__notifications')) {
 }
 
 /**
- * Toggle classes on an element when clicked
+ * Toggles classes on an element when clicked
  * 
- * @param {string} control CSS class name of the HTML elements that should act as controls for firing this event
- * @param {string} target CSS class name of the target HTML elements that should be changed when this event is fired
- * @param {string} className The class to be removed from the target HTML element
+ * @param {string} control CSS class name of the elements that should act as controls for firing this event
+ * @param {string} target CSS class name of the target elements that should be changed when this event is fired
+ * @param {string} className The class to be removed from the target element
  */
 pxh.toggleMenu = function (control, target, className) {
   var controlElements = document.getElementsByClassName(control);
@@ -1278,18 +1281,19 @@ pxh.toggleMenu = function (control, target, className) {
   }
 };
 
-// type : 'green' // green, blue, orange, red
-// isPersistent : false // true, false
-// icon : 'info-circle' // any Font Awesome icon slug
-// text : 'This is the text for notification #1.'
-// actionLabel : 'View'
-// actionLink : 'http://google.com' // fully qualified link or route
-// actionCallback : // callback function
-// timestamp: '9:36 AM'
-
+/** @namespace pxh.toast */
 pxh.toast = {
+  /** @namespace pxh.toast.badge */
   badge: {
     count: 0,
+
+    /** 
+     * Increases the value of the notification icon badge by 1
+     * 
+     * Truncates the value if the resulting number of notifications is greater than 9
+     * 
+     * Won't display a value below zero
+     */
     increment: function increment() {
       pxh.toast.badge.count = pxh.toast.badge.count + 1;
       if (pxh.toast.badge.count > 9) {
@@ -1302,6 +1306,13 @@ pxh.toast = {
       }
       pxh.toast.badge.update();
     },
+    /** 
+     * Decreases the value for on the notification icon badge by 1
+     * 
+     * Truncates the value if the resulting number of notifications is greater than 9
+     * 
+     * Won't display a value below zero
+     */
     decrement: function decrement() {
       pxh.toast.badge.count = pxh.toast.badge.count - 1;
       if (pxh.toast.badge.count > 9) {
@@ -1314,6 +1325,10 @@ pxh.toast = {
       }
       pxh.toast.badge.update();
     },
+    /** 
+     * Locates the notification icon badge element and updates the displayed value
+     * Hides the notification icon and badge entirely if there aren't any notifications
+     */
     update: function update() {
       var notificationIcon = '';
       var notificationBadge = '';
@@ -1330,6 +1345,63 @@ pxh.toast = {
     }
   },
 
+  /** 
+   * Adds a toast and corresponding notification (if applicable) to the application
+   * 
+   * @example
+   * // The pxh.toast.add method accepts a toast object, and responds to the following parameters:
+   * // type : 'green' // green, blue, orange, red ... the color of the toast icon (blue by default)
+   * // icon : 'info-circle' // any Font Awesome icon slug ... the icon to use for the toast icon
+   * // text : 'This is the text for notification #1.' // text to display in toast ... any HTML will be stripped ... a generic message will be displayed 
+   * // actionLabel : 'View' // text to display in the toast action button ... long labels will be truncated
+   * // actionLink : 'http://predix.com' // fully qualified link or route to follow when the user clicks the action button
+   * // actionCallback : // callback function to fire when the user clicks the action button
+   * // isPersistent : false // true, false ... whether toast is persistent or not (only applies to actionable toasts)
+   * // timestamp: '9:36 AM' // CURRENTLY DISABLED, but future iterations of pxh.toast will support toast timestamps
+   * 
+   * var toastObject1 = {
+   *   value : 'something' // pxh.toast.add merely requires that the toast object exists, and will use reasonable defaults if any parameters are missing
+   * }
+   *
+   * var toastObject2 = {
+   *   type : 'orange',
+   *   isPersistent : true,
+   *   icon : 'exclamation-circle',
+   *   text : 'It can be this long or longer if you want. In fact, it can be really, really long if you have a lot you want to say. We kind of discourage this much content but knock yourself out! Just keep talking and talking and talking and this area will keep expanding and expanding.',
+   *   actionLabel : 'View a lot of things right now',
+   *   actionLink : 'http://predix.com',
+   *   timestamp: '9:36 AM'
+   * }
+   *
+   * var toastObject3 = {
+   *   type : 'red',
+   *   isPersistent : false,
+   *   icon : 'exclamation-triangle',
+   *   text : 'This is going to fire a callback.',
+   *   actionLabel : 'Callback, yo!',
+   *   actionCallback : function() {
+   *     console.log('this was called from actionCallback')
+   *   }
+   * }
+   *
+   * var toastObject4 = {
+   *   type : 'red',
+   *   isPersistent : false,
+   *   icon : 'times-circle',
+   *   text : 'Fourth notification? Coming right up!',
+   *   actionLabel : 'GE Digital',
+   *   actionLink : 'http://digital.ge.com'
+   * }
+   * 
+   * document.addEventListener('DOMContentLoaded', function(event) {
+   *   pxh.toast.add(toastObject1);
+   *   pxh.toast.add(toastObject2, true); // creates a notification but not a toast
+   *   pxh.toast.add(toastObject3);
+   *   pxh.toast.add(toastObject4);
+   * });
+   * @param {object} object An object containing the parameters for the toast (and notification, if applicable) that will be created
+   * @param {Boolean} [suppressToast=false] An optional parameter that, if true, will only create a notification (if applicable) from the object, and will display a corresponding toast to the user
+   */
   add: function add(object, suppressToast) {
     var id = Math.floor(Math.random() * 16777215).toString(16);
     var notificationList = '';
@@ -1371,8 +1443,15 @@ pxh.toast = {
     }
     return id;
   },
-
+  /** @namespace pxh.toast.action */
   action: {
+    /** 
+     * Binds an event to an element that will dismiss a toast/notification (and its correponding toast/notification, if applicable) when clicked
+     * 
+     * @param {HTMLElement} element The element of the toast/notification to be dismissed
+     * @param {String} slug The text slug to be used when generating class names and targets
+     * @param {String} id The unique ID of the toast/notification combination associated with the target dismiss button
+     */
     dismissButton: function dismissButton(element, slug, id) {
       var button = document.getElementById('js-' + slug + '__dismiss-button--' + id);
       if (button) {
@@ -1385,7 +1464,12 @@ pxh.toast = {
         });
       }
     },
-
+    /** 
+     * Binds an event to an element that will expand its corresponding toast/notification when clicked
+     * 
+     * @param {HTMLElement} element The element of the toast/notification to be dismissed
+     * @param {String} slug The text slug to be used when generating class names and targets
+     */
     expandButton: function expandButton(element, slug) {
       var button = element.querySelector('.js-' + slug + '__more-button');
       if (button) {
@@ -1395,7 +1479,9 @@ pxh.toast = {
         });
       }
     },
-
+    /** 
+     * Removes all toasts and notifications from application
+     */
     removeAllButton: function removeAllButton() {
       pxh.toast.hideAll();
       setTimeout(function () {
@@ -1403,6 +1489,14 @@ pxh.toast = {
       }, 1000);
     },
 
+    /** 
+     * Binds an callback to an element that will fire when clicked, and automatically hide and remove the corresponding toast/notification from the application
+     * 
+     * @param {HTMLElement} element The element of the toast/notification to be dismissed
+     * @param {String} slug The text slug to be used when generating class names and targets
+     * @param {String} id The unique ID of the toast/notification combination associated with the callback action
+     * @param {Function} callback The callback to fire
+     */
     bindCallback: function bindCallback(element, slug, id, callback) {
       var button = document.getElementById('js-' + slug + '--' + id);
       if (button) {
@@ -1417,6 +1511,14 @@ pxh.toast = {
       }
     },
 
+    /** 
+     * Binds a hyperlink to an element that will fire when clicked, and automatically hide and remove the corresponding toast/notification from the application
+     * 
+     * @param {HTMLElement} element The element of the toast/notification to be dismissed
+     * @param {String} slug The text slug to be used when generating class names and targets
+     * @param {String} id The unique ID of the toast/notification combination associated with the link action
+     * @param {Function} callback The callback to fire
+     */
     bindLink: function bindLink(element, slug, id) {
       var button = document.getElementById('js-' + slug + '--' + id);
       if (button) {
@@ -1428,12 +1530,21 @@ pxh.toast = {
         });
       }
     },
-
+    /** 
+     * Fires a callback
+     * 
+     * @param {Function} callback The callback to fire
+     */
     fireCallback: function fireCallback(callback) {
       callback();
     }
   },
 
+  /** 
+   * Hides a toast and its corresponding notification (if applicable) from the user
+   * 
+   * @param {String} id The unique ID of the toast/notification combination to hide from the user
+   */
   hide: function hide(id) {
     var toastList = '';
     var toastItem = '';
@@ -1449,6 +1560,10 @@ pxh.toast = {
     }
   },
 
+  /** 
+   * Hides all notifications from the user
+   * 
+   */
   hideAll: function hideAll() {
     var notificationList = '';
     var notifications = [];
@@ -1460,6 +1575,11 @@ pxh.toast = {
     }
   },
 
+  /** 
+   * Hides a toast
+   * 
+   * @param {String} id The unique ID of the toast to hide
+   */
   autoHide: function autoHide(id) {
     var toastList = '';
     var toastItem = '';
@@ -1469,6 +1589,11 @@ pxh.toast = {
     }
   },
 
+  /** 
+   * Removes a toast and its corresponding notification (if applicable) from the application
+   * 
+   * @param {String} id The unique ID of the toast/notification combination to remove
+   */
   remove: function remove(id) {
     var toastList = '';
     var toastElement = '';
@@ -1483,6 +1608,11 @@ pxh.toast = {
     }
   },
 
+  /**
+   * Removes a toast from the application
+   * 
+   * @param {String} id The unique ID of the toast to remove
+   */
   autoRemove: function autoRemove(id) {
     var toastList = '';
     var toastElement = '';
@@ -1491,6 +1621,10 @@ pxh.toast = {
     }
   },
 
+  /**
+   * Removes all notifications from the application
+   * 
+   */
   removeAll: function removeAll() {
     var notificationList = '';
     var notifications = [];
@@ -1502,6 +1636,12 @@ pxh.toast = {
     }
   },
 
+  /**
+   * Expands the targeted toast/notification so all its text is visible to the user, or collapses it if it is already expanded
+   * 
+   * @param {HTMLElement} element The element to expand
+   * @param {String} slug The text slug to be used when generating class names and targets
+   */
   expand: function expand(element, slug) {
     if (element.classList.contains('pxh-' + slug + '--expanded')) {
       element.classList.remove('pxh-' + slug + '--expanded');
@@ -1514,8 +1654,14 @@ pxh.toast = {
       element.querySelector('.pxh-' + slug + '__more-button').innerHTML = 'Show less';
     }
   },
-
+  /** @namespace pxh.toast.markup */
   markup: {
+    /**
+     * Generates the HTML markup for displaying a toast/notification's icon
+     * 
+     * @param {Object} object The JavaScript object of the toast/notification that is being created
+     * @param {String} slug The text slug to be used when generating class names and targets
+     */
     icon: function icon(object, slug) {
       var icon = object.icon ? object.icon : 'info-circle';
       var type = object.type ? object.type : 'blue';
@@ -1527,6 +1673,12 @@ pxh.toast = {
       return markup;
     },
 
+    /**
+     * Generates the HTML markup for displaying a toast's text
+     * 
+     * @param {Object} object The JavaScript object of the toast that is being created
+     * @param {String} slug The text slug to be used when generating class names and targets
+     */
     toastText: function toastText(object, slug) {
       var text = object.text ? pxh.stripHTML(object.text) : 'You received a new notification.';
       var markup = [];
@@ -1538,6 +1690,13 @@ pxh.toast = {
       return markup;
     },
 
+    /**
+     * Generates the HTML markup for displaying a notification's text
+     * 
+     * @param {Object} object The JavaScript object of the notification that is being created
+     * @param {String} slug The text slug to be used when generating class names and targets
+     * @param {String} id The unique ID of the notification being created
+     */
     notificationText: function notificationText(object, slug, id) {
       var text = object.text ? pxh.stripHTML(object.text) : 'You received a new notification.';
       var markup = [];
@@ -1557,6 +1716,12 @@ pxh.toast = {
       return markup;
     },
 
+    /**
+     * Generates the HTML markup for displaying a toast/notification's "show more" button
+     * 
+     * @param {Object} object The JavaScript object of the toast/notification that is being created
+     * @param {String} slug The text slug to be used when generating class names and targets
+     */
     more: function more(object, slug) {
       var markup = [];
       markup.push('  <div class="pxh-' + slug + '__more">\n');
@@ -1568,6 +1733,13 @@ pxh.toast = {
       return markup;
     },
 
+    /**
+     * DISABLED: Generates the HTML markup for displaying a notification's timestamp
+     * 
+     * This is disabled until we determine how we want to handle time zones, date formatting, and relative dates
+     * @param {Object} object The JavaScript object of the notification that is being created
+     * @param {String} slug The text slug to be used when generating class names and targets
+     */
     // timestamp : function(object, slug) {
     //   var timestamp = object.timestamp ? object.timestamp : false;
     //   var markup = [];
@@ -1581,6 +1753,13 @@ pxh.toast = {
     //   return markup;
     // },
 
+    /**
+     * Generates the HTML markup for displaying a toast/notification's "dismiss" button
+     * 
+     * @param {Object} object The JavaScript object of the toast/notification that is being created
+     * @param {String} slug The text slug to be used when generating class names and targets
+     * @param {String} id The unique ID of the toast/notification being created, and that will be dismissed
+     */
     dismiss: function dismiss(object, slug, id) {
       var markup = [];
       markup.push('<div class="pxh-' + slug + '__dismiss">\n');
@@ -1592,6 +1771,13 @@ pxh.toast = {
       return markup;
     },
 
+    /**
+     * Generates the HTML markup for displaying a toast/'s action button, which can be either a hyperlink (relative or absolute) or a callback
+     * 
+     * @param {Object} object The JavaScript object of the toast that is being created
+     * @param {String} slug The text slug to be used when generating class names and targets
+     * @param {String} id The unique ID of the toast/notification being created
+     */
     button: function button(object, slug, id) {
       var markup = [];
       if (object.actionLink) {
@@ -1607,6 +1793,13 @@ pxh.toast = {
       return markup;
     },
 
+    /**
+     * Generates the complete HTML markup for creating a new toast
+     * 
+     * @param {Object} object The JavaScript object of the toast that should be created
+     * @param {String} id The unique ID of the toast being created
+     * @returns {HTMLElement} element A toast element that can be inserted into the DOM
+     */
     createToast: function createToast(object, id) {
       var slug = 'toast';
       var element = document.createElement('div');
@@ -1622,6 +1815,13 @@ pxh.toast = {
       return element;
     },
 
+    /**
+     * Generates the complete HTML markup for creating a new notification
+     * 
+     * @param {Object} object The JavaScript object of the notification that should be created
+     * @param {String} id The unique ID of the toast/notification being created, and that will be dismissed
+     * @returns {HTMLElement} element A notification element that can be inserted into the DOM
+     */
     createNotification: function createNotification(object, id) {
       var slug = 'notification';
       var element = document.createElement('div');
@@ -1636,6 +1836,11 @@ pxh.toast = {
       return element;
     }
   },
+  /**
+   * Returns an array of all notifications currently displayed in the notification list
+   * 
+   * @returns {Array|Boolean} notifications An array of notification IDs, or false if no notifications are currently displayed in the notification list
+   */
   getNotifications: function getNotifications() {
     var notifications = [];
     var notificationList = document.getElementById('js-notifications__list');
@@ -1653,13 +1858,6 @@ pxh.toast = {
     }
   }
 };
-
-if (document.getElementById('js-notifications__link--clear')) {
-  document.getElementById('js-notifications__link--clear').addEventListener('click', function (event) {
-    event.preventDefault();
-    pxh.toast.action.removeAllButton();
-  });
-}
 
 // ********
 // FIRE!!!!
@@ -1731,5 +1929,12 @@ document.addEventListener('DOMContentLoaded', function (event) {
   pxh.toggleMenu(pxh.LOGIN_NOTIFICATIONS, pxh.NOTIFICATIONS, pxh.NOTIFICATIONS_VISIBLE);
 
   pxh.addResizeSensor('js-view');
+
+  if (document.getElementById('js-notifications__link--clear')) {
+    document.getElementById('js-notifications__link--clear').addEventListener('click', function (event) {
+      event.preventDefault();
+      pxh.toast.action.removeAllButton();
+    });
+  }
 });
 //# sourceMappingURL=pxh-chrome.js.map
