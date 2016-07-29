@@ -1,7 +1,8 @@
 #pxh-chrome changelog
 
 ### pending release
-* _nothing yet..._
+* Activate timestamps in notifications
+  * To use, include a `timestamp : '9:36 AM'` property in your toast `object` containing the string you want to display as the timestamp
 
 ### 1.3.0 - July 28, 2016
 * Darken default `<html>` background color by changing it from `$gray5` to `$gray8` to better support spine content
