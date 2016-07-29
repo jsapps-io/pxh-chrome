@@ -5,6 +5,8 @@
 \*------------------------------------*/
 
 // ** #SETTINGS ** //
+$pxh-drawer-side : right;
+$pxh-drawer-opposite-side : left;
 @import "settings.defaults.scss";
 @import "settings.pxh-chrome.scss";
 
