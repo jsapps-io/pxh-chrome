@@ -23,7 +23,7 @@
         </a>
       </h1>
       <div class="pxh-login pxh-login--narrow@md pxh-login--wide@lg">
-        <a href="#" class="pxh-login__profile-link" title="Perspiciatis unde omnis iste natus">
+        <a href="#" class="pxh-login__profile-link" title="User who has a really long name">
           <div class="pxh-login__avatar">
             <img src="img/avatar.jpg" class="pxh-login__avatar-image">
           </div>
@@ -59,8 +59,8 @@
           </ul>
         </div>
         <div class="pxh-login__notifications pxh-login__notifications--narrow@md pxh-login__notifications--wide@lg pxh-display-none" id="js-login__notifications">
-          <a href="#" class="pxh-login__notifications-badge pxh-login__notifications-badge--red pxh-login__notifications-badge--hidden" id="js-login__notifications-badge">0</a>
-          <a href="#" class="pxh-login__notifications-link" title="Notifications"><i class="fa fa-bell"></i></a>
+          <a href="#" class="pxh-login__notifications-badge pxh-login__notifications-badge--red pxh-login__notifications-badge--hidden" id="js-login__notifications-badge" title="View Notifications">0</a>
+          <a href="#" class="pxh-login__notifications-link" title="View Notifications"><i class="fa fa-bell"></i></a>
         </div>
         <div class="pxh-login__settings pxh-login__settings--narrow@md pxh-login__settings--wide@lg">
           <a class="pxh-login__settings-link" href="#" title="Settings"><i class="fa fa-cog"></i></a>
@@ -156,10 +156,11 @@
         isPersistent : false,
         icon : 'exclamation-triangle',
         text : 'This is going to fire a callback.',
-        actionLabel : 'Callback, yo!',
+        actionLabel : 'Callback!',
         actionCallback : function() {
           console.log('this was called from actionCallback')
-        }
+        },
+        timestamp: '9:36 AM'
       }
 
       var toastObject4 = {
@@ -167,8 +168,9 @@
         isPersistent : false,
         icon : 'times-circle',
         text : 'Fourth notification? Coming right up!',
-        actionLabel : 'Beef',
-        actionLink : 'http://beef.org'
+        actionLabel : 'See Predix',
+        actionLink : 'http://predix.com',
+        timestamp: '9:36 AM'
       }
 
       document.addEventListener('DOMContentLoaded', function(event) {

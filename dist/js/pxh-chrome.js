@@ -1357,7 +1357,7 @@ pxh.toast = {
    * // actionLink : 'http://predix.com' // fully qualified link or route to follow when the user clicks the action button
    * // actionCallback : // callback function to fire when the user clicks the action button
    * // isPersistent : false // true, false ... whether toast is persistent or not (only applies to actionable toasts)
-   * // timestamp: '9:36 AM' // CURRENTLY DISABLED, but future iterations of pxh.toast will support toast timestamps
+   * // timestamp: '9:36 AM' // string containing the display text for the date/time the toast/notification was issued
    * 
    * var toastObject1 = {
    *   value : 'something' // pxh.toast.add merely requires that the toast object exists, and will use reasonable defaults if any parameters are missing
@@ -1734,24 +1734,22 @@ pxh.toast = {
     },
 
     /**
-     * DISABLED: Generates the HTML markup for displaying a notification's timestamp
+     * Generates the HTML markup for displaying a notification's timestamp. This method displays the contents of the `object.timestamp` string for the toast object passed to it. Any formatting for how the timestamp should be displayed must be performed in advance.
      * 
-     * This is disabled until we determine how we want to handle time zones, date formatting, and relative dates
      * @param {Object} object The JavaScript object of the notification that is being created
      * @param {String} slug The text slug to be used when generating class names and targets
      */
-    // timestamp : function(object, slug) {
-    //   var timestamp = object.timestamp ? object.timestamp : false;
-    //   var markup = [];
-    //   if (timestamp)
-    //   {
-    //     markup.push('<div class="pxh-' + slug + '__timestamp">\n');
-    //     markup.push('  ' + timestamp + '\n');
-    //     markup.push('</div>\n');
-    //   }
-    //   markup = markup.join('');
-    //   return markup;
-    // },
+    timestamp: function timestamp(object, slug) {
+      var timestamp = object.timestamp ? object.timestamp : false;
+      var markup = [];
+      if (timestamp) {
+        markup.push('<div class="pxh-' + slug + '__timestamp">\n');
+        markup.push('  ' + timestamp + '\n');
+        markup.push('</div>\n');
+      }
+      markup = markup.join('');
+      return markup;
+    },
 
     /**
      * Generates the HTML markup for displaying a toast/notification's "dismiss" button
@@ -1830,6 +1828,7 @@ pxh.toast = {
       var markup = [];
       markup.push(pxh.toast.markup.icon(object, slug));
       markup.push(pxh.toast.markup.notificationText(object, slug, id));
+      markup.push(pxh.toast.markup.timestamp(object, slug));
       markup.push(pxh.toast.markup.dismiss(object, slug, id));
       markup = markup.join('');
       element.innerHTML = markup;
