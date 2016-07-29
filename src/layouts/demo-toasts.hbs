@@ -37,10 +37,11 @@
         isPersistent : false,
         icon : 'exclamation-triangle',
         text : 'This is going to fire a callback.',
-        actionLabel : 'Callback, yo!',
+        actionLabel : 'Callback!',
         actionCallback : function() {
           console.log('this was called from actionCallback')
-        }
+        },
+        timestamp: '9:36 AM'
       }
 
       var toastObject4 = {
@@ -48,8 +49,9 @@
         isPersistent : false,
         icon : 'times-circle',
         text : 'Fourth notification? Coming right up!',
-        actionLabel : 'Beef',
-        actionLink : 'http://beef.org'
+        actionLabel : 'See Predix',
+        actionLink : 'http://predix.com',
+        timestamp: '9:36 AM'
       }
 
       document.addEventListener('DOMContentLoaded', function(event) {
