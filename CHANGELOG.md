@@ -1,6 +1,9 @@
 #pxh-chrome changelog
 
 ### pending release
+* Fix bug where an empty pxh-toasts component could prevent click events from triggering on elements underneath it
+* Implement support for right-to-left languages and layout
+  * Drawer, drawer header, view header, view, navigation, login, notifications, toasts
 * Activate timestamps in notifications
   * To use, include a `timestamp : '9:36 AM'` property in your toast `object` containing the string you want to display as the timestamp
 
