@@ -3,8 +3,10 @@
 ### pending release
 * Implement support for right-to-left languages and layout
   * Drawer, drawer header, view header, view, navigation, login, notifications, toasts
-  * Switch between left-to-right and right-to-left layouts by modifying the `$pxh-drawer-side` and `$pxh-drawer-opposite-side` variables and then recompiling pxh-chrome's Sass into CSS
-  * Switching between left-to-right and right-to-left layouts from a single compiled pxh-chrome CSS file (by changing CSS classes in your application's HTML, for example) is currently not supported
+  * Switch between left-to-right and right-to-left layouts by updating the `$pxh-language-direction` variable (valid options are `ltr` [default] and `rtl`)
+      * This toggles the `$pxh-drawer-side` and `$pxh-drawer-opposite-side` variables
+      * Recompile pxh-chrome's Sass into CSS to see the resulting change
+      * Switching between left-to-right and right-to-left layouts from a single compiled pxh-chrome CSS file (by changing CSS classes in your application's HTML, for example) is planned but not currently supported
 * Activate timestamps in notifications
   * To use, include a `timestamp : '9:36 AM'` property in your toast `object` containing the string you want to display as the timestamp
 * Fix bug where an empty pxh-toasts component could prevent click events from triggering on elements underneath it
