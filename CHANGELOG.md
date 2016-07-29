@@ -1,11 +1,13 @@
 #pxh-chrome changelog
 
 ### pending release
-* Fix bug where an empty pxh-toasts component could prevent click events from triggering on elements underneath it
 * Implement support for right-to-left languages and layout
   * Drawer, drawer header, view header, view, navigation, login, notifications, toasts
+  * Switch between left-to-right and right-to-left layouts by modifying the `$pxh-drawer-side` and `$pxh-drawer-opposite-side` variables and then recompiling pxh-chrome's Sass into CSS
+  * Switching between left-to-right and right-to-left layouts from a single compiled pxh-chrome CSS file (by changing CSS classes in your application's HTML, for example) is currently not supported
 * Activate timestamps in notifications
   * To use, include a `timestamp : '9:36 AM'` property in your toast `object` containing the string you want to display as the timestamp
+* Fix bug where an empty pxh-toasts component could prevent click events from triggering on elements underneath it
 
 ### 1.3.0 - July 28, 2016
 * Darken default `<html>` background color by changing it from `$gray5` to `$gray8` to better support spine content
