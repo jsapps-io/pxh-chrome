@@ -24,9 +24,9 @@ $pxh-toast-max-count: 3;
 
 @mixin pxh-toast {
   display: flex;
-  @if $pxh-drawer-side == right {
-    flex-direction: row-reverse;
-  }
+  // @if $pxh-language-direction == 'rtl' { // handled by direction: rtl on body element
+  //   flex-direction: row-reverse;
+  // }
   pointer-events: auto;
   overflow: hidden;
   position: relative;

@@ -38,9 +38,9 @@ $pxh-login-animate-config: (
 
 .pxh-login {
   display: flex;
-  @if $pxh-drawer-side == right {
-    flex-direction: row-reverse;
-  }
+  // @if $pxh-drawer-side == right { handled by direction: rtl on body element
+  //   flex-direction: row-reverse;
+  // }
   align-items: center;
   font-size: $inuit-base-font-size;
   border-top: 1px solid $gray9;
@@ -57,9 +57,9 @@ $pxh-login-animate-config: (
 
 .pxh-login__profile-link {
   display: flex;
-  @if $pxh-drawer-side == right {
-    flex-direction: row-reverse;
-  }
+  // @if $pxh-drawer-side == right { // handled by direction: rtl on body element
+  //   flex-direction: row-reverse;
+  // }
   align-items: center;
   flex-grow: 3;
   text-decoration: none;

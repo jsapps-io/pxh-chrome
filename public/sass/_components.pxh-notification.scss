@@ -114,9 +114,9 @@ $pxh-notification-max-count: 5;
   .pxh-notifications__header {
     height: 40px;
     display: flex;
-    @if $pxh-drawer-side == right {
-      flex-direction: row-reverse;
-    }
+    // @if $pxh-language-direction == 'rtl' { // handled by direction: rtl on body element
+    //   flex-direction: row-reverse;
+    // }
     border-bottom: 1px solid $gray7;
   }
 
