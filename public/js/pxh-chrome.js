@@ -1503,7 +1503,7 @@ pxh.toast = {
    * @param {Boolean} [suppressToast=false] An optional parameter that, if true, will only create a notification (if applicable) from the object, and will display a corresponding toast to the user
    */
   add : function(object, suppressToast) {
-    var id = Math.floor(Math.random()*16777215).toString(16);
+    var id = (object && object.id) ? object.id : Math.floor(Math.random()*16777215).toString(16);
     var notificationList = '';
     var toastList = '';
     if ((notificationList = document.getElementById('js-notifications__list')) && ((object.actionLink) || (object.actionCallback)))

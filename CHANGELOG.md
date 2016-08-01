@@ -12,6 +12,7 @@
   * If a `timestamp` property is provided in addition to the `formattedTimestamp`, it will be used as `title` text on hover
   * If only a `timestamp` property is provided, it will be displayed as a string
   * Fix bug where an empty pxh-toasts component could prevent click events from triggering on elements underneath it
+* Add ability to pass a custom unique ID to `pxh.toast.add()` when creating a new toast/notification
 
 ### 1.3.0 - July 28, 2016
 * Darken default `<html>` background color by changing it from `$gray5` to `$gray8` to better support spine content
