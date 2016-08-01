@@ -1457,7 +1457,7 @@ pxh.toast = {
    * // actionLink : 'http://predix.com' // fully qualified link or route to follow when the user clicks the action button
    * // actionCallback : // callback function to fire when the user clicks the action button
    * // isPersistent : false // true, false ... whether toast is persistent or not (only applies to actionable toasts)
-   * // timestamp: '9:36 AM' // string containing the display text for the date/time the toast/notification was issued
+   * // formattedTimestamp: '9:36 AM' // string containing the formatted display text for the date/time the toast/notification was issued
    * 
    * var toastObject1 = {
    *   value : 'something' // pxh.toast.add merely requires that the toast object exists, and will use reasonable defaults if any parameters are missing
@@ -1470,7 +1470,7 @@ pxh.toast = {
    *   text : 'It can be this long or longer if you want. In fact, it can be really, really long if you have a lot you want to say. We kind of discourage this much content but knock yourself out! Just keep talking and talking and talking and this area will keep expanding and expanding.',
    *   actionLabel : 'View a lot of things right now',
    *   actionLink : 'http://predix.com',
-   *   timestamp: '9:36 AM'
+   *   formattedTimestamp: '9:36 AM'
    * }
    *
    * var toastObject3 = {
@@ -1865,15 +1865,27 @@ pxh.toast = {
     },
 
     /**
-     * Generates the HTML markup for displaying a notification's timestamp. This method displays the contents of the `object.timestamp` string for the toast object passed to it. Any formatting for how the timestamp should be displayed must be performed in advance.
+     * Generates the HTML markup for displaying a notification's formatted timestamp. This method displays the contents of the `object.formattedTimestamp` string for the toast object passed to it, with a fallback to `object.timestamp` if `formattedTimestamp` is not present. Any formatting for how `formattedTimestamp` should be displayed must be performed in advance.
      * 
      * @param {Object} object The JavaScript object of the notification that is being created
      * @param {String} slug The text slug to be used when generating class names and targets
      */
     timestamp : function(object, slug) {
+      var formattedTimestamp = object.formattedTimestamp ? object.formattedTimestamp : false;
       var timestamp = object.timestamp ? object.timestamp : false;
-      var markup = [];
+      var timestampTitle = '';
       if (timestamp)
+      {
+        timestampTitle = ' title="' + timestamp + '"';
+      }
+      var markup = [];
+      if (formattedTimestamp)
+      {
+        markup.push('<div class="pxh-' + slug + '__timestamp"' + timestampTitle + '>\n');
+        markup.push('  ' + formattedTimestamp + '\n');
+        markup.push('</div>\n');
+      }
+      else if (timestamp)
       {
         markup.push('<div class="pxh-' + slug + '__timestamp">\n');
         markup.push('  ' + timestamp + '\n');

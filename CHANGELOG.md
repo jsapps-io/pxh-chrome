@@ -8,8 +8,10 @@
       * Recompile pxh-chrome's Sass into CSS to see the resulting change
       * Switching between left-to-right and right-to-left layouts from a single compiled pxh-chrome CSS file (by changing CSS classes in your application's HTML, for example) is planned but not currently supported
 * Activate timestamps in notifications
-  * To use, include a `timestamp : '9:36 AM'` property in your toast `object` containing the string you want to display as the timestamp
-* Fix bug where an empty pxh-toasts component could prevent click events from triggering on elements underneath it
+  * To use, include a `formattedTimestamp : '9:36 AM'` property in your toast `object` containing the formatted string you want to display as the timestamp
+  * If a `timestamp` property is provided in addition to the `formattedTimestamp`, it will be used as `title` text on hover
+  * If only a `timestamp` property is provided, it will be displayed as a string
+  * Fix bug where an empty pxh-toasts component could prevent click events from triggering on elements underneath it
 
 ### 1.3.0 - July 28, 2016
 * Darken default `<html>` background color by changing it from `$gray5` to `$gray8` to better support spine content

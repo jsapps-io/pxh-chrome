@@ -236,7 +236,7 @@ $pxh-notification-max-count: 5;
   .pxh-notification__timestamp {
     @include pxh-toast__timestamp;
     padding-top: $pxh-toast-margin * 5.5;
-    max-width: $pxh-toast-height * 2;
+    max-width: $pxh-toast-height * 1.5;
   }
   .pxh-notification__dismiss {
     @include pxh-toast__dismiss;
