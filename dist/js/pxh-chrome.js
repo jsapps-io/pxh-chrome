@@ -1349,16 +1349,6 @@ pxh.toast = {
    * Adds a toast and corresponding notification (if applicable) to the application
    * 
    * @example
-   * // The pxh.toast.add method accepts a toast object, and responds to the following parameters:
-   * // type : 'green' // green, blue, orange, red ... the color of the toast icon (blue by default)
-   * // icon : 'info-circle' // any Font Awesome icon slug ... the icon to use for the toast icon
-   * // text : 'This is the text for notification #1.' // text to display in toast ... any HTML will be stripped ... a generic message will be displayed 
-   * // actionLabel : 'View' // text to display in the toast action button ... long labels will be truncated
-   * // actionLink : 'http://predix.com' // fully qualified link or route to follow when the user clicks the action button
-   * // actionCallback : // callback function to fire when the user clicks the action button
-   * // isPersistent : false // true, false ... whether toast is persistent or not (only applies to actionable toasts)
-   * // formattedTimestamp: '9:36 AM' // string containing the formatted display text for the date/time the toast/notification was issued
-   * 
    * var toastObject1 = {
    *   value : 'something' // pxh.toast.add merely requires that the toast object exists, and will use reasonable defaults if any parameters are missing
    * }
@@ -1400,10 +1390,20 @@ pxh.toast = {
    *   pxh.toast.add(toastObject4);
    * });
    * @param {object} object An object containing the parameters for the toast (and notification, if applicable) that will be created
-   * @param {Boolean} [suppressToast=false] An optional parameter that, if true, will only create a notification (if applicable) from the object, and will display a corresponding toast to the user
+   * @param {String} [object.id=unique hex value] - The unique id for the toast/notification being generated. If not provided, pxh-chrome will automatically generate a unique hexidecimal value. The id must be unique or else unexpected behavior might occur. If your application will be providing its own id, it is your responsibility to enforce its uniqueness
+   * @param {String} [object.type='blue'] - The type of toast/notification. Available options are 'green', 'blue', 'orange', 'red'
+   * @param {String} [object.icon='info-circle'] - The name of the Font Awesome icon to display for the toast/notification
+   * @param {String} [object.text='You received a new notification.'] - The text to display for the toast/notification. Any HTML tags will be stripped out and the resulting plaintext will be displayed. 
+   * @param {String} [object.formattedTimestamp] The formatted text to display for the datetime the toast/notification was issued (e.g. 9:36 AM)
+   * @param {String} [object.timestamp] The ISO 8601 datetime value for when the toast/notification was issued (e.g. 2016-08-01T17:36:10+00:00)
+  * @param {Boolean} [object.isPersistent=false] - Whether or not the toast should persist until the user actively dismisses it. This option is only recognized if the toast has an `actionLink` or `actionCallback` associated with it
+   * @param {Boolean} [object.suppressToast=false] An optional parameter that, if true, will only create a notification (if applicable) from the object, and will display a corresponding toast to the user
+   * @param {String} [object.actionText='Action'] - The text to display in the toast's action button, if an `actionLink` or `actionCallback` is present.
+   * @param {String} [object.actionLink] - The URL to follow when the user clicks the action button. Can be a fully qualified URL (e.g. http://www.predix.com/) or a relative route within your application (e.g. assets/detail/1234?show_cases_tab)
+   * @param {Function} [object.actionCallback] - The callback function to execute when the user clicks the toast/notification's action button
    */
   add: function add(object, suppressToast) {
-    var id = Math.floor(Math.random() * 16777215).toString(16);
+    var id = object && object.id ? object.id : Math.floor(Math.random() * 16777215).toString(16);
     var notificationList = '';
     var toastList = '';
     if ((notificationList = document.getElementById('js-notifications__list')) && (object.actionLink || object.actionCallback)) {
