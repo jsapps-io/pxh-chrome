@@ -284,7 +284,7 @@
   height: $pxh-drawer-width-narrow;
   width: $pxh-drawer-width-narrow;
   padding-top: $pxh-drawer-margin;
-  padding-left: $pxh-drawer-margin; // yeah, pretty sure this should be hard-coded for both LTR and RTL
+  padding-#{$pxh-drawer-side}: $pxh-drawer-margin;
   color: $black;
   text-decoration: none;
   &:link,

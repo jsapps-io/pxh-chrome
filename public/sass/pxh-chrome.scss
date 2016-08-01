@@ -6,6 +6,11 @@
 
 // ** #SETTINGS ** //
 
+/// Define whether the application is rendering in a "left-to-right" language or a "right-to-left" language
+/// @group pxh-settings
+/// @type String [default] 'ltr'
+$pxh-language-direction : 'ltr'; // 'ltr' OR 'rtl'
+
 @import "settings.defaults.scss";
 @import "settings.pxh-chrome.scss";
 
@@ -50,11 +55,6 @@ $fa-font-path : "../fonts/font-awesome/fonts" !default;
 // ** #OBJECTS ** //
 
 // ** #COMPONENTS ** //
-
-/// Define whether the application is rendering in a "left-to-right" language or a "right-to-left" language
-/// @group pxh-settings
-/// @type String [default] 'ltr'
-$pxh-language-direction : 'ltr'; // 'ltr' OR 'rtl'
 
 /// Define whether the drawer should appear on the left or right side of the browser window
 /// @group pxh-settings
