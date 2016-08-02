@@ -24,6 +24,10 @@ $pxh-toast-max-count: 3;
 
 @mixin pxh-toast {
   display: flex;
+  // @if $pxh-language-direction == 'rtl' { // handled by direction: rtl on body element
+  //   flex-direction: row-reverse;
+  // }
+  pointer-events: auto;
   overflow: hidden;
   position: relative;
   width: 100%;
@@ -42,10 +46,11 @@ $pxh-toast-max-count: 3;
 }
 
 @mixin pxh-toast__text {
-  text-align: left;
+  text-align: $pxh-drawer-side;
   flex-grow: 2;
   margin: auto $pxh-toast-margin auto $pxh-toast-margin;
-  padding: $pxh-toast-margin 0 0 ($pxh-toast-margin * 2);
+  padding: $pxh-toast-margin 0 0 0;
+  padding-#{$pxh-drawer-side}: ($pxh-toast-margin * 2);
   overflow: hidden;
   position: relative;
   line-height: 1.2;
@@ -109,7 +114,7 @@ $pxh-toast-max-count: 3;
   margin-left: $pxh-toast-margin;
   color: $gray8;
   flex-shrink: 0;
-  text-align: right;
+  text-align: $pxh-drawer-opposite-side;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
@@ -164,6 +169,7 @@ $pxh-toast-max-count: 3;
     @include pxh-fancy-scrollbar;
     position: fixed;
     bottom: 0;
+    pointer-events: none;
     right: $pxh-toast-margin;
     left: $pxh-toast-margin;
     -webkit-overflow-scrolling: touch;
@@ -174,13 +180,13 @@ $pxh-toast-max-count: 3;
       &--narrow\@md {
         max-height: ($pxh-toast-height * $pxh-toast-max-count) + ($pxh-toast-height / 2) + ($pxh-toast-margin * ($pxh-toast-max-count - 1));
         top: 60px + 1px + 5px;
-        left: auto;
+        #{$pxh-drawer-side}: auto;
         width: 420px;
       }
     }
     @include mq($from: lg) {
       &--wide\@lg {
-        left: auto;
+        #{$pxh-drawer-side}: auto;
         width: 480px;
       }
     }

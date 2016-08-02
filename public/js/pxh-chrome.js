@@ -1,5 +1,5 @@
 'use strict';
-/*! pxh-chrome.js 1.3.0 */
+/*! pxh-chrome.js 1.4.0 */
 
 // **************
 // CONFIG OBJECTS
@@ -1449,16 +1449,6 @@ pxh.toast = {
    * Adds a toast and corresponding notification (if applicable) to the application
    * 
    * @example
-   * // The pxh.toast.add method accepts a toast object, and responds to the following parameters:
-   * // type : 'green' // green, blue, orange, red ... the color of the toast icon (blue by default)
-   * // icon : 'info-circle' // any Font Awesome icon slug ... the icon to use for the toast icon
-   * // text : 'This is the text for notification #1.' // text to display in toast ... any HTML will be stripped ... a generic message will be displayed 
-   * // actionLabel : 'View' // text to display in the toast action button ... long labels will be truncated
-   * // actionLink : 'http://predix.com' // fully qualified link or route to follow when the user clicks the action button
-   * // actionCallback : // callback function to fire when the user clicks the action button
-   * // isPersistent : false // true, false ... whether toast is persistent or not (only applies to actionable toasts)
-   * // timestamp: '9:36 AM' // CURRENTLY DISABLED, but future iterations of pxh.toast will support toast timestamps
-   * 
    * var toastObject1 = {
    *   value : 'something' // pxh.toast.add merely requires that the toast object exists, and will use reasonable defaults if any parameters are missing
    * }
@@ -1470,7 +1460,7 @@ pxh.toast = {
    *   text : 'It can be this long or longer if you want. In fact, it can be really, really long if you have a lot you want to say. We kind of discourage this much content but knock yourself out! Just keep talking and talking and talking and this area will keep expanding and expanding.',
    *   actionLabel : 'View a lot of things right now',
    *   actionLink : 'http://predix.com',
-   *   timestamp: '9:36 AM'
+   *   formattedTimestamp: '9:36 AM'
    * }
    *
    * var toastObject3 = {
@@ -1500,10 +1490,20 @@ pxh.toast = {
    *   pxh.toast.add(toastObject4);
    * });
    * @param {object} object An object containing the parameters for the toast (and notification, if applicable) that will be created
-   * @param {Boolean} [suppressToast=false] An optional parameter that, if true, will only create a notification (if applicable) from the object, and will display a corresponding toast to the user
+   * @param {String} [object.id=unique hex value] - The unique id for the toast/notification being generated. If not provided, pxh-chrome will automatically generate a unique hexidecimal value. The id must be unique or else unexpected behavior might occur. If your application will be providing its own id, it is your responsibility to enforce its uniqueness
+   * @param {String} [object.type='blue'] - The type of toast/notification. Available options are 'green', 'blue', 'orange', 'red'
+   * @param {String} [object.icon='info-circle'] - The name of the Font Awesome icon to display for the toast/notification
+   * @param {String} [object.text='You received a new notification.'] - The text to display for the toast/notification. Any HTML tags will be stripped out and the resulting plaintext will be displayed. 
+   * @param {String} [object.formattedTimestamp] The formatted text to display for the datetime the toast/notification was issued (e.g. 9:36 AM)
+   * @param {String} [object.timestamp] The ISO 8601 datetime value for when the toast/notification was issued (e.g. 2016-08-01T17:36:10+00:00)
+  * @param {Boolean} [object.isPersistent=false] - Whether or not the toast should persist until the user actively dismisses it. This option is only recognized if the toast has an `actionLink` or `actionCallback` associated with it
+   * @param {Boolean} [object.suppressToast=false] An optional parameter that, if true, will only create a notification (if applicable) from the object, and will display a corresponding toast to the user
+   * @param {String} [object.actionText='Action'] - The text to display in the toast's action button, if an `actionLink` or `actionCallback` is present.
+   * @param {String} [object.actionLink] - The URL to follow when the user clicks the action button. Can be a fully qualified URL (e.g. http://www.predix.com/) or a relative route within your application (e.g. assets/detail/1234?show_cases_tab)
+   * @param {Function} [object.actionCallback] - The callback function to execute when the user clicks the toast/notification's action button
    */
   add : function(object, suppressToast) {
-    var id = Math.floor(Math.random()*16777215).toString(16);
+    var id = (object && object.id) ? object.id : Math.floor(Math.random()*16777215).toString(16);
     var notificationList = '';
     var toastList = '';
     if ((notificationList = document.getElementById('js-notifications__list')) && ((object.actionLink) || (object.actionCallback)))
@@ -1865,24 +1865,35 @@ pxh.toast = {
     },
 
     /**
-     * DISABLED: Generates the HTML markup for displaying a notification's timestamp
+     * Generates the HTML markup for displaying a notification's formatted timestamp. This method displays the contents of the `object.formattedTimestamp` string for the toast object passed to it, with a fallback to `object.timestamp` if `formattedTimestamp` is not present. Any formatting for how `formattedTimestamp` should be displayed must be performed in advance.
      * 
-     * This is disabled until we determine how we want to handle time zones, date formatting, and relative dates
      * @param {Object} object The JavaScript object of the notification that is being created
      * @param {String} slug The text slug to be used when generating class names and targets
      */
-    // timestamp : function(object, slug) {
-    //   var timestamp = object.timestamp ? object.timestamp : false;
-    //   var markup = [];
-    //   if (timestamp)
-    //   {
-    //     markup.push('<div class="pxh-' + slug + '__timestamp">\n');
-    //     markup.push('  ' + timestamp + '\n');
-    //     markup.push('</div>\n');
-    //   }
-    //   markup = markup.join('');
-    //   return markup;
-    // },
+    timestamp : function(object, slug) {
+      var formattedTimestamp = object.formattedTimestamp ? object.formattedTimestamp : false;
+      var timestamp = object.timestamp ? object.timestamp : false;
+      var timestampTitle = '';
+      if (timestamp)
+      {
+        timestampTitle = ' title="' + timestamp + '"';
+      }
+      var markup = [];
+      if (formattedTimestamp)
+      {
+        markup.push('<div class="pxh-' + slug + '__timestamp"' + timestampTitle + '>\n');
+        markup.push('  ' + formattedTimestamp + '\n');
+        markup.push('</div>\n');
+      }
+      else if (timestamp)
+      {
+        markup.push('<div class="pxh-' + slug + '__timestamp">\n');
+        markup.push('  ' + timestamp + '\n');
+        markup.push('</div>\n');
+      }
+      markup = markup.join('');
+      return markup;
+    },
 
     /**
      * Generates the HTML markup for displaying a toast/notification's "dismiss" button
@@ -1964,6 +1975,7 @@ pxh.toast = {
       var markup = [];
       markup.push(pxh.toast.markup.icon(object, slug));
       markup.push(pxh.toast.markup.notificationText(object, slug, id));
+      markup.push(pxh.toast.markup.timestamp(object, slug));
       markup.push(pxh.toast.markup.dismiss(object, slug, id));
       markup = markup.join('');
       element.innerHTML = markup;

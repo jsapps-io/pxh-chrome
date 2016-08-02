@@ -90,8 +90,21 @@ $pxh-notification-max-count: 5;
     background-color: $gray10;
     color: $gray2;
     border: 1px solid $gray7;
-    max-width: 480px;
     display: none;
+    @include mq($from: md) {
+      &--narrow\@md {
+        #{$pxh-drawer-side}: $pxh-notification-margin;
+        #{$pxh-drawer-opposite-side}: auto;
+        width: 420px;
+      }
+    }
+    @include mq($from: lg) {
+      &--wide\@lg {
+        #{$pxh-drawer-side}: $pxh-notification-margin;
+        #{$pxh-drawer-opposite-side}: auto;
+        width: 480px;
+      }
+    }
   }
 
   .pxh-notifications--visible {
@@ -101,6 +114,9 @@ $pxh-notification-max-count: 5;
   .pxh-notifications__header {
     height: 40px;
     display: flex;
+    // @if $pxh-language-direction == 'rtl' { // handled by direction: rtl on body element
+    //   flex-direction: row-reverse;
+    // }
     border-bottom: 1px solid $gray7;
   }
 
@@ -114,8 +130,8 @@ $pxh-notification-max-count: 5;
 
   .pxh-notifications__action {
     min-width: $pxh-notification-margin * 16;
-    text-align: left;
-    padding-left: $pxh-notification-margin * 2;
+    text-align: $pxh-drawer-side;
+    padding-#{$pxh-drawer-side}: $pxh-notification-margin * 2;
     padding-top: $pxh-notification-margin * 2;
   }
 
@@ -132,7 +148,7 @@ $pxh-notification-max-count: 5;
     min-width: $pxh-notification-margin * 16;
     color: $gray5;
     text-decoration: none;
-    text-align: right;
+    text-align: $pxh-drawer-opposite-side;
     padding-right: $pxh-notification-margin * 2;
     padding-left: $pxh-notification-margin * 2;
     padding-top: $pxh-notification-margin * 2;
@@ -182,7 +198,7 @@ $pxh-notification-max-count: 5;
   .pxh-notification__icon {
     @include pxh-toast__icon;
     padding-top: $pxh-toast-margin * 4;
-    padding-left: $pxh-toast-margin;
+    padding-#{$pxh-drawer-side}: $pxh-toast-margin;
     flex-basis: $pxh-toast-margin * 8;
     font-size: 24px;
     &--green {
@@ -220,7 +236,7 @@ $pxh-notification-max-count: 5;
   .pxh-notification__timestamp {
     @include pxh-toast__timestamp;
     padding-top: $pxh-toast-margin * 5.5;
-    max-width: $pxh-toast-height * 2;
+    max-width: $pxh-toast-height * 1.5;
   }
   .pxh-notification__dismiss {
     @include pxh-toast__dismiss;

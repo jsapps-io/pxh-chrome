@@ -10,7 +10,7 @@
   @include pxh-fancy-scrollbar;
   position: absolute;
   top: $pxh-view-header-height;
-  left: 0;
+  #{$pxh-drawer-side}: 0;
   bottom: $pxh-login-height;
   width: 100%;
   clear: both;
@@ -21,7 +21,7 @@
 
 .pxh-navigation__item-icon {
   text-align: center;
-  float: left;
+  float: $pxh-drawer-side;
   display: block;
   width: $pxh-drawer-margin;
 }
@@ -37,9 +37,12 @@
   display: block;
   width: 100%;
   height: $pxh-navigation-link-height;
-  float: left;
-  clear: left;
-  padding: 15px 0 0 $pxh-drawer-margin;
+  float: $pxh-drawer-side;
+  clear: $pxh-drawer-side;
+  padding-top: 15px;
+  padding-bottom: 0;
+  padding-#{$pxh-drawer-side}: $pxh-drawer-margin;
+  padding-#{$pxh-drawer-opposite-side}: 0;
 }
 
 /*------------------------------------*\
@@ -50,7 +53,7 @@
   .pxh-navigation__link &,
   .pxh-navigation__sub-link & {
     position: absolute;
-    right: 5px;
+    #{$pxh-drawer-opposite-side}: 5px;
   }
   .pxh-navigation__link & {
     top: 33%; // magic number
@@ -65,7 +68,7 @@
 \*------------------------------------*/
 
 @mixin pxh-navigation__item-text--in-state-scale {
-  padding-left: $pxh-drawer-margin;
+  padding-#{$pxh-drawer-side}: $pxh-drawer-margin;
   font-size: 16px;
 }
 @mixin pxh-navigation__item-text--in-state-opacity {
@@ -127,7 +130,7 @@
   white-space: nowrap;
   text-overflow: ellipsis;
   max-width: $pxh-drawer-width-wide - ($pxh-drawer-margin * 3); // has to be narrower than you think to accomodate potential vertical scrollbar in IE11
-  float: left;
+  float: $pxh-drawer-side;
 }
 
 // hide sub-lists (such as sub-navigation for microapps besides the one
@@ -143,7 +146,10 @@
 
 @mixin pxh-navigation__sub-link--in-state-scale {
   height: $pxh-navigation-sub-link-height;
-  padding: ($inuit-base-spacing-unit / 2) ($inuit-base-spacing-unit / 8) 0 $pxh-drawer-margin * 3;
+  padding-top: $inuit-base-spacing-unit / 2;
+  padding-bottom: 0;
+  padding-#{$pxh-drawer-opposite-side}: $inuit-base-spacing-unit / 8;
+  padding-#{$pxh-drawer-side}: $pxh-drawer-margin * 3;
   font-size: 16px;
 }
 
@@ -223,7 +229,7 @@
   white-space: nowrap;
   text-overflow: ellipsis;
   max-width: $pxh-drawer-width-wide - ($pxh-drawer-margin * 3.25); // has to be narrower than the available space to accomodate potential pxh-badge
-  float: left;
+  float: $pxh-drawer-side;
 }
 
 .pxh-navigation__sub-link--selected {
@@ -247,8 +253,8 @@
 .pxh-navigation__sub-item--divider {
   margin-top: $pxh-navigation-divider-margin * .75;
   margin-bottom: $pxh-navigation-divider-margin * .75;
-  margin-left: $pxh-drawer-margin * 3;
-  margin-right: $pxh-drawer-margin;
+  margin-#{$pxh-drawer-side}: $pxh-drawer-margin * 3;
+  margin-#{$pxh-drawer-opposite-side}: $pxh-drawer-margin;
   display: block;
   height: 1px;
   background-color: $gray9;
@@ -304,8 +310,8 @@
     }
     .pxh-navigation__sub-item--divider {
       margin-top: $pxh-navigation-divider-margin * 1.5;
-      margin-left: $pxh-drawer-margin * 3;
-      margin-right: $pxh-drawer-margin;
+      margin-#{$pxh-drawer-side}: $pxh-drawer-margin * 3;
+      margin-#{$pxh-drawer-opposite-side}: $pxh-drawer-margin;
       display: block;
       height: 1px;
       background-color: $gray9;

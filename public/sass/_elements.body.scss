@@ -2,7 +2,12 @@
     #elements.body
 \*------------------------------------*/
 
+$pxh-language-direction : 'ltr' !default; // 'ltr' OR 'rtl'
+
 html, body {
+  @if $pxh-language-direction == 'rtl' {
+    direction: rtl;
+  }
   font-family: "GE Inspira Sans", "Helvetica", "Arial", sans-serif;
   height: 100%;
   width: 100%;
