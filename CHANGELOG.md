@@ -1,5 +1,13 @@
 #pxh-chrome changelog
 
+### 1.5.0 - August 2, 2016
+* Dismissing a toast no longer removes its corresponding notification (if applicable) from the notification list
+  * Clicking the "action" button on a toast still dismisses both the toast and its corresponding notification
+  * Clicking the "action" button on a notification still dismisses both the toast and the notification
+  * Dismissing a notification still dismisses both the toast and the notification
+* Bump versions on browser-sync, gulp-uglify, mocha
+* Fix version number for gulp-plumber
+
 ### 1.4.0 - August 1, 2016
 * Activate timestamps in notifications
   * To use, include a `formattedTimestamp : '9:36 AM'` property in your toast `object` containing the formatted string you want to display as the timestamp
