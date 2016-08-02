@@ -18,7 +18,8 @@ const reload = browserSync.reload;
 
 var componentConfig = {
   site: {
-    title:            'pxh-chrome'
+    title:            'pxh-chrome',
+    version:          '1.4.0' 
   }
 };
 
