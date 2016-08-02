@@ -1526,7 +1526,7 @@ pxh.toast = {
     {
       var toastFirstChild = toastList.firstChild;
       var toastElement = toastList.insertBefore(pxh.toast.markup.createToast(object, id), toastFirstChild);
-      pxh.toast.action.dismissButton(toastElement, 'toast', id);
+      pxh.toast.action.dismissButton(toastElement, 'toast', id, true);
       pxh.toast.action.expandButton(toastElement, 'toast');
       if (object.actionLink) 
       {
@@ -1562,15 +1562,15 @@ pxh.toast = {
      * @param {String} slug The text slug to be used when generating class names and targets
      * @param {String} id The unique ID of the toast/notification combination associated with the target dismiss button
      */
-    dismissButton : function(element, slug, id) {
+    dismissButton : function(element, slug, id, preserveNotification) {
       var button = document.getElementById('js-' + slug + '__dismiss-button--' + id);
       if (button)
       {
         button.addEventListener('click', function(event) {
           event.preventDefault();
-          pxh.toast.hide(id);
+          pxh.toast.hide(id, preserveNotification);
           setTimeout(function() {
-            pxh.toast.remove(id);
+            pxh.toast.remove(id, preserveNotification);
           }, 1000);
         })
       }
@@ -1658,8 +1658,9 @@ pxh.toast = {
    * Hides a toast and its corresponding notification (if applicable) from the user
    * 
    * @param {String} id The unique ID of the toast/notification combination to hide from the user
+   * @param {Boolean} [preserveNotification=false] When dismissing a toast, whether to retain its corresponding notification in the notification list
    */
-  hide : function(id) {
+  hide : function(id, preserveNotification) {
     var toastList = '';
     var toastItem = '';
     var notificationList = '';
@@ -1669,7 +1670,7 @@ pxh.toast = {
       toastItem.classList.add('pxh-toast--animate-out');
       toastItem.classList.remove('pxh-toast--animate-in');
     }
-    if ((notificationList = document.getElementById('js-notifications__list')) && (notification = document.getElementById('js-notification--' + id)))
+    if ((notificationList = document.getElementById('js-notifications__list')) && (notification = document.getElementById('js-notification--' + id)) && (!preserveNotification))
     {
       notification.classList.add('pxh-notification--animate-out');
       notification.classList.remove('pxh-notification--animate-in');
@@ -1711,7 +1712,7 @@ pxh.toast = {
    * 
    * @param {String} id The unique ID of the toast/notification combination to remove
    */
-  remove : function(id) {
+  remove : function(id, preserveNotification) {
     var toastList = '';
     var toastElement = '';
     var notificationList = '';
@@ -1719,9 +1720,8 @@ pxh.toast = {
     if ((toastList = document.getElementById('js-toasts')) && (toastElement = document.getElementById('js-toast--' + id)))
     {
       toastElement.remove();
-
     }
-    if ((notificationList = document.getElementById('js-notifications__list')) && (notification = document.getElementById('js-notification--' + id)))
+    if ((notificationList = document.getElementById('js-notifications__list')) && (notification = document.getElementById('js-notification--' + id)) && (!preserveNotification))
     {
       notification.remove();
       pxh.toast.badge.decrement();
