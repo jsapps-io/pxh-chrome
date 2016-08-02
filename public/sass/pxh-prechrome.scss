@@ -1,4 +1,4 @@
-/*! pxh-prechrome.css 1.4.0 */
+/*! pxh-prechrome.css 1.5.0 */
 
 /*------------------------------------*\
     #pxh-prechrome
@@ -14,7 +14,7 @@
 /// @group pxh-settings
 /// @type String [default] - Webfont path
 $webfont-path: '../fonts/ge/type' !default;
-// $webfont-path: '//dzlpbrbc7yvq0.cloudfront.net/pxh-chrome/1.4.0/dist/fonts/ge/type' !default;
+// $webfont-path: '//dzlpbrbc7yvq0.cloudfront.net/pxh-chrome/1.5.0/dist/fonts/ge/type' !default;
 @import "generic.fonts.scss";
 @import "generic.defaults.scss";
 
@@ -30,7 +30,7 @@ $mq-breakpoints : (
 /// @group pxh-settings
 /// @type String
 $fa-font-path : "../fonts/font-awesome/fonts" !default;
-// $fa-font-path : "//dzlpbrbc7yvq0.cloudfront.net/pxh-chrome/1.4.0/dist/fonts/font-awesome/fonts" !default;
+// $fa-font-path : "//dzlpbrbc7yvq0.cloudfront.net/pxh-chrome/1.5.0/dist/fonts/font-awesome/fonts" !default;
 @import "font-awesome/scss/font-awesome.scss"; // our sass task includes /bower_components automatically so we don't need to specify it
 @import "tools.pxh-animations.scss";
 @import "tools.pxh-mixins.scss";
