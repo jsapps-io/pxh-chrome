@@ -1,4 +1,4 @@
-/*! pxh-chrome.css 1.5.1 */
+/*! pxh-chrome.css 1.6.0 */
 
 /*------------------------------------*\
     #pxh-chrome
@@ -21,7 +21,7 @@ $pxh-language-direction : 'rtl'; // 'ltr' OR 'rtl'
 /// @group pxh-settings
 /// @type String [default] - Webfont path
 $webfont-path: '../fonts/ge/type' !default;
-// $webfont-path: '//dzlpbrbc7yvq0.cloudfront.net/pxh-chrome/1.5.1/dist/fonts/ge/type' !default;
+// $webfont-path: '//dzlpbrbc7yvq0.cloudfront.net/pxh-chrome/1.6.0/dist/fonts/ge/type' !default;
 
 @import "generic.fonts.scss";
 @import "generic.defaults.scss";
@@ -40,7 +40,7 @@ $mq-breakpoints : (
 /// @group pxh-settings
 /// @type String
 $fa-font-path : "../fonts/font-awesome/fonts" !default;
-// $fa-font-path : "//dzlpbrbc7yvq0.cloudfront.net/pxh-chrome/1.5.1/dist/fonts/font-awesome/fonts" !default;
+// $fa-font-path : "//dzlpbrbc7yvq0.cloudfront.net/pxh-chrome/1.6.0/dist/fonts/font-awesome/fonts" !default;
 
 @import "font-awesome/scss/font-awesome.scss"; // our sass task includes /bower_components automatically so we don't need to specify it
 @import "tools.pxh-animations.scss";
