@@ -979,7 +979,8 @@ pxh.bindControl = function (controlName) {
   var controlElements = document.getElementsByClassName(controlName);
   if (pxh.arrayExists(controlElements)) {
     for (var i = controlElements.length - 1; i >= 0; i--) {
-      controlElements[i].addEventListener('click', function () {
+      controlElements[i].addEventListener('click', function (event) {
+        event.preventDefault();
         var firstDrawer = document.getElementsByClassName('pxh-drawer')[0];
         var drawerIsAtDefaultState = firstDrawer.classList.contains('pxh-drawer--wide@lg');
         var drawerIsNarrowAtMd = firstDrawer.classList.contains('pxh-drawer--narrow@md');
