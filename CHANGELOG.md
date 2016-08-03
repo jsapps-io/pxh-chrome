@@ -1,6 +1,6 @@
 #pxh-chrome changelog
 
-### pending release
+### 1.6.0 - August 3, 2016
 * Fix bug where drawer controls would fire their default event and update the URL path
 * Add `pxh-chrome-rtl.css`, `pxh-chrome-rtl.min.css`, `pxh-prechrome-rtl.css`, and `pxh-prechrome-rtl.min.css` to `/dist` for enabling right-to-left layouts
   * Developers can swith between left-to-right and right-to-left layouts by changing the link to the pxh-chrome CSS file in the `<head>` of their HTML file
