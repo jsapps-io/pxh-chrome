@@ -1,10 +1,16 @@
-/*! pxh-prechrome.css 1.5.1 */
+/*! pxh-prechrome.css 1.6.0 */
 
 /*------------------------------------*\
     #pxh-prechrome
 \*------------------------------------*/
 
 // ** #SETTINGS ** //
+
+/// Define whether the application is rendering in a "left-to-right" language or a "right-to-left" language
+/// @group pxh-settings
+/// @type String [default] 'ltr'
+$pxh-language-direction : 'ltr'; // 'ltr' OR 'rtl'
+
 @import "settings.defaults.scss";
 @import "settings.pxh-chrome.scss";
 
@@ -14,7 +20,7 @@
 /// @group pxh-settings
 /// @type String [default] - Webfont path
 $webfont-path: '../fonts/ge/type' !default;
-// $webfont-path: '//dzlpbrbc7yvq0.cloudfront.net/pxh-chrome/1.5.1/dist/fonts/ge/type' !default;
+// $webfont-path: '//dzlpbrbc7yvq0.cloudfront.net/pxh-chrome/1.6.0/dist/fonts/ge/type' !default;
 @import "generic.fonts.scss";
 @import "generic.defaults.scss";
 
@@ -30,7 +36,7 @@ $mq-breakpoints : (
 /// @group pxh-settings
 /// @type String
 $fa-font-path : "../fonts/font-awesome/fonts" !default;
-// $fa-font-path : "//dzlpbrbc7yvq0.cloudfront.net/pxh-chrome/1.5.1/dist/fonts/font-awesome/fonts" !default;
+// $fa-font-path : "//dzlpbrbc7yvq0.cloudfront.net/pxh-chrome/1.6.0/dist/fonts/font-awesome/fonts" !default;
 @import "font-awesome/scss/font-awesome.scss"; // our sass task includes /bower_components automatically so we don't need to specify it
 @import "tools.pxh-animations.scss";
 @import "tools.pxh-mixins.scss";

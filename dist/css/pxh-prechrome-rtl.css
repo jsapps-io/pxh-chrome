@@ -3380,6 +3380,7 @@ html {
 /*------------------------------------*    #elements.body
 \*------------------------------------*/
 html, body {
+  direction: rtl;
   font-family: "GE Inspira Sans", "Helvetica", "Arial", sans-serif;
   height: 100%;
   width: 100%;
@@ -3530,4 +3531,4 @@ a {
   text-decoration: underline;
 }
 
-/*# sourceMappingURL=pxh-prechrome.css.map */
+/*# sourceMappingURL=pxh-prechrome-rtl.css.map */
