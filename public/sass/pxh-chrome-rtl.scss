@@ -1,0 +1,103 @@
+/*! pxh-chrome.css 1.5.1 */
+
+/*------------------------------------*\
+    #pxh-chrome
+\*------------------------------------*/
+
+// ** #SETTINGS ** //
+
+/// Define whether the application is rendering in a "left-to-right" language or a "right-to-left" language
+/// @group pxh-settings
+/// @type String [default] 'ltr'
+$pxh-language-direction : 'rtl'; // 'ltr' OR 'rtl'
+
+@import "settings.defaults.scss";
+@import "settings.pxh-chrome.scss";
+
+// ** #GENERIC ** //
+@import "generic.normalize.scss";
+
+/// Relative path to GE web fonts
+/// @group pxh-settings
+/// @type String [default] - Webfont path
+$webfont-path: '../fonts/ge/type' !default;
+// $webfont-path: '//dzlpbrbc7yvq0.cloudfront.net/pxh-chrome/1.5.1/dist/fonts/ge/type' !default;
+
+@import "generic.fonts.scss";
+@import "generic.defaults.scss";
+
+// ** #TOOLS ** //
+
+/// List of media query breakpoints
+/// @group pxh-settings
+$mq-breakpoints : (
+  md :  768px,
+  lg : 1024px,
+);
+@import "sass-mq/mq.scss"; // our sass task includes /bower_components automatically so we don't need to specify it
+
+/// Relative path to Font Awesome fonts
+/// @group pxh-settings
+/// @type String
+$fa-font-path : "../fonts/font-awesome/fonts" !default;
+// $fa-font-path : "//dzlpbrbc7yvq0.cloudfront.net/pxh-chrome/1.5.1/dist/fonts/font-awesome/fonts" !default;
+
+@import "font-awesome/scss/font-awesome.scss"; // our sass task includes /bower_components automatically so we don't need to specify it
+@import "tools.pxh-animations.scss";
+@import "tools.pxh-mixins.scss";
+
+// ** #ELEMENTS ** //
+@import "elements.body.scss";
+@import "elements.links.scss";
+@import "elements.hr.scss";
+@import "elements.typography.scss";
+
+// ** #OBJECTS ** //
+
+// ** #COMPONENTS ** //
+
+/// Define whether the drawer should appear on the left or right side of the browser window
+/// @group pxh-settings
+/// @type String
+$pxh-drawer-side : null;
+
+/// Define the side of the browser window opposite the drawer (e.g. "right" if the drawer should appear on the left)
+/// @group pxh-settings
+/// @type String
+$pxh-drawer-opposite-side : null;
+
+@if $pxh-language-direction == 'rtl' {
+  $pxh-drawer-side : right;
+  $pxh-drawer-opposite-side: left;
+}
+@else {
+  $pxh-drawer-side : left;
+  $pxh-drawer-opposite-side: right;
+}
+
+/// Flag to enable or disable pxh-notifications
+/// @group pxh-notification
+/// @type Boolean
+$pxh-notifications-enabled : true;
+
+/// Flag to enable or disable pxh-toasts
+/// @group pxh-toast
+/// @type Boolean
+$pxh-toasts-enabled : true;
+
+@import "components.pxh-badge.scss";
+@import "components.pxh-drawer.scss";
+@import "components.pxh-login.scss";
+@import "components.pxh-navigation.scss";
+@import "components.pxh-overlay.scss";
+@import "components.pxh-view.scss";
+@import "components.pxh-spinner.scss";
+@import "components.pxh-closer.scss";
+@import "components.pxh-toast.scss";
+@import "components.pxh-notification.scss";
+@import "components.pxh-error.scss";
+
+// ** #OVERRIDES ** //
+@import "overrides.px-theme.scss";
+@import "overrides.pxh-utilities.scss";
+@import "overrides.pxh-docs.scss";
