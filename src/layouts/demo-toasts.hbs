@@ -64,8 +64,9 @@
       });
 
       if (document.getElementById('js-toast-emitter')) {
-        document.getElementById('js-toast-emitter').addEventListener('click', function() {
-        pxh.toast.add(toastObject3);
+        document.getElementById('js-toast-emitter').addEventListener('click', function(event) {
+          event.preventDefault();
+          pxh.toast.add(toastObject3);
         })
       }
 
