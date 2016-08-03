@@ -1,5 +1,8 @@
 #pxh-chrome changelog
 
+### 1.5.1 - August 2, 2016
+* Fix pxh-chrome version number
+
 ### 1.5.0 - August 2, 2016
 * Dismissing a toast no longer removes its corresponding notification (if applicable) from the notification list
   * Clicking the "action" button on a toast still dismisses both the toast and its corresponding notification
