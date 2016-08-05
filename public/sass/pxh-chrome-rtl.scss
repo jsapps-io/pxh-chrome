@@ -35,7 +35,7 @@ $mq-breakpoints : (
 /// Path to Font Awesome fonts
 /// @group pxh-settings
 /// @type String
-$fa-font-path : "//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/fonts/";
+$fa-font-path : "//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/fonts";
 @import "font-awesome/scss/font-awesome.scss"; // our sass task includes /bower_components automatically so we don't need to specify it
 @import "tools.pxh-animations.scss";
 @import "tools.pxh-mixins.scss";
