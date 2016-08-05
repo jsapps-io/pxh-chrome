@@ -16,7 +16,7 @@ $pxh-language-direction : 'ltr'; // 'ltr' OR 'rtl'
 
 // ** #GENERIC ** //
 @import "generic.normalize.scss";
-/// Relative path to GE web fonts
+/// Path to GE web fonts
 /// @group pxh-settings
 /// @type String [default] - Webfont path
 $webfont-path: '//dzlpbrbc7yvq0.cloudfront.net/px/fonts/1.0.0';
@@ -31,7 +31,7 @@ $mq-breakpoints : (
   lg : 1024px,
 );
 @import "sass-mq/mq.scss"; // our sass task includes /bower_components automatically so we don't need to specify it
-/// Relative path to Font Awesome fonts
+/// Path to Font Awesome fonts
 /// @group pxh-settings
 /// @type String
 $fa-font-path : "//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/fonts/";
