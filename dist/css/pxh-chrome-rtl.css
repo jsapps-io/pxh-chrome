@@ -464,32 +464,32 @@ textarea {
   font-family: "GE Inspira Sans";
   font-weight: normal;
   font-style: normal;
-  src: url("../fonts/ge/type/GEInspiraSans-Regular-v01.eot");
-  src: url("../fonts/ge/type/GEInspiraSans-Regular-v01.eot?#iefix") format("embedded-opentype"), url("../fonts/ge/type/GEInspiraSans-Regular-v01.woff") format("woff"), url("../fonts/ge/type/GEInspiraSans-Regular-v01.ttf") format("truetype"), url("../fonts/ge/type/GEInspiraSans-Regular-v01.svg#GE Inspira Sans") format("svg");
+  src: url("//dzlpbrbc7yvq0.cloudfront.net/px/fonts/1.0.0/GEInspiraSans-Regular-v01.eot");
+  src: url("//dzlpbrbc7yvq0.cloudfront.net/px/fonts/1.0.0/GEInspiraSans-Regular-v01.eot?#iefix") format("embedded-opentype"), url("//dzlpbrbc7yvq0.cloudfront.net/px/fonts/1.0.0/GEInspiraSans-Regular-v01.woff") format("woff"), url("//dzlpbrbc7yvq0.cloudfront.net/px/fonts/1.0.0/GEInspiraSans-Regular-v01.ttf") format("truetype"), url("//dzlpbrbc7yvq0.cloudfront.net/px/fonts/1.0.0/GEInspiraSans-Regular-v01.svg#GE Inspira Sans") format("svg");
 }
 
 @font-face {
   font-family: "GE Inspira Sans";
   font-weight: normal;
   font-style: italic;
-  src: url("../fonts/ge/type/GEInspiraSans-Italic-v01.eot");
-  src: url("../fonts/ge/type/GEInspiraSans-Italic-v01.eot?#iefix") format("embedded-opentype"), url("../fonts/ge/type/GEInspiraSans-Italic-v01.woff") format("woff"), url("../fonts/ge/type/GEInspiraSans-Italic-v01.ttf") format("truetype"), url("../fonts/ge/type/GEInspiraSans-Italic-v01.svg#GE Inspira Sans") format("svg");
+  src: url("//dzlpbrbc7yvq0.cloudfront.net/px/fonts/1.0.0/GEInspiraSans-Italic-v01.eot");
+  src: url("//dzlpbrbc7yvq0.cloudfront.net/px/fonts/1.0.0/GEInspiraSans-Italic-v01.eot?#iefix") format("embedded-opentype"), url("//dzlpbrbc7yvq0.cloudfront.net/px/fonts/1.0.0/GEInspiraSans-Italic-v01.woff") format("woff"), url("//dzlpbrbc7yvq0.cloudfront.net/px/fonts/1.0.0/GEInspiraSans-Italic-v01.ttf") format("truetype"), url("//dzlpbrbc7yvq0.cloudfront.net/px/fonts/1.0.0/GEInspiraSans-Italic-v01.svg#GE Inspira Sans") format("svg");
 }
 
 @font-face {
   font-family: "GE Inspira Sans";
   font-weight: bold;
   font-style: normal;
-  src: url("../fonts/ge/type/GEInspiraSans-Bold-v01.eot");
-  src: url("../fonts/ge/type/GEInspiraSans-Bold-v01.eot?#iefix") format("embedded-opentype"), url("../fonts/ge/type/GEInspiraSans-Bold-v01.woff") format("woff"), url("../fonts/ge/type/GEInspiraSans-Bold-v01.ttf") format("truetype"), url("../fonts/ge/type/GEInspiraSans-Bold-v01.svg#GE Inspira Sans") format("svg");
+  src: url("//dzlpbrbc7yvq0.cloudfront.net/px/fonts/1.0.0/GEInspiraSans-Bold-v01.eot");
+  src: url("//dzlpbrbc7yvq0.cloudfront.net/px/fonts/1.0.0/GEInspiraSans-Bold-v01.eot?#iefix") format("embedded-opentype"), url("//dzlpbrbc7yvq0.cloudfront.net/px/fonts/1.0.0/GEInspiraSans-Bold-v01.woff") format("woff"), url("//dzlpbrbc7yvq0.cloudfront.net/px/fonts/1.0.0/GEInspiraSans-Bold-v01.ttf") format("truetype"), url("//dzlpbrbc7yvq0.cloudfront.net/px/fonts/1.0.0/GEInspiraSans-Bold-v01.svg#GE Inspira Sans") format("svg");
 }
 
 @font-face {
   font-family: "GE Inspira Sans";
   font-weight: bold;
   font-style: italic;
-  src: url("../fonts/ge/type/GEInspiraSans-BoldItalic-v01.eot");
-  src: url("../fonts/ge/type/GEInspiraSans-BoldItalic-v01.eot?#iefix") format("embedded-opentype"), url("../fonts/ge/type/GEInspiraSans-BoldItalic-v01.woff") format("woff"), url("../fonts/ge/type/GEInspiraSans-BoldItalic-v01.ttf") format("truetype"), url("../fonts/ge/type/GEInspiraSans-BoldItalic-v01.svg#GE Inspira Sans") format("svg");
+  src: url("//dzlpbrbc7yvq0.cloudfront.net/px/fonts/1.0.0/GEInspiraSans-BoldItalic-v01.eot");
+  src: url("//dzlpbrbc7yvq0.cloudfront.net/px/fonts/1.0.0/GEInspiraSans-BoldItalic-v01.eot?#iefix") format("embedded-opentype"), url("//dzlpbrbc7yvq0.cloudfront.net/px/fonts/1.0.0/GEInspiraSans-BoldItalic-v01.woff") format("woff"), url("//dzlpbrbc7yvq0.cloudfront.net/px/fonts/1.0.0/GEInspiraSans-BoldItalic-v01.ttf") format("truetype"), url("//dzlpbrbc7yvq0.cloudfront.net/px/fonts/1.0.0/GEInspiraSans-BoldItalic-v01.svg#GE Inspira Sans") format("svg");
 }
 
 /*------------------------------------*    #generic.defaults
@@ -516,8 +516,8 @@ html {
  * -------------------------- */
 @font-face {
   font-family: 'FontAwesome';
-  src: url("../fonts/font-awesome/fonts/fontawesome-webfont.eot?v=4.6.3");
-  src: url("../fonts/font-awesome/fonts/fontawesome-webfont.eot?#iefix&v=4.6.3") format("embedded-opentype"), url("../fonts/font-awesome/fonts/fontawesome-webfont.woff2?v=4.6.3") format("woff2"), url("../fonts/font-awesome/fonts/fontawesome-webfont.woff?v=4.6.3") format("woff"), url("../fonts/font-awesome/fonts/fontawesome-webfont.ttf?v=4.6.3") format("truetype"), url("../fonts/font-awesome/fonts/fontawesome-webfont.svg?v=4.6.3#fontawesomeregular") format("svg");
+  src: url("//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/fonts/fontawesome-webfont.eot?v=4.6.3");
+  src: url("//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/fonts/fontawesome-webfont.eot?#iefix&v=4.6.3") format("embedded-opentype"), url("//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/fonts/fontawesome-webfont.woff2?v=4.6.3") format("woff2"), url("//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/fonts/fontawesome-webfont.woff?v=4.6.3") format("woff"), url("//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/fonts/fontawesome-webfont.ttf?v=4.6.3") format("truetype"), url("//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/fonts/fontawesome-webfont.svg?v=4.6.3#fontawesomeregular") format("svg");
   font-weight: normal;
   font-style: normal;
 }
