@@ -18,8 +18,10 @@ const reload = browserSync.reload;
 
 var componentConfig = {
   site: {
-    title:            'pxh-chrome',
-    version:          '1.6.0'
+    title:              'pxh-chrome',
+    version:            '1.6.0',
+    geFontVersion:      '1.0.0', // not likely to change much
+    fontAwesomeVersion: '4.6.3'
   }
 };
 
@@ -31,6 +33,14 @@ gulp.task('sass', () => {
       precision: 10,
       includePaths: ['.', 'bower_components']
     }).on('error', $.sass.logError))
+    .pipe(replace(
+      '../fonts/ge/type/',
+      '//dzlpbrbc7yvq0.cloudfront.net/px/fonts/'+componentConfig.site.geFontVersion+'/'
+    ))
+    .pipe(replace(
+      '../fonts/font-awesome/fonts/',
+      '//cdnjs.cloudflare.com/ajax/libs/font-awesome/'+componentConfig.site.fontAwesomeVersion+'/fonts/'
+    ))
     .pipe($.sourcemaps.init())
     .pipe($.autoprefixer({browsers: ['> 1%', 'last 2 versions', 'Firefox ESR']}))
     .pipe($.sourcemaps.write('.'))
@@ -83,14 +93,14 @@ gulp.task('lint:test', lint('test/unit/spec/**/*.js', testLintOptions));
 gulp.task('smith', function() {
   gulp.src(['src/screens/*'])
   .pipe($.frontMatter()).on('data', function(file) {
-    lodash.assign(file, file.frontMatter); 
+    lodash.assign(file, file.frontMatter);
     delete file.frontMatter;
   })
   .pipe(
     gulpsmith()
     .metadata(componentConfig)
     .on('error', console.log.bind(console))
-    .use(layouts({ 
+    .use(layouts({
       'engine': 'handlebars',
       'directory': 'src/layouts',
       'pattern': '*.hbs',
