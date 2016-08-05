@@ -6,11 +6,10 @@
  * Define web font paths and declarations for GE Inspira
  *
  */
-/// Relative path to GE web fonts
+/// Path to GE web fonts
 /// @group pxh-settings
 /// @type String [default] - Webfont path
-$webfont-path: '../fonts/ge/type' !default;
-
+$webfont-path: '//dzlpbrbc7yvq0.cloudfront.net/px/fonts/1.0.0';
 /// @name font-face
 /// @param {String} $font-family - Name of font family @font-face will use
 /// @param {String} $file-path - Path to webfont file

@@ -18,8 +18,8 @@ const reload = browserSync.reload;
 
 var componentConfig = {
   site: {
-    title:            'pxh-chrome',
-    version:          '1.6.0'
+    title:              'pxh-chrome',
+    version:            '1.7.0'
   }
 };
 
@@ -83,14 +83,14 @@ gulp.task('lint:test', lint('test/unit/spec/**/*.js', testLintOptions));
 gulp.task('smith', function() {
   gulp.src(['src/screens/*'])
   .pipe($.frontMatter()).on('data', function(file) {
-    lodash.assign(file, file.frontMatter); 
+    lodash.assign(file, file.frontMatter);
     delete file.frontMatter;
   })
   .pipe(
     gulpsmith()
     .metadata(componentConfig)
     .on('error', console.log.bind(console))
-    .use(layouts({ 
+    .use(layouts({
       'engine': 'handlebars',
       'directory': 'src/layouts',
       'pattern': '*.hbs',
@@ -130,15 +130,9 @@ gulp.task('img', () => {
   return gulp.src(['public/img/*']).pipe(gulp.dest('dist/img')).pipe(gulp.dest('.tmp/img'));
 });
 
-gulp.task('fonts', () => {
-  return gulp.src(['bower_components/**/*.{eot,svg,ttf,woff,woff2}', 'public/fonts/**/*', '!bower_components/mocha/**/*'])
-    .pipe(gulp.dest('.tmp/fonts'))
-    .pipe(gulp.dest('dist/fonts'))
-});
-
 gulp.task('clean', del.bind(null, ['.tmp', 'dist']));
 
-gulp.task('serve', ['sass', 'js', 'extras', 'img', 'fonts'], () => {
+gulp.task('serve', ['sass', 'js', 'extras', 'img'], () => {
   browserSync.init({
     ui: {
       port: 4040,
@@ -167,7 +161,7 @@ gulp.task('serve', ['sass', 'js', 'extras', 'img', 'fonts'], () => {
 
 });
 
-gulp.task('serve:dist', ['sass', 'js', 'extras', 'img', 'fonts'], () => {
+gulp.task('serve:dist', ['sass', 'js', 'extras', 'img'], () => {
   browserSync.init({
     ui: {
       port: 4040,
@@ -184,7 +178,7 @@ gulp.task('serve:dist', ['sass', 'js', 'extras', 'img', 'fonts'], () => {
 
 gulp.task('e2e', shell.task('protractor ./test/e2e/protractor.config.js'));
 
-gulp.task('serve:e2e', ['sass', 'js', 'extras', 'img', 'fonts'], () => {
+gulp.task('serve:e2e', ['sass', 'js', 'extras', 'img'], () => {
   browserSync.init({
     ui: false,
     port: 4444,
@@ -218,7 +212,7 @@ gulp.task('serve:test', ['js'], () => {
   gulp.watch('test/unit/spec/**/*.js', ['lint:test']);
 });
 
-gulp.task('build', ['lint', 'smith', 'html', 'extras', 'img', 'fonts'], () => {
+gulp.task('build', ['lint', 'smith', 'html', 'extras', 'img'], () => {
   return gulp.src('dist/**/*').pipe($.size({title: 'build', gzip: true}));
 });
 

@@ -1,4 +1,4 @@
-/*! pxh-chrome.css 1.6.0 */
+/*! pxh-chrome.css 1.7.0 */
 
 /*------------------------------------*\
     #pxh-chrome
@@ -16,13 +16,10 @@ $pxh-language-direction : 'ltr'; // 'ltr' OR 'rtl'
 
 // ** #GENERIC ** //
 @import "generic.normalize.scss";
-
-/// Relative path to GE web fonts
+/// Path to GE web fonts
 /// @group pxh-settings
 /// @type String [default] - Webfont path
-$webfont-path: '../fonts/ge/type' !default;
-// $webfont-path: '//dzlpbrbc7yvq0.cloudfront.net/pxh-chrome/1.6.0/dist/fonts/ge/type' !default;
-
+$webfont-path: '//dzlpbrbc7yvq0.cloudfront.net/px/fonts/1.0.0';
 @import "generic.fonts.scss";
 @import "generic.defaults.scss";
 
@@ -35,13 +32,10 @@ $mq-breakpoints : (
   lg : 1024px,
 );
 @import "sass-mq/mq.scss"; // our sass task includes /bower_components automatically so we don't need to specify it
-
-/// Relative path to Font Awesome fonts
+/// Path to Font Awesome fonts
 /// @group pxh-settings
 /// @type String
-$fa-font-path : "../fonts/font-awesome/fonts" !default;
-// $fa-font-path : "//dzlpbrbc7yvq0.cloudfront.net/pxh-chrome/1.6.0/dist/fonts/font-awesome/fonts" !default;
-
+$fa-font-path : "//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/fonts";
 @import "font-awesome/scss/font-awesome.scss"; // our sass task includes /bower_components automatically so we don't need to specify it
 @import "tools.pxh-animations.scss";
 @import "tools.pxh-mixins.scss";

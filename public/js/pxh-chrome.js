@@ -1,5 +1,5 @@
 'use strict';
-/*! pxh-chrome.js 1.6.0 */
+/*! pxh-chrome.js 1.7.0 */
 
 // **************
 // CONFIG OBJECTS
@@ -2026,12 +2026,12 @@ pxh.viewResized.initCustomEvent('pxhViewResized', false, false, {
 });
 
 pxh.drawerOpened = document.createEvent('CustomEvent');
-pxh.drawerOpened.initCustomEvent('pxh.drawerOpened', false, false, {
+pxh.drawerOpened.initCustomEvent('pxhDrawerOpened', false, false, {
   'drawerOpened': true
 });
 
 pxh.drawerClosed = document.createEvent('CustomEvent');
-pxh.drawerClosed.initCustomEvent('pxh.drawerClosed', false, false, {
+pxh.drawerClosed.initCustomEvent('pxhDrawerClosed', false, false, {
   'drawerClosed': true
 });
 
