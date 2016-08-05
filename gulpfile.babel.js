@@ -130,15 +130,9 @@ gulp.task('img', () => {
   return gulp.src(['public/img/*']).pipe(gulp.dest('dist/img')).pipe(gulp.dest('.tmp/img'));
 });
 
-gulp.task('fonts', () => {
-  return gulp.src(['bower_components/**/*.{eot,svg,ttf,woff,woff2}', 'public/fonts/**/*', '!bower_components/mocha/**/*'])
-    .pipe(gulp.dest('.tmp/fonts'))
-    .pipe(gulp.dest('dist/fonts'))
-});
-
 gulp.task('clean', del.bind(null, ['.tmp', 'dist']));
 
-gulp.task('serve', ['sass', 'js', 'extras', 'img', 'fonts'], () => {
+gulp.task('serve', ['sass', 'js', 'extras', 'img'], () => {
   browserSync.init({
     ui: {
       port: 4040,
@@ -167,7 +161,7 @@ gulp.task('serve', ['sass', 'js', 'extras', 'img', 'fonts'], () => {
 
 });
 
-gulp.task('serve:dist', ['sass', 'js', 'extras', 'img', 'fonts'], () => {
+gulp.task('serve:dist', ['sass', 'js', 'extras', 'img'], () => {
   browserSync.init({
     ui: {
       port: 4040,
@@ -184,7 +178,7 @@ gulp.task('serve:dist', ['sass', 'js', 'extras', 'img', 'fonts'], () => {
 
 gulp.task('e2e', shell.task('protractor ./test/e2e/protractor.config.js'));
 
-gulp.task('serve:e2e', ['sass', 'js', 'extras', 'img', 'fonts'], () => {
+gulp.task('serve:e2e', ['sass', 'js', 'extras', 'img'], () => {
   browserSync.init({
     ui: false,
     port: 4444,
@@ -218,7 +212,7 @@ gulp.task('serve:test', ['js'], () => {
   gulp.watch('test/unit/spec/**/*.js', ['lint:test']);
 });
 
-gulp.task('build', ['lint', 'smith', 'html', 'extras', 'img', 'fonts'], () => {
+gulp.task('build', ['lint', 'smith', 'html', 'extras', 'img'], () => {
   return gulp.src('dist/**/*').pipe($.size({title: 'build', gzip: true}));
 });
 
