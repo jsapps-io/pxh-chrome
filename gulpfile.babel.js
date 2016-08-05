@@ -19,7 +19,7 @@ const reload = browserSync.reload;
 var componentConfig = {
   site: {
     title:              'pxh-chrome',
-    version:            '1.6.0'
+    version:            '1.7.0'
   }
 };
 

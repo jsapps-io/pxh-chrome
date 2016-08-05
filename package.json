@@ -2,7 +2,7 @@
   "name": "pxh-chrome",
   "private": true,
   "description": "Application chrome for the Predix UI App Hub",
-  "version": "1.6.0",
+  "version": "1.7.0",
   "homepage": "https://github.build.ge.com/hubs/pxh-chrome",
   "engines": {
     "node": ">=4"
@@ -30,7 +30,7 @@
     "gulp-sass": "^2.3.0",
     "gulp-shell": "^0.5.2",
     "gulp-size": "^2.1.0",
-    "gulp-sourcemaps": "^1.6.0",
+    "gulp-sourcemaps": "^1.7.0",
     "gulp-uglify": "^2.0.0",
     "gulp-useref": "^3.1.0",
     "gulpsmith": "^0.5.5",
