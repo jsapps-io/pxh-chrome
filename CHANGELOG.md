@@ -1,6 +1,6 @@
 #pxh-chrome changelog
 
-### pending release
+### 1.7.0 - August 5, 2016
 * Link to CDN versions of Font Awesome fonts and GE Inspira fonts
 * Remove Font Awesome and GE Inspira fonts from pxh-chrome, as we now use the CDN fonts exclusively
 * Fix names of `pxhDrawerOpened` and `pxhDrawerClosed` custom events
