@@ -1,7 +1,7 @@
 #pxh-chrome changelog
 
-### 1.8.0 - August 9, 2016
-* Move all `pxh` methods into `window.pxh` namespace
+### 2.0.0 - August 9, 2016
+* **Move all `pxh` methods into `window.pxh` namespace**
 * Add `js-drawer` ID to `pxh-drawer` component so we can target it specifically
 * Enable toast functionality in "chromeless" mode
   * Add `pxh-chrome.js` to "chromeless" but prevent pxh-drawer JavaScript from firing
