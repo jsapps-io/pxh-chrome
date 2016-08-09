@@ -1,10 +1,15 @@
 #pxh-chrome changelog
 
+### pending release
+* Move all `pxh` methods into `window.pxh` namespace
+* Split `pxh-chrome.js` into `common.pxh-chrome.js`, `responsive.pxh-chrome.js`, and `toasts.pxh-chrome.js`
+* Add toast functionality and demo code to "chromeless" demo
+
 ### 1.7.0 - August 5, 2016
 * Link to CDN versions of Font Awesome fonts and GE Inspira fonts
 * Remove Font Awesome and GE Inspira fonts from pxh-chrome, as we now use the CDN fonts exclusively
 * Fix names of `pxhDrawerOpened` and `pxhDrawerClosed` custom events
-  * These are still undocumented events and we reserve the right to change or remove them ;-)
+  * These are still undocumented events and we reserve the right to change or remove them `;-)`
 
 ### 1.6.0 - August 3, 2016
 * Fix bug where drawer controls would fire their default event and update the URL path
