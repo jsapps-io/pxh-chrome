@@ -1,506 +1,506 @@
 'use strict';
-/*! pxh-chrome.js 1.7.0 */
+/*! common.pxh-chrome.js 1.7.0 */
 
 // **************
 // CONFIG OBJECTS
 // **************
 
-/** @namespace pxh */
+/** @namespace window.pxh */
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
 
-var pxh = {};
+if (!window.pxh) window.pxh = {};
 
-pxh.PREFIX = 'pxh-';
-pxh.NARROW = '--narrow';
-pxh.WIDE = '--wide';
-pxh.HIDDEN = '--hidden';
-pxh.VISIBLE = '--visible';
-pxh.UNTIL = '-until';
-pxh.AT_MD = '@md';
-pxh.AT_LG = '@lg';
-pxh.ANIMATE = '--animate';
-pxh.ANIMATE_IN = pxh.ANIMATE + '-in';
-pxh.ANIMATE_OUT = pxh.ANIMATE + '-out';
-pxh.ANIMATE_NARROW = pxh.ANIMATE + '-narrow';
-pxh.ANIMATE_WIDE = pxh.ANIMATE + '-wide';
-pxh.ANIMATE_FULL_TO_WIDE = pxh.ANIMATE + '-full-to-wide';
-pxh.ANIMATE_OUT_WIDE = pxh.ANIMATE + '-out-wide';
+window.pxh.PREFIX = 'pxh-';
+window.pxh.NARROW = '--narrow';
+window.pxh.WIDE = '--wide';
+window.pxh.HIDDEN = '--hidden';
+window.pxh.VISIBLE = '--visible';
+window.pxh.UNTIL = '-until';
+window.pxh.AT_MD = '@md';
+window.pxh.AT_LG = '@lg';
+window.pxh.ANIMATE = '--animate';
+window.pxh.ANIMATE_IN = window.pxh.ANIMATE + '-in';
+window.pxh.ANIMATE_OUT = window.pxh.ANIMATE + '-out';
+window.pxh.ANIMATE_NARROW = window.pxh.ANIMATE + '-narrow';
+window.pxh.ANIMATE_WIDE = window.pxh.ANIMATE + '-wide';
+window.pxh.ANIMATE_FULL_TO_WIDE = window.pxh.ANIMATE + '-full-to-wide';
+window.pxh.ANIMATE_OUT_WIDE = window.pxh.ANIMATE + '-out-wide';
 
 // drawer
-pxh.DRAWER = pxh.PREFIX + 'drawer';
-pxh.DRAWER_HIDDEN_UNTIL_AT_MD = pxh.DRAWER + pxh.HIDDEN + pxh.UNTIL + pxh.AT_MD;
-pxh.DRAWER_NARROW_AT_MD = pxh.DRAWER + pxh.NARROW + pxh.AT_MD;
-pxh.DRAWER_WIDE_AT_LG = pxh.DRAWER + pxh.WIDE + pxh.AT_LG;
-pxh.DRAWER_NARROW_AT_LG = pxh.DRAWER + pxh.NARROW + pxh.AT_LG;
-pxh.DRAWER_ANIMATE_IN = pxh.DRAWER + pxh.ANIMATE_IN;
-pxh.DRAWER_ANIMATE_OUT = pxh.DRAWER + pxh.ANIMATE_OUT;
-pxh.DRAWER_ANIMATE_WIDE = pxh.DRAWER + pxh.ANIMATE_WIDE;
-pxh.DRAWER_ANIMATE_NARROW = pxh.DRAWER + pxh.ANIMATE_NARROW;
-pxh.DRAWER_ANIMATE_OUT_WIDE = pxh.DRAWER + pxh.ANIMATE_OUT_WIDE;
+window.pxh.DRAWER = window.pxh.PREFIX + 'drawer';
+window.pxh.DRAWER_HIDDEN_UNTIL_AT_MD = window.pxh.DRAWER + window.pxh.HIDDEN + window.pxh.UNTIL + window.pxh.AT_MD;
+window.pxh.DRAWER_NARROW_AT_MD = window.pxh.DRAWER + window.pxh.NARROW + window.pxh.AT_MD;
+window.pxh.DRAWER_WIDE_AT_LG = window.pxh.DRAWER + window.pxh.WIDE + window.pxh.AT_LG;
+window.pxh.DRAWER_NARROW_AT_LG = window.pxh.DRAWER + window.pxh.NARROW + window.pxh.AT_LG;
+window.pxh.DRAWER_ANIMATE_IN = window.pxh.DRAWER + window.pxh.ANIMATE_IN;
+window.pxh.DRAWER_ANIMATE_OUT = window.pxh.DRAWER + window.pxh.ANIMATE_OUT;
+window.pxh.DRAWER_ANIMATE_WIDE = window.pxh.DRAWER + window.pxh.ANIMATE_WIDE;
+window.pxh.DRAWER_ANIMATE_NARROW = window.pxh.DRAWER + window.pxh.ANIMATE_NARROW;
+window.pxh.DRAWER_ANIMATE_OUT_WIDE = window.pxh.DRAWER + window.pxh.ANIMATE_OUT_WIDE;
 
 // drawer__toggle
-pxh.DRAWER_TOGGLE = pxh.PREFIX + 'drawer-toggle';
+window.pxh.DRAWER_TOGGLE = window.pxh.PREFIX + 'drawer-toggle';
 
 // drawer-header__link
-pxh.DRAWER_HEADER_LINK = pxh.PREFIX + 'drawer-header__link';
-pxh.DRAWER_HEADER_LINK_WIDE_AT_MD = pxh.DRAWER_HEADER_LINK + pxh.WIDE + pxh.AT_MD;
-pxh.DRAWER_HEADER_LINK_NARROW_AT_MD = pxh.DRAWER_HEADER_LINK + pxh.NARROW + pxh.AT_MD;
-pxh.DRAWER_HEADER_LINK_WIDE_AT_LG = pxh.DRAWER_HEADER_LINK + pxh.WIDE + pxh.AT_LG;
-pxh.DRAWER_HEADER_LINK_ANIMATE_IN = pxh.DRAWER_HEADER_LINK + pxh.ANIMATE_IN;
-pxh.DRAWER_HEADER_LINK_ANIMATE_OUT = pxh.DRAWER_HEADER_LINK + pxh.ANIMATE_OUT;
+window.pxh.DRAWER_HEADER_LINK = window.pxh.PREFIX + 'drawer-header__link';
+window.pxh.DRAWER_HEADER_LINK_WIDE_AT_MD = window.pxh.DRAWER_HEADER_LINK + window.pxh.WIDE + window.pxh.AT_MD;
+window.pxh.DRAWER_HEADER_LINK_NARROW_AT_MD = window.pxh.DRAWER_HEADER_LINK + window.pxh.NARROW + window.pxh.AT_MD;
+window.pxh.DRAWER_HEADER_LINK_WIDE_AT_LG = window.pxh.DRAWER_HEADER_LINK + window.pxh.WIDE + window.pxh.AT_LG;
+window.pxh.DRAWER_HEADER_LINK_ANIMATE_IN = window.pxh.DRAWER_HEADER_LINK + window.pxh.ANIMATE_IN;
+window.pxh.DRAWER_HEADER_LINK_ANIMATE_OUT = window.pxh.DRAWER_HEADER_LINK + window.pxh.ANIMATE_OUT;
 
 // overlay
-pxh.OVERLAY = pxh.PREFIX + 'overlay';
-pxh.OVERLAY_HIDDEN = pxh.OVERLAY + pxh.HIDDEN;
+window.pxh.OVERLAY = window.pxh.PREFIX + 'overlay';
+window.pxh.OVERLAY_HIDDEN = window.pxh.OVERLAY + window.pxh.HIDDEN;
 
 // navigation
-pxh.NAVIGATION = pxh.PREFIX + 'navigation';
-pxh.NAVIGATION_NARROW_AT_MD = pxh.NAVIGATION + pxh.NARROW + pxh.AT_MD;
-pxh.NAVIGATION_WIDE_AT_LG = pxh.NAVIGATION + pxh.WIDE + pxh.AT_LG;
+window.pxh.NAVIGATION = window.pxh.PREFIX + 'navigation';
+window.pxh.NAVIGATION_NARROW_AT_MD = window.pxh.NAVIGATION + window.pxh.NARROW + window.pxh.AT_MD;
+window.pxh.NAVIGATION_WIDE_AT_LG = window.pxh.NAVIGATION + window.pxh.WIDE + window.pxh.AT_LG;
 
 // navigation__item-text
-pxh.NAVIGATION_ITEM_TEXT = pxh.PREFIX + 'navigation__item-text';
-pxh.NAVIGATION_ITEM_TEXT_ANIMATE_IN = pxh.NAVIGATION_ITEM_TEXT + pxh.ANIMATE_IN;
-pxh.NAVIGATION_ITEM_TEXT_ANIMATE_OUT = pxh.NAVIGATION_ITEM_TEXT + pxh.ANIMATE_OUT;
+window.pxh.NAVIGATION_ITEM_TEXT = window.pxh.PREFIX + 'navigation__item-text';
+window.pxh.NAVIGATION_ITEM_TEXT_ANIMATE_IN = window.pxh.NAVIGATION_ITEM_TEXT + window.pxh.ANIMATE_IN;
+window.pxh.NAVIGATION_ITEM_TEXT_ANIMATE_OUT = window.pxh.NAVIGATION_ITEM_TEXT + window.pxh.ANIMATE_OUT;
 
 // navigation__link
-pxh.NAVIGATION_LINK = pxh.PREFIX + 'navigation__link';
-pxh.NAVIGATION_LINK_ANIMATE_IN = pxh.NAVIGATION_LINK + pxh.ANIMATE_IN;
-pxh.NAVIGATION_LINK_ANIMATE_OUT = pxh.NAVIGATION_LINK + pxh.ANIMATE_OUT;
+window.pxh.NAVIGATION_LINK = window.pxh.PREFIX + 'navigation__link';
+window.pxh.NAVIGATION_LINK_ANIMATE_IN = window.pxh.NAVIGATION_LINK + window.pxh.ANIMATE_IN;
+window.pxh.NAVIGATION_LINK_ANIMATE_OUT = window.pxh.NAVIGATION_LINK + window.pxh.ANIMATE_OUT;
 
 // navigation__sub-link
-pxh.NAVIGATION_SUB_LINK = pxh.PREFIX + 'navigation__sub-link';
-pxh.NAVIGATION_SUB_LINK_ANIMATE_IN = pxh.NAVIGATION_SUB_LINK + pxh.ANIMATE_IN;
-pxh.NAVIGATION_SUB_LINK_ANIMATE_OUT = pxh.NAVIGATION_SUB_LINK + pxh.ANIMATE_OUT;
+window.pxh.NAVIGATION_SUB_LINK = window.pxh.PREFIX + 'navigation__sub-link';
+window.pxh.NAVIGATION_SUB_LINK_ANIMATE_IN = window.pxh.NAVIGATION_SUB_LINK + window.pxh.ANIMATE_IN;
+window.pxh.NAVIGATION_SUB_LINK_ANIMATE_OUT = window.pxh.NAVIGATION_SUB_LINK + window.pxh.ANIMATE_OUT;
 
 // login
-pxh.LOGIN = pxh.PREFIX + 'login';
-pxh.LOGIN_NARROW_AT_MD = pxh.LOGIN + pxh.NARROW + pxh.AT_MD;
-pxh.LOGIN_WIDE_AT_LG = pxh.LOGIN + pxh.WIDE + pxh.AT_LG;
+window.pxh.LOGIN = window.pxh.PREFIX + 'login';
+window.pxh.LOGIN_NARROW_AT_MD = window.pxh.LOGIN + window.pxh.NARROW + window.pxh.AT_MD;
+window.pxh.LOGIN_WIDE_AT_LG = window.pxh.LOGIN + window.pxh.WIDE + window.pxh.AT_LG;
 
 // login__name
-pxh.LOGIN_NAME = pxh.PREFIX + 'login__name';
-pxh.LOGIN_NAME_NARROW_AT_MD = pxh.LOGIN_NAME + pxh.NARROW + pxh.AT_MD;
-pxh.LOGIN_NAME_WIDE_AT_LG = pxh.LOGIN_NAME + pxh.WIDE + pxh.AT_LG;
-pxh.LOGIN_NAME_ANIMATE_IN = pxh.LOGIN_NAME + pxh.ANIMATE_IN;
-pxh.LOGIN_NAME_ANIMATE_OUT = pxh.LOGIN_NAME + pxh.ANIMATE_OUT;
+window.pxh.LOGIN_NAME = window.pxh.PREFIX + 'login__name';
+window.pxh.LOGIN_NAME_NARROW_AT_MD = window.pxh.LOGIN_NAME + window.pxh.NARROW + window.pxh.AT_MD;
+window.pxh.LOGIN_NAME_WIDE_AT_LG = window.pxh.LOGIN_NAME + window.pxh.WIDE + window.pxh.AT_LG;
+window.pxh.LOGIN_NAME_ANIMATE_IN = window.pxh.LOGIN_NAME + window.pxh.ANIMATE_IN;
+window.pxh.LOGIN_NAME_ANIMATE_OUT = window.pxh.LOGIN_NAME + window.pxh.ANIMATE_OUT;
 
 // login__link
-pxh.LOGIN_LINK = pxh.PREFIX + 'login__link';
-pxh.LOGIN_LINK_NARROW_AT_MD = pxh.LOGIN_LINK + pxh.NARROW + pxh.AT_MD;
-pxh.LOGIN_LINK_WIDE_AT_LG = pxh.LOGIN_LINK + pxh.WIDE + pxh.AT_LG;
-pxh.LOGIN_LINK_NARROW_AT_LG = pxh.LOGIN_LINK + pxh.NARROW + pxh.AT_LG;
+window.pxh.LOGIN_LINK = window.pxh.PREFIX + 'login__link';
+window.pxh.LOGIN_LINK_NARROW_AT_MD = window.pxh.LOGIN_LINK + window.pxh.NARROW + window.pxh.AT_MD;
+window.pxh.LOGIN_LINK_WIDE_AT_LG = window.pxh.LOGIN_LINK + window.pxh.WIDE + window.pxh.AT_LG;
+window.pxh.LOGIN_LINK_NARROW_AT_LG = window.pxh.LOGIN_LINK + window.pxh.NARROW + window.pxh.AT_LG;
 
-pxh.LOGIN_PROFILE_LINK = pxh.PREFIX + 'login__profile-link';
-pxh.LOGIN_SETTINGS_LINK = pxh.PREFIX + 'login__settings-link';
+window.pxh.LOGIN_PROFILE_LINK = window.pxh.PREFIX + 'login__profile-link';
+window.pxh.LOGIN_SETTINGS_LINK = window.pxh.PREFIX + 'login__settings-link';
 
-pxh.LOGIN_MENU = pxh.PREFIX + 'login-menu';
-pxh.LOGIN_MENU_PROFILE = pxh.LOGIN_MENU + '--profile';
-pxh.LOGIN_MENU_SETTINGS = pxh.LOGIN_MENU + '--settings';
-pxh.LOGIN_MENU_VISIBLE = pxh.LOGIN_MENU + pxh.VISIBLE;
+window.pxh.LOGIN_MENU = window.pxh.PREFIX + 'login-menu';
+window.pxh.LOGIN_MENU_PROFILE = window.pxh.LOGIN_MENU + '--profile';
+window.pxh.LOGIN_MENU_SETTINGS = window.pxh.LOGIN_MENU + '--settings';
+window.pxh.LOGIN_MENU_VISIBLE = window.pxh.LOGIN_MENU + window.pxh.VISIBLE;
 
 // login__settings
-pxh.LOGIN_SETTINGS = pxh.PREFIX + 'login__settings';
-pxh.LOGIN_SETTINGS_NARROW_AT_MD = pxh.LOGIN_SETTINGS + pxh.NARROW + pxh.AT_MD;
-pxh.LOGIN_SETTINGS_WIDE_AT_LG = pxh.LOGIN_SETTINGS + pxh.WIDE + pxh.AT_LG;
-pxh.LOGIN_SETTINGS_ANIMATE_IN = pxh.LOGIN_SETTINGS + pxh.ANIMATE_IN;
-pxh.LOGIN_SETTINGS_ANIMATE_OUT = pxh.LOGIN_SETTINGS + pxh.ANIMATE_OUT;
+window.pxh.LOGIN_SETTINGS = window.pxh.PREFIX + 'login__settings';
+window.pxh.LOGIN_SETTINGS_NARROW_AT_MD = window.pxh.LOGIN_SETTINGS + window.pxh.NARROW + window.pxh.AT_MD;
+window.pxh.LOGIN_SETTINGS_WIDE_AT_LG = window.pxh.LOGIN_SETTINGS + window.pxh.WIDE + window.pxh.AT_LG;
+window.pxh.LOGIN_SETTINGS_ANIMATE_IN = window.pxh.LOGIN_SETTINGS + window.pxh.ANIMATE_IN;
+window.pxh.LOGIN_SETTINGS_ANIMATE_OUT = window.pxh.LOGIN_SETTINGS + window.pxh.ANIMATE_OUT;
 
 // login__caret
-pxh.LOGIN_CARET = pxh.PREFIX + 'login__caret';
-pxh.LOGIN_CARET_NARROW_AT_MD = pxh.LOGIN_CARET + pxh.NARROW + pxh.AT_MD;
-pxh.LOGIN_CARET_WIDE_AT_LG = pxh.LOGIN_CARET + pxh.WIDE + pxh.AT_LG;
-pxh.LOGIN_CARET_ANIMATE_IN = pxh.LOGIN_CARET + pxh.ANIMATE_IN;
-pxh.LOGIN_CARET_ANIMATE_OUT = pxh.LOGIN_CARET + pxh.ANIMATE_OUT;
+window.pxh.LOGIN_CARET = window.pxh.PREFIX + 'login__caret';
+window.pxh.LOGIN_CARET_NARROW_AT_MD = window.pxh.LOGIN_CARET + window.pxh.NARROW + window.pxh.AT_MD;
+window.pxh.LOGIN_CARET_WIDE_AT_LG = window.pxh.LOGIN_CARET + window.pxh.WIDE + window.pxh.AT_LG;
+window.pxh.LOGIN_CARET_ANIMATE_IN = window.pxh.LOGIN_CARET + window.pxh.ANIMATE_IN;
+window.pxh.LOGIN_CARET_ANIMATE_OUT = window.pxh.LOGIN_CARET + window.pxh.ANIMATE_OUT;
 
 // login__notifications
 
-pxh.LOGIN_NOTIFICATIONS = pxh.PREFIX + 'login__notifications';
-pxh.LOGIN_NOTIFICATIONS_NARROW_AT_MD = pxh.LOGIN_NOTIFICATIONS + pxh.NARROW + pxh.AT_MD;
-pxh.LOGIN_NOTIFICATIONS_WIDE_AT_LG = pxh.LOGIN_NOTIFICATIONS + pxh.WIDE + pxh.AT_LG;
-pxh.LOGIN_NOTIFICATIONS_ANIMATE_IN = pxh.LOGIN_NOTIFICATIONS + pxh.ANIMATE_IN;
-pxh.LOGIN_NOTIFICATIONS_ANIMATE_OUT = pxh.LOGIN_NOTIFICATIONS + pxh.ANIMATE_OUT;
+window.pxh.LOGIN_NOTIFICATIONS = window.pxh.PREFIX + 'login__notifications';
+window.pxh.LOGIN_NOTIFICATIONS_NARROW_AT_MD = window.pxh.LOGIN_NOTIFICATIONS + window.pxh.NARROW + window.pxh.AT_MD;
+window.pxh.LOGIN_NOTIFICATIONS_WIDE_AT_LG = window.pxh.LOGIN_NOTIFICATIONS + window.pxh.WIDE + window.pxh.AT_LG;
+window.pxh.LOGIN_NOTIFICATIONS_ANIMATE_IN = window.pxh.LOGIN_NOTIFICATIONS + window.pxh.ANIMATE_IN;
+window.pxh.LOGIN_NOTIFICATIONS_ANIMATE_OUT = window.pxh.LOGIN_NOTIFICATIONS + window.pxh.ANIMATE_OUT;
 
 // view
-pxh.VIEW = pxh.PREFIX + 'view';
-pxh.VIEW_NARROW_AT_LG = pxh.VIEW + pxh.NARROW + pxh.AT_LG;
-pxh.VIEW_WIDE_AT_LG = pxh.VIEW + pxh.WIDE + pxh.AT_LG;
-pxh.VIEW_ANIMATE_FULL_TO_WIDE = pxh.VIEW + pxh.ANIMATE_FULL_TO_WIDE;
-pxh.VIEW_ANIMATE_WIDE = pxh.VIEW + pxh.ANIMATE_WIDE;
-pxh.VIEW_ANIMATE_NARROW = pxh.VIEW + pxh.ANIMATE_NARROW;
+window.pxh.VIEW = window.pxh.PREFIX + 'view';
+window.pxh.VIEW_NARROW_AT_LG = window.pxh.VIEW + window.pxh.NARROW + window.pxh.AT_LG;
+window.pxh.VIEW_WIDE_AT_LG = window.pxh.VIEW + window.pxh.WIDE + window.pxh.AT_LG;
+window.pxh.VIEW_ANIMATE_FULL_TO_WIDE = window.pxh.VIEW + window.pxh.ANIMATE_FULL_TO_WIDE;
+window.pxh.VIEW_ANIMATE_WIDE = window.pxh.VIEW + window.pxh.ANIMATE_WIDE;
+window.pxh.VIEW_ANIMATE_NARROW = window.pxh.VIEW + window.pxh.ANIMATE_NARROW;
 
 // view-header
-pxh.VIEW_HEADER = pxh.PREFIX + 'view-header';
-pxh.VIEW_HEADER_NARROW_AT_LG = pxh.VIEW_HEADER + pxh.NARROW + pxh.AT_LG;
-pxh.VIEW_HEADER_WIDE_AT_LG = pxh.VIEW_HEADER + pxh.WIDE + pxh.AT_LG;
-pxh.VIEW_HEADER_ANIMATE_WIDE = pxh.VIEW_HEADER + pxh.ANIMATE_WIDE;
-pxh.VIEW_HEADER_ANIMATE_NARROW = pxh.VIEW_HEADER + pxh.ANIMATE_NARROW;
-pxh.VIEW_HEADER_ANIMATE_FULL_TO_WIDE = pxh.VIEW_HEADER + pxh.ANIMATE_FULL_TO_WIDE;
+window.pxh.VIEW_HEADER = window.pxh.PREFIX + 'view-header';
+window.pxh.VIEW_HEADER_NARROW_AT_LG = window.pxh.VIEW_HEADER + window.pxh.NARROW + window.pxh.AT_LG;
+window.pxh.VIEW_HEADER_WIDE_AT_LG = window.pxh.VIEW_HEADER + window.pxh.WIDE + window.pxh.AT_LG;
+window.pxh.VIEW_HEADER_ANIMATE_WIDE = window.pxh.VIEW_HEADER + window.pxh.ANIMATE_WIDE;
+window.pxh.VIEW_HEADER_ANIMATE_NARROW = window.pxh.VIEW_HEADER + window.pxh.ANIMATE_NARROW;
+window.pxh.VIEW_HEADER_ANIMATE_FULL_TO_WIDE = window.pxh.VIEW_HEADER + window.pxh.ANIMATE_FULL_TO_WIDE;
 
 // view-header-drawer-toggle
-pxh.VIEW_HEADER_DRAWER_TOGGLE = pxh.PREFIX + 'view-header-drawer-toggle';
-pxh.VIEW_HEADER_DRAWER_TOGGLE_HIDDEN = pxh.VIEW_HEADER_DRAWER_TOGGLE + pxh.HIDDEN;
+window.pxh.VIEW_HEADER_DRAWER_TOGGLE = window.pxh.PREFIX + 'view-header-drawer-toggle';
+window.pxh.VIEW_HEADER_DRAWER_TOGGLE_HIDDEN = window.pxh.VIEW_HEADER_DRAWER_TOGGLE + window.pxh.HIDDEN;
 
 // notifications
-pxh.NOTIFICATIONS = pxh.PREFIX + 'notifications';
-pxh.NOTIFICATIONS_VISIBLE = pxh.NOTIFICATIONS + pxh.VISIBLE;
+window.pxh.NOTIFICATIONS = window.pxh.PREFIX + 'notifications';
+window.pxh.NOTIFICATIONS_VISIBLE = window.pxh.NOTIFICATIONS + window.pxh.VISIBLE;
 
 // disable-scroll
-pxh.DISABLE_SCROLL = pxh.PREFIX + 'disable-scroll';
-pxh.DISABLE_SCROLL_UNTIL_AT_LG = pxh.DISABLE_SCROLL + pxh.UNTIL + pxh.AT_LG;
+window.pxh.DISABLE_SCROLL = window.pxh.PREFIX + 'disable-scroll';
+window.pxh.DISABLE_SCROLL_UNTIL_AT_LG = window.pxh.DISABLE_SCROLL + window.pxh.UNTIL + window.pxh.AT_LG;
 
-pxh.states = {
+window.pxh.states = {
   'default': {
     'pxh-drawer': {
-      'add': pxh.DRAWER_HIDDEN_UNTIL_AT_MD + ' ' + pxh.DRAWER_NARROW_AT_MD + ' ' + pxh.DRAWER_WIDE_AT_LG,
-      'remove': pxh.DRAWER_NARROW_AT_LG
+      'add': window.pxh.DRAWER_HIDDEN_UNTIL_AT_MD + ' ' + window.pxh.DRAWER_NARROW_AT_MD + ' ' + window.pxh.DRAWER_WIDE_AT_LG,
+      'remove': window.pxh.DRAWER_NARROW_AT_LG
     },
     'pxh-drawer-header__link': {
-      'remove': pxh.DRAWER_HEADER_LINK_WIDE_AT_MD,
-      'add': pxh.DRAWER_HEADER_LINK_NARROW_AT_MD + ' ' + pxh.DRAWER_HEADER_LINK_WIDE_AT_LG
+      'remove': window.pxh.DRAWER_HEADER_LINK_WIDE_AT_MD,
+      'add': window.pxh.DRAWER_HEADER_LINK_NARROW_AT_MD + ' ' + window.pxh.DRAWER_HEADER_LINK_WIDE_AT_LG
     },
     'pxh-overlay': {
-      'add': pxh.OVERLAY_HIDDEN
+      'add': window.pxh.OVERLAY_HIDDEN
     },
     'pxh-navigation': {
-      'add': pxh.NAVIGATION_NARROW_AT_MD + ' ' + pxh.NAVIGATION_WIDE_AT_LG
+      'add': window.pxh.NAVIGATION_NARROW_AT_MD + ' ' + window.pxh.NAVIGATION_WIDE_AT_LG
     },
     'pxh-login': {
-      'add': pxh.LOGIN_NARROW_AT_MD + ' ' + pxh.LOGIN_WIDE_AT_LG
+      'add': window.pxh.LOGIN_NARROW_AT_MD + ' ' + window.pxh.LOGIN_WIDE_AT_LG
     },
     'pxh-login__name': {
-      'add': pxh.LOGIN_NAME_NARROW_AT_MD + ' ' + pxh.LOGIN_NAME_WIDE_AT_LG
+      'add': window.pxh.LOGIN_NAME_NARROW_AT_MD + ' ' + window.pxh.LOGIN_NAME_WIDE_AT_LG
     },
     'pxh-login__link': {
-      'add': pxh.LOGIN_LINK_NARROW_AT_MD + ' ' + pxh.LOGIN_LINK_WIDE_AT_LG
+      'add': window.pxh.LOGIN_LINK_NARROW_AT_MD + ' ' + window.pxh.LOGIN_LINK_WIDE_AT_LG
     },
     'pxh-login__settings': {
-      'add': pxh.LOGIN_SETTINGS_NARROW_AT_MD + ' ' + pxh.LOGIN_SETTINGS_WIDE_AT_LG
+      'add': window.pxh.LOGIN_SETTINGS_NARROW_AT_MD + ' ' + window.pxh.LOGIN_SETTINGS_WIDE_AT_LG
     },
     'pxh-login__caret': {
-      'add': pxh.LOGIN_CARET_NARROW_AT_MD + ' ' + pxh.LOGIN_CARET_WIDE_AT_LG
+      'add': window.pxh.LOGIN_CARET_NARROW_AT_MD + ' ' + window.pxh.LOGIN_CARET_WIDE_AT_LG
     },
     'pxh-login__notifications': {
-      'add': pxh.LOGIN_NOTIFICATIONS_NARROW_AT_MD + ' ' + pxh.LOGIN_NOTIFICATIONS_WIDE_AT_LG
+      'add': window.pxh.LOGIN_NOTIFICATIONS_NARROW_AT_MD + ' ' + window.pxh.LOGIN_NOTIFICATIONS_WIDE_AT_LG
     },
     'pxh-view': {
-      'remove': pxh.DISABLE_SCROLL_UNTIL_AT_LG + ' ' + pxh.VIEW_WIDE_AT_LG,
-      'add': pxh.VIEW_NARROW_AT_LG
+      'remove': window.pxh.DISABLE_SCROLL_UNTIL_AT_LG + ' ' + window.pxh.VIEW_WIDE_AT_LG,
+      'add': window.pxh.VIEW_NARROW_AT_LG
     },
     'pxh-view-header': {
-      'remove': pxh.VIEW_HEADER_WIDE_AT_LG,
-      'add': pxh.VIEW_HEADER_NARROW_AT_LG
+      'remove': window.pxh.VIEW_HEADER_WIDE_AT_LG,
+      'add': window.pxh.VIEW_HEADER_NARROW_AT_LG
     },
     'pxh-view-header-drawer-toggle': {
-      'remove': pxh.VIEW_HEADER_DRAWER_TOGGLE_HIDDEN
+      'remove': window.pxh.VIEW_HEADER_DRAWER_TOGGLE_HIDDEN
     },
     'pxh-notifications': {
-      'remove': pxh.NOTIFICATIONS_VISIBLE
+      'remove': window.pxh.NOTIFICATIONS_VISIBLE
     }
   },
   'open': {
     'pxh-drawer': {
-      'remove': pxh.DRAWER_HIDDEN_UNTIL_AT_MD + ' ' + pxh.DRAWER_NARROW_AT_MD + ' ' + pxh.DRAWER_NARROW_AT_LG,
-      'add': pxh.DRAWER_WIDE_AT_LG
+      'remove': window.pxh.DRAWER_HIDDEN_UNTIL_AT_MD + ' ' + window.pxh.DRAWER_NARROW_AT_MD + ' ' + window.pxh.DRAWER_NARROW_AT_LG,
+      'add': window.pxh.DRAWER_WIDE_AT_LG
     },
     'pxh-drawer-header__link': {
-      'remove': pxh.DRAWER_HEADER_LINK_NARROW_AT_MD,
-      'add': pxh.DRAWER_HEADER_LINK_WIDE_AT_MD + ' ' + pxh.DRAWER_HEADER_LINK_WIDE_AT_LG
+      'remove': window.pxh.DRAWER_HEADER_LINK_NARROW_AT_MD,
+      'add': window.pxh.DRAWER_HEADER_LINK_WIDE_AT_MD + ' ' + window.pxh.DRAWER_HEADER_LINK_WIDE_AT_LG
     },
     'pxh-overlay': {
-      'remove': pxh.OVERLAY_HIDDEN
+      'remove': window.pxh.OVERLAY_HIDDEN
     },
     'pxh-navigation': {
-      'remove': pxh.NAVIGATION_NARROW_AT_MD,
-      'add': pxh.NAVIGATION_WIDE_AT_LG
+      'remove': window.pxh.NAVIGATION_NARROW_AT_MD,
+      'add': window.pxh.NAVIGATION_WIDE_AT_LG
     },
     'pxh-login': {
-      'add': pxh.LOGIN_WIDE_AT_LG,
-      'remove': pxh.LOGIN_NARROW_AT_MD
+      'add': window.pxh.LOGIN_WIDE_AT_LG,
+      'remove': window.pxh.LOGIN_NARROW_AT_MD
     },
     'pxh-login__name': {
-      'remove': pxh.LOGIN_NAME_NARROW_AT_MD,
-      'add': pxh.LOGIN_NAME_WIDE_AT_LG
+      'remove': window.pxh.LOGIN_NAME_NARROW_AT_MD,
+      'add': window.pxh.LOGIN_NAME_WIDE_AT_LG
     },
     'pxh-login__link': {
-      'remove': pxh.LOGIN_LINK_NARROW_AT_MD + ' ' + pxh.LOGIN_LINK_NARROW_AT_LG
+      'remove': window.pxh.LOGIN_LINK_NARROW_AT_MD + ' ' + window.pxh.LOGIN_LINK_NARROW_AT_LG
     },
     'pxh-login__settings': {
-      'remove': pxh.LOGIN_SETTINGS_NARROW_AT_MD,
-      'add': pxh.LOGIN_SETTINGS_WIDE_AT_LG
+      'remove': window.pxh.LOGIN_SETTINGS_NARROW_AT_MD,
+      'add': window.pxh.LOGIN_SETTINGS_WIDE_AT_LG
     },
     'pxh-login__caret': {
-      'remove': pxh.LOGIN_CARET_NARROW_AT_MD,
-      'add': pxh.LOGIN_CARET_WIDE_AT_LG
+      'remove': window.pxh.LOGIN_CARET_NARROW_AT_MD,
+      'add': window.pxh.LOGIN_CARET_WIDE_AT_LG
     },
     'pxh-login__notifications': {
-      'remove': pxh.LOGIN_NOTIFICATIONS_NARROW_AT_MD,
-      'add': pxh.LOGIN_NOTIFICATIONS_WIDE_AT_LG
+      'remove': window.pxh.LOGIN_NOTIFICATIONS_NARROW_AT_MD,
+      'add': window.pxh.LOGIN_NOTIFICATIONS_WIDE_AT_LG
     },
     'pxh-view': {
-      'add': pxh.DISABLE_SCROLL_UNTIL_AT_LG + ' ' + pxh.VIEW_NARROW_AT_LG,
-      'remove': pxh.VIEW_WIDE_AT_LG
+      'add': window.pxh.DISABLE_SCROLL_UNTIL_AT_LG + ' ' + window.pxh.VIEW_NARROW_AT_LG,
+      'remove': window.pxh.VIEW_WIDE_AT_LG
     },
     'pxh-view-header': {
-      'add': pxh.VIEW_HEADER_NARROW_AT_LG,
-      'remove': pxh.VIEW_HEADER_WIDE_AT_LG
+      'add': window.pxh.VIEW_HEADER_NARROW_AT_LG,
+      'remove': window.pxh.VIEW_HEADER_WIDE_AT_LG
     },
     'pxh-view-header-drawer-toggle': {
-      'add': pxh.VIEW_HEADER_DRAWER_TOGGLE_HIDDEN
+      'add': window.pxh.VIEW_HEADER_DRAWER_TOGGLE_HIDDEN
     }
   },
   'narrowAtLg': {
     'pxh-drawer': {
-      'add': pxh.DRAWER_HIDDEN_UNTIL_AT_MD + ' ' + pxh.DRAWER_NARROW_AT_MD + ' ' + pxh.DRAWER_NARROW_AT_LG,
-      'remove': pxh.DRAWER_WIDE_AT_LG
+      'add': window.pxh.DRAWER_HIDDEN_UNTIL_AT_MD + ' ' + window.pxh.DRAWER_NARROW_AT_MD + ' ' + window.pxh.DRAWER_NARROW_AT_LG,
+      'remove': window.pxh.DRAWER_WIDE_AT_LG
     },
     'pxh-drawer-header__link': {
-      'remove': pxh.DRAWER_HEADER_LINK_WIDE_AT_MD + ' ' + pxh.DRAWER_HEADER_LINK_WIDE_AT_LG,
-      'add': pxh.DRAWER_HEADER_LINK_NARROW_AT_MD
+      'remove': window.pxh.DRAWER_HEADER_LINK_WIDE_AT_MD + ' ' + window.pxh.DRAWER_HEADER_LINK_WIDE_AT_LG,
+      'add': window.pxh.DRAWER_HEADER_LINK_NARROW_AT_MD
     },
     'pxh-overlay': {
-      'add': pxh.OVERLAY_HIDDEN
+      'add': window.pxh.OVERLAY_HIDDEN
     },
     'pxh-navigation': {
-      'add': pxh.NAVIGATION_NARROW_AT_MD,
-      'remove': pxh.NAVIGATION_WIDE_AT_LG
+      'add': window.pxh.NAVIGATION_NARROW_AT_MD,
+      'remove': window.pxh.NAVIGATION_WIDE_AT_LG
     },
     'pxh-login': {
-      'add': pxh.LOGIN_NARROW_AT_MD,
-      'remove': pxh.LOGIN_WIDE_AT_LG
+      'add': window.pxh.LOGIN_NARROW_AT_MD,
+      'remove': window.pxh.LOGIN_WIDE_AT_LG
     },
     'pxh-login__name': {
-      'add': pxh.LOGIN_NAME_NARROW_AT_MD,
-      'remove': pxh.LOGIN_NAME_WIDE_AT_LG
+      'add': window.pxh.LOGIN_NAME_NARROW_AT_MD,
+      'remove': window.pxh.LOGIN_NAME_WIDE_AT_LG
     },
     'pxh-login__link': {
-      'add': pxh.LOGIN_LINK_NARROW_AT_MD,
-      'remove': pxh.LOGIN_LINK_WIDE_AT_LG
+      'add': window.pxh.LOGIN_LINK_NARROW_AT_MD,
+      'remove': window.pxh.LOGIN_LINK_WIDE_AT_LG
     },
     'pxh-login__settings': {
-      'add': pxh.LOGIN_SETTINGS_NARROW_AT_MD,
-      'remove': pxh.LOGIN_SETTINGS_WIDE_AT_LG
+      'add': window.pxh.LOGIN_SETTINGS_NARROW_AT_MD,
+      'remove': window.pxh.LOGIN_SETTINGS_WIDE_AT_LG
     },
     'pxh-login__caret': {
-      'add': pxh.LOGIN_CARET_NARROW_AT_MD,
-      'remove': pxh.LOGIN_CARET_WIDE_AT_LG
+      'add': window.pxh.LOGIN_CARET_NARROW_AT_MD,
+      'remove': window.pxh.LOGIN_CARET_WIDE_AT_LG
     },
     'pxh-login__notifications': {
-      'add': pxh.LOGIN_NOTIFICATIONS_NARROW_AT_MD,
-      'remove': pxh.LOGIN_NOTIFICATIONS_WIDE_AT_LG
+      'add': window.pxh.LOGIN_NOTIFICATIONS_NARROW_AT_MD,
+      'remove': window.pxh.LOGIN_NOTIFICATIONS_WIDE_AT_LG
     },
     'pxh-view': {
-      'remove': pxh.DISABLE_SCROLL_UNTIL_AT_LG + ' ' + pxh.VIEW_NARROW_AT_LG,
-      'add': pxh.VIEW_WIDE_AT_LG
+      'remove': window.pxh.DISABLE_SCROLL_UNTIL_AT_LG + ' ' + window.pxh.VIEW_NARROW_AT_LG,
+      'add': window.pxh.VIEW_WIDE_AT_LG
     },
     'pxh-view-header': {
-      'remove': pxh.VIEW_HEADER_NARROW_AT_LG,
-      'add': pxh.VIEW_HEADER_WIDE_AT_LG
+      'remove': window.pxh.VIEW_HEADER_NARROW_AT_LG,
+      'add': window.pxh.VIEW_HEADER_WIDE_AT_LG
     },
     'pxh-view-header-drawer-toggle': {
-      'remove': pxh.VIEW_HEADER_DRAWER_TOGGLE_HIDDEN
+      'remove': window.pxh.VIEW_HEADER_DRAWER_TOGGLE_HIDDEN
     },
     'pxh-notifications': {
-      'remove': pxh.NOTIFICATIONS_VISIBLE
+      'remove': window.pxh.NOTIFICATIONS_VISIBLE
     }
   }
 };
 
-pxh.transitions = {
+window.pxh.transitions = {
   'outToIn': {
     'pxh-drawer': {
-      'add': pxh.DRAWER_ANIMATE_IN
+      'add': window.pxh.DRAWER_ANIMATE_IN
     }
   },
   'inToOut': {
     'pxh-drawer': {
-      'add': pxh.DRAWER_ANIMATE_OUT
+      'add': window.pxh.DRAWER_ANIMATE_OUT
     }
   },
   'narrowToOpen': {
     'pxh-drawer': {
-      'add': pxh.DRAWER_ANIMATE_WIDE
+      'add': window.pxh.DRAWER_ANIMATE_WIDE
     },
     'pxh-drawer-header__link': {
-      'add': pxh.DRAWER_HEADER_LINK_ANIMATE_IN
+      'add': window.pxh.DRAWER_HEADER_LINK_ANIMATE_IN
     },
     'pxh-navigation__item-text': {
-      'add': pxh.NAVIGATION_ITEM_TEXT_ANIMATE_IN
+      'add': window.pxh.NAVIGATION_ITEM_TEXT_ANIMATE_IN
     },
     'pxh-navigation__sub-link': {
-      'add': pxh.NAVIGATION_SUB_LINK_ANIMATE_IN
+      'add': window.pxh.NAVIGATION_SUB_LINK_ANIMATE_IN
     },
     'pxh-login__name': {
-      'add': pxh.LOGIN_NAME_ANIMATE_IN
+      'add': window.pxh.LOGIN_NAME_ANIMATE_IN
     },
     'pxh-login__caret': {
-      'add': pxh.LOGIN_CARET_ANIMATE_IN
+      'add': window.pxh.LOGIN_CARET_ANIMATE_IN
     },
     'pxh-login__settings': {
-      'add': pxh.LOGIN_SETTINGS_ANIMATE_IN
+      'add': window.pxh.LOGIN_SETTINGS_ANIMATE_IN
     },
     'pxh-login__notifications': {
-      'add': pxh.LOGIN_NOTIFICATIONS_ANIMATE_IN
+      'add': window.pxh.LOGIN_NOTIFICATIONS_ANIMATE_IN
     }
   },
   'openToNarrow': {
     'pxh-drawer': {
-      'add': pxh.DRAWER_ANIMATE_NARROW
+      'add': window.pxh.DRAWER_ANIMATE_NARROW
     },
     'pxh-drawer-header__link': {
-      'add': pxh.DRAWER_HEADER_LINK_ANIMATE_OUT
+      'add': window.pxh.DRAWER_HEADER_LINK_ANIMATE_OUT
     },
     'pxh-navigation__item-text': {
-      'add': pxh.NAVIGATION_ITEM_TEXT_ANIMATE_OUT
+      'add': window.pxh.NAVIGATION_ITEM_TEXT_ANIMATE_OUT
     },
     'pxh-navigation__sub-link': {
-      'add': pxh.NAVIGATION_SUB_LINK_ANIMATE_OUT
+      'add': window.pxh.NAVIGATION_SUB_LINK_ANIMATE_OUT
     },
     'pxh-login__name': {
-      'add': pxh.LOGIN_NAME_ANIMATE_OUT
+      'add': window.pxh.LOGIN_NAME_ANIMATE_OUT
     },
     'pxh-login__caret': {
-      'add': pxh.LOGIN_CARET_ANIMATE_OUT
+      'add': window.pxh.LOGIN_CARET_ANIMATE_OUT
     },
     'pxh-login__settings': {
-      'add': pxh.LOGIN_SETTINGS_ANIMATE_OUT
+      'add': window.pxh.LOGIN_SETTINGS_ANIMATE_OUT
     },
     'pxh-login__notifications': {
-      'add': pxh.LOGIN_NOTIFICATIONS_ANIMATE_OUT
+      'add': window.pxh.LOGIN_NOTIFICATIONS_ANIMATE_OUT
     }
   },
   'outToNarrow': {
     'pxh-drawer': {
-      'add': pxh.DRAWER_ANIMATE_IN
+      'add': window.pxh.DRAWER_ANIMATE_IN
     },
     'pxh-view': {
-      'add': pxh.VIEW_ANIMATE_FULL_TO_WIDE
+      'add': window.pxh.VIEW_ANIMATE_FULL_TO_WIDE
     },
     'pxh-view-header': {
-      'add': pxh.VIEW_HEADER_ANIMATE_FULL_TO_WIDE
+      'add': window.pxh.VIEW_HEADER_ANIMATE_FULL_TO_WIDE
     }
   },
   'narrowToOut': {
     'pxh-drawer': {
-      'add': pxh.DRAWER_ANIMATE_OUT_WIDE
+      'add': window.pxh.DRAWER_ANIMATE_OUT_WIDE
     },
     'pxh-drawer-header__link': {
-      'add': pxh.DRAWER_HEADER_LINK_ANIMATE_IN
+      'add': window.pxh.DRAWER_HEADER_LINK_ANIMATE_IN
     },
     'pxh-navigation__item-text': {
-      'add': pxh.NAVIGATION_ITEM_TEXT_ANIMATE_IN
+      'add': window.pxh.NAVIGATION_ITEM_TEXT_ANIMATE_IN
     },
     'pxh-navigation__sub-link': {
-      'add': pxh.NAVIGATION_SUB_LINK_ANIMATE_IN
+      'add': window.pxh.NAVIGATION_SUB_LINK_ANIMATE_IN
     },
     'pxh-login__name': {
-      'add': pxh.LOGIN_NAME_ANIMATE_IN
+      'add': window.pxh.LOGIN_NAME_ANIMATE_IN
     },
     'pxh-login__caret': {
-      'add': pxh.LOGIN_CARET_ANIMATE_IN
+      'add': window.pxh.LOGIN_CARET_ANIMATE_IN
     },
     'pxh-login__settings': {
-      'add': pxh.LOGIN_SETTINGS_ANIMATE_IN
+      'add': window.pxh.LOGIN_SETTINGS_ANIMATE_IN
     },
     'pxh-login__notifications': {
-      'add': pxh.LOGIN_NOTIFICATIONS_ANIMATE_IN
+      'add': window.pxh.LOGIN_NOTIFICATIONS_ANIMATE_IN
     }
   },
   'wideToNarrow': {
     'pxh-drawer': {
-      'add': pxh.DRAWER_ANIMATE_NARROW
+      'add': window.pxh.DRAWER_ANIMATE_NARROW
     },
     'pxh-drawer-header__link': {
-      'add': pxh.DRAWER_HEADER_LINK_ANIMATE_OUT
+      'add': window.pxh.DRAWER_HEADER_LINK_ANIMATE_OUT
     },
     'pxh-navigation__item-text': {
-      'add': pxh.NAVIGATION_ITEM_TEXT_ANIMATE_OUT
+      'add': window.pxh.NAVIGATION_ITEM_TEXT_ANIMATE_OUT
     },
     'pxh-navigation__sub-link': {
-      'add': pxh.NAVIGATION_SUB_LINK_ANIMATE_OUT
+      'add': window.pxh.NAVIGATION_SUB_LINK_ANIMATE_OUT
     },
     'pxh-login__name': {
-      'add': pxh.LOGIN_NAME_ANIMATE_OUT
+      'add': window.pxh.LOGIN_NAME_ANIMATE_OUT
     },
     'pxh-login__caret': {
-      'add': pxh.LOGIN_CARET_ANIMATE_OUT
+      'add': window.pxh.LOGIN_CARET_ANIMATE_OUT
     },
     'pxh-login__settings': {
-      'add': pxh.LOGIN_SETTINGS_ANIMATE_OUT
+      'add': window.pxh.LOGIN_SETTINGS_ANIMATE_OUT
     },
     'pxh-login__notifications': {
-      'add': pxh.LOGIN_NOTIFICATIONS_ANIMATE_OUT
+      'add': window.pxh.LOGIN_NOTIFICATIONS_ANIMATE_OUT
     },
     'pxh-view': {
-      'add': pxh.VIEW_ANIMATE_WIDE
+      'add': window.pxh.VIEW_ANIMATE_WIDE
     },
     'pxh-view-header': {
-      'add': pxh.VIEW_HEADER_ANIMATE_WIDE
+      'add': window.pxh.VIEW_HEADER_ANIMATE_WIDE
     }
   },
   'narrowToWide': {
     'pxh-drawer': {
-      'add': pxh.DRAWER_ANIMATE_WIDE
+      'add': window.pxh.DRAWER_ANIMATE_WIDE
     },
     'pxh-drawer-header__link': {
-      'add': pxh.DRAWER_HEADER_LINK_ANIMATE_IN
+      'add': window.pxh.DRAWER_HEADER_LINK_ANIMATE_IN
     },
     'pxh-navigation__item-text': {
-      'add': pxh.NAVIGATION_ITEM_TEXT_ANIMATE_IN
+      'add': window.pxh.NAVIGATION_ITEM_TEXT_ANIMATE_IN
     },
     'pxh-navigation__sub-link': {
-      'add': pxh.NAVIGATION_SUB_LINK_ANIMATE_IN
+      'add': window.pxh.NAVIGATION_SUB_LINK_ANIMATE_IN
     },
     'pxh-login__name': {
-      'add': pxh.LOGIN_NAME_ANIMATE_IN
+      'add': window.pxh.LOGIN_NAME_ANIMATE_IN
     },
     'pxh-login__caret': {
-      'add': pxh.LOGIN_CARET_ANIMATE_IN
+      'add': window.pxh.LOGIN_CARET_ANIMATE_IN
     },
     'pxh-login__settings': {
-      'add': pxh.LOGIN_SETTINGS_ANIMATE_IN
+      'add': window.pxh.LOGIN_SETTINGS_ANIMATE_IN
     },
     'pxh-login__notifications': {
-      'add': pxh.LOGIN_NOTIFICATIONS_ANIMATE_IN
+      'add': window.pxh.LOGIN_NOTIFICATIONS_ANIMATE_IN
     },
     'pxh-view': {
-      'add': pxh.VIEW_ANIMATE_NARROW
+      'add': window.pxh.VIEW_ANIMATE_NARROW
     },
     'pxh-view-header': {
-      'add': pxh.VIEW_HEADER_ANIMATE_NARROW
+      'add': window.pxh.VIEW_HEADER_ANIMATE_NARROW
     }
   },
   'clearAll': {
     'pxh-drawer': {
-      'remove': pxh.DRAWER_ANIMATE_IN + ' ' + pxh.DRAWER_ANIMATE_OUT + ' ' + pxh.DRAWER_ANIMATE_NARROW + ' ' + pxh.DRAWER_ANIMATE_WIDE + ' ' + pxh.DRAWER_ANIMATE_OUT_WIDE
+      'remove': window.pxh.DRAWER_ANIMATE_IN + ' ' + window.pxh.DRAWER_ANIMATE_OUT + ' ' + window.pxh.DRAWER_ANIMATE_NARROW + ' ' + window.pxh.DRAWER_ANIMATE_WIDE + ' ' + window.pxh.DRAWER_ANIMATE_OUT_WIDE
     },
     'pxh-drawer-header__link': {
-      'remove': pxh.DRAWER_HEADER_LINK_ANIMATE_IN + ' ' + pxh.DRAWER_HEADER_LINK_ANIMATE_OUT
+      'remove': window.pxh.DRAWER_HEADER_LINK_ANIMATE_IN + ' ' + window.pxh.DRAWER_HEADER_LINK_ANIMATE_OUT
     },
     'pxh-navigation__item-text': {
-      'remove': pxh.NAVIGATION_ITEM_TEXT_ANIMATE_IN + ' ' + pxh.NAVIGATION_ITEM_TEXT_ANIMATE_OUT
+      'remove': window.pxh.NAVIGATION_ITEM_TEXT_ANIMATE_IN + ' ' + window.pxh.NAVIGATION_ITEM_TEXT_ANIMATE_OUT
     },
     'pxh-navigation__sub-link': {
-      'remove': pxh.NAVIGATION_SUB_LINK_ANIMATE_IN + ' ' + pxh.NAVIGATION_SUB_LINK_ANIMATE_OUT
+      'remove': window.pxh.NAVIGATION_SUB_LINK_ANIMATE_IN + ' ' + window.pxh.NAVIGATION_SUB_LINK_ANIMATE_OUT
     },
     'pxh-login__name': {
-      'remove': pxh.LOGIN_NAME_ANIMATE_IN + ' ' + pxh.LOGIN_NAME_ANIMATE_OUT
+      'remove': window.pxh.LOGIN_NAME_ANIMATE_IN + ' ' + window.pxh.LOGIN_NAME_ANIMATE_OUT
     },
     'pxh-login__caret': {
-      'remove': pxh.LOGIN_CARET_ANIMATE_IN + ' ' + pxh.LOGIN_CARET_ANIMATE_OUT
+      'remove': window.pxh.LOGIN_CARET_ANIMATE_IN + ' ' + window.pxh.LOGIN_CARET_ANIMATE_OUT
     },
     'pxh-login__settings': {
-      'remove': pxh.LOGIN_SETTINGS_ANIMATE_IN + ' ' + pxh.LOGIN_SETTINGS_ANIMATE_OUT
+      'remove': window.pxh.LOGIN_SETTINGS_ANIMATE_IN + ' ' + window.pxh.LOGIN_SETTINGS_ANIMATE_OUT
     },
     'pxh-login__notifications': {
-      'remove': pxh.LOGIN_NOTIFICATIONS_ANIMATE_IN + ' ' + pxh.LOGIN_NOTIFICATIONS_ANIMATE_OUT
+      'remove': window.pxh.LOGIN_NOTIFICATIONS_ANIMATE_IN + ' ' + window.pxh.LOGIN_NOTIFICATIONS_ANIMATE_OUT
     },
     'pxh-view': {
-      'remove': pxh.VIEW_ANIMATE_WIDE + ' ' + pxh.VIEW_ANIMATE_NARROW + ' ' + pxh.VIEW_ANIMATE_FULL_TO_WIDE
+      'remove': window.pxh.VIEW_ANIMATE_WIDE + ' ' + window.pxh.VIEW_ANIMATE_NARROW + ' ' + window.pxh.VIEW_ANIMATE_FULL_TO_WIDE
     },
     'pxh-view-header': {
-      'remove': pxh.VIEW_HEADER_ANIMATE_WIDE + ' ' + pxh.VIEW_HEADER_ANIMATE_NARROW + ' ' + pxh.VIEW_HEADER_ANIMATE_FULL_TO_WIDE
+      'remove': window.pxh.VIEW_HEADER_ANIMATE_WIDE + ' ' + window.pxh.VIEW_HEADER_ANIMATE_NARROW + ' ' + window.pxh.VIEW_HEADER_ANIMATE_FULL_TO_WIDE
     }
   }
 };
@@ -834,7 +834,7 @@ if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
   return init(function () {});
 });
 
-pxh.Cookies = Cookies.noConflict();
+window.pxh.Cookies = Cookies.noConflict();
 
 // *********
 // GENERIC FUNCTIONS
@@ -859,7 +859,7 @@ if (!('remove' in Element.prototype)) {
  * @param {Array} array
  * @returns {Boolean} true if array exists, false if it does not
  */
-pxh.arrayExists = function (array) {
+window.pxh.arrayExists = function (array) {
   if (typeof array !== 'undefined' && array.length > 0) {
     return true;
   } else {
@@ -874,7 +874,7 @@ pxh.arrayExists = function (array) {
  * @param {String} propertyName
  * @returns {Object|Boolean} Object that corresponds to the property name if found, false if not
  */
-pxh.getItemByPropertyName = function (haystack, propertyName) {
+window.pxh.getItemByPropertyName = function (haystack, propertyName) {
   for (var i in haystack) {
     if (haystack.hasOwnProperty(propertyName)) {
       return haystack[propertyName];
@@ -891,7 +891,7 @@ pxh.getItemByPropertyName = function (haystack, propertyName) {
  * @param {String} property The CSS property to query, e.g. z-index
  * @returns {String|Boolean} CSS property value if found, false if not
  */
-pxh.getStyle = function (id, property) {
+window.pxh.getStyle = function (id, property) {
   var element = document.getElementById(id);
   var style = '';
   if (window.getComputedStyle) {
@@ -908,7 +908,7 @@ pxh.getStyle = function (id, property) {
  * @param {String} html A string that may contain HTML tags
  * @returns {String|Boolean} Input string's text with HTML removed, false if no input parameter provided
  */
-pxh.stripHTML = function (html) {
+window.pxh.stripHTML = function (html) {
   if (html) {
     var tmp = document.createElement('div');
     tmp.innerHTML = html;
@@ -919,41 +919,18 @@ pxh.stripHTML = function (html) {
 };
 
 /**
- * Loads a state from a state object, and changes the CSS classes on all relevant elements
- * 
- * @param {Object} stateObject An object containing the states of your application
- * @param {String} targetStateName The name of the desired state to load from the state object
- */
-pxh.loadState = function (stateObject, targetStateName) {
-  // grab the target state object from the master states object
-  var targetState = pxh.getItemByPropertyName(stateObject, targetStateName);
-  // iterate through each target class in the target state object
-  for (var targetClass in targetState) {
-    // grab the target state for each class in the target state
-    var stateChangeTarget = targetState[targetClass];
-    // iterate through each target state change (e.g. whether to add, remove, toggle)
-    for (var stateChangeType in stateChangeTarget) {
-      // grab the target state change classes (e.g. which classes to add, remove, or toggle)
-      var stateChangeClasses = stateChangeTarget[stateChangeType];
-      // change the classes of each target element based on its target class, the type of change to make, and its target classes
-      pxh.changeClasses(targetClass, stateChangeType, stateChangeClasses);
-    }
-  }
-};
-
-/**
  * Changes classes on the targeted elements
  * 
  * @example
  * // finds all elements with class `nav` and adds the class `nav--hidden` to them
- * pxh.changeClasses('nav', 'add', 'nav--hidden');
+ * window.pxh.changeClasses('nav', 'add', 'nav--hidden');
  * @param {String} targetClassName Base CSS class of the targeted elements to be changed
  * @param {String} changeType Type of change to apply. Options are `add`, `remove`, `toggle` 
  * @param {String} classNamesToChange List of classes to change on the targeted elements, separated by spaces
  */
-pxh.changeClasses = function (targetClassName, changeType, classNamesToChange) {
+window.pxh.changeClasses = function (targetClassName, changeType, classNamesToChange) {
   var targetElements = document.getElementsByClassName(targetClassName);
-  if (pxh.arrayExists(targetElements) && classNamesToChange) {
+  if (window.pxh.arrayExists(targetElements) && classNamesToChange) {
     classNamesToChange = classNamesToChange.replace(/  +/g, ' ');
     var classNamesToChangeArray = classNamesToChange.split(' ');
     for (var i = targetElements.length - 1; i >= 0; i--) {
@@ -971,239 +948,20 @@ pxh.changeClasses = function (targetClassName, changeType, classNamesToChange) {
 };
 
 /**
- * Binds drawer state change events to toggle buttons, which will change the state of the drawer depending on the current drawer and responsive contexts
- * 
- * @param {String} controlName CSS class name of control to bind events to
- */
-pxh.bindControl = function (controlName) {
-  var controlElements = document.getElementsByClassName(controlName);
-  if (pxh.arrayExists(controlElements)) {
-    for (var i = controlElements.length - 1; i >= 0; i--) {
-      controlElements[i].addEventListener('click', function (event) {
-        event.preventDefault();
-        var firstDrawer = document.getElementsByClassName('pxh-drawer')[0];
-        var drawerIsAtDefaultState = firstDrawer.classList.contains('pxh-drawer--wide@lg');
-        var drawerIsNarrowAtMd = firstDrawer.classList.contains('pxh-drawer--narrow@md');
-        var drawerIsHiddenAtSm = firstDrawer.classList.contains('pxh-drawer--hidden-until@md');
-        pxh.loadState(pxh.transitions, 'clearAll');
-        if (window.matchMedia('(min-width: 1024px)').matches && drawerIsAtDefaultState) {
-          pxh.loadState(pxh.transitions, 'wideToNarrow');
-          pxh.loadState(pxh.states, 'narrowAtLg');
-          document.dispatchEvent(pxh.drawerClosed);
-          pxh.Cookies.set('pxh-drawer-narrow', 'true', { expires: 1, path: '/' });
-          pxh.Cookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/' });
-        } else if (window.matchMedia('(min-width: 1024px)').matches) {
-          pxh.loadState(pxh.transitions, 'narrowToWide');
-          pxh.loadState(pxh.states, 'default');
-          document.dispatchEvent(pxh.drawerOpened);
-          pxh.Cookies.set('pxh-drawer-narrow', 'false', { expires: 1, path: '/' });
-          pxh.Cookies.set('pxh-drawer-open', 'true', { expires: 1, path: '/' });
-        } else if (drawerIsNarrowAtMd && window.matchMedia('(min-width: 768px)').matches) {
-          pxh.loadState(pxh.transitions, 'narrowToOpen');
-          pxh.loadState(pxh.states, 'open');
-          document.dispatchEvent(pxh.drawerOpened);
-          pxh.Cookies.set('pxh-drawer-open', 'true', { expires: 1, path: '/' });
-          pxh.Cookies.set('pxh-drawer-narrow', 'false', { expires: 1, path: '/' });
-        } else if (window.matchMedia('(min-width: 768px)').matches) {
-          pxh.loadState(pxh.transitions, 'openToNarrow');
-          pxh.loadState(pxh.states, 'default');
-          document.dispatchEvent(pxh.drawerClosed);
-          pxh.Cookies.set('pxh-drawer-narrow', 'true', { expires: 1, path: '/' });
-          pxh.Cookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/' });
-        } else if (drawerIsHiddenAtSm) {
-          pxh.loadState(pxh.transitions, 'outToIn');
-          pxh.loadState(pxh.states, 'open');
-          document.dispatchEvent(pxh.drawerOpened);
-          pxh.Cookies.set('pxh-drawer-narrow', 'false', { expires: 1, path: '/' });
-          pxh.Cookies.set('pxh-drawer-open', 'true', { expires: 1, path: '/' });
-        } else {
-          pxh.loadState(pxh.transitions, 'inToOut');
-          pxh.loadState(pxh.states, 'default');
-          document.dispatchEvent(pxh.drawerClosed);
-          pxh.Cookies.set('pxh-drawer-narrow', 'true', { expires: 1, path: '/' });
-          pxh.Cookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/' });
-        }
-      });
-    }
-  }
-};
-
-/**
- * Creates drawer state change events that should fire when the browser transitions between the medium breakpoint
- * 
- * @param {String} breakpoint 
- */
-pxh.breakpointAtMd = function (breakpoint) {
-  pxh.loadState(pxh.transitions, 'clearAll');
-  var firstDrawer = document.getElementsByClassName('pxh-drawer')[0];
-  var drawerIsWideAtLg = firstDrawer.classList.contains('pxh-drawer--wide@lg');
-  var drawerIsNarrowAtMd = firstDrawer.classList.contains('pxh-drawer--narrow@md');
-  if (breakpoint.matches) {
-    // we entered the @md breakpoint from the @sm breakpoint
-    if (drawerIsNarrowAtMd) {
-      // the drawer wasn't open @sm so open it to narrow @md
-      // fire the transition
-      pxh.loadState(pxh.transitions, 'outToNarrow');
-    }
-  } else {
-    // we exited the @md breakpoint into the @sm breakpoint
-    if (drawerIsNarrowAtMd) {
-      // the drawer was open to narrow @md so move it out @sm
-      pxh.loadState(pxh.transitions, 'narrowToOut');
-    }
-  }
-};
-
-/**
- * Creates drawer state change events that should fire when the browser transitions between the large breakpoint
- * 
- * @param {String} breakpoint 
- */
-pxh.breakpointAtLg = function (breakpoint) {
-  pxh.loadState(pxh.transitions, 'clearAll');
-  var firstDrawer = document.getElementsByClassName('pxh-drawer')[0];
-  var drawerIsWideAtLg = firstDrawer.classList.contains('pxh-drawer--wide@lg');
-  var drawerIsNarrowAtMd = firstDrawer.classList.contains('pxh-drawer--narrow@md');
-  if (breakpoint.matches) {
-    // we entered the @lg breakpoint from the @md breakpoint
-    if (drawerIsWideAtLg && !drawerIsNarrowAtMd) {
-      // the drawer was open @md so keep it open @lg
-      // don't fire any transitions
-      pxh.loadState(pxh.states, 'default');
-      pxh.Cookies.set('pxh-drawer-narrow', 'false', { expires: 1, path: '/' });
-      pxh.Cookies.set('pxh-drawer-open', 'true', { expires: 1, path: '/' });
-    } else {
-      // drawer was narrow @md so transition it to wide @lg
-      // fire transitions
-      pxh.loadState(pxh.transitions, 'narrowToWide');
-      pxh.loadState(pxh.states, 'default');
-      document.dispatchEvent(pxh.drawerOpened);
-      pxh.Cookies.set('pxh-drawer-narrow', 'false', { expires: 1, path: '/' });
-      pxh.Cookies.set('pxh-drawer-open', 'true', { expires: 1, path: '/' });
-    }
-  } else {
-    // we exited the @lg breakpoint into the @md breakpoint
-    if (drawerIsWideAtLg) {
-      // the drawer was wide @lg so transition it to narrow @md
-      // close the notifications list if it's open
-      // fire transitions
-      pxh.loadState(pxh.transitions, 'wideToNarrow');
-    };
-    pxh.loadState(pxh.states, 'default');
-    document.dispatchEvent(pxh.drawerClosed);
-    pxh.Cookies.set('pxh-drawer-narrow', 'true', { expires: 1, path: '/' });
-    pxh.Cookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/' });
-  }
-};
-
-/**
- * Binds media queries to drawer controls or something
- * 
- * @param {String} targetClass CSS class name of elements to bind to
- * @param {Object} window.matchMedia object
- */
-pxh.bindDrawerMediaQueryControls = function (targetClass, mediaQuery) {
-  var targetElements = document.getElementsByClassName(targetClass);
-  if (pxh.arrayExists(targetElements)) {
-    // iterate through drawer controls and fire the pxhToggleDrawer function when clicked
-    for (var i = targetElements.length - 1; i >= 0; i--) {
-      targetElements[i].addEventListener('click', function () {
-        pxh.loadState(pxh.transitions, 'clearAll');
-        if (!mediaQuery.matches) {
-          pxh.loadState(pxh.states, 'default');
-          pxh.Cookies.set('pxh-drawer-narrow', 'true', { expires: 1, path: '/' });
-          pxh.Cookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/' });
-        }
-      });
-    }
-  }
-};
-
-/**
- * When the user clicks the overlay, hides the drawer at the small breakpoint, or collapses the drawer at the narrow breakpoint
- * 
- * If the notification list is displayed, hides it when the user clicks the overlay but doesn't hide or collapse the drawer
- * 
- */
-pxh.overlayDrawerControl = function () {
-  var overlay = document.getElementsByClassName('pxh-overlay');
-  var notifications = document.getElementsByClassName('pxh-notifications');
-  if (pxh.arrayExists(overlay)) {
-    for (var i = overlay.length - 1; i >= 0; i--) {
-      overlay[i].addEventListener('click', function (event) {
-        if (!lgBreakpoint.matches && pxh.Cookies.get('pxh-drawer-open') === 'true') {
-          // if the notifications list is visible, close it when clicking the overlay but don't close the drawer
-          if (pxh.arrayExists(notifications) && notifications[0].classList.contains('pxh-notifications--visible')) {
-            notifications[0].classList.remove('pxh-notifications--visible');
-          } else {
-            pxh.loadState(pxh.transitions, 'clearAll');
-            pxh.loadState(pxh.states, 'default');
-            document.dispatchEvent(pxh.drawerClosed);
-            pxh.Cookies.set('pxh-drawer-narrow', 'true', { expires: 1, path: '/' });
-            pxh.Cookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/' });
-          }
-        }
-      });
-    }
-  }
-};
-
-/**
- * When the user hits the "ESC" key on the keyboard, hides the drawer at the small breakpoint, or collapses the drawer at the narrow breakpoint
- * 
- */
-pxh.escapeDrawerControl = function () {
-  document.addEventListener('keyup', function (event) {
-    if (event.keyCode == 27 && !lgBreakpoint.matches && pxh.Cookies.get('pxh-drawer-open') === 'true') {
-      pxh.loadState(pxh.transitions, 'clearAll');
-      pxh.loadState(pxh.states, 'default');
-      document.dispatchEvent(pxh.drawerClosed);
-      pxh.Cookies.set('pxh-drawer-narrow', 'true', { expires: 1, path: '/' });
-      pxh.Cookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/' });
-    }
-  });
-};
-
-/**
- * Toggles the visibility of a login menu
- * 
- * @param {String} toggleControl CSS class name of the elements to turn into controls that will fire this event
- * @param {String} toggleTarget CSS class name of the login menu elements that should have their visibility toggled
- * @param {string} toggleClass Space-delimited list of CSS class names to toggle on the target elements when this event fires
- */
-pxh.toggleLoginMenu = function (toggleControl, toggleTarget, toggleClass) {
-  var toggleControlElements = document.getElementsByClassName(toggleControl);
-  var toggleTargetElements = document.getElementsByClassName(toggleTarget);
-  if (pxh.arrayExists(toggleControlElements) && pxh.arrayExists(toggleTargetElements)) {
-    for (var i = toggleControlElements.length - 1; i >= 0; i--) {
-      toggleControlElements[i].addEventListener('click', function (event) {
-        event.preventDefault();
-        var menuIsVisible = toggleTargetElements[0].classList.contains(toggleClass);
-        pxh.changeClasses('pxh-login-menu', 'remove', toggleClass);
-        if (!menuIsVisible) {
-          pxh.changeClasses(toggleTarget, 'toggle', toggleClass);
-        }
-        event.stopPropagation();
-      });
-    }
-  }
-};
-
-/**
  * Adds a sensor that will fire a viewResized event every time its corresponding element changes size
  * 
  * @param {string} targetId The id of the target element that should fire an event when it resizes
  */
-pxh.addResizeSensor = function (targetId) {
+window.pxh.addResizeSensor = function (targetId) {
   var targetElement = document.getElementById(targetId);
   if (targetElement) {
     new pxhResizeSensor(targetElement, function () {
-      document.dispatchEvent(pxh.viewResized);
+      document.dispatchEvent(window.pxh.viewResized);
     });
   }
 };
 
-pxh.action = {};
+window.pxh.action = {};
 
 /**
  * Toggles classes on an element when clicked, and immediately fires any event in the clicked target area
@@ -1214,12 +972,12 @@ pxh.action = {};
  * @param {string} className Space-delimited list of CSS classes to change on the target elements
  */
 
-pxh.action.clickToCloseAndFire = function (control, target, change, className) {
+window.pxh.action.clickToCloseAndFire = function (control, target, change, className) {
   var controlElement = document.getElementsByClassName(control);
   var targetElement = document.getElementsByClassName(target);
-  if (pxh.arrayExists(controlElement) && pxh.arrayExists(targetElement)) {
+  if (window.pxh.arrayExists(controlElement) && window.pxh.arrayExists(targetElement)) {
     document.addEventListener('click', function (event) {
-      pxh.changeClasses(target, change, className);
+      window.pxh.changeClasses(target, change, className);
     });
   }
 };
@@ -1231,11 +989,11 @@ pxh.action.clickToCloseAndFire = function (control, target, change, className) {
  * @param {string} target Unique ID of the target element that should be changed when this event is fired
  * @param {string} className The class to be removed from the target element
  */
-pxh.action.clickToCloseAndHold = function (control, target, className) {
+window.pxh.action.clickToCloseAndHold = function (control, target, className) {
   var controlElement = document.getElementById(control);
   var closeElement = document.getElementById('js-closer');
   var targetElement = document.getElementById(target);
-  var zIndex = pxh.getStyle(target, 'z-index') - 1;
+  var zIndex = window.pxh.getStyle(target, 'z-index') - 1;
   if (controlElement && targetElement) {
     if (!closeElement) {
       var closeElement = document.createElement('div');
@@ -1254,14 +1012,6 @@ pxh.action.clickToCloseAndHold = function (control, target, className) {
   }
 };
 
-var notificationsIcon;
-
-if (notificationsIcon = document.getElementById('js-login__notifications')) {
-  notificationsIcon.addEventListener('click', function (event) {
-    pxh.action.clickToCloseAndHold('js-login__notifications', 'js-notifications', 'pxh-notifications--visible');
-  });
-}
-
 /**
  * Toggles classes on an element when clicked
  * 
@@ -1269,22 +1019,790 @@ if (notificationsIcon = document.getElementById('js-login__notifications')) {
  * @param {string} target CSS class name of the target elements that should be changed when this event is fired
  * @param {string} className The class to be removed from the target element
  */
-pxh.toggleMenu = function (control, target, className) {
+window.pxh.toggleMenu = function (control, target, className) {
   var controlElements = document.getElementsByClassName(control);
   var targetElements = document.getElementsByClassName(target);
-  if (pxh.arrayExists(controlElements) && pxh.arrayExists(targetElements)) {
+  if (window.pxh.arrayExists(controlElements) && window.pxh.arrayExists(targetElements)) {
     for (var i = controlElements.length - 1; i >= 0; i--) {
       controlElements[i].addEventListener('click', function (event) {
         event.preventDefault();
-        pxh.changeClasses(target, 'toggle', className);
+        window.pxh.changeClasses(target, 'toggle', className);
       });
     }
   }
 };
 
-/** @namespace pxh.toast */
-pxh.toast = {
-  /** @namespace pxh.toast.badge */
+// ********
+// FIRE!!!!
+// ********
+
+window.pxh.viewResized = document.createEvent('CustomEvent');
+window.pxh.viewResized.initCustomEvent('pxhViewResized', false, false, {
+  'viewResized': true
+});
+
+document.addEventListener('DOMContentLoaded', function (event) {
+  window.pxh.addResizeSensor('js-view');
+});
+
+// ******
+// DRAWER
+// ******
+
+// **************
+// CONFIG OBJECTS
+// **************
+
+window.pxh.states = {
+  'default': {
+    'pxh-drawer': {
+      'add': window.pxh.DRAWER_HIDDEN_UNTIL_AT_MD + ' ' + window.pxh.DRAWER_NARROW_AT_MD + ' ' + window.pxh.DRAWER_WIDE_AT_LG,
+      'remove': window.pxh.DRAWER_NARROW_AT_LG
+    },
+    'pxh-drawer-header__link': {
+      'remove': window.pxh.DRAWER_HEADER_LINK_WIDE_AT_MD,
+      'add': window.pxh.DRAWER_HEADER_LINK_NARROW_AT_MD + ' ' + window.pxh.DRAWER_HEADER_LINK_WIDE_AT_LG
+    },
+    'pxh-overlay': {
+      'add': window.pxh.OVERLAY_HIDDEN
+    },
+    'pxh-navigation': {
+      'add': window.pxh.NAVIGATION_NARROW_AT_MD + ' ' + window.pxh.NAVIGATION_WIDE_AT_LG
+    },
+    'pxh-login': {
+      'add': window.pxh.LOGIN_NARROW_AT_MD + ' ' + window.pxh.LOGIN_WIDE_AT_LG
+    },
+    'pxh-login__name': {
+      'add': window.pxh.LOGIN_NAME_NARROW_AT_MD + ' ' + window.pxh.LOGIN_NAME_WIDE_AT_LG
+    },
+    'pxh-login__link': {
+      'add': window.pxh.LOGIN_LINK_NARROW_AT_MD + ' ' + window.pxh.LOGIN_LINK_WIDE_AT_LG
+    },
+    'pxh-login__settings': {
+      'add': window.pxh.LOGIN_SETTINGS_NARROW_AT_MD + ' ' + window.pxh.LOGIN_SETTINGS_WIDE_AT_LG
+    },
+    'pxh-login__caret': {
+      'add': window.pxh.LOGIN_CARET_NARROW_AT_MD + ' ' + window.pxh.LOGIN_CARET_WIDE_AT_LG
+    },
+    'pxh-login__notifications': {
+      'add': window.pxh.LOGIN_NOTIFICATIONS_NARROW_AT_MD + ' ' + window.pxh.LOGIN_NOTIFICATIONS_WIDE_AT_LG
+    },
+    'pxh-view': {
+      'remove': window.pxh.DISABLE_SCROLL_UNTIL_AT_LG + ' ' + window.pxh.VIEW_WIDE_AT_LG,
+      'add': window.pxh.VIEW_NARROW_AT_LG
+    },
+    'pxh-view-header': {
+      'remove': window.pxh.VIEW_HEADER_WIDE_AT_LG,
+      'add': window.pxh.VIEW_HEADER_NARROW_AT_LG
+    },
+    'pxh-view-header-drawer-toggle': {
+      'remove': window.pxh.VIEW_HEADER_DRAWER_TOGGLE_HIDDEN
+    },
+    'pxh-notifications': {
+      'remove': window.pxh.NOTIFICATIONS_VISIBLE
+    }
+  },
+  'open': {
+    'pxh-drawer': {
+      'remove': window.pxh.DRAWER_HIDDEN_UNTIL_AT_MD + ' ' + window.pxh.DRAWER_NARROW_AT_MD + ' ' + window.pxh.DRAWER_NARROW_AT_LG,
+      'add': window.pxh.DRAWER_WIDE_AT_LG
+    },
+    'pxh-drawer-header__link': {
+      'remove': window.pxh.DRAWER_HEADER_LINK_NARROW_AT_MD,
+      'add': window.pxh.DRAWER_HEADER_LINK_WIDE_AT_MD + ' ' + window.pxh.DRAWER_HEADER_LINK_WIDE_AT_LG
+    },
+    'pxh-overlay': {
+      'remove': window.pxh.OVERLAY_HIDDEN
+    },
+    'pxh-navigation': {
+      'remove': window.pxh.NAVIGATION_NARROW_AT_MD,
+      'add': window.pxh.NAVIGATION_WIDE_AT_LG
+    },
+    'pxh-login': {
+      'add': window.pxh.LOGIN_WIDE_AT_LG,
+      'remove': window.pxh.LOGIN_NARROW_AT_MD
+    },
+    'pxh-login__name': {
+      'remove': window.pxh.LOGIN_NAME_NARROW_AT_MD,
+      'add': window.pxh.LOGIN_NAME_WIDE_AT_LG
+    },
+    'pxh-login__link': {
+      'remove': window.pxh.LOGIN_LINK_NARROW_AT_MD + ' ' + window.pxh.LOGIN_LINK_NARROW_AT_LG
+    },
+    'pxh-login__settings': {
+      'remove': window.pxh.LOGIN_SETTINGS_NARROW_AT_MD,
+      'add': window.pxh.LOGIN_SETTINGS_WIDE_AT_LG
+    },
+    'pxh-login__caret': {
+      'remove': window.pxh.LOGIN_CARET_NARROW_AT_MD,
+      'add': window.pxh.LOGIN_CARET_WIDE_AT_LG
+    },
+    'pxh-login__notifications': {
+      'remove': window.pxh.LOGIN_NOTIFICATIONS_NARROW_AT_MD,
+      'add': window.pxh.LOGIN_NOTIFICATIONS_WIDE_AT_LG
+    },
+    'pxh-view': {
+      'add': window.pxh.DISABLE_SCROLL_UNTIL_AT_LG + ' ' + window.pxh.VIEW_NARROW_AT_LG,
+      'remove': window.pxh.VIEW_WIDE_AT_LG
+    },
+    'pxh-view-header': {
+      'add': window.pxh.VIEW_HEADER_NARROW_AT_LG,
+      'remove': window.pxh.VIEW_HEADER_WIDE_AT_LG
+    },
+    'pxh-view-header-drawer-toggle': {
+      'add': window.pxh.VIEW_HEADER_DRAWER_TOGGLE_HIDDEN
+    }
+  },
+  'narrowAtLg': {
+    'pxh-drawer': {
+      'add': window.pxh.DRAWER_HIDDEN_UNTIL_AT_MD + ' ' + window.pxh.DRAWER_NARROW_AT_MD + ' ' + window.pxh.DRAWER_NARROW_AT_LG,
+      'remove': window.pxh.DRAWER_WIDE_AT_LG
+    },
+    'pxh-drawer-header__link': {
+      'remove': window.pxh.DRAWER_HEADER_LINK_WIDE_AT_MD + ' ' + window.pxh.DRAWER_HEADER_LINK_WIDE_AT_LG,
+      'add': window.pxh.DRAWER_HEADER_LINK_NARROW_AT_MD
+    },
+    'pxh-overlay': {
+      'add': window.pxh.OVERLAY_HIDDEN
+    },
+    'pxh-navigation': {
+      'add': window.pxh.NAVIGATION_NARROW_AT_MD,
+      'remove': window.pxh.NAVIGATION_WIDE_AT_LG
+    },
+    'pxh-login': {
+      'add': window.pxh.LOGIN_NARROW_AT_MD,
+      'remove': window.pxh.LOGIN_WIDE_AT_LG
+    },
+    'pxh-login__name': {
+      'add': window.pxh.LOGIN_NAME_NARROW_AT_MD,
+      'remove': window.pxh.LOGIN_NAME_WIDE_AT_LG
+    },
+    'pxh-login__link': {
+      'add': window.pxh.LOGIN_LINK_NARROW_AT_MD,
+      'remove': window.pxh.LOGIN_LINK_WIDE_AT_LG
+    },
+    'pxh-login__settings': {
+      'add': window.pxh.LOGIN_SETTINGS_NARROW_AT_MD,
+      'remove': window.pxh.LOGIN_SETTINGS_WIDE_AT_LG
+    },
+    'pxh-login__caret': {
+      'add': window.pxh.LOGIN_CARET_NARROW_AT_MD,
+      'remove': window.pxh.LOGIN_CARET_WIDE_AT_LG
+    },
+    'pxh-login__notifications': {
+      'add': window.pxh.LOGIN_NOTIFICATIONS_NARROW_AT_MD,
+      'remove': window.pxh.LOGIN_NOTIFICATIONS_WIDE_AT_LG
+    },
+    'pxh-view': {
+      'remove': window.pxh.DISABLE_SCROLL_UNTIL_AT_LG + ' ' + window.pxh.VIEW_NARROW_AT_LG,
+      'add': window.pxh.VIEW_WIDE_AT_LG
+    },
+    'pxh-view-header': {
+      'remove': window.pxh.VIEW_HEADER_NARROW_AT_LG,
+      'add': window.pxh.VIEW_HEADER_WIDE_AT_LG
+    },
+    'pxh-view-header-drawer-toggle': {
+      'remove': window.pxh.VIEW_HEADER_DRAWER_TOGGLE_HIDDEN
+    },
+    'pxh-notifications': {
+      'remove': window.pxh.NOTIFICATIONS_VISIBLE
+    }
+  }
+};
+
+window.pxh.transitions = {
+  'outToIn': {
+    'pxh-drawer': {
+      'add': window.pxh.DRAWER_ANIMATE_IN
+    }
+  },
+  'inToOut': {
+    'pxh-drawer': {
+      'add': window.pxh.DRAWER_ANIMATE_OUT
+    }
+  },
+  'narrowToOpen': {
+    'pxh-drawer': {
+      'add': window.pxh.DRAWER_ANIMATE_WIDE
+    },
+    'pxh-drawer-header__link': {
+      'add': window.pxh.DRAWER_HEADER_LINK_ANIMATE_IN
+    },
+    'pxh-navigation__item-text': {
+      'add': window.pxh.NAVIGATION_ITEM_TEXT_ANIMATE_IN
+    },
+    'pxh-navigation__sub-link': {
+      'add': window.pxh.NAVIGATION_SUB_LINK_ANIMATE_IN
+    },
+    'pxh-login__name': {
+      'add': window.pxh.LOGIN_NAME_ANIMATE_IN
+    },
+    'pxh-login__caret': {
+      'add': window.pxh.LOGIN_CARET_ANIMATE_IN
+    },
+    'pxh-login__settings': {
+      'add': window.pxh.LOGIN_SETTINGS_ANIMATE_IN
+    },
+    'pxh-login__notifications': {
+      'add': window.pxh.LOGIN_NOTIFICATIONS_ANIMATE_IN
+    }
+  },
+  'openToNarrow': {
+    'pxh-drawer': {
+      'add': window.pxh.DRAWER_ANIMATE_NARROW
+    },
+    'pxh-drawer-header__link': {
+      'add': window.pxh.DRAWER_HEADER_LINK_ANIMATE_OUT
+    },
+    'pxh-navigation__item-text': {
+      'add': window.pxh.NAVIGATION_ITEM_TEXT_ANIMATE_OUT
+    },
+    'pxh-navigation__sub-link': {
+      'add': window.pxh.NAVIGATION_SUB_LINK_ANIMATE_OUT
+    },
+    'pxh-login__name': {
+      'add': window.pxh.LOGIN_NAME_ANIMATE_OUT
+    },
+    'pxh-login__caret': {
+      'add': window.pxh.LOGIN_CARET_ANIMATE_OUT
+    },
+    'pxh-login__settings': {
+      'add': window.pxh.LOGIN_SETTINGS_ANIMATE_OUT
+    },
+    'pxh-login__notifications': {
+      'add': window.pxh.LOGIN_NOTIFICATIONS_ANIMATE_OUT
+    }
+  },
+  'outToNarrow': {
+    'pxh-drawer': {
+      'add': window.pxh.DRAWER_ANIMATE_IN
+    },
+    'pxh-view': {
+      'add': window.pxh.VIEW_ANIMATE_FULL_TO_WIDE
+    },
+    'pxh-view-header': {
+      'add': window.pxh.VIEW_HEADER_ANIMATE_FULL_TO_WIDE
+    }
+  },
+  'narrowToOut': {
+    'pxh-drawer': {
+      'add': window.pxh.DRAWER_ANIMATE_OUT_WIDE
+    },
+    'pxh-drawer-header__link': {
+      'add': window.pxh.DRAWER_HEADER_LINK_ANIMATE_IN
+    },
+    'pxh-navigation__item-text': {
+      'add': window.pxh.NAVIGATION_ITEM_TEXT_ANIMATE_IN
+    },
+    'pxh-navigation__sub-link': {
+      'add': window.pxh.NAVIGATION_SUB_LINK_ANIMATE_IN
+    },
+    'pxh-login__name': {
+      'add': window.pxh.LOGIN_NAME_ANIMATE_IN
+    },
+    'pxh-login__caret': {
+      'add': window.pxh.LOGIN_CARET_ANIMATE_IN
+    },
+    'pxh-login__settings': {
+      'add': window.pxh.LOGIN_SETTINGS_ANIMATE_IN
+    },
+    'pxh-login__notifications': {
+      'add': window.pxh.LOGIN_NOTIFICATIONS_ANIMATE_IN
+    }
+  },
+  'wideToNarrow': {
+    'pxh-drawer': {
+      'add': window.pxh.DRAWER_ANIMATE_NARROW
+    },
+    'pxh-drawer-header__link': {
+      'add': window.pxh.DRAWER_HEADER_LINK_ANIMATE_OUT
+    },
+    'pxh-navigation__item-text': {
+      'add': window.pxh.NAVIGATION_ITEM_TEXT_ANIMATE_OUT
+    },
+    'pxh-navigation__sub-link': {
+      'add': window.pxh.NAVIGATION_SUB_LINK_ANIMATE_OUT
+    },
+    'pxh-login__name': {
+      'add': window.pxh.LOGIN_NAME_ANIMATE_OUT
+    },
+    'pxh-login__caret': {
+      'add': window.pxh.LOGIN_CARET_ANIMATE_OUT
+    },
+    'pxh-login__settings': {
+      'add': window.pxh.LOGIN_SETTINGS_ANIMATE_OUT
+    },
+    'pxh-login__notifications': {
+      'add': window.pxh.LOGIN_NOTIFICATIONS_ANIMATE_OUT
+    },
+    'pxh-view': {
+      'add': window.pxh.VIEW_ANIMATE_WIDE
+    },
+    'pxh-view-header': {
+      'add': window.pxh.VIEW_HEADER_ANIMATE_WIDE
+    }
+  },
+  'narrowToWide': {
+    'pxh-drawer': {
+      'add': window.pxh.DRAWER_ANIMATE_WIDE
+    },
+    'pxh-drawer-header__link': {
+      'add': window.pxh.DRAWER_HEADER_LINK_ANIMATE_IN
+    },
+    'pxh-navigation__item-text': {
+      'add': window.pxh.NAVIGATION_ITEM_TEXT_ANIMATE_IN
+    },
+    'pxh-navigation__sub-link': {
+      'add': window.pxh.NAVIGATION_SUB_LINK_ANIMATE_IN
+    },
+    'pxh-login__name': {
+      'add': window.pxh.LOGIN_NAME_ANIMATE_IN
+    },
+    'pxh-login__caret': {
+      'add': window.pxh.LOGIN_CARET_ANIMATE_IN
+    },
+    'pxh-login__settings': {
+      'add': window.pxh.LOGIN_SETTINGS_ANIMATE_IN
+    },
+    'pxh-login__notifications': {
+      'add': window.pxh.LOGIN_NOTIFICATIONS_ANIMATE_IN
+    },
+    'pxh-view': {
+      'add': window.pxh.VIEW_ANIMATE_NARROW
+    },
+    'pxh-view-header': {
+      'add': window.pxh.VIEW_HEADER_ANIMATE_NARROW
+    }
+  },
+  'clearAll': {
+    'pxh-drawer': {
+      'remove': window.pxh.DRAWER_ANIMATE_IN + ' ' + window.pxh.DRAWER_ANIMATE_OUT + ' ' + window.pxh.DRAWER_ANIMATE_NARROW + ' ' + window.pxh.DRAWER_ANIMATE_WIDE + ' ' + window.pxh.DRAWER_ANIMATE_OUT_WIDE
+    },
+    'pxh-drawer-header__link': {
+      'remove': window.pxh.DRAWER_HEADER_LINK_ANIMATE_IN + ' ' + window.pxh.DRAWER_HEADER_LINK_ANIMATE_OUT
+    },
+    'pxh-navigation__item-text': {
+      'remove': window.pxh.NAVIGATION_ITEM_TEXT_ANIMATE_IN + ' ' + window.pxh.NAVIGATION_ITEM_TEXT_ANIMATE_OUT
+    },
+    'pxh-navigation__sub-link': {
+      'remove': window.pxh.NAVIGATION_SUB_LINK_ANIMATE_IN + ' ' + window.pxh.NAVIGATION_SUB_LINK_ANIMATE_OUT
+    },
+    'pxh-login__name': {
+      'remove': window.pxh.LOGIN_NAME_ANIMATE_IN + ' ' + window.pxh.LOGIN_NAME_ANIMATE_OUT
+    },
+    'pxh-login__caret': {
+      'remove': window.pxh.LOGIN_CARET_ANIMATE_IN + ' ' + window.pxh.LOGIN_CARET_ANIMATE_OUT
+    },
+    'pxh-login__settings': {
+      'remove': window.pxh.LOGIN_SETTINGS_ANIMATE_IN + ' ' + window.pxh.LOGIN_SETTINGS_ANIMATE_OUT
+    },
+    'pxh-login__notifications': {
+      'remove': window.pxh.LOGIN_NOTIFICATIONS_ANIMATE_IN + ' ' + window.pxh.LOGIN_NOTIFICATIONS_ANIMATE_OUT
+    },
+    'pxh-view': {
+      'remove': window.pxh.VIEW_ANIMATE_WIDE + ' ' + window.pxh.VIEW_ANIMATE_NARROW + ' ' + window.pxh.VIEW_ANIMATE_FULL_TO_WIDE
+    },
+    'pxh-view-header': {
+      'remove': window.pxh.VIEW_HEADER_ANIMATE_WIDE + ' ' + window.pxh.VIEW_HEADER_ANIMATE_NARROW + ' ' + window.pxh.VIEW_HEADER_ANIMATE_FULL_TO_WIDE
+    }
+  }
+};
+
+// *****************
+// GENERIC FUNCTIONS
+// *****************
+
+/**
+ * Polyfill to support .remove() in IE11
+ * https://developer.mozilla.org/en-US/docs/Web/API/ChildNode/remove
+ * 
+ */
+if (!('remove' in Element.prototype)) {
+  Element.prototype.remove = function () {
+    if (this.parentNode) {
+      this.parentNode.removeChild(this);
+    }
+  };
+}
+
+/** 
+ * Checks if an array exists
+ * 
+ * @param {Array} array
+ * @returns {Boolean} true if array exists, false if it does not
+ */
+window.pxh.arrayExists = function (array) {
+  if (typeof array !== 'undefined' && array.length > 0) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
+/**
+ * Returns an item from an object based on its property name
+ * 
+ * @param {Object} haystack
+ * @param {String} propertyName
+ * @returns {Object|Boolean} Object that corresponds to the property name if found, false if not
+ */
+window.pxh.getItemByPropertyName = function (haystack, propertyName) {
+  for (var i in haystack) {
+    if (haystack.hasOwnProperty(propertyName)) {
+      return haystack[propertyName];
+    } else {
+      return false;
+    }
+  }
+};
+
+/**
+ * Returns the value of a particular CSS property of an element
+ * 
+ * @param {String} id The id="" attribute of the element
+ * @param {String} property The CSS property to query, e.g. z-index
+ * @returns {String|Boolean} CSS property value if found, false if not
+ */
+window.pxh.getStyle = function (id, property) {
+  var element = document.getElementById(id);
+  var style = '';
+  if (window.getComputedStyle) {
+    var style = document.defaultView.getComputedStyle(element, null).getPropertyValue(property);
+  } else if (element.currentStyle) {
+    var style = element.currentStyle[property];
+  }
+  return style;
+};
+
+/**
+ * Strips HTML tags from the given string
+ * 
+ * @param {String} html A string that may contain HTML tags
+ * @returns {String|Boolean} Input string's text with HTML removed, false if no input parameter provided
+ */
+window.pxh.stripHTML = function (html) {
+  if (html) {
+    var tmp = document.createElement('div');
+    tmp.innerHTML = html;
+    return tmp.textContent || tmp.innerText || '';
+  } else {
+    return false;
+  }
+};
+
+/**
+ * Loads a state from a state object, and changes the CSS classes on all relevant elements
+ * 
+ * @param {Object} stateObject An object containing the states of your application
+ * @param {String} targetStateName The name of the desired state to load from the state object
+ */
+window.pxh.loadState = function (stateObject, targetStateName) {
+  // grab the target state object from the master states object
+  var targetState = window.pxh.getItemByPropertyName(stateObject, targetStateName);
+  // iterate through each target class in the target state object
+  for (var targetClass in targetState) {
+    // grab the target state for each class in the target state
+    var stateChangeTarget = targetState[targetClass];
+    // iterate through each target state change (e.g. whether to add, remove, toggle)
+    for (var stateChangeType in stateChangeTarget) {
+      // grab the target state change classes (e.g. which classes to add, remove, or toggle)
+      var stateChangeClasses = stateChangeTarget[stateChangeType];
+      // change the classes of each target element based on its target class, the type of change to make, and its target classes
+      window.pxh.changeClasses(targetClass, stateChangeType, stateChangeClasses);
+    }
+  }
+};
+
+/**
+ * Binds drawer state change events to toggle buttons, which will change the state of the drawer depending on the current drawer and responsive contexts
+ * 
+ * @param {String} controlName CSS class name of control to bind events to
+ */
+window.pxh.bindControl = function (controlName) {
+  var controlElements = document.getElementsByClassName(controlName);
+  var drawer = document.getElementById('js-drawer');
+  if (window.pxh.arrayExists(controlElements) && drawer) {
+    for (var i = controlElements.length - 1; i >= 0; i--) {
+      controlElements[i].addEventListener('click', function (event) {
+        event.preventDefault();
+        var drawerIsAtDefaultState = drawer.classList.contains('pxh-drawer--wide@lg');
+        var drawerIsNarrowAtMd = drawer.classList.contains('pxh-drawer--narrow@md');
+        var drawerIsHiddenAtSm = drawer.classList.contains('pxh-drawer--hidden-until@md');
+        window.pxh.loadState(window.pxh.transitions, 'clearAll');
+        if (window.matchMedia('(min-width: 1024px)').matches && drawerIsAtDefaultState) {
+          window.pxh.loadState(window.pxh.transitions, 'wideToNarrow');
+          window.pxh.loadState(window.pxh.states, 'narrowAtLg');
+          document.dispatchEvent(window.pxh.drawerClosed);
+          window.pxh.Cookies.set('pxh-drawer-narrow', 'true', { expires: 1, path: '/' });
+          window.pxh.Cookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/' });
+        } else if (window.matchMedia('(min-width: 1024px)').matches) {
+          window.pxh.loadState(window.pxh.transitions, 'narrowToWide');
+          window.pxh.loadState(window.pxh.states, 'default');
+          document.dispatchEvent(window.pxh.drawerOpened);
+          window.pxh.Cookies.set('pxh-drawer-narrow', 'false', { expires: 1, path: '/' });
+          window.pxh.Cookies.set('pxh-drawer-open', 'true', { expires: 1, path: '/' });
+        } else if (drawerIsNarrowAtMd && window.matchMedia('(min-width: 768px)').matches) {
+          window.pxh.loadState(window.pxh.transitions, 'narrowToOpen');
+          window.pxh.loadState(window.pxh.states, 'open');
+          document.dispatchEvent(window.pxh.drawerOpened);
+          window.pxh.Cookies.set('pxh-drawer-open', 'true', { expires: 1, path: '/' });
+          window.pxh.Cookies.set('pxh-drawer-narrow', 'false', { expires: 1, path: '/' });
+        } else if (window.matchMedia('(min-width: 768px)').matches) {
+          window.pxh.loadState(window.pxh.transitions, 'openToNarrow');
+          window.pxh.loadState(window.pxh.states, 'default');
+          document.dispatchEvent(window.pxh.drawerClosed);
+          window.pxh.Cookies.set('pxh-drawer-narrow', 'true', { expires: 1, path: '/' });
+          window.pxh.Cookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/' });
+        } else if (drawerIsHiddenAtSm) {
+          window.pxh.loadState(window.pxh.transitions, 'outToIn');
+          window.pxh.loadState(window.pxh.states, 'open');
+          document.dispatchEvent(window.pxh.drawerOpened);
+          window.pxh.Cookies.set('pxh-drawer-narrow', 'false', { expires: 1, path: '/' });
+          window.pxh.Cookies.set('pxh-drawer-open', 'true', { expires: 1, path: '/' });
+        } else {
+          window.pxh.loadState(window.pxh.transitions, 'inToOut');
+          window.pxh.loadState(window.pxh.states, 'default');
+          document.dispatchEvent(window.pxh.drawerClosed);
+          window.pxh.Cookies.set('pxh-drawer-narrow', 'true', { expires: 1, path: '/' });
+          window.pxh.Cookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/' });
+        }
+      });
+    }
+  }
+};
+
+/**
+ * Creates drawer state change events that should fire when the browser transitions between the medium breakpoint
+ * 
+ * @param {String} breakpoint 
+ */
+window.pxh.breakpointAtMd = function (breakpoint) {
+  window.pxh.loadState(window.pxh.transitions, 'clearAll');
+  var drawer = document.getElementById('js-drawer');
+  var drawerIsWideAtLg = drawer.classList.contains('pxh-drawer--wide@lg');
+  var drawerIsNarrowAtMd = drawer.classList.contains('pxh-drawer--narrow@md');
+  if (breakpoint.matches) {
+    // we entered the @md breakpoint from the @sm breakpoint
+    if (drawerIsNarrowAtMd) {
+      // the drawer wasn't open @sm so open it to narrow @md
+      // fire the transition
+      window.pxh.loadState(window.pxh.transitions, 'outToNarrow');
+    }
+  } else {
+    // we exited the @md breakpoint into the @sm breakpoint
+    if (drawerIsNarrowAtMd) {
+      // the drawer was open to narrow @md so move it out @sm
+      window.pxh.loadState(window.pxh.transitions, 'narrowToOut');
+    }
+  }
+};
+
+/**
+ * Creates drawer state change events that should fire when the browser transitions between the large breakpoint
+ * 
+ * @param {String} breakpoint 
+ */
+window.pxh.breakpointAtLg = function (breakpoint) {
+  window.pxh.loadState(window.pxh.transitions, 'clearAll');
+  var drawer = document.getElementById('js-drawer');
+  var drawerIsWideAtLg = drawer.classList.contains('pxh-drawer--wide@lg');
+  var drawerIsNarrowAtMd = drawer.classList.contains('pxh-drawer--narrow@md');
+  if (breakpoint.matches) {
+    // we entered the @lg breakpoint from the @md breakpoint
+    if (drawerIsWideAtLg && !drawerIsNarrowAtMd) {
+      // the drawer was open @md so keep it open @lg
+      // don't fire any transitions
+      window.pxh.loadState(window.pxh.states, 'default');
+      window.pxh.Cookies.set('pxh-drawer-narrow', 'false', { expires: 1, path: '/' });
+      window.pxh.Cookies.set('pxh-drawer-open', 'true', { expires: 1, path: '/' });
+    } else {
+      // drawer was narrow @md so transition it to wide @lg
+      // fire transitions
+      window.pxh.loadState(window.pxh.transitions, 'narrowToWide');
+      window.pxh.loadState(window.pxh.states, 'default');
+      document.dispatchEvent(window.pxh.drawerOpened);
+      window.pxh.Cookies.set('pxh-drawer-narrow', 'false', { expires: 1, path: '/' });
+      window.pxh.Cookies.set('pxh-drawer-open', 'true', { expires: 1, path: '/' });
+    }
+  } else {
+    // we exited the @lg breakpoint into the @md breakpoint
+    if (drawerIsWideAtLg) {
+      // the drawer was wide @lg so transition it to narrow @md
+      // close the notifications list if it's open
+      // fire transitions
+      window.pxh.loadState(window.pxh.transitions, 'wideToNarrow');
+    };
+    window.pxh.loadState(window.pxh.states, 'default');
+    document.dispatchEvent(window.pxh.drawerClosed);
+    window.pxh.Cookies.set('pxh-drawer-narrow', 'true', { expires: 1, path: '/' });
+    window.pxh.Cookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/' });
+  }
+};
+
+/**
+ * Binds media queries to drawer controls or something
+ * 
+ * @param {String} targetClass CSS class name of elements to bind to
+ * @param {Object} window.matchMedia object
+ */
+window.pxh.bindDrawerMediaQueryControls = function (targetClass, mediaQuery) {
+  var targetElements = document.getElementsByClassName(targetClass);
+  var drawer = document.getElementById('js-drawer');
+  if (window.pxh.arrayExists(targetElements) && drawer) {
+    // iterate through drawer controls and fire the pxhToggleDrawer function when clicked
+    for (var i = targetElements.length - 1; i >= 0; i--) {
+      targetElements[i].addEventListener('click', function () {
+        window.pxh.loadState(window.pxh.transitions, 'clearAll');
+        if (!mediaQuery.matches) {
+          window.pxh.loadState(window.pxh.states, 'default');
+          window.pxh.Cookies.set('pxh-drawer-narrow', 'true', { expires: 1, path: '/' });
+          window.pxh.Cookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/' });
+        }
+      });
+    }
+  }
+};
+
+/**
+ * When the user clicks the overlay, hides the drawer at the small breakpoint, or collapses the drawer at the narrow breakpoint
+ * 
+ * If the notification list is displayed, hides it when the user clicks the overlay but doesn't hide or collapse the drawer
+ * 
+ */
+window.pxh.overlayDrawerControl = function () {
+  var overlay = document.getElementsByClassName('pxh-overlay');
+  var notifications = document.getElementById('js-notifications');
+  if (window.pxh.arrayExists(overlay)) {
+    for (var i = overlay.length - 1; i >= 0; i--) {
+      overlay[i].addEventListener('click', function (event) {
+        if (!lgBreakpoint.matches && window.pxh.Cookies.get('pxh-drawer-open') === 'true') {
+          // if the notifications list is visible, close it when clicking the overlay but don't close the drawer
+          if (notifications && notifications.classList.contains('pxh-notifications--visible')) {
+            notifications.classList.remove('pxh-notifications--visible');
+          } else {
+            window.pxh.loadState(window.pxh.transitions, 'clearAll');
+            window.pxh.loadState(window.pxh.states, 'default');
+            document.dispatchEvent(window.pxh.drawerClosed);
+            window.pxh.Cookies.set('pxh-drawer-narrow', 'true', { expires: 1, path: '/' });
+            window.pxh.Cookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/' });
+          }
+        }
+      });
+    }
+  }
+};
+
+/**
+ * When the user hits the "ESC" key on the keyboard, hides the drawer at the small breakpoint, or collapses the drawer at the narrow breakpoint
+ * 
+ */
+window.pxh.escapeDrawerControl = function () {
+  document.addEventListener('keyup', function (event) {
+    if (event.keyCode == 27 && !lgBreakpoint.matches && window.pxh.Cookies.get('pxh-drawer-open') === 'true') {
+      window.pxh.loadState(window.pxh.transitions, 'clearAll');
+      window.pxh.loadState(window.pxh.states, 'default');
+      document.dispatchEvent(window.pxh.drawerClosed);
+      window.pxh.Cookies.set('pxh-drawer-narrow', 'true', { expires: 1, path: '/' });
+      window.pxh.Cookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/' });
+    }
+  });
+};
+
+/**
+ * Toggles the visibility of a login menu
+ * 
+ * @param {String} toggleControl CSS class name of the elements to turn into controls that will fire this event
+ * @param {String} toggleTarget CSS class name of the login menu elements that should have their visibility toggled
+ * @param {string} toggleClass Space-delimited list of CSS class names to toggle on the target elements when this event fires
+ */
+window.pxh.toggleLoginMenu = function (toggleControl, toggleTarget, toggleClass) {
+  var toggleControlElements = document.getElementsByClassName(toggleControl);
+  var toggleTargetElements = document.getElementsByClassName(toggleTarget);
+  if (window.pxh.arrayExists(toggleControlElements) && window.pxh.arrayExists(toggleTargetElements)) {
+    for (var i = toggleControlElements.length - 1; i >= 0; i--) {
+      toggleControlElements[i].addEventListener('click', function (event) {
+        event.preventDefault();
+        var menuIsVisible = toggleTargetElements[0].classList.contains(toggleClass);
+        window.pxh.changeClasses('pxh-login-menu', 'remove', toggleClass);
+        if (!menuIsVisible) {
+          window.pxh.changeClasses(toggleTarget, 'toggle', toggleClass);
+        }
+        event.stopPropagation();
+      });
+    }
+  }
+};
+
+// ********
+// FIRE!!!!
+// ********
+
+var lgBreakpoint = window.matchMedia('(min-width: 1024px)');
+var mdBreakpoint = window.matchMedia('(min-width: 768px)');
+
+document.addEventListener('DOMContentLoaded', function (event) {
+  if (document.getElementById('js-drawer')) {
+    lgBreakpoint.addListener(window.pxh.breakpointAtLg);
+    mdBreakpoint.addListener(window.pxh.breakpointAtMd);
+  }
+  window.pxh.drawerOpened = document.createEvent('CustomEvent');
+  window.pxh.drawerOpened.initCustomEvent('pxhDrawerOpened', false, false, {
+    'drawerOpened': true
+  });
+
+  window.pxh.drawerClosed = document.createEvent('CustomEvent');
+  window.pxh.drawerClosed.initCustomEvent('pxhDrawerClosed', false, false, {
+    'drawerClosed': true
+  });
+
+  window.pxh.bindControl(window.pxh.VIEW_HEADER_DRAWER_TOGGLE);
+  window.pxh.bindControl(window.pxh.DRAWER_TOGGLE);
+
+  if (window.pxh.Cookies.get('pxh-drawer-open') === null) {
+    window.pxh.Cookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/' });
+  }
+
+  if (window.pxh.Cookies.get('pxh-drawer-narrow') === null) {
+    window.pxh.Cookies.set('pxh-drawer-narrow', 'false', { expires: 1, path: '/' });
+  }
+
+  // check if the 'narrow' cookie is set and if we're currently at the desktop breakpoint
+  if (window.matchMedia('(min-width: 1024px)').matches && window.pxh.Cookies.get('pxh-drawer-narrow') === 'true') {
+    // toggle the drawer closed
+    window.pxh.loadState(window.pxh.states, 'narrowAtLg');
+    document.dispatchEvent(window.pxh.drawerClosed);
+    window.pxh.Cookies.set('pxh-drawer-narrow', 'true', { expires: 1, path: '/' });
+  } else if (window.matchMedia('(min-width: 1024px)').matches) {
+    window.pxh.Cookies.set('pxh-drawer-open', 'true', { expires: 1, path: '/' });
+  } else {
+    window.pxh.Cookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/' });
+  }
+  document.addEventListener('navRefreshed', function (event) {
+    window.pxh.toggleLoginMenu(window.pxh.LOGIN_PROFILE_LINK, window.pxh.LOGIN_MENU_PROFILE, window.pxh.LOGIN_MENU_VISIBLE);
+    window.pxh.toggleLoginMenu(window.pxh.LOGIN_SETTINGS_LINK, window.pxh.LOGIN_MENU_SETTINGS, window.pxh.LOGIN_MENU_VISIBLE);
+  });
+
+  window.pxh.bindDrawerMediaQueryControls(window.pxh.NAVIGATION_LINK, lgBreakpoint);
+  window.pxh.bindDrawerMediaQueryControls(window.pxh.NAVIGATION_SUB_LINK, lgBreakpoint);
+
+  window.pxh.overlayDrawerControl();
+
+  window.pxh.escapeDrawerControl();
+
+  window.pxh.action.clickToCloseAndFire(window.pxh.LOGIN_PROFILE_LINK, window.pxh.LOGIN_MENU_PROFILE, 'remove', window.pxh.LOGIN_MENU_VISIBLE);
+  window.pxh.action.clickToCloseAndFire(window.pxh.LOGIN_SETTINGS_LINK, window.pxh.LOGIN_MENU_SETTINGS, 'remove', window.pxh.LOGIN_MENU_VISIBLE);
+
+  window.pxh.toggleLoginMenu(window.pxh.LOGIN_PROFILE_LINK, window.pxh.LOGIN_MENU_PROFILE, window.pxh.LOGIN_MENU_VISIBLE);
+  window.pxh.toggleLoginMenu(window.pxh.LOGIN_SETTINGS_LINK, window.pxh.LOGIN_MENU_SETTINGS, window.pxh.LOGIN_MENU_VISIBLE);
+});
+
+// ******
+// TOASTS
+// ******
+
+/** @namespace window.pxh.toast */
+window.pxh.toast = {
+  /** @namespace window.pxh.toast.badge */
   badge: {
     count: 0,
 
@@ -1296,16 +1814,16 @@ pxh.toast = {
      * Won't display a value below zero
      */
     increment: function increment() {
-      pxh.toast.badge.count = pxh.toast.badge.count + 1;
-      if (pxh.toast.badge.count > 9) {
-        pxh.toast.badge.text = '9+';
-      } else if (pxh.toast.badge.count < 0) {
-        pxh.toast.badge.count = 0;
-        pxh.toast.badge.text = 0;
+      window.pxh.toast.badge.count = window.pxh.toast.badge.count + 1;
+      if (window.pxh.toast.badge.count > 9) {
+        window.pxh.toast.badge.text = '9+';
+      } else if (window.pxh.toast.badge.count < 0) {
+        window.pxh.toast.badge.count = 0;
+        window.pxh.toast.badge.text = 0;
       } else {
-        pxh.toast.badge.text = pxh.toast.badge.count;
+        window.pxh.toast.badge.text = window.pxh.toast.badge.count;
       }
-      pxh.toast.badge.update();
+      window.pxh.toast.badge.update();
     },
     /** 
      * Decreases the value for on the notification icon badge by 1
@@ -1315,16 +1833,16 @@ pxh.toast = {
      * Won't display a value below zero
      */
     decrement: function decrement() {
-      pxh.toast.badge.count = pxh.toast.badge.count - 1;
-      if (pxh.toast.badge.count > 9) {
-        pxh.toast.badge.text = '9+';
-      } else if (pxh.toast.badge.count < 0) {
-        pxh.toast.badge.count = 0;
-        pxh.toast.badge.text = 0;
+      window.pxh.toast.badge.count = window.pxh.toast.badge.count - 1;
+      if (window.pxh.toast.badge.count > 9) {
+        window.pxh.toast.badge.text = '9+';
+      } else if (window.pxh.toast.badge.count < 0) {
+        window.pxh.toast.badge.count = 0;
+        window.pxh.toast.badge.text = 0;
       } else {
-        pxh.toast.badge.text = pxh.toast.badge.count;
+        window.pxh.toast.badge.text = window.pxh.toast.badge.count;
       }
-      pxh.toast.badge.update();
+      window.pxh.toast.badge.update();
     },
     /** 
      * Locates the notification icon badge element and updates the displayed value
@@ -1334,8 +1852,8 @@ pxh.toast = {
       var notificationIcon = '';
       var notificationBadge = '';
       if ((notificationIcon = document.getElementById('js-login__notifications')) && (notificationBadge = document.getElementById('js-login__notifications-badge'))) {
-        if (pxh.toast.badge.count > 0) {
-          notificationBadge.innerHTML = pxh.toast.badge.text;
+        if (window.pxh.toast.badge.count > 0) {
+          notificationBadge.innerHTML = window.pxh.toast.badge.text;
           notificationIcon.classList.remove('pxh-display-none');
           notificationBadge.classList.remove('pxh-login__notifications-badge--hidden');
         } else {
@@ -1351,7 +1869,7 @@ pxh.toast = {
    * 
    * @example
    * var toastObject1 = {
-   *   value : 'something' // pxh.toast.add merely requires that the toast object exists, and will use reasonable defaults if any parameters are missing
+   *   value : 'something' // window.pxh.toast.add merely requires that the toast object exists, and will use reasonable defaults if any parameters are missing
    * }
    *
    * var toastObject2 = {
@@ -1385,10 +1903,10 @@ pxh.toast = {
    * }
    * 
    * document.addEventListener('DOMContentLoaded', function(event) {
-   *   pxh.toast.add(toastObject1);
-   *   pxh.toast.add(toastObject2, true); // creates a notification but not a toast
-   *   pxh.toast.add(toastObject3);
-   *   pxh.toast.add(toastObject4);
+   *   window.pxh.toast.add(toastObject1);
+   *   window.pxh.toast.add(toastObject2, true); // creates a notification but not a toast
+   *   window.pxh.toast.add(toastObject3);
+   *   window.pxh.toast.add(toastObject4);
    * });
    * @param {object} object An object containing the parameters for the toast (and notification, if applicable) that will be created
    * @param {String} [object.id=unique hex value] - The unique id for the toast/notification being generated. If not provided, pxh-chrome will automatically generate a unique hexidecimal value. The id must be unique or else unexpected behavior might occur. If your application will be providing its own id, it is your responsibility to enforce its uniqueness
@@ -1409,34 +1927,34 @@ pxh.toast = {
     var toastList = '';
     if ((notificationList = document.getElementById('js-notifications__list')) && (object.actionLink || object.actionCallback)) {
       var notificationFirstChild = notificationList.firstChild;
-      var notificationElement = notificationList.insertBefore(pxh.toast.markup.createNotification(object, id), notificationFirstChild);
-      pxh.toast.badge.increment();
-      pxh.toast.action.dismissButton(notificationElement, 'notification', id);
-      pxh.toast.action.expandButton(notificationElement, 'notification');
+      var notificationElement = notificationList.insertBefore(window.pxh.toast.markup.createNotification(object, id), notificationFirstChild);
+      window.pxh.toast.badge.increment();
+      window.pxh.toast.action.dismissButton(notificationElement, 'notification', id);
+      window.pxh.toast.action.expandButton(notificationElement, 'notification');
       if (object.actionLink) {
-        pxh.toast.action.bindLink(toastElement, 'notification__link', id);
+        window.pxh.toast.action.bindLink(toastElement, 'notification__link', id);
       } else if (object.actionCallback) {
-        pxh.toast.action.bindCallback(toastElement, 'notification__link', id, object.actionCallback);
+        window.pxh.toast.action.bindCallback(toastElement, 'notification__link', id, object.actionCallback);
       }
     }
     if ((toastList = document.getElementById('js-toasts')) && !suppressToast) {
       var toastFirstChild = toastList.firstChild;
-      var toastElement = toastList.insertBefore(pxh.toast.markup.createToast(object, id), toastFirstChild);
-      pxh.toast.action.dismissButton(toastElement, 'toast', id, true);
-      pxh.toast.action.expandButton(toastElement, 'toast');
+      var toastElement = toastList.insertBefore(window.pxh.toast.markup.createToast(object, id), toastFirstChild);
+      window.pxh.toast.action.dismissButton(toastElement, 'toast', id, true);
+      window.pxh.toast.action.expandButton(toastElement, 'toast');
       if (object.actionLink) {
-        pxh.toast.action.bindLink(toastElement, 'toast__button', id);
+        window.pxh.toast.action.bindLink(toastElement, 'toast__button', id);
       } else if (object.actionCallback) {
-        pxh.toast.action.bindCallback(toastElement, 'toast__button', id, object.actionCallback);
+        window.pxh.toast.action.bindCallback(toastElement, 'toast__button', id, object.actionCallback);
       }
       if (!object.isPersistent) {
         setTimeout(function () {
           if (!toastElement.classList.contains('pxh-toast--expanded')) {
             // after 2000ms animate the toast out
-            pxh.toast.autoHide(id);
+            window.pxh.toast.autoHide(id);
             // 1000ms after the animation, remove the notification from the DOM
             setTimeout(function () {
-              pxh.toast.autoRemove(id);
+              window.pxh.toast.autoRemove(id);
             }, 1000);
           }
         }, 5000);
@@ -1444,7 +1962,7 @@ pxh.toast = {
     }
     return id;
   },
-  /** @namespace pxh.toast.action */
+  /** @namespace window.pxh.toast.action */
   action: {
     /** 
      * Binds an event to an element that will dismiss a toast/notification (and its correponding toast/notification, if applicable) when clicked
@@ -1458,9 +1976,9 @@ pxh.toast = {
       if (button) {
         button.addEventListener('click', function (event) {
           event.preventDefault();
-          pxh.toast.hide(id, preserveNotification);
+          window.pxh.toast.hide(id, preserveNotification);
           setTimeout(function () {
-            pxh.toast.remove(id, preserveNotification);
+            window.pxh.toast.remove(id, preserveNotification);
           }, 1000);
         });
       }
@@ -1476,7 +1994,7 @@ pxh.toast = {
       if (button) {
         button.addEventListener('click', function (event) {
           event.preventDefault();
-          pxh.toast.expand(element, slug);
+          window.pxh.toast.expand(element, slug);
         });
       }
     },
@@ -1484,9 +2002,9 @@ pxh.toast = {
      * Removes all toasts and notifications from application
      */
     removeAllButton: function removeAllButton() {
-      pxh.toast.hideAll();
+      window.pxh.toast.hideAll();
       setTimeout(function () {
-        pxh.toast.removeAll();
+        window.pxh.toast.removeAll();
       }, 1000);
     },
 
@@ -1503,10 +2021,10 @@ pxh.toast = {
       if (button) {
         button.addEventListener('click', function (event) {
           event.preventDefault();
-          pxh.toast.action.fireCallback(callback);
-          pxh.toast.hide(id);
+          window.pxh.toast.action.fireCallback(callback);
+          window.pxh.toast.hide(id);
           setTimeout(function () {
-            pxh.toast.remove(id);
+            window.pxh.toast.remove(id);
           }, 1000);
         });
       }
@@ -1524,9 +2042,9 @@ pxh.toast = {
       var button = document.getElementById('js-' + slug + '--' + id);
       if (button) {
         button.addEventListener('click', function (event) {
-          pxh.toast.hide(id);
+          window.pxh.toast.hide(id);
           setTimeout(function () {
-            pxh.toast.remove(id);
+            window.pxh.toast.remove(id);
           }, 1000);
         });
       }
@@ -1572,7 +2090,7 @@ pxh.toast = {
     if ((notificationList = document.getElementById('js-notifications__list')) && (notifications = document.getElementsByClassName('pxh-notification'))) {
       for (var i = notifications.length - 1; i >= 0; i--) {
         var id = notifications[i].id.replace('js-notification--', '');
-        pxh.toast.hide(id);
+        window.pxh.toast.hide(id);
       }
     }
   },
@@ -1606,7 +2124,7 @@ pxh.toast = {
     }
     if ((notificationList = document.getElementById('js-notifications__list')) && (notification = document.getElementById('js-notification--' + id)) && !preserveNotification) {
       notification.remove();
-      pxh.toast.badge.decrement();
+      window.pxh.toast.badge.decrement();
     }
   },
 
@@ -1633,7 +2151,7 @@ pxh.toast = {
     if ((notificationList = document.getElementById('js-notifications__list')) && (notifications = document.getElementsByClassName('pxh-notification'))) {
       for (var i = notifications.length - 1; i >= 0; i--) {
         var id = notifications[i].id.replace('js-notification--', '');
-        pxh.toast.remove(id);
+        window.pxh.toast.remove(id);
       }
     }
   },
@@ -1656,7 +2174,7 @@ pxh.toast = {
       element.querySelector('.pxh-' + slug + '__more-button').innerHTML = 'Show less';
     }
   },
-  /** @namespace pxh.toast.markup */
+  /** @namespace window.pxh.toast.markup */
   markup: {
     /**
      * Generates the HTML markup for displaying a toast/notification's icon
@@ -1682,11 +2200,11 @@ pxh.toast = {
      * @param {String} slug The text slug to be used when generating class names and targets
      */
     toastText: function toastText(object, slug) {
-      var text = object.text ? pxh.stripHTML(object.text) : 'You received a new notification.';
+      var text = object.text ? window.pxh.stripHTML(object.text) : 'You received a new notification.';
       var markup = [];
       markup.push('<div class="pxh-' + slug + '__text">\n');
       markup.push('  ' + text + '\n');
-      markup.push(pxh.toast.markup.more(object, slug));
+      markup.push(window.pxh.toast.markup.more(object, slug));
       markup.push('</div>\n');
       markup = markup.join('');
       return markup;
@@ -1700,7 +2218,7 @@ pxh.toast = {
      * @param {String} id The unique ID of the notification being created
      */
     notificationText: function notificationText(object, slug, id) {
-      var text = object.text ? pxh.stripHTML(object.text) : 'You received a new notification.';
+      var text = object.text ? window.pxh.stripHTML(object.text) : 'You received a new notification.';
       var markup = [];
       markup.push('<div class="pxh-' + slug + '__text">\n');
       if (object.actionLink) {
@@ -1712,7 +2230,7 @@ pxh.toast = {
       if (object.actionLink || object.actionCallback) {
         markup.push('  </a>\n');
       }
-      markup.push(pxh.toast.markup.more(object, slug));
+      markup.push(window.pxh.toast.markup.more(object, slug));
       markup.push('</div>\n');
       markup = markup.join('');
       return markup;
@@ -1815,10 +2333,10 @@ pxh.toast = {
       element.className = 'pxh-' + slug + ' pxh-' + slug + '--animate-in';
       element.id = 'js-' + slug + '--' + id;
       var markup = [];
-      markup.push(pxh.toast.markup.icon(object, slug));
-      markup.push(pxh.toast.markup.toastText(object, slug));
-      markup.push(pxh.toast.markup.button(object, slug, id));
-      markup.push(pxh.toast.markup.dismiss(object, slug, id));
+      markup.push(window.pxh.toast.markup.icon(object, slug));
+      markup.push(window.pxh.toast.markup.toastText(object, slug));
+      markup.push(window.pxh.toast.markup.button(object, slug, id));
+      markup.push(window.pxh.toast.markup.dismiss(object, slug, id));
       markup = markup.join('');
       element.innerHTML = markup;
       return element;
@@ -1837,10 +2355,10 @@ pxh.toast = {
       element.className = 'pxh-' + slug;
       element.id = 'js-' + slug + '--' + id;
       var markup = [];
-      markup.push(pxh.toast.markup.icon(object, slug));
-      markup.push(pxh.toast.markup.notificationText(object, slug, id));
-      markup.push(pxh.toast.markup.timestamp(object, slug));
-      markup.push(pxh.toast.markup.dismiss(object, slug, id));
+      markup.push(window.pxh.toast.markup.icon(object, slug));
+      markup.push(window.pxh.toast.markup.notificationText(object, slug, id));
+      markup.push(window.pxh.toast.markup.timestamp(object, slug));
+      markup.push(window.pxh.toast.markup.dismiss(object, slug, id));
       markup = markup.join('');
       element.innerHTML = markup;
       return element;
@@ -1873,77 +2391,12 @@ pxh.toast = {
 // FIRE!!!!
 // ********
 
-var lgBreakpoint = window.matchMedia('(min-width: 1024px)');
-var mdBreakpoint = window.matchMedia('(min-width: 768px)');
 document.addEventListener('DOMContentLoaded', function (event) {
-  lgBreakpoint.addListener(pxh.breakpointAtLg);
-  mdBreakpoint.addListener(pxh.breakpointAtMd);
-});
-
-pxh.viewResized = document.createEvent('CustomEvent');
-pxh.viewResized.initCustomEvent('pxhViewResized', false, false, {
-  'viewResized': true
-});
-
-pxh.drawerOpened = document.createEvent('CustomEvent');
-pxh.drawerOpened.initCustomEvent('pxhDrawerOpened', false, false, {
-  'drawerOpened': true
-});
-
-pxh.drawerClosed = document.createEvent('CustomEvent');
-pxh.drawerClosed.initCustomEvent('pxhDrawerClosed', false, false, {
-  'drawerClosed': true
-});
-
-document.addEventListener('DOMContentLoaded', function (event) {
-  pxh.bindControl(pxh.VIEW_HEADER_DRAWER_TOGGLE);
-  pxh.bindControl(pxh.DRAWER_TOGGLE);
-
-  if (pxh.Cookies.get('pxh-drawer-open') === null) {
-    pxh.Cookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/' });
-  }
-
-  if (pxh.Cookies.get('pxh-drawer-narrow') === null) {
-    pxh.Cookies.set('pxh-drawer-narrow', 'false', { expires: 1, path: '/' });
-  }
-
-  // check if the 'narrow' cookie is set and if we're currently at the desktop breakpoint
-  if (window.matchMedia('(min-width: 1024px)').matches && pxh.Cookies.get('pxh-drawer-narrow') === 'true') {
-    // toggle the drawer closed
-    pxh.loadState(pxh.states, 'narrowAtLg');
-    document.dispatchEvent(pxh.drawerClosed);
-    pxh.Cookies.set('pxh-drawer-narrow', 'true', { expires: 1, path: '/' });
-  } else if (window.matchMedia('(min-width: 1024px)').matches) {
-    pxh.Cookies.set('pxh-drawer-open', 'true', { expires: 1, path: '/' });
-  } else {
-    pxh.Cookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/' });
-  }
-  document.addEventListener('navRefreshed', function (event) {
-    pxh.toggleLoginMenu(pxh.LOGIN_PROFILE_LINK, pxh.LOGIN_MENU_PROFILE, pxh.LOGIN_MENU_VISIBLE);
-    pxh.toggleLoginMenu(pxh.LOGIN_SETTINGS_LINK, pxh.LOGIN_MENU_SETTINGS, pxh.LOGIN_MENU_VISIBLE);
-  });
-
-  pxh.bindDrawerMediaQueryControls(pxh.NAVIGATION_LINK, lgBreakpoint);
-  pxh.bindDrawerMediaQueryControls(pxh.NAVIGATION_SUB_LINK, lgBreakpoint);
-
-  pxh.overlayDrawerControl();
-
-  pxh.escapeDrawerControl();
-
-  pxh.action.clickToCloseAndFire(pxh.LOGIN_PROFILE_LINK, pxh.LOGIN_MENU_PROFILE, 'remove', pxh.LOGIN_MENU_VISIBLE);
-  pxh.action.clickToCloseAndFire(pxh.LOGIN_SETTINGS_LINK, pxh.LOGIN_MENU_SETTINGS, 'remove', pxh.LOGIN_MENU_VISIBLE);
-
-  pxh.toggleLoginMenu(pxh.LOGIN_PROFILE_LINK, pxh.LOGIN_MENU_PROFILE, pxh.LOGIN_MENU_VISIBLE);
-  pxh.toggleLoginMenu(pxh.LOGIN_SETTINGS_LINK, pxh.LOGIN_MENU_SETTINGS, pxh.LOGIN_MENU_VISIBLE);
-
-  pxh.toggleMenu(pxh.LOGIN_NOTIFICATIONS, pxh.NOTIFICATIONS, pxh.NOTIFICATIONS_VISIBLE);
-
-  pxh.addResizeSensor('js-view');
-
+  window.pxh.toggleMenu(window.pxh.LOGIN_NOTIFICATIONS, window.pxh.NOTIFICATIONS, window.pxh.NOTIFICATIONS_VISIBLE);
   if (document.getElementById('js-notifications__link--clear')) {
     document.getElementById('js-notifications__link--clear').addEventListener('click', function (event) {
       event.preventDefault();
-      pxh.toast.action.removeAllButton();
+      window.pxh.toast.action.removeAllButton();
     });
   }
 });
