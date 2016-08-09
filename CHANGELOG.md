@@ -1,11 +1,12 @@
 #pxh-chrome changelog
 
-### pending release
+### 1.8.0 - August 9, 2016
 * Move all `pxh` methods into `window.pxh` namespace
 * Add `js-drawer` ID to `pxh-drawer` component so we can target it specifically
 * Enable toast functionality in "chromeless" mode
   * Add `pxh-chrome.js` to "chromeless" but prevent pxh-drawer JavaScript from firing
   * Add toast functionality and demo code to chromeless demo
+* Remove all HTML5 `<section>`, `<aside>`, `<header>` and `<nav>` elements and use `<div>`s exclusively
 
 ### 1.7.0 - August 5, 2016
 * Link to CDN versions of Font Awesome fonts and GE Inspira fonts
