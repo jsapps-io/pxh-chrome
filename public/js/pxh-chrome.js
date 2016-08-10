@@ -1769,7 +1769,6 @@ window.pxh.bindDrawerMediaQueryControls = function(targetClass, mediaQuery) {
 /**
  * When the user clicks the overlay, hides the drawer at the small breakpoint, or collapses the drawer at the narrow breakpoint
  * 
- * If the notification list is displayed, hides it when the user clicks the overlay but doesn't hide or collapse the drawer
  * 
  */
 window.pxh.overlayDrawerControl = function() {
@@ -2558,13 +2557,18 @@ window.pxh.toast = {
 
 document.addEventListener('DOMContentLoaded', function(event) {
   window.pxh.toggleMenu(window.pxh.LOGIN_NOTIFICATIONS, window.pxh.NOTIFICATIONS, window.pxh.NOTIFICATIONS_VISIBLE);
-  document.getElementById('js-login__notifications').addEventListener('click', function(event) {
-    event.preventDefault();
-    window.pxh.action.clickToCloseAndHold('js-login__notifications', 'js-notifications', window.pxh.NOTIFICATIONS_VISIBLE)
-  })
-  if (document.getElementById('js-notifications__link--clear'))
+  var notificationsIcon;
+  if (notificationsIcon = document.getElementById('js-login__notifications')) {
+    notificationsIcon.addEventListener('click', function(event) {
+      event.preventDefault();
+      window.pxh.action.clickToCloseAndHold('js-login__notifications', 'js-notifications', window.pxh.NOTIFICATIONS_VISIBLE)
+    })
+  }
+
+  var clearNotificationsLink;
+  if (clearNotificationsLink = document.getElementById('js-notifications__link--clear'))
   {
-    document.getElementById('js-notifications__link--clear').addEventListener('click', function(event) {
+    clearNotificationsLink.addEventListener('click', function(event) {
       event.preventDefault();
       window.pxh.toast.action.removeAllButton();
     })
