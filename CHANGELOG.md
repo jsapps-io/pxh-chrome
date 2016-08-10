@@ -1,12 +1,20 @@
 #pxh-chrome changelog
 
-### 1.8.0 - August 9, 2016
-* Move all `pxh` methods into `window.pxh` namespace
+### 2.0.0 - August 10, 2016
+* **Move all `pxh` methods into `window.pxh` namespace**
 * Add `js-drawer` ID to `pxh-drawer` component so we can target it specifically
 * Enable toast functionality in "chromeless" mode
   * Add `pxh-chrome.js` to "chromeless" but prevent pxh-drawer JavaScript from firing
   * Add toast functionality and demo code to chromeless demo
+* Add `pxh-clearfix` utility class, which can be applied to a parent element to automatically clear the height of its floated child elements
+* Add `pxh-toasts` placeholder element to all layouts and screens (including "chromeless" but excluding "error" screens)
+* Fix toggle behavior for showing/hiding the notification list
+  * Use `window.pxh.clickToCloseAndHold` to insert invisible full-screen element, and remove overlay-specific code
+  * Clicking in the drawer or in the content area/overlay will dismiss the list without firing the event on a clickable element beneath the cursor
+* Add `pxh-notifications` placeholder element to all "chromeful" layouts and screens
+* Update `pxh-chrome.js` to use more CSS class variables and fewer hard-coded class names
 * Remove all HTML5 `<section>`, `<aside>`, `<header>` and `<nav>` elements and use `<div>`s exclusively
+* Fix file extensions on sourcemaps so browsers can actually find them
 
 ### 1.7.0 - August 5, 2016
 * Link to CDN versions of Font Awesome fonts and GE Inspira fonts

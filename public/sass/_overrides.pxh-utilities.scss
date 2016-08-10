@@ -33,3 +33,9 @@
 .pxh-display-none {
   display: none;
 }
+
+.pxh-clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}

@@ -1,5 +1,5 @@
 'use strict';
-/*! common.pxh-chrome.js 1.8.0 */
+/*! common.pxh-chrome.js 2.0.0 */
 
 // **************
 // CONFIG OBJECTS
@@ -16,6 +16,7 @@ window.pxh.NARROW = '--narrow';
 window.pxh.WIDE = '--wide';
 window.pxh.HIDDEN = '--hidden';
 window.pxh.VISIBLE = '--visible';
+window.pxh.EXPANDED = '--expanded';
 window.pxh.UNTIL = '-until';
 window.pxh.AT_MD = '@md';
 window.pxh.AT_LG = '@lg';
@@ -115,12 +116,15 @@ window.pxh.LOGIN_CARET_ANIMATE_IN = window.pxh.LOGIN_CARET + window.pxh.ANIMATE_
 window.pxh.LOGIN_CARET_ANIMATE_OUT = window.pxh.LOGIN_CARET + window.pxh.ANIMATE_OUT;
 
 // login__notifications
-
 window.pxh.LOGIN_NOTIFICATIONS = window.pxh.PREFIX + 'login__notifications';
 window.pxh.LOGIN_NOTIFICATIONS_NARROW_AT_MD = window.pxh.LOGIN_NOTIFICATIONS + window.pxh.NARROW + window.pxh.AT_MD;
 window.pxh.LOGIN_NOTIFICATIONS_WIDE_AT_LG = window.pxh.LOGIN_NOTIFICATIONS + window.pxh.WIDE + window.pxh.AT_LG;
 window.pxh.LOGIN_NOTIFICATIONS_ANIMATE_IN = window.pxh.LOGIN_NOTIFICATIONS + window.pxh.ANIMATE_IN;
 window.pxh.LOGIN_NOTIFICATIONS_ANIMATE_OUT = window.pxh.LOGIN_NOTIFICATIONS + window.pxh.ANIMATE_OUT;
+
+// login__notifications-badge
+window.pxh.LOGIN_NOTIFICATIONS_BADGE = window.pxh.PREFIX + 'login__notifications-badge';
+window.pxh.LOGIN_NOTIFICATIONS_BADGE_HIDDEN = window.pxh.LOGIN_NOTIFICATIONS_BADGE + window.pxh.HIDDEN;
 
 // view
 window.pxh.VIEW = window.pxh.PREFIX + 'view';
@@ -146,9 +150,24 @@ window.pxh.VIEW_HEADER_DRAWER_TOGGLE_HIDDEN = window.pxh.VIEW_HEADER_DRAWER_TOGG
 window.pxh.NOTIFICATIONS = window.pxh.PREFIX + 'notifications';
 window.pxh.NOTIFICATIONS_VISIBLE = window.pxh.NOTIFICATIONS + window.pxh.VISIBLE;
 
+// notification
+window.pxh.NOTIFICATION = window.pxh.PREFIX + 'notification';
+window.pxh.NOTIFICATION_ANIMATE_IN = window.pxh.NOTIFICATION + window.pxh.ANIMATE_IN;
+window.pxh.NOTIFICATION_ANIMATE_OUT = window.pxh.NOTIFICATION + window.pxh.ANIMATE_OUT;
+window.pxh.NOTIFICATION_EXPANDED = window.pxh.NOTIFICATION + window.pxh.EXPANDED;
+
+// toast
+window.pxh.TOAST = window.pxh.PREFIX + 'toast';
+window.pxh.TOAST_ANIMATE_IN = window.pxh.TOAST + window.pxh.ANIMATE_IN;
+window.pxh.TOAST_ANIMATE_OUT = window.pxh.TOAST + window.pxh.ANIMATE_OUT;
+window.pxh.TOAST_EXPANDED = window.pxh.TOAST + window.pxh.EXPANDED;
+
 // disable-scroll
 window.pxh.DISABLE_SCROLL = window.pxh.PREFIX + 'disable-scroll';
 window.pxh.DISABLE_SCROLL_UNTIL_AT_LG = window.pxh.DISABLE_SCROLL + window.pxh.UNTIL + window.pxh.AT_LG;
+
+// display none
+window.pxh.DISPLAY_NONE = window.pxh.PREFIX + 'display-none';
 
 window.pxh.states = {
   'default': {
@@ -1525,13 +1544,15 @@ window.pxh.bindControl = function (controlName) {
     for (var i = controlElements.length - 1; i >= 0; i--) {
       controlElements[i].addEventListener('click', function (event) {
         event.preventDefault();
-        var drawerIsAtDefaultState = drawer.classList.contains('pxh-drawer--wide@lg');
-        var drawerIsNarrowAtMd = drawer.classList.contains('pxh-drawer--narrow@md');
-        var drawerIsHiddenAtSm = drawer.classList.contains('pxh-drawer--hidden-until@md');
+        var drawerIsAtDefaultState = drawer.classList.contains(window.pxh.DRAWER_WIDE_AT_LG);
+        var drawerIsNarrowAtMd = drawer.classList.contains(window.pxh.DRAWER_NARROW_AT_MD);
+        var drawerIsHiddenAtSm = drawer.classList.contains(window.pxh.DRAWER_HIDDEN_UNTIL_AT_MD);
+        var closeElement = document.getElementById('js-closer');
         window.pxh.loadState(window.pxh.transitions, 'clearAll');
         if (window.matchMedia('(min-width: 1024px)').matches && drawerIsAtDefaultState) {
           window.pxh.loadState(window.pxh.transitions, 'wideToNarrow');
           window.pxh.loadState(window.pxh.states, 'narrowAtLg');
+          if (closeElement) closeElement.remove();
           document.dispatchEvent(window.pxh.drawerClosed);
           window.pxh.Cookies.set('pxh-drawer-narrow', 'true', { expires: 1, path: '/' });
           window.pxh.Cookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/' });
@@ -1550,6 +1571,7 @@ window.pxh.bindControl = function (controlName) {
         } else if (window.matchMedia('(min-width: 768px)').matches) {
           window.pxh.loadState(window.pxh.transitions, 'openToNarrow');
           window.pxh.loadState(window.pxh.states, 'default');
+          if (closeElement) closeElement.remove();
           document.dispatchEvent(window.pxh.drawerClosed);
           window.pxh.Cookies.set('pxh-drawer-narrow', 'true', { expires: 1, path: '/' });
           window.pxh.Cookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/' });
@@ -1607,12 +1629,14 @@ window.pxh.breakpointAtLg = function (breakpoint) {
   var drawer = document.getElementById('js-drawer');
   var drawerIsWideAtLg = drawer.classList.contains('pxh-drawer--wide@lg');
   var drawerIsNarrowAtMd = drawer.classList.contains('pxh-drawer--narrow@md');
+  var closeElement = document.getElementById('js-closer');
   if (breakpoint.matches) {
     // we entered the @lg breakpoint from the @md breakpoint
     if (drawerIsWideAtLg && !drawerIsNarrowAtMd) {
       // the drawer was open @md so keep it open @lg
       // don't fire any transitions
       window.pxh.loadState(window.pxh.states, 'default');
+      if (closeElement) closeElement.remove(); // the state change auto-hides the notification list because it doesn't know if it's @sm or @lg, so the close element needs to follow suit
       window.pxh.Cookies.set('pxh-drawer-narrow', 'false', { expires: 1, path: '/' });
       window.pxh.Cookies.set('pxh-drawer-open', 'true', { expires: 1, path: '/' });
     } else {
@@ -1633,6 +1657,7 @@ window.pxh.breakpointAtLg = function (breakpoint) {
       window.pxh.loadState(window.pxh.transitions, 'wideToNarrow');
     };
     window.pxh.loadState(window.pxh.states, 'default');
+    if (closeElement) closeElement.remove();
     document.dispatchEvent(window.pxh.drawerClosed);
     window.pxh.Cookies.set('pxh-drawer-narrow', 'true', { expires: 1, path: '/' });
     window.pxh.Cookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/' });
@@ -1666,26 +1691,19 @@ window.pxh.bindDrawerMediaQueryControls = function (targetClass, mediaQuery) {
 /**
  * When the user clicks the overlay, hides the drawer at the small breakpoint, or collapses the drawer at the narrow breakpoint
  * 
- * If the notification list is displayed, hides it when the user clicks the overlay but doesn't hide or collapse the drawer
  * 
  */
 window.pxh.overlayDrawerControl = function () {
-  var overlay = document.getElementsByClassName('pxh-overlay');
-  var notifications = document.getElementById('js-notifications');
+  var overlay = document.getElementsByClassName(window.pxh.OVERLAY);
   if (window.pxh.arrayExists(overlay)) {
     for (var i = overlay.length - 1; i >= 0; i--) {
       overlay[i].addEventListener('click', function (event) {
         if (!lgBreakpoint.matches && window.pxh.Cookies.get('pxh-drawer-open') === 'true') {
-          // if the notifications list is visible, close it when clicking the overlay but don't close the drawer
-          if (notifications && notifications.classList.contains('pxh-notifications--visible')) {
-            notifications.classList.remove('pxh-notifications--visible');
-          } else {
-            window.pxh.loadState(window.pxh.transitions, 'clearAll');
-            window.pxh.loadState(window.pxh.states, 'default');
-            document.dispatchEvent(window.pxh.drawerClosed);
-            window.pxh.Cookies.set('pxh-drawer-narrow', 'true', { expires: 1, path: '/' });
-            window.pxh.Cookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/' });
-          }
+          window.pxh.loadState(window.pxh.transitions, 'clearAll');
+          window.pxh.loadState(window.pxh.states, 'default');
+          document.dispatchEvent(window.pxh.drawerClosed);
+          window.pxh.Cookies.set('pxh-drawer-narrow', 'true', { expires: 1, path: '/' });
+          window.pxh.Cookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/' });
         }
       });
     }
@@ -1723,7 +1741,7 @@ window.pxh.toggleLoginMenu = function (toggleControl, toggleTarget, toggleClass)
       toggleControlElements[i].addEventListener('click', function (event) {
         event.preventDefault();
         var menuIsVisible = toggleTargetElements[0].classList.contains(toggleClass);
-        window.pxh.changeClasses('pxh-login-menu', 'remove', toggleClass);
+        window.pxh.changeClasses(window.pxh.LOGIN_MENU, 'remove', toggleClass);
         if (!menuIsVisible) {
           window.pxh.changeClasses(toggleTarget, 'toggle', toggleClass);
         }
@@ -1854,11 +1872,11 @@ window.pxh.toast = {
       if ((notificationIcon = document.getElementById('js-login__notifications')) && (notificationBadge = document.getElementById('js-login__notifications-badge'))) {
         if (window.pxh.toast.badge.count > 0) {
           notificationBadge.innerHTML = window.pxh.toast.badge.text;
-          notificationIcon.classList.remove('pxh-display-none');
-          notificationBadge.classList.remove('pxh-login__notifications-badge--hidden');
+          notificationIcon.classList.remove(window.pxh.DISPLAY_NONE);
+          notificationBadge.classList.remove(window.pxh.LOGIN_NOTIFICATIONS_BADGE_HIDDEN);
         } else {
-          notificationIcon.classList.add('pxh-display-none');
-          notificationBadge.classList.add('pxh-login__notifications-badge--hidden');
+          notificationIcon.classList.add(window.pxh.DISPLAY_NONE);
+          notificationBadge.classList.add(window.pxh.LOGIN_NOTIFICATIONS_BADGE_HIDDEN);
         }
       }
     }
@@ -1949,7 +1967,7 @@ window.pxh.toast = {
       }
       if (!object.isPersistent) {
         setTimeout(function () {
-          if (!toastElement.classList.contains('pxh-toast--expanded')) {
+          if (!toastElement.classList.contains(window.pxh.TOAST_EXPANDED)) {
             // after 2000ms animate the toast out
             window.pxh.toast.autoHide(id);
             // 1000ms after the animation, remove the notification from the DOM
@@ -2071,12 +2089,12 @@ window.pxh.toast = {
     var notificationList = '';
     var notification = '';
     if ((toastList = document.getElementById('js-toasts')) && (toastItem = document.getElementById('js-toast--' + id))) {
-      toastItem.classList.add('pxh-toast--animate-out');
-      toastItem.classList.remove('pxh-toast--animate-in');
+      toastItem.classList.add(window.pxh.TOAST_ANIMATE_OUT);
+      toastItem.classList.remove(window.pxh.TOAST_ANIMATE_IN);
     }
     if ((notificationList = document.getElementById('js-notifications__list')) && (notification = document.getElementById('js-notification--' + id)) && !preserveNotification) {
-      notification.classList.add('pxh-notification--animate-out');
-      notification.classList.remove('pxh-notification--animate-in');
+      notification.classList.add(window.pxh.NOTIFICATION_ANIMATE_OUT);
+      notification.classList.remove(window.pxh.NOTIFICATION_ANIMATE_IN);
     }
   },
 
@@ -2087,7 +2105,7 @@ window.pxh.toast = {
   hideAll: function hideAll() {
     var notificationList = '';
     var notifications = [];
-    if ((notificationList = document.getElementById('js-notifications__list')) && (notifications = document.getElementsByClassName('pxh-notification'))) {
+    if ((notificationList = document.getElementById('js-notifications__list')) && (notifications = document.getElementsByClassName(window.pxh.NOTIFICATION))) {
       for (var i = notifications.length - 1; i >= 0; i--) {
         var id = notifications[i].id.replace('js-notification--', '');
         window.pxh.toast.hide(id);
@@ -2104,8 +2122,8 @@ window.pxh.toast = {
     var toastList = '';
     var toastItem = '';
     if ((toastList = document.getElementById('js-toasts')) && (toastItem = document.getElementById('js-toast--' + id))) {
-      toastItem.classList.add('pxh-toast--animate-out');
-      toastItem.classList.remove('pxh-toast--animate-in');
+      toastItem.classList.add(window.pxh.TOAST_ANIMATE_OUT);
+      toastItem.classList.remove(window.pxh.TOAST_ANIMATE_IN);
     }
   },
 
@@ -2148,7 +2166,7 @@ window.pxh.toast = {
   removeAll: function removeAll() {
     var notificationList = '';
     var notifications = [];
-    if ((notificationList = document.getElementById('js-notifications__list')) && (notifications = document.getElementsByClassName('pxh-notification'))) {
+    if ((notificationList = document.getElementById('js-notifications__list')) && (notifications = document.getElementsByClassName(window.pxh.NOTIFICATION))) {
       for (var i = notifications.length - 1; i >= 0; i--) {
         var id = notifications[i].id.replace('js-notification--', '');
         window.pxh.toast.remove(id);
@@ -2374,7 +2392,7 @@ window.pxh.toast = {
     var notificationList = document.getElementById('js-notifications__list');
     var notificationElements = '';
     if (notificationList) {
-      notificationElements = notificationList.getElementsByClassName('pxh-notification');
+      notificationElements = notificationList.getElementsByClassName(window.pxh.NOTIFICATION);
     }
     if (notificationElements.length > 0) {
       for (var i = notificationElements.length - 1; i >= 0; i--) {
@@ -2393,8 +2411,17 @@ window.pxh.toast = {
 
 document.addEventListener('DOMContentLoaded', function (event) {
   window.pxh.toggleMenu(window.pxh.LOGIN_NOTIFICATIONS, window.pxh.NOTIFICATIONS, window.pxh.NOTIFICATIONS_VISIBLE);
-  if (document.getElementById('js-notifications__link--clear')) {
-    document.getElementById('js-notifications__link--clear').addEventListener('click', function (event) {
+  var notificationsIcon;
+  if (notificationsIcon = document.getElementById('js-login__notifications')) {
+    notificationsIcon.addEventListener('click', function (event) {
+      event.preventDefault();
+      window.pxh.action.clickToCloseAndHold('js-login__notifications', 'js-notifications', window.pxh.NOTIFICATIONS_VISIBLE);
+    });
+  }
+
+  var clearNotificationsLink;
+  if (clearNotificationsLink = document.getElementById('js-notifications__link--clear')) {
+    clearNotificationsLink.addEventListener('click', function (event) {
       event.preventDefault();
       window.pxh.toast.action.removeAllButton();
     });

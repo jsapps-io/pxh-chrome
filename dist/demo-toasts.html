@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>pxh-chrome 1.8.0 | Toasts and Notifications</title>
+    <title>pxh-chrome 2.0.0 | Toasts and Notifications</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -68,15 +68,30 @@
       </div>
     </div>
     <div class="pxh-overlay pxh-overlay--hidden pxh-overlay--hidden@lg"></div>
+        <div class="pxh-toasts pxh-toasts--narrow@md pxh-toasts--wide@lg" id="js-toasts">
+        </div>
+        <div class="pxh-notifications pxh-notifications--narrow@md pxh-notifications--wide@lg" id="js-notifications">
+          <div class="pxh-notifications__header">
+            <div class="pxh-notifications__action">
+              <a href="#" class="pxh-notifications__link">View Log</a>
+            </div>
+            <div class="pxh-notifications__title">
+              Notifications
+            </div>
+            <div class="pxh-notifications__clear">
+              <a href="#" class="pxh-notifications__link" id="js-notifications__link--clear">Clear</a>
+            </div>
+          </div>
+          <div class="pxh-notifications__list" id="js-notifications__list">
+            <div class="pxh-notifications__empty">There are no new notifications.</div>
+          </div>
+        </div>
     <div class="pxh-view-header-drawer-toggle pxh-view-header-drawer-toggle--hidden@md">
       <a href="#" class="pxh-view-header-drawer-toggle__link">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="16" viewBox="291 489.4 20 16" class="pxh-drawer-toggle__icon"><path fill="#000000" d="M291 489.4v4h20v-4h-20zm0 10h20v-4h-20v4zm0 6h20v-4h-20v4z"></path></svg>
       </a>
     </div>
     
-    <div class="pxh-toasts pxh-toasts--narrow@md pxh-toasts--wide@lg" id="js-toasts">
-    </div>
-
     <div class="pxh-wrapper">
       <div class="pxh-view-header pxh-view-header--wide@md pxh-view-header--narrow@lg pxh-view-header--nudge-until@md">
         <h1 class="pxh-view-header__title">
@@ -112,23 +127,6 @@
           <p>Quisque at placerat mi. Nunc nisl lectus, porta ac molestie quis, venenatis id neque. In hac habitasse platea dictumst. Mauris et orci sit amet augue luctus mattis. In nibh felis, facilisis et placerat sit amet, mollis id dui. Vivamus venenatis eu diam eget convallis. Quisque nec est dui. Integer magna odio, sodales vel tellus eget, mattis eleifend odio. Mauris sed nulla ac purus fermentum lacinia. Maecenas pretium quam id porta maximus.</p>
 
         </div>
-      </div>
-    </div>
-
-    <div class="pxh-notifications pxh-notifications--narrow@md pxh-notifications--wide@lg" id="js-notifications">
-      <div class="pxh-notifications__header">
-        <div class="pxh-notifications__action">
-          <a href="#" class="pxh-notifications__link">View Log</a>
-        </div>
-        <div class="pxh-notifications__title">
-          Notifications
-        </div>
-        <div class="pxh-notifications__clear">
-          <a href="#" class="pxh-notifications__link" id="js-notifications__link--clear">Clear</a>
-        </div>
-      </div>
-      <div class="pxh-notifications__list" id="js-notifications__list">
-        <div class="pxh-notifications__empty">There are no new notifications.</div>
       </div>
     </div>
 
