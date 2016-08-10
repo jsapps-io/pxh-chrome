@@ -4,15 +4,15 @@ bodyClass: "pxh-chromeful"
 errorSelected: false
 ---
 
-    <section class="pxh-wrapper">
-      <header class="pxh-view-header pxh-view-header--wide@md pxh-view-header--narrow@lg pxh-view-header--nudge-until@md">
+    <div class="pxh-wrapper">
+      <div class="pxh-view-header pxh-view-header--wide@md pxh-view-header--narrow@lg pxh-view-header--nudge-until@md">
         <h1 class="pxh-view-header__title">
           <a href="index.html" class="pxh-view-header__title-link">
             Resize Event
           </a>
         </h1>
-      </header>
-      <section class="pxh-view pxh-view--wide@md pxh-view--narrow@lg" id="js-view">
+      </div>
+      <div class="pxh-view pxh-view--wide@md pxh-view--narrow@lg" id="js-view">
 
         <div class="pxh-docs">
 
@@ -59,5 +59,5 @@ document.addEventListener('pxhViewResized', function(event) {
 
           <p>P.S. If you look at the console output for this example, you'll realize you'll want to implement some debouncing on your event listener ... our current thinking is that the debouncing should be the responsibility of the microapp, not the event itself, but we're open to alternative perspectives.</p>
         </div>
-      </section>
-    </section>
+      </div>
+    </div>

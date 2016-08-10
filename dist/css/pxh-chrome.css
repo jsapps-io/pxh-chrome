@@ -1,5 +1,5 @@
 @charset "UTF-8";
-/*! pxh-chrome.css 1.7.0 */
+/*! pxh-chrome.css 2.0.0 */
 /*------------------------------------*    #pxh-chrome
 \*------------------------------------*/
 /*------------------------------------*    #settings.defaults
@@ -6697,6 +6697,12 @@ body {
 
 .pxh-display-none {
   display: none;
+}
+
+.pxh-clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
 }
 
 /*------------------------------------*    #overrides.pxh-docs
