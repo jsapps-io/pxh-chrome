@@ -34,7 +34,6 @@ gulp.task('sass', () => {
     .pipe($.sourcemaps.init())
     .pipe($.autoprefixer({browsers: ['> 1%', 'last 2 versions', 'Firefox ESR']}))
     .pipe($.sourcemaps.write('.'))
-    .pipe(ext_replace('.map', '.css.map'))
     .pipe(gulp.dest('.tmp/css'))
     .pipe(gulp.dest('dist/css'))
     .pipe($.if('*.css', $.cssnano()))
@@ -50,7 +49,6 @@ gulp.task('js', () => {
     .pipe($.sourcemaps.init())
     .pipe($.babel())
     .pipe($.sourcemaps.write('.'))
-    .pipe(ext_replace('.map', '.js.map'))
     .pipe(gulp.dest('.tmp/js'))
     .pipe(gulp.dest('dist/js'))
     .pipe($.if('*.js', $.uglify({
