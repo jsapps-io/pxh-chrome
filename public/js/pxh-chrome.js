@@ -1773,7 +1773,6 @@ window.pxh.bindDrawerMediaQueryControls = function(targetClass, mediaQuery) {
  * 
  */
 window.pxh.overlayDrawerControl = function() {
-  var notifications = document.getElementById('js-notifications');
   var overlay = document.getElementsByClassName(window.pxh.OVERLAY);
   if (window.pxh.arrayExists(overlay))
   {
@@ -1782,19 +1781,11 @@ window.pxh.overlayDrawerControl = function() {
       overlay[i].addEventListener('click', function(event) {
         if ((!lgBreakpoint.matches) && (window.pxh.Cookies.get('pxh-drawer-open') === 'true'))
         {
-          // if the notifications list is visible, close it when clicking the overlay but don't close the drawer
-          if ((notifications) && (notifications.classList.contains('pxh-notifications--visible')))
-          {
-            notifications.classList.remove('pxh-notifications--visible');
-          }
-          else
-          {
-            window.pxh.loadState(window.pxh.transitions, 'clearAll');
-            window.pxh.loadState(window.pxh.states, 'default');
-            document.dispatchEvent(window.pxh.drawerClosed);
-            window.pxh.Cookies.set('pxh-drawer-narrow', 'true', { expires: 1, path: '/'});
-            window.pxh.Cookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/'});
-          }
+          window.pxh.loadState(window.pxh.transitions, 'clearAll');
+          window.pxh.loadState(window.pxh.states, 'default');
+          document.dispatchEvent(window.pxh.drawerClosed);
+          window.pxh.Cookies.set('pxh-drawer-narrow', 'true', { expires: 1, path: '/'});
+          window.pxh.Cookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/'});
         }
       })
     }
@@ -2567,6 +2558,10 @@ window.pxh.toast = {
 
 document.addEventListener('DOMContentLoaded', function(event) {
   window.pxh.toggleMenu(window.pxh.LOGIN_NOTIFICATIONS, window.pxh.NOTIFICATIONS, window.pxh.NOTIFICATIONS_VISIBLE);
+  document.getElementById('js-login__notifications').addEventListener('click', function(event) {
+    event.preventDefault();
+    window.pxh.action.clickToCloseAndHold('js-login__notifications', 'js-notifications', window.pxh.NOTIFICATIONS_VISIBLE)
+  })
   if (document.getElementById('js-notifications__link--clear'))
   {
     document.getElementById('js-notifications__link--clear').addEventListener('click', function(event) {
