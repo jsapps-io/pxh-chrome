@@ -1988,7 +1988,7 @@ window.pxh.toast = {
         else
         {
           notificationIcon.classList.add(window.pxh.DISPLAY_NONE);
-          notificationBadge.classList.add(pxh.window.LOGIN_NOTIFICATIONS_BADGE_HIDDEN);
+          notificationBadge.classList.add(window.pxh.LOGIN_NOTIFICATIONS_BADGE_HIDDEN);
         }
       }
     }
