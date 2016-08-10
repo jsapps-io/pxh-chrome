@@ -1606,11 +1606,13 @@ window.pxh.bindControl = function(controlName) {
         var drawerIsAtDefaultState = drawer.classList.contains(window.pxh.DRAWER_WIDE_AT_LG);
         var drawerIsNarrowAtMd = drawer.classList.contains(window.pxh.DRAWER_NARROW_AT_MD);
         var drawerIsHiddenAtSm = drawer.classList.contains(window.pxh.DRAWER_HIDDEN_UNTIL_AT_MD);
+        var closeElement = document.getElementById('js-closer');
         window.pxh.loadState(window.pxh.transitions, 'clearAll');
         if ((window.matchMedia('(min-width: 1024px)').matches) && (drawerIsAtDefaultState))
         {
           window.pxh.loadState(window.pxh.transitions, 'wideToNarrow');
           window.pxh.loadState(window.pxh.states, 'narrowAtLg');
+          if (closeElement) closeElement.remove();
           document.dispatchEvent(window.pxh.drawerClosed);
           window.pxh.Cookies.set('pxh-drawer-narrow', 'true', { expires: 1, path: '/'});
           window.pxh.Cookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/'});
@@ -1635,6 +1637,7 @@ window.pxh.bindControl = function(controlName) {
         {
           window.pxh.loadState(window.pxh.transitions, 'openToNarrow');
           window.pxh.loadState(window.pxh.states, 'default');
+          if (closeElement) closeElement.remove();
           document.dispatchEvent(window.pxh.drawerClosed);
           window.pxh.Cookies.set('pxh-drawer-narrow', 'true', { expires: 1, path: '/'});
           window.pxh.Cookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/'});
@@ -1700,6 +1703,7 @@ window.pxh.breakpointAtLg = function(breakpoint) {
   var drawer = document.getElementById('js-drawer');
   var drawerIsWideAtLg = drawer.classList.contains('pxh-drawer--wide@lg');
   var drawerIsNarrowAtMd = drawer.classList.contains('pxh-drawer--narrow@md');
+  var closeElement = document.getElementById('js-closer');
   if (breakpoint.matches)
   {
     // we entered the @lg breakpoint from the @md breakpoint
@@ -1708,6 +1712,7 @@ window.pxh.breakpointAtLg = function(breakpoint) {
       // the drawer was open @md so keep it open @lg
       // don't fire any transitions
       window.pxh.loadState(window.pxh.states, 'default');
+      if (closeElement) closeElement.remove(); // the state change auto-hides the notification list because it doesn't know if it's @sm or @lg, so the close element needs to follow suit
       window.pxh.Cookies.set('pxh-drawer-narrow', 'false', { expires: 1, path: '/'});
       window.pxh.Cookies.set('pxh-drawer-open', 'true', { expires: 1, path: '/'});
     }
@@ -1733,6 +1738,7 @@ window.pxh.breakpointAtLg = function(breakpoint) {
       window.pxh.loadState(window.pxh.transitions, 'wideToNarrow');
     };
     window.pxh.loadState(window.pxh.states, 'default');
+    if (closeElement) closeElement.remove();
     document.dispatchEvent(window.pxh.drawerClosed);
     window.pxh.Cookies.set('pxh-drawer-narrow', 'true', { expires: 1, path: '/'});
     window.pxh.Cookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/'});
