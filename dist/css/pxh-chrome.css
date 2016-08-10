@@ -6699,6 +6699,12 @@ body {
   display: none;
 }
 
+.pxh-clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
 /*------------------------------------*    #overrides.pxh-docs
 \*------------------------------------*/
 .pxh-docs {
