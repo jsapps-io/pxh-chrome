@@ -6,6 +6,8 @@
 * Enable toast functionality in "chromeless" mode
   * Add `pxh-chrome.js` to "chromeless" but prevent pxh-drawer JavaScript from firing
   * Add toast functionality and demo code to chromeless demo
+* Add `pxh-clearfix` utility class, which can be applied to a parent element to automatically clear the height of its floated child elements
+* Update `pxh-chrome.js` to use more CSS class variables and fewer hard-coded class names
 * Remove all HTML5 `<section>`, `<aside>`, `<header>` and `<nav>` elements and use `<div>`s exclusively
 
 ### 1.7.0 - August 5, 2016
