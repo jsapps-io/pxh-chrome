@@ -1,5 +1,8 @@
 #pxh-chrome changelog
 
+### pending release
+* Remove duplicate copies of `element.remove` polyfill, `getStyle`, `stripHTML`, `arrayExists`, and `getItemByPropertyName` methods from `window.pxh`
+
 ### 2.0.0 - August 10, 2016
 * **Move all `pxh` methods into `window.pxh` namespace**
 * Add `js-drawer` ID to `pxh-drawer` component so we can target it specifically
