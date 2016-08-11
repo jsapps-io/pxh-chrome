@@ -1,6 +1,6 @@
 #pxh-chrome changelog
 
-### pending release
+### 2.0.1 - August 11, 2016
 * Remove duplicate copies of `element.remove` polyfill, `getStyle`, `stripHTML`, `arrayExists`, and `getItemByPropertyName` methods from `window.pxh`
 * Update whitespace, semicolons, line breaks, and some code in `pxh-chrome.js` to match output from `babel` task in Gulp
 
