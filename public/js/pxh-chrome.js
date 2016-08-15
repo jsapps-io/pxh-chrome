@@ -7,7 +7,7 @@
 
 /** @namespace pxh */
 
-pxh = {};
+var pxh = {};
 
 pxh.PREFIX = 'pxh-';
 pxh.NARROW = '--narrow';
