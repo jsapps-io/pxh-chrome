@@ -1,5 +1,5 @@
 @charset "UTF-8";
-/*! pxh-chrome-rtl.css 2.0.1 */
+/*! pxh-chrome-rtl.css 2.1.0 */
 /*------------------------------------*    #pxh-chrome-rtl
 \*------------------------------------*/
 /*------------------------------------*    #settings.defaults
@@ -3379,6 +3379,13 @@ html {
 \*------------------------------------*/
 /*------------------------------------*    #elements.body
 \*------------------------------------*/
+html {
+  font-size: 0.9375em;
+  line-height: 1.3333333333;
+  background-color: #525156;
+  color: black;
+}
+
 html, body {
   direction: rtl;
   font-family: "GE Inspira Sans", "Helvetica", "Arial", sans-serif;
