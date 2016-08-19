@@ -1,5 +1,12 @@
 #pxh-chrome changelog
 
+### pending release
+* **Remove explicit `window.pxh` namespace from  `pxh` object**
+  * `pxh` is bound to the `window` object automatically in a browser environment, so `window.pxh` is unnecessarily verbose
+* Add GE license
+* Add font size, line height, and color rules to `html` element
+  * These rules will be removed from the next major release of `ui-microapp` so they need to be defined at the `ui-app-hub` level (and that means pxh-chrome)
+
 ### 2.0.1 - August 11, 2016
 * Remove duplicate copies of `element.remove` polyfill, `getStyle`, `stripHTML`, `arrayExists`, and `getItemByPropertyName` methods from `window.pxh`
 * Update whitespace, semicolons, line breaks, and some code in `pxh-chrome.js` to match output from `babel` task in Gulp
