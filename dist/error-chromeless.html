@@ -78,14 +78,14 @@
       }
 
       document.addEventListener('DOMContentLoaded', function(event) {
-        window.pxh.toast.add(toastObject1);
-        window.pxh.toast.add(toastObject2);
+        pxh.toast.add(toastObject1);
+        pxh.toast.add(toastObject2);
       });
 
       if (document.getElementById('js-toast-emitter')) {
         document.getElementById('js-toast-emitter').addEventListener('click', function(event) {
           event.preventDefault();
-          window.pxh.toast.add(toastObject3);
+          pxh.toast.add(toastObject3);
         })
       }
 

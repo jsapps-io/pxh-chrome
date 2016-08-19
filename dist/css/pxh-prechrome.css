@@ -3379,6 +3379,13 @@ html {
 \*------------------------------------*/
 /*------------------------------------*    #elements.body
 \*------------------------------------*/
+html {
+  font-size: 0.9375em;
+  line-height: 1.3333333333;
+  background-color: #525156;
+  color: black;
+}
+
 html, body {
   font-family: "GE Inspira Sans", "Helvetica", "Arial", sans-serif;
   height: 100%;
