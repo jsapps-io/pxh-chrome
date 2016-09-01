@@ -2,7 +2,7 @@
   "name": "pxh-chrome",
   "private": true,
   "description": "Application chrome for the Predix UI App Hub",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "homepage": "https://github.build.ge.com/hubs/pxh-chrome",
   "ignore": [
     ".tmp",
