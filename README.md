@@ -1,4 +1,4 @@
-#pxh-chrome 2.1.0
+#pxh-chrome 2.1.1
 
 Application chrome for the Predix UI App Hub
 
@@ -197,19 +197,13 @@ This will start a local testing server at [http://localhost:4040](http://localho
 
 Type `CTRL+C` to shut down the unit testing server.
 
-**To run end-to-end tests,** first install a local version of Selenium WebDriver for Protractor by running the following command from the root of your project folder:
-
-```bash
-./node_modules/protractor/bin/webdriver-manager update
-```
-
-Then, type the following at the command line:
+**To run end-to-end tests,** type the following at the command line:
 
 ```bash
 gulp serve:e2e
 ```
 
-This will start a local development server at [http://localhost:4444](http://localhost:4444).
+This will install (or update, if already installed) a local version of Selenium WebDriver for Protractor, and then start a local development server at [http://localhost:4444](http://localhost:4444).
 
 As soon as the server finishes loading (watch your Terminal output) open a new Terminal window and type the following:
 
@@ -220,6 +214,12 @@ gulp e2e
 This will run all the end-to-end tests located at `./test/e2e/spec/**/*.js` and show you the results.
 
 When you're done, type `CTRL+C` to shut down the development server.
+
+**Note:** If you need to manually install WebDriver you can do so with this command:
+
+```bash
+./node_modules/protractor/bin/webdriver-manager update
+```
 
 ##Browser Support
 pxh-chrome is tested in the most recent major releases of Chrome, Firefox, Safari, iOS Safari, and Internet Explorer (IE11 on Windows 7 and IE Edge on Windows 10).
