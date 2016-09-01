@@ -186,9 +186,10 @@ gulp.task('serve:dist', ['sass:dist', 'js', 'extras', 'img'], () => {
   gulp.watch('public/js/**/*.js', ['js']);
 });
 
+gulp.task('webdriver:update', shell.task('./node_modules/protractor/bin/webdriver-manager update'));
 gulp.task('e2e', shell.task('protractor ./test/e2e/protractor.config.js'));
 
-gulp.task('serve:e2e', ['sass', 'js', 'extras', 'img'], () => {
+gulp.task('serve:e2e', ['webdriver:update', 'sass', 'js', 'extras', 'img'], () => {
   browserSync.init({
     ui: false,
     port: 4444,
