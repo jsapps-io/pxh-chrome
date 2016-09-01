@@ -26,21 +26,33 @@ var componentConfig = {
 gulp.task('sass', () => {
   return gulp.src('public/sass/*.scss')
     .pipe($.plumber())
+    .pipe($.sourcemaps.init())
     .pipe($.sass.sync({
       outputStyle: 'expanded',
       precision: 10,
       includePaths: ['.', 'bower_components']
     }).on('error', $.sass.logError))
-    .pipe($.sourcemaps.init())
     .pipe($.autoprefixer({browsers: ['> 1%', 'last 2 versions', 'Firefox ESR']}))
     .pipe($.sourcemaps.write('.'))
     .pipe(gulp.dest('.tmp/css'))
     .pipe(gulp.dest('dist/css'))
-    .pipe($.if('*.css', $.cssnano()))
+    .pipe(reload({stream: true}));
+});
+
+gulp.task('sass:dist', () => {
+  gulp.start('sass');
+  return gulp.src('public/sass/*.scss')
+    .pipe($.plumber())
+    .pipe($.sass.sync({
+      outputStyle: 'expanded',
+      precision: 10,
+      includePaths: ['.', 'bower_components']
+    }).on('error', $.sass.logError))
+    .pipe($.autoprefixer({browsers: ['> 1%', 'last 2 versions', 'Firefox ESR']}))
+    .pipe($.cssnano())
     .pipe(ext_replace('.min.css', '.css'))
     .pipe(gulp.dest('.tmp/css'))
     .pipe(gulp.dest('dist/css'))
-    .pipe(reload({stream: true}));
 });
 
 gulp.task('js', () => {
@@ -108,7 +120,7 @@ gulp.task('smith', function() {
   .pipe(reload({stream: true}));
 });
 
-gulp.task('html', ['sass', 'js'], () => {
+gulp.task('html', ['sass:dist', 'js'], () => {
   return gulp.src(['.tmp/*.html'])
     .pipe($.useref({searchPath: ['.tmp']}))
     .pipe($.if('*.html', $.htmlmin()))
@@ -159,7 +171,7 @@ gulp.task('serve', ['sass', 'js', 'extras', 'img'], () => {
 
 });
 
-gulp.task('serve:dist', ['sass', 'js', 'extras', 'img'], () => {
+gulp.task('serve:dist', ['sass:dist', 'js', 'extras', 'img'], () => {
   browserSync.init({
     ui: {
       port: 4040,
