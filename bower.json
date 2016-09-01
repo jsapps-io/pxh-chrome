@@ -15,6 +15,7 @@
     ".babelrc",
     ".bowerrc",
     ".editorconfig",
+    ".eslintrc"
     ".gitattributes",
     ".gitignore",
     ".yo-rc.json",
