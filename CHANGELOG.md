@@ -1,5 +1,9 @@
 #pxh-chrome changelog
 
+### pending release
+* Update Sass compilation tasks to improve behavior of sourcemaps, autoprefixing and minification
+* Update Javascript tasks to lint against Airbnb's ES5 style guide
+
 ### 2.1.0 - August 19, 2016
 * **Remove explicit `window.pxh` namespace from  `pxh` object**
   * `pxh` is bound to the `window` object automatically in a browser environment, so `window.pxh` is unnecessarily verbose
