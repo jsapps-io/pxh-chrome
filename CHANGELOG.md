@@ -1,5 +1,8 @@
 #pxh-chrome changelog
 
+### pending release
+* Add notes and link in README that describe how to cut a new release of pxh-chrome
+
 ### 2.1.1 - September 1, 2016
 * Update Sass compilation gulp tasks to improve behavior of sourcemaps, autoprefixing and minification
 * Update Javascript gulp tasks to lint against Airbnb's ES5 style guide

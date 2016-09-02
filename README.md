@@ -224,7 +224,6 @@ When you're done, type `CTRL+C` to shut down the development server.
 ##Browser Support
 pxh-chrome is tested in the most recent major releases of Chrome, Firefox, Safari, iOS Safari, and Internet Explorer (IE11 on Windows 7 and IE Edge on Windows 10).
 
-
 ##Distributing pxh-chrome
 1. Run `gulp` to compile your local version of pxh-chrome to your `/dist` folder
   * The files at `/dist` contain the compiled, concatenated and minified HTML, CSS and JavaScript for pxh-chrome
@@ -240,3 +239,17 @@ pxh-chrome is tested in the most recent major releases of Chrome, Firefox, Safar
 1. Run `bower install` to install the version of pxh-chrome that you just pushed to GitHub
 1. Fire up your local App Hub
 1. If everything looks good, commit your changes to ui-app-hub and push them to GitHub
+
+##Creating a new release of pxh-chrome
+
+The release process has a few steps, [which we've carefully documented here](https://github.build.ge.com/gist/212326609/7299a13d2054479b2f3c).
+
+Each time you cut a new release of pxh-chrome you're going to:
+
+* Write really good release notes in the changelog
+* Finalize and commit your source files
+* Generate a new `/dist`
+* Commit your dist files
+* **Finish your release and push it to GitHub**
+* Publish your (really good) release notes on GitHub
+* **Push your release to the CDN**
