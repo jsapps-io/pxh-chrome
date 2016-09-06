@@ -1,5 +1,5 @@
 'use strict';
-/*! common.pxh-chrome.js 2.1.1 */
+/*! common.pxh-chrome.js 2.1.2 */
 
 // **************
 // CONFIG OBJECTS
@@ -168,356 +168,356 @@ pxh.DISABLE_SCROLL_UNTIL_AT_LG = pxh.DISABLE_SCROLL + pxh.UNTIL + pxh.AT_LG;
 pxh.DISPLAY_NONE = pxh.PREFIX + 'display-none';
 
 pxh.states = {
-  'default': {
+  default: {
     'pxh-drawer': {
-      'add': pxh.DRAWER_HIDDEN_UNTIL_AT_MD + ' ' + pxh.DRAWER_NARROW_AT_MD + ' ' + pxh.DRAWER_WIDE_AT_LG,
-      'remove': pxh.DRAWER_NARROW_AT_LG
+      add: pxh.DRAWER_HIDDEN_UNTIL_AT_MD + ' ' + pxh.DRAWER_NARROW_AT_MD + ' ' + pxh.DRAWER_WIDE_AT_LG,
+      remove: pxh.DRAWER_NARROW_AT_LG
     },
     'pxh-drawer-header__link': {
-      'remove': pxh.DRAWER_HEADER_LINK_WIDE_AT_MD,
-      'add': pxh.DRAWER_HEADER_LINK_NARROW_AT_MD + ' ' + pxh.DRAWER_HEADER_LINK_WIDE_AT_LG
+      remove: pxh.DRAWER_HEADER_LINK_WIDE_AT_MD,
+      add: pxh.DRAWER_HEADER_LINK_NARROW_AT_MD + ' ' + pxh.DRAWER_HEADER_LINK_WIDE_AT_LG
     },
     'pxh-overlay': {
-      'add': pxh.OVERLAY_HIDDEN
+      add: pxh.OVERLAY_HIDDEN
     },
     'pxh-navigation': {
-      'add': pxh.NAVIGATION_NARROW_AT_MD + ' ' + pxh.NAVIGATION_WIDE_AT_LG
+      add: pxh.NAVIGATION_NARROW_AT_MD + ' ' + pxh.NAVIGATION_WIDE_AT_LG
     },
     'pxh-login': {
-      'add': pxh.LOGIN_NARROW_AT_MD + ' ' + pxh.LOGIN_WIDE_AT_LG
+      add: pxh.LOGIN_NARROW_AT_MD + ' ' + pxh.LOGIN_WIDE_AT_LG
     },
     'pxh-login__name': {
-      'add': pxh.LOGIN_NAME_NARROW_AT_MD + ' ' + pxh.LOGIN_NAME_WIDE_AT_LG
+      add: pxh.LOGIN_NAME_NARROW_AT_MD + ' ' + pxh.LOGIN_NAME_WIDE_AT_LG
     },
     'pxh-login__link': {
-      'add': pxh.LOGIN_LINK_NARROW_AT_MD + ' ' + pxh.LOGIN_LINK_WIDE_AT_LG
+      add: pxh.LOGIN_LINK_NARROW_AT_MD + ' ' + pxh.LOGIN_LINK_WIDE_AT_LG
     },
     'pxh-login__settings': {
-      'add': pxh.LOGIN_SETTINGS_NARROW_AT_MD + ' ' + pxh.LOGIN_SETTINGS_WIDE_AT_LG
+      add: pxh.LOGIN_SETTINGS_NARROW_AT_MD + ' ' + pxh.LOGIN_SETTINGS_WIDE_AT_LG
     },
     'pxh-login__caret': {
-      'add': pxh.LOGIN_CARET_NARROW_AT_MD + ' ' + pxh.LOGIN_CARET_WIDE_AT_LG
+      add: pxh.LOGIN_CARET_NARROW_AT_MD + ' ' + pxh.LOGIN_CARET_WIDE_AT_LG
     },
     'pxh-login__notifications': {
-      'add': pxh.LOGIN_NOTIFICATIONS_NARROW_AT_MD + ' ' + pxh.LOGIN_NOTIFICATIONS_WIDE_AT_LG
+      add: pxh.LOGIN_NOTIFICATIONS_NARROW_AT_MD + ' ' + pxh.LOGIN_NOTIFICATIONS_WIDE_AT_LG
     },
     'pxh-view': {
-      'remove': pxh.DISABLE_SCROLL_UNTIL_AT_LG + ' ' + pxh.VIEW_WIDE_AT_LG,
-      'add': pxh.VIEW_NARROW_AT_LG
+      remove: pxh.DISABLE_SCROLL_UNTIL_AT_LG + ' ' + pxh.VIEW_WIDE_AT_LG,
+      add: pxh.VIEW_NARROW_AT_LG
     },
     'pxh-view-header': {
-      'remove': pxh.VIEW_HEADER_WIDE_AT_LG,
-      'add': pxh.VIEW_HEADER_NARROW_AT_LG
+      remove: pxh.VIEW_HEADER_WIDE_AT_LG,
+      add: pxh.VIEW_HEADER_NARROW_AT_LG
     },
     'pxh-view-header-drawer-toggle': {
-      'remove': pxh.VIEW_HEADER_DRAWER_TOGGLE_HIDDEN
+      remove: pxh.VIEW_HEADER_DRAWER_TOGGLE_HIDDEN
     },
     'pxh-notifications': {
-      'remove': pxh.NOTIFICATIONS_VISIBLE
+      remove: pxh.NOTIFICATIONS_VISIBLE
     }
   },
-  'open': {
+  open: {
     'pxh-drawer': {
-      'remove': pxh.DRAWER_HIDDEN_UNTIL_AT_MD + ' ' + pxh.DRAWER_NARROW_AT_MD + ' ' + pxh.DRAWER_NARROW_AT_LG,
-      'add': pxh.DRAWER_WIDE_AT_LG
+      remove: pxh.DRAWER_HIDDEN_UNTIL_AT_MD + ' ' + pxh.DRAWER_NARROW_AT_MD + ' ' + pxh.DRAWER_NARROW_AT_LG,
+      add: pxh.DRAWER_WIDE_AT_LG
     },
     'pxh-drawer-header__link': {
-      'remove': pxh.DRAWER_HEADER_LINK_NARROW_AT_MD,
-      'add': pxh.DRAWER_HEADER_LINK_WIDE_AT_MD + ' ' + pxh.DRAWER_HEADER_LINK_WIDE_AT_LG
+      remove: pxh.DRAWER_HEADER_LINK_NARROW_AT_MD,
+      add: pxh.DRAWER_HEADER_LINK_WIDE_AT_MD + ' ' + pxh.DRAWER_HEADER_LINK_WIDE_AT_LG
     },
     'pxh-overlay': {
-      'remove': pxh.OVERLAY_HIDDEN
+      remove: pxh.OVERLAY_HIDDEN
     },
     'pxh-navigation': {
-      'remove': pxh.NAVIGATION_NARROW_AT_MD,
-      'add': pxh.NAVIGATION_WIDE_AT_LG
+      remove: pxh.NAVIGATION_NARROW_AT_MD,
+      add: pxh.NAVIGATION_WIDE_AT_LG
     },
     'pxh-login': {
-      'add': pxh.LOGIN_WIDE_AT_LG,
-      'remove': pxh.LOGIN_NARROW_AT_MD
+      add: pxh.LOGIN_WIDE_AT_LG,
+      remove: pxh.LOGIN_NARROW_AT_MD
     },
     'pxh-login__name': {
-      'remove': pxh.LOGIN_NAME_NARROW_AT_MD,
-      'add': pxh.LOGIN_NAME_WIDE_AT_LG
+      remove: pxh.LOGIN_NAME_NARROW_AT_MD,
+      add: pxh.LOGIN_NAME_WIDE_AT_LG
     },
     'pxh-login__link': {
-      'remove': pxh.LOGIN_LINK_NARROW_AT_MD + ' ' + pxh.LOGIN_LINK_NARROW_AT_LG
+      remove: pxh.LOGIN_LINK_NARROW_AT_MD + ' ' + pxh.LOGIN_LINK_NARROW_AT_LG
     },
     'pxh-login__settings': {
-      'remove': pxh.LOGIN_SETTINGS_NARROW_AT_MD,
-      'add': pxh.LOGIN_SETTINGS_WIDE_AT_LG
+      remove: pxh.LOGIN_SETTINGS_NARROW_AT_MD,
+      add: pxh.LOGIN_SETTINGS_WIDE_AT_LG
     },
     'pxh-login__caret': {
-      'remove': pxh.LOGIN_CARET_NARROW_AT_MD,
-      'add': pxh.LOGIN_CARET_WIDE_AT_LG
+      remove: pxh.LOGIN_CARET_NARROW_AT_MD,
+      add: pxh.LOGIN_CARET_WIDE_AT_LG
     },
     'pxh-login__notifications': {
-      'remove': pxh.LOGIN_NOTIFICATIONS_NARROW_AT_MD,
-      'add': pxh.LOGIN_NOTIFICATIONS_WIDE_AT_LG
+      remove: pxh.LOGIN_NOTIFICATIONS_NARROW_AT_MD,
+      add: pxh.LOGIN_NOTIFICATIONS_WIDE_AT_LG
     },
     'pxh-view': {
-      'add': pxh.DISABLE_SCROLL_UNTIL_AT_LG + ' ' + pxh.VIEW_NARROW_AT_LG,
-      'remove': pxh.VIEW_WIDE_AT_LG
+      add: pxh.DISABLE_SCROLL_UNTIL_AT_LG + ' ' + pxh.VIEW_NARROW_AT_LG,
+      remove: pxh.VIEW_WIDE_AT_LG
     },
     'pxh-view-header': {
-      'add': pxh.VIEW_HEADER_NARROW_AT_LG,
-      'remove': pxh.VIEW_HEADER_WIDE_AT_LG
+      add: pxh.VIEW_HEADER_NARROW_AT_LG,
+      remove: pxh.VIEW_HEADER_WIDE_AT_LG
     },
     'pxh-view-header-drawer-toggle': {
-      'add': pxh.VIEW_HEADER_DRAWER_TOGGLE_HIDDEN
+      add: pxh.VIEW_HEADER_DRAWER_TOGGLE_HIDDEN
     }
   },
-  'narrowAtLg': {
+  narrowAtLg: {
     'pxh-drawer': {
-      'add': pxh.DRAWER_HIDDEN_UNTIL_AT_MD + ' ' + pxh.DRAWER_NARROW_AT_MD + ' ' + pxh.DRAWER_NARROW_AT_LG,
-      'remove': pxh.DRAWER_WIDE_AT_LG
+      add: pxh.DRAWER_HIDDEN_UNTIL_AT_MD + ' ' + pxh.DRAWER_NARROW_AT_MD + ' ' + pxh.DRAWER_NARROW_AT_LG,
+      remove: pxh.DRAWER_WIDE_AT_LG
     },
     'pxh-drawer-header__link': {
-      'remove': pxh.DRAWER_HEADER_LINK_WIDE_AT_MD + ' ' + pxh.DRAWER_HEADER_LINK_WIDE_AT_LG,
-      'add': pxh.DRAWER_HEADER_LINK_NARROW_AT_MD
+      remove: pxh.DRAWER_HEADER_LINK_WIDE_AT_MD + ' ' + pxh.DRAWER_HEADER_LINK_WIDE_AT_LG,
+      add: pxh.DRAWER_HEADER_LINK_NARROW_AT_MD
     },
     'pxh-overlay': {
-      'add': pxh.OVERLAY_HIDDEN
+      add: pxh.OVERLAY_HIDDEN
     },
     'pxh-navigation': {
-      'add': pxh.NAVIGATION_NARROW_AT_MD,
-      'remove': pxh.NAVIGATION_WIDE_AT_LG
+      add: pxh.NAVIGATION_NARROW_AT_MD,
+      remove: pxh.NAVIGATION_WIDE_AT_LG
     },
     'pxh-login': {
-      'add': pxh.LOGIN_NARROW_AT_MD,
-      'remove': pxh.LOGIN_WIDE_AT_LG
+      add: pxh.LOGIN_NARROW_AT_MD,
+      remove: pxh.LOGIN_WIDE_AT_LG
     },
     'pxh-login__name': {
-      'add': pxh.LOGIN_NAME_NARROW_AT_MD,
-      'remove': pxh.LOGIN_NAME_WIDE_AT_LG
+      add: pxh.LOGIN_NAME_NARROW_AT_MD,
+      remove: pxh.LOGIN_NAME_WIDE_AT_LG
     },
     'pxh-login__link': {
-      'add': pxh.LOGIN_LINK_NARROW_AT_MD,
-      'remove': pxh.LOGIN_LINK_WIDE_AT_LG
+      add: pxh.LOGIN_LINK_NARROW_AT_MD,
+      remove: pxh.LOGIN_LINK_WIDE_AT_LG
     },
     'pxh-login__settings': {
-      'add': pxh.LOGIN_SETTINGS_NARROW_AT_MD,
-      'remove': pxh.LOGIN_SETTINGS_WIDE_AT_LG
+      add: pxh.LOGIN_SETTINGS_NARROW_AT_MD,
+      remove: pxh.LOGIN_SETTINGS_WIDE_AT_LG
     },
     'pxh-login__caret': {
-      'add': pxh.LOGIN_CARET_NARROW_AT_MD,
-      'remove': pxh.LOGIN_CARET_WIDE_AT_LG
+      add: pxh.LOGIN_CARET_NARROW_AT_MD,
+      remove: pxh.LOGIN_CARET_WIDE_AT_LG
     },
     'pxh-login__notifications': {
-      'add': pxh.LOGIN_NOTIFICATIONS_NARROW_AT_MD,
-      'remove': pxh.LOGIN_NOTIFICATIONS_WIDE_AT_LG
+      add: pxh.LOGIN_NOTIFICATIONS_NARROW_AT_MD,
+      remove: pxh.LOGIN_NOTIFICATIONS_WIDE_AT_LG
     },
     'pxh-view': {
-      'remove': pxh.DISABLE_SCROLL_UNTIL_AT_LG + ' ' + pxh.VIEW_NARROW_AT_LG,
-      'add': pxh.VIEW_WIDE_AT_LG
+      remove: pxh.DISABLE_SCROLL_UNTIL_AT_LG + ' ' + pxh.VIEW_NARROW_AT_LG,
+      add: pxh.VIEW_WIDE_AT_LG
     },
     'pxh-view-header': {
-      'remove': pxh.VIEW_HEADER_NARROW_AT_LG,
-      'add': pxh.VIEW_HEADER_WIDE_AT_LG
+      remove: pxh.VIEW_HEADER_NARROW_AT_LG,
+      add: pxh.VIEW_HEADER_WIDE_AT_LG
     },
     'pxh-view-header-drawer-toggle': {
-      'remove': pxh.VIEW_HEADER_DRAWER_TOGGLE_HIDDEN
+      remove: pxh.VIEW_HEADER_DRAWER_TOGGLE_HIDDEN
     },
     'pxh-notifications': {
-      'remove': pxh.NOTIFICATIONS_VISIBLE
+      remove: pxh.NOTIFICATIONS_VISIBLE
     }
   }
 };
 
 pxh.transitions = {
-  'outToIn': {
+  outToIn: {
     'pxh-drawer': {
-      'add': pxh.DRAWER_ANIMATE_IN
+      add: pxh.DRAWER_ANIMATE_IN
     }
   },
-  'inToOut': {
+  inToOut: {
     'pxh-drawer': {
-      'add': pxh.DRAWER_ANIMATE_OUT
+      add: pxh.DRAWER_ANIMATE_OUT
     }
   },
-  'narrowToOpen': {
+  narrowToOpen: {
     'pxh-drawer': {
-      'add': pxh.DRAWER_ANIMATE_WIDE
+      add: pxh.DRAWER_ANIMATE_WIDE
     },
     'pxh-drawer-header__link': {
-      'add': pxh.DRAWER_HEADER_LINK_ANIMATE_IN
+      add: pxh.DRAWER_HEADER_LINK_ANIMATE_IN
     },
     'pxh-navigation__item-text': {
-      'add': pxh.NAVIGATION_ITEM_TEXT_ANIMATE_IN
+      add: pxh.NAVIGATION_ITEM_TEXT_ANIMATE_IN
     },
     'pxh-navigation__sub-link': {
-      'add': pxh.NAVIGATION_SUB_LINK_ANIMATE_IN
+      add: pxh.NAVIGATION_SUB_LINK_ANIMATE_IN
     },
     'pxh-login__name': {
-      'add': pxh.LOGIN_NAME_ANIMATE_IN
+      add: pxh.LOGIN_NAME_ANIMATE_IN
     },
     'pxh-login__caret': {
-      'add': pxh.LOGIN_CARET_ANIMATE_IN
+      add: pxh.LOGIN_CARET_ANIMATE_IN
     },
     'pxh-login__settings': {
-      'add': pxh.LOGIN_SETTINGS_ANIMATE_IN
+      add: pxh.LOGIN_SETTINGS_ANIMATE_IN
     },
     'pxh-login__notifications': {
-      'add': pxh.LOGIN_NOTIFICATIONS_ANIMATE_IN
+      add: pxh.LOGIN_NOTIFICATIONS_ANIMATE_IN
     }
   },
-  'openToNarrow': {
+  openToNarrow: {
     'pxh-drawer': {
-      'add': pxh.DRAWER_ANIMATE_NARROW
+      add: pxh.DRAWER_ANIMATE_NARROW
     },
     'pxh-drawer-header__link': {
-      'add': pxh.DRAWER_HEADER_LINK_ANIMATE_OUT
+      add: pxh.DRAWER_HEADER_LINK_ANIMATE_OUT
     },
     'pxh-navigation__item-text': {
-      'add': pxh.NAVIGATION_ITEM_TEXT_ANIMATE_OUT
+      add: pxh.NAVIGATION_ITEM_TEXT_ANIMATE_OUT
     },
     'pxh-navigation__sub-link': {
-      'add': pxh.NAVIGATION_SUB_LINK_ANIMATE_OUT
+      add: pxh.NAVIGATION_SUB_LINK_ANIMATE_OUT
     },
     'pxh-login__name': {
-      'add': pxh.LOGIN_NAME_ANIMATE_OUT
+      add: pxh.LOGIN_NAME_ANIMATE_OUT
     },
     'pxh-login__caret': {
-      'add': pxh.LOGIN_CARET_ANIMATE_OUT
+      add: pxh.LOGIN_CARET_ANIMATE_OUT
     },
     'pxh-login__settings': {
-      'add': pxh.LOGIN_SETTINGS_ANIMATE_OUT
+      add: pxh.LOGIN_SETTINGS_ANIMATE_OUT
     },
     'pxh-login__notifications': {
-      'add': pxh.LOGIN_NOTIFICATIONS_ANIMATE_OUT
+      add: pxh.LOGIN_NOTIFICATIONS_ANIMATE_OUT
     }
   },
-  'outToNarrow': {
+  outToNarrow: {
     'pxh-drawer': {
-      'add': pxh.DRAWER_ANIMATE_IN
+      add: pxh.DRAWER_ANIMATE_IN
     },
     'pxh-view': {
-      'add': pxh.VIEW_ANIMATE_FULL_TO_WIDE
+      add: pxh.VIEW_ANIMATE_FULL_TO_WIDE
     },
     'pxh-view-header': {
-      'add': pxh.VIEW_HEADER_ANIMATE_FULL_TO_WIDE
+      add: pxh.VIEW_HEADER_ANIMATE_FULL_TO_WIDE
     }
   },
-  'narrowToOut': {
+  narrowToOut: {
     'pxh-drawer': {
-      'add': pxh.DRAWER_ANIMATE_OUT_WIDE
+      add: pxh.DRAWER_ANIMATE_OUT_WIDE
     },
     'pxh-drawer-header__link': {
-      'add': pxh.DRAWER_HEADER_LINK_ANIMATE_IN
+      add: pxh.DRAWER_HEADER_LINK_ANIMATE_IN
     },
     'pxh-navigation__item-text': {
-      'add': pxh.NAVIGATION_ITEM_TEXT_ANIMATE_IN
+      add: pxh.NAVIGATION_ITEM_TEXT_ANIMATE_IN
     },
     'pxh-navigation__sub-link': {
-      'add': pxh.NAVIGATION_SUB_LINK_ANIMATE_IN
+      add: pxh.NAVIGATION_SUB_LINK_ANIMATE_IN
     },
     'pxh-login__name': {
-      'add': pxh.LOGIN_NAME_ANIMATE_IN
+      add: pxh.LOGIN_NAME_ANIMATE_IN
     },
     'pxh-login__caret': {
-      'add': pxh.LOGIN_CARET_ANIMATE_IN
+      add: pxh.LOGIN_CARET_ANIMATE_IN
     },
     'pxh-login__settings': {
-      'add': pxh.LOGIN_SETTINGS_ANIMATE_IN
+      add: pxh.LOGIN_SETTINGS_ANIMATE_IN
     },
     'pxh-login__notifications': {
-      'add': pxh.LOGIN_NOTIFICATIONS_ANIMATE_IN
+      add: pxh.LOGIN_NOTIFICATIONS_ANIMATE_IN
     }
   },
-  'wideToNarrow': {
+  wideToNarrow: {
     'pxh-drawer': {
-      'add': pxh.DRAWER_ANIMATE_NARROW
+      add: pxh.DRAWER_ANIMATE_NARROW
     },
     'pxh-drawer-header__link': {
-      'add': pxh.DRAWER_HEADER_LINK_ANIMATE_OUT
+      add: pxh.DRAWER_HEADER_LINK_ANIMATE_OUT
     },
     'pxh-navigation__item-text': {
-      'add': pxh.NAVIGATION_ITEM_TEXT_ANIMATE_OUT
+      add: pxh.NAVIGATION_ITEM_TEXT_ANIMATE_OUT
     },
     'pxh-navigation__sub-link': {
-      'add': pxh.NAVIGATION_SUB_LINK_ANIMATE_OUT
+      add: pxh.NAVIGATION_SUB_LINK_ANIMATE_OUT
     },
     'pxh-login__name': {
-      'add': pxh.LOGIN_NAME_ANIMATE_OUT
+      add: pxh.LOGIN_NAME_ANIMATE_OUT
     },
     'pxh-login__caret': {
-      'add': pxh.LOGIN_CARET_ANIMATE_OUT
+      add: pxh.LOGIN_CARET_ANIMATE_OUT
     },
     'pxh-login__settings': {
-      'add': pxh.LOGIN_SETTINGS_ANIMATE_OUT
+      add: pxh.LOGIN_SETTINGS_ANIMATE_OUT
     },
     'pxh-login__notifications': {
-      'add': pxh.LOGIN_NOTIFICATIONS_ANIMATE_OUT
+      add: pxh.LOGIN_NOTIFICATIONS_ANIMATE_OUT
     },
     'pxh-view': {
-      'add': pxh.VIEW_ANIMATE_WIDE
+      add: pxh.VIEW_ANIMATE_WIDE
     },
     'pxh-view-header': {
-      'add': pxh.VIEW_HEADER_ANIMATE_WIDE
+      add: pxh.VIEW_HEADER_ANIMATE_WIDE
     }
   },
-  'narrowToWide': {
+  narrowToWide: {
     'pxh-drawer': {
-      'add': pxh.DRAWER_ANIMATE_WIDE
+      add: pxh.DRAWER_ANIMATE_WIDE
     },
     'pxh-drawer-header__link': {
-      'add': pxh.DRAWER_HEADER_LINK_ANIMATE_IN
+      add: pxh.DRAWER_HEADER_LINK_ANIMATE_IN
     },
     'pxh-navigation__item-text': {
-      'add': pxh.NAVIGATION_ITEM_TEXT_ANIMATE_IN
+      add: pxh.NAVIGATION_ITEM_TEXT_ANIMATE_IN
     },
     'pxh-navigation__sub-link': {
-      'add': pxh.NAVIGATION_SUB_LINK_ANIMATE_IN
+      add: pxh.NAVIGATION_SUB_LINK_ANIMATE_IN
     },
     'pxh-login__name': {
-      'add': pxh.LOGIN_NAME_ANIMATE_IN
+      add: pxh.LOGIN_NAME_ANIMATE_IN
     },
     'pxh-login__caret': {
-      'add': pxh.LOGIN_CARET_ANIMATE_IN
+      add: pxh.LOGIN_CARET_ANIMATE_IN
     },
     'pxh-login__settings': {
-      'add': pxh.LOGIN_SETTINGS_ANIMATE_IN
+      add: pxh.LOGIN_SETTINGS_ANIMATE_IN
     },
     'pxh-login__notifications': {
-      'add': pxh.LOGIN_NOTIFICATIONS_ANIMATE_IN
+      add: pxh.LOGIN_NOTIFICATIONS_ANIMATE_IN
     },
     'pxh-view': {
-      'add': pxh.VIEW_ANIMATE_NARROW
+      add: pxh.VIEW_ANIMATE_NARROW
     },
     'pxh-view-header': {
-      'add': pxh.VIEW_HEADER_ANIMATE_NARROW
+      add: pxh.VIEW_HEADER_ANIMATE_NARROW
     }
   },
-  'clearAll': {
+  clearAll: {
     'pxh-drawer': {
-      'remove': pxh.DRAWER_ANIMATE_IN + ' ' + pxh.DRAWER_ANIMATE_OUT + ' ' + pxh.DRAWER_ANIMATE_NARROW + ' ' + pxh.DRAWER_ANIMATE_WIDE + ' ' + pxh.DRAWER_ANIMATE_OUT_WIDE
+      remove: pxh.DRAWER_ANIMATE_IN + ' ' + pxh.DRAWER_ANIMATE_OUT + ' ' + pxh.DRAWER_ANIMATE_NARROW + ' ' + pxh.DRAWER_ANIMATE_WIDE + ' ' + pxh.DRAWER_ANIMATE_OUT_WIDE
     },
     'pxh-drawer-header__link': {
-      'remove': pxh.DRAWER_HEADER_LINK_ANIMATE_IN + ' ' + pxh.DRAWER_HEADER_LINK_ANIMATE_OUT
+      remove: pxh.DRAWER_HEADER_LINK_ANIMATE_IN + ' ' + pxh.DRAWER_HEADER_LINK_ANIMATE_OUT
     },
     'pxh-navigation__item-text': {
-      'remove': pxh.NAVIGATION_ITEM_TEXT_ANIMATE_IN + ' ' + pxh.NAVIGATION_ITEM_TEXT_ANIMATE_OUT
+      remove: pxh.NAVIGATION_ITEM_TEXT_ANIMATE_IN + ' ' + pxh.NAVIGATION_ITEM_TEXT_ANIMATE_OUT
     },
     'pxh-navigation__sub-link': {
-      'remove': pxh.NAVIGATION_SUB_LINK_ANIMATE_IN + ' ' + pxh.NAVIGATION_SUB_LINK_ANIMATE_OUT
+      remove: pxh.NAVIGATION_SUB_LINK_ANIMATE_IN + ' ' + pxh.NAVIGATION_SUB_LINK_ANIMATE_OUT
     },
     'pxh-login__name': {
-      'remove': pxh.LOGIN_NAME_ANIMATE_IN + ' ' + pxh.LOGIN_NAME_ANIMATE_OUT
+      remove: pxh.LOGIN_NAME_ANIMATE_IN + ' ' + pxh.LOGIN_NAME_ANIMATE_OUT
     },
     'pxh-login__caret': {
-      'remove': pxh.LOGIN_CARET_ANIMATE_IN + ' ' + pxh.LOGIN_CARET_ANIMATE_OUT
+      remove: pxh.LOGIN_CARET_ANIMATE_IN + ' ' + pxh.LOGIN_CARET_ANIMATE_OUT
     },
     'pxh-login__settings': {
-      'remove': pxh.LOGIN_SETTINGS_ANIMATE_IN + ' ' + pxh.LOGIN_SETTINGS_ANIMATE_OUT
+      remove: pxh.LOGIN_SETTINGS_ANIMATE_IN + ' ' + pxh.LOGIN_SETTINGS_ANIMATE_OUT
     },
     'pxh-login__notifications': {
-      'remove': pxh.LOGIN_NOTIFICATIONS_ANIMATE_IN + ' ' + pxh.LOGIN_NOTIFICATIONS_ANIMATE_OUT
+      remove: pxh.LOGIN_NOTIFICATIONS_ANIMATE_IN + ' ' + pxh.LOGIN_NOTIFICATIONS_ANIMATE_OUT
     },
     'pxh-view': {
-      'remove': pxh.VIEW_ANIMATE_WIDE + ' ' + pxh.VIEW_ANIMATE_NARROW + ' ' + pxh.VIEW_ANIMATE_FULL_TO_WIDE
+      remove: pxh.VIEW_ANIMATE_WIDE + ' ' + pxh.VIEW_ANIMATE_NARROW + ' ' + pxh.VIEW_ANIMATE_FULL_TO_WIDE
     },
     'pxh-view-header': {
-      'remove': pxh.VIEW_HEADER_ANIMATE_WIDE + ' ' + pxh.VIEW_HEADER_ANIMATE_NARROW + ' ' + pxh.VIEW_HEADER_ANIMATE_FULL_TO_WIDE
+      remove: pxh.VIEW_HEADER_ANIMATE_WIDE + ' ' + pxh.VIEW_HEADER_ANIMATE_NARROW + ' ' + pxh.VIEW_HEADER_ANIMATE_FULL_TO_WIDE
     }
   }
 };
@@ -556,7 +556,8 @@ var pxhResizeSensor = function pxhResizeSensor(element, callback) {
       this.q.push(ev);
     };
 
-    var i, j;
+    var i;
+    var j;
     this.call = function () {
       for (i = 0, j = this.q.length; i < j; i++) {
         this.q[i].call();
@@ -641,7 +642,7 @@ var pxhResizeSensor = function pxhResizeSensor(element, callback) {
     };
 
     var onScroll = function onScroll() {
-      if (element.offsetWidth != lastWidth || element.offsetHeight != lastHeight) {
+      if (element.offsetWidth !== lastWidth || element.offsetHeight !== lastHeight) {
         changed();
       }
       reset();
@@ -860,7 +861,7 @@ pxh.Cookies = Cookies.noConflict();
 /**
  * Polyfill to support .remove() in IE11
  * https://developer.mozilla.org/en-US/docs/Web/API/ChildNode/remove
- * 
+ *
  */
 if (!('remove' in Element.prototype)) {
   Element.prototype.remove = function () {
@@ -870,9 +871,9 @@ if (!('remove' in Element.prototype)) {
   };
 }
 
-/** 
+/**
  * Checks if an array exists
- * 
+ *
  * @param {Array} array
  * @returns {Boolean} true if array exists, false if it does not
  */
@@ -903,7 +904,7 @@ pxh.getItemByPropertyName = function (haystack, propertyName) {
 
 /**
  * Returns the value of a particular CSS property of an element
- * 
+ *
  * @param {String} id The id="" attribute of the element
  * @param {String} property The CSS property to query, e.g. z-index
  * @returns {String|Boolean} CSS property value if found, false if not
@@ -921,7 +922,7 @@ pxh.getStyle = function (id, property) {
 
 /**
  * Strips HTML tags from the given string
- * 
+ *
  * @param {String} html A string that may contain HTML tags
  * @returns {String|Boolean} Input string's text with HTML removed, false if no input parameter provided
  */
@@ -937,7 +938,7 @@ pxh.stripHTML = function (html) {
 
 /**
  * Changes classes on the targeted elements
- * 
+ *
  * @example
  * // finds all elements with class `nav` and adds the class `nav--hidden` to them
  * pxh.changeClasses('nav', 'add', 'nav--hidden');
@@ -966,7 +967,7 @@ pxh.changeClasses = function (targetClassName, changeType, classNamesToChange) {
 
 /**
  * Adds a sensor that will fire a viewResized event every time its corresponding element changes size
- * 
+ *
  * @param {string} targetId The id of the target element that should fire an event when it resizes
  */
 pxh.addResizeSensor = function (targetId) {
@@ -982,7 +983,7 @@ pxh.action = {};
 
 /**
  * Toggles classes on an element when clicked, and immediately fires any event in the clicked target area
- * 
+ *
  * @param {string} control CSS class name of the elements that should act as controls for firing this event
  * @param {string} target CSS class name of the target elements that should be changed when this event is fired
  * @param {string} change Type of change to perform on the target elements. Options are `add`, `remove`, `toggle`
@@ -1001,7 +1002,7 @@ pxh.action.clickToCloseAndFire = function (control, target, change, className) {
 
 /**
  * Toggles classes on an element when clicked, but does not fire any event in the clicked target area
- * 
+ *
  * @param {string} control Unique ID of the element that should act as controls for firing this event
  * @param {string} target Unique ID of the target element that should be changed when this event is fired
  * @param {string} className The class to be removed from the target element
@@ -1031,7 +1032,7 @@ pxh.action.clickToCloseAndHold = function (control, target, className) {
 
 /**
  * Toggles classes on an element when clicked
- * 
+ *
  * @param {string} control CSS class name of the elements that should act as controls for firing this event
  * @param {string} target CSS class name of the target elements that should be changed when this event is fired
  * @param {string} className The class to be removed from the target element
@@ -1055,7 +1056,7 @@ pxh.toggleMenu = function (control, target, className) {
 
 pxh.viewResized = document.createEvent('CustomEvent');
 pxh.viewResized.initCustomEvent('pxhViewResized', false, false, {
-  'viewResized': true
+  viewResized: true
 });
 
 document.addEventListener('DOMContentLoaded', function (event) {
@@ -1071,356 +1072,356 @@ document.addEventListener('DOMContentLoaded', function (event) {
 // **************
 
 pxh.states = {
-  'default': {
+  default: {
     'pxh-drawer': {
-      'add': pxh.DRAWER_HIDDEN_UNTIL_AT_MD + ' ' + pxh.DRAWER_NARROW_AT_MD + ' ' + pxh.DRAWER_WIDE_AT_LG,
-      'remove': pxh.DRAWER_NARROW_AT_LG
+      add: pxh.DRAWER_HIDDEN_UNTIL_AT_MD + ' ' + pxh.DRAWER_NARROW_AT_MD + ' ' + pxh.DRAWER_WIDE_AT_LG,
+      remove: pxh.DRAWER_NARROW_AT_LG
     },
     'pxh-drawer-header__link': {
-      'remove': pxh.DRAWER_HEADER_LINK_WIDE_AT_MD,
-      'add': pxh.DRAWER_HEADER_LINK_NARROW_AT_MD + ' ' + pxh.DRAWER_HEADER_LINK_WIDE_AT_LG
+      remove: pxh.DRAWER_HEADER_LINK_WIDE_AT_MD,
+      add: pxh.DRAWER_HEADER_LINK_NARROW_AT_MD + ' ' + pxh.DRAWER_HEADER_LINK_WIDE_AT_LG
     },
     'pxh-overlay': {
-      'add': pxh.OVERLAY_HIDDEN
+      add: pxh.OVERLAY_HIDDEN
     },
     'pxh-navigation': {
-      'add': pxh.NAVIGATION_NARROW_AT_MD + ' ' + pxh.NAVIGATION_WIDE_AT_LG
+      add: pxh.NAVIGATION_NARROW_AT_MD + ' ' + pxh.NAVIGATION_WIDE_AT_LG
     },
     'pxh-login': {
-      'add': pxh.LOGIN_NARROW_AT_MD + ' ' + pxh.LOGIN_WIDE_AT_LG
+      add: pxh.LOGIN_NARROW_AT_MD + ' ' + pxh.LOGIN_WIDE_AT_LG
     },
     'pxh-login__name': {
-      'add': pxh.LOGIN_NAME_NARROW_AT_MD + ' ' + pxh.LOGIN_NAME_WIDE_AT_LG
+      add: pxh.LOGIN_NAME_NARROW_AT_MD + ' ' + pxh.LOGIN_NAME_WIDE_AT_LG
     },
     'pxh-login__link': {
-      'add': pxh.LOGIN_LINK_NARROW_AT_MD + ' ' + pxh.LOGIN_LINK_WIDE_AT_LG
+      add: pxh.LOGIN_LINK_NARROW_AT_MD + ' ' + pxh.LOGIN_LINK_WIDE_AT_LG
     },
     'pxh-login__settings': {
-      'add': pxh.LOGIN_SETTINGS_NARROW_AT_MD + ' ' + pxh.LOGIN_SETTINGS_WIDE_AT_LG
+      add: pxh.LOGIN_SETTINGS_NARROW_AT_MD + ' ' + pxh.LOGIN_SETTINGS_WIDE_AT_LG
     },
     'pxh-login__caret': {
-      'add': pxh.LOGIN_CARET_NARROW_AT_MD + ' ' + pxh.LOGIN_CARET_WIDE_AT_LG
+      add: pxh.LOGIN_CARET_NARROW_AT_MD + ' ' + pxh.LOGIN_CARET_WIDE_AT_LG
     },
     'pxh-login__notifications': {
-      'add': pxh.LOGIN_NOTIFICATIONS_NARROW_AT_MD + ' ' + pxh.LOGIN_NOTIFICATIONS_WIDE_AT_LG
+      add: pxh.LOGIN_NOTIFICATIONS_NARROW_AT_MD + ' ' + pxh.LOGIN_NOTIFICATIONS_WIDE_AT_LG
     },
     'pxh-view': {
-      'remove': pxh.DISABLE_SCROLL_UNTIL_AT_LG + ' ' + pxh.VIEW_WIDE_AT_LG,
-      'add': pxh.VIEW_NARROW_AT_LG
+      remove: pxh.DISABLE_SCROLL_UNTIL_AT_LG + ' ' + pxh.VIEW_WIDE_AT_LG,
+      add: pxh.VIEW_NARROW_AT_LG
     },
     'pxh-view-header': {
-      'remove': pxh.VIEW_HEADER_WIDE_AT_LG,
-      'add': pxh.VIEW_HEADER_NARROW_AT_LG
+      remove: pxh.VIEW_HEADER_WIDE_AT_LG,
+      add: pxh.VIEW_HEADER_NARROW_AT_LG
     },
     'pxh-view-header-drawer-toggle': {
-      'remove': pxh.VIEW_HEADER_DRAWER_TOGGLE_HIDDEN
+      remove: pxh.VIEW_HEADER_DRAWER_TOGGLE_HIDDEN
     },
     'pxh-notifications': {
-      'remove': pxh.NOTIFICATIONS_VISIBLE
+      remove: pxh.NOTIFICATIONS_VISIBLE
     }
   },
-  'open': {
+  open: {
     'pxh-drawer': {
-      'remove': pxh.DRAWER_HIDDEN_UNTIL_AT_MD + ' ' + pxh.DRAWER_NARROW_AT_MD + ' ' + pxh.DRAWER_NARROW_AT_LG,
-      'add': pxh.DRAWER_WIDE_AT_LG
+      remove: pxh.DRAWER_HIDDEN_UNTIL_AT_MD + ' ' + pxh.DRAWER_NARROW_AT_MD + ' ' + pxh.DRAWER_NARROW_AT_LG,
+      add: pxh.DRAWER_WIDE_AT_LG
     },
     'pxh-drawer-header__link': {
-      'remove': pxh.DRAWER_HEADER_LINK_NARROW_AT_MD,
-      'add': pxh.DRAWER_HEADER_LINK_WIDE_AT_MD + ' ' + pxh.DRAWER_HEADER_LINK_WIDE_AT_LG
+      remove: pxh.DRAWER_HEADER_LINK_NARROW_AT_MD,
+      add: pxh.DRAWER_HEADER_LINK_WIDE_AT_MD + ' ' + pxh.DRAWER_HEADER_LINK_WIDE_AT_LG
     },
     'pxh-overlay': {
-      'remove': pxh.OVERLAY_HIDDEN
+      remove: pxh.OVERLAY_HIDDEN
     },
     'pxh-navigation': {
-      'remove': pxh.NAVIGATION_NARROW_AT_MD,
-      'add': pxh.NAVIGATION_WIDE_AT_LG
+      remove: pxh.NAVIGATION_NARROW_AT_MD,
+      add: pxh.NAVIGATION_WIDE_AT_LG
     },
     'pxh-login': {
-      'add': pxh.LOGIN_WIDE_AT_LG,
-      'remove': pxh.LOGIN_NARROW_AT_MD
+      add: pxh.LOGIN_WIDE_AT_LG,
+      remove: pxh.LOGIN_NARROW_AT_MD
     },
     'pxh-login__name': {
-      'remove': pxh.LOGIN_NAME_NARROW_AT_MD,
-      'add': pxh.LOGIN_NAME_WIDE_AT_LG
+      remove: pxh.LOGIN_NAME_NARROW_AT_MD,
+      add: pxh.LOGIN_NAME_WIDE_AT_LG
     },
     'pxh-login__link': {
-      'remove': pxh.LOGIN_LINK_NARROW_AT_MD + ' ' + pxh.LOGIN_LINK_NARROW_AT_LG
+      remove: pxh.LOGIN_LINK_NARROW_AT_MD + ' ' + pxh.LOGIN_LINK_NARROW_AT_LG
     },
     'pxh-login__settings': {
-      'remove': pxh.LOGIN_SETTINGS_NARROW_AT_MD,
-      'add': pxh.LOGIN_SETTINGS_WIDE_AT_LG
+      remove: pxh.LOGIN_SETTINGS_NARROW_AT_MD,
+      add: pxh.LOGIN_SETTINGS_WIDE_AT_LG
     },
     'pxh-login__caret': {
-      'remove': pxh.LOGIN_CARET_NARROW_AT_MD,
-      'add': pxh.LOGIN_CARET_WIDE_AT_LG
+      remove: pxh.LOGIN_CARET_NARROW_AT_MD,
+      add: pxh.LOGIN_CARET_WIDE_AT_LG
     },
     'pxh-login__notifications': {
-      'remove': pxh.LOGIN_NOTIFICATIONS_NARROW_AT_MD,
-      'add': pxh.LOGIN_NOTIFICATIONS_WIDE_AT_LG
+      remove: pxh.LOGIN_NOTIFICATIONS_NARROW_AT_MD,
+      add: pxh.LOGIN_NOTIFICATIONS_WIDE_AT_LG
     },
     'pxh-view': {
-      'add': pxh.DISABLE_SCROLL_UNTIL_AT_LG + ' ' + pxh.VIEW_NARROW_AT_LG,
-      'remove': pxh.VIEW_WIDE_AT_LG
+      add: pxh.DISABLE_SCROLL_UNTIL_AT_LG + ' ' + pxh.VIEW_NARROW_AT_LG,
+      remove: pxh.VIEW_WIDE_AT_LG
     },
     'pxh-view-header': {
-      'add': pxh.VIEW_HEADER_NARROW_AT_LG,
-      'remove': pxh.VIEW_HEADER_WIDE_AT_LG
+      add: pxh.VIEW_HEADER_NARROW_AT_LG,
+      remove: pxh.VIEW_HEADER_WIDE_AT_LG
     },
     'pxh-view-header-drawer-toggle': {
-      'add': pxh.VIEW_HEADER_DRAWER_TOGGLE_HIDDEN
+      add: pxh.VIEW_HEADER_DRAWER_TOGGLE_HIDDEN
     }
   },
-  'narrowAtLg': {
+  narrowAtLg: {
     'pxh-drawer': {
-      'add': pxh.DRAWER_HIDDEN_UNTIL_AT_MD + ' ' + pxh.DRAWER_NARROW_AT_MD + ' ' + pxh.DRAWER_NARROW_AT_LG,
-      'remove': pxh.DRAWER_WIDE_AT_LG
+      add: pxh.DRAWER_HIDDEN_UNTIL_AT_MD + ' ' + pxh.DRAWER_NARROW_AT_MD + ' ' + pxh.DRAWER_NARROW_AT_LG,
+      remove: pxh.DRAWER_WIDE_AT_LG
     },
     'pxh-drawer-header__link': {
-      'remove': pxh.DRAWER_HEADER_LINK_WIDE_AT_MD + ' ' + pxh.DRAWER_HEADER_LINK_WIDE_AT_LG,
-      'add': pxh.DRAWER_HEADER_LINK_NARROW_AT_MD
+      remove: pxh.DRAWER_HEADER_LINK_WIDE_AT_MD + ' ' + pxh.DRAWER_HEADER_LINK_WIDE_AT_LG,
+      add: pxh.DRAWER_HEADER_LINK_NARROW_AT_MD
     },
     'pxh-overlay': {
-      'add': pxh.OVERLAY_HIDDEN
+      add: pxh.OVERLAY_HIDDEN
     },
     'pxh-navigation': {
-      'add': pxh.NAVIGATION_NARROW_AT_MD,
-      'remove': pxh.NAVIGATION_WIDE_AT_LG
+      add: pxh.NAVIGATION_NARROW_AT_MD,
+      remove: pxh.NAVIGATION_WIDE_AT_LG
     },
     'pxh-login': {
-      'add': pxh.LOGIN_NARROW_AT_MD,
-      'remove': pxh.LOGIN_WIDE_AT_LG
+      add: pxh.LOGIN_NARROW_AT_MD,
+      remove: pxh.LOGIN_WIDE_AT_LG
     },
     'pxh-login__name': {
-      'add': pxh.LOGIN_NAME_NARROW_AT_MD,
-      'remove': pxh.LOGIN_NAME_WIDE_AT_LG
+      add: pxh.LOGIN_NAME_NARROW_AT_MD,
+      remove: pxh.LOGIN_NAME_WIDE_AT_LG
     },
     'pxh-login__link': {
-      'add': pxh.LOGIN_LINK_NARROW_AT_MD,
-      'remove': pxh.LOGIN_LINK_WIDE_AT_LG
+      add: pxh.LOGIN_LINK_NARROW_AT_MD,
+      remove: pxh.LOGIN_LINK_WIDE_AT_LG
     },
     'pxh-login__settings': {
-      'add': pxh.LOGIN_SETTINGS_NARROW_AT_MD,
-      'remove': pxh.LOGIN_SETTINGS_WIDE_AT_LG
+      add: pxh.LOGIN_SETTINGS_NARROW_AT_MD,
+      remove: pxh.LOGIN_SETTINGS_WIDE_AT_LG
     },
     'pxh-login__caret': {
-      'add': pxh.LOGIN_CARET_NARROW_AT_MD,
-      'remove': pxh.LOGIN_CARET_WIDE_AT_LG
+      add: pxh.LOGIN_CARET_NARROW_AT_MD,
+      remove: pxh.LOGIN_CARET_WIDE_AT_LG
     },
     'pxh-login__notifications': {
-      'add': pxh.LOGIN_NOTIFICATIONS_NARROW_AT_MD,
-      'remove': pxh.LOGIN_NOTIFICATIONS_WIDE_AT_LG
+      add: pxh.LOGIN_NOTIFICATIONS_NARROW_AT_MD,
+      remove: pxh.LOGIN_NOTIFICATIONS_WIDE_AT_LG
     },
     'pxh-view': {
-      'remove': pxh.DISABLE_SCROLL_UNTIL_AT_LG + ' ' + pxh.VIEW_NARROW_AT_LG,
-      'add': pxh.VIEW_WIDE_AT_LG
+      remove: pxh.DISABLE_SCROLL_UNTIL_AT_LG + ' ' + pxh.VIEW_NARROW_AT_LG,
+      add: pxh.VIEW_WIDE_AT_LG
     },
     'pxh-view-header': {
-      'remove': pxh.VIEW_HEADER_NARROW_AT_LG,
-      'add': pxh.VIEW_HEADER_WIDE_AT_LG
+      remove: pxh.VIEW_HEADER_NARROW_AT_LG,
+      add: pxh.VIEW_HEADER_WIDE_AT_LG
     },
     'pxh-view-header-drawer-toggle': {
-      'remove': pxh.VIEW_HEADER_DRAWER_TOGGLE_HIDDEN
+      remove: pxh.VIEW_HEADER_DRAWER_TOGGLE_HIDDEN
     },
     'pxh-notifications': {
-      'remove': pxh.NOTIFICATIONS_VISIBLE
+      remove: pxh.NOTIFICATIONS_VISIBLE
     }
   }
 };
 
 pxh.transitions = {
-  'outToIn': {
+  outToIn: {
     'pxh-drawer': {
-      'add': pxh.DRAWER_ANIMATE_IN
+      add: pxh.DRAWER_ANIMATE_IN
     }
   },
-  'inToOut': {
+  inToOut: {
     'pxh-drawer': {
-      'add': pxh.DRAWER_ANIMATE_OUT
+      add: pxh.DRAWER_ANIMATE_OUT
     }
   },
-  'narrowToOpen': {
+  narrowToOpen: {
     'pxh-drawer': {
-      'add': pxh.DRAWER_ANIMATE_WIDE
+      add: pxh.DRAWER_ANIMATE_WIDE
     },
     'pxh-drawer-header__link': {
-      'add': pxh.DRAWER_HEADER_LINK_ANIMATE_IN
+      add: pxh.DRAWER_HEADER_LINK_ANIMATE_IN
     },
     'pxh-navigation__item-text': {
-      'add': pxh.NAVIGATION_ITEM_TEXT_ANIMATE_IN
+      add: pxh.NAVIGATION_ITEM_TEXT_ANIMATE_IN
     },
     'pxh-navigation__sub-link': {
-      'add': pxh.NAVIGATION_SUB_LINK_ANIMATE_IN
+      add: pxh.NAVIGATION_SUB_LINK_ANIMATE_IN
     },
     'pxh-login__name': {
-      'add': pxh.LOGIN_NAME_ANIMATE_IN
+      add: pxh.LOGIN_NAME_ANIMATE_IN
     },
     'pxh-login__caret': {
-      'add': pxh.LOGIN_CARET_ANIMATE_IN
+      add: pxh.LOGIN_CARET_ANIMATE_IN
     },
     'pxh-login__settings': {
-      'add': pxh.LOGIN_SETTINGS_ANIMATE_IN
+      add: pxh.LOGIN_SETTINGS_ANIMATE_IN
     },
     'pxh-login__notifications': {
-      'add': pxh.LOGIN_NOTIFICATIONS_ANIMATE_IN
+      add: pxh.LOGIN_NOTIFICATIONS_ANIMATE_IN
     }
   },
-  'openToNarrow': {
+  openToNarrow: {
     'pxh-drawer': {
-      'add': pxh.DRAWER_ANIMATE_NARROW
+      add: pxh.DRAWER_ANIMATE_NARROW
     },
     'pxh-drawer-header__link': {
-      'add': pxh.DRAWER_HEADER_LINK_ANIMATE_OUT
+      add: pxh.DRAWER_HEADER_LINK_ANIMATE_OUT
     },
     'pxh-navigation__item-text': {
-      'add': pxh.NAVIGATION_ITEM_TEXT_ANIMATE_OUT
+      add: pxh.NAVIGATION_ITEM_TEXT_ANIMATE_OUT
     },
     'pxh-navigation__sub-link': {
-      'add': pxh.NAVIGATION_SUB_LINK_ANIMATE_OUT
+      add: pxh.NAVIGATION_SUB_LINK_ANIMATE_OUT
     },
     'pxh-login__name': {
-      'add': pxh.LOGIN_NAME_ANIMATE_OUT
+      add: pxh.LOGIN_NAME_ANIMATE_OUT
     },
     'pxh-login__caret': {
-      'add': pxh.LOGIN_CARET_ANIMATE_OUT
+      add: pxh.LOGIN_CARET_ANIMATE_OUT
     },
     'pxh-login__settings': {
-      'add': pxh.LOGIN_SETTINGS_ANIMATE_OUT
+      add: pxh.LOGIN_SETTINGS_ANIMATE_OUT
     },
     'pxh-login__notifications': {
-      'add': pxh.LOGIN_NOTIFICATIONS_ANIMATE_OUT
+      add: pxh.LOGIN_NOTIFICATIONS_ANIMATE_OUT
     }
   },
-  'outToNarrow': {
+  outToNarrow: {
     'pxh-drawer': {
-      'add': pxh.DRAWER_ANIMATE_IN
+      add: pxh.DRAWER_ANIMATE_IN
     },
     'pxh-view': {
-      'add': pxh.VIEW_ANIMATE_FULL_TO_WIDE
+      add: pxh.VIEW_ANIMATE_FULL_TO_WIDE
     },
     'pxh-view-header': {
-      'add': pxh.VIEW_HEADER_ANIMATE_FULL_TO_WIDE
+      add: pxh.VIEW_HEADER_ANIMATE_FULL_TO_WIDE
     }
   },
-  'narrowToOut': {
+  narrowToOut: {
     'pxh-drawer': {
-      'add': pxh.DRAWER_ANIMATE_OUT_WIDE
+      add: pxh.DRAWER_ANIMATE_OUT_WIDE
     },
     'pxh-drawer-header__link': {
-      'add': pxh.DRAWER_HEADER_LINK_ANIMATE_IN
+      add: pxh.DRAWER_HEADER_LINK_ANIMATE_IN
     },
     'pxh-navigation__item-text': {
-      'add': pxh.NAVIGATION_ITEM_TEXT_ANIMATE_IN
+      add: pxh.NAVIGATION_ITEM_TEXT_ANIMATE_IN
     },
     'pxh-navigation__sub-link': {
-      'add': pxh.NAVIGATION_SUB_LINK_ANIMATE_IN
+      add: pxh.NAVIGATION_SUB_LINK_ANIMATE_IN
     },
     'pxh-login__name': {
-      'add': pxh.LOGIN_NAME_ANIMATE_IN
+      add: pxh.LOGIN_NAME_ANIMATE_IN
     },
     'pxh-login__caret': {
-      'add': pxh.LOGIN_CARET_ANIMATE_IN
+      add: pxh.LOGIN_CARET_ANIMATE_IN
     },
     'pxh-login__settings': {
-      'add': pxh.LOGIN_SETTINGS_ANIMATE_IN
+      add: pxh.LOGIN_SETTINGS_ANIMATE_IN
     },
     'pxh-login__notifications': {
-      'add': pxh.LOGIN_NOTIFICATIONS_ANIMATE_IN
+      add: pxh.LOGIN_NOTIFICATIONS_ANIMATE_IN
     }
   },
-  'wideToNarrow': {
+  wideToNarrow: {
     'pxh-drawer': {
-      'add': pxh.DRAWER_ANIMATE_NARROW
+      add: pxh.DRAWER_ANIMATE_NARROW
     },
     'pxh-drawer-header__link': {
-      'add': pxh.DRAWER_HEADER_LINK_ANIMATE_OUT
+      add: pxh.DRAWER_HEADER_LINK_ANIMATE_OUT
     },
     'pxh-navigation__item-text': {
-      'add': pxh.NAVIGATION_ITEM_TEXT_ANIMATE_OUT
+      add: pxh.NAVIGATION_ITEM_TEXT_ANIMATE_OUT
     },
     'pxh-navigation__sub-link': {
-      'add': pxh.NAVIGATION_SUB_LINK_ANIMATE_OUT
+      add: pxh.NAVIGATION_SUB_LINK_ANIMATE_OUT
     },
     'pxh-login__name': {
-      'add': pxh.LOGIN_NAME_ANIMATE_OUT
+      add: pxh.LOGIN_NAME_ANIMATE_OUT
     },
     'pxh-login__caret': {
-      'add': pxh.LOGIN_CARET_ANIMATE_OUT
+      add: pxh.LOGIN_CARET_ANIMATE_OUT
     },
     'pxh-login__settings': {
-      'add': pxh.LOGIN_SETTINGS_ANIMATE_OUT
+      add: pxh.LOGIN_SETTINGS_ANIMATE_OUT
     },
     'pxh-login__notifications': {
-      'add': pxh.LOGIN_NOTIFICATIONS_ANIMATE_OUT
+      add: pxh.LOGIN_NOTIFICATIONS_ANIMATE_OUT
     },
     'pxh-view': {
-      'add': pxh.VIEW_ANIMATE_WIDE
+      add: pxh.VIEW_ANIMATE_WIDE
     },
     'pxh-view-header': {
-      'add': pxh.VIEW_HEADER_ANIMATE_WIDE
+      add: pxh.VIEW_HEADER_ANIMATE_WIDE
     }
   },
-  'narrowToWide': {
+  narrowToWide: {
     'pxh-drawer': {
-      'add': pxh.DRAWER_ANIMATE_WIDE
+      add: pxh.DRAWER_ANIMATE_WIDE
     },
     'pxh-drawer-header__link': {
-      'add': pxh.DRAWER_HEADER_LINK_ANIMATE_IN
+      add: pxh.DRAWER_HEADER_LINK_ANIMATE_IN
     },
     'pxh-navigation__item-text': {
-      'add': pxh.NAVIGATION_ITEM_TEXT_ANIMATE_IN
+      add: pxh.NAVIGATION_ITEM_TEXT_ANIMATE_IN
     },
     'pxh-navigation__sub-link': {
-      'add': pxh.NAVIGATION_SUB_LINK_ANIMATE_IN
+      add: pxh.NAVIGATION_SUB_LINK_ANIMATE_IN
     },
     'pxh-login__name': {
-      'add': pxh.LOGIN_NAME_ANIMATE_IN
+      add: pxh.LOGIN_NAME_ANIMATE_IN
     },
     'pxh-login__caret': {
-      'add': pxh.LOGIN_CARET_ANIMATE_IN
+      add: pxh.LOGIN_CARET_ANIMATE_IN
     },
     'pxh-login__settings': {
-      'add': pxh.LOGIN_SETTINGS_ANIMATE_IN
+      add: pxh.LOGIN_SETTINGS_ANIMATE_IN
     },
     'pxh-login__notifications': {
-      'add': pxh.LOGIN_NOTIFICATIONS_ANIMATE_IN
+      add: pxh.LOGIN_NOTIFICATIONS_ANIMATE_IN
     },
     'pxh-view': {
-      'add': pxh.VIEW_ANIMATE_NARROW
+      add: pxh.VIEW_ANIMATE_NARROW
     },
     'pxh-view-header': {
-      'add': pxh.VIEW_HEADER_ANIMATE_NARROW
+      add: pxh.VIEW_HEADER_ANIMATE_NARROW
     }
   },
-  'clearAll': {
+  clearAll: {
     'pxh-drawer': {
-      'remove': pxh.DRAWER_ANIMATE_IN + ' ' + pxh.DRAWER_ANIMATE_OUT + ' ' + pxh.DRAWER_ANIMATE_NARROW + ' ' + pxh.DRAWER_ANIMATE_WIDE + ' ' + pxh.DRAWER_ANIMATE_OUT_WIDE
+      remove: pxh.DRAWER_ANIMATE_IN + ' ' + pxh.DRAWER_ANIMATE_OUT + ' ' + pxh.DRAWER_ANIMATE_NARROW + ' ' + pxh.DRAWER_ANIMATE_WIDE + ' ' + pxh.DRAWER_ANIMATE_OUT_WIDE
     },
     'pxh-drawer-header__link': {
-      'remove': pxh.DRAWER_HEADER_LINK_ANIMATE_IN + ' ' + pxh.DRAWER_HEADER_LINK_ANIMATE_OUT
+      remove: pxh.DRAWER_HEADER_LINK_ANIMATE_IN + ' ' + pxh.DRAWER_HEADER_LINK_ANIMATE_OUT
     },
     'pxh-navigation__item-text': {
-      'remove': pxh.NAVIGATION_ITEM_TEXT_ANIMATE_IN + ' ' + pxh.NAVIGATION_ITEM_TEXT_ANIMATE_OUT
+      remove: pxh.NAVIGATION_ITEM_TEXT_ANIMATE_IN + ' ' + pxh.NAVIGATION_ITEM_TEXT_ANIMATE_OUT
     },
     'pxh-navigation__sub-link': {
-      'remove': pxh.NAVIGATION_SUB_LINK_ANIMATE_IN + ' ' + pxh.NAVIGATION_SUB_LINK_ANIMATE_OUT
+      remove: pxh.NAVIGATION_SUB_LINK_ANIMATE_IN + ' ' + pxh.NAVIGATION_SUB_LINK_ANIMATE_OUT
     },
     'pxh-login__name': {
-      'remove': pxh.LOGIN_NAME_ANIMATE_IN + ' ' + pxh.LOGIN_NAME_ANIMATE_OUT
+      remove: pxh.LOGIN_NAME_ANIMATE_IN + ' ' + pxh.LOGIN_NAME_ANIMATE_OUT
     },
     'pxh-login__caret': {
-      'remove': pxh.LOGIN_CARET_ANIMATE_IN + ' ' + pxh.LOGIN_CARET_ANIMATE_OUT
+      remove: pxh.LOGIN_CARET_ANIMATE_IN + ' ' + pxh.LOGIN_CARET_ANIMATE_OUT
     },
     'pxh-login__settings': {
-      'remove': pxh.LOGIN_SETTINGS_ANIMATE_IN + ' ' + pxh.LOGIN_SETTINGS_ANIMATE_OUT
+      remove: pxh.LOGIN_SETTINGS_ANIMATE_IN + ' ' + pxh.LOGIN_SETTINGS_ANIMATE_OUT
     },
     'pxh-login__notifications': {
-      'remove': pxh.LOGIN_NOTIFICATIONS_ANIMATE_IN + ' ' + pxh.LOGIN_NOTIFICATIONS_ANIMATE_OUT
+      remove: pxh.LOGIN_NOTIFICATIONS_ANIMATE_IN + ' ' + pxh.LOGIN_NOTIFICATIONS_ANIMATE_OUT
     },
     'pxh-view': {
-      'remove': pxh.VIEW_ANIMATE_WIDE + ' ' + pxh.VIEW_ANIMATE_NARROW + ' ' + pxh.VIEW_ANIMATE_FULL_TO_WIDE
+      remove: pxh.VIEW_ANIMATE_WIDE + ' ' + pxh.VIEW_ANIMATE_NARROW + ' ' + pxh.VIEW_ANIMATE_FULL_TO_WIDE
     },
     'pxh-view-header': {
-      'remove': pxh.VIEW_HEADER_ANIMATE_WIDE + ' ' + pxh.VIEW_HEADER_ANIMATE_NARROW + ' ' + pxh.VIEW_HEADER_ANIMATE_FULL_TO_WIDE
+      remove: pxh.VIEW_HEADER_ANIMATE_WIDE + ' ' + pxh.VIEW_HEADER_ANIMATE_NARROW + ' ' + pxh.VIEW_HEADER_ANIMATE_FULL_TO_WIDE
     }
   }
 };
@@ -1431,7 +1432,7 @@ pxh.transitions = {
 
 /**
  * Loads a state from a state object, and changes the CSS classes on all relevant elements
- * 
+ *
  * @param {Object} stateObject An object containing the states of your application
  * @param {String} targetStateName The name of the desired state to load from the state object
  */
@@ -1454,7 +1455,7 @@ pxh.loadState = function (stateObject, targetStateName) {
 
 /**
  * Binds drawer state change events to toggle buttons, which will change the state of the drawer depending on the current drawer and responsive contexts
- * 
+ *
  * @param {String} controlName CSS class name of control to bind events to
  */
 pxh.bindControl = function (controlName) {
@@ -1515,8 +1516,8 @@ pxh.bindControl = function (controlName) {
 
 /**
  * Creates drawer state change events that should fire when the browser transitions between the medium breakpoint
- * 
- * @param {String} breakpoint 
+ *
+ * @param {String} breakpoint
  */
 pxh.breakpointAtMd = function (breakpoint) {
   pxh.loadState(pxh.transitions, 'clearAll');
@@ -1541,8 +1542,8 @@ pxh.breakpointAtMd = function (breakpoint) {
 
 /**
  * Creates drawer state change events that should fire when the browser transitions between the large breakpoint
- * 
- * @param {String} breakpoint 
+ *
+ * @param {String} breakpoint
  */
 pxh.breakpointAtLg = function (breakpoint) {
   pxh.loadState(pxh.transitions, 'clearAll');
@@ -1575,7 +1576,7 @@ pxh.breakpointAtLg = function (breakpoint) {
       // close the notifications list if it's open
       // fire transitions
       pxh.loadState(pxh.transitions, 'wideToNarrow');
-    };
+    }
     pxh.loadState(pxh.states, 'default');
     if (closeElement) closeElement.remove();
     document.dispatchEvent(pxh.drawerClosed);
@@ -1586,7 +1587,7 @@ pxh.breakpointAtLg = function (breakpoint) {
 
 /**
  * Binds media queries to drawer controls or something
- * 
+ *
  * @param {String} targetClass CSS class name of elements to bind to
  * @param {Object} window.matchMedia object
  */
@@ -1610,8 +1611,8 @@ pxh.bindDrawerMediaQueryControls = function (targetClass, mediaQuery) {
 
 /**
  * When the user clicks the overlay, hides the drawer at the small breakpoint, or collapses the drawer at the narrow breakpoint
- * 
- * 
+ *
+ *
  */
 pxh.overlayDrawerControl = function () {
   var overlay = document.getElementsByClassName(pxh.OVERLAY);
@@ -1632,7 +1633,7 @@ pxh.overlayDrawerControl = function () {
 
 /**
  * When the user hits the "ESC" key on the keyboard, hides the drawer at the small breakpoint, or collapses the drawer at the narrow breakpoint
- * 
+ *
  */
 pxh.escapeDrawerControl = function () {
   document.addEventListener('keyup', function (event) {
@@ -1648,7 +1649,7 @@ pxh.escapeDrawerControl = function () {
 
 /**
  * Toggles the visibility of a login menu
- * 
+ *
  * @param {String} toggleControl CSS class name of the elements to turn into controls that will fire this event
  * @param {String} toggleTarget CSS class name of the login menu elements that should have their visibility toggled
  * @param {string} toggleClass Space-delimited list of CSS class names to toggle on the target elements when this event fires
@@ -1685,12 +1686,12 @@ document.addEventListener('DOMContentLoaded', function (event) {
   }
   pxh.drawerOpened = document.createEvent('CustomEvent');
   pxh.drawerOpened.initCustomEvent('pxhDrawerOpened', false, false, {
-    'drawerOpened': true
+    drawerOpened: true
   });
 
   pxh.drawerClosed = document.createEvent('CustomEvent');
   pxh.drawerClosed.initCustomEvent('pxhDrawerClosed', false, false, {
-    'drawerClosed': true
+    drawerClosed: true
   });
 
   pxh.bindControl(pxh.VIEW_HEADER_DRAWER_TOGGLE);
@@ -1744,11 +1745,11 @@ pxh.toast = {
   badge: {
     count: 0,
 
-    /** 
+    /**
      * Increases the value of the notification icon badge by 1
-     * 
+     *
      * Truncates the value if the resulting number of notifications is greater than 9
-     * 
+     *
      * Won't display a value below zero
      */
     increment: function increment() {
@@ -1763,11 +1764,11 @@ pxh.toast = {
       }
       pxh.toast.badge.update();
     },
-    /** 
+    /**
      * Decreases the value for on the notification icon badge by 1
-     * 
+     *
      * Truncates the value if the resulting number of notifications is greater than 9
-     * 
+     *
      * Won't display a value below zero
      */
     decrement: function decrement() {
@@ -1782,7 +1783,7 @@ pxh.toast = {
       }
       pxh.toast.badge.update();
     },
-    /** 
+    /**
      * Locates the notification icon badge element and updates the displayed value
      * Hides the notification icon and badge entirely if there aren't any notifications
      */
@@ -1802,9 +1803,9 @@ pxh.toast = {
     }
   },
 
-  /** 
+  /**
    * Adds a toast and corresponding notification (if applicable) to the application
-   * 
+   *
    * @example
    * var toastObject1 = {
    *   value : 'something' // pxh.toast.add merely requires that the toast object exists, and will use reasonable defaults if any parameters are missing
@@ -1839,7 +1840,7 @@ pxh.toast = {
    *   actionLabel : 'GE Digital',
    *   actionLink : 'http://digital.ge.com'
    * }
-   * 
+   *
    * document.addEventListener('DOMContentLoaded', function(event) {
    *   pxh.toast.add(toastObject1);
    *   pxh.toast.add(toastObject2, true); // creates a notification but not a toast
@@ -1850,7 +1851,7 @@ pxh.toast = {
    * @param {String} [object.id=unique hex value] - The unique id for the toast/notification being generated. If not provided, pxh-chrome will automatically generate a unique hexidecimal value. The id must be unique or else unexpected behavior might occur. If your application will be providing its own id, it is your responsibility to enforce its uniqueness
    * @param {String} [object.type='blue'] - The type of toast/notification. Available options are 'green', 'blue', 'orange', 'red'
    * @param {String} [object.icon='info-circle'] - The name of the Font Awesome icon to display for the toast/notification
-   * @param {String} [object.text='You received a new notification.'] - The text to display for the toast/notification. Any HTML tags will be stripped out and the resulting plaintext will be displayed. 
+   * @param {String} [object.text='You received a new notification.'] - The text to display for the toast/notification. Any HTML tags will be stripped out and the resulting plaintext will be displayed.
    * @param {String} [object.formattedTimestamp] The formatted text to display for the datetime the toast/notification was issued (e.g. 9:36 AM)
    * @param {String} [object.timestamp] The ISO 8601 datetime value for when the toast/notification was issued (e.g. 2016-08-01T17:36:10+00:00)
   * @param {Boolean} [object.isPersistent=false] - Whether or not the toast should persist until the user actively dismisses it. This option is only recognized if the toast has an `actionLink` or `actionCallback` associated with it
@@ -1902,9 +1903,9 @@ pxh.toast = {
   },
   /** @namespace pxh.toast.action */
   action: {
-    /** 
+    /**
      * Binds an event to an element that will dismiss a toast/notification (and its correponding toast/notification, if applicable) when clicked
-     * 
+     *
      * @param {HTMLElement} element The element of the toast/notification to be dismissed
      * @param {String} slug The text slug to be used when generating class names and targets
      * @param {String} id The unique ID of the toast/notification combination associated with the target dismiss button
@@ -1921,9 +1922,9 @@ pxh.toast = {
         });
       }
     },
-    /** 
+    /**
      * Binds an event to an element that will expand its corresponding toast/notification when clicked
-     * 
+     *
      * @param {HTMLElement} element The element of the toast/notification to be dismissed
      * @param {String} slug The text slug to be used when generating class names and targets
      */
@@ -1936,7 +1937,7 @@ pxh.toast = {
         });
       }
     },
-    /** 
+    /**
      * Removes all toasts and notifications from application
      */
     removeAllButton: function removeAllButton() {
@@ -1946,9 +1947,9 @@ pxh.toast = {
       }, 1000);
     },
 
-    /** 
+    /**
      * Binds an callback to an element that will fire when clicked, and automatically hide and remove the corresponding toast/notification from the application
-     * 
+     *
      * @param {HTMLElement} element The element of the toast/notification to be dismissed
      * @param {String} slug The text slug to be used when generating class names and targets
      * @param {String} id The unique ID of the toast/notification combination associated with the callback action
@@ -1968,9 +1969,9 @@ pxh.toast = {
       }
     },
 
-    /** 
+    /**
      * Binds a hyperlink to an element that will fire when clicked, and automatically hide and remove the corresponding toast/notification from the application
-     * 
+     *
      * @param {HTMLElement} element The element of the toast/notification to be dismissed
      * @param {String} slug The text slug to be used when generating class names and targets
      * @param {String} id The unique ID of the toast/notification combination associated with the link action
@@ -1987,9 +1988,9 @@ pxh.toast = {
         });
       }
     },
-    /** 
+    /**
      * Fires a callback
-     * 
+     *
      * @param {Function} callback The callback to fire
      */
     fireCallback: function fireCallback(callback) {
@@ -1997,9 +1998,9 @@ pxh.toast = {
     }
   },
 
-  /** 
+  /**
    * Hides a toast and its corresponding notification (if applicable) from the user
-   * 
+   *
    * @param {String} id The unique ID of the toast/notification combination to hide from the user
    * @param {Boolean} [preserveNotification=false] When dismissing a toast, whether to retain its corresponding notification in the notification list
    */
@@ -2018,9 +2019,9 @@ pxh.toast = {
     }
   },
 
-  /** 
+  /**
    * Hides all notifications from the user
-   * 
+   *
    */
   hideAll: function hideAll() {
     var notificationList = '';
@@ -2033,9 +2034,9 @@ pxh.toast = {
     }
   },
 
-  /** 
+  /**
    * Hides a toast
-   * 
+   *
    * @param {String} id The unique ID of the toast to hide
    */
   autoHide: function autoHide(id) {
@@ -2047,9 +2048,9 @@ pxh.toast = {
     }
   },
 
-  /** 
+  /**
    * Removes a toast and its corresponding notification (if applicable) from the application
-   * 
+   *
    * @param {String} id The unique ID of the toast/notification combination to remove
    */
   remove: function remove(id, preserveNotification) {
@@ -2068,7 +2069,7 @@ pxh.toast = {
 
   /**
    * Removes a toast from the application
-   * 
+   *
    * @param {String} id The unique ID of the toast to remove
    */
   autoRemove: function autoRemove(id) {
@@ -2081,7 +2082,7 @@ pxh.toast = {
 
   /**
    * Removes all notifications from the application
-   * 
+   *
    */
   removeAll: function removeAll() {
     var notificationList = '';
@@ -2096,7 +2097,7 @@ pxh.toast = {
 
   /**
    * Expands the targeted toast/notification so all its text is visible to the user, or collapses it if it is already expanded
-   * 
+   *
    * @param {HTMLElement} element The element to expand
    * @param {String} slug The text slug to be used when generating class names and targets
    */
@@ -2116,7 +2117,7 @@ pxh.toast = {
   markup: {
     /**
      * Generates the HTML markup for displaying a toast/notification's icon
-     * 
+     *
      * @param {Object} object The JavaScript object of the toast/notification that is being created
      * @param {String} slug The text slug to be used when generating class names and targets
      */
@@ -2133,7 +2134,7 @@ pxh.toast = {
 
     /**
      * Generates the HTML markup for displaying a toast's text
-     * 
+     *
      * @param {Object} object The JavaScript object of the toast that is being created
      * @param {String} slug The text slug to be used when generating class names and targets
      */
@@ -2150,7 +2151,7 @@ pxh.toast = {
 
     /**
      * Generates the HTML markup for displaying a notification's text
-     * 
+     *
      * @param {Object} object The JavaScript object of the notification that is being created
      * @param {String} slug The text slug to be used when generating class names and targets
      * @param {String} id The unique ID of the notification being created
@@ -2176,7 +2177,7 @@ pxh.toast = {
 
     /**
      * Generates the HTML markup for displaying a toast/notification's "show more" button
-     * 
+     *
      * @param {Object} object The JavaScript object of the toast/notification that is being created
      * @param {String} slug The text slug to be used when generating class names and targets
      */
@@ -2193,7 +2194,7 @@ pxh.toast = {
 
     /**
      * Generates the HTML markup for displaying a notification's formatted timestamp. This method displays the contents of the `object.formattedTimestamp` string for the toast object passed to it, with a fallback to `object.timestamp` if `formattedTimestamp` is not present. Any formatting for how `formattedTimestamp` should be displayed must be performed in advance.
-     * 
+     *
      * @param {Object} object The JavaScript object of the notification that is being created
      * @param {String} slug The text slug to be used when generating class names and targets
      */
@@ -2220,7 +2221,7 @@ pxh.toast = {
 
     /**
      * Generates the HTML markup for displaying a toast/notification's "dismiss" button
-     * 
+     *
      * @param {Object} object The JavaScript object of the toast/notification that is being created
      * @param {String} slug The text slug to be used when generating class names and targets
      * @param {String} id The unique ID of the toast/notification being created, and that will be dismissed
@@ -2238,7 +2239,7 @@ pxh.toast = {
 
     /**
      * Generates the HTML markup for displaying a toast/'s action button, which can be either a hyperlink (relative or absolute) or a callback
-     * 
+     *
      * @param {Object} object The JavaScript object of the toast that is being created
      * @param {String} slug The text slug to be used when generating class names and targets
      * @param {String} id The unique ID of the toast/notification being created
@@ -2260,7 +2261,7 @@ pxh.toast = {
 
     /**
      * Generates the complete HTML markup for creating a new toast
-     * 
+     *
      * @param {Object} object The JavaScript object of the toast that should be created
      * @param {String} id The unique ID of the toast being created
      * @returns {HTMLElement} element A toast element that can be inserted into the DOM
@@ -2282,7 +2283,7 @@ pxh.toast = {
 
     /**
      * Generates the complete HTML markup for creating a new notification
-     * 
+     *
      * @param {Object} object The JavaScript object of the notification that should be created
      * @param {String} id The unique ID of the toast/notification being created, and that will be dismissed
      * @returns {HTMLElement} element A notification element that can be inserted into the DOM
@@ -2304,7 +2305,7 @@ pxh.toast = {
   },
   /**
    * Returns an array of all notifications currently displayed in the notification list
-   * 
+   *
    * @returns {Array|Boolean} notifications An array of notification IDs, or false if no notifications are currently displayed in the notification list
    */
   getNotifications: function getNotifications() {
