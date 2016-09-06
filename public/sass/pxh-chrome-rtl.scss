@@ -15,6 +15,7 @@ $pxh-language-direction : 'rtl'; // 'ltr' OR 'rtl'
 @import "settings.pxh-chrome.scss";
 
 // ** #GENERIC ** //
+
 @import "generic.normalize.scss";
 /// Path to GE web fonts
 /// @group pxh-settings
@@ -35,12 +36,13 @@ $mq-breakpoints : (
 /// Path to Font Awesome fonts
 /// @group pxh-settings
 /// @type String
-$fa-font-path : "//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/fonts";
+$fa-font-path : "//dzlpbrbc7yvq0.cloudfront.net/libs/font-awesome/4.6.3/fonts";
 @import "font-awesome/scss/font-awesome.scss"; // our sass task includes /bower_components automatically so we don't need to specify it
 @import "tools.pxh-animations.scss";
 @import "tools.pxh-mixins.scss";
 
 // ** #ELEMENTS ** //
+
 @import "elements.body.scss";
 @import "elements.links.scss";
 @import "elements.hr.scss";
@@ -92,6 +94,7 @@ $pxh-toasts-enabled : true;
 @import "components.pxh-error.scss";
 
 // ** #OVERRIDES ** //
+
 @import "overrides.px-theme.scss";
 @import "overrides.pxh-utilities.scss";
 @import "overrides.pxh-docs.scss";
