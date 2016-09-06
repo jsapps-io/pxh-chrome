@@ -249,6 +249,7 @@ Each time you cut a new release of pxh-chrome you're going to:
 * Write really good release notes in the changelog
 * Finalize and commit your source files
 * Generate a new `/dist`
+* Run unit and end-to-end tests
 * Commit your dist files
 * **Finish your release and push it to GitHub**
 * Publish your (really good) release notes on GitHub
