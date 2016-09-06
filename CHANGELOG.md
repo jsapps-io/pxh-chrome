@@ -1,7 +1,9 @@
 #pxh-chrome changelog
 
-### pending release
+### 2.1.2 - September 6, 2016
+* Point to CloudFront CDN for Font Awesome 6.6.3 fonts to fix proxy issue
 * Add notes and link in README that describe how to cut a new release of pxh-chrome
+* Fix the most egregious ESLint errors in `pxh-chrome.js`
 
 ### 2.1.1 - September 1, 2016
 * Update Sass compilation gulp tasks to improve behavior of sourcemaps, autoprefixing and minification
