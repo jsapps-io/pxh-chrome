@@ -1,7 +1,7 @@
 #pxh-chrome changelog
 
 ### 2.1.2 - September 6, 2016
-* Point to CloudFront CDN for Font Awesome 6.6.3 fonts to fix proxy issue
+* Point to CloudFront CDN for Font Awesome 4.6.3 fonts to fix proxy issue
 * Add notes and link in README that describe how to cut a new release of pxh-chrome
 * Fix the most egregious ESLint errors in `pxh-chrome.js`
 
