@@ -1,7 +1,19 @@
 #pxh-chrome changelog
 
+### 2.1.3 - September 19, 2016
+* Bump versions on node modules
+* Bump JavaScript Cookie library to 2.1.3
+* Remove duplicate Javascript for drawer behavior
+* Move all "fire" Javascript to bottom of `pxh-chrome.js`
+* Fix a number of linting errors in Sass manifests
+  * Use single-quotes
+  * Remove filename extensions
+  * Fix spacing around colons
+* Fix pxh-spinner link in documentation
+* Fix title comment for px-theme overrides
+
 ### 2.1.2 - September 6, 2016
-* Point to CloudFront CDN for Font Awesome 6.6.3 fonts to fix proxy issue
+* Point to CloudFront CDN for Font Awesome 4.6.3 fonts to fix proxy issue
 * Add notes and link in README that describe how to cut a new release of pxh-chrome
 * Fix the most egregious ESLint errors in `pxh-chrome.js`
 

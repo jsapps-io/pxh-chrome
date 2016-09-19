@@ -1,5 +1,5 @@
 'use strict';
-/*! common.pxh-chrome.js 2.1.2 */
+/*! common.pxh-chrome.js 2.1.3 */
 
 // **************
 // CONFIG OBJECTS
@@ -698,18 +698,23 @@ if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
 // })();
 
 /*!
- * JavaScript Cookie v2.1.2
+ * JavaScript Cookie v2.1.3
  * https://github.com/js-cookie/js-cookie
  *
  * Copyright 2006, 2015 Klaus Hartl & Fagner Brack
  * Released under the MIT license
  */
 ;(function (factory) {
+  var registeredInModuleLoader = false;
   if (typeof define === 'function' && define.amd) {
     define(factory);
-  } else if ((typeof exports === 'undefined' ? 'undefined' : _typeof(exports)) === 'object') {
+    registeredInModuleLoader = true;
+  }
+  if (typeof exports === 'object') {
     module.exports = factory();
-  } else {
+    registeredInModuleLoader = true;
+  }
+  if (!registeredInModuleLoader) {
     var OldCookies = window.Cookies;
     var api = window.Cookies = factory();
     api.noConflict = function () {
@@ -717,12 +722,12 @@ if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
       return api;
     };
   }
-})(function () {
-  function extend() {
+}(function () {
+  function extend () {
     var i = 0;
     var result = {};
     for (; i < arguments.length; i++) {
-      var attributes = arguments[i];
+      var attributes = arguments[ i ];
       for (var key in attributes) {
         result[key] = attributes[key];
       }
@@ -730,8 +735,8 @@ if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
     return result;
   }
 
-  function init(converter) {
-    function api(key, value, attributes) {
+  function init (converter) {
+    function api (key, value, attributes) {
       var result;
       if (typeof document === 'undefined') {
         return;
@@ -758,7 +763,8 @@ if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
         } catch (e) {}
 
         if (!converter.write) {
-          value = encodeURIComponent(String(value)).replace(/%(23|24|26|2B|3A|3C|3E|3D|2F|3F|40|5B|5D|5E|60|7B|7D|7C)/g, decodeURIComponent);
+          value = encodeURIComponent(String(value))
+            .replace(/%(23|24|26|2B|3A|3C|3E|3D|2F|3F|40|5B|5D|5E|60|7B|7D|7C)/g, decodeURIComponent);
         } else {
           value = converter.write(value, key);
         }
@@ -767,8 +773,13 @@ if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
         key = key.replace(/%(23|24|26|2B|5E|60|7C)/g, decodeURIComponent);
         key = key.replace(/[\(\)]/g, escape);
 
-        return document.cookie = [key, '=', value, attributes.expires && '; expires=' + attributes.expires.toUTCString(), // use expires attribute, max-age is not supported by IE
-        attributes.path && '; path=' + attributes.path, attributes.domain && '; domain=' + attributes.domain, attributes.secure ? '; secure' : ''].join('');
+        return (document.cookie = [
+          key, '=', value,
+          attributes.expires ? '; expires=' + attributes.expires.toUTCString() : '', // use expires attribute, max-age is not supported by IE
+          attributes.path ? '; path=' + attributes.path : '',
+          attributes.domain ? '; domain=' + attributes.domain : '',
+          attributes.secure ? '; secure' : ''
+        ].join(''));
       }
 
       // Read
@@ -794,7 +805,9 @@ if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
 
         try {
           var name = parts[0].replace(rdecode, decodeURIComponent);
-          cookie = converter.read ? converter.read(cookie, name) : converter(cookie, name) || cookie.replace(rdecode, decodeURIComponent);
+          cookie = converter.read ?
+            converter.read(cookie, name) : converter(cookie, name) ||
+            cookie.replace(rdecode, decodeURIComponent);
 
           if (this.json) {
             try {
@@ -816,11 +829,10 @@ if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
       return result;
     }
 
-    // api.set = api;
-    // api.get = function (key) {
-    //   return api(key);
-    // };
-    api.get = api.set = api;
+    api.set = api;
+    api.get = function (key) {
+      return api.call(api, key);
+    };
     api.getJSON = function () {
       return api.apply({
         json: true
@@ -850,7 +862,7 @@ if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
   }
 
   return init(function () {});
-});
+}));
 
 pxh.Cookies = Cookies.noConflict();
 
@@ -1046,382 +1058,6 @@ pxh.toggleMenu = function (control, target, className) {
         event.preventDefault();
         pxh.changeClasses(target, 'toggle', className);
       });
-    }
-  }
-};
-
-// ********
-// FIRE!!!!
-// ********
-
-pxh.viewResized = document.createEvent('CustomEvent');
-pxh.viewResized.initCustomEvent('pxhViewResized', false, false, {
-  viewResized: true
-});
-
-document.addEventListener('DOMContentLoaded', function (event) {
-  pxh.addResizeSensor('js-view');
-});
-
-// ******
-// DRAWER
-// ******
-
-// **************
-// CONFIG OBJECTS
-// **************
-
-pxh.states = {
-  default: {
-    'pxh-drawer': {
-      add: pxh.DRAWER_HIDDEN_UNTIL_AT_MD + ' ' + pxh.DRAWER_NARROW_AT_MD + ' ' + pxh.DRAWER_WIDE_AT_LG,
-      remove: pxh.DRAWER_NARROW_AT_LG
-    },
-    'pxh-drawer-header__link': {
-      remove: pxh.DRAWER_HEADER_LINK_WIDE_AT_MD,
-      add: pxh.DRAWER_HEADER_LINK_NARROW_AT_MD + ' ' + pxh.DRAWER_HEADER_LINK_WIDE_AT_LG
-    },
-    'pxh-overlay': {
-      add: pxh.OVERLAY_HIDDEN
-    },
-    'pxh-navigation': {
-      add: pxh.NAVIGATION_NARROW_AT_MD + ' ' + pxh.NAVIGATION_WIDE_AT_LG
-    },
-    'pxh-login': {
-      add: pxh.LOGIN_NARROW_AT_MD + ' ' + pxh.LOGIN_WIDE_AT_LG
-    },
-    'pxh-login__name': {
-      add: pxh.LOGIN_NAME_NARROW_AT_MD + ' ' + pxh.LOGIN_NAME_WIDE_AT_LG
-    },
-    'pxh-login__link': {
-      add: pxh.LOGIN_LINK_NARROW_AT_MD + ' ' + pxh.LOGIN_LINK_WIDE_AT_LG
-    },
-    'pxh-login__settings': {
-      add: pxh.LOGIN_SETTINGS_NARROW_AT_MD + ' ' + pxh.LOGIN_SETTINGS_WIDE_AT_LG
-    },
-    'pxh-login__caret': {
-      add: pxh.LOGIN_CARET_NARROW_AT_MD + ' ' + pxh.LOGIN_CARET_WIDE_AT_LG
-    },
-    'pxh-login__notifications': {
-      add: pxh.LOGIN_NOTIFICATIONS_NARROW_AT_MD + ' ' + pxh.LOGIN_NOTIFICATIONS_WIDE_AT_LG
-    },
-    'pxh-view': {
-      remove: pxh.DISABLE_SCROLL_UNTIL_AT_LG + ' ' + pxh.VIEW_WIDE_AT_LG,
-      add: pxh.VIEW_NARROW_AT_LG
-    },
-    'pxh-view-header': {
-      remove: pxh.VIEW_HEADER_WIDE_AT_LG,
-      add: pxh.VIEW_HEADER_NARROW_AT_LG
-    },
-    'pxh-view-header-drawer-toggle': {
-      remove: pxh.VIEW_HEADER_DRAWER_TOGGLE_HIDDEN
-    },
-    'pxh-notifications': {
-      remove: pxh.NOTIFICATIONS_VISIBLE
-    }
-  },
-  open: {
-    'pxh-drawer': {
-      remove: pxh.DRAWER_HIDDEN_UNTIL_AT_MD + ' ' + pxh.DRAWER_NARROW_AT_MD + ' ' + pxh.DRAWER_NARROW_AT_LG,
-      add: pxh.DRAWER_WIDE_AT_LG
-    },
-    'pxh-drawer-header__link': {
-      remove: pxh.DRAWER_HEADER_LINK_NARROW_AT_MD,
-      add: pxh.DRAWER_HEADER_LINK_WIDE_AT_MD + ' ' + pxh.DRAWER_HEADER_LINK_WIDE_AT_LG
-    },
-    'pxh-overlay': {
-      remove: pxh.OVERLAY_HIDDEN
-    },
-    'pxh-navigation': {
-      remove: pxh.NAVIGATION_NARROW_AT_MD,
-      add: pxh.NAVIGATION_WIDE_AT_LG
-    },
-    'pxh-login': {
-      add: pxh.LOGIN_WIDE_AT_LG,
-      remove: pxh.LOGIN_NARROW_AT_MD
-    },
-    'pxh-login__name': {
-      remove: pxh.LOGIN_NAME_NARROW_AT_MD,
-      add: pxh.LOGIN_NAME_WIDE_AT_LG
-    },
-    'pxh-login__link': {
-      remove: pxh.LOGIN_LINK_NARROW_AT_MD + ' ' + pxh.LOGIN_LINK_NARROW_AT_LG
-    },
-    'pxh-login__settings': {
-      remove: pxh.LOGIN_SETTINGS_NARROW_AT_MD,
-      add: pxh.LOGIN_SETTINGS_WIDE_AT_LG
-    },
-    'pxh-login__caret': {
-      remove: pxh.LOGIN_CARET_NARROW_AT_MD,
-      add: pxh.LOGIN_CARET_WIDE_AT_LG
-    },
-    'pxh-login__notifications': {
-      remove: pxh.LOGIN_NOTIFICATIONS_NARROW_AT_MD,
-      add: pxh.LOGIN_NOTIFICATIONS_WIDE_AT_LG
-    },
-    'pxh-view': {
-      add: pxh.DISABLE_SCROLL_UNTIL_AT_LG + ' ' + pxh.VIEW_NARROW_AT_LG,
-      remove: pxh.VIEW_WIDE_AT_LG
-    },
-    'pxh-view-header': {
-      add: pxh.VIEW_HEADER_NARROW_AT_LG,
-      remove: pxh.VIEW_HEADER_WIDE_AT_LG
-    },
-    'pxh-view-header-drawer-toggle': {
-      add: pxh.VIEW_HEADER_DRAWER_TOGGLE_HIDDEN
-    }
-  },
-  narrowAtLg: {
-    'pxh-drawer': {
-      add: pxh.DRAWER_HIDDEN_UNTIL_AT_MD + ' ' + pxh.DRAWER_NARROW_AT_MD + ' ' + pxh.DRAWER_NARROW_AT_LG,
-      remove: pxh.DRAWER_WIDE_AT_LG
-    },
-    'pxh-drawer-header__link': {
-      remove: pxh.DRAWER_HEADER_LINK_WIDE_AT_MD + ' ' + pxh.DRAWER_HEADER_LINK_WIDE_AT_LG,
-      add: pxh.DRAWER_HEADER_LINK_NARROW_AT_MD
-    },
-    'pxh-overlay': {
-      add: pxh.OVERLAY_HIDDEN
-    },
-    'pxh-navigation': {
-      add: pxh.NAVIGATION_NARROW_AT_MD,
-      remove: pxh.NAVIGATION_WIDE_AT_LG
-    },
-    'pxh-login': {
-      add: pxh.LOGIN_NARROW_AT_MD,
-      remove: pxh.LOGIN_WIDE_AT_LG
-    },
-    'pxh-login__name': {
-      add: pxh.LOGIN_NAME_NARROW_AT_MD,
-      remove: pxh.LOGIN_NAME_WIDE_AT_LG
-    },
-    'pxh-login__link': {
-      add: pxh.LOGIN_LINK_NARROW_AT_MD,
-      remove: pxh.LOGIN_LINK_WIDE_AT_LG
-    },
-    'pxh-login__settings': {
-      add: pxh.LOGIN_SETTINGS_NARROW_AT_MD,
-      remove: pxh.LOGIN_SETTINGS_WIDE_AT_LG
-    },
-    'pxh-login__caret': {
-      add: pxh.LOGIN_CARET_NARROW_AT_MD,
-      remove: pxh.LOGIN_CARET_WIDE_AT_LG
-    },
-    'pxh-login__notifications': {
-      add: pxh.LOGIN_NOTIFICATIONS_NARROW_AT_MD,
-      remove: pxh.LOGIN_NOTIFICATIONS_WIDE_AT_LG
-    },
-    'pxh-view': {
-      remove: pxh.DISABLE_SCROLL_UNTIL_AT_LG + ' ' + pxh.VIEW_NARROW_AT_LG,
-      add: pxh.VIEW_WIDE_AT_LG
-    },
-    'pxh-view-header': {
-      remove: pxh.VIEW_HEADER_NARROW_AT_LG,
-      add: pxh.VIEW_HEADER_WIDE_AT_LG
-    },
-    'pxh-view-header-drawer-toggle': {
-      remove: pxh.VIEW_HEADER_DRAWER_TOGGLE_HIDDEN
-    },
-    'pxh-notifications': {
-      remove: pxh.NOTIFICATIONS_VISIBLE
-    }
-  }
-};
-
-pxh.transitions = {
-  outToIn: {
-    'pxh-drawer': {
-      add: pxh.DRAWER_ANIMATE_IN
-    }
-  },
-  inToOut: {
-    'pxh-drawer': {
-      add: pxh.DRAWER_ANIMATE_OUT
-    }
-  },
-  narrowToOpen: {
-    'pxh-drawer': {
-      add: pxh.DRAWER_ANIMATE_WIDE
-    },
-    'pxh-drawer-header__link': {
-      add: pxh.DRAWER_HEADER_LINK_ANIMATE_IN
-    },
-    'pxh-navigation__item-text': {
-      add: pxh.NAVIGATION_ITEM_TEXT_ANIMATE_IN
-    },
-    'pxh-navigation__sub-link': {
-      add: pxh.NAVIGATION_SUB_LINK_ANIMATE_IN
-    },
-    'pxh-login__name': {
-      add: pxh.LOGIN_NAME_ANIMATE_IN
-    },
-    'pxh-login__caret': {
-      add: pxh.LOGIN_CARET_ANIMATE_IN
-    },
-    'pxh-login__settings': {
-      add: pxh.LOGIN_SETTINGS_ANIMATE_IN
-    },
-    'pxh-login__notifications': {
-      add: pxh.LOGIN_NOTIFICATIONS_ANIMATE_IN
-    }
-  },
-  openToNarrow: {
-    'pxh-drawer': {
-      add: pxh.DRAWER_ANIMATE_NARROW
-    },
-    'pxh-drawer-header__link': {
-      add: pxh.DRAWER_HEADER_LINK_ANIMATE_OUT
-    },
-    'pxh-navigation__item-text': {
-      add: pxh.NAVIGATION_ITEM_TEXT_ANIMATE_OUT
-    },
-    'pxh-navigation__sub-link': {
-      add: pxh.NAVIGATION_SUB_LINK_ANIMATE_OUT
-    },
-    'pxh-login__name': {
-      add: pxh.LOGIN_NAME_ANIMATE_OUT
-    },
-    'pxh-login__caret': {
-      add: pxh.LOGIN_CARET_ANIMATE_OUT
-    },
-    'pxh-login__settings': {
-      add: pxh.LOGIN_SETTINGS_ANIMATE_OUT
-    },
-    'pxh-login__notifications': {
-      add: pxh.LOGIN_NOTIFICATIONS_ANIMATE_OUT
-    }
-  },
-  outToNarrow: {
-    'pxh-drawer': {
-      add: pxh.DRAWER_ANIMATE_IN
-    },
-    'pxh-view': {
-      add: pxh.VIEW_ANIMATE_FULL_TO_WIDE
-    },
-    'pxh-view-header': {
-      add: pxh.VIEW_HEADER_ANIMATE_FULL_TO_WIDE
-    }
-  },
-  narrowToOut: {
-    'pxh-drawer': {
-      add: pxh.DRAWER_ANIMATE_OUT_WIDE
-    },
-    'pxh-drawer-header__link': {
-      add: pxh.DRAWER_HEADER_LINK_ANIMATE_IN
-    },
-    'pxh-navigation__item-text': {
-      add: pxh.NAVIGATION_ITEM_TEXT_ANIMATE_IN
-    },
-    'pxh-navigation__sub-link': {
-      add: pxh.NAVIGATION_SUB_LINK_ANIMATE_IN
-    },
-    'pxh-login__name': {
-      add: pxh.LOGIN_NAME_ANIMATE_IN
-    },
-    'pxh-login__caret': {
-      add: pxh.LOGIN_CARET_ANIMATE_IN
-    },
-    'pxh-login__settings': {
-      add: pxh.LOGIN_SETTINGS_ANIMATE_IN
-    },
-    'pxh-login__notifications': {
-      add: pxh.LOGIN_NOTIFICATIONS_ANIMATE_IN
-    }
-  },
-  wideToNarrow: {
-    'pxh-drawer': {
-      add: pxh.DRAWER_ANIMATE_NARROW
-    },
-    'pxh-drawer-header__link': {
-      add: pxh.DRAWER_HEADER_LINK_ANIMATE_OUT
-    },
-    'pxh-navigation__item-text': {
-      add: pxh.NAVIGATION_ITEM_TEXT_ANIMATE_OUT
-    },
-    'pxh-navigation__sub-link': {
-      add: pxh.NAVIGATION_SUB_LINK_ANIMATE_OUT
-    },
-    'pxh-login__name': {
-      add: pxh.LOGIN_NAME_ANIMATE_OUT
-    },
-    'pxh-login__caret': {
-      add: pxh.LOGIN_CARET_ANIMATE_OUT
-    },
-    'pxh-login__settings': {
-      add: pxh.LOGIN_SETTINGS_ANIMATE_OUT
-    },
-    'pxh-login__notifications': {
-      add: pxh.LOGIN_NOTIFICATIONS_ANIMATE_OUT
-    },
-    'pxh-view': {
-      add: pxh.VIEW_ANIMATE_WIDE
-    },
-    'pxh-view-header': {
-      add: pxh.VIEW_HEADER_ANIMATE_WIDE
-    }
-  },
-  narrowToWide: {
-    'pxh-drawer': {
-      add: pxh.DRAWER_ANIMATE_WIDE
-    },
-    'pxh-drawer-header__link': {
-      add: pxh.DRAWER_HEADER_LINK_ANIMATE_IN
-    },
-    'pxh-navigation__item-text': {
-      add: pxh.NAVIGATION_ITEM_TEXT_ANIMATE_IN
-    },
-    'pxh-navigation__sub-link': {
-      add: pxh.NAVIGATION_SUB_LINK_ANIMATE_IN
-    },
-    'pxh-login__name': {
-      add: pxh.LOGIN_NAME_ANIMATE_IN
-    },
-    'pxh-login__caret': {
-      add: pxh.LOGIN_CARET_ANIMATE_IN
-    },
-    'pxh-login__settings': {
-      add: pxh.LOGIN_SETTINGS_ANIMATE_IN
-    },
-    'pxh-login__notifications': {
-      add: pxh.LOGIN_NOTIFICATIONS_ANIMATE_IN
-    },
-    'pxh-view': {
-      add: pxh.VIEW_ANIMATE_NARROW
-    },
-    'pxh-view-header': {
-      add: pxh.VIEW_HEADER_ANIMATE_NARROW
-    }
-  },
-  clearAll: {
-    'pxh-drawer': {
-      remove: pxh.DRAWER_ANIMATE_IN + ' ' + pxh.DRAWER_ANIMATE_OUT + ' ' + pxh.DRAWER_ANIMATE_NARROW + ' ' + pxh.DRAWER_ANIMATE_WIDE + ' ' + pxh.DRAWER_ANIMATE_OUT_WIDE
-    },
-    'pxh-drawer-header__link': {
-      remove: pxh.DRAWER_HEADER_LINK_ANIMATE_IN + ' ' + pxh.DRAWER_HEADER_LINK_ANIMATE_OUT
-    },
-    'pxh-navigation__item-text': {
-      remove: pxh.NAVIGATION_ITEM_TEXT_ANIMATE_IN + ' ' + pxh.NAVIGATION_ITEM_TEXT_ANIMATE_OUT
-    },
-    'pxh-navigation__sub-link': {
-      remove: pxh.NAVIGATION_SUB_LINK_ANIMATE_IN + ' ' + pxh.NAVIGATION_SUB_LINK_ANIMATE_OUT
-    },
-    'pxh-login__name': {
-      remove: pxh.LOGIN_NAME_ANIMATE_IN + ' ' + pxh.LOGIN_NAME_ANIMATE_OUT
-    },
-    'pxh-login__caret': {
-      remove: pxh.LOGIN_CARET_ANIMATE_IN + ' ' + pxh.LOGIN_CARET_ANIMATE_OUT
-    },
-    'pxh-login__settings': {
-      remove: pxh.LOGIN_SETTINGS_ANIMATE_IN + ' ' + pxh.LOGIN_SETTINGS_ANIMATE_OUT
-    },
-    'pxh-login__notifications': {
-      remove: pxh.LOGIN_NOTIFICATIONS_ANIMATE_IN + ' ' + pxh.LOGIN_NOTIFICATIONS_ANIMATE_OUT
-    },
-    'pxh-view': {
-      remove: pxh.VIEW_ANIMATE_WIDE + ' ' + pxh.VIEW_ANIMATE_NARROW + ' ' + pxh.VIEW_ANIMATE_FULL_TO_WIDE
-    },
-    'pxh-view-header': {
-      remove: pxh.VIEW_HEADER_ANIMATE_WIDE + ' ' + pxh.VIEW_HEADER_ANIMATE_NARROW + ' ' + pxh.VIEW_HEADER_ANIMATE_FULL_TO_WIDE
     }
   }
 };
@@ -1671,69 +1307,6 @@ pxh.toggleLoginMenu = function (toggleControl, toggleTarget, toggleClass) {
     }
   }
 };
-
-// ********
-// FIRE!!!!
-// ********
-
-var lgBreakpoint = window.matchMedia('(min-width: 1024px)');
-var mdBreakpoint = window.matchMedia('(min-width: 768px)');
-
-document.addEventListener('DOMContentLoaded', function (event) {
-  if (document.getElementById('js-drawer')) {
-    lgBreakpoint.addListener(pxh.breakpointAtLg);
-    mdBreakpoint.addListener(pxh.breakpointAtMd);
-  }
-  pxh.drawerOpened = document.createEvent('CustomEvent');
-  pxh.drawerOpened.initCustomEvent('pxhDrawerOpened', false, false, {
-    drawerOpened: true
-  });
-
-  pxh.drawerClosed = document.createEvent('CustomEvent');
-  pxh.drawerClosed.initCustomEvent('pxhDrawerClosed', false, false, {
-    drawerClosed: true
-  });
-
-  pxh.bindControl(pxh.VIEW_HEADER_DRAWER_TOGGLE);
-  pxh.bindControl(pxh.DRAWER_TOGGLE);
-
-  if (pxh.Cookies.get('pxh-drawer-open') === null) {
-    pxh.Cookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/' });
-  }
-
-  if (pxh.Cookies.get('pxh-drawer-narrow') === null) {
-    pxh.Cookies.set('pxh-drawer-narrow', 'false', { expires: 1, path: '/' });
-  }
-
-  // check if the 'narrow' cookie is set and if we're currently at the desktop breakpoint
-  if (window.matchMedia('(min-width: 1024px)').matches && pxh.Cookies.get('pxh-drawer-narrow') === 'true') {
-    // toggle the drawer closed
-    pxh.loadState(pxh.states, 'narrowAtLg');
-    document.dispatchEvent(pxh.drawerClosed);
-    pxh.Cookies.set('pxh-drawer-narrow', 'true', { expires: 1, path: '/' });
-  } else if (window.matchMedia('(min-width: 1024px)').matches) {
-    pxh.Cookies.set('pxh-drawer-open', 'true', { expires: 1, path: '/' });
-  } else {
-    pxh.Cookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/' });
-  }
-  document.addEventListener('navRefreshed', function (event) {
-    pxh.toggleLoginMenu(pxh.LOGIN_PROFILE_LINK, pxh.LOGIN_MENU_PROFILE, pxh.LOGIN_MENU_VISIBLE);
-    pxh.toggleLoginMenu(pxh.LOGIN_SETTINGS_LINK, pxh.LOGIN_MENU_SETTINGS, pxh.LOGIN_MENU_VISIBLE);
-  });
-
-  pxh.bindDrawerMediaQueryControls(pxh.NAVIGATION_LINK, lgBreakpoint);
-  pxh.bindDrawerMediaQueryControls(pxh.NAVIGATION_SUB_LINK, lgBreakpoint);
-
-  pxh.overlayDrawerControl();
-
-  pxh.escapeDrawerControl();
-
-  pxh.action.clickToCloseAndFire(pxh.LOGIN_PROFILE_LINK, pxh.LOGIN_MENU_PROFILE, 'remove', pxh.LOGIN_MENU_VISIBLE);
-  pxh.action.clickToCloseAndFire(pxh.LOGIN_SETTINGS_LINK, pxh.LOGIN_MENU_SETTINGS, 'remove', pxh.LOGIN_MENU_VISIBLE);
-
-  pxh.toggleLoginMenu(pxh.LOGIN_PROFILE_LINK, pxh.LOGIN_MENU_PROFILE, pxh.LOGIN_MENU_VISIBLE);
-  pxh.toggleLoginMenu(pxh.LOGIN_SETTINGS_LINK, pxh.LOGIN_MENU_SETTINGS, pxh.LOGIN_MENU_VISIBLE);
-});
 
 // ******
 // TOASTS
@@ -2329,6 +1902,79 @@ pxh.toast = {
 // ********
 // FIRE!!!!
 // ********
+
+pxh.viewResized = document.createEvent('CustomEvent');
+pxh.viewResized.initCustomEvent('pxhViewResized', false, false, {
+  viewResized: true
+});
+
+document.addEventListener('DOMContentLoaded', function (event) {
+  pxh.addResizeSensor('js-view');
+});
+
+
+// ********
+// FIRE!!!!
+// ********
+
+var lgBreakpoint = window.matchMedia('(min-width: 1024px)');
+var mdBreakpoint = window.matchMedia('(min-width: 768px)');
+
+document.addEventListener('DOMContentLoaded', function (event) {
+  if (document.getElementById('js-drawer')) {
+    lgBreakpoint.addListener(pxh.breakpointAtLg);
+    mdBreakpoint.addListener(pxh.breakpointAtMd);
+  }
+  pxh.drawerOpened = document.createEvent('CustomEvent');
+  pxh.drawerOpened.initCustomEvent('pxhDrawerOpened', false, false, {
+    drawerOpened: true
+  });
+
+  pxh.drawerClosed = document.createEvent('CustomEvent');
+  pxh.drawerClosed.initCustomEvent('pxhDrawerClosed', false, false, {
+    drawerClosed: true
+  });
+
+  pxh.bindControl(pxh.VIEW_HEADER_DRAWER_TOGGLE);
+  pxh.bindControl(pxh.DRAWER_TOGGLE);
+
+  if (pxh.Cookies.get('pxh-drawer-open') === null) {
+    pxh.Cookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/' });
+  }
+
+  if (pxh.Cookies.get('pxh-drawer-narrow') === null) {
+    pxh.Cookies.set('pxh-drawer-narrow', 'false', { expires: 1, path: '/' });
+  }
+
+  // check if the 'narrow' cookie is set and if we're currently at the desktop breakpoint
+  if (window.matchMedia('(min-width: 1024px)').matches && pxh.Cookies.get('pxh-drawer-narrow') === 'true') {
+    // toggle the drawer closed
+    pxh.loadState(pxh.states, 'narrowAtLg');
+    document.dispatchEvent(pxh.drawerClosed);
+    pxh.Cookies.set('pxh-drawer-narrow', 'true', { expires: 1, path: '/' });
+  } else if (window.matchMedia('(min-width: 1024px)').matches) {
+    pxh.Cookies.set('pxh-drawer-open', 'true', { expires: 1, path: '/' });
+  } else {
+    pxh.Cookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/' });
+  }
+  document.addEventListener('navRefreshed', function (event) {
+    pxh.toggleLoginMenu(pxh.LOGIN_PROFILE_LINK, pxh.LOGIN_MENU_PROFILE, pxh.LOGIN_MENU_VISIBLE);
+    pxh.toggleLoginMenu(pxh.LOGIN_SETTINGS_LINK, pxh.LOGIN_MENU_SETTINGS, pxh.LOGIN_MENU_VISIBLE);
+  });
+
+  pxh.bindDrawerMediaQueryControls(pxh.NAVIGATION_LINK, lgBreakpoint);
+  pxh.bindDrawerMediaQueryControls(pxh.NAVIGATION_SUB_LINK, lgBreakpoint);
+
+  pxh.overlayDrawerControl();
+
+  pxh.escapeDrawerControl();
+
+  pxh.action.clickToCloseAndFire(pxh.LOGIN_PROFILE_LINK, pxh.LOGIN_MENU_PROFILE, 'remove', pxh.LOGIN_MENU_VISIBLE);
+  pxh.action.clickToCloseAndFire(pxh.LOGIN_SETTINGS_LINK, pxh.LOGIN_MENU_SETTINGS, 'remove', pxh.LOGIN_MENU_VISIBLE);
+
+  pxh.toggleLoginMenu(pxh.LOGIN_PROFILE_LINK, pxh.LOGIN_MENU_PROFILE, pxh.LOGIN_MENU_VISIBLE);
+  pxh.toggleLoginMenu(pxh.LOGIN_SETTINGS_LINK, pxh.LOGIN_MENU_SETTINGS, pxh.LOGIN_MENU_VISIBLE);
+});
 
 document.addEventListener('DOMContentLoaded', function (event) {
   pxh.toggleMenu(pxh.LOGIN_NOTIFICATIONS, pxh.NOTIFICATIONS, pxh.NOTIFICATIONS_VISIBLE);

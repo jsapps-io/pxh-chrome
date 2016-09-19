@@ -1,5 +1,5 @@
 @charset "UTF-8";
-/*! pxh-chrome-rtl.css 2.1.2 */
+/*! pxh-chrome-rtl.css 2.1.3 */
 /*------------------------------------*    #pxh-chrome-rtl
 \*------------------------------------*/
 /*------------------------------------*    #settings.defaults
@@ -6663,7 +6663,7 @@ sub {
   text-decoration: none;
 }
 
-/*------------------------------------*    #overrides.pxh-theme
+/*------------------------------------*    #overrides.px-theme
 \*------------------------------------*/
 html {
   background-color: #525156 !important;
