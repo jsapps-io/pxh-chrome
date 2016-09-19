@@ -1,6 +1,6 @@
 #pxh-chrome changelog
 
-### pending release
+### 2.1.3 - September 19, 2016
 * Bump versions on node modules
 * Bump JavaScript Cookie library to 2.1.3
 * Remove duplicate Javascript for drawer behavior
