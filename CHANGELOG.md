@@ -1,6 +1,8 @@
 #pxh-chrome changelog
 
 ### pending release
+* Bump versions on node modules
+* Bump JavaScript Cookie library to 2.1.3
 * Remove duplicate Javascript for drawer behavior
 * Move all "fire" Javascript to bottom of `pxh-chrome.js`
 * Fix a number of linting errors in Sass manifests
