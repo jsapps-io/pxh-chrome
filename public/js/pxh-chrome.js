@@ -698,18 +698,23 @@ if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
 // })();
 
 /*!
- * JavaScript Cookie v2.1.2
+ * JavaScript Cookie v2.1.3
  * https://github.com/js-cookie/js-cookie
  *
  * Copyright 2006, 2015 Klaus Hartl & Fagner Brack
  * Released under the MIT license
  */
 ;(function (factory) {
+  var registeredInModuleLoader = false;
   if (typeof define === 'function' && define.amd) {
     define(factory);
-  } else if ((typeof exports === 'undefined' ? 'undefined' : _typeof(exports)) === 'object') {
+    registeredInModuleLoader = true;
+  }
+  if (typeof exports === 'object') {
     module.exports = factory();
-  } else {
+    registeredInModuleLoader = true;
+  }
+  if (!registeredInModuleLoader) {
     var OldCookies = window.Cookies;
     var api = window.Cookies = factory();
     api.noConflict = function () {
@@ -717,12 +722,12 @@ if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
       return api;
     };
   }
-})(function () {
-  function extend() {
+}(function () {
+  function extend () {
     var i = 0;
     var result = {};
     for (; i < arguments.length; i++) {
-      var attributes = arguments[i];
+      var attributes = arguments[ i ];
       for (var key in attributes) {
         result[key] = attributes[key];
       }
@@ -730,8 +735,8 @@ if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
     return result;
   }
 
-  function init(converter) {
-    function api(key, value, attributes) {
+  function init (converter) {
+    function api (key, value, attributes) {
       var result;
       if (typeof document === 'undefined') {
         return;
@@ -758,7 +763,8 @@ if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
         } catch (e) {}
 
         if (!converter.write) {
-          value = encodeURIComponent(String(value)).replace(/%(23|24|26|2B|3A|3C|3E|3D|2F|3F|40|5B|5D|5E|60|7B|7D|7C)/g, decodeURIComponent);
+          value = encodeURIComponent(String(value))
+            .replace(/%(23|24|26|2B|3A|3C|3E|3D|2F|3F|40|5B|5D|5E|60|7B|7D|7C)/g, decodeURIComponent);
         } else {
           value = converter.write(value, key);
         }
@@ -767,8 +773,13 @@ if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
         key = key.replace(/%(23|24|26|2B|5E|60|7C)/g, decodeURIComponent);
         key = key.replace(/[\(\)]/g, escape);
 
-        return document.cookie = [key, '=', value, attributes.expires && '; expires=' + attributes.expires.toUTCString(), // use expires attribute, max-age is not supported by IE
-        attributes.path && '; path=' + attributes.path, attributes.domain && '; domain=' + attributes.domain, attributes.secure ? '; secure' : ''].join('');
+        return (document.cookie = [
+          key, '=', value,
+          attributes.expires ? '; expires=' + attributes.expires.toUTCString() : '', // use expires attribute, max-age is not supported by IE
+          attributes.path ? '; path=' + attributes.path : '',
+          attributes.domain ? '; domain=' + attributes.domain : '',
+          attributes.secure ? '; secure' : ''
+        ].join(''));
       }
 
       // Read
@@ -794,7 +805,9 @@ if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
 
         try {
           var name = parts[0].replace(rdecode, decodeURIComponent);
-          cookie = converter.read ? converter.read(cookie, name) : converter(cookie, name) || cookie.replace(rdecode, decodeURIComponent);
+          cookie = converter.read ?
+            converter.read(cookie, name) : converter(cookie, name) ||
+            cookie.replace(rdecode, decodeURIComponent);
 
           if (this.json) {
             try {
@@ -816,11 +829,10 @@ if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
       return result;
     }
 
-    // api.set = api;
-    // api.get = function (key) {
-    //   return api(key);
-    // };
-    api.get = api.set = api;
+    api.set = api;
+    api.get = function (key) {
+      return api.call(api, key);
+    };
     api.getJSON = function () {
       return api.apply({
         json: true
@@ -850,7 +862,7 @@ if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
   }
 
   return init(function () {});
-});
+}));
 
 pxh.Cookies = Cookies.noConflict();
 
