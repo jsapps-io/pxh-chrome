@@ -6,47 +6,47 @@
 
 // ** #SETTINGS ** //
 
-/// Define whether the application is rendering in a "left-to-right" language or a "right-to-left" language
+/// Define whether the application is rendering in a 'left-to-right' language or a 'right-to-left' language
 /// @group pxh-settings
 /// @type String [default] 'ltr'
-$pxh-language-direction : 'rtl'; // 'ltr' OR 'rtl'
+$pxh-language-direction: 'rtl'; // 'ltr' OR 'rtl'
 
-@import "settings.defaults.scss";
-@import "settings.pxh-chrome.scss";
+@import 'settings.defaults';
+@import 'settings.pxh-chrome';
 
 // ** #GENERIC ** //
 
-@import "generic.normalize.scss";
+@import 'generic.normalize';
 /// Path to GE web fonts
 /// @group pxh-settings
 /// @type String [default] - Webfont path
 $webfont-path: '//dzlpbrbc7yvq0.cloudfront.net/px/fonts/1.0.0';
-@import "generic.fonts.scss";
-@import "generic.defaults.scss";
+@import 'generic.fonts';
+@import 'generic.defaults';
 
 // ** #TOOLS ** //
 
 /// List of media query breakpoints
 /// @group pxh-settings
-$mq-breakpoints : (
-  md :  768px,
-  lg : 1024px,
+$mq-breakpoints: (
+  md:  768px,
+  lg: 1024px,
 );
-@import "sass-mq/mq.scss"; // our sass task includes /bower_components automatically so we don't need to specify it
+@import 'sass-mq/mq'; // our sass task includes /bower_components automatically so we don't need to specify it
 /// Path to Font Awesome fonts
 /// @group pxh-settings
 /// @type String
-$fa-font-path : "//dzlpbrbc7yvq0.cloudfront.net/libs/font-awesome/4.6.3/fonts";
-@import "font-awesome/scss/font-awesome.scss"; // our sass task includes /bower_components automatically so we don't need to specify it
-@import "tools.pxh-animations.scss";
-@import "tools.pxh-mixins.scss";
+$fa-font-path: '//dzlpbrbc7yvq0.cloudfront.net/libs/font-awesome/4.6.3/fonts';
+@import 'font-awesome/scss/font-awesome'; // our sass task includes /bower_components automatically so we don't need to specify it
+@import 'tools.pxh-animations';
+@import 'tools.pxh-mixins';
 
 // ** #ELEMENTS ** //
 
-@import "elements.body.scss";
-@import "elements.links.scss";
-@import "elements.hr.scss";
-@import "elements.typography.scss";
+@import 'elements.body';
+@import 'elements.links';
+@import 'elements.hr';
+@import 'elements.typography';
 
 html {
   background-color: $gray10;
@@ -91,6 +91,6 @@ $error-padding-top: $inuit-base-spacing-unit * 2;
 /// @type String
 $error-link-text-decoration: underline;
 
-@import "components.pxh-error.scss";
+@import 'components.pxh-error';
 
 // ** #OVERRIDES ** //
