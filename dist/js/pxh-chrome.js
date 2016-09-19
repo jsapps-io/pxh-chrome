@@ -1,11 +1,13 @@
 'use strict';
-/*! common.pxh-chrome.js 2.1.2 */
+/*! common.pxh-chrome.js 2.1.3 */
 
 // **************
 // CONFIG OBJECTS
 // **************
 
 /** @namespace pxh */
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
 
 var pxh = {};
 
@@ -698,18 +700,23 @@ if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
 // })();
 
 /*!
- * JavaScript Cookie v2.1.2
+ * JavaScript Cookie v2.1.3
  * https://github.com/js-cookie/js-cookie
  *
  * Copyright 2006, 2015 Klaus Hartl & Fagner Brack
  * Released under the MIT license
  */
 ;(function (factory) {
+  var registeredInModuleLoader = false;
   if (typeof define === 'function' && define.amd) {
     define(factory);
-  } else if ((typeof exports === 'undefined' ? 'undefined' : _typeof(exports)) === 'object') {
+    registeredInModuleLoader = true;
+  }
+  if ((typeof exports === 'undefined' ? 'undefined' : _typeof(exports)) === 'object') {
     module.exports = factory();
-  } else {
+    registeredInModuleLoader = true;
+  }
+  if (!registeredInModuleLoader) {
     var OldCookies = window.Cookies;
     var api = window.Cookies = factory();
     api.noConflict = function () {
@@ -767,8 +774,8 @@ if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
         key = key.replace(/%(23|24|26|2B|5E|60|7C)/g, decodeURIComponent);
         key = key.replace(/[\(\)]/g, escape);
 
-        return document.cookie = [key, '=', value, attributes.expires && '; expires=' + attributes.expires.toUTCString(), // use expires attribute, max-age is not supported by IE
-        attributes.path && '; path=' + attributes.path, attributes.domain && '; domain=' + attributes.domain, attributes.secure ? '; secure' : ''].join('');
+        return document.cookie = [key, '=', value, attributes.expires ? '; expires=' + attributes.expires.toUTCString() : '', // use expires attribute, max-age is not supported by IE
+        attributes.path ? '; path=' + attributes.path : '', attributes.domain ? '; domain=' + attributes.domain : '', attributes.secure ? '; secure' : ''].join('');
       }
 
       // Read
@@ -816,11 +823,10 @@ if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
       return result;
     }
 
-    // api.set = api;
-    // api.get = function (key) {
-    //   return api(key);
-    // };
-    api.get = api.set = api;
+    api.set = api;
+    api.get = function (key) {
+      return api.call(api, key);
+    };
     api.getJSON = function () {
       return api.apply({
         json: true
