@@ -6662,7 +6662,7 @@ sub {
   text-decoration: none;
 }
 
-/*------------------------------------*    #overrides.pxh-theme
+/*------------------------------------*    #overrides.px-theme
 \*------------------------------------*/
 html {
   background-color: #525156 !important;
