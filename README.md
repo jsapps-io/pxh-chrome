@@ -15,6 +15,11 @@ pxh-chrome is the CSS/HTML layer of [ui-app-hub](https://github.build.ge.com/hub
 * `pxh-wrapper` - an element that wraps around the view header and view in your Microapp
 * `pxh-view-header` - a fixed top header that should display a user's context within a microapp, potentially with a px-context-browser component
 * `pxh-view` - a flexible, responsive target container for all microapp content
+* `pxh-toasts` - Configurable messages to the user that "toast" in the upper-right corner of their web browser
+* `pxh-notifications` - List of user's unacknowledged messages that persist in a menu accessible in the lower-left corner of their web browser
+
+### [Screencast Introduction to pxh-chrome](https://ge.box.com/s/3ffmgwpntrbd6gjenw4zzqzkh1v2f387)
+### [Introduction Slides](https://github.build.ge.com/pages/212326609/pxh-chrome-intro)
 
 ##Using pxh-chrome
 ###Use pxh-chrome on its own
