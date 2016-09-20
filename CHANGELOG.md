@@ -1,6 +1,6 @@
 #pxh-chrome changelog
 
-### pending release
+### 2.1.4 - September 20, 2016
 * Update README
   * Add `pxh-toasts` and `pxh-notifications` to list of primary components
   * Add links to introductory screencast and slides
