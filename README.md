@@ -40,6 +40,23 @@ pxh-chrome is the CSS/HTML layer of [ui-app-hub](https://github.build.ge.com/hub
 **Need a more robust prototyping environment?** Try [Propeller-Px](https://github.build.ge.com/212326609/propeller-px), which includes pxh-chrome along with server-side templating, jQuery, Bootstrap, GitHub Pages hosting, etc.
 
 ###Use pxh-chrome in your project
+
+####Use the CDN
+
+The easiest way to drop pxh-chrome into your project is via the CDN. Simply drop `pxh-chrome.css` and `pxh-chrome.js` into your HTML file with the following lines:
+
+```html
+<link rel="stylesheet" href="//dzlpbrbc7yvq0.cloudfront.net/pxh-chrome/2.1.3/dist/css/pxh-chrome.min.css">
+```
+
+```html
+<script src="//dzlpbrbc7yvq0.cloudfront.net/pxh-chrome/2.1.3/dist/js/pxh-chrome.min.js"></script>
+```
+
+Then, update your HTML to use pxh-chrome's markup and classes. Refer to the source code of `index.html` for examples.
+
+####Use Bower
+
 Add pxh-chrome to your project using Bower:
 
 ```bash
@@ -56,7 +73,21 @@ Add `pxh-chrome.css` and `pxh-chrome.js` to your HTML file:
 <script src="bower_components/pxh-chrome/dist/js/pxh-chrome.js"></script>
 ```
 
-Finally, update your HTML to use pxh-chrome's markup and classes. Refer to the source code of `index.html` for the full and proper way of doing this.
+Then, update your HTML to use pxh-chrome's markup and classes. Refer to the source code of `index.html` for examples.
+
+####What files should I use?
+
+The following CSS files are available on the CDN or as a local dependency via Bower:
+
+* `pxh-chrome.min.css` - Default pxh-chrome styles in minified, compressed CSS (recommended in production)
+* `pxh-chrome.css` - Default styles in expanded, readable, commented CSS (recommended for development)
+* `pxh-chrome-rtl.min.css` - Experimental pxh-chrome layout for right-to-left languages (minified)
+* `pxh-chrome-rtl.css` - Experimental layout for right-to-left-languages (expanded)
+
+The following JS files are available via CDN or Bower:
+
+* `pxh-chrome.min.js` - pxh-chrome scripts in minified, compressed Javascript (recommended in production)
+* `pxh-chrome.js` - Scripts in expanded Javascript (recommended for development)
 
 ##Design Philosophy
 Harry Roberts' [discovr](https://github.com/csswizardry/discovr/tree/correct) application from his CSS Architecture workshop is a great reference that encapsulates much of our markup and style goals with pxh-chrome.
