@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>pxh-chrome 2.1.4 | pxh-drawer</title>
+    <title>pxh-chrome 2.1.4 | Error State</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -215,168 +215,42 @@
       <div class="pxh-view-header pxh-view-header--wide@md pxh-view-header--narrow@lg pxh-view-header--nudge-until@md">
         <h1 class="pxh-view-header__title">
           <a href="index.html" class="pxh-view-header__title-link">
-            Drawer, View &amp; View Header Documentation
+            Error State
           </a>
         </h1>
       </div>
       <div class="pxh-view pxh-view--wide@md pxh-view--narrow@lg" id="js-view">
-
         <div class="pxh-docs">
+          <h1>Error State</h1>
 
-          <h2>pxh-drawer &mdash; <a href="demo-drawer.html">view demo</a></h2>
+          <h2>pxh-error &mdash; <a href="error-postchrome.html">demo</a> | <a href="error-chromeless.html">chromeless demo</a></h2>
 
-          <h4>Show a narrow drawer at tablet widths and above</h4>
+          <p>Use the following markup to display a full-screen error state in your microapp:</p>
 
-          <p>To enable the persistent, narrow sidebar treatment at tablet-width breakpoints (approximately 768px) and above, locate the <code>pxh-navigation</code>-classed element and add the responsive modifier class <code>pxh-navigation--narrow@md</code> to it. This class should be hard-coded, and does not need to be toggled with Javascript.</p>
+          <pre><code>&lt;div class="pxh-wrapper"&gt;
+  &lt;div class="pxh-view-header pxh-view-header--wide@md pxh-view-header--narrow@lg pxh-view-header--nudge-until@md"&gt;
+  &lt;/div&gt;
+  &lt;div class="pxh-view pxh-view--wide@md pxh-view--narrow@lg pxh-view--white" id="js-view"&gt;
+    &lt;div class="pxh-error pxh-error@md pxh-error@lg"&gt;
+      &lt;div class="pxh-error__icon"&gt;
+        &lt;i class="fa fa-exclamation-circle"&gt;&lt;/i&gt;
+      &lt;/div&gt;
+      &lt;h1 class="pxh-error__title"&gt;
+        This is my error title.
+      &lt;/h1&gt;
+      &lt;p class="pxh-error__description"&gt;
+        Here is an &lt;a href="#"&gt;error action&lt;/a&gt;.
+      &lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
 
-          <h4>Javascript:</h4>
-
-          <p>When the user clicks <code>.pxh-drawer-toggle__link</code> or <code>.pxh-view-header-drawer-toggle__link</code>&hellip;</p>
-
-          <ul>
-            <li>Find <code>.pxh-drawer</code> and toggle the classes <code>pxh-drawer--hidden-until@md</code> and <code>pxh-drawer--narrow@md</code> on it.</li>
-          </ul>
-          
-          <h4>Sass:</h4>
-
-          <pre><code>// Set the default styles for the wide/active state of the drawer.
-  .pxh-drawer {
-    z-index: 1000;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: $pxh-drawer-width-wide;
-    height: 100%;
-    background-color: $pxh-drawer-bg-color;
-    transition: all 500ms ease-out;
-  }
-
-  // Keep the inactive drawer hidden off-screen until the @md (tablet) breakpoint.
-  @include mq($until: md) {
-    .pxh-drawer--hidden-until\@md {
-      left: ($pxh-drawer-width-wide * -1);
-    }
-  }
-
-  // From the @md (tablet) breakpoint and wider,
-  // the inactive drawer is displayed in its narrow state.
-  // Remove this class to display the drawer in its wide state.
-  @include mq($from: md) {
-    .pxh-drawer--narrow\@md {
-      width: $pxh-drawer-width-narrow;
-    }
-  }</code></pre>
-
-          <hr>
-
-          <h2>pxh-view and pxh-view-header</h2>
-
-          <h4>Changing the default background color of pxh-view</h4>
-
-          <p>By default, pxh-view is transparent and gets its background color from the background color of the HTML <code>body</code> element, which is set to a light gray color from Predix UI.</p>
-
-          <p>If you wish to override this default color, you can apply a modifier class to your pxh-view element. For example:</p>
-
-          <pre><code>&lt;section class="pxh-view <strong>pxh-view--gray7</strong> pxh-view--wide@md pxh-view--narrow@lg" id="js-view"&gt;
-    &lt;p&gt;This screen demonstrates &lt;code&gt;pxh-view&lt;/code&gt; with the &lt;code&gt;pxh-view--gray7&lt;/code&gt; modifier class applied to it, which changes its default background color.&lt;/p&gt;
-&lt;/section&gt;</code></pre>
-          
-          All monochromatic colors from Predix UI are supported, including black and white. <a href="demo-drawer.html">View the drawer demo page</a> for a list of all options, and links to examples.</p>
-
-          <hr>
-
-          <h4>Accounting for the "hamburger" drawer toggle menu at the mobile breakpoint</h4>
-
-          <p>By default, <code>pxh-view-header</code> assumes the styles for your microapp's view header content will account for the extra space needed to display the "hamburger" drawer toggle menu at the mobile breakpoint. If you would rather that pxh-chrome handles this spacing automatically, add the responsive modifier class <code>pxh-view-header--nudge-until@md</code> to your <code>pxh-view-header</code> element markup like so:</p>
-
-          <pre><code>&lt;section class="pxh-wrapper"&gt;
-  &lt;header class="pxh-view-header pxh-view-header--wide@md pxh-view-header--narrow@lg <strong>pxh-view-header--nudge-until@md</strong>"&gt;
-    &lt;h1 class="pxh-view-header__title"&gt;
-      &lt;a href="index.html" class="pxh-view-header__title-link"&gt;
-        View Header Nudge Demo
-      &lt;/a&gt;
-    &lt;/h1&gt;
-  &lt;/header&gt;
-  &lt;section class="pxh-view pxh-view--wide@md pxh-view--narrow@lg" id="js-view"&gt;
-    &hellip;
-  &lt;/section&gt;
-&lt;/section&gt;</code></pre>
-
-          <p>This class will automatically include the extra left spacing for the drawer toggle menu at the mobile breakpoint and below, but remove it at all higher breakpoints.</p>
-
-          <p>Typically we prefer that the mobile breakpoint is simply defined by our application's default non-responsive styles, and we layer additional styles on top of it to achieve the desired look-and-feel at wider breakpoints. By targeting <em>lower</em> rather than <em>higher</em> breakpoints the <code>--until@md</code> responsive modifier class clearly doesn't follow this best practice, but we find it to be an allowable exception in this case.</p>
-
-          <h4>Javascript:</h4>
-
-          <p>When the user clicks <code>.pxh-drawer-toggle__link</code> or <code>.pxh-view-header-drawer-toggle__link</code>&hellip;</p>
-
-          <ul>
-            <li>Find <code>.pxh-view</code> and toggle the class <code>pxh-view--narrow@lg</code> on it</li>
-            <li>Find <code>.pxh-view-header</code> and toggle the class <code>pxh-view-header--narrow@lg</code> on it</li>
-            <li>Find <code>.pxh-view-header-drawer-toggle</code> and toggle the classes <code>pxh-view-header-drawer-toggle--hidden@md and pxh-view-header-drawer-toggle--hidden</code> on it</li>
-          </ul>
-
-          <h4>Sass:</h4>
-
-          <pre><code>// From the @md (tablet) breakpoint and wider,
-  // the view is displayed in its wide state, which accounts
-  // for the width of the narrow state of the drawer on the left.
-  @include mq($from: md) {
-    .pxh-view--wide\@md {
-      margin-left: $pxh-drawer-width-narrow;
-    }
-  }
-
-  // From the @lg (desktop) breakpoint and wider,
-  // add this class to display the view in its narrow state,
-  // which acccounts for the width of the wide state of the drawer.
-  @include mq($from: lg) {
-    .pxh-view--narrow\@lg {
-      margin-left: $pxh-drawer-width-wide;
-    }
-  }
-
-  // From the @md (tablet) breakpoint and wider,
-  // the view header is displayed in its wide state, which accounts
-  // for the width of the narrow state of the drawer on the left.
-  @include mq($from: md) {
-    .pxh-view-header--wide\@md {
-      left: $pxh-drawer-width-narrow;
-    }
-  }
-
-  // From the @lg (desktop) breakpoint and wider,
-  // add this class to display the view header in its narrow state,
-  // which accounts for the width of the wide state of the drawer.
-  @include mq($from: lg) {
-    .pxh-view-header--narrow\@lg {
-      left: $pxh-drawer-width-wide;
-    }
-  }
-
-  // Hide the toggle button in the view-header. This class is
-  // used even though the drawer covers the view-header toggle
-  // button, because sometimes click events on the drawer toggle
-  // are intercepted by the view-header toggle as well, resulting
-  // in a bounce scenario.
-  .pxh-view-header-drawer-toggle--hidden {
-    left: $pxh-drawer-width-narrow * -1;
-    opacity: 0;  
-  }
-
-  // From the @md (tablet) breakpoint and wider, hide the
-  // toggle button in the view-header, as the toggle in the
-  // narrow left drawer is persistently displayed instead.
-  @include mq($from: md) {
-    .pxh-view-header-drawer-toggle--hidden\@md {
-        left: $pxh-drawer-width-narrow * -1;
-        opacity: 0;
-    }
-  }</code></pre>
+          <p>You can use the same markup when displaying an error in "chromeful" or "chromeless" mode. No modification is necessary.</p>
 
         </div>
       </div>
     </div>
+
 
     <!-- build:js js/pxh-chrome.js -->
     <script src="js/pxh-chrome.js"></script>
