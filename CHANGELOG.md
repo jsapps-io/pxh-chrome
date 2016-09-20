@@ -1,5 +1,8 @@
 #pxh-chrome changelog
 
+### pending release
+* Add documentation and code example for using the postchrome error state markup in a microapp
+
 ### 2.1.4 - September 20, 2016
 * Update README
   * Add `pxh-toasts` and `pxh-notifications` to list of primary components
