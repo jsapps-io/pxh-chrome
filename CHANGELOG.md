@@ -1,5 +1,11 @@
 #pxh-chrome changelog
 
+### 2.1.4 - September 20, 2016
+* Update README
+  * Add `pxh-toasts` and `pxh-notifications` to list of primary components
+  * Add links to introductory screencast and slides
+  * Add notes and examples for CDN assets, and which files to reference
+
 ### 2.1.3 - September 19, 2016
 * Bump versions on node modules
 * Bump JavaScript Cookie library to 2.1.3
