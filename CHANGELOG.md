@@ -1,6 +1,6 @@
 #pxh-chrome changelog
 
-### pending release
+### 2.1.5 - September 23, 2016
 * Bump gulp-htmlmin to 3.0.0
 * Add documentation and code example for using the postchrome error state markup in a microapp
 * Clean up Javascript comments
