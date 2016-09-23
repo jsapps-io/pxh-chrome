@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>pxh-chrome 2.1.5 | pxh-drawer</title>
+    <title>pxh-chrome 2.1.5 | Error State</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -215,58 +215,42 @@
       <div class="pxh-view-header pxh-view-header--wide@md pxh-view-header--narrow@lg pxh-view-header--nudge-until@md">
         <h1 class="pxh-view-header__title">
           <a href="index.html" class="pxh-view-header__title-link">
-            Resize Event
+            Error State
           </a>
         </h1>
       </div>
       <div class="pxh-view pxh-view--wide@md pxh-view--narrow@lg" id="js-view">
-
         <div class="pxh-docs">
+          <h1>Error State</h1>
 
-          <h1>Listening for resize events</h1>
+          <h2>pxh-error &mdash; <a href="error-postchrome.html">demo</a> | <a href="error-chromeless.html">chromeless demo</a></h2>
 
-          <p>Since pxh-chrome is mobile-first and responsive, there may be cases where you need to rerender your microapp content based on changes in width to the <code>pxh-view</code> wrapping element. This is common with SVGs or other types of content that need to render at a specific and known pixel width.</p>
+          <p>Use the following markup to display a full-screen error state in your microapp:</p>
 
-          <p>Listening to <code>window.width</code> will cover many responsive use cases, but it doesn't cover the expansion (and collapse) of the navigation drawer, as that behavior changes the width of <code>pxh-view</code> without changing the width of the browser window.</p>
+          <pre><code>&lt;div class="pxh-wrapper"&gt;
+  &lt;div class="pxh-view-header pxh-view-header--wide@md pxh-view-header--narrow@lg pxh-view-header--nudge-until@md"&gt;
+  &lt;/div&gt;
+  &lt;div class="pxh-view pxh-view--wide@md pxh-view--narrow@lg pxh-view--white" id="js-view"&gt;
+    &lt;div class="pxh-error pxh-error@md pxh-error@lg"&gt;
+      &lt;div class="pxh-error__icon"&gt;
+        &lt;i class="fa fa-exclamation-circle"&gt;&lt;/i&gt;
+      &lt;/div&gt;
+      &lt;h1 class="pxh-error__title"&gt;
+        This is my error title.
+      &lt;/h1&gt;
+      &lt;p class="pxh-error__description"&gt;
+        Here is an &lt;a href="#"&gt;error action&lt;/a&gt;.
+      &lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
 
-          <p>Fortunately, pxh-chrome and the App Hub provides a custom event, <code>pxhViewResized</code>, that fires whenever the <code>pxh-view</code> element changes size. Simply listen for this event in your microapp, and respond as necessary after it fires.</p>
+          <p>You can use the same markup when displaying an error in "chromeful" or "chromeless" mode. No modification is necessary.</p>
 
-          <ul>
-            <li>We include the ResizeSensor class from css-element-queries to give ourselves the ability to track when elements resize</li>
-            <li>We grab <code>pxh-view</code> by ID and put it in a var</li>
-            <li><code>document.getElementById('js-view'); // you'll need to add this ID to your markup</code></li>
-            <li>In cases where pxh-chrome uses classes or IDs to grab elements via JS, we prefix them with <code>js-*</code> so we know there are no actual CSS styles associated with that attribute</li>
-            <li>We create a new custom event called <code>pxhViewResized</code></li>
-          </ul>
-
-          <pre><code>javascript
-var pxhViewResized = new CustomEvent('pxhViewResized', {
- 'detail' : pxhView.offsetWidth
-});</code></pre>
-
-          <ul>
-            <li>Since it's a custom event, we return the offsetWidth in the detail object</li>
-            <li>We add a new <code>ResizeSensor</code> to the pxh-view element, which dispatches the <code>pxhViewResized</code> event when it fires
-            </li>
-          </ul>
-
-          <pre><code>javascript
-new ResizeSensor(pxhView, function() {
-  document.dispatchEvent(pxhViewResized);
-});</code></pre>
-
-          <p><strong>Here's a basic usage example (do this in your microapp ... pxh-chrome should handle the rest):</strong></p>
-
-          <pre><code>javascript
-document.addEventListener('pxhViewResized', function(event) {
-  console.log('pxhViewResized was fired!');
-  console.log('width changed to ' + event.detail);
-});</code></pre>
-
-          <p>P.S. If you look at the console output for this example, you'll realize you'll want to implement some debouncing on your event listener ... our current thinking is that the debouncing should be the responsibility of the microapp, not the event itself, but we're open to alternative perspectives.</p>
         </div>
       </div>
     </div>
+
 
     <!-- build:js js/pxh-chrome.js -->
     <script src="js/pxh-chrome.js"></script>

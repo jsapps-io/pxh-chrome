@@ -1,5 +1,5 @@
 'use strict';
-/*! common.pxh-chrome.js 2.1.4 */
+/*! pxh-chrome.js 2.1.5 */
 
 // **************
 // CONFIG OBJECTS
@@ -1905,10 +1905,6 @@ pxh.viewResized.initCustomEvent('pxhViewResized', false, false, {
 document.addEventListener('DOMContentLoaded', function (event) {
   pxh.addResizeSensor('js-view');
 });
-
-// ********
-// FIRE!!!!
-// ********
 
 var lgBreakpoint = window.matchMedia('(min-width: 1024px)');
 var mdBreakpoint = window.matchMedia('(min-width: 768px)');

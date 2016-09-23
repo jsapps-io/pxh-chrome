@@ -1,5 +1,10 @@
 #pxh-chrome changelog
 
+### 2.1.5 - September 23, 2016
+* Bump gulp-htmlmin to 3.0.0
+* Add documentation and code example for using the postchrome error state markup in a microapp
+* Clean up Javascript comments
+
 ### 2.1.4 - September 20, 2016
 * Update README
   * Add `pxh-toasts` and `pxh-notifications` to list of primary components
