@@ -1,5 +1,5 @@
 {
-  "name": "pxh-chrome",
+  "name": "@hubs/pxh-chrome",
   "private": true,
   "description": "Application chrome for the Predix UI App Hub",
   "version": "2.1.5",
