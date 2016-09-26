@@ -1,5 +1,9 @@
 #pxh-chrome changelog
 
+### pending release
+* Scope pxh-chrome's npm namespace to `@hubs`
+  * http://blog.npmjs.org/post/116936804365/solving-npms-hard-problem-naming-packages
+
 ### 2.1.5 - September 23, 2016
 * Bump gulp-htmlmin to 3.0.0
 * Add documentation and code example for using the postchrome error state markup in a microapp
