@@ -80,25 +80,30 @@ $pxh-notification-max-count: 5;
   bottom: ($pxh-drawer-margin * 3) - 4px;
   left: $pxh-notification-margin;
   right: $pxh-notification-margin;
+  max-width: 480px;
   border-radius: 2px;
   background-color: $gray10;
   color: $gray2;
   border: 1px solid $gray7;
   display: none;
+
   @include mq($from: md) {
+    &\@md {
+      width: 480px;
+    }
+
     &--narrow\@md {
       #{$pxh-drawer-side}: $pxh-notification-margin;
       #{$pxh-drawer-opposite-side}: auto;
-      width: 420px;
       bottom: ($pxh-drawer-margin * 3) + 6px;
     }
   }
+
   @include mq($from: lg) {
     &--wide\@lg {
       #{$pxh-drawer-side}: $pxh-notification-margin;
       #{$pxh-drawer-opposite-side}: auto;
       bottom: ($pxh-drawer-margin * 3) - 4px;
-      width: 480px;
     }
   }
 
@@ -158,10 +163,15 @@ $pxh-notification-max-count: 5;
   &__list {
     @include pxh-fancy-scrollbar;
     position: relative;
-    max-height: ($pxh-notification-height * $pxh-notification-max-count) + ($pxh-notification-height / 2);
+    max-height: ($pxh-notification-height * 3) + ($pxh-notification-height / 2);
     min-height: $pxh-notification-height;
     -webkit-overflow-scrolling: touch;
     overflow-y: auto;
+    @include mq($from: md) {
+      &\@md {
+      max-height: ($pxh-notification-height * $pxh-notification-max-count) + ($pxh-notification-height / 2);
+      }
+    }
   }
 
   &__empty {
