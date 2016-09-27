@@ -146,14 +146,35 @@ $pxh-login-animate-config: (
     position: relative;
     flex-shrink: 0;
     flex-basis: auto;
-  }
 
-  &__caret-icon {
-    padding-#{$pxh-drawer-side}: $pxh-drawer-margin / 4;
+    @include mq($from: md) {
+      &--narrow\@md {
+        position: absolute;
+        bottom: $pxh-drawer-margin * 2.5;
+        #{$pxh-drawer-side}: $pxh-drawer-margin * 2.5;
+
+        .pxh-login__notifications-link {
+          display: none;
+        }
+      }
+    }
+
+    @include mq($from: lg) {
+      &--wide\@lg {
+        position: relative;
+        bottom: auto;
+        #{$pxh-drawer-side}: auto;
+
+        .pxh-login__notifications-link {
+          display: inline;
+        }
+      }
+    }
   }
 
   &__notifications-link {
     @include pxh-override-px-theme-color('pxh-login__notifications-link');
+    display: inline;
     padding: $pxh-login-magic-centering ($pxh-drawer-margin / 2) ($pxh-drawer-margin / 2) ($pxh-drawer-margin / 2);
     color: $gray7;
 
