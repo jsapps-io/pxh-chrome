@@ -5,42 +5,33 @@
 /// Flag to enable or disable pxh-notifications
 /// @group pxh-notification
 /// @type Boolean
-$pxh-notifications-enabled : true !default;
+$pxh-notifications-enabled: true !default;
 
 /// Massive animation config object for pxh-login components
 /// @group pxh-login
 $pxh-login-animate-config: (
-  font-size-in : $inuit-base-font-size,
-  margin-in : 0,
-  padding-in : 0,
-  border-in : 0,
-  height-in : auto,
-  opacity-in : 1,
-  animation-name-in : animate-in,
-  font-size-out : 0,
-  margin-out : 0,
-  padding-out : 0,
-  border-out : 0,
-  height-out : auto,
-  opacity-out : 0,
-  animation-name-out : animate-out,
-  animation-duration : 500ms,
-  block-class : pxh-login
+  font-size-in: $inuit-base-font-size,
+  margin-in: 0,
+  padding-in: 0,
+  border-in: 0,
+  height-in: auto,
+  opacity-in: 1,
+  animation-name-in: animate-in,
+  font-size-out: 0,
+  margin-out: 0,
+  padding-out: 0,
+  border-out: 0,
+  height-out: auto,
+  opacity-out: 0,
+  animation-name-out: animate-out,
+  animation-duration: 500ms,
+  block-class: pxh-login
 );
 
 @include mega-keyframes($pxh-login-animate-config);
 
 .pxh-login {
-  &__name, &__caret, &__settings, &__notifications {
-    @include mega-animate($pxh-login-animate-config);
-  }
-}
-
-.pxh-login {
   display: flex;
-  // @if $pxh-drawer-side == right { handled by direction: rtl on body element
-  //   flex-direction: row-reverse;
-  // }
   align-items: center;
   font-size: $inuit-base-font-size;
   border-top: 1px solid $gray9;
@@ -49,28 +40,131 @@ $pxh-login-animate-config: (
   bottom: 0;
   height: $pxh-login-height;
   width: 100%;
-}
 
-.pxh-login__link {
-  @include pxh-override-px-theme-color('pxh-login__link');
-}
+  &__name,
+  &__caret,
+  &__settings,
+  &__notifications {
+    @include mega-animate($pxh-login-animate-config);
+  }
 
-.pxh-login__profile-link {
-  display: flex;
-  // @if $pxh-drawer-side == right { // handled by direction: rtl on body element
-  //   flex-direction: row-reverse;
-  // }
-  align-items: center;
-  flex-grow: 3;
-  text-decoration: none;
-  text-align: $pxh-drawer-side;
-  @include pxh-override-px-theme-color('pxh-login__profile-link');
-}
+  &__link {
+    @include pxh-override-px-theme-color('pxh-login__link');
+  }
 
-.pxh-login__avatar {
-  height: $pxh-login-avatar-height-width;
-  width: $pxh-login-avatar-height-width + $pxh-drawer-margin / 2;
-  margin-#{$pxh-drawer-side}: $pxh-drawer-margin - 6px;
+  &__profile-link {
+    @include pxh-override-px-theme-color('pxh-login__profile-link');
+    display: flex;
+    align-items: center;
+    flex-grow: 3;
+    text-decoration: none;
+    text-align: $pxh-drawer-side;
+  }
+
+  &__avatar {
+    height: $pxh-login-avatar-height-width;
+    width: $pxh-login-avatar-height-width + $pxh-drawer-margin / 2;
+    margin-#{$pxh-drawer-side}: $pxh-drawer-margin - 6px;
+  }
+
+  &__avatar-image {
+    height: $pxh-login-avatar-height-width;
+    width: $pxh-login-avatar-height-width;
+    border-radius: 100%;
+  }
+
+  &__name {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    @if ($pxh-notifications-enabled == true) {
+      max-width: $pxh-drawer-width-wide - ($pxh-drawer-margin * 7);
+    } @else {
+      max-width: $pxh-drawer-width-wide - ($pxh-drawer-margin * 5.25);
+    }
+  }
+
+  &__settings {
+    flex-shrink: 0;
+    flex-basis: auto;
+  }
+
+  &__notifications {
+    text-align: center;
+    position: relative;
+    flex-shrink: 0;
+    flex-basis: auto;
+  }
+
+  &__caret-icon {
+    padding-#{$pxh-drawer-side}: $pxh-drawer-margin / 4;
+  }
+
+  &__notifications-link {
+    @include pxh-override-px-theme-color('pxh-login__notifications-link');
+    padding: $pxh-login-magic-centering ($pxh-drawer-margin / 2) ($pxh-drawer-margin / 2) ($pxh-drawer-margin / 2);
+    color: $gray7;
+
+    &:hover,
+    .pxh-login__notifications:hover & {
+      color: $white;
+    }
+  }
+
+  &__notifications-badge {
+    @include pxh-override-px-theme-color('pxh-login__notifications-badge', $white);
+    @if $pxh-drawer-side == right {
+      left: $pxh-drawer-margin / 4;
+    } @else {
+      right: -$pxh-drawer-margin / 4;
+    }
+    top: -($pxh-drawer-margin / 2) - 5px;
+    z-index: 775;
+    text-align: center;
+    background-color: $gray5;
+    display: block;
+    min-width: $pxh-drawer-margin;
+    height: $pxh-drawer-margin;
+    font-weight: normal;
+    color: $white;
+    font-size: 12px;
+    line-height: 1;
+    border-radius: 12px;
+    text-decoration: none;
+    position: absolute;
+    padding-top: 4px;
+    padding-bottom: 0;
+    padding-left: 1px; // yeah, hard-coded for LTR and RTL
+    padding-right: 2px; // yeah, hard-coded for LTR and RTL
+
+    &:hover + .pxh-login__notifications-link {
+      color: $white !important; // !important is the only way to override the px-theme override chaining
+    }
+
+    &--green {
+      @include pxh-override-px-theme-background-color('pxh-login__notifications-badge--green', $green);
+      background-color: $green;
+    }
+
+    &--blue {
+      @include pxh-override-px-theme-background-color('pxh-login__notifications-badge--blue', $blue);
+      background-color: $blue;
+    }
+
+    &--orange {
+      @include pxh-override-px-theme-background-color('pxh-notifications-badge--orange', $orange);
+      background-color: $orange;
+    }
+
+    &--red {
+      @include pxh-override-px-theme-background-color('pxh-notifications-badge--red', $red);
+      background-color: $red;
+    }
+
+    &--hidden {
+      display: none;
+    }
+  }
 }
 
 .pxh-login__avatar-icon.pxh-login__avatar-icon.pxh-login__avatar-icon.pxh-login__avatar-icon.pxh-login__avatar-icon {  // it takes a five-deep class chain to override px-theme here
@@ -83,24 +177,6 @@ $pxh-login-animate-config: (
   color: $gray7;
   border: 1px solid $gray7;
   border-radius: 100%;
-}
-
-.pxh-login__avatar-image {
-  height: $pxh-login-avatar-height-width;
-  width: $pxh-login-avatar-height-width;
-  border-radius: 100%;
-}
-
-.pxh-login__name {
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  @if ($pxh-notifications-enabled == true) {
-    max-width: $pxh-drawer-width-wide - ($pxh-drawer-margin * 7);
-  }
-  @else {
-    max-width: $pxh-drawer-width-wide - ($pxh-drawer-margin * 5.25);
-  }
 }
 
 // From the @md (tablet) breakpoint and wider,
@@ -133,16 +209,6 @@ $pxh-login-animate-config: (
   }
 }
 
-.pxh-login__caret-icon {
-  padding-#{$pxh-drawer-side}: $pxh-drawer-margin / 4;
-}
-.pxh-login__notifications {
-  text-align: center;
-  position: relative;
-  flex-shrink: 0;
-  flex-basis: auto;
-}
-
 // From the @md (tablet) breakpoint and wider,
 // display pxh-login__settings in its narrow state.
 // Remove this class to display the drawer in its wide state.
@@ -156,71 +222,6 @@ $pxh-login-animate-config: (
   .pxh-login__notifications--wide\@lg {
     display: block;
   }
-}
-
-.pxh-login__notifications-link {
-  padding: $pxh-login-magic-centering ($pxh-drawer-margin / 2) ($pxh-drawer-margin / 2) ($pxh-drawer-margin / 2);
-  color: $gray7;
-  &:hover,
-  .pxh-login__notifications:hover & {
-    color: $white;
-  }
-  @include pxh-override-px-theme-color('pxh-login__notifications-link');
-}
-
-.pxh-login__notifications-badge {
-  z-index: 775;
-  text-align: center;
-  background-color: $gray5;
-  display: block;
-  min-width: $pxh-drawer-margin;
-  height: $pxh-drawer-margin;
-  font-weight: normal;
-  color: $white;
-  font-size: 12px;
-  line-height: 1;
-  border-radius: 12px;
-  text-decoration: none;
-  position: absolute;
-  top: -($pxh-drawer-margin / 2) - 5px;
-  @if $pxh-drawer-side == right {
-    left: $pxh-drawer-margin / 4;
-  }
-  @else {
-    right: -$pxh-drawer-margin / 4;
-  }
-  padding-top: 4px;
-  padding-bottom: 0;
-  padding-left: 1px; // yeah, hard-coded for LTR and RTL
-  padding-right: 2px; // yeah, hard-coded for LTR and RTL
-  @include pxh-override-px-theme-color('pxh-login__notifications-badge', $white);
-  &--green {
-    background-color: $green;
-    @include pxh-override-px-theme-background-color('pxh-login__notifications-badge--green', $green);
-  }
-  &--blue {
-    background-color: $blue;
-    @include pxh-override-px-theme-background-color('pxh-login__notifications-badge--blue', $blue);
-  }
-  &--orange {
-    background-color: $orange;
-    @include pxh-override-px-theme-background-color('pxh-notifications-badge--orange', $orange);
-  }
-  &--red {
-    background-color: $red;
-    @include pxh-override-px-theme-background-color('pxh-notifications-badge--red', $red);
-  }
-  &--hidden {
-    display: none;
-  }
-  &:hover + .pxh-login__notifications-link {
-    color: $white !important; // !important is the only way to override the px-theme override chaining
-  } 
-}
-
-.pxh-login__settings {
-  flex-shrink: 0;
-  flex-basis: auto;
 }
 
 // From the @md (tablet) breakpoint and wider,
@@ -271,6 +272,15 @@ $pxh-login-animate-config: (
   -webkit-box-shadow: 0 1px 2px 0 rgba(0,0,0,0.25);
   -moz-box-shadow: 0 1px 2px 0 rgba(0,0,0,0.25);
   box-shadow: 0 1px 2px 0 rgba(0,0,0,0.25);
+
+  &__divider {
+    display: block;
+    border-top: 1px solid $gray10;
+  }
+
+  &__link {
+    @include pxh-override-px-theme-color('pxh-login-menu__link ', $white, $white);
+  }
 }
 
 .pxh-login-menu--visible.pxh-login-menu--profile {
@@ -287,11 +297,6 @@ $pxh-login-animate-config: (
   padding: 0;
 }
 
-.pxh-login-menu__divider {
-  display: block;
-  border-top: 1px solid $gray10;
-}
-
 .pxh-login-menu__link.pxh-login-menu__link.pxh-login-menu__link { // chained to override px-theme
   display: block;
   height: 30px;
@@ -301,10 +306,6 @@ $pxh-login-animate-config: (
   text-overflow: ellipsis;
   text-decoration: none;
   color: $white;
-}
-
-.pxh-login-menu__link {
-  @include pxh-override-px-theme-color('pxh-login-menu__link ', $white, $white);
 }
 
 .pxh-login-menu__link:hover.pxh-login-menu__link:hover.pxh-login-menu__link:hover { // chained to override px-theme
