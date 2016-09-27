@@ -131,6 +131,7 @@ gulp.task('extras', () => {
   return gulp.src([
     'public/*.*',
     '!public/*.html',
+    '!public/.eslintrc',
   ], {
     dot: true,
   }).pipe(gulp.dest('dist'));
