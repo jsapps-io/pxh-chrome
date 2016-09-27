@@ -1,6 +1,11 @@
 #pxh-chrome changelog
 
 ### pending release
+* Remove flag for enabling or disabling pxh-notifications
+  * They are now always enabled by default
+* Remove flag for enabling or disabling pxh-toasts
+  * They are now always enabled by default
+* Display notifications badge 
 * Scope ESLint to use ES2015 for pxh-chrome root, but ES5 for public folder
 * Fix most ESLint errors in gulpfile
 * Ignore third-party libraries in `pxh-chrome.js` when running ESLint
