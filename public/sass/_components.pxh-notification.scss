@@ -2,11 +2,6 @@
     #components.pxh-notification
 \*------------------------------------*/
 
-/// Flag to enable or disable pxh-notifications
-/// @group pxh-notification
-/// @type Boolean
-$pxh-notifications-enabled : false !default;
-
 /// Height of a (non-expanded) notification
 /// @group pxh-notification
 /// @type Number

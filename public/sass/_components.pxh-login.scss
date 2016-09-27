@@ -2,11 +2,6 @@
     #components.pxh-login
 \*------------------------------------*/
 
-/// Flag to enable or disable pxh-notifications
-/// @group pxh-notification
-/// @type Boolean
-$pxh-notifications-enabled: true !default;
-
 /// Massive animation config object for pxh-login components
 /// @group pxh-login
 $pxh-login-animate-config: (
@@ -92,11 +87,7 @@ $pxh-login-animate-config: (
   }
 
   &__name {
-    @if ($pxh-notifications-enabled == true) {
-      max-width: $pxh-drawer-width-wide - ($pxh-drawer-margin * 7);
-    } @else {
-      max-width: $pxh-drawer-width-wide - ($pxh-drawer-margin * 5.25);
-    }
+    max-width: $pxh-drawer-width-wide - ($pxh-drawer-margin * 7);
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;

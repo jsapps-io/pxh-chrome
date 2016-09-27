@@ -2,11 +2,6 @@
     #components.pxh-toast
 \*------------------------------------*/
 
-/// Flag to enable or disable pxh-toasts
-/// @group pxh-toast
-/// @type Boolean
-$pxh-toasts-enabled : false !default;
-
 /// Height of a (non-expanded) toast
 /// @group pxh-toast
 /// @type Number

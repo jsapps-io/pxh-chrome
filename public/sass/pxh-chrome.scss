@@ -70,16 +70,6 @@ $pxh-drawer-opposite-side: null;
   $pxh-drawer-opposite-side: right;
 }
 
-/// Flag to enable or disable pxh-notifications
-/// @group pxh-notification
-/// @type Boolean
-$pxh-notifications-enabled: true;
-
-/// Flag to enable or disable pxh-toasts
-/// @group pxh-toast
-/// @type Boolean
-$pxh-toasts-enabled: true;
-
 @import 'components.pxh-badge';
 @import 'components.pxh-drawer';
 @import 'components.pxh-login';
