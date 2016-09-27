@@ -267,8 +267,4 @@ $pxh-notification-max-count: 5;
     color: $gray8;
     @include pxh-override-px-theme-color('pxh-notification__dismiss-button', $gray8, $primary-blue);
   }
-
-
 }
-
-
