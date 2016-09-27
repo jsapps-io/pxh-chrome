@@ -48,6 +48,24 @@ $pxh-login-animate-config: (
     @include mega-animate($pxh-login-animate-config);
   }
 
+  &__caret {
+
+    // From the @md (tablet) breakpoint and wider,
+    // display pxh-login__caret in its narrow state.
+    // Remove this class to display the drawer in its wide state.
+    @include mq($from: md) {
+      &--narrow\@md {
+        display: none;
+      }
+    }
+
+    @include mq($from: lg) {
+      &--wide\@lg {
+        display: block;
+      }
+    }
+  }
+
   &__link {
     @include pxh-override-px-theme-color('pxh-login__link');
   }
@@ -74,19 +92,53 @@ $pxh-login-animate-config: (
   }
 
   &__name {
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
     @if ($pxh-notifications-enabled == true) {
       max-width: $pxh-drawer-width-wide - ($pxh-drawer-margin * 7);
     } @else {
       max-width: $pxh-drawer-width-wide - ($pxh-drawer-margin * 5.25);
+    }
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+    // From the @md (tablet) breakpoint and wider,
+    // display pxh-login__name in its narrow state.
+    // Remove this class to display the drawer in its wide state.
+    @include mq($from: md) {
+      &--narrow\@md {
+        display: none;
+      }
+    }
+
+    @include mq($from: lg) {
+      &--wide\@lg {
+        display: block;
+      }
     }
   }
 
   &__settings {
     flex-shrink: 0;
     flex-basis: auto;
+
+    // From the @md (tablet) breakpoint and wider,
+    // display pxh-login__settings in its narrow state.
+    // Remove this class to display the drawer in its wide state.
+    @include mq($from: md) {
+      &--narrow\@md {
+        display: none;
+      }
+    }
+
+    @include mq($from: lg) {
+      &--wide\@lg {
+        display: block;
+      }
+    }
+  }
+
+  &__caret-icon {
+    padding-#{$pxh-drawer-side}: $pxh-drawer-margin / 4;
   }
 
   &__notifications {
@@ -177,66 +229,6 @@ $pxh-login-animate-config: (
   color: $gray7;
   border: 1px solid $gray7;
   border-radius: 100%;
-}
-
-// From the @md (tablet) breakpoint and wider,
-// display pxh-login__name in its narrow state.
-// Remove this class to display the drawer in its wide state.
-@include mq($from: md) {
-  .pxh-login__name--narrow\@md {
-    display: none;
-  }
-}
-
-@include mq($from: lg) {
-  .pxh-login__name--wide\@lg {
-    display: block;
-  }
-}
-
-// From the @md (tablet) breakpoint and wider,
-// display pxh-login__caret in its narrow state.
-// Remove this class to display the drawer in its wide state.
-@include mq($from: md) {
-  .pxh-login__caret--narrow\@md {
-    display: none;
-  }
-}
-
-@include mq($from: lg) {
-  .pxh-login__caret--wide\@lg {
-    display: block;
-  }
-}
-
-// From the @md (tablet) breakpoint and wider,
-// display pxh-login__settings in its narrow state.
-// Remove this class to display the drawer in its wide state.
-@include mq($from: md) {
-  .pxh-login__notifications--narrow\@md {
-    display: none;
-  }
-}
-
-@include mq($from: lg) {
-  .pxh-login__notifications--wide\@lg {
-    display: block;
-  }
-}
-
-// From the @md (tablet) breakpoint and wider,
-// display pxh-login__settings in its narrow state.
-// Remove this class to display the drawer in its wide state.
-@include mq($from: md) {
-  .pxh-login__settings--narrow\@md {
-    display: none;
-  }
-}
-
-@include mq($from: lg) {
-  .pxh-login__settings--wide\@lg {
-    display: block;
-  }
 }
 
 .pxh-login__settings-link.pxh-login__settings-link.pxh-login__settings-link,
