@@ -44,18 +44,5 @@
     "metalsmith-layouts": "^1.6.5",
     "mocha": "^3.0.2",
     "protractor": "^4.0.8"
-  },
-  "eslintConfig": {
-    "env": {
-      "es6": true,
-      "node": true,
-      "browser": true
-    },
-    "rules": {
-      "quotes": [
-        2,
-        "single"
-      ]
-    }
   }
 }
