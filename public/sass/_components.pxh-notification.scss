@@ -74,10 +74,10 @@ $pxh-notification-max-count: 5;
   }
 }
 
-    bottom: 40px;
 .pxh-notifications {
   z-index: 800;
   position: fixed;
+  bottom: ($pxh-drawer-margin * 3) - 4px;
   left: $pxh-notification-margin;
   right: $pxh-notification-margin;
   border-radius: 2px;
@@ -90,12 +90,14 @@ $pxh-notification-max-count: 5;
       #{$pxh-drawer-side}: $pxh-notification-margin;
       #{$pxh-drawer-opposite-side}: auto;
       width: 420px;
+      bottom: ($pxh-drawer-margin * 3) + 6px;
     }
   }
   @include mq($from: lg) {
     &--wide\@lg {
       #{$pxh-drawer-side}: $pxh-notification-margin;
       #{$pxh-drawer-opposite-side}: auto;
+      bottom: ($pxh-drawer-margin * 3) - 4px;
       width: 480px;
     }
   }
