@@ -74,30 +74,29 @@ $pxh-notification-max-count: 5;
   }
 }
 
-  .pxh-notifications {
-    z-index: 800;
-    position: fixed;
     bottom: 40px;
-    left: $pxh-notification-margin;
-    right: $pxh-notification-margin;
-    border-radius: 2px;
-    background-color: $gray10;
-    color: $gray2;
-    border: 1px solid $gray7;
-    display: none;
-    @include mq($from: md) {
-      &--narrow\@md {
-        #{$pxh-drawer-side}: $pxh-notification-margin;
-        #{$pxh-drawer-opposite-side}: auto;
-        width: 420px;
-      }
+.pxh-notifications {
+  z-index: 800;
+  position: fixed;
+  left: $pxh-notification-margin;
+  right: $pxh-notification-margin;
+  border-radius: 2px;
+  background-color: $gray10;
+  color: $gray2;
+  border: 1px solid $gray7;
+  display: none;
+  @include mq($from: md) {
+    &--narrow\@md {
+      #{$pxh-drawer-side}: $pxh-notification-margin;
+      #{$pxh-drawer-opposite-side}: auto;
+      width: 420px;
     }
-    @include mq($from: lg) {
-      &--wide\@lg {
-        #{$pxh-drawer-side}: $pxh-notification-margin;
-        #{$pxh-drawer-opposite-side}: auto;
-        width: 480px;
-      }
+  }
+  @include mq($from: lg) {
+    &--wide\@lg {
+      #{$pxh-drawer-side}: $pxh-notification-margin;
+      #{$pxh-drawer-opposite-side}: auto;
+      width: 480px;
     }
   }
 
@@ -176,20 +175,21 @@ $pxh-notification-max-count: 5;
   }
 }
 
-  .pxh-notification {
-    @include pxh-toast;
-    @include pxh-notification--in-state;
-    z-index: 900;
-    &--animate-in {
-      animation-fill-mode: forwards;
-      animation-duration: 1000ms;
-      animation-name: pxh-notification--animate-in;
-    }
-    &--animate-out {
-      animation-fill-mode: forwards;
-      animation-duration: 1000ms;
-      animation-name: pxh-notification--animate-out;
-    }
+.pxh-notification {
+  @include pxh-toast;
+  @include pxh-notification--in-state;
+  z-index: 900;
+
+  &--animate-in {
+    animation-fill-mode: forwards;
+    animation-duration: 1000ms;
+    animation-name: pxh-notification--animate-in;
+  }
+
+  &--animate-out {
+    animation-fill-mode: forwards;
+    animation-duration: 1000ms;
+    animation-name: pxh-notification--animate-out;
   }
 
   &__icon {
