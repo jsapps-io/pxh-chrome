@@ -1,6 +1,9 @@
 #pxh-chrome changelog
 
 ### pending release
+* Scope ESLint to use ES2015 for pxh-chrome root, but ES5 for public folder
+* Fix most ESLint errors in gulpfile
+* Ignore third-party libraries in `pxh-chrome.js` when running ESLint
 * Scope pxh-chrome's npm namespace to `@hubs`
   * http://blog.npmjs.org/post/116936804365/solving-npms-hard-problem-naming-packages
 
