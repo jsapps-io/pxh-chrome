@@ -526,6 +526,8 @@ pxh.transitions = {
 // THIRD PARTY LIBRARIES
 // *********
 
+/* eslint-disable */
+
 /*! css-element-queries/ResizeSensor.js 0.3.2 */
 
 /**
@@ -866,6 +868,8 @@ if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
 
 pxh.Cookies = Cookies.noConflict();
 
+/* eslint-enable */
+
 // *********
 // GENERIC FUNCTIONS
 // *********
@@ -899,7 +903,7 @@ pxh.arrayExists = function (array) {
 
 /**
  * Returns an item from an object based on its property name
- * 
+ *
  * @param {Object} haystack
  * @param {String} propertyName
  * @returns {Object|Boolean} Object that corresponds to the property name if found, false if not
