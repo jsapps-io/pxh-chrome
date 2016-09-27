@@ -42,37 +42,37 @@ $pxh-notification-max-count: 5;
   @include out-state-opacity;
 }
 
-  @keyframes pxh-notification--animate-in {
-    0% {
-      @include pxh-notification--out-state;
-    }
-    33% {
-      @include pxh-notification--in-state-scale;
-      @include out-state-opacity;
-    }
-    66% {
-      @include pxh-notification--in-state;
-    }
-    100% {
-      @include pxh-notification--in-state;
-    }
+@keyframes pxh-notification--animate-in {
+  0% {
+    @include pxh-notification--out-state;
   }
+  33% {
+    @include pxh-notification--in-state-scale;
+    @include out-state-opacity;
+  }
+  66% {
+    @include pxh-notification--in-state;
+  }
+  100% {
+    @include pxh-notification--in-state;
+  }
+}
 
-  @keyframes pxh-notification--animate-out {
-    0% {
-      @include pxh-notification--in-state;
-    }
-    33% {
-      @include pxh-notification--in-state-scale;
-      @include out-state-opacity;
-    }
-    66% {
-      @include pxh-notification--out-state;
-    }
-    100% {
-      @include pxh-notification--out-state;
-    }
+@keyframes pxh-notification--animate-out {
+  0% {
+    @include pxh-notification--in-state;
   }
+  33% {
+    @include pxh-notification--in-state-scale;
+    @include out-state-opacity;
+  }
+  66% {
+    @include pxh-notification--out-state;
+  }
+  100% {
+    @include pxh-notification--out-state;
+  }
+}
 
 @if $pxh-notifications-enabled == true {
   .pxh-notifications {
