@@ -1,4 +1,4 @@
-/*! pxh-chrome-rtl.css 2.1.5 */
+/*! pxh-chrome-rtl.css 2.2.0 */
 
 /*------------------------------------*\
     #pxh-chrome-rtl
@@ -69,16 +69,6 @@ $pxh-drawer-opposite-side: null;
   $pxh-drawer-side: left;
   $pxh-drawer-opposite-side: right;
 }
-
-/// Flag to enable or disable pxh-notifications
-/// @group pxh-notification
-/// @type Boolean
-$pxh-notifications-enabled: true;
-
-/// Flag to enable or disable pxh-toasts
-/// @group pxh-toast
-/// @type Boolean
-$pxh-toasts-enabled: true;
 
 @import 'components.pxh-badge';
 @import 'components.pxh-drawer';

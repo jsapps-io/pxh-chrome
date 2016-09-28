@@ -1,5 +1,5 @@
 'use strict';
-/*! pxh-chrome.js 2.1.5 */
+/*! pxh-chrome.js 2.2.0 */
 
 // **************
 // CONFIG OBJECTS
@@ -147,6 +147,8 @@ pxh.VIEW_HEADER_DRAWER_TOGGLE_HIDDEN = pxh.VIEW_HEADER_DRAWER_TOGGLE + pxh.HIDDE
 // notifications
 pxh.NOTIFICATIONS = pxh.PREFIX + 'notifications';
 pxh.NOTIFICATIONS_VISIBLE = pxh.NOTIFICATIONS + pxh.VISIBLE;
+pxh.NOTIFICATIONS_NARROW_AT_MD = pxh.NOTIFICATIONS + pxh.NARROW + pxh.AT_MD;
+pxh.NOTIFICATIONS_WIDE_AT_LG = pxh.NOTIFICATIONS + pxh.WIDE + pxh.AT_LG;
 
 // notification
 pxh.NOTIFICATION = pxh.PREFIX + 'notification';
@@ -213,7 +215,8 @@ pxh.states = {
       remove: pxh.VIEW_HEADER_DRAWER_TOGGLE_HIDDEN
     },
     'pxh-notifications': {
-      remove: pxh.NOTIFICATIONS_VISIBLE
+      remove: pxh.NOTIFICATIONS_VISIBLE,
+      add: pxh.NOTIFICATIONS_NARROW_AT_MD + ' ' + pxh.NOTIFICATIONS_WIDE_AT_LG
     }
   },
   open: {
@@ -265,6 +268,10 @@ pxh.states = {
     },
     'pxh-view-header-drawer-toggle': {
       add: pxh.VIEW_HEADER_DRAWER_TOGGLE_HIDDEN
+    },
+    'pxh-notifications': {
+      remove: pxh.NOTIFICATIONS_NARROW_AT_MD,
+      add: pxh.NOTIFICATIONS_WIDE_AT_LG
     }
   },
   narrowAtLg: {
@@ -319,7 +326,8 @@ pxh.states = {
       remove: pxh.VIEW_HEADER_DRAWER_TOGGLE_HIDDEN
     },
     'pxh-notifications': {
-      remove: pxh.NOTIFICATIONS_VISIBLE
+      remove: pxh.NOTIFICATIONS_VISIBLE + ' ' + pxh.NOTIFICATIONS_WIDE_AT_LG,
+      add: pxh.NOTIFICATIONS_NARROW_AT_MD
     }
   }
 };
@@ -356,9 +364,6 @@ pxh.transitions = {
     },
     'pxh-login__settings': {
       add: pxh.LOGIN_SETTINGS_ANIMATE_IN
-    },
-    'pxh-login__notifications': {
-      add: pxh.LOGIN_NOTIFICATIONS_ANIMATE_IN
     }
   },
   openToNarrow: {
@@ -382,9 +387,6 @@ pxh.transitions = {
     },
     'pxh-login__settings': {
       add: pxh.LOGIN_SETTINGS_ANIMATE_OUT
-    },
-    'pxh-login__notifications': {
-      add: pxh.LOGIN_NOTIFICATIONS_ANIMATE_OUT
     }
   },
   outToNarrow: {
@@ -445,9 +447,6 @@ pxh.transitions = {
     },
     'pxh-login__settings': {
       add: pxh.LOGIN_SETTINGS_ANIMATE_OUT
-    },
-    'pxh-login__notifications': {
-      add: pxh.LOGIN_NOTIFICATIONS_ANIMATE_OUT
     },
     'pxh-view': {
       add: pxh.VIEW_ANIMATE_WIDE
@@ -525,6 +524,8 @@ pxh.transitions = {
 // *********
 // THIRD PARTY LIBRARIES
 // *********
+
+/* eslint-disable */
 
 /*! css-element-queries/ResizeSensor.js 0.3.2 */
 
@@ -866,6 +867,8 @@ if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
 
 pxh.Cookies = Cookies.noConflict();
 
+/* eslint-enable */
+
 // *********
 // GENERIC FUNCTIONS
 // *********
@@ -899,7 +902,7 @@ pxh.arrayExists = function (array) {
 
 /**
  * Returns an item from an object based on its property name
- * 
+ *
  * @param {Object} haystack
  * @param {String} propertyName
  * @returns {Object|Boolean} Object that corresponds to the property name if found, false if not

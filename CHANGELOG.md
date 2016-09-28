@@ -1,4 +1,20 @@
-#pxh-chrome changelog
+# pxh-chrome changelog
+
+### 2.2.0 - September 28, 2016
+* Display notifications badge at medium breakpoint and at large breakpoint when drawer is narrow
+* Apply a maximum height to the notifications list at the default breakpoint to improve compatibility with mobile phones in landscape orientation
+* Apply a maximum height to the notifications list at the medium breakpoint
+* Apply a width to the notifications list at the medium breakpoint so it's no longer dependent on the drawer being wide
+* Remove flag for enabling or disabling pxh-notifications
+  * They are now always enabled by default
+* Fix bug where user couldn't scroll the toast container if their cursor was over the vertical margin between two toasts
+* Remove flag for enabling or disabling pxh-toasts
+  * They are now always enabled by default
+* Scope ESLint to use ES2015 for pxh-chrome root, but ES5 for public folder
+* Fix most ESLint errors in gulpfile
+* Ignore third-party libraries in `pxh-chrome.js` when running ESLint
+* Scope pxh-chrome's npm namespace to `@hubs`
+  * http://blog.npmjs.org/post/116936804365/solving-npms-hard-problem-naming-packages
 
 ### 2.1.5 - September 23, 2016
 * Bump gulp-htmlmin to 3.0.0

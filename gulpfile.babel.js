@@ -16,11 +16,11 @@ import lodash from 'lodash';
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
 
-var componentConfig = {
+const componentConfig = {
   site: {
-    title:              'pxh-chrome',
-    version:            '2.1.5'
-  }
+    title: 'pxh-chrome',
+    version: '2.2.0',
+  },
 };
 
 gulp.task('sass', () => {
@@ -30,13 +30,13 @@ gulp.task('sass', () => {
     .pipe($.sass.sync({
       outputStyle: 'expanded',
       precision: 10,
-      includePaths: ['.', 'bower_components']
+      includePaths: ['.', 'bower_components'],
     }).on('error', $.sass.logError))
-    .pipe($.autoprefixer({browsers: ['> 1%', 'last 2 versions', 'Firefox ESR']}))
+    .pipe($.autoprefixer({ browsers: ['> 1%', 'last 2 versions', 'Firefox ESR'] }))
     .pipe($.sourcemaps.write('.'))
     .pipe(gulp.dest('.tmp/css'))
     .pipe(gulp.dest('dist/css'))
-    .pipe(reload({stream: true}));
+    .pipe(reload({ stream: true }));
 });
 
 gulp.task('sass:dist', () => {
@@ -46,13 +46,13 @@ gulp.task('sass:dist', () => {
     .pipe($.sass.sync({
       outputStyle: 'expanded',
       precision: 10,
-      includePaths: ['.', 'bower_components']
+      includePaths: ['.', 'bower_components'],
     }).on('error', $.sass.logError))
-    .pipe($.autoprefixer({browsers: ['> 1%', 'last 2 versions', 'Firefox ESR']}))
+    .pipe($.autoprefixer({ browsers: ['> 1%', 'last 2 versions', 'Firefox ESR'] }))
     .pipe($.cssnano())
     .pipe(ext_replace('.min.css', '.css'))
     .pipe(gulp.dest('.tmp/css'))
-    .pipe(gulp.dest('dist/css'))
+    .pipe(gulp.dest('dist/css'));
 });
 
 gulp.task('js', () => {
@@ -64,35 +64,35 @@ gulp.task('js', () => {
     .pipe(gulp.dest('.tmp/js'))
     .pipe(gulp.dest('dist/js'))
     .pipe($.if('*.js', $.uglify({
-      preserveComments: 'some'
+      preserveComments: 'some',
     })))
     .pipe(ext_replace('.min.js', '.js'))
     .pipe(gulp.dest('.tmp/js'))
     .pipe(gulp.dest('dist/js'))
-    .pipe(reload({stream: true}));
+    .pipe(reload({ stream: true }));
 });
 
 function lint(files, options) {
   return () => {
     return gulp.src(files)
-      .pipe(reload({stream: true, once: true}))
+      .pipe(reload({ stream: true, once: true }))
       .pipe($.eslint(options))
-      .pipe($.eslint.format())
+      .pipe($.eslint.format());
       // .pipe($.if(!browserSync.active, $.eslint.failAfterError()));
   };
 }
 const testLintOptions = {
   env: {
-    mocha: true
-  }
+    mocha: true,
+  },
 };
 
 gulp.task('lint', lint('public/js/**/*.js'));
 gulp.task('lint:test', lint('test/unit/spec/**/*.js', testLintOptions));
 
-gulp.task('smith', function() {
+gulp.task('smith', () => {
   gulp.src(['src/screens/*'])
-  .pipe($.frontMatter()).on('data', function(file) {
+  .pipe($.frontMatter()).on('data', (file) => {
     lodash.assign(file, file.frontMatter);
     delete file.frontMatter;
   })
@@ -101,28 +101,28 @@ gulp.task('smith', function() {
     .metadata(componentConfig)
     .on('error', console.log.bind(console))
     .use(layouts({
-      'engine': 'handlebars',
-      'directory': 'src/layouts',
-      'pattern': '*.hbs',
-      'default': 'default.hbs',
-      'partials': 'src/partials'
+      engine: 'handlebars',
+      directory: 'src/layouts',
+      pattern: '*.hbs',
+      default: 'default.hbs',
+      partials: 'src/partials',
     }))
     .on('error', console.log.bind(console))
     .use(copy({
       pattern: '*.hbs',
       extension: '.html',
-      move: true
+      move: true,
     }))
     .on('error', console.log.bind(console))
   )
   .pipe(gulp.dest('.tmp'))
   .pipe(gulp.dest('dist'))
-  .pipe(reload({stream: true}));
+  .pipe(reload({ stream: true }));
 });
 
 gulp.task('html', ['sass:dist', 'js'], () => {
   return gulp.src(['.tmp/*.html'])
-    .pipe($.useref({searchPath: ['.tmp']}))
+    .pipe($.useref({ searchPath: ['.tmp'] }))
     .pipe($.if('*.html', $.htmlmin()))
     .pipe(gulp.dest('dist'));
 });
@@ -130,9 +130,10 @@ gulp.task('html', ['sass:dist', 'js'], () => {
 gulp.task('extras', () => {
   return gulp.src([
     'public/*.*',
-    '!public/*.html'
+    '!public/*.html',
+    '!public/.eslintrc',
   ], {
-    dot: true
+    dot: true,
   }).pipe(gulp.dest('dist'));
 });
 
@@ -152,9 +153,9 @@ gulp.task('serve', ['sass', 'js', 'extras', 'img'], () => {
     server: {
       baseDir: ['.tmp', 'public'],
       routes: {
-        '/bower_components': 'bower_components'
-      }
-    }
+        '/bower_components': 'bower_components',
+      },
+    },
   });
 
   gulp.watch('src/**/*.hbs', ['smith']);
@@ -166,9 +167,8 @@ gulp.task('serve', ['sass', 'js', 'extras', 'img'], () => {
     '.tmp/*.html',
     '.tmp/img/*',
     '.tmp/css/*.css',
-    '.tmp/js/*.js'
+    '.tmp/js/*.js',
   ]).on('change', reload);
-
 });
 
 gulp.task('serve:dist', ['sass:dist', 'js', 'extras', 'img'], () => {
@@ -179,8 +179,8 @@ gulp.task('serve:dist', ['sass:dist', 'js', 'extras', 'img'], () => {
     port: 4000,
     notify: false,
     server: {
-      baseDir: ['dist']
-    }
+      baseDir: ['dist'],
+    },
   });
   gulp.watch('public/sass/**/*.scss', ['sass']);
   gulp.watch('public/js/**/*.js', ['js']);
@@ -198,10 +198,10 @@ gulp.task('serve:e2e', ['webdriver:update', 'sass', 'js', 'extras', 'img'], () =
     server: {
       baseDir: ['.tmp'],
       routes: {
-        '/bower_components': 'bower_components'
-      }
-    }
-  })
+        '/bower_components': 'bower_components',
+      },
+    },
+  });
 });
 
 gulp.task('serve:test', ['js'], () => {
@@ -213,9 +213,9 @@ gulp.task('serve:test', ['js'], () => {
       baseDir: 'test/unit',
       routes: {
         '/js': '.tmp/js',
-        '/bower_components': 'bower_components'
-      }
-    }
+        '/bower_components': 'bower_components',
+      },
+    },
   });
 
   gulp.watch('public/js/**/*.js', ['js']);
@@ -224,7 +224,7 @@ gulp.task('serve:test', ['js'], () => {
 });
 
 gulp.task('build', ['lint', 'smith', 'html', 'extras', 'img'], () => {
-  return gulp.src('dist/**/*').pipe($.size({title: 'build', gzip: true}));
+  return gulp.src('dist/**/*').pipe($.size({ title: 'build', gzip: true }));
 });
 
 // dist task is just a copy of the default task
