@@ -4146,6 +4146,22 @@ sub {
   }
 }
 
+.pxh-login {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 15px;
+  border-top: 1px solid #3b3b3f;
+  background-color: #242326;
+  position: absolute;
+  bottom: 0;
+  height: 60px;
+  width: 100%;
+}
+
 .pxh-login__name, .pxh-login__caret, .pxh-login__settings, .pxh-login__notifications {
   font-size: 15px;
   margin: 0;
@@ -4211,20 +4227,16 @@ sub {
   opacity: 0;
 }
 
-.pxh-login {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  font-size: 15px;
-  border-top: 1px solid #3b3b3f;
-  background-color: #242326;
-  position: absolute;
-  bottom: 0;
-  height: 60px;
-  width: 100%;
+@media (min-width: 48em) {
+  .pxh-login__caret--narrow\@md {
+    display: none;
+  }
+}
+
+@media (min-width: 64em) {
+  .pxh-login__caret--wide\@lg {
+    display: block;
+  }
 }
 
 .pxh-login__link {
@@ -4248,6 +4260,7 @@ sub {
 }
 
 .pxh-login__profile-link {
+  color: #7c7c84 !important;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -4259,7 +4272,6 @@ sub {
           flex-grow: 3;
   text-decoration: none;
   text-align: right;
-  color: #7c7c84 !important;
 }
 
 .pxh-login__profile-link:link {
@@ -4284,18 +4296,6 @@ sub {
   margin-right: 14px;
 }
 
-.pxh-login__avatar-icon.pxh-login__avatar-icon.pxh-login__avatar-icon.pxh-login__avatar-icon.pxh-login__avatar-icon {
-  height: 30px;
-  width: 30px;
-  padding-top: 4px;
-  text-align: center;
-  font-size: 16.5px;
-  background-color: transparent;
-  color: #7c7c84;
-  border: 1px solid #7c7c84;
-  border-radius: 100%;
-}
-
 .pxh-login__avatar-image {
   height: 30px;
   width: 30px;
@@ -4303,10 +4303,10 @@ sub {
 }
 
 .pxh-login__name {
+  max-width: 120px;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  max-width: 120px;
 }
 
 @media (min-width: 48em) {
@@ -4321,14 +4321,21 @@ sub {
   }
 }
 
+.pxh-login__settings {
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  -ms-flex-preferred-size: auto;
+      flex-basis: auto;
+}
+
 @media (min-width: 48em) {
-  .pxh-login__caret--narrow\@md {
+  .pxh-login__settings--narrow\@md {
     display: none;
   }
 }
 
 @media (min-width: 64em) {
-  .pxh-login__caret--wide\@lg {
+  .pxh-login__settings--wide\@lg {
     display: block;
   }
 }
@@ -4348,25 +4355,31 @@ sub {
 
 @media (min-width: 48em) {
   .pxh-login__notifications--narrow\@md {
+    position: absolute;
+    bottom: 50px;
+    right: 50px;
+  }
+  .pxh-login__notifications--narrow\@md .pxh-login__notifications-link {
     display: none;
   }
 }
 
 @media (min-width: 64em) {
   .pxh-login__notifications--wide\@lg {
-    display: block;
+    position: relative;
+    bottom: auto;
+    right: auto;
+  }
+  .pxh-login__notifications--wide\@lg .pxh-login__notifications-link {
+    display: inline;
   }
 }
 
 .pxh-login__notifications-link {
+  color: #7c7c84 !important;
+  display: inline;
   padding: 14px 10px 10px 10px;
   color: #7c7c84;
-  color: #7c7c84 !important;
-}
-
-.pxh-login__notifications-link:hover,
-.pxh-login__notifications:hover .pxh-login__notifications-link {
-  color: white;
 }
 
 .pxh-login__notifications-link:link {
@@ -4385,7 +4398,15 @@ sub {
   color: white !important;
 }
 
+.pxh-login__notifications-link:hover,
+.pxh-login__notifications:hover .pxh-login__notifications-link {
+  color: white;
+}
+
 .pxh-login__notifications-badge {
+  color: white !important;
+  left: 5px;
+  top: -15px;
   z-index: 775;
   text-align: center;
   background-color: #b1b1bc;
@@ -4399,13 +4420,10 @@ sub {
   border-radius: 12px;
   text-decoration: none;
   position: absolute;
-  top: -15px;
-  left: 5px;
   padding-top: 4px;
   padding-bottom: 0;
   padding-left: 1px;
   padding-right: 2px;
-  color: white !important;
 }
 
 .pxh-login__notifications-badge:link {
@@ -4424,9 +4442,13 @@ sub {
   color: white !important;
 }
 
+.pxh-login__notifications-badge:hover + .pxh-login__notifications-link {
+  color: white !important;
+}
+
 .pxh-login__notifications-badge--green {
-  background-color: #46ad00;
   background-color: #46ad00 !important;
+  background-color: #46ad00;
 }
 
 .pxh-login__notifications-badge--green:link {
@@ -4446,8 +4468,8 @@ sub {
 }
 
 .pxh-login__notifications-badge--blue {
-  background-color: #005cb9;
   background-color: #005cb9 !important;
+  background-color: #005cb9;
 }
 
 .pxh-login__notifications-badge--blue:link {
@@ -4467,8 +4489,8 @@ sub {
 }
 
 .pxh-login__notifications-badge--orange {
-  background-color: #ff9821;
   background-color: #ff9821 !important;
+  background-color: #ff9821;
 }
 
 .pxh-login__notifications-badge--orange:link {
@@ -4488,8 +4510,8 @@ sub {
 }
 
 .pxh-login__notifications-badge--red {
-  background-color: #e32533;
   background-color: #e32533 !important;
+  background-color: #e32533;
 }
 
 .pxh-login__notifications-badge--red:link {
@@ -4512,27 +4534,16 @@ sub {
   display: none;
 }
 
-.pxh-login__notifications-badge:hover + .pxh-login__notifications-link {
-  color: white !important;
-}
-
-.pxh-login__settings {
-  -ms-flex-negative: 0;
-      flex-shrink: 0;
-  -ms-flex-preferred-size: auto;
-      flex-basis: auto;
-}
-
-@media (min-width: 48em) {
-  .pxh-login__settings--narrow\@md {
-    display: none;
-  }
-}
-
-@media (min-width: 64em) {
-  .pxh-login__settings--wide\@lg {
-    display: block;
-  }
+.pxh-login__avatar-icon.pxh-login__avatar-icon.pxh-login__avatar-icon.pxh-login__avatar-icon.pxh-login__avatar-icon {
+  height: 30px;
+  width: 30px;
+  padding-top: 4px;
+  text-align: center;
+  font-size: 16.5px;
+  background-color: transparent;
+  color: #7c7c84;
+  border: 1px solid #7c7c84;
+  border-radius: 100%;
 }
 
 .pxh-login__settings-link.pxh-login__settings-link.pxh-login__settings-link,
@@ -4566,34 +4577,9 @@ sub {
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.25);
 }
 
-.pxh-login-menu--visible.pxh-login-menu--profile {
-  right: 55px;
-}
-
-.pxh-login-menu--visible.pxh-login-menu--settings {
-  right: 120px;
-}
-
-.pxh-login-menu__list.pxh-login-menu__list.pxh-login-menu__list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
 .pxh-login-menu__divider {
   display: block;
   border-top: 1px solid #242326;
-}
-
-.pxh-login-menu__link.pxh-login-menu__link.pxh-login-menu__link {
-  display: block;
-  height: 30px;
-  padding: 5px;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  text-decoration: none;
-  color: white;
 }
 
 .pxh-login-menu__link {
@@ -4614,6 +4600,31 @@ sub {
 
 .pxh-login-menu__link:active {
   color: white !important;
+}
+
+.pxh-login-menu--visible.pxh-login-menu--profile {
+  right: 55px;
+}
+
+.pxh-login-menu--visible.pxh-login-menu--settings {
+  right: 120px;
+}
+
+.pxh-login-menu__list.pxh-login-menu__list.pxh-login-menu__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.pxh-login-menu__link.pxh-login-menu__link.pxh-login-menu__link {
+  display: block;
+  height: 30px;
+  padding: 5px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  text-decoration: none;
+  color: white;
 }
 
 .pxh-login-menu__link:hover.pxh-login-menu__link:hover.pxh-login-menu__link:hover {
@@ -6245,9 +6256,10 @@ sub {
 .pxh-notifications {
   z-index: 800;
   position: fixed;
-  bottom: 40px;
+  bottom: 56px;
   left: 5px;
   right: 5px;
+  max-width: 480px;
   border-radius: 2px;
   background-color: #242326;
   color: #efeff4;
@@ -6256,10 +6268,13 @@ sub {
 }
 
 @media (min-width: 48em) {
+  .pxh-notifications\@md {
+    width: 480px;
+  }
   .pxh-notifications--narrow\@md {
     right: 5px;
     left: auto;
-    width: 420px;
+    bottom: 66px;
   }
 }
 
@@ -6267,7 +6282,7 @@ sub {
   .pxh-notifications--wide\@lg {
     right: 5px;
     left: auto;
-    width: 480px;
+    bottom: 56px;
   }
 }
 
@@ -6301,13 +6316,9 @@ sub {
 }
 
 .pxh-notifications__link {
+  color: #b1b1bc !important;
   color: #b1b1bc;
   text-decoration: none;
-  color: #b1b1bc !important;
-}
-
-.pxh-notifications__link:hover {
-  color: #3e87e8;
 }
 
 .pxh-notifications__link:link {
@@ -6324,6 +6335,10 @@ sub {
 
 .pxh-notifications__link:active {
   color: #3e87e8 !important;
+}
+
+.pxh-notifications__link:hover {
+  color: #3e87e8;
 }
 
 .pxh-notifications__clear {
@@ -6348,7 +6363,7 @@ sub {
   scrollbar-face-color: #525156;
   -webkit-overflow-scrolling: touch;
   position: relative;
-  max-height: 385px;
+  max-height: 245px;
   min-height: 70px;
   -webkit-overflow-scrolling: touch;
   overflow-y: auto;
@@ -6367,6 +6382,12 @@ sub {
   border-left: 2px solid #242326;
   border-right: 2px solid #242326;
   background-color: #7c7c84;
+}
+
+@media (min-width: 48em) {
+  .pxh-notifications__list\@md {
+    max-height: 385px;
+  }
 }
 
 .pxh-notifications__empty {
@@ -6464,13 +6485,9 @@ sub {
 }
 
 .pxh-notification__link {
+  color: #d1d0d8 !important;
   text-decoration: none;
   color: #b1b1bc;
-  color: #d1d0d8 !important;
-}
-
-.pxh-notification__link:hover {
-  color: #3e87e8;
 }
 
 .pxh-notification__link:link {
@@ -6487,6 +6504,10 @@ sub {
 
 .pxh-notification__link:active {
   color: #3e87e8 !important;
+}
+
+.pxh-notification__link:hover {
+  color: #3e87e8;
 }
 
 .pxh-notification__more {
