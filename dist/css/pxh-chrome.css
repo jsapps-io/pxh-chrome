@@ -5735,7 +5735,6 @@ sub {
   -webkit-overflow-scrolling: touch;
   position: fixed;
   bottom: 0;
-  pointer-events: none;
   right: 5px;
   left: 5px;
   -webkit-overflow-scrolling: touch;
@@ -5765,6 +5764,7 @@ sub {
     top: 66px;
     left: auto;
     width: 420px;
+    bottom: auto;
   }
 }
 
