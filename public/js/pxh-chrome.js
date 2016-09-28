@@ -364,10 +364,7 @@ pxh.transitions = {
     },
     'pxh-login__settings': {
       add: pxh.LOGIN_SETTINGS_ANIMATE_IN
-    },
-    // 'pxh-login__notifications': {
-    //   add: pxh.LOGIN_NOTIFICATIONS_ANIMATE_IN
-    // }
+    }
   },
   openToNarrow: {
     'pxh-drawer': {
@@ -390,10 +387,7 @@ pxh.transitions = {
     },
     'pxh-login__settings': {
       add: pxh.LOGIN_SETTINGS_ANIMATE_OUT
-    },
-    // 'pxh-login__notifications': {
-    //   add: pxh.LOGIN_NOTIFICATIONS_ANIMATE_OUT
-    // }
+    }
   },
   outToNarrow: {
     'pxh-drawer': {
@@ -454,9 +448,6 @@ pxh.transitions = {
     'pxh-login__settings': {
       add: pxh.LOGIN_SETTINGS_ANIMATE_OUT
     },
-    // 'pxh-login__notifications': {
-    //   add: pxh.LOGIN_NOTIFICATIONS_ANIMATE_OUT
-    // },
     'pxh-view': {
       add: pxh.VIEW_ANIMATE_WIDE
     },
@@ -486,9 +477,9 @@ pxh.transitions = {
     'pxh-login__settings': {
       add: pxh.LOGIN_SETTINGS_ANIMATE_IN
     },
-    // 'pxh-login__notifications': {
-    //   add: pxh.LOGIN_NOTIFICATIONS_ANIMATE_IN
-    // },
+    'pxh-login__notifications': {
+      add: pxh.LOGIN_NOTIFICATIONS_ANIMATE_IN
+    },
     'pxh-view': {
       add: pxh.VIEW_ANIMATE_NARROW
     },
@@ -518,9 +509,9 @@ pxh.transitions = {
     'pxh-login__settings': {
       remove: pxh.LOGIN_SETTINGS_ANIMATE_IN + ' ' + pxh.LOGIN_SETTINGS_ANIMATE_OUT
     },
-    // 'pxh-login__notifications': {
-    //   remove: pxh.LOGIN_NOTIFICATIONS_ANIMATE_IN + ' ' + pxh.LOGIN_NOTIFICATIONS_ANIMATE_OUT
-    // },
+    'pxh-login__notifications': {
+      remove: pxh.LOGIN_NOTIFICATIONS_ANIMATE_IN + ' ' + pxh.LOGIN_NOTIFICATIONS_ANIMATE_OUT
+    },
     'pxh-view': {
       remove: pxh.VIEW_ANIMATE_WIDE + ' ' + pxh.VIEW_ANIMATE_NARROW + ' ' + pxh.VIEW_ANIMATE_FULL_TO_WIDE
     },
