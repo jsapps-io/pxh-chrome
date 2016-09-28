@@ -1,6 +1,6 @@
 # pxh-chrome changelog
 
-### pending release
+### 2.2.0 - September 28, 2016
 * Display notifications badge at medium breakpoint and at large breakpoint when drawer is narrow
 * Apply a maximum height to the notifications list at the default breakpoint to improve compatibility with mobile phones in landscape orientation
 * Apply a maximum height to the notifications list at the medium breakpoint
