@@ -2,11 +2,6 @@
     #components.pxh-notification
 \*------------------------------------*/
 
-/// Flag to enable or disable pxh-notifications
-/// @group pxh-notification
-/// @type Boolean
-$pxh-notifications-enabled : false !default;
-
 /// Height of a (non-expanded) notification
 /// @group pxh-notification
 /// @type Number
@@ -47,71 +42,76 @@ $pxh-notification-max-count: 5;
   @include out-state-opacity;
 }
 
-  @keyframes pxh-notification--animate-in {
-    0% {
-      @include pxh-notification--out-state;
+@keyframes pxh-notification--animate-in {
+  0% {
+    @include pxh-notification--out-state;
+  }
+  33% {
+    @include pxh-notification--in-state-scale;
+    @include out-state-opacity;
+  }
+  66% {
+    @include pxh-notification--in-state;
+  }
+  100% {
+    @include pxh-notification--in-state;
+  }
+}
+
+@keyframes pxh-notification--animate-out {
+  0% {
+    @include pxh-notification--in-state;
+  }
+  33% {
+    @include pxh-notification--in-state-scale;
+    @include out-state-opacity;
+  }
+  66% {
+    @include pxh-notification--out-state;
+  }
+  100% {
+    @include pxh-notification--out-state;
+  }
+}
+
+.pxh-notifications {
+  z-index: 800;
+  position: fixed;
+  bottom: ($pxh-drawer-margin * 3) - 4px;
+  left: $pxh-notification-margin;
+  right: $pxh-notification-margin;
+  max-width: 480px;
+  border-radius: 2px;
+  background-color: $gray10;
+  color: $gray2;
+  border: 1px solid $gray7;
+  display: none;
+
+  @include mq($from: md) {
+    &\@md {
+      width: 480px;
     }
-    33% {
-      @include pxh-notification--in-state-scale;
-      @include out-state-opacity;
-    }
-    66% {
-      @include pxh-notification--in-state;
-    }
-    100% {
-      @include pxh-notification--in-state;
+
+    &--narrow\@md {
+      #{$pxh-drawer-side}: $pxh-notification-margin;
+      #{$pxh-drawer-opposite-side}: auto;
+      bottom: ($pxh-drawer-margin * 3) + 6px;
     }
   }
 
-  @keyframes pxh-notification--animate-out {
-    0% {
-      @include pxh-notification--in-state;
-    }
-    33% {
-      @include pxh-notification--in-state-scale;
-      @include out-state-opacity;
-    }
-    66% {
-      @include pxh-notification--out-state;
-    }
-    100% {
-      @include pxh-notification--out-state;
+  @include mq($from: lg) {
+    &--wide\@lg {
+      #{$pxh-drawer-side}: $pxh-notification-margin;
+      #{$pxh-drawer-opposite-side}: auto;
+      bottom: ($pxh-drawer-margin * 3) - 4px;
     }
   }
 
-@if $pxh-notifications-enabled == true {
-  .pxh-notifications {
-    z-index: 800;
-    position: fixed;
-    bottom: 40px;
-    left: $pxh-notification-margin;
-    right: $pxh-notification-margin;
-    border-radius: 2px;
-    background-color: $gray10;
-    color: $gray2;
-    border: 1px solid $gray7;
-    display: none;
-    @include mq($from: md) {
-      &--narrow\@md {
-        #{$pxh-drawer-side}: $pxh-notification-margin;
-        #{$pxh-drawer-opposite-side}: auto;
-        width: 420px;
-      }
-    }
-    @include mq($from: lg) {
-      &--wide\@lg {
-        #{$pxh-drawer-side}: $pxh-notification-margin;
-        #{$pxh-drawer-opposite-side}: auto;
-        width: 480px;
-      }
-    }
-  }
-
-  .pxh-notifications--visible {
+  &--visible {
     display: block;
   }
 
-  .pxh-notifications__header {
+  &__header {
     height: 40px;
     display: flex;
     // @if $pxh-language-direction == 'rtl' { // handled by direction: rtl on body element
@@ -120,7 +120,7 @@ $pxh-notification-max-count: 5;
     border-bottom: 1px solid $gray7;
   }
 
-  .pxh-notifications__title {
+  &__title {
     padding-top: $pxh-notification-margin * 2;
     flex-grow: 1;
     text-align: center;
@@ -128,23 +128,24 @@ $pxh-notification-max-count: 5;
     font-weight: bold;
   }
 
-  .pxh-notifications__action {
+  &__action {
     min-width: $pxh-notification-margin * 16;
     text-align: $pxh-drawer-side;
     padding-#{$pxh-drawer-side}: $pxh-notification-margin * 2;
     padding-top: $pxh-notification-margin * 2;
   }
 
-  .pxh-notifications__link {
+  &__link {
+    @include pxh-override-px-theme-color('pxh-notifications__link', $gray5, $primary-blue);
     color: $gray5;
     text-decoration: none;
+
     &:hover {
       color: $primary-blue;
     }
-    @include pxh-override-px-theme-color('pxh-notifications__link', $gray5, $primary-blue);
   }
 
-  .pxh-notifications__clear {
+  &__clear {
     min-width: $pxh-notification-margin * 16;
     color: $gray5;
     text-decoration: none;
@@ -152,22 +153,28 @@ $pxh-notification-max-count: 5;
     padding-right: $pxh-notification-margin * 2;
     padding-left: $pxh-notification-margin * 2;
     padding-top: $pxh-notification-margin * 2;
+
     a {
       color: $gray5;
       text-decoration: none;
     }
   }
 
-  .pxh-notifications__list {
+  &__list {
     @include pxh-fancy-scrollbar;
     position: relative;
-    max-height: ($pxh-notification-height * $pxh-notification-max-count) + ($pxh-notification-height / 2);
+    max-height: ($pxh-notification-height * 3) + ($pxh-notification-height / 2);
     min-height: $pxh-notification-height;
     -webkit-overflow-scrolling: touch;
     overflow-y: auto;
+    @include mq($from: md) {
+      &\@md {
+      max-height: ($pxh-notification-height * $pxh-notification-max-count) + ($pxh-notification-height / 2);
+      }
+    }
   }
 
-  .pxh-notifications__empty {
+  &__empty {
     position: absolute;
     bottom: 0;
     height: $pxh-notification-height;
@@ -178,78 +185,86 @@ $pxh-notification-max-count: 5;
     text-align: center;
     padding-top: $pxh-notification-height / 3;
   }
+}
 
-  .pxh-notification {
-    @include pxh-toast;
-    @include pxh-notification--in-state;
-    z-index: 900;
-    &--animate-in {
-      animation-fill-mode: forwards;
-      animation-duration: 1000ms;
-      animation-name: pxh-notification--animate-in;
-    }
-    &--animate-out {
-      animation-fill-mode: forwards;
-      animation-duration: 1000ms;
-      animation-name: pxh-notification--animate-out;
-    }
+.pxh-notification {
+  @include pxh-toast;
+  @include pxh-notification--in-state;
+  z-index: 900;
+
+  &--animate-in {
+    animation-fill-mode: forwards;
+    animation-duration: 1000ms;
+    animation-name: pxh-notification--animate-in;
   }
-  
-  .pxh-notification__icon {
+
+  &--animate-out {
+    animation-fill-mode: forwards;
+    animation-duration: 1000ms;
+    animation-name: pxh-notification--animate-out;
+  }
+
+  &__icon {
     @include pxh-toast__icon;
     padding-top: $pxh-toast-margin * 4;
     padding-#{$pxh-drawer-side}: $pxh-toast-margin;
     flex-basis: $pxh-toast-margin * 8;
     font-size: 24px;
+
     &--green {
       color: $green;
     }
+
     &--blue {
       color: $blue;
     }
+
     &--orange {
       color: $orange;
     }
+
     &--red {
       color: $red;
     }
   }
-  .pxh-notification__text {
+
+  &__text {
     @include pxh-toast__text;
   }
-  .pxh-notification__link {
+
+  &__link {
+    @include pxh-override-px-theme-color('pxh-notification__link', $gray4, $primary-blue);
     text-decoration: none;
     color: $gray5;
+
     &:hover {
       color: $primary-blue;
     }
-    @include pxh-override-px-theme-color('pxh-notification__link', $gray4, $primary-blue);
   }
-  .pxh-notification__more {
+
+  &__more {
     @include pxh-toast__more;
   }
-  .pxh-notification__more-button {
+
+  &__more-button {
     @include pxh-toast__more-button;
     @include pxh-override-px-theme-color('pxh-notification__more-button');
     @include pxh-override-px-theme-background-color('pxh-notification__more-button', $gray10, $gray9);
   }
-  .pxh-notification__timestamp {
+
+  &__timestamp {
     @include pxh-toast__timestamp;
     padding-top: $pxh-toast-margin * 5.5;
     max-width: $pxh-toast-height * 1.5;
   }
-  .pxh-notification__dismiss {
+
+  &__dismiss {
     @include pxh-toast__dismiss;
   }
-  .pxh-notification__dismiss-button {
+
+  &__dismiss-button {
     @include pxh-toast__dismiss-button;
     color: $gray8;
     @include pxh-override-px-theme-color('pxh-notification__dismiss-button', $gray8, $primary-blue);
-  }
-}
-
-@else {
-  .pxh-notifications {
-    display: none;
   }
 }

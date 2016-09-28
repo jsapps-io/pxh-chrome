@@ -2,11 +2,6 @@
     #components.pxh-toast
 \*------------------------------------*/
 
-/// Flag to enable or disable pxh-toasts
-/// @group pxh-toast
-/// @type Boolean
-$pxh-toasts-enabled : false !default;
-
 /// Height of a (non-expanded) toast
 /// @group pxh-toast
 /// @type Number
@@ -164,138 +159,138 @@ $pxh-toast-max-count: 3;
   @include out-state-opacity;
 }
 
-@if $pxh-toasts-enabled == true {
-  .pxh-toasts {
-    @include pxh-fancy-scrollbar;
-    position: fixed;
-    bottom: 0;
-    pointer-events: none;
-    right: $pxh-toast-margin;
-    left: $pxh-toast-margin;
-    -webkit-overflow-scrolling: touch;
-    overflow-y: auto;
-    z-index: 300;
-    max-height: ($pxh-toast-height * 2) + ($pxh-toast-height / 2) + $pxh-toast-margin;
-    @include mq($from: md) {
-      &--narrow\@md {
-        max-height: ($pxh-toast-height * $pxh-toast-max-count) + ($pxh-toast-height / 2) + ($pxh-toast-margin * ($pxh-toast-max-count - 1));
-        top: 60px + 1px + 5px;
-        #{$pxh-drawer-side}: auto;
-        width: 420px;
-      }
-    }
-    @include mq($from: lg) {
-      &--wide\@lg {
-        #{$pxh-drawer-side}: auto;
-        width: 480px;
-      }
+.pxh-toasts {
+  @include pxh-fancy-scrollbar;
+  position: fixed;
+  bottom: 0;
+  pointer-events: none;
+  right: $pxh-toast-margin;
+  left: $pxh-toast-margin;
+  -webkit-overflow-scrolling: touch;
+  overflow-y: auto;
+  z-index: 300;
+  max-height: ($pxh-toast-height * 2) + ($pxh-toast-height / 2) + $pxh-toast-margin;
+
+  @include mq($from: md) {
+    &--narrow\@md {
+      max-height: ($pxh-toast-height * $pxh-toast-max-count) + ($pxh-toast-height / 2) + ($pxh-toast-margin * ($pxh-toast-max-count - 1));
+      top: 60px + 1px + 5px;
+      #{$pxh-drawer-side}: auto;
+      width: 420px;
     }
   }
 
-  @keyframes pxh-toast--animate-in {
-    0% {
-      @include pxh-toast--out-state;
-    }
-    33% {
-      @include pxh-toast--in-state-scale;
-      @include out-state-opacity;
-    }
-    66% {
-      @include pxh-toast--in-state;
-    }
-    100% {
-      @include pxh-toast--in-state;
+  @include mq($from: lg) {
+    &--wide\@lg {
+      #{$pxh-drawer-side}: auto;
+      width: 480px;
     }
   }
+}
 
-  @keyframes pxh-toast--animate-out {
-    0% {
-      @include pxh-toast--in-state;
-    }
-    33% {
-      @include pxh-toast--in-state-scale;
-      @include out-state-opacity;
-    }
-    66% {
-      @include pxh-toast--out-state;
-    }
-    100% {
-      @include pxh-toast--out-state;
-    }
+@keyframes pxh-toast--animate-in {
+  0% {
+    @include pxh-toast--out-state;
   }
-
-  .pxh-toast {
+  33% {
+    @include pxh-toast--in-state-scale;
+    @include out-state-opacity;
+  }
+  66% {
     @include pxh-toast--in-state;
-    @include pxh-toast;
-    &--animate-in {
-      animation-fill-mode: forwards;
-      animation-duration: 1000ms;
-      animation-name: pxh-toast--animate-in;
-    }
-    &--animate-out {
-      animation-fill-mode: forwards;
-      animation-duration: 1000ms;
-      animation-name: pxh-toast--animate-out;
-    }
+  }
+  100% {
+    @include pxh-toast--in-state;
+  }
+}
+
+@keyframes pxh-toast--animate-out {
+  0% {
+    @include pxh-toast--in-state;
+  }
+  33% {
+    @include pxh-toast--in-state-scale;
+    @include out-state-opacity;
+  }
+  66% {
+    @include pxh-toast--out-state;
+  }
+  100% {
+    @include pxh-toast--out-state;
+  }
+}
+
+.pxh-toast {
+  @include pxh-toast--in-state;
+  @include pxh-toast;
+
+  &--animate-in {
+    animation-fill-mode: forwards;
+    animation-duration: 1000ms;
+    animation-name: pxh-toast--animate-in;
   }
 
-  .pxh-toast__action {
+  &--animate-out {
+    animation-fill-mode: forwards;
+    animation-duration: 1000ms;
+    animation-name: pxh-toast--animate-out;
+  }
+
+  &__action {
     @include pxh-toast__action;
   }
 
-  .pxh-toast__button {
+  &__button {
     max-width: $pxh-toast-height * 1.75;
     @include pxh-toast__button;
     @include pxh-override-px-theme-color('pxh-toast__button', $gray5);
     @include pxh-override-px-theme-background-color('pxh-toast__button', $gray10, $gray9);
   }
 
-  .pxh-toast__icon {
+  &__icon {
     @include pxh-toast__icon;
     color: $white;
     padding-top: $pxh-toast-margin * 4;
     flex-basis: $pxh-toast-height;
     font-size: 28px;
+
     &--green {
       background-color: $green;
     }
+
     &--blue {
       background-color: $blue;
     }
+
     &--orange {
       background-color: $orange;
     }
+
     &--red {
       background-color: $red;
     }
   }
 
-  .pxh-toast__text {
+  &__text {
     @include pxh-toast__text;
   }
 
-  .pxh-toast__more {
+  &__more {
     @include pxh-toast__more;
   }
 
-  .pxh-toast__more-button {
+  &__more-button {
     @include pxh-toast__more-button;
     @include pxh-override-px-theme-color('pxh-toast__more-button');
     @include pxh-override-px-theme-background-color('pxh-toast__more-button', $gray10, $gray9);
   }
 
-  .pxh-toast__dismiss {
+  &__dismiss {
     @include pxh-toast__dismiss;
   }
 
-  .pxh-toast__dismiss-button {
+  &__dismiss-button {
     @include pxh-toast__dismiss-button;
     @include pxh-override-px-theme-color('pxh-toast__dismiss-button', $gray7, $primary-blue);
-  }
-}
-
-@else {
-  .pxh-toasts {
-    display: none;
   }
 }

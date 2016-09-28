@@ -147,6 +147,8 @@ pxh.VIEW_HEADER_DRAWER_TOGGLE_HIDDEN = pxh.VIEW_HEADER_DRAWER_TOGGLE + pxh.HIDDE
 // notifications
 pxh.NOTIFICATIONS = pxh.PREFIX + 'notifications';
 pxh.NOTIFICATIONS_VISIBLE = pxh.NOTIFICATIONS + pxh.VISIBLE;
+pxh.NOTIFICATIONS_NARROW_AT_MD = pxh.NOTIFICATIONS + pxh.NARROW + pxh.AT_MD;
+pxh.NOTIFICATIONS_WIDE_AT_LG = pxh.NOTIFICATIONS + pxh.WIDE + pxh.AT_LG;
 
 // notification
 pxh.NOTIFICATION = pxh.PREFIX + 'notification';
@@ -213,7 +215,8 @@ pxh.states = {
       remove: pxh.VIEW_HEADER_DRAWER_TOGGLE_HIDDEN
     },
     'pxh-notifications': {
-      remove: pxh.NOTIFICATIONS_VISIBLE
+      remove: pxh.NOTIFICATIONS_VISIBLE,
+      add: pxh.NOTIFICATIONS_NARROW_AT_MD + ' ' + pxh.NOTIFICATIONS_WIDE_AT_LG
     }
   },
   open: {
@@ -265,6 +268,10 @@ pxh.states = {
     },
     'pxh-view-header-drawer-toggle': {
       add: pxh.VIEW_HEADER_DRAWER_TOGGLE_HIDDEN
+    },
+    'pxh-notifications': {
+      remove: pxh.NOTIFICATIONS_NARROW_AT_MD,
+      add: pxh.NOTIFICATIONS_WIDE_AT_LG
     }
   },
   narrowAtLg: {
@@ -319,7 +326,8 @@ pxh.states = {
       remove: pxh.VIEW_HEADER_DRAWER_TOGGLE_HIDDEN
     },
     'pxh-notifications': {
-      remove: pxh.NOTIFICATIONS_VISIBLE
+      remove: pxh.NOTIFICATIONS_VISIBLE + ' ' + pxh.NOTIFICATIONS_WIDE_AT_LG,
+      add: pxh.NOTIFICATIONS_NARROW_AT_MD
     }
   }
 };
@@ -356,9 +364,6 @@ pxh.transitions = {
     },
     'pxh-login__settings': {
       add: pxh.LOGIN_SETTINGS_ANIMATE_IN
-    },
-    'pxh-login__notifications': {
-      add: pxh.LOGIN_NOTIFICATIONS_ANIMATE_IN
     }
   },
   openToNarrow: {
@@ -382,9 +387,6 @@ pxh.transitions = {
     },
     'pxh-login__settings': {
       add: pxh.LOGIN_SETTINGS_ANIMATE_OUT
-    },
-    'pxh-login__notifications': {
-      add: pxh.LOGIN_NOTIFICATIONS_ANIMATE_OUT
     }
   },
   outToNarrow: {
@@ -445,9 +447,6 @@ pxh.transitions = {
     },
     'pxh-login__settings': {
       add: pxh.LOGIN_SETTINGS_ANIMATE_OUT
-    },
-    'pxh-login__notifications': {
-      add: pxh.LOGIN_NOTIFICATIONS_ANIMATE_OUT
     },
     'pxh-view': {
       add: pxh.VIEW_ANIMATE_WIDE
