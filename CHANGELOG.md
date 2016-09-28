@@ -7,6 +7,7 @@
 * Apply a width to the notifications list at the medium breakpoint so it's no longer dependent on the drawer being wide
 * Remove flag for enabling or disabling pxh-notifications
   * They are now always enabled by default
+* Fix bug where user couldn't scroll the toast container if their cursor was over the vertical margin between two toasts
 * Remove flag for enabling or disabling pxh-toasts
   * They are now always enabled by default
 * Scope ESLint to use ES2015 for pxh-chrome root, but ES5 for public folder
