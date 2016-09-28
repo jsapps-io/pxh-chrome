@@ -163,7 +163,6 @@ $pxh-toast-max-count: 3;
   @include pxh-fancy-scrollbar;
   position: fixed;
   bottom: 0;
-  pointer-events: none;
   right: $pxh-toast-margin;
   left: $pxh-toast-margin;
   -webkit-overflow-scrolling: touch;
@@ -177,6 +176,7 @@ $pxh-toast-max-count: 3;
       top: 60px + 1px + 5px;
       #{$pxh-drawer-side}: auto;
       width: 420px;
+      bottom: auto;
     }
   }
 
