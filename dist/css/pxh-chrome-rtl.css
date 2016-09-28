@@ -1,5 +1,5 @@
 @charset "UTF-8";
-/*! pxh-chrome-rtl.css 2.1.5 */
+/*! pxh-chrome-rtl.css 2.2.0 */
 /*------------------------------------*    #pxh-chrome-rtl
 \*------------------------------------*/
 /*------------------------------------*    #settings.defaults
@@ -5736,7 +5736,6 @@ sub {
   -webkit-overflow-scrolling: touch;
   position: fixed;
   bottom: 0;
-  pointer-events: none;
   right: 5px;
   left: 5px;
   -webkit-overflow-scrolling: touch;
@@ -5766,6 +5765,7 @@ sub {
     top: 66px;
     right: auto;
     width: 420px;
+    bottom: auto;
   }
 }
 
