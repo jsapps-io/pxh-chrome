@@ -1,4 +1,4 @@
-#pxh-chrome changelog
+# pxh-chrome changelog
 
 ### pending release
 * Display notifications badge at medium breakpoint and at large breakpoint when drawer is narrow
