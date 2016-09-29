@@ -10,7 +10,8 @@ exports.config = {
   suites: {
     smoke:      'spec/smoke/*.spec.js',
     nav:        'spec/drawer/*.spec.js',
-    responsive: 'spec/responsive/*.spec.js'
+    responsive: 'spec/responsive/*.spec.js',
+    toast:      'spec/toast/*.spec.js',
   },
   capabilities: {
     'browserName': 'chrome' // chrome or firefox ... directConnect doesn't support safari
