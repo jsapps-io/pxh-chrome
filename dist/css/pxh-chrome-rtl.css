@@ -5320,6 +5320,30 @@ sub {
   }
 }
 
+@-webkit-keyframes pxh-view--animate-full-to-narrow {
+  0% {
+    margin-right: 0;
+  }
+  50% {
+    margin-right: 0;
+  }
+  100% {
+    margin-right: 260px;
+  }
+}
+
+@keyframes pxh-view--animate-full-to-narrow {
+  0% {
+    margin-right: 0;
+  }
+  50% {
+    margin-right: 0;
+  }
+  100% {
+    margin-right: 260px;
+  }
+}
+
 .pxh-view--animate-wide {
   -webkit-animation-timing-function: ease-in-out;
           animation-timing-function: ease-in-out;
@@ -5351,6 +5375,17 @@ sub {
           animation-duration: 250ms;
   -webkit-animation-name: pxh-view--animate-full-to-wide;
           animation-name: pxh-view--animate-full-to-wide;
+}
+
+.pxh-view--animate-full-to-narrow {
+  -webkit-animation-timing-function: ease-in-out;
+          animation-timing-function: ease-in-out;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  -webkit-animation-duration: 250ms;
+          animation-duration: 250ms;
+  -webkit-animation-name: pxh-view--animate-full-to-narrow;
+          animation-name: pxh-view--animate-full-to-narrow;
 }
 
 .pxh-view {
@@ -5504,6 +5539,30 @@ sub {
   }
 }
 
+@-webkit-keyframes pxh-view-header--animate-full-to-narrow {
+  0% {
+    right: 0;
+  }
+  50% {
+    right: 0;
+  }
+  100% {
+    right: 260px;
+  }
+}
+
+@keyframes pxh-view-header--animate-full-to-narrow {
+  0% {
+    right: 0;
+  }
+  50% {
+    right: 0;
+  }
+  100% {
+    right: 260px;
+  }
+}
+
 .pxh-view-header--animate-wide {
   -webkit-animation-timing-function: ease-in-out;
           animation-timing-function: ease-in-out;
@@ -5535,6 +5594,17 @@ sub {
           animation-duration: 250ms;
   -webkit-animation-name: pxh-view-header--animate-full-to-wide;
           animation-name: pxh-view-header--animate-full-to-wide;
+}
+
+.pxh-view-header--animate-full-to-narrow {
+  -webkit-animation-timing-function: ease-in-out;
+          animation-timing-function: ease-in-out;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  -webkit-animation-duration: 250ms;
+          animation-duration: 250ms;
+  -webkit-animation-name: pxh-view-header--animate-full-to-narrow;
+          animation-name: pxh-view-header--animate-full-to-narrow;
 }
 
 .pxh-view-header {
