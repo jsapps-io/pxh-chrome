@@ -1,8 +1,10 @@
 # pxh-chrome changelog
 
 ### pending release
+* Add end-to-end tests for pxh-toast and pxh-notification capabilities
 * Fix bug where drawer could overlap view area when transitioning from default breakpoint to @lg breakpoint
   * Could happen when user resized browser window while on a different browser tab, and then switched back to their tab with the pxh-chrome layout
+* Bump mocha, eslint, babel-core, chai-as-promised, lodash, and other dependencies
 
 ### 2.2.0 - September 28, 2016
 * Display notifications badge at medium breakpoint and at large breakpoint when drawer is narrow
