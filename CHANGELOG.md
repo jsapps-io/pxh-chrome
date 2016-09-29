@@ -1,5 +1,9 @@
 # pxh-chrome changelog
 
+### pending release
+* Fix bug where drawer could overlap view area when transitioning from default breakpoint to @lg breakpoint
+  * Could happen when user resized browser window while on a different browser tab, and then switched back to their tab with the pxh-chrome layout
+
 ### 2.2.0 - September 28, 2016
 * Display notifications badge at medium breakpoint and at large breakpoint when drawer is narrow
 * Apply a maximum height to the notifications list at the default breakpoint to improve compatibility with mobile phones in landscape orientation
