@@ -246,4 +246,25 @@ describe('pxh-chrome', function () {
     });
     browser.driver.sleep(1000);
   });
+
+  it('should remember that the drawer is wide between refreshes', function () {
+    browser.driver.manage().window().setSize(1100, 800);
+    mainComponents.clickDrawerToggleLink();
+    browser.driver.sleep(1000);
+    browser.driver.navigate().refresh();
+    browser.driver.sleep(2000);
+    mainComponents.getDrawer().getCssValue('left').then(function (leftPosition) {
+      leftPosition = commonPage.convertPxToNum(leftPosition);
+      assert.isAtLeast(leftPosition, 0);
+    });
+    mainComponents.getDrawer().getCssValue('width').then(function (drawerWidth) {
+      drawerWidth = commonPage.convertPxToNum(drawerWidth);
+      assert.isAtLeast(drawerWidth, 200);
+    });
+    mainComponents.getOverlay().getCssValue('background-color').then(function (color) {
+      var opacity = commonPage.isOpaque(color);
+      assert.isNotOk(opacity);
+    });
+    browser.driver.sleep(1000);
+  });
 });
