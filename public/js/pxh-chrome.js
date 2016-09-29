@@ -1189,7 +1189,6 @@ pxh.breakpointAtMd = function (mdBreakpoint) {
         // the drawer wasn't open @sm so open it to narrow @md
         // fire the transition
         pxh.loadState(pxh.transitions, 'outToNarrow');
-        console.log('fired out to narrow');
       }
     }
   } else if (drawerIsNarrowAtMd) {
