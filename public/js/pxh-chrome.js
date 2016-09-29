@@ -24,6 +24,7 @@ pxh.ANIMATE_OUT = pxh.ANIMATE + '-out';
 pxh.ANIMATE_NARROW = pxh.ANIMATE + '-narrow';
 pxh.ANIMATE_WIDE = pxh.ANIMATE + '-wide';
 pxh.ANIMATE_FULL_TO_WIDE = pxh.ANIMATE + '-full-to-wide';
+pxh.ANIMATE_FULL_TO_NARROW = pxh.ANIMATE + '-full-to-narrow';
 pxh.ANIMATE_OUT_WIDE = pxh.ANIMATE + '-out-wide';
 
 // drawer
@@ -129,6 +130,7 @@ pxh.VIEW = pxh.PREFIX + 'view';
 pxh.VIEW_NARROW_AT_LG = pxh.VIEW + pxh.NARROW + pxh.AT_LG;
 pxh.VIEW_WIDE_AT_LG = pxh.VIEW + pxh.WIDE + pxh.AT_LG;
 pxh.VIEW_ANIMATE_FULL_TO_WIDE = pxh.VIEW + pxh.ANIMATE_FULL_TO_WIDE;
+pxh.VIEW_ANIMATE_FULL_TO_NARROW = pxh.VIEW + pxh.ANIMATE_FULL_TO_NARROW;
 pxh.VIEW_ANIMATE_WIDE = pxh.VIEW + pxh.ANIMATE_WIDE;
 pxh.VIEW_ANIMATE_NARROW = pxh.VIEW + pxh.ANIMATE_NARROW;
 
@@ -139,6 +141,8 @@ pxh.VIEW_HEADER_WIDE_AT_LG = pxh.VIEW_HEADER + pxh.WIDE + pxh.AT_LG;
 pxh.VIEW_HEADER_ANIMATE_WIDE = pxh.VIEW_HEADER + pxh.ANIMATE_WIDE;
 pxh.VIEW_HEADER_ANIMATE_NARROW = pxh.VIEW_HEADER + pxh.ANIMATE_NARROW;
 pxh.VIEW_HEADER_ANIMATE_FULL_TO_WIDE = pxh.VIEW_HEADER + pxh.ANIMATE_FULL_TO_WIDE;
+pxh.VIEW_HEADER_ANIMATE_FULL_TO_NARROW = pxh.VIEW_HEADER + pxh.ANIMATE_FULL_TO_NARROW;
+
 
 // view-header-drawer-toggle
 pxh.VIEW_HEADER_DRAWER_TOGGLE = pxh.PREFIX + 'view-header-drawer-toggle';
@@ -398,6 +402,17 @@ pxh.transitions = {
     },
     'pxh-view-header': {
       add: pxh.VIEW_HEADER_ANIMATE_FULL_TO_WIDE
+    }
+  },
+  outToWide: {
+    'pxh-drawer': {
+      add: pxh.DRAWER_ANIMATE_IN
+    },
+    'pxh-view': {
+      add: pxh.VIEW_ANIMATE_FULL_TO_NARROW
+    },
+    'pxh-view-header': {
+      add: pxh.VIEW_HEADER_ANIMATE_FULL_TO_NARROW
     }
   },
   narrowToOut: {
@@ -1158,24 +1173,29 @@ pxh.bindControl = function (controlName) {
  *
  * @param {String} breakpoint
  */
-pxh.breakpointAtMd = function (breakpoint) {
-  pxh.loadState(pxh.transitions, 'clearAll');
+pxh.breakpointAtMd = function (mdBreakpoint) {
   var drawer = document.getElementById('js-drawer');
-  var drawerIsWideAtLg = drawer.classList.contains('pxh-drawer--wide@lg');
   var drawerIsNarrowAtMd = drawer.classList.contains('pxh-drawer--narrow@md');
-  if (breakpoint.matches) {
-    // we entered the @md breakpoint from the @sm breakpoint
+  pxh.loadState(pxh.transitions, 'clearAll');
+  if (mdBreakpoint.matches) {
+    // we entered the @md or @lg breakpoint from the @sm breakpoint
     if (drawerIsNarrowAtMd) {
-      // the drawer wasn't open @sm so open it to narrow @md
-      // fire the transition
-      pxh.loadState(pxh.transitions, 'outToNarrow');
+      // the drawer wasn't open @sm
+      if (window.matchMedia('(min-width: 1024px)').matches) {
+        // we transitioned to the @lg breakpoint so open it to wide @lg
+        // fire the transition
+        pxh.loadState(pxh.transitions, 'outToWide');
+      } else {
+        // the drawer wasn't open @sm so open it to narrow @md
+        // fire the transition
+        pxh.loadState(pxh.transitions, 'outToNarrow');
+        console.log('fired out to narrow');
+      }
     }
-  } else {
+  } else if (drawerIsNarrowAtMd) {
     // we exited the @md breakpoint into the @sm breakpoint
-    if (drawerIsNarrowAtMd) {
-      // the drawer was open to narrow @md so move it out @sm
-      pxh.loadState(pxh.transitions, 'narrowToOut');
-    }
+    // the drawer was open to narrow @md so move it out @sm
+    pxh.loadState(pxh.transitions, 'narrowToOut');
   }
 };
 
