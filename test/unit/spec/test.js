@@ -105,8 +105,8 @@ pxh.changeClasses('qa-target-toggle-multiple', 'toggle', 'qa-toggle-add-multiple
 // fire the changes for pxh.loadState
 pxh.loadState(testStatesObject, 'stateTwo');
 
-describe('Tests for pxh-chrome.js', () => {
-  describe('Tests for pxh.Cookies', () => {
+describe('pxh-chrome.js', () => {
+  describe('pxh.Cookies', () => {
     it('pxh.Cookies.set should set a cookie', () => {
       assert.include(document.cookie, 'qa-cookie-is-set');
       assert.include(document.cookie, 'qa-cookie-set');
@@ -124,15 +124,15 @@ describe('Tests for pxh-chrome.js', () => {
       assert.isNotOk(document.cookie, 'document.cookie is empty');
     });
   });
-  describe('Tests for pxhFindObjectByLabel', () => {
-    it('pxhFindObjectByLabel returns the stateOne object by label', () => {
+  describe('pxh.getItemByPropertyName', () => {
+    it('pxh.getItemByPropertyName returns the stateOne object by property', () => {
       assert.isObject(testStateOne, 'testStateOne is an object');
     });
-    it('pxhFindObjectByLabel returns the drawerClosedState object by label', () => {
+    it('pxh.getItemByPropertyName returns the drawerClosedState object by property', () => {
       assert.isObject(testStateTwo, 'stateTwo is an object');
     });
   });
-  describe('Tests for pxh.changeClasses', () => {
+  describe('pxh.changeClasses', () => {
     it('pxh.changeClasses added a class to a target class element', () => {
       assert.deepEqual(document.getElementsByClassName('qa-target-add'), document.getElementsByClassName('qa-added'));
     });
@@ -156,7 +156,7 @@ describe('Tests for pxh-chrome.js', () => {
       assert.notDeepEqual(document.getElementsByClassName('qa-target-toggle-multiple'), document.getElementsByClassName('qa-toggle-remove-multiple-two'));
     });
   });
-  describe('Tests for pxh.loadState', () => {
+  describe('pxh.loadState', () => {
     it('pxh.loadState switches from stateOne to stateTwo', () => {
       assert.deepEqual(document.getElementsByClassName('qa-item-one'), document.getElementsByClassName('qa-item-one--state-two'));
       assert.deepEqual(document.getElementsByClassName('qa-item-two'), document.getElementsByClassName('qa-item-two--state-two'));
