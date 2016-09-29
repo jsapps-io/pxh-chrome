@@ -8,7 +8,7 @@
 
 (function () {
 
-  var commonPage = function() {
+  var commonPage = function () {
 
     return {
       //check to see if an element has such css class provided
@@ -61,13 +61,13 @@
         return randomstring;
       },
 
-      waitForElement: function(elementToWait) {
+      waitForElement: function (elementToWait) {
         var EC = protractor.ExpectedConditions;
         var microappContent = element(by.css(elementToWait));
         browser.wait(EC.presenceOf(microappContent), 10000);
       },
 
-      waitForUrlToChange: function(urlToWait) {
+      waitForUrlToChange: function (urlToWait) {
         var currentUrl;
         return browser.getCurrentUrl()
         .then(function storeCurrentUrl(url) {
@@ -82,24 +82,24 @@
          });
       },
 
-      navigateToUrl: function(url) {
+      navigateToUrl: function (url) {
         browser.driver.get(url);
         this.waitForUrlToChange(url);
       },
 
-      getErrorMessage: function() {
+      getErrorMessage: function () {
         //
       },
 
-      getSuccessMessage: function() {
+      getSuccessMessage: function () {
         //
       },
 
       // Choose SelectField
       // Click an option under a select tag
       // Passing a selector, index of the option, and text that matches the text under the select menu
-      selectSelectorField : function(selector, index , text){
-        return element(selector).all(by.css('option')).then(function(eles) {
+      selectSelectorField : function (selector, index , text){
+        return element(selector).all(by.css('option')).then(function (eles) {
           return eles[index].getText().then(function doesOptionMatch(txt){
             if (txt === text){
               return eles[index].click();

@@ -11,13 +11,13 @@ var chaiAsPromised = require('chai-as-promised');
 chai.use(chaiAsPromised);
 var assert = chai.assert;
 
-describe('pxh-chrome', function() {
+describe('pxh-chrome', function () {
 
   var commonPage = require('../common/common.po.js');
   var mainComponents    = require('../smoke/mainComponents.po.js');
   var drawerComponents = require('../drawer/drawerComponents.po.js');
 
-  it('should hide the drawer by default at the mobile breakpoint', function() {
+  it('should hide the drawer by default at the mobile breakpoint', function () {
     browser.driver.manage().window().setSize(400, 800);
     browser.driver.sleep(1000);
     assert.eventually.isOk(mainComponents.getDrawer().isDisplayed());
@@ -31,7 +31,7 @@ describe('pxh-chrome', function() {
     });
   });
 
-  it('should show the view header drawer toggle button at the mobile breakpoint', function() {
+  it('should show the view header drawer toggle button at the mobile breakpoint', function () {
     browser.driver.manage().window().setSize(400, 800);
     assert.eventually.isOk(mainComponents.getViewHeaderDrawerToggle().isDisplayed());
     mainComponents.getViewHeaderDrawerToggle().getCssValue('left').then(function (leftPosition) {
@@ -40,7 +40,7 @@ describe('pxh-chrome', function() {
     });
   });
 
-  it('should open the drawer when the view header drawer toggle is clicked', function() {
+  it('should open the drawer when the view header drawer toggle is clicked', function () {
     browser.driver.manage().window().setSize(400, 800);
     mainComponents.clickViewHeaderDrawerToggleLink();
     browser.driver.sleep(1000);
@@ -58,7 +58,7 @@ describe('pxh-chrome', function() {
     });
   });
 
-  it('should close the drawer when the drawer toggle is clicked', function() {
+  it('should close the drawer when the drawer toggle is clicked', function () {
     browser.driver.manage().window().setSize(400, 800);
     mainComponents.clickDrawerToggleLink();
     browser.driver.sleep(1000);
@@ -72,7 +72,7 @@ describe('pxh-chrome', function() {
     });
   });
 
-  it('should close the drawer when the overlay is clicked', function() {
+  it('should close the drawer when the overlay is clicked', function () {
     browser.driver.manage().window().setSize(400, 800);
     mainComponents.clickViewHeaderDrawerToggleLink();
     browser.driver.sleep(400);
@@ -88,7 +88,7 @@ describe('pxh-chrome', function() {
     });
   });
 
-  it('should show the narrow drawer by default at the tablet breakpoint', function() {
+  it('should show the narrow drawer by default at the tablet breakpoint', function () {
     browser.driver.manage().window().setSize(800, 800);
     browser.driver.sleep(1000);
     assert.eventually.isOk(mainComponents.getDrawer().isDisplayed());
@@ -106,7 +106,7 @@ describe('pxh-chrome', function() {
     });
   });
 
-  it('should not show the view header drawer toggle button at the tablet breakpoint', function() {
+  it('should not show the view header drawer toggle button at the tablet breakpoint', function () {
     browser.driver.manage().window().setSize(800, 800);
     browser.driver.sleep(1000);
     mainComponents.getViewHeaderDrawerToggle().getCssValue('left').then(function (leftPosition) {
@@ -115,7 +115,7 @@ describe('pxh-chrome', function() {
     });
   });
 
-  it('should open the drawer when the view header drawer toggle is clicked', function() {
+  it('should open the drawer when the view header drawer toggle is clicked', function () {
     browser.driver.manage().window().setSize(800, 800);
     mainComponents.clickDrawerToggleLink();
     browser.driver.sleep(1000);
@@ -133,7 +133,7 @@ describe('pxh-chrome', function() {
     });
   });
 
-  it('should narrow the drawer when the view header drawer toggle is clicked', function() {
+  it('should narrow the drawer when the view header drawer toggle is clicked', function () {
     browser.driver.manage().window().setSize(800, 800);
     mainComponents.clickDrawerToggleLink();
     browser.driver.sleep(1000);
@@ -151,7 +151,7 @@ describe('pxh-chrome', function() {
     });
   });
 
-  it('should narrow the drawer when the overlay is clicked', function() {
+  it('should narrow the drawer when the overlay is clicked', function () {
     browser.driver.manage().window().setSize(800, 800);
     mainComponents.clickDrawerToggleLink();
     browser.driver.sleep(1000);
@@ -172,7 +172,7 @@ describe('pxh-chrome', function() {
     browser.driver.sleep(1000);
   });
 
-  it('should show the wide drawer at the desktop breakpoint', function() {
+  it('should show the wide drawer at the desktop breakpoint', function () {
     browser.driver.manage().window().setSize(1100, 800);
     browser.driver.sleep(1000);
     assert.eventually.isOk(mainComponents.getDrawer().isDisplayed());
@@ -190,7 +190,7 @@ describe('pxh-chrome', function() {
     });
   });
 
-  it('should narrow the drawer when the view header drawer toggle is clicked', function() {
+  it('should narrow the drawer when the view header drawer toggle is clicked', function () {
     browser.driver.manage().window().setSize(1100, 800);
     mainComponents.clickDrawerToggleLink();
     browser.driver.sleep(1000);
@@ -208,7 +208,7 @@ describe('pxh-chrome', function() {
     });
   });
 
-  it('should expand the drawer when the view header drawer toggle is clicked', function() {
+  it('should expand the drawer when the view header drawer toggle is clicked', function () {
     browser.driver.manage().window().setSize(1100, 800);
     mainComponents.clickDrawerToggleLink();
     browser.driver.sleep(1000);
@@ -226,7 +226,7 @@ describe('pxh-chrome', function() {
     });
   });
 
-  it('should remember that the drawer is narrow between refreshes', function() {
+  it('should remember that the drawer is narrow between refreshes', function () {
     browser.driver.manage().window().setSize(1100, 800);
     mainComponents.clickDrawerToggleLink();
     browser.driver.sleep(1000);
