@@ -164,4 +164,62 @@ describe('pxh-chrome.js', () => {
       assert.notDeepEqual(document.getElementsByClassName('qa-item-two'), document.getElementsByClassName('qa-item-two--state-one'));
     });
   });
+
+  describe('pxh.toast', () => {
+
+    describe('pxh.toast.badge', () => {
+      it('badge count increments by 1 and shows 1', () => {
+        pxh.toast.badge.increment();
+        assert.deepEqual(pxh.toast.badge.count, 1);
+        assert.deepEqual(pxh.toast.badge.count, pxh.toast.badge.text);
+      });
+      it('badge count decrements by 1 and shows 0', () => {
+        pxh.toast.badge.decrement();
+        assert.deepEqual(pxh.toast.badge.count, 0);
+        assert.deepEqual(pxh.toast.badge.count, pxh.toast.badge.text);
+      });
+      it('badge count does not decrement below 0 or show below 0', () => {
+        for (var i = 10; i > 0; i -= 1) {
+          pxh.toast.badge.decrement();
+        }
+        assert.deepEqual(pxh.toast.badge.count, 0);
+        assert.deepEqual(pxh.toast.badge.count, pxh.toast.badge.text);
+      });
+      it('badge count increments to 2 and shows 2', () => {
+        for (var i = 2; i > 0; i -= 1) {
+          pxh.toast.badge.increment();
+        }
+        assert.deepEqual(pxh.toast.badge.count, 2);
+        assert.deepEqual(pxh.toast.badge.count, pxh.toast.badge.text);
+      });
+      it('badge count decrements to 0 and shows 0', () => {
+        for (var i = 2; i > 0; i -= 1) {
+          pxh.toast.badge.decrement();
+        }
+        assert.deepEqual(pxh.toast.badge.count, 0);
+        assert.deepEqual(pxh.toast.badge.count, pxh.toast.badge.text);
+      });
+      it('badge count increments to 9 and shows 9', () => {
+        for (var i = 9; i > 0; i -= 1) {
+          pxh.toast.badge.increment();
+        }
+        assert.deepEqual(pxh.toast.badge.count, 9);
+        assert.deepEqual(pxh.toast.badge.count, pxh.toast.badge.text);
+      });
+      it('badge count increases to 10 but displayed count is 9+', () => {
+        pxh.toast.badge.increment();
+        assert.deepEqual(pxh.toast.badge.count, 10);
+        assert.notEqual(pxh.toast.badge.count, pxh.toast.badge.text);
+        assert.deepEqual(pxh.toast.badge.text, '9+');
+      });
+      it('badge count increases beyond 9 and displayed count remains 9+', () => {
+        for (var i = 10; i > 0; i -= 1) {
+          pxh.toast.badge.increment();
+        }
+        assert.deepEqual(pxh.toast.badge.count, 20);
+        assert.notEqual(pxh.toast.badge.count, pxh.toast.badge.text);
+        assert.deepEqual(pxh.toast.badge.text, '9+');
+      });
+    });
+  });
 });
