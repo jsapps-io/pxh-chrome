@@ -1,6 +1,6 @@
 # pxh-chrome changelog
 
-### pending release
+### 2.2.1 - September 30, 2016
 * Add end-to-end tests for pxh-toast and pxh-notification capabilities
 * Fix bug where drawer could overlap view area when transitioning from default breakpoint to @lg breakpoint
   * Could happen when user resized browser window while on a different browser tab, and then switched back to their tab with the pxh-chrome layout
