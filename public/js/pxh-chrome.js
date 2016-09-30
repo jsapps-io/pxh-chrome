@@ -1341,6 +1341,7 @@ pxh.toast = {
   /** @namespace pxh.toast.badge */
   badge: {
     count: 0,
+    text: 0,
 
     /**
      * Increases the value of the notification icon badge by 1
@@ -1388,8 +1389,8 @@ pxh.toast = {
       var notificationIcon = '';
       var notificationBadge = '';
       if ((notificationIcon = document.getElementById('js-login__notifications')) && (notificationBadge = document.getElementById('js-login__notifications-badge'))) {
+        notificationBadge.innerHTML = pxh.toast.badge.text;
         if (pxh.toast.badge.count > 0) {
-          notificationBadge.innerHTML = pxh.toast.badge.text;
           notificationIcon.classList.remove(pxh.DISPLAY_NONE);
           notificationBadge.classList.remove(pxh.LOGIN_NOTIFICATIONS_BADGE_HIDDEN);
         } else {
