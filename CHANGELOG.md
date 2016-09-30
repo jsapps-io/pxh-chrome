@@ -7,7 +7,7 @@
 * Fix bug where toasts and notifications weren't receiving a default action label if one wasn't provided in the toast object
 * Fix bug where notifications badge wasn't being assigned a default value
 * Fix bug where the flag to suppress a toast object's "toast" and send it directly to the notification list wasn't being recognized
-* Bump mocha, eslint, babel-core, chai-as-promised, lodash, and other dependencies
+* Bump mocha, eslint, babel-core, browser-sync, chai-as-promised, lodash, and other dependencies
 
 ### 2.2.0 - September 28, 2016
 * Display notifications badge at medium breakpoint and at large breakpoint when drawer is narrow
