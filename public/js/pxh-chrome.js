@@ -1454,7 +1454,7 @@ pxh.toast = {
    * @param {String} [object.timestamp] The ISO 8601 datetime value for when the toast/notification was issued (e.g. 2016-08-01T17:36:10+00:00)
   * @param {Boolean} [object.isPersistent=false] - Whether or not the toast should persist until the user actively dismisses it. This option is only recognized if the toast has an `actionLink` or `actionCallback` associated with it
    * @param {Boolean} [object.suppressToast=false] An optional parameter that, if true, will only create a notification (if applicable) from the object, and will display a corresponding toast to the user
-   * @param {String} [object.actionText='Action'] - The text to display in the toast's action button, if an `actionLink` or `actionCallback` is present.
+   * @param {String} [object.actionLabel='Action'] - The text to display in the toast's action button, if an `actionLink` or `actionCallback` is present.
    * @param {String} [object.actionLink] - The URL to follow when the user clicks the action button. Can be a fully qualified URL (e.g. http://www.predix.com/) or a relative route within your application (e.g. assets/detail/1234?show_cases_tab)
    * @param {Function} [object.actionCallback] - The callback function to execute when the user clicks the toast/notification's action button
    */
@@ -1844,6 +1844,9 @@ pxh.toast = {
      */
     button: function button(object, slug, id) {
       var markup = [];
+      if (!object.actionLabel) {
+        object.actionLabel = 'Action';
+      }
       if (object.actionLink) {
         markup.push('<div class="pxh-' + slug + '__action">\n');
         markup.push('  <a class="pxh-' + slug + '__button" href="' + object.actionLink + '">' + object.actionLabel + '</a>\n');
