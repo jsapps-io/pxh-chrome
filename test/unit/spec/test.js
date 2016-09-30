@@ -47,13 +47,13 @@ var testStatesObject = {
 var testStateOne = pxh.getItemByPropertyName(testStatesObject, 'stateOne');
 var testStateTwo = pxh.getItemByPropertyName(testStatesObject, 'stateTwo');
 
-// create item to manipulate by toggling state
+// create element to manipulate by toggling state
 var stateItemOne = document.createElement('div');
 stateItemOne.classList.add('qa-item-one');
 stateItemOne.classList.add('qa-item-one--state-one');
 document.body.appendChild(stateItemOne);
 
-// create item to manipulate by toggling state
+// create element to manipulate by toggling state
 var stateItemTwo = document.createElement('div');
 stateItemOne.classList.add('qa-item-two');
 stateItemOne.classList.add('qa-item-two--state-one');
@@ -94,6 +94,32 @@ toggleMultipleClassesOnMultipleTargetsTwo.classList.add('qa-target-toggle-multip
 toggleMultipleClassesOnMultipleTargetsTwo.classList.add('qa-toggle-remove-multiple-one');
 toggleMultipleClassesOnMultipleTargetsTwo.classList.add('qa-toggle-remove-multiple-two');
 document.body.appendChild(toggleMultipleClassesOnMultipleTargetsTwo);
+
+// create elements to test pxh.toast.badge.update
+var notificationsIcon = document.createElement('div');
+notificationsIcon.id = 'js-login__notifications';
+document.body.appendChild(notificationsIcon);
+
+var notificationsBadge = document.createElement('div');
+notificationsBadge.id = 'js-login__notifications-badge';
+document.body.appendChild(notificationsBadge);
+
+// create element for inserting toasts
+var toasts = document.createElement('div');
+toasts.id = 'js-toasts';
+document.body.appendChild(toasts);
+
+// create element for inserting notifications
+var notifications = document.createElement('div');
+notifications.id = 'js-notifications__list';
+document.body.appendChild(notifications);
+
+var toastObject1 = {};
+var toastObject2 = {isPersistent: true,};
+var toastObject3 = {
+  isPersistent: true,
+  actionLink: 'http://predix.com/',
+};
 
 // fire the changes for pxh.changeClasses
 pxh.changeClasses('qa-target-add', 'add', 'qa-added');
@@ -169,56 +195,127 @@ describe('pxh-chrome.js', () => {
 
     describe('pxh.toast.badge', () => {
       it('badge count increments by 1 and shows 1', () => {
+        var assertCount = 1;
         pxh.toast.badge.increment();
-        assert.deepEqual(pxh.toast.badge.count, 1);
+        pxh.toast.badge.update();
+        assert.deepEqual(pxh.toast.badge.count, assertCount);
         assert.deepEqual(pxh.toast.badge.count, pxh.toast.badge.text);
+        assert.equal(document.getElementById('js-login__notifications-badge').innerHTML, assertCount.toString());
       });
       it('badge count decrements by 1 and shows 0', () => {
+        var assertCount = 0;
         pxh.toast.badge.decrement();
-        assert.deepEqual(pxh.toast.badge.count, 0);
+        pxh.toast.badge.update();
+        assert.deepEqual(pxh.toast.badge.count, assertCount);
         assert.deepEqual(pxh.toast.badge.count, pxh.toast.badge.text);
+        assert.equal(document.getElementById('js-login__notifications-badge').innerHTML, assertCount.toString());
       });
       it('badge count does not decrement below 0 or show below 0', () => {
+        var assertCount = 0;
         for (var i = 10; i > 0; i -= 1) {
           pxh.toast.badge.decrement();
+          pxh.toast.badge.update();
         }
-        assert.deepEqual(pxh.toast.badge.count, 0);
+        assert.deepEqual(pxh.toast.badge.count, assertCount);
         assert.deepEqual(pxh.toast.badge.count, pxh.toast.badge.text);
+        assert.equal(document.getElementById('js-login__notifications-badge').innerHTML, assertCount.toString());
       });
       it('badge count increments to 2 and shows 2', () => {
+        var assertCount = 2;
         for (var i = 2; i > 0; i -= 1) {
           pxh.toast.badge.increment();
+          pxh.toast.badge.update();
+
         }
-        assert.deepEqual(pxh.toast.badge.count, 2);
+        assert.deepEqual(pxh.toast.badge.count, assertCount);
         assert.deepEqual(pxh.toast.badge.count, pxh.toast.badge.text);
+        assert.equal(document.getElementById('js-login__notifications-badge').innerHTML, assertCount.toString());
       });
       it('badge count decrements to 0 and shows 0', () => {
+        var assertCount = 0;
         for (var i = 2; i > 0; i -= 1) {
           pxh.toast.badge.decrement();
         }
-        assert.deepEqual(pxh.toast.badge.count, 0);
+        pxh.toast.badge.update();
+        assert.deepEqual(pxh.toast.badge.count, assertCount);
         assert.deepEqual(pxh.toast.badge.count, pxh.toast.badge.text);
+        assert.equal(document.getElementById('js-login__notifications-badge').innerHTML, assertCount.toString());
       });
       it('badge count increments to 9 and shows 9', () => {
+        var assertCount = 9;
         for (var i = 9; i > 0; i -= 1) {
           pxh.toast.badge.increment();
         }
-        assert.deepEqual(pxh.toast.badge.count, 9);
+        pxh.toast.badge.update();
+        assert.deepEqual(pxh.toast.badge.count, assertCount);
         assert.deepEqual(pxh.toast.badge.count, pxh.toast.badge.text);
+        assert.equal(document.getElementById('js-login__notifications-badge').innerHTML, assertCount.toString());
       });
       it('badge count increases to 10 but displayed count is 9+', () => {
+        var assertCount = 10;
+        var assertText = '9+'
         pxh.toast.badge.increment();
-        assert.deepEqual(pxh.toast.badge.count, 10);
+        pxh.toast.badge.update();
+        assert.deepEqual(pxh.toast.badge.count, assertCount);
         assert.notEqual(pxh.toast.badge.count, pxh.toast.badge.text);
-        assert.deepEqual(pxh.toast.badge.text, '9+');
+        assert.deepEqual(pxh.toast.badge.text, assertText);
+        assert.equal(document.getElementById('js-login__notifications-badge').innerHTML, assertText);
       });
       it('badge count increases beyond 9 and displayed count remains 9+', () => {
+        var assertCount = 20;
+        var assertText = '9+';
         for (var i = 10; i > 0; i -= 1) {
           pxh.toast.badge.increment();
         }
-        assert.deepEqual(pxh.toast.badge.count, 20);
+        pxh.toast.badge.update();
+        assert.deepEqual(pxh.toast.badge.count, assertCount);
         assert.notEqual(pxh.toast.badge.count, pxh.toast.badge.text);
-        assert.deepEqual(pxh.toast.badge.text, '9+');
+        assert.deepEqual(pxh.toast.badge.text, assertText);
+        assert.equal(document.getElementById('js-login__notifications-badge').innerHTML, assertText);
+      });
+      it('badge count decrements back down to 0', () => {
+        var assertCount = 0;
+        var assertText = 0;
+        for (var i = 20; i > 0; i -= 1) {
+          pxh.toast.badge.decrement();
+        }
+        pxh.toast.badge.update();
+        assert.deepEqual(pxh.toast.badge.count, assertCount);
+        assert.deepEqual(pxh.toast.badge.count, pxh.toast.badge.text);
+        assert.deepEqual(pxh.toast.badge.text, assertText);
+        assert.equal(document.getElementById('js-login__notifications-badge').innerHTML, assertText.toString());
+      });
+    });
+    describe('pxh.toast.add', () => {
+      it('inserts a blank toast that toasts but does not appear in notifications', () => {
+        pxh.toast.add(toastObject1);
+        assert.lengthOf(document.getElementById('js-toasts').getElementsByClassName('pxh-toast'), 1);
+        assert.lengthOf(document.getElementById('js-notifications__list').getElementsByClassName('pxh-notification'), 0);
+        assert.equal(document.getElementById('js-login__notifications-badge').innerHTML, 0);
+      });
+      it('inserts a persistent toast w/o an action so it does not appear in notifications', () => {
+        pxh.toast.add(toastObject2);
+        assert.lengthOf(document.getElementById('js-toasts').getElementsByClassName('pxh-toast'), 2);
+        assert.lengthOf(document.getElementById('js-notifications__list').getElementsByClassName('pxh-notification'), 0);
+        assert.equal(document.getElementById('js-login__notifications-badge').innerHTML, 0);
+      });
+      it('inserts a persistent toast w/ an action link so it appears in notifications', () => {
+        pxh.toast.add(toastObject3);
+        assert.lengthOf(document.getElementById('js-toasts').getElementsByClassName('pxh-toast'), 3);
+        assert.lengthOf(document.getElementById('js-notifications__list').getElementsByClassName('pxh-notification'), 1);
+        assert.equal(document.getElementById('js-login__notifications-badge').innerHTML, 1);
+      });
+    });
+    describe('pxh.toast.removeAll', () => {
+      it('removes all notifications', () => {
+        pxh.toast.add(toastObject3);
+        pxh.toast.add(toastObject3);
+        assert.lengthOf(document.getElementById('js-notifications__list').getElementsByClassName('pxh-notification'), 3);
+        assert.equal(document.getElementById('js-login__notifications-badge').innerHTML, 3);
+        pxh.toast.removeAll();
+        assert.lengthOf(document.getElementById('js-notifications__list').getElementsByClassName('pxh-notification'), 0);
+        assert.equal(document.getElementById('js-login__notifications-badge').innerHTML, 0);
+        
       });
     });
   });
