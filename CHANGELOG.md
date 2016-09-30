@@ -6,6 +6,7 @@
   * Could happen when user resized browser window while on a different browser tab, and then switched back to their tab with the pxh-chrome layout
 * Fix bug where toasts and notifications weren't receiving a default action label if one wasn't provided in the toast object
 * Fix bug where notifications badge wasn't being assigned a default value
+* Fix bug where the flag to suppress a toast object's "toast" and send it directly to the notification list wasn't being recognized
 * Bump mocha, eslint, babel-core, chai-as-promised, lodash, and other dependencies
 
 ### 2.2.0 - September 28, 2016
