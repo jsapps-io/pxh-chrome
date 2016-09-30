@@ -1474,7 +1474,7 @@ pxh.toast = {
         pxh.toast.action.bindCallback(toastElement, 'notification__link', id, object.actionCallback);
       }
     }
-    if ((toastList = document.getElementById('js-toasts')) && !suppressToast) {
+    if ((toastList = document.getElementById('js-toasts')) && !object.suppressToast) {
       var toastFirstChild = toastList.firstChild;
       var toastElement = toastList.insertBefore(pxh.toast.markup.createToast(object, id), toastFirstChild);
       pxh.toast.action.dismissButton(toastElement, 'toast', id, true);

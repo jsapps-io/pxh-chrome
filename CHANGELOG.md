@@ -4,6 +4,8 @@
 * Add end-to-end tests for pxh-toast and pxh-notification capabilities
 * Fix bug where drawer could overlap view area when transitioning from default breakpoint to @lg breakpoint
   * Could happen when user resized browser window while on a different browser tab, and then switched back to their tab with the pxh-chrome layout
+* Fix bug where toasts and notifications weren't receiving a default action label if one wasn't provided in the toast object
+* Fix bug where notifications badge wasn't being assigned a default value
 * Bump mocha, eslint, babel-core, chai-as-promised, lodash, and other dependencies
 
 ### 2.2.0 - September 28, 2016
