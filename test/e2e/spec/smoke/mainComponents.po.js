@@ -7,54 +7,54 @@
 'use strict';
 
 (function () {
-  var mainComponents = function() {
+  var mainComponents = function () {
     return {
-      getDrawer: function() {
+      getDrawer: function () {
         return browser.driver.findElement(by.css('.pxh-drawer'));
       },
-      getDrawerHeader: function() {
+      getDrawerHeader: function () {
         return browser.driver.findElement(by.css('.pxh-drawer-header'));
       },
-      getDrawerToggle: function() {
+      getDrawerToggle: function () {
         return browser.driver.findElement(by.css('.pxh-drawer-toggle'));
       },
-      getDrawerToggleLink: function() {
+      getDrawerToggleLink: function () {
         return browser.driver.findElement(by.css('a.pxh-drawer-toggle__link'));
       },
       clickDrawerToggleLink: function () {
         this.getDrawerToggleLink().click();
       },
-      getNavigation: function() {
+      getNavigation: function () {
         return browser.driver.findElement(by.css('.pxh-navigation'));
       },
-      getBadge: function() {
+      getBadge: function () {
         return browser.driver.findElement(by.css('.pxh-badge'));
       },
-      getLogin: function() {
+      getLogin: function () {
         return browser.driver.findElement(by.css('.pxh-login'));
       },
-      getOverlay: function() {
+      getOverlay: function () {
         return browser.driver.findElement(by.css('.pxh-overlay'));
       },
-      getWrapper: function() {
+      getWrapper: function () {
         return browser.driver.findElement(by.css('.pxh-wrapper'));
       },
-      getViewHeader: function() {
+      getViewHeader: function () {
         return browser.driver.findElement(by.css('.pxh-view-header'));
       },
       clickViewHeader: function () {
         this.getViewHeader().click();
       },
-      getViewHeaderDrawerToggle: function() {
+      getViewHeaderDrawerToggle: function () {
         return browser.driver.findElement(by.css('.pxh-view-header-drawer-toggle'));
       },
-      getViewHeaderDrawerToggleLink: function() {
+      getViewHeaderDrawerToggleLink: function () {
         return browser.driver.findElement(by.css('a.pxh-view-header-drawer-toggle__link'));
       },
       clickViewHeaderDrawerToggleLink: function () {
         this.getViewHeaderDrawerToggleLink().click();
       },
-      getView: function() {
+      getView: function () {
         return browser.driver.findElement(by.css('.pxh-view'));
       }
     };

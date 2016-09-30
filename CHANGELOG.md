@@ -1,5 +1,14 @@
 # pxh-chrome changelog
 
+### 2.2.1 - September 30, 2016
+* Add end-to-end tests for pxh-toast and pxh-notification capabilities
+* Fix bug where drawer could overlap view area when transitioning from default breakpoint to @lg breakpoint
+  * Could happen when user resized browser window while on a different browser tab, and then switched back to their tab with the pxh-chrome layout
+* Fix bug where toasts and notifications weren't receiving a default action label if one wasn't provided in the toast object
+* Fix bug where notifications badge wasn't being assigned a default value
+* Fix bug where the flag to suppress a toast object's "toast" and send it directly to the notification list wasn't being recognized
+* Bump mocha, eslint, babel-core, browser-sync, chai-as-promised, lodash, and other dependencies
+
 ### 2.2.0 - September 28, 2016
 * Display notifications badge at medium breakpoint and at large breakpoint when drawer is narrow
 * Apply a maximum height to the notifications list at the default breakpoint to improve compatibility with mobile phones in landscape orientation

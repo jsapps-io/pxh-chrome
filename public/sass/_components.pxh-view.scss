@@ -50,6 +50,18 @@
   }
 }
 
+@keyframes pxh-view--animate-full-to-narrow {
+  0% {
+    margin-#{$pxh-drawer-side}: 0;
+  }
+  50% {
+    margin-#{$pxh-drawer-side}: 0;
+  }
+  100% {
+    margin-#{$pxh-drawer-side}: $pxh-drawer-width-wide;
+  }
+}
+
 .pxh-view {
   &--animate-wide {
     animation-timing-function: ease-in-out;
@@ -68,6 +80,12 @@
     animation-fill-mode: forwards;
     animation-duration: 250ms;
     animation-name: pxh-view--animate-full-to-wide;
+  }
+  &--animate-full-to-narrow {
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+    animation-duration: 250ms;
+    animation-name: pxh-view--animate-full-to-narrow;
   }
 }
 
@@ -154,6 +172,18 @@
   }
 }
 
+@keyframes pxh-view-header--animate-full-to-narrow {
+  0% {
+    #{$pxh-drawer-side}: 0;
+  }
+  50% {
+    #{$pxh-drawer-side}: 0;
+  }
+  100% {
+    #{$pxh-drawer-side}: $pxh-drawer-width-wide;
+  }
+}
+
 .pxh-view-header {
   &--animate-wide {
     animation-timing-function: ease-in-out;
@@ -172,6 +202,12 @@
     animation-fill-mode: forwards;
     animation-duration: 250ms;
     animation-name: pxh-view-header--animate-full-to-wide;
+  }
+  &--animate-full-to-narrow {
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+    animation-duration: 250ms;
+    animation-name: pxh-view-header--animate-full-to-narrow;
   }
 }
 

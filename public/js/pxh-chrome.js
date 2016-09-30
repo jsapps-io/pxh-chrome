@@ -1,5 +1,5 @@
 'use strict';
-/*! pxh-chrome.js 2.2.0 */
+/*! pxh-chrome.js 2.2.1 */
 
 // **************
 // CONFIG OBJECTS
@@ -24,6 +24,7 @@ pxh.ANIMATE_OUT = pxh.ANIMATE + '-out';
 pxh.ANIMATE_NARROW = pxh.ANIMATE + '-narrow';
 pxh.ANIMATE_WIDE = pxh.ANIMATE + '-wide';
 pxh.ANIMATE_FULL_TO_WIDE = pxh.ANIMATE + '-full-to-wide';
+pxh.ANIMATE_FULL_TO_NARROW = pxh.ANIMATE + '-full-to-narrow';
 pxh.ANIMATE_OUT_WIDE = pxh.ANIMATE + '-out-wide';
 
 // drawer
@@ -129,8 +130,11 @@ pxh.VIEW = pxh.PREFIX + 'view';
 pxh.VIEW_NARROW_AT_LG = pxh.VIEW + pxh.NARROW + pxh.AT_LG;
 pxh.VIEW_WIDE_AT_LG = pxh.VIEW + pxh.WIDE + pxh.AT_LG;
 pxh.VIEW_ANIMATE_FULL_TO_WIDE = pxh.VIEW + pxh.ANIMATE_FULL_TO_WIDE;
+pxh.VIEW_ANIMATE_FULL_TO_NARROW = pxh.VIEW + pxh.ANIMATE_FULL_TO_NARROW;
 pxh.VIEW_ANIMATE_WIDE = pxh.VIEW + pxh.ANIMATE_WIDE;
 pxh.VIEW_ANIMATE_NARROW = pxh.VIEW + pxh.ANIMATE_NARROW;
+pxh.VIEW_ANIMATE_FULL_TO_WIDE = pxh.VIEW + pxh.ANIMATE_FULL_TO_WIDE;
+pxh.VIEW_ANIMATE_FULL_TO_NARROW = pxh.VIEW + pxh.ANIMATE_FULL_TO_NARROW;
 
 // view-header
 pxh.VIEW_HEADER = pxh.PREFIX + 'view-header';
@@ -139,6 +143,8 @@ pxh.VIEW_HEADER_WIDE_AT_LG = pxh.VIEW_HEADER + pxh.WIDE + pxh.AT_LG;
 pxh.VIEW_HEADER_ANIMATE_WIDE = pxh.VIEW_HEADER + pxh.ANIMATE_WIDE;
 pxh.VIEW_HEADER_ANIMATE_NARROW = pxh.VIEW_HEADER + pxh.ANIMATE_NARROW;
 pxh.VIEW_HEADER_ANIMATE_FULL_TO_WIDE = pxh.VIEW_HEADER + pxh.ANIMATE_FULL_TO_WIDE;
+pxh.VIEW_HEADER_ANIMATE_FULL_TO_NARROW = pxh.VIEW_HEADER + pxh.ANIMATE_FULL_TO_NARROW;
+
 
 // view-header-drawer-toggle
 pxh.VIEW_HEADER_DRAWER_TOGGLE = pxh.PREFIX + 'view-header-drawer-toggle';
@@ -400,6 +406,17 @@ pxh.transitions = {
       add: pxh.VIEW_HEADER_ANIMATE_FULL_TO_WIDE
     }
   },
+  outToWide: {
+    'pxh-drawer': {
+      add: pxh.DRAWER_ANIMATE_IN
+    },
+    'pxh-view': {
+      add: pxh.VIEW_ANIMATE_FULL_TO_NARROW
+    },
+    'pxh-view-header': {
+      add: pxh.VIEW_HEADER_ANIMATE_FULL_TO_NARROW
+    }
+  },
   narrowToOut: {
     'pxh-drawer': {
       add: pxh.DRAWER_ANIMATE_OUT_WIDE
@@ -513,10 +530,10 @@ pxh.transitions = {
       remove: pxh.LOGIN_NOTIFICATIONS_ANIMATE_IN + ' ' + pxh.LOGIN_NOTIFICATIONS_ANIMATE_OUT
     },
     'pxh-view': {
-      remove: pxh.VIEW_ANIMATE_WIDE + ' ' + pxh.VIEW_ANIMATE_NARROW + ' ' + pxh.VIEW_ANIMATE_FULL_TO_WIDE
+      remove: pxh.VIEW_ANIMATE_WIDE + ' ' + pxh.VIEW_ANIMATE_NARROW + ' ' + pxh.VIEW_ANIMATE_FULL_TO_WIDE + ' ' + pxh.VIEW_ANIMATE_FULL_TO_NARROW
     },
     'pxh-view-header': {
-      remove: pxh.VIEW_HEADER_ANIMATE_WIDE + ' ' + pxh.VIEW_HEADER_ANIMATE_NARROW + ' ' + pxh.VIEW_HEADER_ANIMATE_FULL_TO_WIDE
+      remove: pxh.VIEW_HEADER_ANIMATE_WIDE + ' ' + pxh.VIEW_HEADER_ANIMATE_NARROW + ' ' + pxh.VIEW_HEADER_ANIMATE_FULL_TO_WIDE + ' ' + pxh.VIEW_HEADER_ANIMATE_FULL_TO_NARROW
     }
   }
 };
@@ -1158,24 +1175,28 @@ pxh.bindControl = function (controlName) {
  *
  * @param {String} breakpoint
  */
-pxh.breakpointAtMd = function (breakpoint) {
-  pxh.loadState(pxh.transitions, 'clearAll');
+pxh.breakpointAtMd = function (mdBreakpoint) {
   var drawer = document.getElementById('js-drawer');
-  var drawerIsWideAtLg = drawer.classList.contains('pxh-drawer--wide@lg');
   var drawerIsNarrowAtMd = drawer.classList.contains('pxh-drawer--narrow@md');
-  if (breakpoint.matches) {
-    // we entered the @md breakpoint from the @sm breakpoint
+  pxh.loadState(pxh.transitions, 'clearAll');
+  if (mdBreakpoint.matches) {
+    // we entered the @md or @lg breakpoint from the @sm breakpoint
     if (drawerIsNarrowAtMd) {
-      // the drawer wasn't open @sm so open it to narrow @md
-      // fire the transition
-      pxh.loadState(pxh.transitions, 'outToNarrow');
+      // the drawer wasn't open @sm
+      if (window.matchMedia('(min-width: 1024px)').matches) {
+        // we transitioned to the @lg breakpoint so open it to wide @lg
+        // fire the transition
+        pxh.loadState(pxh.transitions, 'outToWide');
+      } else {
+        // the drawer wasn't open @sm so open it to narrow @md
+        // fire the transition
+        pxh.loadState(pxh.transitions, 'outToNarrow');
+      }
     }
-  } else {
+  } else if (drawerIsNarrowAtMd) {
     // we exited the @md breakpoint into the @sm breakpoint
-    if (drawerIsNarrowAtMd) {
-      // the drawer was open to narrow @md so move it out @sm
-      pxh.loadState(pxh.transitions, 'narrowToOut');
-    }
+    // the drawer was open to narrow @md so move it out @sm
+    pxh.loadState(pxh.transitions, 'narrowToOut');
   }
 };
 
@@ -1320,6 +1341,7 @@ pxh.toast = {
   /** @namespace pxh.toast.badge */
   badge: {
     count: 0,
+    text: 0,
 
     /**
      * Increases the value of the notification icon badge by 1
@@ -1367,8 +1389,8 @@ pxh.toast = {
       var notificationIcon = '';
       var notificationBadge = '';
       if ((notificationIcon = document.getElementById('js-login__notifications')) && (notificationBadge = document.getElementById('js-login__notifications-badge'))) {
+        notificationBadge.innerHTML = pxh.toast.badge.text;
         if (pxh.toast.badge.count > 0) {
-          notificationBadge.innerHTML = pxh.toast.badge.text;
           notificationIcon.classList.remove(pxh.DISPLAY_NONE);
           notificationBadge.classList.remove(pxh.LOGIN_NOTIFICATIONS_BADGE_HIDDEN);
         } else {
@@ -1432,7 +1454,7 @@ pxh.toast = {
    * @param {String} [object.timestamp] The ISO 8601 datetime value for when the toast/notification was issued (e.g. 2016-08-01T17:36:10+00:00)
   * @param {Boolean} [object.isPersistent=false] - Whether or not the toast should persist until the user actively dismisses it. This option is only recognized if the toast has an `actionLink` or `actionCallback` associated with it
    * @param {Boolean} [object.suppressToast=false] An optional parameter that, if true, will only create a notification (if applicable) from the object, and will display a corresponding toast to the user
-   * @param {String} [object.actionText='Action'] - The text to display in the toast's action button, if an `actionLink` or `actionCallback` is present.
+   * @param {String} [object.actionLabel='Action'] - The text to display in the toast's action button, if an `actionLink` or `actionCallback` is present.
    * @param {String} [object.actionLink] - The URL to follow when the user clicks the action button. Can be a fully qualified URL (e.g. http://www.predix.com/) or a relative route within your application (e.g. assets/detail/1234?show_cases_tab)
    * @param {Function} [object.actionCallback] - The callback function to execute when the user clicks the toast/notification's action button
    */
@@ -1452,7 +1474,7 @@ pxh.toast = {
         pxh.toast.action.bindCallback(toastElement, 'notification__link', id, object.actionCallback);
       }
     }
-    if ((toastList = document.getElementById('js-toasts')) && !suppressToast) {
+    if ((toastList = document.getElementById('js-toasts')) && !object.suppressToast) {
       var toastFirstChild = toastList.firstChild;
       var toastElement = toastList.insertBefore(pxh.toast.markup.createToast(object, id), toastFirstChild);
       pxh.toast.action.dismissButton(toastElement, 'toast', id, true);
@@ -1822,6 +1844,9 @@ pxh.toast = {
      */
     button: function button(object, slug, id) {
       var markup = [];
+      if (!object.actionLabel) {
+        object.actionLabel = 'Action';
+      }
       if (object.actionLink) {
         markup.push('<div class="pxh-' + slug + '__action">\n');
         markup.push('  <a class="pxh-' + slug + '__button" href="' + object.actionLink + '">' + object.actionLabel + '</a>\n');

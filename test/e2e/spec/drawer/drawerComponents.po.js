@@ -6,7 +6,7 @@
 
 'use strict';
 
-var drawerComponents = function() {
+var drawerComponents = function () {
   var commonPage = require('../common/common.po.js');
   return {
     getDrawerHeaderLink: function () {
