@@ -114,11 +114,45 @@ var notifications = document.createElement('div');
 notifications.id = 'js-notifications__list';
 document.body.appendChild(notifications);
 
+var toastCallback = function() {
+  console.log('toast callback fired!');
+}
+
 var toastObject1 = {};
-var toastObject2 = {isPersistent: true,};
+var toastObject2 = {
+  isPersistent: true,
+  text: 'Persistent toast w/o link or action',
+};
 var toastObject3 = {
   isPersistent: true,
   actionLink: 'http://predix.com/',
+  text: 'Persistent toast w/ link',
+};
+var toastObject4 = {
+  isPersistent: true,
+  actionCallback: toastCallback,
+  text: 'Persistent toast w/ callback',
+};
+var toastObject5 = {
+  suppressToast: true,
+  isPersistent: true,
+  actionLink: 'http://predix.com/',
+  text: 'Persistent notification w/ suppressed toast',
+};
+var toastObject6 = {
+  id: 'b4d455',
+  isPersistent: true,
+  actionLink: 'http://predix.com/',
+  type: 'red',
+  formattedTimestamp: '8:30 AM',
+  actionLabel: 'Custom action label',
+  text: '<strong>Persistent</strong> <a href="http://predix.com/">toast</a> with <div class="qa-toast-bogus-class" id="qa-toast-bogus-id"><span>HTML</span></div>',
+};
+var toastObject7 = {
+  id: 'qaTimestamp',
+  isPersistent: true,
+  actionLink: 'http://predix.com/',
+  timestamp: '2016-08-01T17:36:10+00:00',
 };
 
 // fire the changes for pxh.changeClasses
@@ -305,17 +339,46 @@ describe('pxh-chrome.js', () => {
         assert.lengthOf(document.getElementById('js-notifications__list').getElementsByClassName('pxh-notification'), 1);
         assert.equal(document.getElementById('js-login__notifications-badge').innerHTML, 1);
       });
-    });
-    describe('pxh.toast.removeAll', () => {
-      it('removes all notifications', () => {
-        pxh.toast.add(toastObject3);
-        pxh.toast.add(toastObject3);
+      it('inserts a persistent toast w/ an action callback so it appears in notifications', () => {
+        pxh.toast.add(toastObject4);
+        assert.lengthOf(document.getElementById('js-toasts').getElementsByClassName('pxh-toast'), 4);
+        assert.lengthOf(document.getElementById('js-notifications__list').getElementsByClassName('pxh-notification'), 2);
+        assert.equal(document.getElementById('js-login__notifications-badge').innerHTML, 2);
+      });
+      it('inserts a notification and supresses its corresponding toast', () => {
+        pxh.toast.add(toastObject5);
+        assert.lengthOf(document.getElementById('js-toasts').getElementsByClassName('pxh-toast'), 4);
         assert.lengthOf(document.getElementById('js-notifications__list').getElementsByClassName('pxh-notification'), 3);
         assert.equal(document.getElementById('js-login__notifications-badge').innerHTML, 3);
+      });
+      it('inserts a toast with a lot of config options', () => {
+        pxh.toast.add(toastObject6);
+        assert.lengthOf(document.getElementById('js-toasts').getElementsByClassName('pxh-toast'), 5);
+        assert.lengthOf(document.getElementById('js-notifications__list').getElementsByClassName('pxh-notification'), 4);
+        assert.equal(document.getElementById('js-login__notifications-badge').innerHTML, 4);
+        assert.isOk(document.getElementById('js-toast--b4d455'));
+        assert.isOk(document.getElementById('js-notification--b4d455'));
+        // console.log(document.getElementById('js-toast--b4d455').getElementsByClassName('pxh-toast__text')[0].innerHTML);
+        assert.include(document.getElementById('js-toast--b4d455').getElementsByClassName('pxh-toast__text')[0].innerHTML, 'Persistent toast with HTML');
+        assert.include(document.getElementById('js-notification--b4d455').getElementsByClassName('pxh-notification__link')[0].innerHTML, 'Persistent toast with HTML');
+        assert.include(document.getElementById('js-toast--b4d455').getElementsByClassName('pxh-toast__button')[0].innerHTML, 'Custom action label');
+        assert.isOk(document.getElementById('js-toast--b4d455').getElementsByClassName('pxh-toast__icon')[0].classList.contains('pxh-toast__icon--red'));
+        assert.include(document.getElementById('js-notification--b4d455').getElementsByClassName('pxh-notification__timestamp')[0].innerHTML, '8:30 AM');
+        assert.isOk(document.getElementById('js-notification--b4d455').getElementsByClassName('pxh-notification__icon')[0].classList.contains('pxh-notification__icon--red'));
+      });
+      it('inserts a toast with an unformatted timestamp', () => {
+        pxh.toast.add(toastObject7);
+        assert.include(document.getElementById('js-notification--qaTimestamp').getElementsByClassName('pxh-notification__timestamp')[0].innerHTML, '2016-08-01T17:36:10+00:00');
+      });
+    });
+
+    describe('pxh.toast.removeAll', () => {
+      it('removes all notifications', () => {
+        assert.lengthOf(document.getElementById('js-notifications__list').getElementsByClassName('pxh-notification'), 5);
+        assert.equal(document.getElementById('js-login__notifications-badge').innerHTML, 5);
         pxh.toast.removeAll();
         assert.lengthOf(document.getElementById('js-notifications__list').getElementsByClassName('pxh-notification'), 0);
         assert.equal(document.getElementById('js-login__notifications-badge').innerHTML, 0);
-        
       });
     });
   });
