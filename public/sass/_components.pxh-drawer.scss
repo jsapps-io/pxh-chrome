@@ -88,6 +88,9 @@
   height: 100%;
   background-color: $pxh-drawer-bg-color;
 
+  &--image {
+    // I don't need this class yet but I anticipate other people needing it in the future
+  }
 
   &--animate-in {
     animation-timing-function: ease-in-out;
@@ -246,6 +249,20 @@
       animation-duration: 1000ms;
       animation-name: pxh-drawer-header__link--animate-out;
     }
+
+    &--image {
+      display: block;
+      background-image: url('../img/predix_logo_color.png');
+      background-repeat: no-repeat;
+      // TODO: position should be dynamic to support right-to-left layout
+      background-position: -20px 0;
+      background-size: contain;
+      height: $pxh-drawer-margin * 3;
+      width: $pxh-drawer-width-wide - $pxh-drawer-width-narrow;
+      text-indent: -9999px;
+      font-size: 1px;
+    }
+
     @include mq($from: md) {
       &--narrow\@md {
         @include out-state;
