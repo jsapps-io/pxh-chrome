@@ -1,5 +1,11 @@
 # pxh-chrome changelog
 
+### pending release
+* Add support for including an image logo instead of text in the drawer header via `pxh-view-header--image` and `pxh-view-header__link--image` classes
+  * Dimensions are 60px x 200px
+  * Any image larger will be scaled proportionally to fit via `background-scale: contains` property
+  * We recommend an image at least 180px x 600px to support devices with @3x dpi retina displays (e.g. iPhone 6+)
+
 ### 2.2.1 - September 30, 2016
 * Add end-to-end tests for pxh-toast and pxh-notification capabilities
 * Fix bug where drawer could overlap view area when transitioning from default breakpoint to @lg breakpoint
