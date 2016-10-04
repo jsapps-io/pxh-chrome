@@ -2,8 +2,6 @@
     #components.pxh-drawer
 \*------------------------------------*/
 
-
-
 @keyframes pxh-drawer--animate-in {
   0% {
     #{$pxh-drawer-side}: -$pxh-drawer-width-wide - 10px;
