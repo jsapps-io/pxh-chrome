@@ -3572,34 +3572,6 @@ sub {
 
 /*------------------------------------*    #components.pxh-drawer
 \*------------------------------------*/
-.pxh-drawer {
-  z-index: 750;
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 260px;
-  height: 100%;
-  background-color: #242326;
-}
-
-@media (max-width: 47.99em) {
-  .pxh-drawer--hidden-until\@md {
-    right: -270px;
-  }
-}
-
-@media (min-width: 48em) {
-  .pxh-drawer--narrow\@md {
-    width: 60px;
-  }
-}
-
-@media (min-width: 64em) {
-  .pxh-drawer--wide\@lg {
-    width: 260px;
-  }
-}
-
 @-webkit-keyframes pxh-drawer--animate-in {
   0% {
     right: -270px;
@@ -3611,7 +3583,6 @@ sub {
     right: 0;
   }
 }
-
 @keyframes pxh-drawer--animate-in {
   0% {
     right: -270px;
@@ -3740,6 +3711,16 @@ sub {
   }
 }
 
+.pxh-drawer {
+  z-index: 750;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 260px;
+  height: 100%;
+  background-color: #242326;
+}
+
 .pxh-drawer--animate-in {
   -webkit-animation-timing-function: ease-in-out;
           animation-timing-function: ease-in-out;
@@ -3793,6 +3774,24 @@ sub {
           animation-duration: 1000ms;
   -webkit-animation-name: pxh-drawer--animate-out-wide;
           animation-name: pxh-drawer--animate-out-wide;
+}
+
+@media (max-width: 47.99em) {
+  .pxh-drawer--hidden-until\@md {
+    right: -270px;
+  }
+}
+
+@media (min-width: 48em) {
+  .pxh-drawer--narrow\@md {
+    width: 60px;
+  }
+}
+
+@media (min-width: 64em) {
+  .pxh-drawer--wide\@lg {
+    width: 260px;
+  }
 }
 
 .pxh-drawer-toggle {
@@ -3943,24 +3942,6 @@ sub {
   }
 }
 
-.pxh-drawer-header__link--animate-in {
-  -webkit-animation-fill-mode: forwards;
-          animation-fill-mode: forwards;
-  -webkit-animation-duration: 1000ms;
-          animation-duration: 1000ms;
-  -webkit-animation-name: pxh-drawer-header__link--animate-in;
-          animation-name: pxh-drawer-header__link--animate-in;
-}
-
-.pxh-drawer-header__link--animate-out {
-  -webkit-animation-fill-mode: forwards;
-          animation-fill-mode: forwards;
-  -webkit-animation-duration: 1000ms;
-          animation-duration: 1000ms;
-  -webkit-animation-name: pxh-drawer-header__link--animate-out;
-          animation-name: pxh-drawer-header__link--animate-out;
-}
-
 .pxh-drawer-header {
   float: right;
   text-align: right;
@@ -3982,6 +3963,36 @@ sub {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+}
+
+.pxh-drawer-header__link--animate-in {
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  -webkit-animation-duration: 1000ms;
+          animation-duration: 1000ms;
+  -webkit-animation-name: pxh-drawer-header__link--animate-in;
+          animation-name: pxh-drawer-header__link--animate-in;
+}
+
+.pxh-drawer-header__link--animate-out {
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  -webkit-animation-duration: 1000ms;
+          animation-duration: 1000ms;
+  -webkit-animation-name: pxh-drawer-header__link--animate-out;
+          animation-name: pxh-drawer-header__link--animate-out;
+}
+
+.pxh-drawer-header__link--image {
+  display: block;
+  background-image: url("../img/predix_logo_color.png");
+  background-repeat: no-repeat;
+  background-position: right center;
+  background-size: contain;
+  height: 60px;
+  width: 200px;
+  text-indent: -9999px;
+  font-size: 1px;
 }
 
 @media (min-width: 48em) {
