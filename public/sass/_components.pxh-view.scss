@@ -63,36 +63,37 @@
 }
 
 .pxh-view {
+  height: 100%;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+
   &--animate-wide {
     animation-timing-function: ease-in-out;
     animation-fill-mode: forwards;
     animation-duration: 1000ms;
     animation-name: pxh-view--animate-wide;
   }
+
   &--animate-narrow {
     animation-timing-function: ease-in-out;
     animation-fill-mode: forwards;
     animation-duration: 500ms;
     animation-name: pxh-view--animate-narrow;
   }
+
   &--animate-full-to-wide {
     animation-timing-function: ease-in-out;
     animation-fill-mode: forwards;
     animation-duration: 250ms;
     animation-name: pxh-view--animate-full-to-wide;
   }
+
   &--animate-full-to-narrow {
     animation-timing-function: ease-in-out;
     animation-fill-mode: forwards;
     animation-duration: 250ms;
     animation-name: pxh-view--animate-full-to-narrow;
   }
-}
-
-.pxh-view {
-  height: 100%;
-  overflow: auto;
-  -webkit-overflow-scrolling: touch;
 }
 
 @each $color-slug, $color-variable in $pxh-view-background-colors {
@@ -191,18 +192,21 @@
     animation-duration: 1000ms;
     animation-name: pxh-view-header--animate-wide;
   }
+
   &--animate-narrow {
     animation-timing-function: ease-in-out;
     animation-fill-mode: forwards;
     animation-duration: 500ms;
     animation-name: pxh-view-header--animate-narrow;
   }
+
   &--animate-full-to-wide {
     animation-timing-function: ease-in-out;
     animation-fill-mode: forwards;
     animation-duration: 250ms;
     animation-name: pxh-view-header--animate-full-to-wide;
   }
+
   &--animate-full-to-narrow {
     animation-timing-function: ease-in-out;
     animation-fill-mode: forwards;
