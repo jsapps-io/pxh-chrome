@@ -254,7 +254,12 @@
       display: block;
       background-image: url('../img/predix_logo_color.png');
       background-repeat: no-repeat;
-      // TODO: position should be dynamic to support right-to-left layout
+
+      @if $pxh-drawer-side == right {
+        background-position: right center;
+      } @else {
+        background-position: left center;
+      }
       background-size: contain;
       height: $pxh-drawer-margin * 3;
       width: $pxh-drawer-width-wide - $pxh-drawer-width-narrow;
