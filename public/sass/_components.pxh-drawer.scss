@@ -4,39 +4,6 @@
 
 
 
-// Set the default styles for the wide/open state of the drawer (as seen on mobile).
-.pxh-drawer {
-  z-index: 750;
-  position: fixed;
-  top: 0;
-  #{$pxh-drawer-side}: 0;
-  width: $pxh-drawer-width-wide;
-  height: 100%;
-  background-color: $pxh-drawer-bg-color;
-}
-
-// Keep the inactive drawer hidden off-screen until the @md (tablet) breakpoint.
-@include mq($until: md) {
-  .pxh-drawer--hidden-until\@md {
-    #{$pxh-drawer-side}: -$pxh-drawer-width-wide - 10px;
-  }
-}
-
-// From the @md (tablet) breakpoint and wider,
-// the inactive drawer is displayed in its narrow state.
-// Remove this class to display the drawer in its wide state.
-@include mq($from: md) {
-  .pxh-drawer--narrow\@md {
-    width: $pxh-drawer-width-narrow;
-  }
-}
-
-@include mq($from: lg) {
-  .pxh-drawer--wide\@lg {
-    width: $pxh-drawer-width-wide;
-  }
-}
-
 @keyframes pxh-drawer--animate-in {
   0% {
     #{$pxh-drawer-side}: -$pxh-drawer-width-wide - 10px;
@@ -111,58 +78,97 @@
   }
 }
 
+// Set the default styles for the wide/open state of the drawer (as seen on mobile).
 .pxh-drawer {
+  z-index: 750;
+  position: fixed;
+  top: 0;
+  #{$pxh-drawer-side}: 0;
+  width: $pxh-drawer-width-wide;
+  height: 100%;
+  background-color: $pxh-drawer-bg-color;
+
+  &--image {
+    // I don't need this class yet but I anticipate other people needing it in the future
+  }
+
   &--animate-in {
     animation-timing-function: ease-in-out;
     animation-fill-mode: forwards;
     animation-duration: 250ms;
     animation-name: pxh-drawer--animate-in;
   }
+  
   &--animate-out {
     animation-timing-function: ease-in-out;
     animation-fill-mode: forwards;
     animation-duration: 250ms;
     animation-name: pxh-drawer--animate-out;
   }
+
   &--animate-narrow {
     animation-timing-function: ease-in-out;
     animation-fill-mode: forwards;
     animation-duration: 1000ms;
     animation-name: pxh-drawer--animate-narrow;
   }
+
   &--animate-wide {
     animation-timing-function: ease-in-out;
     animation-fill-mode: forwards;
     animation-duration: 500ms;
     animation-name: pxh-drawer--animate-wide;
   }
+
   &--animate-out-wide {
     animation-timing-function: ease-in-out;
     animation-fill-mode: forwards;
     animation-duration: 1000ms;
     animation-name: pxh-drawer--animate-out-wide;
   }
+
+  // Keep the inactive drawer hidden off-screen until the @md (tablet) breakpoint.
+  @include mq($until: md) {
+    &--hidden-until\@md {
+      #{$pxh-drawer-side}: -$pxh-drawer-width-wide - 10px;
+    }
+  }
+
+  // From the @md (tablet) breakpoint and wider,
+  // the inactive drawer is displayed in its narrow state.
+  // Remove this class to display the drawer in its wide state.
+  @include mq($from: md) {
+    &--narrow\@md {
+      width: $pxh-drawer-width-narrow;
+    }
+  }
+
+  @include mq($from: lg) {
+    &--wide\@lg {
+      width: $pxh-drawer-width-wide;
+    }
+  }
 }
 
 .pxh-drawer-toggle {
   float: $pxh-drawer-side;
-}
 
-.pxh-drawer-toggle__link {
-  display: block;
-  float: $pxh-drawer-side;
-  width: $pxh-drawer-margin * 3;
-  height: $pxh-drawer-margin * 3;
-  padding: $pxh-drawer-margin;
-  color: $white;
-  &:link,
-  &:visited {
+  &__link {
+    display: block;
+    float: $pxh-drawer-side;
+    width: $pxh-drawer-margin * 3;
+    height: $pxh-drawer-margin * 3;
+    padding: $pxh-drawer-margin;
     color: $white;
+    &:link,
+    &:visited {
+      color: $white;
+    }
   }
-}
 
-.pxh-drawer-toggle__icon {
-  fill: $gray7;
+  &__icon {
+    fill: $gray7;
+  }
 }
 
 /*------------------------------------*\
@@ -217,51 +223,67 @@
   }
 }
 
-.pxh-drawer-header__link {
-  &--animate-in {
-    animation-fill-mode: forwards;
-    animation-duration: 1000ms;
-    animation-name: pxh-drawer-header__link--animate-in;
-  }
-  &--animate-out {
-    animation-fill-mode: forwards;
-    animation-duration: 1000ms;
-    animation-name: pxh-drawer-header__link--animate-out;
-  }
-}
-
 .pxh-drawer-header {
   float: $pxh-drawer-side;
   text-align: $pxh-drawer-side;
   margin: 0;
   padding: 0;
   font-weight: normal;
-}
 
-.pxh-drawer-header__link {
-  @include pxh-drawer-header__link--in-state;
-  display: block;
-  text-decoration: none;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-
-@include mq($from: md) {
-  .pxh-drawer-header__link--narrow\@md {
-    @include out-state;
-  }
-}
-
-@include mq($from: md) {
-  .pxh-drawer-header__link--wide\@md {
+  &__link {
     @include pxh-drawer-header__link--in-state;
-  }
-}
+    display: block;
+    text-decoration: none;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 
-@include mq($from: lg) {
-  .pxh-drawer-header__link--wide\@lg {
-    @include pxh-drawer-header__link--in-state;
+    &--animate-in {
+      animation-fill-mode: forwards;
+      animation-duration: 1000ms;
+      animation-name: pxh-drawer-header__link--animate-in;
+    }
+
+    &--animate-out {
+      animation-fill-mode: forwards;
+      animation-duration: 1000ms;
+      animation-name: pxh-drawer-header__link--animate-out;
+    }
+
+    &--image {
+      display: block;
+      background-image: url('../img/predix_logo_color.png');
+      background-repeat: no-repeat;
+
+      @if $pxh-drawer-side == right {
+        background-position: right center;
+      } @else {
+        background-position: left center;
+      }
+      background-size: contain;
+      height: $pxh-drawer-margin * 3;
+      width: $pxh-drawer-width-wide - $pxh-drawer-width-narrow;
+      text-indent: -9999px;
+      font-size: 1px;
+    }
+
+    @include mq($from: md) {
+      &--narrow\@md {
+        @include out-state;
+      }
+    }
+
+    @include mq($from: md) {
+      &--wide\@md {
+        @include pxh-drawer-header__link--in-state;
+      }
+    }
+
+    @include mq($from: lg) {
+      &--wide\@lg {
+        @include pxh-drawer-header__link--in-state;
+      }
+    }
   }
 }
 
