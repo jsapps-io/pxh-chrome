@@ -227,6 +227,12 @@ $pxh-notification-dismiss-button-font-color: $gray8;
 
 $pxh-notification-dismiss-button-font-color-hover: $primary-blue;
 
+
+
+
+
+
+
 $pxh-overlay-bg-color: rgba(0, 0, 0, 0.7);
 
 
@@ -235,8 +241,8 @@ $pxh-overlay-bg-color: rgba(0, 0, 0, 0.7);
 $pxh-spinner-base-color: rgba($gray4, $pxh-spinner-alpha);
 $pxh-spinner-accent-color: $primary-blue;
 
-$pxh-spinner-inverted-base-color: rgba($gray8, $pxh-spinner-alpha);
-$pxh-spinner-inverted-accent-color: $pxh-spinner-accent-color;
+$pxh-spinner-base-color-inverted: rgba($gray8, $pxh-spinner-alpha);
+$pxh-spinner-inverted-accent-color-inverted: $pxh-spinner-accent-color;
 
 
 
