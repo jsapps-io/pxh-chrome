@@ -6,8 +6,8 @@
   width: 100%;
   max-width: 1200px;
   text-align: center;
-  margin: $error-margin-top 0 0 0;
-  padding: $error-padding-top $inuit-base-spacing-unit ($inuit-base-spacing-unit * 8) $inuit-base-spacing-unit;
+  margin: $pxhtheme-error-margin-top 0 0 0;
+  padding: $pxhtheme-error-padding-top $inuit-base-spacing-unit ($inuit-base-spacing-unit * 8) $inuit-base-spacing-unit;
 }
 
 @include mq($from: md) {
@@ -28,25 +28,25 @@
 
 .pxh-error__icon {
   font-size: $px-font-size-beta;
-  color: $error-icon-color;
+  color: $pxhtheme-error-icon-color;
   line-height: 1;
 }
 
 .pxh-error__title {
   font-size: $px-font-size-epsilon;
   font-weight: bold;
-  color: $error-title-color;
+  color: $pxhtheme-error-title-text-color;
   a,
   a:link {
-    text-decoration: $error-link-text-decoration;
+    text-decoration: $pxhtheme-error-link-text-decoration;
   }
 }
 
 .pxh-error__description {
   font-size: $px-font-size-regular;
-  color: $error-description-color;
+  color: $pxhtheme-error-description-text-color;
   a,
   a:link {
-    text-decoration: $error-link-text-decoration;
+    text-decoration: $pxhtheme-error-link-text-decoration;
   }
 }

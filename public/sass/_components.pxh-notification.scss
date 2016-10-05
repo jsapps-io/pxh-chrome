@@ -2,23 +2,158 @@
     #components.pxh-notification
 \*------------------------------------*/
 
-/// Height of a (non-expanded) notification
-/// @group pxh-notification
-/// @type Number
-$pxh-notification-height: 70px;
+@mixin pxh-toast {
+  display: flex;
+  // @if $pxhtheme-language-direction == 'rtl' { // handled by direction: rtl on body element
+  //   flex-direction: row-reverse;
+  // }
+  pointer-events: auto;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  // color: $gray5;
+  // background: $gray10;
+  &--expanded {
+    height: auto;
+  }
+}
 
-/// Default margin for notification components
-/// @group pxh-notification
-/// @type Number
-$pxh-notification-margin: 5px;
+@mixin pxh-toast__icon {
+  text-align: center;
+  flex-shrink: 0;
+  align-self: stretch;
+  min-height: $pxhtheme-toast-height;
+}
 
-/// Maximum number of notifications to display at once
-/// @group pxh-notification
-/// @type Number
-$pxh-notification-max-count: 5;
+@mixin pxh-toast__text {
+  text-align: $pxhtheme-drawer-side;
+  flex-grow: 2;
+  margin: auto $pxhtheme-toast-margin auto $pxhtheme-toast-margin;
+  padding: $pxhtheme-toast-margin 0 0 0;
+  padding-#{$pxhtheme-drawer-side}: ($pxhtheme-toast-margin * 2);
+  overflow: hidden;
+  position: relative;
+  line-height: 1.2;
+}
+
+@mixin pxh-toast__more {
+  position: absolute;
+  top: $pxhtheme-toast-margin * 8;
+  width: 100%;
+  height: $pxhtheme-toast-margin * 6;
+  padding: ($pxhtheme-toast-margin + 2px) 0 $pxhtheme-toast-margin 0;
+  // background: linear-gradient(to bottom, rgba($gray10, 0) 0%, rgba($gray10, 1) 50%);
+  text-align: center;
+  &--expanded {
+    position: relative;
+    top: 0;
+    height: auto;
+    background: transparent;
+  }
+}
+
+@mixin pxh-toast__more-button {
+  // color: $gray7;
+  // background-color: $gray10;
+  // border: 1px solid $gray8;
+  border-radius: 5px;
+  padding: 1px 5px 0 5px;
+  display: inline-block;
+  text-decoration: none;
+  text-transform: lowercase;
+  font-size: 14px;
+  &:hover {
+    // color: $primary-blue;
+  }
+}
+
+@mixin pxh-toast__action {
+  flex-shrink: 0;
+  text-align: center;
+  margin: ($pxhtheme-toast-margin * 3) ($pxhtheme-toast-margin * 2) 0 ($pxhtheme-toast-margin * 2);
+}
+
+@mixin pxh-toast__button {
+  display: block;
+  overflow: hidden;
+  text-decoration: none;
+  // border: 1px solid $gray8;
+  padding: 8px;
+  // background-color: transparent;
+  // color: $gray5;
+  border-radius: 2px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  &:hover {
+    // background-color: $gray9;
+  }
+}
+
+@mixin pxh-toast__timestamp {
+  margin-left: $pxhtheme-toast-margin;
+  // color: $gray8;
+  flex-shrink: 0;
+  text-align: $pxhtheme-drawer-opposite-side;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+@mixin pxh-toast__dismiss {
+  text-align: center;
+  font-size: 18px;
+  flex-basis: auto;
+  width: $pxhtheme-toast-margin * 8;
+  flex-shrink: 0;
+}
+
+@mixin pxh-toast__dismiss-button {
+  color: $gray7;
+  text-decoration: none;
+  display: block;
+  padding: ($pxhtheme-toast-margin * 5) ($pxhtheme-toast-margin * 2) 0 ($pxhtheme-toast-margin * 2);
+  height: $pxhtheme-toast-height;
+  &:hover {
+    // color: $primary-blue;
+  }
+}
+
+@mixin pxh-toast--in-state-scale {
+  height: $pxhtheme-toast-height;
+  margin-bottom: $pxhtheme-toast-margin;
+  font-size: 16px;
+}
+
+@mixin pxh-toast--in-state-opacity {
+  @include in-state-opacity;
+}
+
+@mixin pxh-toast--out-state-scale {
+    @include out-state-scale;
+    height: 0;
+}
+
+@mixin pxh-toast--in-state {
+  @include pxh-toast--in-state-opacity;
+  @include pxh-toast--in-state-scale;
+}
+
+@mixin pxh-toast--out-state {
+  @include pxh-toast--out-state-scale;
+  @include out-state-opacity;
+}
+
+
+
+
+
+
+
+
+
 
 @mixin pxh-notification--in-state-scale {
-  height: $pxh-toast-height;
+  height: $pxhtheme-toast-height;
   font-size: 16px;
   border-bottom: 1px solid $gray9;
 }
@@ -77,14 +212,14 @@ $pxh-notification-max-count: 5;
 .pxh-notifications {
   z-index: 800;
   position: fixed;
-  bottom: ($pxh-drawer-margin * 3) - 4px;
-  left: $pxh-notification-margin;
-  right: $pxh-notification-margin;
+  bottom: ($pxhtheme-drawer-margin * 3) - 4px;
+  left: $pxhtheme-notification-margin;
+  right: $pxhtheme-notification-margin;
   max-width: 480px;
   border-radius: 2px;
-  background-color: $gray10;
-  color: $gray2;
-  border: 1px solid $gray7;
+  // background-color: $gray10;
+  // color: $gray2;
+  // border: 1px solid $gray7;
   display: none;
 
   @include mq($from: md) {
@@ -93,17 +228,17 @@ $pxh-notification-max-count: 5;
     }
 
     &--narrow\@md {
-      #{$pxh-drawer-side}: $pxh-notification-margin;
-      #{$pxh-drawer-opposite-side}: auto;
-      bottom: ($pxh-drawer-margin * 3) + 6px;
+      #{$pxhtheme-drawer-side}: $pxhtheme-notification-margin;
+      #{$pxhtheme-drawer-opposite-side}: auto;
+      bottom: ($pxhtheme-drawer-margin * 3) + 6px;
     }
   }
 
   @include mq($from: lg) {
     &--wide\@lg {
-      #{$pxh-drawer-side}: $pxh-notification-margin;
-      #{$pxh-drawer-opposite-side}: auto;
-      bottom: ($pxh-drawer-margin * 3) - 4px;
+      #{$pxhtheme-drawer-side}: $pxhtheme-notification-margin;
+      #{$pxhtheme-drawer-opposite-side}: auto;
+      bottom: ($pxhtheme-drawer-margin * 3) - 4px;
     }
   }
 
@@ -112,16 +247,16 @@ $pxh-notification-max-count: 5;
   }
 
   &__header {
-    height: 40px;
+    height: 40px; // magic number -- fix this
     display: flex;
-    // @if $pxh-language-direction == 'rtl' { // handled by direction: rtl on body element
+    // @if $pxhtheme-language-direction == 'rtl' { // handled by direction: rtl on body element
     //   flex-direction: row-reverse;
     // }
-    border-bottom: 1px solid $gray7;
+    // border-bottom: 1px solid $gray7;
   }
 
   &__title {
-    padding-top: $pxh-notification-margin * 2;
+    padding-top: $pxhtheme-notification-margin * 2;
     flex-grow: 1;
     text-align: center;
     text-transform: uppercase;
@@ -129,33 +264,33 @@ $pxh-notification-max-count: 5;
   }
 
   &__action {
-    min-width: $pxh-notification-margin * 16;
-    text-align: $pxh-drawer-side;
-    padding-#{$pxh-drawer-side}: $pxh-notification-margin * 2;
-    padding-top: $pxh-notification-margin * 2;
+    min-width: $pxhtheme-notification-margin * 16;
+    text-align: $pxhtheme-drawer-side;
+    padding-#{$pxhtheme-drawer-side}: $pxhtheme-notification-margin * 2;
+    padding-top: $pxhtheme-notification-margin * 2;
   }
 
   &__link {
     @include pxh-override-px-theme-color('pxh-notifications__link', $gray5, $primary-blue);
-    color: $gray5;
+    // color: $gray5;
     text-decoration: none;
 
     &:hover {
-      color: $primary-blue;
+      // color: $primary-blue;
     }
   }
 
   &__clear {
-    min-width: $pxh-notification-margin * 16;
-    color: $gray5;
+    min-width: $pxhtheme-notification-margin * 16;
+    // color: $gray5;
     text-decoration: none;
-    text-align: $pxh-drawer-opposite-side;
-    padding-right: $pxh-notification-margin * 2;
-    padding-left: $pxh-notification-margin * 2;
-    padding-top: $pxh-notification-margin * 2;
+    text-align: $pxhtheme-drawer-opposite-side;
+    padding-right: $pxhtheme-notification-margin * 2;
+    padding-left: $pxhtheme-notification-margin * 2;
+    padding-top: $pxhtheme-notification-margin * 2;
 
     a {
-      color: $gray5;
+      // color: $gray5;
       text-decoration: none;
     }
   }
@@ -163,13 +298,13 @@ $pxh-notification-max-count: 5;
   &__list {
     @include pxh-fancy-scrollbar;
     position: relative;
-    max-height: ($pxh-notification-height * 3) + ($pxh-notification-height / 2);
-    min-height: $pxh-notification-height;
+    max-height: ($pxhtheme-notification-height * 3) + ($pxhtheme-notification-height / 2);
+    min-height: $pxhtheme-notification-height;
     -webkit-overflow-scrolling: touch;
     overflow-y: auto;
     @include mq($from: md) {
       &\@md {
-      max-height: ($pxh-notification-height * $pxh-notification-max-count) + ($pxh-notification-height / 2);
+      max-height: ($pxhtheme-notification-height * $pxhtheme-notification-max-count) + ($pxhtheme-notification-height / 2);
       }
     }
   }
@@ -177,13 +312,13 @@ $pxh-notification-max-count: 5;
   &__empty {
     position: absolute;
     bottom: 0;
-    height: $pxh-notification-height;
+    height: $pxhtheme-notification-height;
     z-index: 850;
     font-style: italic;
-    color: $gray7;
+    // color: $gray7;
     width: 100%;
     text-align: center;
-    padding-top: $pxh-notification-height / 3;
+    padding-top: $pxhtheme-notification-height / 3;
   }
 }
 
@@ -206,25 +341,25 @@ $pxh-notification-max-count: 5;
 
   &__icon {
     @include pxh-toast__icon;
-    padding-top: $pxh-toast-margin * 4;
-    padding-#{$pxh-drawer-side}: $pxh-toast-margin;
-    flex-basis: $pxh-toast-margin * 8;
+    padding-top: $pxhtheme-toast-margin * 4;
+    padding-#{$pxhtheme-drawer-side}: $pxhtheme-toast-margin;
+    flex-basis: $pxhtheme-toast-margin * 8;
     font-size: 24px;
 
     &--green {
-      color: $green;
+      // color: $green;
     }
 
     &--blue {
-      color: $blue;
+      // color: $blue;
     }
 
     &--orange {
-      color: $orange;
+      // color: $orange;
     }
 
     &--red {
-      color: $red;
+      // color: $red;
     }
   }
 
@@ -254,8 +389,8 @@ $pxh-notification-max-count: 5;
 
   &__timestamp {
     @include pxh-toast__timestamp;
-    padding-top: $pxh-toast-margin * 5.5;
-    max-width: $pxh-toast-height * 1.5;
+    padding-top: $pxhtheme-toast-margin * 5.5;
+    max-width: $pxhtheme-toast-height * 1.5;
   }
 
   &__dismiss {

@@ -3,7 +3,7 @@
 \*------------------------------------*/
 
 .pxh-wrapper {
-  padding-top: $pxh-view-header-height;
+  padding-top: $pxhtheme-view-header-height;
   position: absolute;
   top: 0;
   right: 0;
@@ -13,52 +13,52 @@
 
 @keyframes pxh-view--animate-wide {
   0% {
-    margin-#{$pxh-drawer-side}: $pxh-drawer-width-wide;
+    margin-#{$pxhtheme-drawer-side}: $pxhtheme-drawer-width-wide;
   }
   33% {
-    margin-#{$pxh-drawer-side}: $pxh-drawer-width-wide;
+    margin-#{$pxhtheme-drawer-side}: $pxhtheme-drawer-width-wide;
   }
   66% {
-    margin-#{$pxh-drawer-side}: $pxh-drawer-width-narrow;
+    margin-#{$pxhtheme-drawer-side}: $pxhtheme-drawer-width-narrow;
   }
   100% {
-    margin-#{$pxh-drawer-side}: $pxh-drawer-width-narrow;
+    margin-#{$pxhtheme-drawer-side}: $pxhtheme-drawer-width-narrow;
   }
 }
 
 @keyframes pxh-view--animate-narrow {
   0% {
-    margin-#{$pxh-drawer-side}: $pxh-drawer-width-narrow;
+    margin-#{$pxhtheme-drawer-side}: $pxhtheme-drawer-width-narrow;
   }
   33% {
-    margin-#{$pxh-drawer-side}: $pxh-drawer-width-wide;
+    margin-#{$pxhtheme-drawer-side}: $pxhtheme-drawer-width-wide;
   }
   100% {
-    margin-#{$pxh-drawer-side}: $pxh-drawer-width-wide;
+    margin-#{$pxhtheme-drawer-side}: $pxhtheme-drawer-width-wide;
   }
 }
 
 @keyframes pxh-view--animate-full-to-wide {
   0% {
-    margin-#{$pxh-drawer-side}: 0;
+    margin-#{$pxhtheme-drawer-side}: 0;
   }
   50% {
-    margin-#{$pxh-drawer-side}: 0;
+    margin-#{$pxhtheme-drawer-side}: 0;
   }
   100% {
-    margin-#{$pxh-drawer-side}: $pxh-drawer-width-narrow;
+    margin-#{$pxhtheme-drawer-side}: $pxhtheme-drawer-width-narrow;
   }
 }
 
 @keyframes pxh-view--animate-full-to-narrow {
   0% {
-    margin-#{$pxh-drawer-side}: 0;
+    margin-#{$pxhtheme-drawer-side}: 0;
   }
   50% {
-    margin-#{$pxh-drawer-side}: 0;
+    margin-#{$pxhtheme-drawer-side}: 0;
   }
   100% {
-    margin-#{$pxh-drawer-side}: $pxh-drawer-width-wide;
+    margin-#{$pxhtheme-drawer-side}: $pxhtheme-drawer-width-wide;
   }
 }
 
@@ -96,7 +96,7 @@
   }
 }
 
-@each $color-slug, $color-variable in $pxh-view-background-colors {
+@each $color-slug, $color-variable in $pxhtheme-view-bg-colors {
   .pxh-view--#{$color-slug} {
     background-color: $color-variable;
   }
@@ -110,7 +110,7 @@
   // for the width of the narrow state of the drawer on the left.
   @include mq($from: md) {
     .pxh-view--wide\@md {
-      margin-#{$pxh-drawer-side}: $pxh-drawer-width-narrow;
+      margin-#{$pxhtheme-drawer-side}: $pxhtheme-drawer-width-narrow;
     }
   }
 
@@ -119,13 +119,13 @@
   // which accounts for the width of the wide state of the drawer.
   @include mq($from: lg) {
     .pxh-view--narrow\@lg {
-      margin-#{$pxh-drawer-side}: $pxh-drawer-width-wide;
+      margin-#{$pxhtheme-drawer-side}: $pxhtheme-drawer-width-wide;
     }
   }
 
   @include mq($from: lg) {
     .pxh-view--wide\@lg {
-      margin-#{$pxh-drawer-side}: $pxh-drawer-width-narrow;
+      margin-#{$pxhtheme-drawer-side}: $pxhtheme-drawer-width-narrow;
     }
   }
 }
@@ -136,56 +136,67 @@
 
 @keyframes pxh-view-header--animate-wide {
   0% {
-    #{$pxh-drawer-side}: $pxh-drawer-width-wide;
+    #{$pxhtheme-drawer-side}: $pxhtheme-drawer-width-wide;
   }
   33% {
-    #{$pxh-drawer-side}: $pxh-drawer-width-wide;
+    #{$pxhtheme-drawer-side}: $pxhtheme-drawer-width-wide;
   }
   66% {
-    #{$pxh-drawer-side}: $pxh-drawer-width-narrow;
+    #{$pxhtheme-drawer-side}: $pxhtheme-drawer-width-narrow;
   }
   100% {
-    #{$pxh-drawer-side}: $pxh-drawer-width-narrow;
+    #{$pxhtheme-drawer-side}: $pxhtheme-drawer-width-narrow;
   }
 }
 
 @keyframes pxh-view-header--animate-narrow {
   0% {
-    #{$pxh-drawer-side}: $pxh-drawer-width-narrow;
+    #{$pxhtheme-drawer-side}: $pxhtheme-drawer-width-narrow;
   }
   33% {
-    #{$pxh-drawer-side}: $pxh-drawer-width-wide;
+    #{$pxhtheme-drawer-side}: $pxhtheme-drawer-width-wide;
   }
   100% {
-    #{$pxh-drawer-side}: $pxh-drawer-width-wide;
+    #{$pxhtheme-drawer-side}: $pxhtheme-drawer-width-wide;
   }
 }
 
 @keyframes pxh-view-header--animate-full-to-wide {
   0% {
-    #{$pxh-drawer-side}: 0;
+    #{$pxhtheme-drawer-side}: 0;
   }
   50% {
-    #{$pxh-drawer-side}: 0;
+    #{$pxhtheme-drawer-side}: 0;
   }
   100% {
-    #{$pxh-drawer-side}: $pxh-drawer-width-narrow;
+    #{$pxhtheme-drawer-side}: $pxhtheme-drawer-width-narrow;
   }
 }
 
 @keyframes pxh-view-header--animate-full-to-narrow {
   0% {
-    #{$pxh-drawer-side}: 0;
+    #{$pxhtheme-drawer-side}: 0;
   }
   50% {
-    #{$pxh-drawer-side}: 0;
+    #{$pxhtheme-drawer-side}: 0;
   }
   100% {
-    #{$pxh-drawer-side}: $pxh-drawer-width-wide;
+    #{$pxhtheme-drawer-side}: $pxhtheme-drawer-width-wide;
   }
 }
 
 .pxh-view-header {
+  position: fixed;
+  top: 0;
+  #{$pxhtheme-drawer-opposite-side}: 0;
+  #{$pxhtheme-drawer-side}: 0;
+  background-color: $pxhtheme-view-header-bg-color;
+  border-style: solid;
+  border-color: $pxhtheme-view-header-border-color;
+  border-width: $pxhtheme-view-header-border-width;
+  height: $pxhtheme-view-header-height;
+  z-index: 250;
+
   &--animate-wide {
     animation-timing-function: ease-in-out;
     animation-fill-mode: forwards;
@@ -215,17 +226,6 @@
   }
 }
 
-.pxh-view-header {
-  position: fixed;
-  top: 0;
-  #{$pxh-drawer-opposite-side}: 0;
-  #{$pxh-drawer-side}: 0;
-  border-bottom: 1px solid rgba($gray7, 0.8);
-  height: $pxh-view-header-height;
-  background-color: $white;
-  z-index: 250;
-}
-
 // nest all responsive styles within a pxh-chromeful class (applied to the <body> element so they only apply if the chrome is present
 // this violates our principle of immutability for class styles, but yolo
 .pxh-chromeful {
@@ -234,19 +234,19 @@
   // for the width of the narrow state of the drawer on the left.
   @include mq($from: md) {
     .pxh-view-header--wide\@md {
-      #{$pxh-drawer-side}: $pxh-drawer-width-narrow;
+      #{$pxhtheme-drawer-side}: $pxhtheme-drawer-width-narrow;
     }
   }
 
   @include mq($from: lg) {
     .pxh-view-header--wide\@lg {
-      #{$pxh-drawer-side}: $pxh-drawer-width-narrow;
+      #{$pxhtheme-drawer-side}: $pxhtheme-drawer-width-narrow;
     }
   }
 
   @include mq($until: md) {
     .pxh-view-header--nudge-until\@md {
-      padding-#{$pxh-drawer-side}: $pxh-drawer-width-narrow;
+      padding-#{$pxhtheme-drawer-side}: $pxhtheme-drawer-width-narrow;
     }
   }
 
@@ -255,7 +255,7 @@
   // which accounts for the width of the wide state of the drawer.
   @include mq($from: lg) {
     .pxh-view-header--narrow\@lg {
-      #{$pxh-drawer-side}: $pxh-drawer-width-wide;
+      #{$pxhtheme-drawer-side}: $pxhtheme-drawer-width-wide;
     }
   }
 }
@@ -273,13 +273,13 @@
 }
 
 .pxh-view-header__title-link.pxh-view-header__title-link.pxh-view-header__title-link  { // chained to override px-theme
-  color: $black;
+  color: $pxhtheme-view-header-title-link-text-color;
   text-decoration: none;
 }
 
 .pxh-view-header__title-link:link.pxh-view-header__title-link:link.pxh-view-header__title-link:link,
 .pxh-view-header__title-link:visited.pxh-view-header__title-link:visited.pxh-view-header__title-link:visited { // chained to override px-theme
-  color: $black;
+  color: $pxhtheme-view-header-title-link-text-color;
 }
 
 /*------------------------------------*\
@@ -289,20 +289,33 @@
 .pxh-view-header-drawer-toggle {
   position: fixed;
   top: 0;
-  #{$pxh-drawer-side}: 0;
+  #{$pxhtheme-drawer-side}: 0;
   opacity: 1;
   z-index: 500; // making the same as overlay to overcome IE10 clickthru bug with overlay
   transition: all 300ms ease-in-out;
-}
 
-// Hide the toggle button in the view-header. This class is
-// used even though the drawer covers the view-header toggle
-// button, because sometimes click events on the drawer toggle
-// are intercepted by the view-header toggle as well, resulting
-// in a bounce scenario.
-.pxh-view-header-drawer-toggle--hidden {
-  #{$pxh-drawer-side}: $pxh-drawer-width-narrow * -1;
-  opacity: 0;  
+  &__icon {
+    fill: $pxhtheme-view-header-drawer-toggle-icon-color;
+  }
+
+  // Hide the toggle button in the view-header. This class is
+  // used even though the drawer covers the view-header toggle
+  // button, because sometimes click events on the drawer toggle
+  // are intercepted by the view-header toggle as well, resulting
+  // in a bounce scenario.
+  &--hidden {
+    #{$pxhtheme-drawer-side}: $pxhtheme-drawer-width-narrow * -1;
+    opacity: 0;  
+  }
+
+  &__link {
+    display: block;
+    height: $pxhtheme-drawer-width-narrow;
+    width: $pxhtheme-drawer-width-narrow;
+    padding-top: $pxhtheme-drawer-margin;
+    padding-#{$pxhtheme-drawer-side}: $pxhtheme-drawer-margin;
+    text-decoration: none;
+  }
 }
 
 // nest all responsive styles within a pxh-chromeful class (applied to the <body> element so they only apply if the chrome is present
@@ -313,22 +326,8 @@
   // narrow left drawer is persistently displayed instead.
   @include mq($from: md) {
     .pxh-view-header-drawer-toggle--hidden\@md {
-        #{$pxh-drawer-side}: $pxh-drawer-width-narrow * -1;
+        #{$pxhtheme-drawer-side}: $pxhtheme-drawer-width-narrow * -1;
         opacity: 0;
     }
-  }
-}
-
-.pxh-view-header-drawer-toggle__link {
-  display: block;
-  height: $pxh-drawer-width-narrow;
-  width: $pxh-drawer-width-narrow;
-  padding-top: $pxh-drawer-margin;
-  padding-#{$pxh-drawer-side}: $pxh-drawer-margin;
-  color: $black;
-  text-decoration: none;
-  &:link,
-  &:visited {
-    color: $black;
   }
 }

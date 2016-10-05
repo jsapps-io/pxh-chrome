@@ -4,75 +4,75 @@
 
 @keyframes pxh-drawer--animate-in {
   0% {
-    #{$pxh-drawer-side}: -$pxh-drawer-width-wide - 10px;
+    #{$pxhtheme-drawer-side}: -$pxhtheme-drawer-width-wide - 10px;
   }
   85% {
-    #{$pxh-drawer-side}: 0;
+    #{$pxhtheme-drawer-side}: 0;
   }
   100% {
-    #{$pxh-drawer-side}: 0;
+    #{$pxhtheme-drawer-side}: 0;
   }
 }
 
 @keyframes pxh-drawer--animate-out {
   0% {
-    #{$pxh-drawer-side}: 0;
+    #{$pxhtheme-drawer-side}: 0;
   }
   85% {
-    #{$pxh-drawer-side}: -$pxh-drawer-width-wide - 10px;
+    #{$pxhtheme-drawer-side}: -$pxhtheme-drawer-width-wide - 10px;
   }
   100% {
-    #{$pxh-drawer-side}: -$pxh-drawer-width-wide - 10px;
+    #{$pxhtheme-drawer-side}: -$pxhtheme-drawer-width-wide - 10px;
   }
 }
 
 @keyframes pxh-drawer--animate-wide {
   0% {
-    width: $pxh-drawer-width-narrow;
+    width: $pxhtheme-drawer-width-narrow;
   }
   33% {
-    width: $pxh-drawer-width-wide;
+    width: $pxhtheme-drawer-width-wide;
   }
   100% {
-    width: $pxh-drawer-width-wide;
+    width: $pxhtheme-drawer-width-wide;
   }
 }
 
 @keyframes pxh-drawer--animate-out-wide {
   0% {
-    #{$pxh-drawer-side}: 0;
+    #{$pxhtheme-drawer-side}: 0;
     // transform: translateX(0);
-    width: $pxh-drawer-width-narrow;
+    width: $pxhtheme-drawer-width-narrow;
   }
   33% {
-    // transform: translateX(-$pxh-drawer-width-wide);
-    #{$pxh-drawer-side}: -$pxh-drawer-width-wide - 10px;
-    width: $pxh-drawer-width-narrow;
+    // transform: translateX(-$pxhtheme-drawer-width-wide);
+    #{$pxhtheme-drawer-side}: -$pxhtheme-drawer-width-wide - 10px;
+    width: $pxhtheme-drawer-width-narrow;
   }
   66% {
-    // transform: translateX(-$pxh-drawer-width-wide);
-    #{$pxh-drawer-side}: -$pxh-drawer-width-wide - 10px;
-    width: $pxh-drawer-width-wide;
+    // transform: translateX(-$pxhtheme-drawer-width-wide);
+    #{$pxhtheme-drawer-side}: -$pxhtheme-drawer-width-wide - 10px;
+    width: $pxhtheme-drawer-width-wide;
   }
   100% {
-    // transform: translateX(-$pxh-drawer-width-wide);
-    #{$pxh-drawer-side}: -$pxh-drawer-width-wide;
-    width: $pxh-drawer-width-wide;
+    // transform: translateX(-$pxhtheme-drawer-width-wide);
+    #{$pxhtheme-drawer-side}: -$pxhtheme-drawer-width-wide;
+    width: $pxhtheme-drawer-width-wide;
   }
 }
 
 @keyframes pxh-drawer--animate-narrow {
   0% {
-    width: $pxh-drawer-width-wide;
+    width: $pxhtheme-drawer-width-wide;
   }
   33% {
-    width: $pxh-drawer-width-wide;
+    width: $pxhtheme-drawer-width-wide;
   }
   66% {
-    width: $pxh-drawer-width-narrow;
+    width: $pxhtheme-drawer-width-narrow;
   }
   100% {
-    width: $pxh-drawer-width-narrow;
+    width: $pxhtheme-drawer-width-narrow;
   }
 }
 
@@ -81,10 +81,10 @@
   z-index: 750;
   position: fixed;
   top: 0;
-  #{$pxh-drawer-side}: 0;
-  width: $pxh-drawer-width-wide;
+  #{$pxhtheme-drawer-side}: 0;
+  width: $pxhtheme-drawer-width-wide;
   height: 100%;
-  background-color: $pxh-drawer-bg-color;
+  background-color: $pxhtheme-drawer-bg-color;
 
   &--image {
     // I don't need this class yet but I anticipate other people needing it in the future
@@ -128,7 +128,7 @@
   // Keep the inactive drawer hidden off-screen until the @md (tablet) breakpoint.
   @include mq($until: md) {
     &--hidden-until\@md {
-      #{$pxh-drawer-side}: -$pxh-drawer-width-wide - 10px;
+      #{$pxhtheme-drawer-side}: -$pxhtheme-drawer-width-wide - 10px;
     }
   }
 
@@ -137,26 +137,26 @@
   // Remove this class to display the drawer in its wide state.
   @include mq($from: md) {
     &--narrow\@md {
-      width: $pxh-drawer-width-narrow;
+      width: $pxhtheme-drawer-width-narrow;
     }
   }
 
   @include mq($from: lg) {
     &--wide\@lg {
-      width: $pxh-drawer-width-wide;
+      width: $pxhtheme-drawer-width-wide;
     }
   }
 }
 
 .pxh-drawer-toggle {
-  float: $pxh-drawer-side;
+  float: $pxhtheme-drawer-side;
 
   &__link {
     display: block;
-    float: $pxh-drawer-side;
-    width: $pxh-drawer-margin * 3;
-    height: $pxh-drawer-margin * 3;
-    padding: $pxh-drawer-margin;
+    float: $pxhtheme-drawer-side;
+    width: $pxhtheme-drawer-margin * 3;
+    height: $pxhtheme-drawer-margin * 3;
+    padding: $pxhtheme-drawer-margin;
     color: $white;
     &:link,
     &:visited {
@@ -165,7 +165,7 @@
   }
 
   &__icon {
-    fill: $gray7;
+    fill: $pxhtheme-drawer-toggle-icon-color;
   }
 }
 
@@ -178,11 +178,11 @@
 }
 
 @mixin pxh-drawer-header__link--in-state-scale {
-  padding-top: $pxh-drawer-margin;
+  padding-top: $pxhtheme-drawer-margin;
   padding-bottom: 0;
   margin-top: 0;
   margin-bottom: 0;
-  width: $pxh-drawer-width-wide - ($pxh-drawer-margin * 3);
+  width: $pxhtheme-drawer-width-wide - ($pxhtheme-drawer-margin * 3);
   font-size: $inuit-base-font-size * 1.25;
 }
 
@@ -222,8 +222,8 @@
 }
 
 .pxh-drawer-header {
-  float: $pxh-drawer-side;
-  text-align: $pxh-drawer-side;
+  float: $pxhtheme-drawer-side;
+  text-align: $pxhtheme-drawer-side;
   margin: 0;
   padding: 0;
   font-weight: normal;
@@ -250,17 +250,12 @@
 
     &--image {
       display: block;
-      background-image: url('../img/predix_logo_color.png');
+      background-image: $pxhtheme-drawer-header-image;
       background-repeat: no-repeat;
-
-      @if $pxh-drawer-side == right {
-        background-position: right center;
-      } @else {
-        background-position: left center;
-      }
+      background-position: #{$pxhtheme-drawer-side} center;
       background-size: contain;
-      height: $pxh-drawer-margin * 3;
-      width: $pxh-drawer-width-wide - $pxh-drawer-width-narrow;
+      height: $pxhtheme-drawer-margin * 3;
+      width: $pxhtheme-drawer-width-wide - $pxhtheme-drawer-width-narrow;
       text-indent: -9999px;
       font-size: 1px;
     }

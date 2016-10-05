@@ -2,145 +2,346 @@
     #settings.pxh-chrome
 \*------------------------------------*/
 
-/// Width of drawer in wide state
-/// @group pxh-drawer
-/// @type Number
-$pxh-drawer-width-wide: 260px !default; // magic number ... fix this
+/// @group pxh-badge
+$pxhtheme-badge-bg-color: $gray5;
+$pxhtheme-badge-border-color: $pxhtheme-badge-bg-color;
+$pxhtheme-badge-text-color: $white;
+$pxhtheme-badge-text-color-inverse: $black;
+$pxhtheme-badge-border-width: 1px;
 
-/// Width of drawer in narrow state
-/// @group pxh-drawer
-/// @type Number
-$pxh-drawer-width-narrow: 60px !default; // magic number ... fix this
+$pxhtheme-badge-bg-color-navigation: $select-blue-pressed;
+$pxhtheme-badge-border-color-navigation: $pxhtheme-badge-bg-color-navigation;
 
-/// Drawer margin
+$pxhtheme-badge-bg-color-primary: $primary-blue;
+$pxhtheme-badge-border-color-primary: $pxhtheme-badge-bg-color-primary;
+
+$pxhtheme-badge-bg-color-important: $alert-red;
+$pxhtheme-badge-border-color-important: $pxhtheme-badge-bg-color-important;
+
+$pxhtheme-badge-bg-color-warning: $alert-orange;
+$pxhtheme-badge-border-color-warning: $pxhtheme-badge-bg-color-warning;
+
+$pxhtheme-badge-bg-color-error: $alert-yellow;
+$pxhtheme-badge-border-color-error: $pxhtheme-badge-bg-color-error;
+
+$pxhtheme-badge-bg-color-info: $alert-blue;
+$pxhtheme-badge-border-color-info: $pxhtheme-badge-bg-color-info;
+
+$pxhtheme-badge-bg-color-healthy-black: $black;
+$pxhtheme-badge-border-color-healthy-black: $pxhtheme-badge-bg-color-healthy-black;
+
+$pxhtheme-badge-bg-color-healthy-white: $white;
+$pxhtheme-badge-border-color-healthy-white: $gray5;
+// also uses $pxhtheme-badge-text-color-inverse
+
 /// @group pxh-drawer
-/// @type Number
-$pxh-drawer-margin: 20px !default; // magic number ... fix this
 
 /// Drawer background color
 /// @group pxh-drawer
 /// @type Color
-$pxh-drawer-bg-color: $gray10 !default;
+$pxhtheme-drawer-bg-color: $gray10;
 
-/// Navigation text color
+/// Drawer toggle icon fill color
+/// @group pxh-drawer
+/// @type Color
+$pxhtheme-drawer-toggle-icon-color: $gray7;
+
+$pxhtheme-drawer-header-image: url('../img/predix_logo_color.png');
+
+// not implemented yet
+// $pxhtheme-drawer-box-shadow: none;
+
+
+
+// pxh-error
+
+/// Icon color for error messages
+/// @group pxh-error
+/// @type Color
+$pxhtheme-error-icon-color: $gray5;
+
+/// Title/header font color for error messages
+/// @group pxh-error
+/// @type Color
+$pxhtheme-error-title-text-color: $gray6;
+
+/// Description font color for error messages
+/// @group pxh-error
+/// @type Color
+$pxhtheme-error-description-text-color: $gray6;
+
+
+
+// pxh-login
+
+$pxhtheme-login-border-color: rgba(0, 0, 0, 0.15);;
+$pxhtheme-login-border-width: 1px 0 0 0;
+
+$pxhtheme-login-notifications-link-text-color: $gray7;
+$pxhtheme-login-notifications-link-text-color-hover: $white;
+
+$pxhtheme-login-notifications-badge-bg-color: $gray5;
+$pxhtheme-login-notifications-badge-bg-color-green: $green;
+$pxhtheme-login-notifications-badge-bg-color-blue: $blue;
+$pxhtheme-login-notifications-badge-bg-color-orange: $orange;
+$pxhtheme-login-notifications-badge-bg-color-red: $red;
+
+$pxhtheme-login-notifications-badge-text-color: $white;
+
+$pxhtheme-login-avatar-icon-color: $gray7;
+
+$pxhtheme-login-avater-border-width: 1px;
+
+$pxhtheme-login-avatar-border-color: $gray7;
+
+$pxhtheme-login-settings-link-text-color: $gray7;
+
+$pxhtheme-login-settings-link-text-color-hover: $white;
+
+$pxhtheme-login-menu-text-color: $white;
+$pxhtheme-login-menu-bg-color: $black;
+$pxhtheme-login-menu-border-width: 1px;
+$pxhtheme-login-menu-border-color: $gray9;
+$pxhtheme-login-menu-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.25);
+
+$pxhtheme-login-menu-divider-border-width: 1px 0 0 0;
+
+$pxhtheme-login-menu-divider-border-color: $gray10;
+
+$pxhtheme-login-menu-link-text-color: $white;
+$pxhtheme-login-menu-link-bg-color: transparent;
+
+$pxhtheme-login-menu-link-text-color-hover: $white;
+
+$pxhtheme-login-menu-link-bg-color-hover: $gray10;
+
+
+
+
+
+
+
+
+
+
+$pxhtheme-navigation-border-width: 1px 0 0 0;
+$pxhtheme-navigation-border-color: rgba(0, 0, 0, 0.15);
+
+/// Navigation font color for sub-item
 /// @group pxh-navigation
 /// @type Color
-$pxh-navigation-color: $gray7 !default;
+$pxhtheme-navigation-sub-link-text-color: $gray7;
+$pxhtheme-navigation-sub-link-bg-color: transparent;
 
-/// Navigation background color
+/// Navigation font color for sub-item on hover
 /// @group pxh-navigation
 /// @type Color
-$pxh-navigation-bg-color: transparent !default;
+$pxhtheme-navigation-sub-link-text-color-hover: $gray4;
+$pxhtheme-navigation-sub-link-bg-color-hover: transparent;
 
-/// Navigation text color on hover
+/// Navigation font color for selected sub-item
 /// @group pxh-navigation
 /// @type Color
-$pxh-navigation-hover-color: $gray4 !default;
+$pxhtheme-navigation-sub-link-text-color-selected: $white;
+$pxhtheme-navigation-sub-link-bg-color-selected: transparent;
+
+$pxhtheme-navigation-sub-link-settings-text-color: $primary-blue;
+$pxhtheme-navigation-sub-link-settings-bg-color: transparent;
+$pxhtheme-navigation-sub-link-settings-bg-color-hover: transparent;
+$pxhtheme-navigation-sub-link-settings-text-color-selected: $primary-blue;
+$pxhtheme-navigation-sub-link-settings-bg-color-selected: transparent;
+
+/// Navigation link font color
+/// @group pxh-navigation
+/// @type Color
+$pxhtheme-navigation-link-text-color: $gray7;
+
+/// Navigation link background color
+/// @group pxh-navigation
+/// @type Color
+$pxhtheme-navigation-link-bg-color: transparent;
+
+/// Navigation font color on hover
+/// @group pxh-navigation
+/// @type Color
+$pxhtheme-navigation-link-text-color-hover: $gray4;
 
 /// Navigation background color on hover
 /// @group pxh-navigation
 /// @type Color
-$pxh-navigation-hover-bg-color: $gray9 !default;
+$pxhtheme-navigation-link-bg-color-hover: $gray9;
 
-/// Navigation text color for selected item
+/// Navigation font color for selected item
 /// @group pxh-navigation
 /// @type Color
-$pxh-navigation-selected-color: $white !default;
+$pxhtheme-navigation-link-text-color-selected: $white;
 
 /// Navigation background color for selected item
 /// @group pxh-navigation
 /// @type Color
-$pxh-navigation-selected-bg-color: $gray9 !default;
+$pxhtheme-navigation-link-bg-color-selected: $gray9;
 
-/// Navigation text color for active item
+/// Navigation font color for active item
 /// @group pxh-navigation
 /// @type Color
-$pxh-navigation-active-color: $white !default;
+$pxhtheme-navigation-link-text-color-active: $white;
+
+$pxhtheme-navigation-link-text-color-error: $gray7;
+
+$pxhtheme-navigation-link-bg-color-error: transparent;
 
 /// Navigation background color for active item
 /// @group pxh-navigation
 /// @type Color
-$pxh-navigation-active-bg-color: $gray9 !default;
+$pxhtheme-navigation-link-bg-color-active: $gray9;
 
-/// Navigation text color for error item
-/// @group pxh-navigation
-/// @type Color
-$pxh-navigation-error-color: $pxh-navigation-color !default;
+$pxhtheme-navigation-sub-item-divider-height: 1px;
+$pxhtheme-navigation-sub-item-divider-color: $gray9; // used as bg color but that's an implementation detail
+
+$pxhtheme-navigation-item-icon-color: $gray7;
+$pxhtheme-navigation-item-icon-color-hover: $gray4;
+$pxhtheme-navigation-item-icon-color-selected: $white;
+$pxhtheme-navigation-item-icon-color-active: $white;
 
 /// Navigation color for error icon
 /// @group pxh-navigation
 /// @type Color
-$pxh-navigation-error-icon-color: $red !default;
+$pxhtheme-navigation-item-icon-color-error: $red;
 
-/// Navigation background color for error item
-/// @group pxh-navigation
-/// @type Color
-$pxh-navigation-error-bg-color: $pxh-navigation-bg-color !default;
 
-/// Navigation text color for sub-item
-/// @group pxh-navigation
-/// @type Color
-$pxh-navigation-sub-color: $gray7 !default;
 
-/// Navigation text color for selected sub-item
-/// @group pxh-navigation
-/// @type Color
-$pxh-navigation-sub-selected-color: $white !default;
 
-/// Navigation background color for selected sub-item
-/// @group pxh-navigation
-/// @type Color
-$pxh-navigation-sub-selected-bg-color: transparent !default;
 
-/// Navigation text color for sub-item on hover
-/// @group pxh-navigation
-/// @type Color
-$pxh-navigation-sub-hover-color: $gray4 !default;
 
-/// Navigation background color for sub-item on hover
-/// @group pxh-navigation
-/// @type Color
-$pxh-navigation-sub-hover-bg-color: transparent !default;
+
+
+
+
+
+
+
+
+/// Width of drawer in wide state
+/// @group pxh-drawer
+/// @type Number
+$pxhtheme-drawer-width-wide: 260px !default; // magic number ... fix this
+
+/// Width of drawer in narrow state
+/// @group pxh-drawer
+/// @type Number
+$pxhtheme-drawer-width-narrow: 60px !default; // magic number ... fix this
+
+/// Drawer margin
+/// @group pxh-drawer
+/// @type Number
+$pxhtheme-drawer-margin: 20px !default; // magic number ... fix this
+
+/// Top margin to offset error message from top of browser window
+/// @group pxh-error
+/// @type Number
+$pxhtheme-error-margin-top: $inuit-base-spacing-unit * 3 !default;
+
+/// Top padding to give error message some breathing room
+/// @group pxh-error
+/// @type Number
+$pxhtheme-error-padding-top: $inuit-base-spacing-unit !default;
+
+/// Text decoration for hyperlinks in error messages
+/// @group pxh-error
+/// @type String
+$pxhtheme-error-link-text-decoration: none !default;
 
 /// Navigation item link height
 /// @group pxh-navigation
 /// @type Number
-$pxh-navigation-link-height: 48px;
+$pxhtheme-navigation-link-height: 48px;
 
 /// Navigation sub-item link height
 /// @group pxh-navigation
 /// @type Number
-$pxh-navigation-sub-link-height: 30px;
+$pxhtheme-navigation-sub-link-height: 30px;
 
 /// Navigation margin for divider component
 /// @group pxh-navigation
 /// @type Number
-$pxh-navigation-divider-margin: 10px;
+$pxhtheme-navigation-divider-margin: 10px;
 
 /// Login component height
-/// @group pxh-login
+/// @group pxhtheme-login
 /// @type Number
-$pxh-login-height:  60px !default;
+$pxhtheme-login-height:  60px !default;
 
 /// User avatar height and width
-/// @group pxh-login
+/// @group pxhtheme-login
 /// @type Number
-$pxh-login-avatar-height-width: 30px !default;
+$pxhtheme-login-avatar-height-width: 30px !default;
 
 /// "Magic number" centering for login components
-/// @group pxh-login
+/// @group pxhtheme-login
 /// @type Number
-$pxh-login-magic-centering: 14px !default; // magic number, fix this
+$pxhtheme-login-magic-centering: 14px !default; // magic number, fix this
 
 /// View header height
 /// locked to current height of px-context-browser + 1px for bottom border
 /// @group pxh-view
 /// @type Number
-$pxh-view-header-height: 61px !default;
+$pxhtheme-view-header-height: 61px !default;
+
+
+
+
+
+
+
+/// Height of a (non-expanded) notification
+/// @group pxh-notification
+/// @type Number
+$pxhtheme-notification-height: 70px;
+
+/// Default margin for notification components
+/// @group pxh-notification
+/// @type Number
+$pxhtheme-notification-margin: 5px;
+
+/// Maximum number of notifications to display at once
+/// @group pxh-notification
+/// @type Number
+$pxhtheme-notification-max-count: 5;
+
+
+
+
+
+$pxhtheme-overlay-bg-color: rgba(0, 0, 0, 0.7);
+
+
+
+
+// pxh-spinner
+
+/// Alpha transparency for pxh-spinner
+/// @group pxh-spinner
+/// @type Number
+$pxhtheme-spinner-alpha: 0.7;
+
+$pxhtheme-spinner-base-color: rgba($gray4, $pxhtheme-spinner-alpha);
+$pxhtheme-spinner-accent-color: $primary-blue;
+
+$pxhtheme-spinner-base-color-inverted: rgba($gray8, $pxhtheme-spinner-alpha);
+$pxhtheme-spinner-accent-color-inverted: $pxhtheme-spinner-accent-color;
+
+
+
+
+
+
+
+
+// pxh-view
 
 /// Options for pxh-view background colors
 /// @group pxh-view
-$pxh-view-background-colors: (
+$pxhtheme-view-bg-colors: (
   white: $white, 
   gray1: $gray1, 
   gray2: $gray2, 
@@ -155,37 +356,76 @@ $pxh-view-background-colors: (
   black: $black
  );
 
-/// Alpha transparency for pxh-spinner
-/// @group pxh-spinner
+$pxhtheme-view-header-bg-color: $white;
+
+$pxhtheme-view-header-border-width: 0 0 1px 0; // should allow all borders, but specify just the bottom to start
+
+$pxhtheme-view-header-border-color: $gray5;
+
+$pxhtheme-view-header-title-link-text-color: $black;
+
+$pxhtheme-view-header-drawer-toggle-icon-color: $black;
+
+
+
+
+
+
+
+
+// <html> and <body> elements
+
+$pxhtheme-html-bg-color: $inuit-base-background-color;
+
+$pxhtheme-html-text-color: $inuit-base-text-color;
+
+$pxhtheme-html-font-family: 'GE Inspira Sans', 'Helvetica', 'Arial', sans-serif;
+
+// <hr> element
+
+$pxhtheme-hr-color: $gray6;
+
+// <a> element
+
+$pxhtheme-link-text-color: $primary-blue;
+
+$pxhtheme-link-text-color-hover: $pxhtheme-link-text-color;
+
+
+
+// overrides.px-theme
+
+
+
+
+// overrides.pxh-docs
+
+$pxhtheme-docs-bg-color: $white;
+$pxhtheme-docs-code-font-size: $inuit-base-font-size;
+$pxhtheme-docs-code-bg-color: #fff3f3;
+$pxhtheme-docs-code-text-color: #900;
+
+
+
+
+
+
+
+
+/// Height of a (non-expanded) toast
+/// @group pxh-toast
 /// @type Number
-$pxh-spinner-alpha: 0.7;
+$pxhtheme-toast-height: 70px;
 
-/// Icon color for error messages
-/// @group pxh-error
-/// @type Color
-$error-icon-color: $gray5 !default;
-
-/// Title/header text color for error messages
-/// @group pxh-error
-/// @type Color
-$error-title-color: $gray6 !default;
-
-/// Description text color for error messages
-/// @group pxh-error
-/// @type Color
-$error-description-color: $gray6 !default;
-
-/// Top margin to offset error message from top of browser window
-/// @group pxh-error
+/// Default margin for toast components
+/// @group pxh-toast
 /// @type Number
-$error-margin-top: $inuit-base-spacing-unit * 3 !default;
+$pxhtheme-toast-margin: 5px;
 
-/// Top padding to give error message some breathing room
-/// @group pxh-error
+/// Maximum number of toasts to display at once
+/// @group pxh-toast
 /// @type Number
-$error-padding-top: $inuit-base-spacing-unit !default;
+$pxhtheme-toast-max-count: 3;
 
-/// Text decoration for hyperlinks in error messages
-/// @group pxh-error
-/// @type String
-$error-link-text-decoration: none !default;
+
+

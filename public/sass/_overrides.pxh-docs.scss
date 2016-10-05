@@ -5,12 +5,12 @@
 .pxh-docs {
   margin: 5px 5px 5px 5px;
   padding: 20px;
-  background-color: $white;
+  background-color: $pxhtheme-docs-bg-color;
 
   code {
     font-size: $inuit-base-font-size;
-    background-color: #fff3f3;
-    color: #900;
+    background-color: $pxhtheme-docs-code-bg-color;
+    color: $pxhtheme-docs-code-text-color;
   }
   pre {
     overflow-x: auto;
