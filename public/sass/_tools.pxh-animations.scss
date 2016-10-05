@@ -30,25 +30,25 @@
 }
 
 $mega-animate-default-config: (
-  font-size-in : 14px,
-  margin-in : 0,
-  padding-in : 0,
-  border-in : 0,
-  height-in : auto,
-  opacity-in : 1,
-  animation-name-in : animate-in,
-  font-size-out : 0,
-  margin-out : 0,
-  padding-out : 0,
-  border-out : 0,
-  height-out : auto,
-  opacity-out : 0,
-  animation-name-out : animate-out,
-  animation-duration : 500ms,
-  block-class : default
+  font-size-in: 14px,
+  margin-in: 0,
+  padding-in: 0,
+  border-in: 0,
+  height-in: auto,
+  opacity-in: 1,
+  animation-name-in: animate-in,
+  font-size-out: 0,
+  margin-out: 0,
+  padding-out: 0,
+  border-out: 0,
+  height-out: auto,
+  opacity-out: 0,
+  animation-name-out: animate-out,
+  animation-duration: 500ms,
+  block-class: default
 );
 
-@mixin mega-keyframes($config : $mega-animate-default-config) {
+@mixin mega-keyframes($config: $mega-animate-default-config) {
   @keyframes #{map-get($config, block-class)}--#{map-get($config, animation-name-in)} {
     0% {
       font-size: map-get($config, font-size-out);
