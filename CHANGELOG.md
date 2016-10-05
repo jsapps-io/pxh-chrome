@@ -7,6 +7,8 @@
   * We recommend an image least 180px x 600px in size to support devices with @3x dpi retina displays (e.g. iPhone 6+)
   * We recommend using a PNG image with alpha transparency
   * An image that does not fill the full height will be centered vertically within the container
+* Bump Normalize.css to 5.0.0
+* Remove `_elements.typography.scss`, as all the styles it declares are already covered by Normalize.css
 
 ### 2.2.1 - September 30, 2016
 * Add end-to-end tests for pxh-toast and pxh-notification capabilities
