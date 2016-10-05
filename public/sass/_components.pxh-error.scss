@@ -36,7 +36,7 @@
   font-size: $px-font-size-epsilon;
   font-weight: bold;
   color: $error-title-color;
-  a, 
+  a,
   a:link {
     text-decoration: $error-link-text-decoration;
   }
@@ -45,7 +45,7 @@
 .pxh-error__description {
   font-size: $px-font-size-regular;
   color: $error-description-color;
-  a, 
+  a,
   a:link {
     text-decoration: $error-link-text-decoration;
   }
