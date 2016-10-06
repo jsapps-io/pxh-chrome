@@ -282,5 +282,5 @@
 
 // chain to override px-theme
 .pxh-drawer-header__link {
-  @include pxh-override-px-theme-color('pxh-drawer-header__link');
+  @include pxh-override-px-theme-text-color('pxh-drawer-header__link');
 } 

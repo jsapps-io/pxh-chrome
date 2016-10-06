@@ -271,8 +271,8 @@
   }
 
   &__link {
-    @include pxh-override-px-theme-color('pxh-notifications__link', $gray5, $primary-blue);
-    // color: $gray5;
+    @include pxh-override-px-theme-text-color('pxh-notifications__link', $pxhtheme-notifications-link-text-color, $pxhtheme-notifications-link-text-color-hover);
+    color: $pxhtheme-notifications-link-text-color;
     text-decoration: none;
 
     &:hover {
@@ -368,7 +368,7 @@
   }
 
   &__link {
-    @include pxh-override-px-theme-color('pxh-notification__link', $gray4, $primary-blue);
+    @include pxh-override-px-theme-text-color('pxh-notification__link', $pxhtheme-notification-link-text-color, $pxhtheme-notification-link-text-color-hover);
     text-decoration: none;
     color: $gray5;
 
@@ -383,8 +383,8 @@
 
   &__more-button {
     @include pxh-toast__more-button;
-    @include pxh-override-px-theme-color('pxh-notification__more-button');
-    @include pxh-override-px-theme-background-color('pxh-notification__more-button', $gray10, $gray9);
+    @include pxh-override-px-theme-text-color('pxh-notification__more-button');
+    @include pxh-override-px-theme-bg-color('pxh-notification__more-button', $pxhtheme-notification-more-button-bg-color, $pxhtheme-notification-more-button-bg-color-hover);
   }
 
   &__timestamp {
@@ -399,7 +399,7 @@
 
   &__dismiss-button {
     @include pxh-toast__dismiss-button;
-    color: $gray8;
-    @include pxh-override-px-theme-color('pxh-notification__dismiss-button', $gray8, $primary-blue);
+    color: $pxhtheme-notification-dismiss-button-icon-color;
+    @include pxh-override-px-theme-text-color('pxh-notification__dismiss-button', $pxhtheme-notification-dismiss-button-icon-color, $pxhtheme-notification-dismiss-button-icon-color-hover);
   }
 }

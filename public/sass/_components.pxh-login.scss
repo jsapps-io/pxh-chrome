@@ -64,11 +64,11 @@ $pxhtheme-login-animate-config: (
   }
 
   &__link {
-    @include pxh-override-px-theme-color('pxh-login__link');
+    @include pxh-override-px-theme-text-color('pxh-login__link');
   }
 
   &__profile-link {
-    @include pxh-override-px-theme-color('pxh-login__profile-link');
+    @include pxh-override-px-theme-text-color('pxh-login__profile-link');
     display: flex;
     align-items: center;
     flex-grow: 3;
@@ -166,7 +166,7 @@ $pxhtheme-login-animate-config: (
   }
 
   &__notifications-link {
-    @include pxh-override-px-theme-color('pxh-login__notifications-link');
+    @include pxh-override-px-theme-text-color('pxh-login__notifications-link');
     display: inline;
     padding: $pxhtheme-login-magic-centering ($pxhtheme-drawer-margin / 2) ($pxhtheme-drawer-margin / 2) ($pxhtheme-drawer-margin / 2);
     color: $pxhtheme-login-notifications-link-text-color;
@@ -178,7 +178,7 @@ $pxhtheme-login-animate-config: (
   }
 
   &__notifications-badge {
-    @include pxh-override-px-theme-color('pxh-login__notifications-badge', $white);
+    @include pxh-override-px-theme-text-color('pxh-login__notifications-badge', $white);
     @if $pxhtheme-drawer-side == right {
       left: $pxhtheme-drawer-margin / 4;
     } @else {
@@ -208,22 +208,22 @@ $pxhtheme-login-animate-config: (
     }
 
     &--green {
-      @include pxh-override-px-theme-background-color('pxh-login__notifications-badge--green', $pxhtheme-login-notifications-badge-bg-color-green);
+      @include pxh-override-px-theme-bg-color('pxh-login__notifications-badge--green', $pxhtheme-login-notifications-badge-bg-color-green);
       background-color: $pxhtheme-login-notifications-badge-bg-color-green;
     }
 
     &--blue {
-      @include pxh-override-px-theme-background-color('pxh-login__notifications-badge--blue', $pxhtheme-login-notifications-badge-bg-color-blue);
+      @include pxh-override-px-theme-bg-color('pxh-login__notifications-badge--blue', $pxhtheme-login-notifications-badge-bg-color-blue);
       background-color: $pxhtheme-login-notifications-badge-bg-color-blue;
     }
 
     &--orange {
-      @include pxh-override-px-theme-background-color('pxh-notifications-badge--orange', $pxhtheme-login-notifications-badge-bg-color-orange);
+      @include pxh-override-px-theme-bg-color('pxh-notifications-badge--orange', $pxhtheme-login-notifications-badge-bg-color-orange);
       background-color: $pxhtheme-login-notifications-badge-bg-color-orange;
     }
 
     &--red {
-      @include pxh-override-px-theme-background-color('pxh-notifications-badge--red', $pxhtheme-login-notifications-badge-bg-color-red);
+      @include pxh-override-px-theme-bg-color('pxh-notifications-badge--red', $pxhtheme-login-notifications-badge-bg-color-red);
       background-color: $pxhtheme-login-notifications-badge-bg-color-red;
     }
 
@@ -287,7 +287,7 @@ $pxhtheme-login-animate-config: (
   }
 
   &__link {
-    @include pxh-override-px-theme-color('pxh-login-menu__link ', $pxhtheme-login-menu-link-text-color, $pxhtheme-login-menu-link-text-color-hover);
+    @include pxh-override-px-theme-text-color('pxh-login-menu__link ', $pxhtheme-login-menu-link-text-color, $pxhtheme-login-menu-link-text-color-hover);
   }
 }
 

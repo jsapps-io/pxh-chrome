@@ -86,8 +86,8 @@
   &__button {
     max-width: $pxhtheme-toast-height * 1.75;
     @include pxh-toast__button;
-    // @include pxh-override-px-theme-color('pxh-toast__button', $gray5);
-    // @include pxh-override-px-theme-background-color('pxh-toast__button', $gray10, $gray9);
+    @include pxh-override-px-theme-text-color('pxh-toast__button', $pxhtheme-toast-button-text-color);
+    @include pxh-override-px-theme-bg-color('pxh-toast__button', $pxhtheme-toast-button-bg-color, $pxhtheme-toast-button-bg-color-hover);
   }
 
   &__icon {
@@ -124,8 +124,8 @@
 
   &__more-button {
     @include pxh-toast__more-button;
-    @include pxh-override-px-theme-color('pxh-toast__more-button');
-    // @include pxh-override-px-theme-background-color('pxh-toast__more-button', $gray10, $gray9);
+    @include pxh-override-px-theme-text-color('pxh-toast__more-button');
+    @include pxh-override-px-theme-bg-color('pxh-toast__more-button', $pxhtheme-toast-more-button-text-color, $pxhtheme-toast-more-button-text-color-hover);
   }
 
   &__dismiss {
@@ -134,6 +134,6 @@
 
   &__dismiss-button {
     @include pxh-toast__dismiss-button;
-    // @include pxh-override-px-theme-color('pxh-toast__dismiss-button', $gray7, $primary-blue);
+    @include pxh-override-px-theme-text-color('pxh-toast__dismiss-button', $pxhtheme-toast-dismiss-button-icon-color, $pxhtheme-toast-dismiss-button-icon-color-hover);
   }
 }

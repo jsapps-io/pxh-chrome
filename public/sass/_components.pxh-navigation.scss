@@ -399,5 +399,5 @@
 }
 
 .pxh-navigation__sub-link--settings {
-  @include pxh-override-px-theme-color('pxh-navigation__sub-link--settings',$pxhtheme-navigation-sub-link-settings-text-color);
+  @include pxh-override-px-theme-text-color('pxh-navigation__sub-link--settings',$pxhtheme-navigation-sub-link-settings-text-color);
 }
