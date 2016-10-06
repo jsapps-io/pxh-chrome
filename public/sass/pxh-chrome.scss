@@ -9,37 +9,19 @@
 /// Define whether the application is rendering in a 'left-to-right' language or a 'right-to-left' language
 /// @group pxh-settings
 /// @type String [default] 'ltr'
-$pxhtheme-language-direction: 'ltr'; // 'ltr' OR 'rtl'
+$pxh-language-direction: 'ltr'; // 'ltr' OR 'rtl'
 
-@import 'settings.defaults';
-
-// @import 'settings.predixio';
-
-@import 'settings.pxh-chrome';
+@import 'settings.theme';
 
 // ** #GENERIC ** //
 
 @import 'generic.normalize';
-/// Path to GE web fonts
-/// @group pxh-settings
-/// @type String [default] - Webfont path
-$webfont-path: '//dzlpbrbc7yvq0.cloudfront.net/px/fonts/1.0.0';
 @import 'generic.fonts';
 @import 'generic.defaults';
 
 // ** #TOOLS ** //
 
-/// List of media query breakpoints
-/// @group pxh-settings
-$mq-breakpoints: (
-  md:  768px,
-  lg: 1024px,
-);
 @import 'sass-mq/mq'; // our sass task includes /bower_components automatically so we don't need to specify it
-/// Path to Font Awesome fonts
-/// @group pxh-settings
-/// @type String
-$fa-font-path: '//dzlpbrbc7yvq0.cloudfront.net/libs/font-awesome/4.6.3/fonts';
 @import 'font-awesome/scss/font-awesome'; // our sass task includes /bower_components automatically so we don't need to specify it
 @import 'tools.pxh-animations';
 @import 'tools.pxh-mixins';
@@ -53,24 +35,6 @@ $fa-font-path: '//dzlpbrbc7yvq0.cloudfront.net/libs/font-awesome/4.6.3/fonts';
 // ** #OBJECTS ** //
 
 // ** #COMPONENTS ** //
-
-/// Define whether the drawer should appear on the left or right side of the browser window
-/// @group pxh-settings
-/// @type String
-$pxhtheme-drawer-side: null;
-
-/// Define the side of the browser window opposite the drawer (e.g. 'right' if the drawer should appear on the left)
-/// @group pxh-settings
-/// @type String
-$pxhtheme-drawer-opposite-side: null;
-
-@if $pxhtheme-language-direction == 'rtl' {
-  $pxhtheme-drawer-side: right;
-  $pxhtheme-drawer-opposite-side: left;
-} @else {
-  $pxhtheme-drawer-side: left;
-  $pxhtheme-drawer-opposite-side: right;
-}
 
 @import 'components.pxh-badge';
 @import 'components.pxh-closer';
