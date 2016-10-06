@@ -6,8 +6,8 @@
   width: 100%;
   max-width: 1200px;
   text-align: center;
-  margin: $pxhtheme-error-margin-top 0 0 0;
-  padding: $pxhtheme-error-padding-top $pxhtheme-base-spacing-unit ($pxhtheme-base-spacing-unit * 8) $pxhtheme-base-spacing-unit;
+  margin: $pxh-error-margin-top 0 0 0;
+  padding: $pxh-error-padding-top $pxh-base-spacing-unit ($pxh-base-spacing-unit * 8) $pxh-base-spacing-unit;
 }
 
 @include mq($from: md) {
@@ -28,25 +28,25 @@
 
 .pxh-error__icon {
   font-size: $px-font-size-beta;
-  color: $pxhtheme-error-icon-color;
+  color: $pxh-error-icon-color;
   line-height: 1;
 }
 
 .pxh-error__title {
   font-size: $px-font-size-epsilon;
   font-weight: bold;
-  color: $pxhtheme-error-title-text-color;
+  color: $pxh-error-title-text-color;
   a,
   a:link {
-    text-decoration: $pxhtheme-error-link-text-decoration;
+    text-decoration: $pxh-error-link-text-decoration;
   }
 }
 
 .pxh-error__description {
   font-size: $px-font-size-regular;
-  color: $pxhtheme-error-description-text-color;
+  color: $pxh-error-description-text-color;
   a,
   a:link {
-    text-decoration: $pxhtheme-error-link-text-decoration;
+    text-decoration: $pxh-error-link-text-decoration;
   }
 }

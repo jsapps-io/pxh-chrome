@@ -3,14 +3,14 @@
 \*------------------------------------*/
 
 .pxh-docs {
-  margin: 5px 5px 5px 5px;
-  padding: 20px;
-  background-color: $pxhtheme-docs-bg-color;
+  margin: $pxh-base-spacing-unit / 3;
+  padding: $pxh-base-spacing-unit + ($pxh-base-spacing-unit / 3);
+  background-color: $pxh-docs-bg-color;
 
   code {
-    font-size: $pxhtheme-base-font-size;
-    background-color: $pxhtheme-docs-code-bg-color;
-    color: $pxhtheme-docs-code-text-color;
+    font-size: $pxh-base-font-size;
+    background-color: $pxh-docs-code-bg-color;
+    color: $pxh-docs-code-text-color;
   }
   pre {
     overflow-x: auto;

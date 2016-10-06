@@ -3,7 +3,7 @@
 \*------------------------------------*/
 
 .pxh-spinner {
-  margin: 60px 0 60px 0;
+  margin: ($pxh-base-spacing-unit * 4) 0 ($pxh-base-spacing-unit * 4) 0;
   text-align: center;
   overflow: hidden;
   &::after {
@@ -14,29 +14,29 @@
     text-indent: -9999em;
     border-width: 4px;
     border-style: solid;
-    border-color: $pxhtheme-spinner-base-color;
-    border-left-color: $pxhtheme-spinner-accent-color;
+    border-color: $pxh-spinner-base-color;
+    border-left-color: $pxh-spinner-accent-color;
     transform: translateZ(0);
     animation: pxh-spinner 1.7s infinite linear;
     border-radius: 50%;
-    width: 40px;
-    height: 40px;
+    width: ($pxh-base-spacing-unit * 2) + (($pxh-base-spacing-unit / 3) * 2);
+    height: ($pxh-base-spacing-unit * 2) + (($pxh-base-spacing-unit / 3) * 2);
   }
   &--small::after {
     animation-duration: 1.6s;
     border-width: 2px;
-    height: 20px;
-    width: 20px;
+    height: $pxh-base-spacing-unit + ($pxh-base-spacing-unit / 3);
+    width: $pxh-base-spacing-unit + ($pxh-base-spacing-unit / 3);
   }
   &--large::after {
     animation-duration: 1.8s;
     border-width: 6px;
-    height: 60px;
-    width: 60px;
+    height: $pxh-base-spacing-unit * 4;
+    width: $pxh-base-spacing-unit * 4;
   }
   &--inverted::after {
-    border-color: $pxhtheme-spinner-base-color-inverted;
-    border-left-color: $pxhtheme-spinner-accent-color-inverted;
+    border-color: $pxh-spinner-base-color-inverted;
+    border-left-color: $pxh-spinner-accent-color-inverted;
   }
   &--finished::after {
     display: none;

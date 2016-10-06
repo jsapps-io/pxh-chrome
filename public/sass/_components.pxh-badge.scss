@@ -4,7 +4,7 @@
 
 @mixin pxh-badge--in-state-scale {
   padding: 2px 4px 0px 4px;
-  font-size: $pxhtheme-base-font-size * 0.866666666666;
+  font-size: $pxh-base-font-size * 0.866666666666;
 }
 @mixin pxh-badge--in-state-opacity {
   @include in-state-opacity;
@@ -34,62 +34,62 @@
 .pxh-badge {
   @include pxh-badge--in-state;
   text-align: center;
-  background-color: $pxhtheme-badge-bg-color;
+  background-color: $pxh-badge-bg-color;
   display: inline-block;
   font-weight: normal;
-  color: $pxhtheme-badge-text-color;
+  color: $pxh-badge-text-color;
   line-height: 1;
   border-style: solid;
-  border-width: $pxhtheme-badge-border-width;
-  border-color: $pxhtheme-badge-border-color;
+  border-width: $pxh-badge-border-width;
+  border-color: $pxh-badge-border-color;
   border-radius: 6px;
   text-decoration: none;
   transition: opacity 250ms ease-in-out;
   transition-delay: 250ms;
 
   &--navigation {
-    background-color: $pxhtheme-badge-bg-color-navigation;
-    border-color: $pxhtheme-badge-border-color-navigation;
+    background-color: $pxh-badge-bg-color-navigation;
+    border-color: $pxh-badge-border-color-navigation;
   }
 
   &--primary {
-    background-color: $pxhtheme-badge-bg-color-primary;
-    border-color: $pxhtheme-badge-border-color-primary;
+    background-color: $pxh-badge-bg-color-primary;
+    border-color: $pxh-badge-border-color-primary;
   }
 
   &--important {
-    background-color: $pxhtheme-badge-bg-color-important;
-    border-color: $pxhtheme-badge-border-color-important;
+    background-color: $pxh-badge-bg-color-important;
+    border-color: $pxh-badge-border-color-important;
   }
 
   &--warning {
-    background-color: $pxhtheme-badge-bg-color-warning;
-    border-color: $pxhtheme-badge-border-color-warning;
+    background-color: $pxh-badge-bg-color-warning;
+    border-color: $pxh-badge-border-color-warning;
   }
 
   &--error {
-    background-color: $pxhtheme-badge-bg-color-error;
-    border-color: $pxhtheme-badge-border-color-error;
+    background-color: $pxh-badge-bg-color-error;
+    border-color: $pxh-badge-border-color-error;
   }
 
   &--info {
-    background-color: $pxhtheme-badge-bg-color-info;
-    border-color: $pxhtheme-badge-border-color-info;
+    background-color: $pxh-badge-bg-color-info;
+    border-color: $pxh-badge-border-color-info;
   }
 
   &--healthy-black {
-    background-color: $pxhtheme-badge-bg-color-healthy-black;
-    border-color: $pxhtheme-badge-border-color-healthy-black;
+    background-color: $pxh-badge-bg-color-healthy-black;
+    border-color: $pxh-badge-border-color-healthy-black;
   }
 
   &--healthy-white {
-    background-color: $pxhtheme-badge-bg-color-healthy-white;
-    border-color: $pxhtheme-badge-border-color-healthy-white;
-    color: $pxhtheme-badge-text-color-inverse;
+    background-color: $pxh-badge-bg-color-healthy-white;
+    border-color: $pxh-badge-border-color-healthy-white;
+    color: $pxh-badge-text-color-inverse;
   }
 
   &--truncated {
-    max-width: $pxhtheme-base-spacing-unit * 3;
+    max-width: $pxh-base-spacing-unit * 3;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;

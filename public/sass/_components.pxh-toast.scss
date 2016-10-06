@@ -6,27 +6,27 @@
   @include pxh-fancy-scrollbar;
   position: fixed;
   bottom: 0;
-  right: $pxhtheme-toast-margin;
-  left: $pxhtheme-toast-margin;
+  right: $pxh-toast-margin;
+  left: $pxh-toast-margin;
   -webkit-overflow-scrolling: touch;
   overflow-y: auto;
   z-index: 300;
-  max-height: ($pxhtheme-toast-height * 2) + ($pxhtheme-toast-height / 2) + $pxhtheme-toast-margin;
+  max-height: ($pxh-toast-height * 2) + ($pxh-toast-height / 2) + $pxh-toast-margin;
 
   @include mq($from: md) {
     &--narrow\@md {
-      max-height: ($pxhtheme-toast-height * $pxhtheme-toast-max-count) + ($pxhtheme-toast-height / 2) + ($pxhtheme-toast-margin * ($pxhtheme-toast-max-count - 1));
-      top: 60px + 1px + 5px;
-      #{$pxhtheme-drawer-side}: auto;
-      width: 420px;
+      max-height: ($pxh-toast-height * $pxh-toast-max-count) + ($pxh-toast-height / 2) + ($pxh-toast-margin * ($pxh-toast-max-count - 1));
+      top: $pxh-view-header-height + ($pxh-base-spacing-unit / 3);
+      #{$pxh-drawer-side}: auto;
+      width: $pxh-base-spacing-unit * 28;
       bottom: auto;
     }
   }
 
   @include mq($from: lg) {
     &--wide\@lg {
-      #{$pxhtheme-drawer-side}: auto;
-      width: 480px;
+      #{$pxh-drawer-side}: auto;
+      width: $pxh-base-spacing-unit * 32;
     }
   }
 }
@@ -84,33 +84,33 @@
   }
 
   &__button {
-    max-width: $pxhtheme-toast-height * 1.75;
+    max-width: $pxh-toast-height * 1.75;
     @include pxh-toast__button;
-    @include pxh-override-px-theme-text-color('pxh-toast__button', $pxhtheme-toast-button-text-color);
-    @include pxh-override-px-theme-bg-color('pxh-toast__button', $pxhtheme-toast-button-bg-color, $pxhtheme-toast-button-bg-color-hover);
+    @include pxh-override-px-theme-text-color('pxh-toast__button', $pxh-toast-button-text-color);
+    @include pxh-override-px-theme-bg-color('pxh-toast__button', $pxh-toast-button-bg-color, $pxh-toast-button-bg-color-hover);
   }
 
   &__icon {
     @include pxh-toast__icon;
-    color: $pxhtheme-toast-icon-color;
-    padding-top: $pxhtheme-toast-margin * 4;
-    flex-basis: $pxhtheme-toast-height;
+    color: $pxh-toast-icon-color;
+    padding-top: $pxh-toast-margin * 4;
+    flex-basis: $pxh-toast-height;
     font-size: 28px;
 
     &--green {
-      background-color: $pxhtheme-toast-icon-bg-color-green;
+      background-color: $pxh-toast-icon-bg-color-green;
     }
 
     &--blue {
-      background-color: $pxhtheme-toast-icon-bg-color-blue;
+      background-color: $pxh-toast-icon-bg-color-blue;
     }
 
     &--orange {
-      background-color: $pxhtheme-toast-icon-bg-color-orange;
+      background-color: $pxh-toast-icon-bg-color-orange;
     }
 
     &--red {
-      background-color: $pxhtheme-toast-icon-bg-color-red;
+      background-color: $pxh-toast-icon-bg-color-red;
     }
   }
 
@@ -124,8 +124,8 @@
 
   &__more-button {
     @include pxh-toast__more-button;
-    @include pxh-override-px-theme-text-color('pxh-toast__more-button');
-    @include pxh-override-px-theme-bg-color('pxh-toast__more-button', $pxhtheme-toast-more-button-text-color, $pxhtheme-toast-more-button-text-color-hover);
+    @include pxh-override-px-theme-text-color('pxh-toast__more-button', $pxh-toast-more-button-text-color, $pxh-toast-more-button-text-color-hover);
+    @include pxh-override-px-theme-bg-color('pxh-toast__more-button', $pxh-toast-more-button-bg-color, $pxh-toast-more-button-bg-color-hover);
   }
 
   &__dismiss {
@@ -134,6 +134,6 @@
 
   &__dismiss-button {
     @include pxh-toast__dismiss-button;
-    @include pxh-override-px-theme-text-color('pxh-toast__dismiss-button', $pxhtheme-toast-dismiss-button-icon-color, $pxhtheme-toast-dismiss-button-icon-color-hover);
+    @include pxh-override-px-theme-text-color('pxh-toast__dismiss-button', $pxh-toast-dismiss-button-icon-color, $pxh-toast-dismiss-button-icon-color-hover);
   }
 }

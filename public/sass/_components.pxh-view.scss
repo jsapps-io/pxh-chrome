@@ -3,7 +3,7 @@
 \*------------------------------------*/
 
 .pxh-wrapper {
-  padding-top: $pxhtheme-view-header-height;
+  padding-top: $pxh-view-header-height;
   position: absolute;
   top: 0;
   right: 0;
@@ -13,52 +13,52 @@
 
 @keyframes pxh-view--animate-wide {
   0% {
-    margin-#{$pxhtheme-drawer-side}: $pxhtheme-drawer-width-wide;
+    margin-#{$pxh-drawer-side}: $pxh-drawer-width-wide;
   }
   33% {
-    margin-#{$pxhtheme-drawer-side}: $pxhtheme-drawer-width-wide;
+    margin-#{$pxh-drawer-side}: $pxh-drawer-width-wide;
   }
   66% {
-    margin-#{$pxhtheme-drawer-side}: $pxhtheme-drawer-width-narrow;
+    margin-#{$pxh-drawer-side}: $pxh-drawer-width-narrow;
   }
   100% {
-    margin-#{$pxhtheme-drawer-side}: $pxhtheme-drawer-width-narrow;
+    margin-#{$pxh-drawer-side}: $pxh-drawer-width-narrow;
   }
 }
 
 @keyframes pxh-view--animate-narrow {
   0% {
-    margin-#{$pxhtheme-drawer-side}: $pxhtheme-drawer-width-narrow;
+    margin-#{$pxh-drawer-side}: $pxh-drawer-width-narrow;
   }
   33% {
-    margin-#{$pxhtheme-drawer-side}: $pxhtheme-drawer-width-wide;
+    margin-#{$pxh-drawer-side}: $pxh-drawer-width-wide;
   }
   100% {
-    margin-#{$pxhtheme-drawer-side}: $pxhtheme-drawer-width-wide;
+    margin-#{$pxh-drawer-side}: $pxh-drawer-width-wide;
   }
 }
 
 @keyframes pxh-view--animate-full-to-wide {
   0% {
-    margin-#{$pxhtheme-drawer-side}: 0;
+    margin-#{$pxh-drawer-side}: 0;
   }
   50% {
-    margin-#{$pxhtheme-drawer-side}: 0;
+    margin-#{$pxh-drawer-side}: 0;
   }
   100% {
-    margin-#{$pxhtheme-drawer-side}: $pxhtheme-drawer-width-narrow;
+    margin-#{$pxh-drawer-side}: $pxh-drawer-width-narrow;
   }
 }
 
 @keyframes pxh-view--animate-full-to-narrow {
   0% {
-    margin-#{$pxhtheme-drawer-side}: 0;
+    margin-#{$pxh-drawer-side}: 0;
   }
   50% {
-    margin-#{$pxhtheme-drawer-side}: 0;
+    margin-#{$pxh-drawer-side}: 0;
   }
   100% {
-    margin-#{$pxhtheme-drawer-side}: $pxhtheme-drawer-width-wide;
+    margin-#{$pxh-drawer-side}: $pxh-drawer-width-wide;
   }
 }
 
@@ -96,7 +96,7 @@
   }
 }
 
-@each $color-slug, $color-variable in $pxhtheme-view-bg-colors {
+@each $color-slug, $color-variable in $pxh-view-bg-colors {
   .pxh-view--#{$color-slug} {
     background-color: $color-variable;
   }
@@ -110,7 +110,7 @@
   // for the width of the narrow state of the drawer on the left.
   @include mq($from: md) {
     .pxh-view--wide\@md {
-      margin-#{$pxhtheme-drawer-side}: $pxhtheme-drawer-width-narrow;
+      margin-#{$pxh-drawer-side}: $pxh-drawer-width-narrow;
     }
   }
 
@@ -119,13 +119,13 @@
   // which accounts for the width of the wide state of the drawer.
   @include mq($from: lg) {
     .pxh-view--narrow\@lg {
-      margin-#{$pxhtheme-drawer-side}: $pxhtheme-drawer-width-wide;
+      margin-#{$pxh-drawer-side}: $pxh-drawer-width-wide;
     }
   }
 
   @include mq($from: lg) {
     .pxh-view--wide\@lg {
-      margin-#{$pxhtheme-drawer-side}: $pxhtheme-drawer-width-narrow;
+      margin-#{$pxh-drawer-side}: $pxh-drawer-width-narrow;
     }
   }
 }
@@ -136,65 +136,65 @@
 
 @keyframes pxh-view-header--animate-wide {
   0% {
-    #{$pxhtheme-drawer-side}: $pxhtheme-drawer-width-wide;
+    #{$pxh-drawer-side}: $pxh-drawer-width-wide;
   }
   33% {
-    #{$pxhtheme-drawer-side}: $pxhtheme-drawer-width-wide;
+    #{$pxh-drawer-side}: $pxh-drawer-width-wide;
   }
   66% {
-    #{$pxhtheme-drawer-side}: $pxhtheme-drawer-width-narrow;
+    #{$pxh-drawer-side}: $pxh-drawer-width-narrow;
   }
   100% {
-    #{$pxhtheme-drawer-side}: $pxhtheme-drawer-width-narrow;
+    #{$pxh-drawer-side}: $pxh-drawer-width-narrow;
   }
 }
 
 @keyframes pxh-view-header--animate-narrow {
   0% {
-    #{$pxhtheme-drawer-side}: $pxhtheme-drawer-width-narrow;
+    #{$pxh-drawer-side}: $pxh-drawer-width-narrow;
   }
   33% {
-    #{$pxhtheme-drawer-side}: $pxhtheme-drawer-width-wide;
+    #{$pxh-drawer-side}: $pxh-drawer-width-wide;
   }
   100% {
-    #{$pxhtheme-drawer-side}: $pxhtheme-drawer-width-wide;
+    #{$pxh-drawer-side}: $pxh-drawer-width-wide;
   }
 }
 
 @keyframes pxh-view-header--animate-full-to-wide {
   0% {
-    #{$pxhtheme-drawer-side}: 0;
+    #{$pxh-drawer-side}: 0;
   }
   50% {
-    #{$pxhtheme-drawer-side}: 0;
+    #{$pxh-drawer-side}: 0;
   }
   100% {
-    #{$pxhtheme-drawer-side}: $pxhtheme-drawer-width-narrow;
+    #{$pxh-drawer-side}: $pxh-drawer-width-narrow;
   }
 }
 
 @keyframes pxh-view-header--animate-full-to-narrow {
   0% {
-    #{$pxhtheme-drawer-side}: 0;
+    #{$pxh-drawer-side}: 0;
   }
   50% {
-    #{$pxhtheme-drawer-side}: 0;
+    #{$pxh-drawer-side}: 0;
   }
   100% {
-    #{$pxhtheme-drawer-side}: $pxhtheme-drawer-width-wide;
+    #{$pxh-drawer-side}: $pxh-drawer-width-wide;
   }
 }
 
 .pxh-view-header {
   position: fixed;
   top: 0;
-  #{$pxhtheme-drawer-opposite-side}: 0;
-  #{$pxhtheme-drawer-side}: 0;
-  background-color: $pxhtheme-view-header-bg-color;
+  #{$pxh-drawer-opposite-side}: 0;
+  #{$pxh-drawer-side}: 0;
+  background-color: $pxh-view-header-bg-color;
   border-style: solid;
-  border-color: $pxhtheme-view-header-border-color;
-  border-width: $pxhtheme-view-header-border-width;
-  height: $pxhtheme-view-header-height;
+  border-color: $pxh-view-header-border-color;
+  border-width: $pxh-view-header-border-width;
+  height: $pxh-view-header-height;
   z-index: 250;
 
   &--animate-wide {
@@ -234,19 +234,19 @@
   // for the width of the narrow state of the drawer on the left.
   @include mq($from: md) {
     .pxh-view-header--wide\@md {
-      #{$pxhtheme-drawer-side}: $pxhtheme-drawer-width-narrow;
+      #{$pxh-drawer-side}: $pxh-drawer-width-narrow;
     }
   }
 
   @include mq($from: lg) {
     .pxh-view-header--wide\@lg {
-      #{$pxhtheme-drawer-side}: $pxhtheme-drawer-width-narrow;
+      #{$pxh-drawer-side}: $pxh-drawer-width-narrow;
     }
   }
 
   @include mq($until: md) {
     .pxh-view-header--nudge-until\@md {
-      padding-#{$pxhtheme-drawer-side}: $pxhtheme-drawer-width-narrow;
+      padding-#{$pxh-drawer-side}: $pxh-drawer-width-narrow;
     }
   }
 
@@ -255,7 +255,7 @@
   // which accounts for the width of the wide state of the drawer.
   @include mq($from: lg) {
     .pxh-view-header--narrow\@lg {
-      #{$pxhtheme-drawer-side}: $pxhtheme-drawer-width-wide;
+      #{$pxh-drawer-side}: $pxh-drawer-width-wide;
     }
   }
 }
@@ -267,19 +267,19 @@
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  padding-top: $pxhtheme-base-spacing-unit;
+  padding-top: $pxh-base-spacing-unit;
   text-align: center;
-  font-size: $pxhtheme-base-font-size * 1.5;
+  font-size: $pxh-base-font-size * 1.5;
 }
 
 .pxh-view-header__title-link.pxh-view-header__title-link.pxh-view-header__title-link  { // chained to override px-theme
-  color: $pxhtheme-view-header-title-link-text-color;
+  color: $pxh-view-header-title-link-text-color;
   text-decoration: none;
 }
 
 .pxh-view-header__title-link:link.pxh-view-header__title-link:link.pxh-view-header__title-link:link,
 .pxh-view-header__title-link:visited.pxh-view-header__title-link:visited.pxh-view-header__title-link:visited { // chained to override px-theme
-  color: $pxhtheme-view-header-title-link-text-color;
+  color: $pxh-view-header-title-link-text-color;
 }
 
 /*------------------------------------*\
@@ -289,13 +289,13 @@
 .pxh-view-header-drawer-toggle {
   position: fixed;
   top: 0;
-  #{$pxhtheme-drawer-side}: 0;
+  #{$pxh-drawer-side}: 0;
   opacity: 1;
   z-index: 500; // making the same as overlay to overcome IE10 clickthru bug with overlay
   transition: all 300ms ease-in-out;
 
   &__icon {
-    fill: $pxhtheme-view-header-drawer-toggle-icon-color;
+    fill: $pxh-view-header-drawer-toggle-icon-color;
   }
 
   // Hide the toggle button in the view-header. This class is
@@ -304,16 +304,16 @@
   // are intercepted by the view-header toggle as well, resulting
   // in a bounce scenario.
   &--hidden {
-    #{$pxhtheme-drawer-side}: $pxhtheme-drawer-width-narrow * -1;
+    #{$pxh-drawer-side}: $pxh-drawer-width-narrow * -1;
     opacity: 0;  
   }
 
   &__link {
     display: block;
-    height: $pxhtheme-drawer-width-narrow;
-    width: $pxhtheme-drawer-width-narrow;
-    padding-top: $pxhtheme-drawer-margin;
-    padding-#{$pxhtheme-drawer-side}: $pxhtheme-drawer-margin;
+    height: $pxh-drawer-width-narrow;
+    width: $pxh-drawer-width-narrow;
+    padding-top: $pxh-drawer-margin;
+    padding-#{$pxh-drawer-side}: $pxh-drawer-margin;
     text-decoration: none;
   }
 }
@@ -326,7 +326,7 @@
   // narrow left drawer is persistently displayed instead.
   @include mq($from: md) {
     .pxh-view-header-drawer-toggle--hidden\@md {
-        #{$pxhtheme-drawer-side}: $pxhtheme-drawer-width-narrow * -1;
+        #{$pxh-drawer-side}: $pxh-drawer-width-narrow * -1;
         opacity: 0;
     }
   }

@@ -9,40 +9,40 @@
 .pxh-navigation {
   @include pxh-fancy-scrollbar;
   position: absolute;
-  top: $pxhtheme-view-header-height;
-  #{$pxhtheme-drawer-side}: 0;
-  bottom: $pxhtheme-login-height;
+  top: $pxh-view-header-height;
+  #{$pxh-drawer-side}: 0;
+  bottom: $pxh-login-height;
   width: 100%;
   clear: both;
   border-style: solid;
-  border-width: $pxhtheme-navigation-border-width;
-  border-color: $pxhtheme-navigation-border-color;
+  border-width: $pxh-navigation-border-width;
+  border-color: $pxh-navigation-border-color;
   max-height: 100%;
   overflow-y: auto;
 
   &__link {
     position: relative;
-    font-size: $pxhtheme-base-font-size;
+    font-size: $pxh-base-font-size;
     display: block;
     width: 100%;
-    height: $pxhtheme-navigation-link-height;
-    float: $pxhtheme-drawer-side;
-    clear: $pxhtheme-drawer-side;
-    padding-top: 15px;
+    height: $pxh-navigation-link-height;
+    float: $pxh-drawer-side;
+    clear: $pxh-drawer-side;
+    padding-top: $pxh-base-spacing-unit;
     padding-bottom: 0;
-    padding-#{$pxhtheme-drawer-side}: $pxhtheme-drawer-margin;
-    padding-#{$pxhtheme-drawer-opposite-side}: 0;
+    padding-#{$pxh-drawer-side}: $pxh-drawer-margin;
+    padding-#{$pxh-drawer-opposite-side}: 0;
   }
 
   &__item-icon {
     text-align: center;
-    float: $pxhtheme-drawer-side;
+    float: $pxh-drawer-side;
     display: block;
-    width: $pxhtheme-drawer-margin;
+    width: $pxh-drawer-margin;
 
     &--error {
-      color: $pxhtheme-navigation-item-icon-color-error;
-      font-size: $pxhtheme-base-font-size * 1.25;
+      color: $pxh-navigation-item-icon-color-error;
+      font-size: $pxh-base-font-size * 1.25;
     }
   }
 }
@@ -56,7 +56,7 @@
   .pxh-navigation__link &,
   .pxh-navigation__sub-link & {
     position: absolute;
-    #{$pxhtheme-drawer-opposite-side}: 5px;
+    #{$pxh-drawer-opposite-side}: $pxh-base-spacing-unit / 3;
   }
 
   .pxh-navigation__link & {
@@ -73,9 +73,10 @@
 \*------------------------------------*/
 
 @mixin pxh-navigation__item-text--in-state-scale {
-  padding-#{$pxhtheme-drawer-side}: $pxhtheme-drawer-margin;
+  padding-#{$pxh-drawer-side}: $pxh-drawer-margin;
   font-size: 16px;
 }
+
 @mixin pxh-navigation__item-text--in-state-opacity {
   @include in-state-opacity;
 }
@@ -134,8 +135,8 @@
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  max-width: $pxhtheme-drawer-width-wide - ($pxhtheme-drawer-margin * 3); // has to be narrower than you think to accomodate potential vertical scrollbar in IE11
-  float: $pxhtheme-drawer-side;
+  max-width: $pxh-drawer-width-wide - ($pxh-drawer-margin * 3); // has to be narrower than you think to accomodate potential vertical scrollbar in IE11
+  float: $pxh-drawer-side;
 }
 
 // hide sub-lists (such as sub-navigation for microapps besides the one
@@ -150,11 +151,11 @@
 \*------------------------------------*/
 
 @mixin pxh-navigation__sub-link--in-state-scale {
-  height: $pxhtheme-navigation-sub-link-height;
-  padding-top: $pxhtheme-base-spacing-unit / 2;
+  height: $pxh-navigation-sub-link-height;
+  padding-top: $pxh-base-spacing-unit / 2;
   padding-bottom: 0;
-  padding-#{$pxhtheme-drawer-opposite-side}: $pxhtheme-base-spacing-unit / 8;
-  padding-#{$pxhtheme-drawer-side}: $pxhtheme-drawer-margin * 3;
+  padding-#{$pxh-drawer-opposite-side}: $pxh-base-spacing-unit / 8;
+  padding-#{$pxh-drawer-side}: $pxh-drawer-margin * 3;
   font-size: 16px;
 }
 
@@ -224,7 +225,7 @@
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  max-width: $pxhtheme-drawer-width-wide;
+  max-width: $pxh-drawer-width-wide;
   text-decoration: none;
 }
 
@@ -233,21 +234,21 @@
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  max-width: $pxhtheme-drawer-width-wide - ($pxhtheme-drawer-margin * 3.25); // has to be narrower than the available space to accomodate potential pxh-badge
-  float: $pxhtheme-drawer-side;
+  max-width: $pxh-drawer-width-wide - ($pxh-drawer-margin * 3.25); // has to be narrower than the available space to accomodate potential pxh-badge
+  float: $pxh-drawer-side;
 }
 
 .pxh-navigation__sub-link--selected {
-  background-color: $pxhtheme-navigation-sub-link-bg-color-selected;
-  color: $pxhtheme-navigation-sub-link-text-color-selected;
+  background-color: $pxh-navigation-sub-link-bg-color-selected;
+  color: $pxh-navigation-sub-link-text-color-selected;
   &:link,
   &:visited {
-    background-color: $pxhtheme-navigation-sub-link-bg-color-selected;
-    color: $pxhtheme-navigation-sub-link-text-color-selected;
+    background-color: $pxh-navigation-sub-link-bg-color-selected;
+    color: $pxh-navigation-sub-link-text-color-selected;
   }
   &:hover {
-    background-color: $pxhtheme-navigation-sub-link-bg-color-selected;
-    color: $pxhtheme-navigation-sub-link-text-color-selected;
+    background-color: $pxh-navigation-sub-link-bg-color-selected;
+    color: $pxh-navigation-sub-link-text-color-selected;
   }
 }
 
@@ -256,13 +257,13 @@
 \*------------------------------------*/
 
 .pxh-navigation__sub-item--divider {
-  margin-top: $pxhtheme-navigation-divider-margin * .75;
-  margin-bottom: $pxhtheme-navigation-divider-margin * .75;
-  margin-#{$pxhtheme-drawer-side}: $pxhtheme-drawer-margin * 3;
-  margin-#{$pxhtheme-drawer-opposite-side}: $pxhtheme-drawer-margin;
+  margin-top: $pxh-navigation-divider-margin * .75;
+  margin-bottom: $pxh-navigation-divider-margin * .75;
+  margin-#{$pxh-drawer-side}: $pxh-drawer-margin * 3;
+  margin-#{$pxh-drawer-opposite-side}: $pxh-drawer-margin;
   display: block;
-  height: $pxhtheme-navigation-sub-item-divider-height;
-  background-color: $pxhtheme-navigation-sub-item-divider-color;
+  height: $pxh-navigation-sub-item-divider-height;
+  background-color: $pxh-navigation-sub-item-divider-color;
   // transition: all 200ms linear;
   // transition-delay: 200ms;
 }
@@ -310,16 +311,16 @@
     }
     .pxh-navigation__sub-item:last-of-type {
       .pxh-navigation__sub-link { // really don't like nesting but don't know how else to target this
-        margin-bottom: $pxhtheme-drawer-margin / 2;
+        margin-bottom: $pxh-drawer-margin / 2;
       }
     }
     .pxh-navigation__sub-item--divider {
-      margin-top: $pxhtheme-navigation-divider-margin * 1.5;
-      margin-#{$pxhtheme-drawer-side}: $pxhtheme-drawer-margin * 3;
-      margin-#{$pxhtheme-drawer-opposite-side}: $pxhtheme-drawer-margin;
+      margin-top: $pxh-navigation-divider-margin * 1.5;
+      margin-#{$pxh-drawer-side}: $pxh-drawer-margin * 3;
+      margin-#{$pxh-drawer-opposite-side}: $pxh-drawer-margin;
       display: block;
-      height: $pxhtheme-navigation-sub-item-divider-height;
-      background-color: $pxhtheme-navigation-sub-item-divider-color;
+      height: $pxh-navigation-sub-item-divider-height;
+      background-color: $pxh-navigation-sub-item-divider-color;
       // transition: all 200ms linear;
       // transition-delay: 200ms;
     }
@@ -344,27 +345,27 @@
 .pxh-navigation__link:link.pxh-navigation__link:link.pxh-navigation__link:link,
 .pxh-navigation__link:visited.pxh-navigation__link:visited.pxh-navigation__link:visited { // chained to override px-theme
   text-decoration: none;
-  color: $pxhtheme-navigation-link-text-color;
+  color: $pxh-navigation-link-text-color;
 }
 
 .pxh-navigation__link:hover.pxh-navigation__link:hover.pxh-navigation__link:hover { // chained to override px-theme
-  background-color: $pxhtheme-navigation-link-bg-color-hover;
-  color: $pxhtheme-navigation-link-text-color-hover;
+  background-color: $pxh-navigation-link-bg-color-hover;
+  color: $pxh-navigation-link-text-color-hover;
 }
 
 .pxh-navigation__link--selected.pxh-navigation__link--selected.pxh-navigation__link--selected,
 .pxh-navigation__link--selected:link.pxh-navigation__link--selected:link.pxh-navigation__link--selected:link,
 .pxh-navigation__link--selected:visited.pxh-navigation__link--selected:visited.pxh-navigation__link--selected:visited,
 .pxh-navigation__link--selected:hover.pxh-navigation__link--selected:hover.pxh-navigation__link--selected:hover { // chained to override px-theme
-  background-color: $pxhtheme-navigation-link-bg-color-selected;
-  color: $pxhtheme-navigation-link-text-color-selected;
+  background-color: $pxh-navigation-link-bg-color-selected;
+  color: $pxh-navigation-link-text-color-selected;
 }
 
 .pxh-navigation__link--active.pxh-navigation__link--active.pxh-navigation__link--active,
 .pxh-navigation__link--active:link.pxh-navigation__link--active:link.pxh-navigation__link--active:link,
 .pxh-navigation__link--active:visited.pxh-navigation__link--active:visited.pxh-navigation__link--active:visited {
-  background-color: $pxhtheme-navigation-link-bg-color-active;
-  color: $pxhtheme-navigation-link-text-color-active;
+  background-color: $pxh-navigation-link-bg-color-active;
+  color: $pxh-navigation-link-text-color-active;
 }
 
 .pxh-navigation__sub-list.pxh-navigation__sub-list.pxh-navigation__sub-list { // chained to override px-theme
@@ -376,28 +377,28 @@
 
 .pxh-navigation__sub-item:last-of-type {
   .pxh-navigation__sub-link { // really don't like nesting but don't know how else to target this
-    margin-bottom: $pxhtheme-drawer-margin / 2;
+    margin-bottom: $pxh-drawer-margin / 2;
   }
 }
 
 .pxh-navigation__sub-link.pxh-navigation__sub-link.pxh-navigation__sub-link,
 .pxh-navigation__sub-link:link.pxh-navigation__sub-link:link.pxh-navigation__sub-link:link,
 .pxh-navigation__sub-link:visited.pxh-navigation__sub-link:visited.pxh-navigation__sub-link:visited { // chained to override px-theme
-  color: $pxhtheme-navigation-sub-link-text-color;
+  color: $pxh-navigation-sub-link-text-color;
 }
 
 .pxh-navigation__sub-link:hover.pxh-navigation__sub-link:hover.pxh-navigation__sub-link:hover { // chained to override px-theme
-  background-color: $pxhtheme-navigation-sub-link-bg-color-hover;
-  color: $pxhtheme-navigation-sub-link-text-color-hover;
+  background-color: $pxh-navigation-sub-link-bg-color-hover;
+  color: $pxh-navigation-sub-link-text-color-hover;
 }
 
 .pxh-navigation__sub-link--selected.pxh-navigation__sub-link--selected.pxh-navigation__sub-link--selected,
 .pxh-navigation__sub-link--selected:link.pxh-navigation__sub-link--selected:link.pxh-navigation__sub-link--selected:link,
 .pxh-navigation__sub-link--selected:visited.pxh-navigation__sub-link--selected:visited.pxh-navigation__sub-link--selected:visited { // chained to override px-theme
-  background-color: $pxhtheme-navigation-sub-link-bg-color-selected;
-  color: $pxhtheme-navigation-sub-link-text-color-selected;
+  background-color: $pxh-navigation-sub-link-bg-color-selected;
+  color: $pxh-navigation-sub-link-text-color-selected;
 }
 
 .pxh-navigation__sub-link--settings {
-  @include pxh-override-px-theme-text-color('pxh-navigation__sub-link--settings',$pxhtheme-navigation-sub-link-settings-text-color);
+  @include pxh-override-px-theme-text-color('pxh-navigation__sub-link--settings',$pxh-navigation-sub-link-settings-text-color);
 }
