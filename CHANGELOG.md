@@ -9,6 +9,7 @@
   * An image that does not fill the full height will be centered vertically within the container
 * Bump Normalize.css to 5.0.0
 * Remove `_elements.typography.scss`, as all the styles it declares are already covered by Normalize.css
+* Move all `inuit` Sass variables into the `pxh` namespace
 
 ### 2.2.1 - September 30, 2016
 * Add end-to-end tests for pxh-toast and pxh-notification capabilities

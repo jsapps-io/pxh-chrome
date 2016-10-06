@@ -70,16 +70,16 @@ $pxhtheme-drawer-opposite-side: null;
 }
 
 @import 'components.pxh-badge';
+@import 'components.pxh-closer';
 @import 'components.pxh-drawer';
+@import 'components.pxh-error';
 @import 'components.pxh-login';
 @import 'components.pxh-navigation';
-@import 'components.pxh-overlay';
-@import 'components.pxh-view';
-@import 'components.pxh-spinner';
-@import 'components.pxh-closer';
-@import 'components.pxh-toast';
 @import 'components.pxh-notification';
-@import 'components.pxh-error';
+@import 'components.pxh-overlay';
+@import 'components.pxh-spinner';
+@import 'components.pxh-toast';
+@import 'components.pxh-view';
 
 // ** #OVERRIDES ** //
 
