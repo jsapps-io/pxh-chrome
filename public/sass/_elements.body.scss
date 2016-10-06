@@ -5,10 +5,10 @@
 $pxh-language-direction : 'ltr' !default; // 'ltr' OR 'rtl'
 
 html {
-  background-color: $pxhtheme-html-bg-color;
-  color: $pxhtheme-html-text-color;
   font-size: ($pxhtheme-base-font-size / 16px) * 1em;
   line-height: $pxhtheme-base-line-height / $pxhtheme-base-font-size;
+  background-color: $pxhtheme-base-bg-color;
+  color: $pxhtheme-base-text-color;
 }
 
 html, body {
