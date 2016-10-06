@@ -2,6 +2,17 @@
     #settings.pxh-chrome
 \*------------------------------------*/
 
+
+
+/// @type Number [default] - Base font size
+$pxhtheme-base-font-size           : $px-font-size-regular;
+/// @type Number [default] - Base line height (leading)
+$pxhtheme-base-line-height         : ($pxhtheme-base-font-size * 4) / 3;
+
+/// @type Number [default] - Base spacing unit (same as $inuit base-font-size)
+$pxhtheme-base-spacing-unit        : $pxhtheme-base-font-size;
+
+
 /// @group pxh-badge
 $pxhtheme-badge-bg-color: $gray5;
 $pxhtheme-badge-border-color: $pxhtheme-badge-bg-color;
@@ -239,12 +250,12 @@ $pxhtheme-drawer-margin: 20px !default; // magic number ... fix this
 /// Top margin to offset error message from top of browser window
 /// @group pxh-error
 /// @type Number
-$pxhtheme-error-margin-top: $inuit-base-spacing-unit * 3 !default;
+$pxhtheme-error-margin-top: $pxhtheme-base-spacing-unit * 3 !default;
 
 /// Top padding to give error message some breathing room
 /// @group pxh-error
 /// @type Number
-$pxhtheme-error-padding-top: $inuit-base-spacing-unit !default;
+$pxhtheme-error-padding-top: $pxhtheme-base-spacing-unit !default;
 
 /// Text decoration for hyperlinks in error messages
 /// @group pxh-error
@@ -375,11 +386,11 @@ $pxhtheme-view-header-drawer-toggle-icon-color: $black;
 
 // <html> and <body> elements
 
-$pxhtheme-html-bg-color: $inuit-base-background-color;
+$pxhtheme-base-bg-color: $gray8;
 
-$pxhtheme-html-text-color: $inuit-base-text-color;
+$pxhtheme-base-text-color: $black;
 
-$pxhtheme-html-font-family: 'GE Inspira Sans', 'Helvetica', 'Arial', sans-serif;
+$pxhtheme-base-font-family: 'GE Inspira Sans', 'Helvetica', 'Arial', sans-serif;
 
 // <hr> element
 
@@ -401,7 +412,7 @@ $pxhtheme-link-text-color-hover: $pxhtheme-link-text-color;
 // overrides.pxh-docs
 
 $pxhtheme-docs-bg-color: $white;
-$pxhtheme-docs-code-font-size: $inuit-base-font-size;
+$pxhtheme-docs-code-font-size: $pxhtheme-base-font-size;
 $pxhtheme-docs-code-bg-color: #fff3f3;
 $pxhtheme-docs-code-text-color: #900;
 

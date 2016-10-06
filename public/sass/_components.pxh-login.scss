@@ -5,7 +5,7 @@
 /// Massive animation config object for pxh-login components
 /// @group pxh-login
 $pxhtheme-login-animate-config: (
-  font-size-in: $inuit-base-font-size,
+  font-size-in: $pxhtheme-base-font-size,
   margin-in: 0,
   padding-in: 0,
   border-in: 0,
@@ -28,7 +28,7 @@ $pxhtheme-login-animate-config: (
 .pxh-login {
   display: flex;
   align-items: center;
-  font-size: $inuit-base-font-size;
+  font-size: $pxhtheme-base-font-size;
   border-style: solid;
   border-color: $pxhtheme-login-border-color;
   border-width: $pxhtheme-login-border-width;
@@ -238,7 +238,7 @@ $pxhtheme-login-animate-config: (
   width: $pxhtheme-login-avatar-height-width;
   padding-top: 4px; // magic number
   text-align: center;
-  font-size: $inuit-base-font-size * 1.1; // needs a !important with anything less than a five-deep class chain
+  font-size: $pxhtheme-base-font-size * 1.1; // needs a !important with anything less than a five-deep class chain
   background-color: transparent;
   color: $gray7;
   border: 1px solid $gray7;

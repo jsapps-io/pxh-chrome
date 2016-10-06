@@ -5,17 +5,17 @@
 $pxh-language-direction : 'ltr' !default; // 'ltr' OR 'rtl'
 
 html {
-  font-size: ($inuit-base-font-size / 16px) * 1em;
-  line-height: $inuit-base-line-height / $inuit-base-font-size;
   background-color: $pxhtheme-html-bg-color;
   color: $pxhtheme-html-text-color;
+  font-size: ($pxhtheme-base-font-size / 16px) * 1em;
+  line-height: $pxhtheme-base-line-height / $pxhtheme-base-font-size;
 }
 
 html, body {
   @if $pxh-language-direction == 'rtl' {
     direction: rtl;
   }
-  font-family: $pxhtheme-html-font-family;
+  font-family: $pxhtheme-base-font-family;
   height: 100%;
   width: 100%;
   overflow: hidden;

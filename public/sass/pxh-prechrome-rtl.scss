@@ -78,12 +78,12 @@ $error-description-color: $white;
 /// Top margin to offset error message from top of browser window
 /// @group pxh-error
 /// @type Number
-$error-margin-top: $inuit-base-spacing-unit * 6;
+$error-margin-top: $pxhtheme-base-spacing-unit * 6;
 
 /// Top padding to give error message some breathing room
 /// @group pxh-error
 /// @type Number
-$error-padding-top: $inuit-base-spacing-unit * 2;
+$error-padding-top: $pxhtheme-base-spacing-unit * 2;
 
 /// Text decoration for hyperlinks in error messages
 /// @group pxh-error

@@ -4,7 +4,7 @@
 
 @mixin pxh-badge--in-state-scale {
   padding: 2px 4px 0px 4px;
-  font-size: $inuit-base-font-size * 0.866666666666;
+  font-size: $pxhtheme-base-font-size * 0.866666666666;
 }
 @mixin pxh-badge--in-state-opacity {
   @include in-state-opacity;
@@ -89,7 +89,7 @@
   }
 
   &--truncated {
-    max-width: $inuit-base-spacing-unit * 3;
+    max-width: $pxhtheme-base-spacing-unit * 3;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;

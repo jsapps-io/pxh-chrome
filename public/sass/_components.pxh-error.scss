@@ -7,7 +7,7 @@
   max-width: 1200px;
   text-align: center;
   margin: $pxhtheme-error-margin-top 0 0 0;
-  padding: $pxhtheme-error-padding-top $inuit-base-spacing-unit ($inuit-base-spacing-unit * 8) $inuit-base-spacing-unit;
+  padding: $pxhtheme-error-padding-top $pxhtheme-base-spacing-unit ($pxhtheme-base-spacing-unit * 8) $pxhtheme-base-spacing-unit;
 }
 
 @include mq($from: md) {

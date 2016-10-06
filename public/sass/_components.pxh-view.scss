@@ -267,9 +267,9 @@
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  padding-top: $inuit-base-spacing-unit;
+  padding-top: $pxhtheme-base-spacing-unit;
   text-align: center;
-  font-size: $inuit-base-font-size * 1.5;
+  font-size: $pxhtheme-base-font-size * 1.5;
 }
 
 .pxh-view-header__title-link.pxh-view-header__title-link.pxh-view-header__title-link  { // chained to override px-theme

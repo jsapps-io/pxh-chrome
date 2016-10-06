@@ -22,7 +22,7 @@
 
   &__link {
     position: relative;
-    font-size: $inuit-base-font-size;
+    font-size: $pxhtheme-base-font-size;
     display: block;
     width: 100%;
     height: $pxhtheme-navigation-link-height;
@@ -42,7 +42,7 @@
 
     &--error {
       color: $pxhtheme-navigation-item-icon-color-error;
-      font-size: $inuit-base-font-size * 1.25;
+      font-size: $pxhtheme-base-font-size * 1.25;
     }
   }
 }
@@ -151,9 +151,9 @@
 
 @mixin pxh-navigation__sub-link--in-state-scale {
   height: $pxhtheme-navigation-sub-link-height;
-  padding-top: $inuit-base-spacing-unit / 2;
+  padding-top: $pxhtheme-base-spacing-unit / 2;
   padding-bottom: 0;
-  padding-#{$pxhtheme-drawer-opposite-side}: $inuit-base-spacing-unit / 8;
+  padding-#{$pxhtheme-drawer-opposite-side}: $pxhtheme-base-spacing-unit / 8;
   padding-#{$pxhtheme-drawer-side}: $pxhtheme-drawer-margin * 3;
   font-size: 16px;
 }

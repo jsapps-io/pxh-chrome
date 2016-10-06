@@ -183,7 +183,7 @@
   margin-top: 0;
   margin-bottom: 0;
   width: $pxhtheme-drawer-width-wide - ($pxhtheme-drawer-margin * 3);
-  font-size: $inuit-base-font-size * 1.25;
+  font-size: $pxhtheme-base-font-size * 1.25;
 }
 
 @mixin pxh-drawer-header__link--in-state {
