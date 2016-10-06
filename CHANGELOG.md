@@ -10,6 +10,7 @@
 * Bump Normalize.css to 5.0.0
 * Remove `_elements.typography.scss`, as all the styles it declares are already covered by Normalize.css
 * Move all `inuit` Sass variables into the `pxh` namespace
+* Update Sass mixin names for clarity
 
 ### 2.2.1 - September 30, 2016
 * Add end-to-end tests for pxh-toast and pxh-notification capabilities

@@ -323,6 +323,64 @@ $pxhtheme-notification-max-count: 5;
 
 
 
+
+
+// pxh-notifications
+
+$pxhtheme-notification-border-width: 0 0 1px 0;
+
+$pxhtheme-notification-border-color: $gray9;
+
+$pxhtheme-notifications-bg-color: $gray10;
+
+$pxhtheme-notifications-text-color: $gray2;
+
+$pxhtheme-notifications-border-width: 1px;
+
+$pxhtheme-notifications-border-color: $gray7;
+
+$pxhtheme-notifications-box-shadow: none;
+
+$pxhtheme-notifications-header-border-width: 0 0 1px 0;
+
+$pxhtheme-notifications-header-border-color: $gray7;
+
+$pxhtheme-notifications-link-text-color: $gray5;
+
+$pxhtheme-notifications-link-text-color-hover: $primary-blue;
+
+$pxhtheme-notifications-clear-text-color: $gray5;
+
+$pxhtheme-notifications-clear-text-color-hover: $primary-blue;
+
+$pxhtheme-notifications-empty-text-color: $gray7;
+
+$pxhtheme-notification-icon-color: transparent;
+$pxhtheme-notification-icon-color-green: $green;
+$pxhtheme-notification-icon-color-blue: $blue;
+$pxhtheme-notification-icon-color-orange: $orange;
+$pxhtheme-notification-icon-color-red: $red;
+
+$pxhtheme-notification-link-text-color: $gray4;
+
+$pxhtheme-notification-link-text-color-hover: $primary-blue;
+
+$pxhtheme-notification-more-button-bg-color: $gray10;
+
+$pxhtheme-notification-more-button-bg-color-hover: $gray9;
+
+$pxhtheme-notification-dismiss-button-icon-color: $gray8;
+
+$pxhtheme-notification-dismiss-button-icon-color-hover: $primary-blue;
+
+
+
+
+
+
+
+
+
 $pxhtheme-overlay-bg-color: rgba(0, 0, 0, 0.7);
 
 
@@ -341,6 +399,57 @@ $pxhtheme-spinner-accent-color: $primary-blue;
 $pxhtheme-spinner-base-color-inverted: rgba($gray8, $pxhtheme-spinner-alpha);
 $pxhtheme-spinner-accent-color-inverted: $pxhtheme-spinner-accent-color;
 
+
+
+
+
+
+
+// pxh-toast
+
+$pxhtheme-toast-text-color: $gray5;
+
+$pxhtheme-toast-background-color: $gray10;
+
+$pxhtheme-toast-more-bg: linear-gradient(to bottom, rgba($gray10, 0) 0%, rgba($gray10, 1) 50%); // gradients are considered CSS images not colors
+
+$pxhtheme-toast-more-button-text-color: $gray7;
+
+$pxhtheme-toast-more-button-bg-color: $gray10;
+
+$pxhtheme-toast-more-button-border-color: $gray8;
+
+$pxhtheme-toast-more-button-border-width: 1px;
+
+$pxhtheme-toast-more-button-text-color-hover: $primary-blue;
+
+$pxhtheme-toast-more-button-bg-color-hover: $gray10;
+
+$pxhtheme-toast-button-border-width: 1px;
+
+$pxhtheme-toast-button-border-color: $gray8;
+
+$pxhtheme-toast-button-bg-color: $gray10;
+
+$pxhtheme-toast-button-text-color: $gray5;
+
+$pxhtheme-toast-button-bg-color-hover: $gray9;
+
+$pxhtheme-toast-button-text-color-hover: $gray9;
+
+$pxhtheme-toast-timestamp-text-color: $gray8;
+
+$pxhtheme-toast-dismiss-button-icon-color: $gray7;
+
+$pxhtheme-toast-dismiss-button-icon-color-hover: $primary-blue;
+
+$pxhtheme-toast-icon-color: $white;
+
+$pxhtheme-toast-icon-bg-color: transparent;
+$pxhtheme-toast-icon-bg-color-green: $green;
+$pxhtheme-toast-icon-bg-color-blue: $blue;
+$pxhtheme-toast-icon-bg-color-orange: $orange;
+$pxhtheme-toast-icon-bg-color-red: $red;
 
 
 

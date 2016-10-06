@@ -11,8 +11,8 @@
   overflow: hidden;
   position: relative;
   width: 100%;
-  // color: $gray5;
-  // background: $gray10;
+  color: $pxhtheme-toast-text-color;
+  background: $pxhtheme-toast-background-color;
   &--expanded {
     height: auto;
   }
@@ -42,7 +42,7 @@
   width: 100%;
   height: $pxhtheme-toast-margin * 6;
   padding: ($pxhtheme-toast-margin + 2px) 0 $pxhtheme-toast-margin 0;
-  // background: linear-gradient(to bottom, rgba($gray10, 0) 0%, rgba($gray10, 1) 50%);
+  background: $pxhtheme-toast-more-bg;
   text-align: center;
   &--expanded {
     position: relative;
@@ -53,9 +53,11 @@
 }
 
 @mixin pxh-toast__more-button {
-  // color: $gray7;
-  // background-color: $gray10;
-  // border: 1px solid $gray8;
+  color: $pxhtheme-toast-more-button-text-color;
+  background-color: $pxhtheme-toast-more-button-bg-color;
+  border-style: solid;
+  border-width: $pxhtheme-toast-more-button-border-width;
+  border-color: $pxhtheme-toast-more-button-border-color;
   border-radius: 5px;
   padding: 1px 5px 0 5px;
   display: inline-block;
@@ -63,7 +65,8 @@
   text-transform: lowercase;
   font-size: 14px;
   &:hover {
-    // color: $primary-blue;
+    color: $pxhtheme-toast-more-button-text-color-hover;
+    background-color: $pxhtheme-toast-more-button-bg-color-hover;
   }
 }
 
@@ -77,21 +80,24 @@
   display: block;
   overflow: hidden;
   text-decoration: none;
-  // border: 1px solid $gray8;
+  border-style: solid;
+  border-width: $pxhtheme-toast-button-border-width;
+  border-color: $pxhtheme-toast-button-border-color;
   padding: 8px;
-  // background-color: transparent;
-  // color: $gray5;
+  background-color: $pxhtheme-toast-button-bg-color;
+  color: $pxhtheme-toast-button-text-color;
   border-radius: 2px;
   white-space: nowrap;
   text-overflow: ellipsis;
   &:hover {
-    // background-color: $gray9;
+    color: $pxhtheme-toast-button-text-color-hover;
+    background-color: $pxhtheme-toast-button-bg-color-hover;
   }
 }
 
 @mixin pxh-toast__timestamp {
   margin-left: $pxhtheme-toast-margin;
-  // color: $gray8;
+  color: $pxhtheme-toast-timestamp-text-color;
   flex-shrink: 0;
   text-align: $pxhtheme-drawer-opposite-side;
   white-space: nowrap;
@@ -108,13 +114,13 @@
 }
 
 @mixin pxh-toast__dismiss-button {
-  color: $gray7;
+  color: $pxhtheme-toast-dismiss-button-icon-color;
   text-decoration: none;
   display: block;
   padding: ($pxhtheme-toast-margin * 5) ($pxhtheme-toast-margin * 2) 0 ($pxhtheme-toast-margin * 2);
   height: $pxhtheme-toast-height;
   &:hover {
-    // color: $primary-blue;
+    color: $pxhtheme-toast-dismiss-button-icon-color-hover;
   }
 }
 
@@ -155,7 +161,9 @@
 @mixin pxh-notification--in-state-scale {
   height: $pxhtheme-toast-height;
   font-size: 16px;
-  border-bottom: 1px solid $gray9;
+  border-style: solid;
+  border-width: $pxhtheme-notification-border-width;
+  border-color: $pxhtheme-notification-border-color;
 }
 
 @mixin pxh-notification--in-state-opacity {
@@ -217,9 +225,11 @@
   right: $pxhtheme-notification-margin;
   max-width: 480px;
   border-radius: 2px;
-  // background-color: $gray10;
-  // color: $gray2;
-  // border: 1px solid $gray7;
+  background-color: $pxhtheme-notifications-bg-color;
+  color: $pxhtheme-notifications-text-color;
+  border-style: solid;
+  border-width: $pxhtheme-notifications-border-width;
+  border-color: $pxhtheme-notifications-border-color;
   display: none;
 
   @include mq($from: md) {
@@ -252,7 +262,9 @@
     // @if $pxhtheme-language-direction == 'rtl' { // handled by direction: rtl on body element
     //   flex-direction: row-reverse;
     // }
-    // border-bottom: 1px solid $gray7;
+    border-style: solid;
+    border-width: $pxhtheme-notifications-header-border-width;
+    border-color: $pxhtheme-notifications-header-border-color;
   }
 
   &__title {
@@ -276,13 +288,13 @@
     text-decoration: none;
 
     &:hover {
-      // color: $primary-blue;
+      color: $pxhtheme-notifications-link-text-color-hover
     }
   }
 
   &__clear {
     min-width: $pxhtheme-notification-margin * 16;
-    // color: $gray5;
+    color: $pxhtheme-notifications-clear-text-color;
     text-decoration: none;
     text-align: $pxhtheme-drawer-opposite-side;
     padding-right: $pxhtheme-notification-margin * 2;
@@ -290,8 +302,12 @@
     padding-top: $pxhtheme-notification-margin * 2;
 
     a {
-      // color: $gray5;
+      color: $pxhtheme-notifications-clear-text-color;
       text-decoration: none;
+
+      &:hover {
+        color: $pxhtheme-notifications-clear-text-color-hover;
+      }
     }
   }
 
@@ -315,7 +331,7 @@
     height: $pxhtheme-notification-height;
     z-index: 850;
     font-style: italic;
-    // color: $gray7;
+    color: $pxhtheme-notifications-empty-text-color;
     width: 100%;
     text-align: center;
     padding-top: $pxhtheme-notification-height / 3;
@@ -347,19 +363,19 @@
     font-size: 24px;
 
     &--green {
-      // color: $green;
+      color: $pxhtheme-notification-icon-color-green;
     }
 
     &--blue {
-      // color: $blue;
+      color: $pxhtheme-notification-icon-color-blue;
     }
 
     &--orange {
-      // color: $orange;
+      color: $pxhtheme-notification-icon-color-orange;
     }
 
     &--red {
-      // color: $red;
+      color: $pxhtheme-notification-icon-color-red;
     }
   }
 
@@ -370,10 +386,10 @@
   &__link {
     @include pxh-override-px-theme-text-color('pxh-notification__link', $pxhtheme-notification-link-text-color, $pxhtheme-notification-link-text-color-hover);
     text-decoration: none;
-    color: $gray5;
+    color: $pxhtheme-notification-link-text-color;
 
     &:hover {
-      color: $primary-blue;
+      color: $pxhtheme-notification-link-text-color-hover;
     }
   }
 

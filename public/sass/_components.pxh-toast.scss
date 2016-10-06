@@ -92,25 +92,25 @@
 
   &__icon {
     @include pxh-toast__icon;
-    // color: $white;
+    color: $pxhtheme-toast-icon-color;
     padding-top: $pxhtheme-toast-margin * 4;
     flex-basis: $pxhtheme-toast-height;
     font-size: 28px;
 
     &--green {
-      // background-color: $green;
+      background-color: $pxhtheme-toast-icon-bg-color-green;
     }
 
     &--blue {
-      // background-color: $blue;
+      background-color: $pxhtheme-toast-icon-bg-color-blue;
     }
 
     &--orange {
-      // background-color: $orange;
+      background-color: $pxhtheme-toast-icon-bg-color-orange;
     }
 
     &--red {
-      // background-color: $red;
+      background-color: $pxhtheme-toast-icon-bg-color-red;
     }
   }
 
