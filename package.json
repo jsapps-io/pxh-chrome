@@ -40,7 +40,7 @@
     "handlebars": "^4.0.5",
     "lodash": "^4.16.2",
     "metalsmith": "^2.1.0",
-    "metalsmith-copy": "^0.2.1",
+    "metalsmith-copy": "^0.3.0",
     "metalsmith-layouts": "^1.6.5",
     "mocha": "^3.1.0",
     "protractor": "^4.0.8"
