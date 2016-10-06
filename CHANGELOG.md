@@ -11,6 +11,10 @@
 * Remove `_elements.typography.scss`, as all the styles it declares are already covered by Normalize.css
 * Move all `inuit` Sass variables into the `pxh` namespace
 * Update Sass mixin names for clarity
+* Consolidate all theme-related attributes and Sass variables to `_settings.theme.scss`
+  * Remove `_settings.defaults.scss` and `_settings.pxh-chrome.css`
+* Remove magic numbers and calculate more margins and padding based on `$pxh-base-spacing-unit`
+* Bump metalsmith-copy to 0.3.0
 
 ### 2.2.1 - September 30, 2016
 * Add end-to-end tests for pxh-toast and pxh-notification capabilities
