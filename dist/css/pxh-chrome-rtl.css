@@ -4465,11 +4465,11 @@ hr {
 }
 
 .pxh-login__notifications-badge:hover {
-  color: #d1d0d8 !important;
+  color: white !important;
 }
 
 .pxh-login__notifications-badge:active {
-  color: #d1d0d8 !important;
+  color: white !important;
 }
 
 .pxh-login__notifications-badge:hover + .pxh-login__notifications-link {
