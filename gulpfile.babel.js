@@ -20,6 +20,7 @@ const componentConfig = {
   site: {
     title: 'pxh-chrome',
     version: '2.2.1',
+  }
 };
 
 gulp.task('sass', () => {

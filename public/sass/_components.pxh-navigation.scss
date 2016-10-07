@@ -9,7 +9,7 @@
 .pxh-navigation {
   @include pxh-fancy-scrollbar;
   position: absolute;
-  top: $pxh-view-header-height;
+  top: $pxh-view-header-height - 1px; // only need to subtract a pixel if there's a border, so this shouldn't actually be hard-coded
   #{$pxh-drawer-side}: 0;
   bottom: $pxh-login-height;
   width: 100%;
