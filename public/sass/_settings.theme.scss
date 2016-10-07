@@ -99,8 +99,10 @@ $pxh-base-font-size:                    15px;
 /// @type Number [default] - Base line height
 $pxh-base-line-height:                  ($pxh-base-font-size * 4) / 3;
 
+$pxh-base-spacing-scale-ratio:       1;
+
 /// @type Number [default] - Base spacing unit
-$pxh-base-spacing-unit:                 $pxh-base-font-size;
+$pxh-base-spacing-unit:                 $pxh-base-font-size * $pxh-base-spacing-scale-ratio;
 
 /// Define whether the drawer should appear on the left or right side of the browser window
 /// @group pxh-settings
