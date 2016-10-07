@@ -173,12 +173,12 @@ $pxh-login-animate-config: (
 
     &:hover,
     .pxh-login__notifications:hover & {
-      color: $white;
+      color: $pxh-login-notifications-link-text-color-hover;
     }
   }
 
   &__notifications-badge {
-    @include pxh-override-px-theme-text-color('pxh-login__notifications-badge', $white);
+    @include pxh-override-px-theme-text-color('pxh-login__notifications-badge', $pxh-login-notifications-badge-text-color, $pxh-login-notifications-badge-text-color-hover);
     @if $pxh-drawer-side == right {
       left: $pxh-drawer-margin / 4;
     } @else {
@@ -202,9 +202,10 @@ $pxh-login-animate-config: (
     padding-bottom: 0;
     padding-#{$pxh-drawer-side}: 1px;
     padding-#{$pxh-drawer-opposite-side}: 2px;
-
-    &:hover + .pxh-login__notifications-link {
-      color: $pxh-login-notifications-link-text-color-hover !important; // !important is the only way to override the px-theme override chaining
+    &:hover {
+      & + .pxh-login__notifications-link {
+        color: $pxh-login-notifications-link-text-color-hover !important; // !important is the only way to override the px-theme override chaining
+      }
     }
 
     &--green {
