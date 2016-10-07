@@ -93,6 +93,9 @@ $dv-dark-red                    : rgb(203,32,39);
 $dv-dark-gray                   : $black;
 $dv-dark-grey                   : $dv-dark-gray;
 
+
+
+
 /// @type Number [default] - Base font size
 $pxh-base-font-size:                    15px;
 
@@ -103,6 +106,9 @@ $pxh-base-spacing-scale-ratio:       1;
 
 /// @type Number [default] - Base spacing unit
 $pxh-base-spacing-unit:                 $pxh-base-font-size * $pxh-base-spacing-scale-ratio;
+
+
+
 
 /// Define whether the drawer should appear on the left or right side of the browser window
 /// @group pxh-settings
@@ -122,6 +128,9 @@ $pxh-drawer-opposite-side: null;
   $pxh-drawer-opposite-side: right;
 }
 
+
+
+
 /// Path to GE web fonts
 /// @group pxh-settings
 /// @type String [default] - Webfont path
@@ -135,6 +144,8 @@ $webfont-file-name-italic: GEInspiraSans-Italic-v01;
 $webfont-file-name-bold-italic: GEInspiraSans-BoldItalic-v01;
 
 
+
+
 /// List of media query breakpoints
 /// @group pxh-settings
 $mq-breakpoints: (
@@ -142,10 +153,16 @@ $mq-breakpoints: (
   lg: 1024px,
 );
 
+
+
+
 /// Path to Font Awesome fonts
 /// @group pxh-settings
 /// @type String
 $fa-font-path: '//dzlpbrbc7yvq0.cloudfront.net/libs/font-awesome/4.6.3/fonts';
+
+
+
 
 // <html> and <body> elements
 
@@ -155,15 +172,24 @@ $pxh-base-text-color: $black;
 
 $pxh-base-font-family: 'GE Inspira Sans', 'Helvetica', 'Arial', sans-serif;
 
+
+
+
 // <hr> element
 
 $pxh-hr-color: $gray6;
+
+
+
 
 // <a> element
 
 $pxh-link-text-color: $primary-blue;
 
 $pxh-link-text-color-hover: $pxh-link-text-color;
+
+
+
 
 /// @group pxh-badge
 $pxh-badge-text-color:                  $white;
@@ -199,6 +225,8 @@ $pxh-badge-border-color-healthy-white:  $gray5;
 $pxh-badge-font-size: $pxh-base-font-size * 0.866666666666666;
 
 
+
+
 /// @group pxh-drawer
 $pxh-drawer-bg-color: $gray10;
 
@@ -223,6 +251,8 @@ $pxh-drawer-width-narrow: $pxh-base-spacing-unit * 4;
 $pxh-drawer-margin: $pxh-base-spacing-unit + ($pxh-base-spacing-unit / 3);
 
 $pxh-drawer-header-link-font-size: $pxh-base-font-size * 1.266666666666666;
+
+
 
 
 /// @group pxh-error
@@ -262,6 +292,8 @@ $pxh-error-icon-font-size: $pxh-base-font-size * 4;
 $pxh-error-title-font-size: $pxh-base-font-size * 1.333333333333333;
 
 $pxh-error-description-font-size: $pxh-base-font-size;
+
+
 
 
 /// @group pxh-login
@@ -321,6 +353,8 @@ $pxh-login-avatar-height-width: $pxh-base-spacing-unit * 2;
 /// @group pxhtheme-login
 /// @type Number
 $pxh-login-magic-centering: $pxh-base-spacing-unit - 1px;
+
+
 
 
 /// @group pxh-navigation
@@ -435,10 +469,6 @@ $pxh-navigation-sub-link-font-size: $pxh-base-font-size * 1.066666666666666;
 
 
 
-
-
-
-
 /// @group pxh-notifications
 
 $pxh-notifications-text-color: $gray2;
@@ -514,6 +544,7 @@ $pxh-notification-max-count: 5;
 $pxh-notification-font-size: $pxh-base-font-size * 1.066666666666666;
 
 $pxh-notification-icon-font-size: $pxh-base-font-size * 1.6;
+
 
 
 
