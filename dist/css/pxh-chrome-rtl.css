@@ -455,7 +455,7 @@ template {
 /*------------------------------------*    #generic.fonts
 \*------------------------------------*/
 /**
- * Define web font paths and declarations for GE Inspira
+ * Define web font paths and declarations
  *
  */
 @font-face {
@@ -3794,7 +3794,7 @@ hr {
     margin-top: 0;
     margin-bottom: 0;
     width: 200px;
-    font-size: 18.75px;
+    font-size: 19px;
     opacity: 0;
   }
   100% {
@@ -3803,7 +3803,7 @@ hr {
     margin-top: 0;
     margin-bottom: 0;
     width: 200px;
-    font-size: 18.75px;
+    font-size: 19px;
     opacity: 1;
   }
 }
@@ -3820,7 +3820,7 @@ hr {
     margin-top: 0;
     margin-bottom: 0;
     width: 200px;
-    font-size: 18.75px;
+    font-size: 19px;
     opacity: 0;
   }
   100% {
@@ -3829,7 +3829,7 @@ hr {
     margin-top: 0;
     margin-bottom: 0;
     width: 200px;
-    font-size: 18.75px;
+    font-size: 19px;
     opacity: 1;
   }
 }
@@ -3841,7 +3841,7 @@ hr {
     margin-top: 0;
     margin-bottom: 0;
     width: 200px;
-    font-size: 18.75px;
+    font-size: 19px;
     opacity: 1;
   }
   33% {
@@ -3851,7 +3851,7 @@ hr {
     margin-top: 0;
     margin-bottom: 0;
     width: 200px;
-    font-size: 18.75px;
+    font-size: 19px;
   }
   34% {
     opacity: 0;
@@ -3860,7 +3860,7 @@ hr {
     margin-top: 0;
     margin-bottom: 0;
     width: 200px;
-    font-size: 18.75px;
+    font-size: 19px;
   }
   100% {
     margin: 0;
@@ -3877,7 +3877,7 @@ hr {
     margin-top: 0;
     margin-bottom: 0;
     width: 200px;
-    font-size: 18.75px;
+    font-size: 19px;
     opacity: 1;
   }
   33% {
@@ -3887,7 +3887,7 @@ hr {
     margin-top: 0;
     margin-bottom: 0;
     width: 200px;
-    font-size: 18.75px;
+    font-size: 19px;
   }
   34% {
     opacity: 0;
@@ -3896,7 +3896,7 @@ hr {
     margin-top: 0;
     margin-bottom: 0;
     width: 200px;
-    font-size: 18.75px;
+    font-size: 19px;
   }
   100% {
     margin: 0;
@@ -3920,7 +3920,7 @@ hr {
   margin-top: 0;
   margin-bottom: 0;
   width: 200px;
-  font-size: 18.75px;
+  font-size: 19px;
   opacity: 1;
   display: block;
   text-decoration: none;
@@ -3975,7 +3975,7 @@ hr {
     margin-top: 0;
     margin-bottom: 0;
     width: 200px;
-    font-size: 18.75px;
+    font-size: 19px;
     opacity: 1;
   }
 }
@@ -3987,7 +3987,7 @@ hr {
     margin-top: 0;
     margin-bottom: 0;
     width: 200px;
-    font-size: 18.75px;
+    font-size: 19px;
     opacity: 1;
   }
 }
@@ -4569,7 +4569,7 @@ hr {
   width: 30px;
   padding-top: 4px;
   text-align: center;
-  font-size: 16.5px;
+  font-size: 17px;
   background-color: transparent;
   color: #7c7c84;
   border-style: solid;
@@ -4741,7 +4741,7 @@ hr {
 
 .pxh-navigation__item-icon--error {
   color: #e32533;
-  font-size: 18.75px;
+  font-size: 19px;
 }
 
 /*------------------------------------*    #pxh-badge
@@ -6713,7 +6713,7 @@ hr {
   text-overflow: ellipsis;
   padding-top: 15px;
   text-align: center;
-  font-size: 22.5px;
+  font-size: 22px;
 }
 
 .pxh-view-header__title-link.pxh-view-header__title-link.pxh-view-header__title-link {
