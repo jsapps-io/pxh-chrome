@@ -17,6 +17,7 @@
   * We recommend using a PNG image with alpha transparency
   * An image that does not fill the full height will be centered vertically within the container
 * Bump Normalize.css to 5.0.0
+* Change import order of Sass components to be alphabetical
 * Remove `_elements.typography.scss`, as all the styles it declares are already covered by Normalize.css
 * Update Sass mixin names for clarity
 
