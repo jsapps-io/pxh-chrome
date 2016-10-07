@@ -1,5 +1,5 @@
 /*------------------------------------*\
-    #settings.theme
+    #settings.theme-default
 \*------------------------------------*/
 
 /// @group Brand Colors - Primary
@@ -233,6 +233,10 @@ $pxh-drawer-bg-color: $gray10;
 $pxh-drawer-toggle-icon-color: $gray7;
 
 $pxh-drawer-header-image: url('../img/predix_logo_color.png');
+
+$pxh-drawer-border-color: transparent;
+
+$pxh-drawer-border-width: 0;
 
 $pxh-drawer-box-shadow: none;
 
