@@ -1,0 +1,720 @@
+/*------------------------------------*\
+    #settings.theme-predixio
+\*------------------------------------*/
+
+/// @group Brand Colors - Primary
+$red                            : rgb(227,37,51);
+$blue                           : rgb(0,92,185);
+$green                          : rgb(70,173,0);
+$purple                         : rgb(134,105,255);
+$orange                         : rgb(255,152,33);
+$yellow                         : rgb(255,237,69);
+
+/// @group Brand Colors - Light
+$red-light                      : rgb(255,92,92);
+$blue-light                     : rgb(54,147,248);
+$green-light                    : rgb(117,216,53);
+$purple-light                   : rgb(156,151,255);
+$orange-light                   : rgb(255,187,102);
+$yellow-light                   : rgb(255,249,141);
+
+/// @group Brand Colors - Dark
+$red-dark                       : rgb(182,18,37);
+$blue-dark                      : rgb(0,54,110);
+$green-dark                     : rgb(29,95,17);
+$purple-dark                    : rgb(89,81,148);
+$orange-dark                    : rgb(229,92,0);
+$yellow-dark                    : rgb(255,207,69);
+
+/// @group Monochromatic (gray10 is darkest, gray1 is lightest)
+$black                          : rgb(0,0,0);
+$gray10                         : rgb(36,35,38);
+$gray9                          : rgb(59,59,63);
+$gray8                          : rgb(82,81,86);
+$gray7                          : rgb(124,124,132);
+$gray6                          : rgb(153,153,163);
+$gray5                          : rgb(177,177,188);
+$gray4                          : rgb(209,208,216);
+$gray3                          : rgb(228,228,234);
+$gray2                          : rgb(239,239,244);
+$gray1                          : rgb(247,247,252);
+$white                          : rgb(255,255,255);
+$graybg                         : rgb(139,141,143);
+
+/// @group Primary Buttons
+$primary-blue                   : rgb(62,135,232);
+$primary-blue-hover             : rgb(53,115,197);
+$primary-blue-pressed           : rgb(43,94,162);
+
+/// @group Select States
+$select-blue-default            : rgb(10,158,193);
+$select-blue-hover              : rgb(9,134,164);
+$select-blue-pressed            : rgb(8,110,135);
+
+/// @group Alerts
+$alert-red                      : rgb(229,56,56);
+$alert-orange                   : rgb(221,107,31);
+$alert-yellow                   : rgb(232,167,54);
+$alert-blue                     : rgb(67,100,221);
+
+/// @group Data Visualization - Primary
+$dv-basic-blue                  : rgb(93,165,218);
+$dv-basic-orange                : rgb(250,164,58);
+$dv-basic-green                 : rgb(96,189,104);
+$dv-basic-pink                  : rgb(241,124,176);
+$dv-basic-brown                 : rgb(178,145,47);
+$dv-basic-purple                : rgb(178,118,178);
+$dv-basic-yellow                : rgb(222,207,63);
+$dv-basic-red                   : rgb(241,88,84);
+$dv-basic-gray                  : rgb(77,77,77);
+$dv-basic-grey                  : $dv-basic-gray;
+
+/// @group Data Visualization - Light
+$dv-light-blue                  : rgb(136,189,230);
+$dv-light-orange                : rgb(251,178,88);
+$dv-light-green                 : rgb(144,205,151);
+$dv-light-pink                  : rgb(246,170,201);
+$dv-light-brown                 : rgb(191,165,84);
+$dv-light-purple                : rgb(188,153,199);
+$dv-light-yellow                : rgb(237,221,70);
+$dv-light-red                   : rgb(240,126,110);
+$dv-light-gray                  : rgb(140,140,140);
+$dv-light-grey                  : $dv-light-gray;
+
+/// @group Data Visualization - Dark
+$dv-dark-blue                   : rgb(38,93,171);
+$dv-dark-orange                 : rgb(223,92,36);
+$dv-dark-green                  : rgb(5,151,72);
+$dv-dark-pink                   : rgb(229,18,111);
+$dv-dark-brown                  : rgb(157,114,42);
+$dv-dark-purple                 : rgb(123,58,150);
+$dv-dark-yellow                 : rgb(199,180,46);
+$dv-dark-red                    : rgb(203,32,39);
+$dv-dark-gray                   : $black;
+$dv-dark-grey                   : $dv-dark-gray;
+
+
+
+/// predix.io variables
+
+$predix-brand-light-blue: rgb(58, 180, 212);
+$predix-brand-dark-blue: rgb(40, 134, 175);
+$predix-brand-dark-gray: rgb(51, 51, 51);
+$predix-brand-pale-gray: rgb(221, 221, 221);
+$predix-brand-base-bg-color: rgb(234, 234, 234);
+
+/// @type Number [default] - Base font size
+$pxh-base-font-size:                    15px;
+
+/// @type Number [default] - Base line height
+$pxh-base-line-height:                  ($pxh-base-font-size * 4) / 3;
+
+$pxh-base-spacing-scale-ratio:       1;
+
+/// @type Number [default] - Base spacing unit
+$pxh-base-spacing-unit:                 $pxh-base-font-size * $pxh-base-spacing-scale-ratio;
+
+
+
+
+/// Define whether the drawer should appear on the left or right side of the browser window
+/// @group pxh-settings
+/// @type String
+$pxh-drawer-side: null;
+
+/// Define the side of the browser window opposite the drawer (e.g. 'right' if the drawer should appear on the left)
+/// @group pxh-settings
+/// @type String
+$pxh-drawer-opposite-side: null;
+
+@if $pxh-language-direction == 'rtl' {
+  $pxh-drawer-side: right;
+  $pxh-drawer-opposite-side: left;
+} @else {
+  $pxh-drawer-side: left;
+  $pxh-drawer-opposite-side: right;
+}
+
+
+
+
+/// Path to GE web fonts
+/// @group pxh-settings
+/// @type String [default] - Webfont path
+$webfont-path: '//dzlpbrbc7yvq0.cloudfront.net/px/fonts/1.0.0';
+
+$webfont-name: 'GE Inspira Sans';
+
+$webfont-file-name-regular: GEInspiraSans-Regular-v01;
+$webfont-file-name-bold: GEInspiraSans-Bold-v01;
+$webfont-file-name-italic: GEInspiraSans-Italic-v01;
+$webfont-file-name-bold-italic: GEInspiraSans-BoldItalic-v01;
+
+
+
+
+/// List of media query breakpoints
+/// @group pxh-settings
+$mq-breakpoints: (
+  md:  768px,
+  lg: 1024px,
+);
+
+
+
+
+/// Path to Font Awesome fonts
+/// @group pxh-settings
+/// @type String
+$fa-font-path: '//dzlpbrbc7yvq0.cloudfront.net/libs/font-awesome/4.6.3/fonts';
+
+
+
+
+// <html> and <body> elements
+
+$pxh-base-bg-color: $predix-brand-base-bg-color;
+
+$pxh-base-text-color: $black;
+
+$pxh-base-font-family: 'GE Inspira Sans', 'Helvetica', 'Arial', sans-serif;
+
+
+
+
+// <hr> element
+
+$pxh-hr-color: $gray6;
+
+
+
+
+// <a> element
+
+$pxh-link-text-color: $predix-brand-light-blue;
+
+$pxh-link-text-color-hover: $pxh-link-text-color;
+
+
+
+
+/// @group pxh-badge
+$pxh-badge-text-color:                  $white;
+$pxh-badge-text-color-inverse:          $black;
+$pxh-badge-bg-color:                    $gray5;
+$pxh-badge-border-color:                $gray5;
+$pxh-badge-border-width:                1px;
+
+$pxh-badge-bg-color-navigation:         $select-blue-pressed;
+$pxh-badge-border-color-navigation:     $select-blue-pressed;
+
+$pxh-badge-bg-color-primary:            $primary-blue;
+$pxh-badge-border-color-primary:        $primary-blue;
+
+$pxh-badge-bg-color-important:          $alert-red;
+$pxh-badge-border-color-important:      $alert-red;
+
+$pxh-badge-bg-color-warning:            $alert-orange;
+$pxh-badge-border-color-warning:        $alert-orange;
+
+$pxh-badge-bg-color-error:              $alert-yellow;
+$pxh-badge-border-color-error:          $alert-yellow;
+
+$pxh-badge-bg-color-info:               $alert-blue;
+$pxh-badge-border-color-info:           $alert-blue;
+
+$pxh-badge-bg-color-healthy-black:      $black;
+$pxh-badge-border-color-healthy-black:  $black;
+
+$pxh-badge-bg-color-healthy-white:      $white;
+$pxh-badge-border-color-healthy-white:  $gray5;
+
+$pxh-badge-font-size: $pxh-base-font-size * 0.866666666666666;
+
+
+
+
+/// @group pxh-drawer
+$pxh-drawer-bg-color: $white;
+
+$pxh-drawer-toggle-icon-color: rgb(59, 180, 212);
+
+$pxh-drawer-header-image: url('../img/predix_logo_color.png');
+
+$pxh-drawer-border-color: $predix-brand-pale-gray;
+
+$pxh-drawer-border-width: 0 1px 0 0;
+
+$pxh-drawer-box-shadow: 0 0 5px rgba(0, 0, 0, .3);
+
+/// Width of drawer in wide state
+/// @group pxh-drawer
+/// @type Number
+$pxh-drawer-width-wide: ($pxh-base-spacing-unit * 17) + ($pxh-base-spacing-unit / 3);
+
+/// Width of drawer in narrow state
+/// @group pxh-drawer
+/// @type Number
+$pxh-drawer-width-narrow: $pxh-base-spacing-unit * 4;
+/// Drawer margin
+/// @group pxh-drawer
+/// @type Number
+$pxh-drawer-margin: $pxh-base-spacing-unit + ($pxh-base-spacing-unit / 3);
+
+$pxh-drawer-header-link-font-size: $pxh-base-font-size * 1.266666666666666;
+
+
+
+
+/// @group pxh-error
+
+/// Icon color for error messages
+/// @group pxh-error
+/// @type Color
+$pxh-error-icon-color: $gray5;
+
+/// Title/header text color for error messages
+/// @group pxh-error
+/// @type Color
+$pxh-error-title-text-color: $gray6;
+
+/// Description text color for error messages
+/// @group pxh-error
+/// @type Color
+$pxh-error-description-text-color: $gray6;
+
+/// Top margin to offset error message from top of browser window
+/// @group pxh-error
+/// @type Number
+$pxh-error-margin-top: $pxh-base-spacing-unit * 3;
+
+/// Top padding to give error message some breathing room
+/// @group pxh-error
+/// @type Number
+$pxh-error-padding-top: $pxh-base-spacing-unit;
+
+/// Text decoration for hyperlinks in error messages
+/// @group pxh-error
+/// @type String
+$pxh-error-link-text-decoration: none;
+
+$pxh-error-icon-font-size: $pxh-base-font-size * 4;
+
+$pxh-error-title-font-size: $pxh-base-font-size * 1.333333333333333;
+
+$pxh-error-description-font-size: $pxh-base-font-size;
+
+
+
+
+/// @group pxh-login
+$pxh-login-border-color: rgba(0, 0, 0, 0.15);
+$pxh-login-border-width: 1px 0 0 0;
+
+$pxh-login-avatar-icon-color: $predix-brand-dark-gray;
+$pxh-login-avatar-icon-border-color: $predix-brand-dark-gray;
+$pxh-login-avatar-icon-border-width: 1px;
+
+$pxh-login-settings-link-text-color: $predix-brand-dark-gray;
+$pxh-login-settings-link-text-color-hover: $black;
+
+$pxh-login-menu-text-color: $white;
+$pxh-login-menu-bg-color: $black;
+$pxh-login-menu-border-width: 1px;
+$pxh-login-menu-border-color: $gray9;
+$pxh-login-menu-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.25);
+
+$pxh-login-menu-divider-border-width: 1px 0 0 0;
+$pxh-login-menu-divider-border-color: $gray10;
+
+$pxh-login-menu-link-text-color: $white;
+$pxh-login-menu-link-text-color-hover: $white;
+$pxh-login-menu-link-bg-color: transparent;
+$pxh-login-menu-link-bg-color-hover: $gray10;
+
+$pxh-login-notifications-link-text-color: $gray7;
+$pxh-login-notifications-link-text-color-hover: $white;
+
+$pxh-login-notifications-badge-text-color: $white;
+$pxh-login-notifications-badge-text-color-hover: $white;
+
+$pxh-login-notifications-badge-bg-color: $gray5;
+$pxh-login-notifications-badge-bg-color-green: $green;
+$pxh-login-notifications-badge-bg-color-blue: $blue;
+$pxh-login-notifications-badge-bg-color-orange: $orange;
+$pxh-login-notifications-badge-bg-color-red: $red;
+
+$pxh-login-font-size: $pxh-base-font-size;
+
+$pxh-login-notifications-badge-font-size: $pxh-base-font-size * 0.8;
+
+$pxh-login-avatar-icon-font-size: $pxh-base-font-size * 1.133333333333333;
+
+/// Login component height
+/// @group pxhtheme-login
+/// @type Number
+$pxh-login-height:  $pxh-base-spacing-unit * 4;
+
+/// User avatar height and width
+/// @group pxhtheme-login
+/// @type Number
+$pxh-login-avatar-height-width: $pxh-base-spacing-unit * 2;
+
+/// "Magic number" centering for login components
+/// @group pxhtheme-login
+/// @type Number
+$pxh-login-magic-centering: $pxh-base-spacing-unit - 1px;
+
+
+
+
+/// @group pxh-navigation
+$pxh-navigation-border-width: 1px 0 0 0;
+$pxh-navigation-border-color: rgba(0, 0, 0, 0.15);
+
+$pxh-navigation-item-icon-color: $predix-brand-dark-gray;
+$pxh-navigation-item-icon-color-hover: $white;
+$pxh-navigation-item-icon-color-selected: $white;
+$pxh-navigation-item-icon-color-active: $white;
+
+/// Navigation color for error icon
+/// @group pxh-navigation
+/// @type Color
+$pxh-navigation-item-icon-color-error: $red;
+
+/// Navigation link font color
+/// @group pxh-navigation
+/// @type Color
+$pxh-navigation-link-text-color: $predix-brand-dark-gray;
+
+/// Navigation text color on hover
+/// @group pxh-navigation
+/// @type Color
+$pxh-navigation-link-text-color-hover: $predix-brand-dark-gray;
+
+/// Navigation text color for selected item
+/// @group pxh-navigation
+/// @type Color
+$pxh-navigation-link-text-color-selected: $white;
+
+/// Navigation text color for active item
+/// @group pxh-navigation
+/// @type Color
+$pxh-navigation-link-text-color-active: $white;
+
+$pxh-navigation-link-text-color-error: $predix-brand-dark-gray;
+
+/// Navigation link background color
+/// @group pxh-navigation
+/// @type Color
+$pxh-navigation-link-bg-color: transparent;
+
+/// Navigation background color on hover
+/// @group pxh-navigation
+/// @type Color
+$pxh-navigation-link-bg-color-hover: $predix-brand-pale-gray;
+
+/// Navigation background color for selected item
+/// @group pxh-navigation
+/// @type Color
+$pxh-navigation-link-bg-color-selected: rgb(92, 92, 92);
+
+/// Navigation background color for active item
+/// @group pxh-navigation
+/// @type Color
+$pxh-navigation-link-bg-color-active: $gray9;
+
+$pxh-navigation-link-bg-color-error: transparent;
+
+/// Navigation text color for sub-item
+/// @group pxh-navigation
+/// @type Color
+$pxh-navigation-sub-link-text-color: $gray6;
+
+/// Navigation text color for sub-item on hover
+/// @group pxh-navigation
+/// @type Color
+$pxh-navigation-sub-link-text-color-hover: $predix-brand-dark-gray;
+
+/// Navigation text color for selected sub-item
+/// @group pxh-navigation
+/// @type Color
+$pxh-navigation-sub-link-text-color-selected: $white;
+
+$pxh-navigation-sub-link-bg-color: transparent;
+$pxh-navigation-sub-link-bg-color-hover: transparent;
+$pxh-navigation-sub-link-bg-color-selected: transparent;
+
+$pxh-navigation-sub-link-settings-text-color: $primary-blue;
+$pxh-navigation-sub-link-settings-text-color-selected: $primary-blue;
+$pxh-navigation-sub-link-settings-bg-color: transparent;
+$pxh-navigation-sub-link-settings-bg-color-hover: transparent;
+$pxh-navigation-sub-link-settings-bg-color-selected: transparent;
+
+$pxh-navigation-sub-item-divider-height: 1px;
+$pxh-navigation-sub-item-divider-color: $predix-brand-pale-gray; // used as bg color but that's an implementation detail
+
+/// Navigation item link height
+/// @group pxh-navigation
+/// @type Number
+$pxh-navigation-link-height: ($pxh-base-spacing-unit * 3) + 3px;
+
+/// Navigation sub-item link height
+/// @group pxh-navigation
+/// @type Number
+$pxh-navigation-sub-link-height: $pxh-base-spacing-unit * 2;
+
+/// Navigation margin for divider component
+/// @group pxh-navigation
+/// @type Number
+$pxh-navigation-divider-margin: $pxh-base-spacing-unit - ($pxh-base-spacing-unit / 3);
+
+$pxh-navigation-link-font-size: $pxh-base-font-size;
+
+$pxh-navigation-item-icon-error-font-size: $pxh-base-font-size * 1.266666666666666;
+
+$pxh-navigation-item-text-font-size: $pxh-base-font-size * 1.066666666666666;
+
+$pxh-navigation-sub-link-font-size: $pxh-base-font-size * 1.066666666666666;
+
+
+
+
+/// @group pxh-notifications
+
+$pxh-notifications-text-color: $gray2;
+
+$pxh-notifications-bg-color: $gray10;
+
+$pxh-notifications-border-color: $gray7;
+
+$pxh-notifications-border-width: 1px;
+
+$pxh-notifications-box-shadow: none;
+
+$pxh-notifications-header-border-width: 0 0 1px 0;
+
+$pxh-notifications-header-border-color: $gray7;
+
+$pxh-notifications-link-text-color: $gray5;
+
+$pxh-notifications-link-text-color-hover: $primary-blue;
+
+$pxh-notifications-clear-text-color: $gray5;
+
+$pxh-notifications-clear-text-color-hover: $primary-blue;
+
+$pxh-notifications-empty-text-color: $gray7;
+
+
+
+
+/// @group pxh-notification
+
+$pxh-notification-border-color: $gray9;
+
+$pxh-notification-border-width: 0 0 1px 0;
+
+$pxh-notification-icon-color: transparent;
+$pxh-notification-icon-color-green: $green;
+$pxh-notification-icon-color-blue: $blue;
+$pxh-notification-icon-color-orange: $orange;
+$pxh-notification-icon-color-red: $red;
+
+$pxh-notification-link-text-color: $gray4;
+
+$pxh-notification-link-text-color-hover: $primary-blue;
+
+$pxh-notification-more-button-text-color: $gray7;
+
+$pxh-notification-more-button-text-color-hover: $gray4;
+
+$pxh-notification-more-button-bg-color: $gray10;
+
+$pxh-notification-more-button-bg-color-hover: $gray9;
+
+$pxh-notification-dismiss-button-icon-color: $gray8;
+
+$pxh-notification-dismiss-button-icon-color-hover: $primary-blue;
+
+/// Height of a (non-expanded) notification
+/// @group pxh-notification
+/// @type Number
+$pxh-notification-height: ($pxh-base-spacing-unit * 4) + (($pxh-base-spacing-unit / 3) * 2);
+
+/// Default margin for notification components
+/// @group pxh-notification
+/// @type Number
+$pxh-notification-margin: ($pxh-base-spacing-unit / 3);
+
+/// Maximum number of notifications to display at once
+/// @group pxh-notification
+/// @type Number
+$pxh-notification-max-count: 5;
+
+$pxh-notification-font-size: $pxh-base-font-size * 1.066666666666666;
+
+$pxh-notification-icon-font-size: $pxh-base-font-size * 1.6;
+
+
+
+
+/// @group pxh-overlay
+$pxh-overlay-bg-color: rgba($black, 0.7);
+
+
+
+
+/// @group pxh-spinner
+
+/// Alpha transparency for pxh-spinner
+/// @group pxh-spinner
+/// @type Number
+$pxh-spinner-alpha: 0.7;
+
+$pxh-spinner-base-color: rgba($predix-brand-dark-gray, $pxh-spinner-alpha);
+$pxh-spinner-accent-color: $predix-brand-light-blue;
+
+$pxh-spinner-base-color-inverted: rgba($predix-brand-dark-gray, $pxh-spinner-alpha);
+$pxh-spinner-accent-color-inverted: $predix-brand-dark-blue;
+
+
+
+
+// pxh-toast
+
+$pxh-toast-text-color: $gray5;
+
+$pxh-toast-bg-color: $gray10;
+
+$pxh-toast-more-bg: linear-gradient(to bottom, rgba($gray10, 0) 0%, rgba($gray10, 1) 50%); // gradients are considered CSS images not colors hence bg and not bg-color
+
+$pxh-toast-more-button-text-color: $gray7;
+
+$pxh-toast-more-button-text-color-hover: $gray4;
+
+$pxh-toast-more-button-bg-color: $gray10;
+
+$pxh-toast-more-button-bg-color-hover: $gray9;
+
+$pxh-toast-more-button-border-color: $gray8;
+
+$pxh-toast-more-button-border-width: 1px;
+
+$pxh-toast-button-text-color: $gray5;
+
+$pxh-toast-button-text-color-hover: $gray9;
+
+$pxh-toast-button-bg-color: $gray10;
+
+$pxh-toast-button-bg-color-hover: $gray9;
+
+$pxh-toast-button-border-color: $gray8;
+
+$pxh-toast-button-border-width: 1px;
+
+$pxh-toast-timestamp-text-color: $gray8;
+
+$pxh-toast-dismiss-button-icon-color: $gray7;
+
+$pxh-toast-dismiss-button-icon-color-hover: $primary-blue;
+
+$pxh-toast-icon-color: $white;
+
+$pxh-toast-icon-bg-color: transparent;
+$pxh-toast-icon-bg-color-green: $green;
+$pxh-toast-icon-bg-color-blue: $blue;
+$pxh-toast-icon-bg-color-orange: $orange;
+$pxh-toast-icon-bg-color-red: $red;
+
+/// Height of a (non-expanded) toast
+/// @group pxh-toast
+/// @type Number
+$pxh-toast-height: $pxh-base-spacing-unit * 4 + (($pxh-base-spacing-unit / 3) * 2);
+
+/// Default margin for toast components
+/// @group pxh-toast
+/// @type Number
+$pxh-toast-margin: $pxh-base-spacing-unit / 3;
+
+/// Maximum number of toasts to display at once
+/// @group pxh-toast
+/// @type Number
+$pxh-toast-max-count: 3;
+
+$pxh-toast-font-size: $pxh-base-font-size * 1.066666666666666;
+
+$pxh-toast-more-button-font-size: $pxh-base-font-size * 0.933333333333333;
+
+$pxh-toast-dismiss-font-size: $pxh-base-font-size * 1.2;
+
+$pxh-toast-icon-font-size: $pxh-base-font-size * 1.866666666666666;
+
+
+
+
+/// @group pxh-view
+
+/// Options for pxh-view background colors
+/// @group pxh-view
+$pxh-view-bg-colors: (
+  white: $white, 
+  gray1: $gray1, 
+  gray2: $gray2, 
+  gray3: $gray3, 
+  gray4: $gray4, 
+  gray5: $gray5, 
+  gray6: $gray6, 
+  gray7: $gray7, 
+  gray8: $gray8, 
+  gray9: $gray9, 
+  gray10: $gray10, 
+  black: $black
+ );
+
+$pxh-view-header-bg-color: $white;
+
+$pxh-view-header-border-color: rgba(0, 0, 0, 0.15);
+
+$pxh-view-header-border-width: 0 0 1px 0; // should allow all borders, but specify just the bottom to start
+
+$pxh-view-header-drawer-toggle-icon-color: $predix-brand-light-blue;
+
+$pxh-view-header-title-link-text-color: $black;
+
+$pxh-view-header-title-font-size: $pxh-base-font-size * 1.466666666666666;
+
+/// View header height
+/// locked to current height of px-context-browser + 1px for bottom border
+/// @group pxh-view
+/// @type Number
+$pxh-view-header-height: ($pxh-base-spacing-unit * 4) + 1px;
+
+
+
+
+// overrides.pxh-docs
+
+$pxh-docs-bg-color: transparent;
+$pxh-docs-code-font-size: $pxh-base-font-size;
+$pxh-docs-code-bg-color: #fff3f3;
+$pxh-docs-code-text-color: #900;
+
+
+
+
+// pxh-fancy-scrollbars
+
+$pxh-scrollbar-width: 7px;
+
+$pxh-scrollbar-base-color: $white;
+$pxh-scrollbar-arrow-color: $predix-brand-pale-gray;
+$pxh-scrollbar-track-color: $white;
+$pxh-scrollbar-face-color:  $predix-brand-pale-gray;
+
+$pxh-scrollbar-track-border-color: $white;
+$pxh-scrollbar-track-border-width: 2px;
+
+$pxh-scrollbar-thumb-color: $predix-brand-pale-gray;
+$pxh-scrollbar-thumb-border-color: $white;
+$pxh-scrollbar-thumb-border-width: 0 2px 0 2px;

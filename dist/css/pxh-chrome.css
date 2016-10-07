@@ -2,7 +2,7 @@
 /*! pxh-chrome.css 2.2.1 */
 /*------------------------------------*    #pxh-chrome
 \*------------------------------------*/
-/*------------------------------------*    #settings.theme
+/*------------------------------------*    #settings.theme-default
 \*------------------------------------*/
 /*! normalize.css v5.0.0 | MIT License | github.com/necolas/normalize.css */
 /**
@@ -3680,6 +3680,9 @@ hr {
   left: 0;
   width: 260px;
   height: 100%;
+  border-style: solid;
+  border-width: 0;
+  border-color: transparent;
   background-color: #242326;
   box-shadow: none;
 }
@@ -3792,7 +3795,7 @@ hr {
     padding-bottom: 0;
     margin-top: 0;
     margin-bottom: 0;
-    width: 200px;
+    width: 199px;
     font-size: 19px;
     opacity: 0;
   }
@@ -3801,7 +3804,7 @@ hr {
     padding-bottom: 0;
     margin-top: 0;
     margin-bottom: 0;
-    width: 200px;
+    width: 199px;
     font-size: 19px;
     opacity: 1;
   }
@@ -3818,7 +3821,7 @@ hr {
     padding-bottom: 0;
     margin-top: 0;
     margin-bottom: 0;
-    width: 200px;
+    width: 199px;
     font-size: 19px;
     opacity: 0;
   }
@@ -3827,7 +3830,7 @@ hr {
     padding-bottom: 0;
     margin-top: 0;
     margin-bottom: 0;
-    width: 200px;
+    width: 199px;
     font-size: 19px;
     opacity: 1;
   }
@@ -3839,7 +3842,7 @@ hr {
     padding-bottom: 0;
     margin-top: 0;
     margin-bottom: 0;
-    width: 200px;
+    width: 199px;
     font-size: 19px;
     opacity: 1;
   }
@@ -3849,7 +3852,7 @@ hr {
     padding-bottom: 0;
     margin-top: 0;
     margin-bottom: 0;
-    width: 200px;
+    width: 199px;
     font-size: 19px;
   }
   34% {
@@ -3858,7 +3861,7 @@ hr {
     padding-bottom: 0;
     margin-top: 0;
     margin-bottom: 0;
-    width: 200px;
+    width: 199px;
     font-size: 19px;
   }
   100% {
@@ -3875,7 +3878,7 @@ hr {
     padding-bottom: 0;
     margin-top: 0;
     margin-bottom: 0;
-    width: 200px;
+    width: 199px;
     font-size: 19px;
     opacity: 1;
   }
@@ -3885,7 +3888,7 @@ hr {
     padding-bottom: 0;
     margin-top: 0;
     margin-bottom: 0;
-    width: 200px;
+    width: 199px;
     font-size: 19px;
   }
   34% {
@@ -3894,7 +3897,7 @@ hr {
     padding-bottom: 0;
     margin-top: 0;
     margin-bottom: 0;
-    width: 200px;
+    width: 199px;
     font-size: 19px;
   }
   100% {
@@ -3918,7 +3921,7 @@ hr {
   padding-bottom: 0;
   margin-top: 0;
   margin-bottom: 0;
-  width: 200px;
+  width: 199px;
   font-size: 19px;
   opacity: 1;
   display: block;
@@ -3953,7 +3956,7 @@ hr {
   background-position: left center;
   background-size: contain;
   height: 60px;
-  width: 200px;
+  width: 199px;
   text-indent: -9999px;
   font-size: 1px;
 }
@@ -3973,7 +3976,7 @@ hr {
     padding-bottom: 0;
     margin-top: 0;
     margin-bottom: 0;
-    width: 200px;
+    width: 199px;
     font-size: 19px;
     opacity: 1;
   }
@@ -3985,7 +3988,7 @@ hr {
     padding-bottom: 0;
     margin-top: 0;
     margin-bottom: 0;
-    width: 200px;
+    width: 199px;
     font-size: 19px;
     opacity: 1;
   }
@@ -4689,7 +4692,7 @@ hr {
   scrollbar-face-color: #525156;
   -webkit-overflow-scrolling: touch;
   position: absolute;
-  top: 61px;
+  top: 60px;
   left: 0;
   bottom: 60px;
   width: 100%;
