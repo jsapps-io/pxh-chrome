@@ -3,8 +3,8 @@
 \*------------------------------------*/
 
 html {
-  // sets dark gray ($gray8) color as default for application background:
-  background-color: $inuit-base-background-color !important;
+  // sets color as default for application background:
+  background-color: $pxh-base-bg-color !important;
   // prevents duplicate scroll bars on the viewport in addition to the pxh-view content area in IE:
   overflow: hidden !important;
 }

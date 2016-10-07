@@ -5,16 +5,17 @@
 $pxh-language-direction : 'ltr' !default; // 'ltr' OR 'rtl'
 
 html {
-  font-size: ($inuit-base-font-size / 16px) * 1em;
-  line-height: $inuit-base-line-height / $inuit-base-font-size;
-  background-color: $inuit-base-background-color;
-  color: $inuit-base-text-color;
+  font-size: ($pxh-base-font-size / 16px) * 1em;
+  line-height: $pxh-base-line-height / $pxh-base-font-size;
+  background-color: $pxh-base-bg-color;
+  color: $pxh-base-text-color;
 }
+
 html, body {
   @if $pxh-language-direction == 'rtl' {
     direction: rtl;
   }
-  font-family: "GE Inspira Sans", "Helvetica", "Arial", sans-serif;
+  font-family: $pxh-base-font-family;
   height: 100%;
   width: 100%;
   overflow: hidden;

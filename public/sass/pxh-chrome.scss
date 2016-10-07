@@ -11,32 +11,17 @@
 /// @type String [default] 'ltr'
 $pxh-language-direction: 'ltr'; // 'ltr' OR 'rtl'
 
-@import 'settings.defaults';
-@import 'settings.pxh-chrome';
+@import 'settings.theme';
 
 // ** #GENERIC ** //
 
 @import 'generic.normalize';
-/// Path to GE web fonts
-/// @group pxh-settings
-/// @type String [default] - Webfont path
-$webfont-path: '//dzlpbrbc7yvq0.cloudfront.net/px/fonts/1.0.0';
 @import 'generic.fonts';
 @import 'generic.defaults';
 
 // ** #TOOLS ** //
 
-/// List of media query breakpoints
-/// @group pxh-settings
-$mq-breakpoints: (
-  md:  768px,
-  lg: 1024px,
-);
 @import 'sass-mq/mq'; // our sass task includes /bower_components automatically so we don't need to specify it
-/// Path to Font Awesome fonts
-/// @group pxh-settings
-/// @type String
-$fa-font-path: '//dzlpbrbc7yvq0.cloudfront.net/libs/font-awesome/4.6.3/fonts';
 @import 'font-awesome/scss/font-awesome'; // our sass task includes /bower_components automatically so we don't need to specify it
 @import 'tools.pxh-animations';
 @import 'tools.pxh-mixins';
@@ -46,41 +31,22 @@ $fa-font-path: '//dzlpbrbc7yvq0.cloudfront.net/libs/font-awesome/4.6.3/fonts';
 @import 'elements.body';
 @import 'elements.links';
 @import 'elements.hr';
-@import 'elements.typography';
 
 // ** #OBJECTS ** //
 
 // ** #COMPONENTS ** //
 
-/// Define whether the drawer should appear on the left or right side of the browser window
-/// @group pxh-settings
-/// @type String
-$pxh-drawer-side: null;
-
-/// Define the side of the browser window opposite the drawer (e.g. 'right' if the drawer should appear on the left)
-/// @group pxh-settings
-/// @type String
-$pxh-drawer-opposite-side: null;
-
-@if $pxh-language-direction == 'rtl' {
-  $pxh-drawer-side: right;
-  $pxh-drawer-opposite-side: left;
-} @else {
-  $pxh-drawer-side: left;
-  $pxh-drawer-opposite-side: right;
-}
-
 @import 'components.pxh-badge';
+@import 'components.pxh-closer';
 @import 'components.pxh-drawer';
+@import 'components.pxh-error';
 @import 'components.pxh-login';
 @import 'components.pxh-navigation';
-@import 'components.pxh-overlay';
-@import 'components.pxh-view';
-@import 'components.pxh-spinner';
-@import 'components.pxh-closer';
-@import 'components.pxh-toast';
 @import 'components.pxh-notification';
-@import 'components.pxh-error';
+@import 'components.pxh-overlay';
+@import 'components.pxh-spinner';
+@import 'components.pxh-toast';
+@import 'components.pxh-view';
 
 // ** #OVERRIDES ** //
 

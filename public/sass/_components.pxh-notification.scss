@@ -2,25 +2,159 @@
     #components.pxh-notification
 \*------------------------------------*/
 
-/// Height of a (non-expanded) notification
-/// @group pxh-notification
-/// @type Number
-$pxh-notification-height: 70px;
+@mixin pxh-toast {
+  display: flex;
+  // @if $pxh-language-direction == 'rtl' { // handled by direction: rtl on body element
+  //   flex-direction: row-reverse;
+  // }
+  pointer-events: auto;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  color: $pxh-toast-text-color;
+  background: $pxh-toast-bg-color;
+  &--expanded {
+    height: auto;
+  }
+}
 
-/// Default margin for notification components
-/// @group pxh-notification
-/// @type Number
-$pxh-notification-margin: 5px;
+@mixin pxh-toast__icon {
+  text-align: center;
+  flex-shrink: 0;
+  align-self: stretch;
+  min-height: $pxh-toast-height;
+}
 
-/// Maximum number of notifications to display at once
-/// @group pxh-notification
-/// @type Number
-$pxh-notification-max-count: 5;
+@mixin pxh-toast__text {
+  text-align: $pxh-drawer-side;
+  flex-grow: 2;
+  margin: auto $pxh-toast-margin auto $pxh-toast-margin;
+  padding: $pxh-toast-margin 0 0 0;
+  padding-#{$pxh-drawer-side}: ($pxh-toast-margin * 2);
+  overflow: hidden;
+  position: relative;
+  line-height: 1.2;
+}
+
+@mixin pxh-toast__more {
+  position: absolute;
+  top: $pxh-toast-margin * 8;
+  width: 100%;
+  height: $pxh-toast-margin * 6;
+  padding: ($pxh-toast-margin + 2px) 0 $pxh-toast-margin 0;
+  background: $pxh-toast-more-bg;
+  text-align: center;
+  &--expanded {
+    position: relative;
+    top: 0;
+    height: auto;
+    background: transparent;
+  }
+}
+
+@mixin pxh-toast__more-button {
+  color: $pxh-toast-more-button-text-color;
+  background-color: $pxh-toast-more-button-bg-color;
+  border-style: solid;
+  border-width: $pxh-toast-more-button-border-width;
+  border-color: $pxh-toast-more-button-border-color;
+  border-radius: 5px;
+  padding: 1px ($pxh-base-spacing-unit / 3) 0 ($pxh-base-spacing-unit / 3);
+  display: inline-block;
+  text-decoration: none;
+  text-transform: lowercase;
+  font-size: $pxh-toast-more-button-font-size;
+  &:hover {
+    color: $pxh-toast-more-button-text-color-hover;
+    background-color: $pxh-toast-more-button-bg-color-hover;
+  }
+}
+
+@mixin pxh-toast__action {
+  flex-shrink: 0;
+  text-align: center;
+  margin: ($pxh-toast-margin * 3) ($pxh-toast-margin * 2) 0 ($pxh-toast-margin * 2);
+}
+
+@mixin pxh-toast__button {
+  display: block;
+  overflow: hidden;
+  text-decoration: none;
+  border-style: solid;
+  border-width: $pxh-toast-button-border-width;
+  border-color: $pxh-toast-button-border-color;
+  padding: ($pxh-base-spacing-unit / 2);
+  background-color: $pxh-toast-button-bg-color;
+  color: $pxh-toast-button-text-color;
+  border-radius: 2px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  &:hover {
+    color: $pxh-toast-button-text-color-hover;
+    background-color: $pxh-toast-button-bg-color-hover;
+  }
+}
+
+@mixin pxh-toast__timestamp {
+  margin-left: $pxh-toast-margin;
+  color: $pxh-toast-timestamp-text-color;
+  flex-shrink: 0;
+  text-align: $pxh-drawer-opposite-side;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+@mixin pxh-toast__dismiss {
+  text-align: center;
+  font-size: $pxh-toast-dismiss-font-size;
+  flex-basis: auto;
+  width: $pxh-toast-margin * 8;
+  flex-shrink: 0;
+}
+
+@mixin pxh-toast__dismiss-button {
+  color: $pxh-toast-dismiss-button-icon-color;
+  text-decoration: none;
+  display: block;
+  padding: ($pxh-toast-margin * 5) ($pxh-toast-margin * 2) 0 ($pxh-toast-margin * 2);
+  height: $pxh-toast-height;
+  &:hover {
+    color: $pxh-toast-dismiss-button-icon-color-hover;
+  }
+}
+
+@mixin pxh-toast--in-state-scale {
+  height: $pxh-toast-height;
+  margin-bottom: $pxh-toast-margin;
+  font-size: $pxh-toast-font-size;
+}
+
+@mixin pxh-toast--in-state-opacity {
+  @include in-state-opacity;
+}
+
+@mixin pxh-toast--out-state-scale {
+    @include out-state-scale;
+    height: 0;
+}
+
+@mixin pxh-toast--in-state {
+  @include pxh-toast--in-state-opacity;
+  @include pxh-toast--in-state-scale;
+}
+
+@mixin pxh-toast--out-state {
+  @include pxh-toast--out-state-scale;
+  @include out-state-opacity;
+}
 
 @mixin pxh-notification--in-state-scale {
   height: $pxh-toast-height;
-  font-size: 16px;
-  border-bottom: 1px solid $gray9;
+  font-size: $pxh-notification-font-size;
+  border-style: solid;
+  border-width: $pxh-notification-border-width;
+  border-color: $pxh-notification-border-color;
 }
 
 @mixin pxh-notification--in-state-opacity {
@@ -80,16 +214,18 @@ $pxh-notification-max-count: 5;
   bottom: ($pxh-drawer-margin * 3) - 4px;
   left: $pxh-notification-margin;
   right: $pxh-notification-margin;
-  max-width: 480px;
+  max-width: $pxh-base-spacing-unit * 32;
   border-radius: 2px;
-  background-color: $gray10;
-  color: $gray2;
-  border: 1px solid $gray7;
+  background-color: $pxh-notifications-bg-color;
+  color: $pxh-notifications-text-color;
+  border-style: solid;
+  border-width: $pxh-notifications-border-width;
+  border-color: $pxh-notifications-border-color;
   display: none;
 
   @include mq($from: md) {
     &\@md {
-      width: 480px;
+      width: $pxh-base-spacing-unit * 32;
     }
 
     &--narrow\@md {
@@ -112,12 +248,14 @@ $pxh-notification-max-count: 5;
   }
 
   &__header {
-    height: 40px;
+    height: ($pxh-base-spacing-unit * 2) + (($pxh-base-spacing-unit / 3) * 2); // magic number -- fix this
     display: flex;
     // @if $pxh-language-direction == 'rtl' { // handled by direction: rtl on body element
     //   flex-direction: row-reverse;
     // }
-    border-bottom: 1px solid $gray7;
+    border-style: solid;
+    border-width: $pxh-notifications-header-border-width;
+    border-color: $pxh-notifications-header-border-color;
   }
 
   &__title {
@@ -136,18 +274,18 @@ $pxh-notification-max-count: 5;
   }
 
   &__link {
-    @include pxh-override-px-theme-color('pxh-notifications__link', $gray5, $primary-blue);
-    color: $gray5;
+    @include pxh-override-px-theme-text-color('pxh-notifications__link', $pxh-notifications-link-text-color, $pxh-notifications-link-text-color-hover);
+    color: $pxh-notifications-link-text-color;
     text-decoration: none;
 
     &:hover {
-      color: $primary-blue;
+      color: $pxh-notifications-link-text-color-hover
     }
   }
 
   &__clear {
     min-width: $pxh-notification-margin * 16;
-    color: $gray5;
+    color: $pxh-notifications-clear-text-color;
     text-decoration: none;
     text-align: $pxh-drawer-opposite-side;
     padding-right: $pxh-notification-margin * 2;
@@ -155,8 +293,12 @@ $pxh-notification-max-count: 5;
     padding-top: $pxh-notification-margin * 2;
 
     a {
-      color: $gray5;
+      color: $pxh-notifications-clear-text-color;
       text-decoration: none;
+
+      &:hover {
+        color: $pxh-notifications-clear-text-color-hover;
+      }
     }
   }
 
@@ -180,7 +322,7 @@ $pxh-notification-max-count: 5;
     height: $pxh-notification-height;
     z-index: 850;
     font-style: italic;
-    color: $gray7;
+    color: $pxh-notifications-empty-text-color;
     width: 100%;
     text-align: center;
     padding-top: $pxh-notification-height / 3;
@@ -209,22 +351,22 @@ $pxh-notification-max-count: 5;
     padding-top: $pxh-toast-margin * 4;
     padding-#{$pxh-drawer-side}: $pxh-toast-margin;
     flex-basis: $pxh-toast-margin * 8;
-    font-size: 24px;
+    font-size: $pxh-notification-icon-font-size;
 
     &--green {
-      color: $green;
+      color: $pxh-notification-icon-color-green;
     }
 
     &--blue {
-      color: $blue;
+      color: $pxh-notification-icon-color-blue;
     }
 
     &--orange {
-      color: $orange;
+      color: $pxh-notification-icon-color-orange;
     }
 
     &--red {
-      color: $red;
+      color: $pxh-notification-icon-color-red;
     }
   }
 
@@ -233,12 +375,12 @@ $pxh-notification-max-count: 5;
   }
 
   &__link {
-    @include pxh-override-px-theme-color('pxh-notification__link', $gray4, $primary-blue);
+    @include pxh-override-px-theme-text-color('pxh-notification__link', $pxh-notification-link-text-color, $pxh-notification-link-text-color-hover);
     text-decoration: none;
-    color: $gray5;
+    color: $pxh-notification-link-text-color;
 
     &:hover {
-      color: $primary-blue;
+      color: $pxh-notification-link-text-color-hover;
     }
   }
 
@@ -248,8 +390,8 @@ $pxh-notification-max-count: 5;
 
   &__more-button {
     @include pxh-toast__more-button;
-    @include pxh-override-px-theme-color('pxh-notification__more-button');
-    @include pxh-override-px-theme-background-color('pxh-notification__more-button', $gray10, $gray9);
+    @include pxh-override-px-theme-text-color('pxh-notification__more-button'$pxh-notification-more-button-text-color, $pxh-notification-more-button-text-color-hover);
+    @include pxh-override-px-theme-bg-color('pxh-notification__more-button', $pxh-notification-more-button-bg-color, $pxh-notification-more-button-bg-color-hover);
   }
 
   &__timestamp {
@@ -264,7 +406,7 @@ $pxh-notification-max-count: 5;
 
   &__dismiss-button {
     @include pxh-toast__dismiss-button;
-    color: $gray8;
-    @include pxh-override-px-theme-color('pxh-notification__dismiss-button', $gray8, $primary-blue);
+    color: $pxh-notification-dismiss-button-icon-color;
+    @include pxh-override-px-theme-text-color('pxh-notification__dismiss-button', $pxh-notification-dismiss-button-icon-color, $pxh-notification-dismiss-button-icon-color-hover);
   }
 }

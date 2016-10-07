@@ -63,24 +63,31 @@
 }
 
 .pxh-view {
+  height: 100%;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+
   &--animate-wide {
     animation-timing-function: ease-in-out;
     animation-fill-mode: forwards;
     animation-duration: 1000ms;
     animation-name: pxh-view--animate-wide;
   }
+
   &--animate-narrow {
     animation-timing-function: ease-in-out;
     animation-fill-mode: forwards;
     animation-duration: 500ms;
     animation-name: pxh-view--animate-narrow;
   }
+
   &--animate-full-to-wide {
     animation-timing-function: ease-in-out;
     animation-fill-mode: forwards;
     animation-duration: 250ms;
     animation-name: pxh-view--animate-full-to-wide;
   }
+
   &--animate-full-to-narrow {
     animation-timing-function: ease-in-out;
     animation-fill-mode: forwards;
@@ -89,13 +96,7 @@
   }
 }
 
-.pxh-view {
-  height: 100%;
-  overflow: auto;
-  -webkit-overflow-scrolling: touch;
-}
-
-@each $color-slug, $color-variable in $pxh-view-background-colors {
+@each $color-slug, $color-variable in $pxh-view-bg-colors {
   .pxh-view--#{$color-slug} {
     background-color: $color-variable;
   }
@@ -185,41 +186,44 @@
 }
 
 .pxh-view-header {
+  position: fixed;
+  top: 0;
+  #{$pxh-drawer-opposite-side}: 0;
+  #{$pxh-drawer-side}: 0;
+  background-color: $pxh-view-header-bg-color;
+  border-style: solid;
+  border-color: $pxh-view-header-border-color;
+  border-width: $pxh-view-header-border-width;
+  height: $pxh-view-header-height;
+  z-index: 250;
+
   &--animate-wide {
     animation-timing-function: ease-in-out;
     animation-fill-mode: forwards;
     animation-duration: 1000ms;
     animation-name: pxh-view-header--animate-wide;
   }
+
   &--animate-narrow {
     animation-timing-function: ease-in-out;
     animation-fill-mode: forwards;
     animation-duration: 500ms;
     animation-name: pxh-view-header--animate-narrow;
   }
+
   &--animate-full-to-wide {
     animation-timing-function: ease-in-out;
     animation-fill-mode: forwards;
     animation-duration: 250ms;
     animation-name: pxh-view-header--animate-full-to-wide;
   }
+
   &--animate-full-to-narrow {
     animation-timing-function: ease-in-out;
     animation-fill-mode: forwards;
     animation-duration: 250ms;
     animation-name: pxh-view-header--animate-full-to-narrow;
   }
-}
-
-.pxh-view-header {
-  position: fixed;
-  top: 0;
-  #{$pxh-drawer-opposite-side}: 0;
-  #{$pxh-drawer-side}: 0;
-  border-bottom: 1px solid rgba($gray7, 0.8);
-  height: $pxh-view-header-height;
-  background-color: $white;
-  z-index: 250;
 }
 
 // nest all responsive styles within a pxh-chromeful class (applied to the <body> element so they only apply if the chrome is present
@@ -263,19 +267,19 @@
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  padding-top: $inuit-base-spacing-unit;
+  padding-top: $pxh-base-spacing-unit;
   text-align: center;
-  font-size: $inuit-base-font-size * 1.5;
+  font-size: $pxh-view-header-title-font-size;
 }
 
 .pxh-view-header__title-link.pxh-view-header__title-link.pxh-view-header__title-link  { // chained to override px-theme
-  color: $black;
+  color: $pxh-view-header-title-link-text-color;
   text-decoration: none;
 }
 
 .pxh-view-header__title-link:link.pxh-view-header__title-link:link.pxh-view-header__title-link:link,
 .pxh-view-header__title-link:visited.pxh-view-header__title-link:visited.pxh-view-header__title-link:visited { // chained to override px-theme
-  color: $black;
+  color: $pxh-view-header-title-link-text-color;
 }
 
 /*------------------------------------*\
@@ -289,16 +293,29 @@
   opacity: 1;
   z-index: 500; // making the same as overlay to overcome IE10 clickthru bug with overlay
   transition: all 300ms ease-in-out;
-}
 
-// Hide the toggle button in the view-header. This class is
-// used even though the drawer covers the view-header toggle
-// button, because sometimes click events on the drawer toggle
-// are intercepted by the view-header toggle as well, resulting
-// in a bounce scenario.
-.pxh-view-header-drawer-toggle--hidden {
-  #{$pxh-drawer-side}: $pxh-drawer-width-narrow * -1;
-  opacity: 0;  
+  &__icon {
+    fill: $pxh-view-header-drawer-toggle-icon-color;
+  }
+
+  // Hide the toggle button in the view-header. This class is
+  // used even though the drawer covers the view-header toggle
+  // button, because sometimes click events on the drawer toggle
+  // are intercepted by the view-header toggle as well, resulting
+  // in a bounce scenario.
+  &--hidden {
+    #{$pxh-drawer-side}: $pxh-drawer-width-narrow * -1;
+    opacity: 0;  
+  }
+
+  &__link {
+    display: block;
+    height: $pxh-drawer-width-narrow;
+    width: $pxh-drawer-width-narrow;
+    padding-top: $pxh-drawer-margin;
+    padding-#{$pxh-drawer-side}: $pxh-drawer-margin;
+    text-decoration: none;
+  }
 }
 
 // nest all responsive styles within a pxh-chromeful class (applied to the <body> element so they only apply if the chrome is present
@@ -312,19 +329,5 @@
         #{$pxh-drawer-side}: $pxh-drawer-width-narrow * -1;
         opacity: 0;
     }
-  }
-}
-
-.pxh-view-header-drawer-toggle__link {
-  display: block;
-  height: $pxh-drawer-width-narrow;
-  width: $pxh-drawer-width-narrow;
-  padding-top: $pxh-drawer-margin;
-  padding-#{$pxh-drawer-side}: $pxh-drawer-margin;
-  color: $black;
-  text-decoration: none;
-  &:link,
-  &:visited {
-    color: $black;
   }
 }

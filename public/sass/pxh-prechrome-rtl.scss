@@ -11,32 +11,50 @@
 /// @type String [default] 'ltr'
 $pxh-language-direction: 'rtl'; // 'ltr' OR 'rtl'
 
-@import 'settings.defaults';
-@import 'settings.pxh-chrome';
+@import 'settings.theme';
+
+/// prechrome overrides
+/// these should go somewhere else
+
+/// Icon color for error messages
+/// @group pxh-error
+/// @type Color
+$pxh-error-icon-color: $gray5;
+
+/// Title/header text color for error messages
+/// @group pxh-error
+/// @type Color
+$pxh-error-title-color: $white;
+
+/// Description text color for error messages
+/// @group pxh-error
+/// @type Color
+$pxh-error-description-color: $white;
+
+/// Top margin to offset error message from top of browser window
+/// @group pxh-error
+/// @type Number
+$pxh-error-margin-top: $pxh-base-spacing-unit * 6;
+
+/// Top padding to give error message some breathing room
+/// @group pxh-error
+/// @type Number
+$pxh-error-padding-top: $pxh-base-spacing-unit * 2;
+
+/// Text decoration for hyperlinks in error messages
+/// @group pxh-error
+/// @type String
+$pxh-error-link-text-decoration: underline;
 
 // ** #GENERIC ** //
 
 @import 'generic.normalize';
-/// Path to GE web fonts
-/// @group pxh-settings
-/// @type String [default] - Webfont path
-$webfont-path: '//dzlpbrbc7yvq0.cloudfront.net/px/fonts/1.0.0';
 @import 'generic.fonts';
 @import 'generic.defaults';
 
 // ** #TOOLS ** //
 
-/// List of media query breakpoints
-/// @group pxh-settings
-$mq-breakpoints: (
-  md:  768px,
-  lg: 1024px,
-);
 @import 'sass-mq/mq'; // our sass task includes /bower_components automatically so we don't need to specify it
-/// Path to Font Awesome fonts
-/// @group pxh-settings
-/// @type String
-$fa-font-path: '//dzlpbrbc7yvq0.cloudfront.net/libs/font-awesome/4.6.3/fonts';
 @import 'font-awesome/scss/font-awesome'; // our sass task includes /bower_components automatically so we don't need to specify it
 @import 'tools.pxh-animations';
 @import 'tools.pxh-mixins';
@@ -46,7 +64,6 @@ $fa-font-path: '//dzlpbrbc7yvq0.cloudfront.net/libs/font-awesome/4.6.3/fonts';
 @import 'elements.body';
 @import 'elements.links';
 @import 'elements.hr';
-@import 'elements.typography';
 
 html {
   background-color: $gray10;
@@ -60,36 +77,6 @@ a {
 // ** #OBJECTS ** //
 
 // ** #COMPONENTS ** //
-
-/// Icon color for error messages
-/// @group pxh-error
-/// @type Color
-$error-icon-color: $gray5;
-
-/// Title/header text color for error messages
-/// @group pxh-error
-/// @type Color
-$error-title-color: $white;
-
-/// Description text color for error messages
-/// @group pxh-error
-/// @type Color
-$error-description-color: $white;
-
-/// Top margin to offset error message from top of browser window
-/// @group pxh-error
-/// @type Number
-$error-margin-top: $inuit-base-spacing-unit * 6;
-
-/// Top padding to give error message some breathing room
-/// @group pxh-error
-/// @type Number
-$error-padding-top: $inuit-base-spacing-unit * 2;
-
-/// Text decoration for hyperlinks in error messages
-/// @group pxh-error
-/// @type String
-$error-link-text-decoration: underline;
 
 @import 'components.pxh-error';
 
