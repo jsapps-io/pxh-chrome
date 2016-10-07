@@ -125,6 +125,14 @@ $pxh-drawer-opposite-side: null;
 /// @type String [default] - Webfont path
 $webfont-path: '//dzlpbrbc7yvq0.cloudfront.net/px/fonts/1.0.0';
 
+$webfont-name: 'GE Inspira Sans';
+
+$webfont-file-name-regular: GEInspiraSans-Regular-v01;
+$webfont-file-name-bold: GEInspiraSans-Bold-v01;
+$webfont-file-name-italic: GEInspiraSans-Italic-v01;
+$webfont-file-name-bold-italic: GEInspiraSans-BoldItalic-v01;
+
+
 /// List of media query breakpoints
 /// @group pxh-settings
 $mq-breakpoints: (
