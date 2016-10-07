@@ -269,7 +269,7 @@
   text-overflow: ellipsis;
   padding-top: $pxh-base-spacing-unit;
   text-align: center;
-  font-size: $pxh-base-font-size * 1.5;
+  font-size: $pxh-view-header-title-font-size;
 }
 
 .pxh-view-header__title-link.pxh-view-header__title-link.pxh-view-header__title-link  { // chained to override px-theme

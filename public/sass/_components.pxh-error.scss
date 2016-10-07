@@ -27,13 +27,13 @@
 }
 
 .pxh-error__icon {
-  font-size: $px-font-size-beta;
+  font-size: $pxh-error-icon-font-size;
   color: $pxh-error-icon-color;
   line-height: 1;
 }
 
 .pxh-error__title {
-  font-size: $px-font-size-epsilon;
+  font-size: $pxh-error-title-font-size;
   font-weight: bold;
   color: $pxh-error-title-text-color;
   a,
@@ -43,7 +43,7 @@
 }
 
 .pxh-error__description {
-  font-size: $px-font-size-regular;
+  font-size: $pxh-error-description-font-size;
   color: $pxh-error-description-text-color;
   a,
   a:link {

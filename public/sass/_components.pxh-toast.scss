@@ -95,7 +95,7 @@
     color: $pxh-toast-icon-color;
     padding-top: $pxh-toast-margin * 4;
     flex-basis: $pxh-toast-height;
-    font-size: 28px;
+    font-size: $pxh-toast-icon-font-size;
 
     &--green {
       background-color: $pxh-toast-icon-bg-color-green;

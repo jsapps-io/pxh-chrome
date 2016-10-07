@@ -63,7 +63,7 @@
   display: inline-block;
   text-decoration: none;
   text-transform: lowercase;
-  font-size: 14px;
+  font-size: $pxh-toast-more-button-font-size;
   &:hover {
     color: $pxh-toast-more-button-text-color-hover;
     background-color: $pxh-toast-more-button-bg-color-hover;
@@ -107,7 +107,7 @@
 
 @mixin pxh-toast__dismiss {
   text-align: center;
-  font-size: 18px;
+  font-size: $pxh-toast-dismiss-font-size;
   flex-basis: auto;
   width: $pxh-toast-margin * 8;
   flex-shrink: 0;
@@ -127,7 +127,7 @@
 @mixin pxh-toast--in-state-scale {
   height: $pxh-toast-height;
   margin-bottom: $pxh-toast-margin;
-  font-size: 16px;
+  font-size: $pxh-toast-font-size;
 }
 
 @mixin pxh-toast--in-state-opacity {
@@ -151,7 +151,7 @@
 
 @mixin pxh-notification--in-state-scale {
   height: $pxh-toast-height;
-  font-size: 16px;
+  font-size: $pxh-notification-font-size;
   border-style: solid;
   border-width: $pxh-notification-border-width;
   border-color: $pxh-notification-border-color;
@@ -351,7 +351,7 @@
     padding-top: $pxh-toast-margin * 4;
     padding-#{$pxh-drawer-side}: $pxh-toast-margin;
     flex-basis: $pxh-toast-margin * 8;
-    font-size: 24px;
+    font-size: $pxh-notification-icon-font-size;
 
     &--green {
       color: $pxh-notification-icon-color-green;

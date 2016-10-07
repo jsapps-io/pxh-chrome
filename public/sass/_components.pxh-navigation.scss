@@ -22,7 +22,7 @@
 
   &__link {
     position: relative;
-    font-size: $pxh-base-font-size;
+    font-size: $pxh-navigation-link-font-size;
     display: block;
     width: 100%;
     height: $pxh-navigation-link-height;
@@ -42,7 +42,7 @@
 
     &--error {
       color: $pxh-navigation-item-icon-color-error;
-      font-size: $pxh-base-font-size * 1.25;
+      font-size: $pxh-navigation-item-icon-error-font-size;
     }
   }
 }
@@ -74,7 +74,7 @@
 
 @mixin pxh-navigation__item-text--in-state-scale {
   padding-#{$pxh-drawer-side}: $pxh-drawer-margin;
-  font-size: 16px;
+  font-size: $pxh-navigation-item-text-font-size;
 }
 
 @mixin pxh-navigation__item-text--in-state-opacity {
@@ -156,7 +156,7 @@
   padding-bottom: 0;
   padding-#{$pxh-drawer-opposite-side}: $pxh-base-spacing-unit / 8;
   padding-#{$pxh-drawer-side}: $pxh-drawer-margin * 3;
-  font-size: 16px;
+  font-size: $pxh-navigation-sub-link-font-size;
 }
 
 @mixin pxh-navigation__sub-link--in-state-opacity {

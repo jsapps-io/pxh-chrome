@@ -5,7 +5,7 @@
 /// Massive animation config object for pxh-login components
 /// @group pxh-login
 $pxh-login-animate-config: (
-  font-size-in: $pxh-base-font-size,
+  font-size-in: $pxh-login-font-size,
   margin-in: 0,
   padding-in: 0,
   border-in: 0,
@@ -28,7 +28,7 @@ $pxh-login-animate-config: (
 .pxh-login {
   display: flex;
   align-items: center;
-  font-size: $pxh-base-font-size;
+  font-size: $pxh-login-font-size;
   border-style: solid;
   border-color: $pxh-login-border-color;
   border-width: $pxh-login-border-width;
@@ -193,7 +193,7 @@ $pxh-login-animate-config: (
     height: $pxh-drawer-margin;
     font-weight: normal;
     color: $pxh-login-notifications-badge-text-color;
-    font-size: 12px;
+    font-size: $pxh-login-notifications-badge-font-size;
     line-height: 1;
     border-radius: 12px;
     text-decoration: none;
@@ -238,7 +238,7 @@ $pxh-login-animate-config: (
   width: $pxh-login-avatar-height-width;
   padding-top: 4px; // magic number
   text-align: center;
-  font-size: $pxh-base-font-size * 1.1; // needs a !important with anything less than a five-deep class chain
+  font-size: $pxh-login-avatar-icon-font-size; // needs a !important with anything less than a five-deep class chain
   background-color: transparent;
   color: $pxh-login-avatar-icon-color;
   border-style: solid;

@@ -4,8 +4,9 @@
 
 @mixin pxh-badge--in-state-scale {
   padding: 2px 4px 0px 4px;
-  font-size: $pxh-base-font-size * 0.866666666666;
+  font-size: $pxh-badge-font-size;
 }
+
 @mixin pxh-badge--in-state-opacity {
   @include in-state-opacity;
 }

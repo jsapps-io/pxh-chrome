@@ -194,7 +194,7 @@ $pxh-badge-border-color-healthy-black:  $black;
 $pxh-badge-bg-color-healthy-white:      $white;
 $pxh-badge-border-color-healthy-white:  $gray5;
 
-
+$pxh-badge-font-size: $pxh-base-font-size * 0.866666666666666;
 
 
 /// @group pxh-drawer
@@ -220,7 +220,7 @@ $pxh-drawer-width-narrow: $pxh-base-spacing-unit * 4;
 /// @type Number
 $pxh-drawer-margin: $pxh-base-spacing-unit + ($pxh-base-spacing-unit / 3);
 
-
+$pxh-drawer-header-link-font-size: $pxh-base-font-size * 1.266666666666666;
 
 
 /// @group pxh-error
@@ -255,11 +255,15 @@ $pxh-error-padding-top: $pxh-base-spacing-unit;
 /// @type String
 $pxh-error-link-text-decoration: none;
 
+$pxh-error-icon-font-size: $pxh-base-font-size * 4;
 
+$pxh-error-title-font-size: $pxh-base-font-size * 1.333333333333333;
+
+$pxh-error-description-font-size: $pxh-base-font-size;
 
 
 /// @group pxh-login
-$pxh-login-border-color: rgba(0, 0, 0, 0.15);;
+$pxh-login-border-color: rgba(0, 0, 0, 0.15);
 $pxh-login-border-width: 1px 0 0 0;
 
 $pxh-login-avatar-icon-color: $gray7;
@@ -293,7 +297,26 @@ $pxh-login-notifications-badge-bg-color-blue: $blue;
 $pxh-login-notifications-badge-bg-color-orange: $orange;
 $pxh-login-notifications-badge-bg-color-red: $red;
 
+$pxh-login-font-size: $pxh-base-font-size;
 
+$pxh-login-notifications-badge-font-size: $pxh-base-font-size * 0.8;
+
+$pxh-login-avatar-icon-font-size: $pxh-base-font-size * 1.133333333333333;
+
+/// Login component height
+/// @group pxhtheme-login
+/// @type Number
+$pxh-login-height:  $pxh-base-spacing-unit * 4;
+
+/// User avatar height and width
+/// @group pxhtheme-login
+/// @type Number
+$pxh-login-avatar-height-width: $pxh-base-spacing-unit * 2;
+
+/// "Magic number" centering for login components
+/// @group pxhtheme-login
+/// @type Number
+$pxh-login-magic-centering: $pxh-base-spacing-unit - 1px;
 
 
 /// @group pxh-navigation
@@ -397,26 +420,17 @@ $pxh-navigation-sub-link-height: $pxh-base-spacing-unit * 2;
 /// @type Number
 $pxh-navigation-divider-margin: $pxh-base-spacing-unit - ($pxh-base-spacing-unit / 3);
 
-/// Login component height
-/// @group pxhtheme-login
-/// @type Number
-$pxh-login-height:  $pxh-base-spacing-unit * 4;
+$pxh-navigation-link-font-size: $pxh-base-font-size;
 
-/// User avatar height and width
-/// @group pxhtheme-login
-/// @type Number
-$pxh-login-avatar-height-width: $pxh-base-spacing-unit * 2;
+$pxh-navigation-item-icon-error-font-size: $pxh-base-font-size * 1.266666666666666;
 
-/// "Magic number" centering for login components
-/// @group pxhtheme-login
-/// @type Number
-$pxh-login-magic-centering: $pxh-base-spacing-unit - 1px;
+$pxh-navigation-item-text-font-size: $pxh-base-font-size * 1.066666666666666;
 
-/// View header height
-/// locked to current height of px-context-browser + 1px for bottom border
-/// @group pxh-view
-/// @type Number
-$pxh-view-header-height: ($pxh-base-spacing-unit * 4) + 1px;
+$pxh-navigation-sub-link-font-size: $pxh-base-font-size * 1.066666666666666;
+
+
+
+
 
 
 
@@ -493,6 +507,9 @@ $pxh-notification-margin: ($pxh-base-spacing-unit / 3);
 /// @type Number
 $pxh-notification-max-count: 5;
 
+$pxh-notification-font-size: $pxh-base-font-size * 1.066666666666666;
+
+$pxh-notification-icon-font-size: $pxh-base-font-size * 1.6;
 
 
 
@@ -579,6 +596,14 @@ $pxh-toast-margin: $pxh-base-spacing-unit / 3;
 /// @type Number
 $pxh-toast-max-count: 3;
 
+$pxh-toast-font-size: $pxh-base-font-size * 1.066666666666666;
+
+$pxh-toast-more-button-font-size: $pxh-base-font-size * 0.933333333333333;
+
+$pxh-toast-dismiss-font-size: $pxh-base-font-size * 1.2;
+
+$pxh-toast-icon-font-size: $pxh-base-font-size * 1.866666666666666;
+
 
 
 
@@ -610,6 +635,14 @@ $pxh-view-header-border-width: 0 0 1px 0; // should allow all borders, but speci
 $pxh-view-header-drawer-toggle-icon-color: $black;
 
 $pxh-view-header-title-link-text-color: $black;
+
+$pxh-view-header-title-font-size: $pxh-base-font-size * 1.466666666666666;
+
+/// View header height
+/// locked to current height of px-context-browser + 1px for bottom border
+/// @group pxh-view
+/// @type Number
+$pxh-view-header-height: ($pxh-base-spacing-unit * 4) + 1px;
 
 
 

@@ -184,7 +184,7 @@
   margin-top: 0;
   margin-bottom: 0;
   width: $pxh-drawer-width-wide - ($pxh-drawer-margin * 3);
-  font-size: $pxh-base-font-size * 1.25;
+  font-size: $pxh-drawer-header-link-font-size;
 }
 
 @mixin pxh-drawer-header__link--in-state {
