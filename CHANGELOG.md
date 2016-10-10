@@ -1,6 +1,6 @@
 # pxh-chrome changelog
 
-### pending release
+### 2.3.0 - October 10, 2016
 * Add theming support
   * Consolidate all theme-related attributes and Sass variables to `_settings.theme.scss`
   * Remove `_settings.defaults.scss` and `_settings.pxh-chrome.css`
@@ -20,8 +20,8 @@
 * Change import order of Sass components to be alphabetical
 * Remove `_elements.typography.scss`, as all the styles it declares are already covered by Normalize.css
 * Update Sass mixin names for clarity
-
 * Bump metalsmith-copy to 0.3.0
+* Bump mocha to 3.1.1
 
 ### 2.2.1 - September 30, 2016
 * Add end-to-end tests for pxh-toast and pxh-notification capabilities

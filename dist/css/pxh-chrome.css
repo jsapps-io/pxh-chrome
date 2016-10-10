@@ -1,5 +1,5 @@
 @charset "UTF-8";
-/*! pxh-chrome.css 2.2.1 */
+/*! pxh-chrome.css 2.3.0 */
 /*------------------------------------*    #pxh-chrome
 \*------------------------------------*/
 /*------------------------------------*    #settings.theme-default
@@ -3680,9 +3680,6 @@ hr {
   left: 0;
   width: 260px;
   height: 100%;
-  border-style: solid;
-  border-width: 0;
-  border-color: transparent;
   background-color: #242326;
   box-shadow: none;
 }
@@ -3951,12 +3948,12 @@ hr {
 
 .pxh-drawer-header__link--image {
   display: block;
-  background-image: url("../img/predix_logo_color.png");
+  background-image: url("../img/logo.png");
   background-repeat: no-repeat;
   background-position: left center;
   background-size: contain;
   height: 60px;
-  width: 199px;
+  width: 200px;
   text-indent: -9999px;
   font-size: 1px;
 }

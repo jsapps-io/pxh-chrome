@@ -232,11 +232,13 @@ $pxh-drawer-bg-color: $gray10;
 
 $pxh-drawer-toggle-icon-color: $gray7;
 
-$pxh-drawer-header-image: url('../img/predix_logo_color.png');
+$pxh-drawer-header-image: url('../img/logo.png');
 
-$pxh-drawer-border-color: transparent;
+/// Disabled until we figure out how to add a border without reducing the logo width
+/// $pxh-drawer-border-color: transparent;
 
-$pxh-drawer-border-width: 0;
+/// Disabled until we figure out how to add a border without reducing the logo width
+/// $pxh-drawer-border-width: 0;
 
 $pxh-drawer-box-shadow: none;
 
