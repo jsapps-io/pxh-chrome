@@ -1,6 +1,6 @@
 # pxh-chrome changelog
 
-### 2.3.0 - pending release
+### 2.3.0 - October 10, 2016
 * Add theming support
   * Consolidate all theme-related attributes and Sass variables to `_settings.theme.scss`
   * Remove `_settings.defaults.scss` and `_settings.pxh-chrome.css`
@@ -22,7 +22,7 @@
 * Update Sass mixin names for clarity
 * Bump metalsmith-copy to 0.3.0
 
-### 2.3.0 - September 30, 2016
+### 2.2.1 - September 30, 2016
 * Add end-to-end tests for pxh-toast and pxh-notification capabilities
 * Fix bug where drawer could overlap view area when transitioning from default breakpoint to @lg breakpoint
   * Could happen when user resized browser window while on a different browser tab, and then switched back to their tab with the pxh-chrome layout
