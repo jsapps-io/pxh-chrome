@@ -19,8 +19,8 @@ const reload = browserSync.reload;
 const componentConfig = {
   site: {
     title: 'pxh-chrome',
-    version: '2.2.1',
-  },
+    version: '2.3.0',
+  }
 };
 
 gulp.task('sass', () => {

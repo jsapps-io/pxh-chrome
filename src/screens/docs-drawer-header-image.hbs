@@ -1,0 +1,50 @@
+---
+title: "Drawer Header Image"
+bodyClass: "pxh-chromeful"
+---
+
+    <div class="pxh-wrapper">
+      <div class="pxh-view-header pxh-view-header--wide@md pxh-view-header--narrow@lg pxh-view-header--nudge-until@md">
+        <h1 class="pxh-view-header__title">
+          <a href="index.html" class="pxh-view-header__title-link">
+            Drawer Header Image
+          </a>
+        </h1>
+      </div>
+      <div class="pxh-view pxh-view--wide@md pxh-view--narrow@lg" id="js-view">
+        <div class="pxh-docs">
+          <h2>pxh-drawer-header--image &mdash; <a href="demo-drawer-header-image.html">view demo</a></h2>
+
+          <p>By default, pxh-chrome displays the title of your application in the drawer header area. If you wish to display a company logo or other image in this space, you are free to do so with a few small changes.</p>
+
+          <p>The drawer header area provides a 60px x 200px space for including a logo. We strongly recommend you use a PNG image with a 24-bit transparent background, at a resolution at least twice as large as 60px x 200px to accomodate retina displays. pxh-chrome will proportionally scale the image you include, and using a 120px x 400px image, for example, will ensure your logo still looks crisp on a display with 2x pixel density.</p>
+
+          <p>The iPhone 6 Plus and iPhone 7 Plus have 3x pixel density displays, so to ensure the highest compatibility of your designs with future devices we highly recommend you use an image that is at least 180px x 600px.</p>
+
+          <p>pxh-chrome will preserve the aspect ratio of any image that it scales to fit into the drawer header area. If an image doesn't match the 60x200 aspect ratio, it will be scaled proportionally so that the entire image fits the available space, and will be centered vertically and fully aligned to the left. In right-to-left layouts, the image will be fully aligned to the right.</p>
+
+          <h3>Adding your own logo to pxh-chrome</h3>
+
+          <p><em>Note: Adding and updating the image in the drawer header of pxh-chrome is currently in beta. These instructions will undoubtedly change as we improve the customization hooks in pxh-chrome.</em></p>
+
+          <ul>
+            <li>Create and save your logo image in PNG format on a 24-bit alpha transparent background, with the filename <code>logo.png</code></li>
+            <li>Replace the <code>logo.png</code> file in the <code>/public/img</code> folder of pxh-chrome with your own logo</li>
+            <li>Update your drawer template (in your HTML if you're using pxh-chrome by itself; in <code>views/main.handlebars</code> if you're using pxh-chrome with the App Hub) to tell it to use your image:
+              <ul>
+                <li>Find <code>&lt;h1 class="pxh-drawer-header"&gt;</code> and change it to <code>&lt;h1 class="pxh-drawer-header pxh-drawer-header--image"&gt;</code></li>
+                <li>Find <code>&lt;a href="#" class="pxh-drawer-header__link pxh-drawer-header__link--narrow@md pxh-drawer-header__link--wide@lg" title="{{appname}}"&gt;</code> and change it to <code>&lt;a href="#" class="pxh-drawer-header__link pxh-drawer-header__link--image pxh-drawer-header__link--narrow@md pxh-drawer-header__link--wide@lg" title="{{appname}}"&gt;</code></li>
+              </ul>
+            </li>
+            <li>To put it plainly, you're adding the <code>pxh-drawer-header--image</code> and <code>pxh-drawer-header__link--image</code> classes to their corresponding elements, telling them to show an image instead of showing the application name</li>
+          </ul>
+
+          <p><em>If you're using the App Hub, the easiest way to repoint the CSS to your image is to put it somewhere accessible (e.g. in your App Hub filesystem or on a CDN) and add these lines to the <code>&lt;head&gt;</code> of your <code>main.handlebars</code> file:</p>
+            <pre><code>&lt;style type="text/css"&gt;
+  .pxh-drawer-header__link--image {
+    background-image: url('RELATIVE_OR_ABSOLUTE_PATH_TO_YOUR/logo.png') !important;
+  }
+&lt;style&gt;</code></pre>
+        </div>
+      </div>
+    </div>

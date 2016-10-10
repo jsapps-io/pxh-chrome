@@ -1,5 +1,28 @@
 # pxh-chrome changelog
 
+### 2.3.0 - October 10, 2016
+* Add theming support
+  * Consolidate all theme-related attributes and Sass variables to `_settings.theme.scss`
+  * Remove `_settings.defaults.scss` and `_settings.pxh-chrome.css`
+  * Remove magic numbers and calculate nearly all widths, margins and paddings based on `$pxh-base-spacing-unit` (which in turn is based on `$pxh-base-font-size`)
+  * Calculate all font sizes based on `$pxh-base-font-size`, and remove Px font sizes
+  * Add `$pxh-base-spacing-scale-ratio` value that allows fine-tuning of relationship between base font size and base spacing unit
+  * Make GE Inspira Sans `@font-face` import configurable
+  * Move base font family into variable
+  * Move all `inuit` Sass variables into the `pxh` namespace
+* Add support for including an image logo instead of text in the drawer header via `pxh-view-header--image` and `pxh-view-header__link--image` classes
+  * Dimensions are 60px x 200px
+  * Any image larger will be scaled proportionally to fit via `background-scale: contains` property
+  * We recommend an image least 180px x 600px in size to support devices with @3x dpi retina displays (e.g. iPhone 6+)
+  * We recommend using a PNG image with alpha transparency
+  * An image that does not fill the full height will be centered vertically within the container
+* Bump Normalize.css to 5.0.0
+* Change import order of Sass components to be alphabetical
+* Remove `_elements.typography.scss`, as all the styles it declares are already covered by Normalize.css
+* Update Sass mixin names for clarity
+* Bump metalsmith-copy to 0.3.0
+* Bump mocha to 3.1.1
+
 ### 2.2.1 - September 30, 2016
 * Add end-to-end tests for pxh-toast and pxh-notification capabilities
 * Fix bug where drawer could overlap view area when transitioning from default breakpoint to @lg breakpoint

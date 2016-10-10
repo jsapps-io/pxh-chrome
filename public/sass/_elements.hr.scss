@@ -4,10 +4,10 @@
 
 hr {
     height: 1px;
-    color: $gray6;
-    background: $gray6;
+    color: $pxh-hr-color;
+    background: $pxh-hr-color;
     font-size: 0;
     border: 0;
-    margin-top: $inuit-base-spacing-unit;
-    margin-bottom: $inuit-base-spacing-unit;
+    margin-top: $pxh-base-spacing-unit;
+    margin-bottom: $pxh-base-spacing-unit;
 }

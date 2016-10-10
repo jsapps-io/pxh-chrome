@@ -5,7 +5,7 @@
 /// Massive animation config object for pxh-login components
 /// @group pxh-login
 $pxh-login-animate-config: (
-  font-size-in: $inuit-base-font-size,
+  font-size-in: $pxh-login-font-size,
   margin-in: 0,
   padding-in: 0,
   border-in: 0,
@@ -28,8 +28,10 @@ $pxh-login-animate-config: (
 .pxh-login {
   display: flex;
   align-items: center;
-  font-size: $inuit-base-font-size;
-  border-top: 1px solid $gray9;
+  font-size: $pxh-login-font-size;
+  border-style: solid;
+  border-color: $pxh-login-border-color;
+  border-width: $pxh-login-border-width;
   background-color: $pxh-drawer-bg-color;
   position: absolute;
   bottom: 0;
@@ -62,11 +64,11 @@ $pxh-login-animate-config: (
   }
 
   &__link {
-    @include pxh-override-px-theme-color('pxh-login__link');
+    @include pxh-override-px-theme-text-color('pxh-login__link');
   }
 
   &__profile-link {
-    @include pxh-override-px-theme-color('pxh-login__profile-link');
+    @include pxh-override-px-theme-text-color('pxh-login__profile-link');
     display: flex;
     align-items: center;
     flex-grow: 3;
@@ -164,65 +166,66 @@ $pxh-login-animate-config: (
   }
 
   &__notifications-link {
-    @include pxh-override-px-theme-color('pxh-login__notifications-link');
+    @include pxh-override-px-theme-text-color('pxh-login__notifications-link');
     display: inline;
     padding: $pxh-login-magic-centering ($pxh-drawer-margin / 2) ($pxh-drawer-margin / 2) ($pxh-drawer-margin / 2);
-    color: $gray7;
+    color: $pxh-login-notifications-link-text-color;
 
     &:hover,
     .pxh-login__notifications:hover & {
-      color: $white;
+      color: $pxh-login-notifications-link-text-color-hover;
     }
   }
 
   &__notifications-badge {
-    @include pxh-override-px-theme-color('pxh-login__notifications-badge', $white);
+    @include pxh-override-px-theme-text-color('pxh-login__notifications-badge', $pxh-login-notifications-badge-text-color, $pxh-login-notifications-badge-text-color-hover);
     @if $pxh-drawer-side == right {
       left: $pxh-drawer-margin / 4;
     } @else {
       right: -$pxh-drawer-margin / 4;
     }
-    top: -($pxh-drawer-margin / 2) - 5px;
+    top: -($pxh-drawer-margin - 5px);
     z-index: 775;
     text-align: center;
-    background-color: $gray5;
+    background-color: $pxh-login-notifications-badge-bg-color;
     display: block;
     min-width: $pxh-drawer-margin;
     height: $pxh-drawer-margin;
     font-weight: normal;
-    color: $white;
-    font-size: 12px;
+    color: $pxh-login-notifications-badge-text-color;
+    font-size: $pxh-login-notifications-badge-font-size;
     line-height: 1;
     border-radius: 12px;
     text-decoration: none;
     position: absolute;
     padding-top: 4px;
     padding-bottom: 0;
-    padding-left: 1px; // yeah, hard-coded for LTR and RTL
-    padding-right: 2px; // yeah, hard-coded for LTR and RTL
-
-    &:hover + .pxh-login__notifications-link {
-      color: $white !important; // !important is the only way to override the px-theme override chaining
+    padding-#{$pxh-drawer-side}: 1px;
+    padding-#{$pxh-drawer-opposite-side}: 2px;
+    &:hover {
+      & + .pxh-login__notifications-link {
+        color: $pxh-login-notifications-link-text-color-hover !important; // !important is the only way to override the px-theme override chaining
+      }
     }
 
     &--green {
-      @include pxh-override-px-theme-background-color('pxh-login__notifications-badge--green', $green);
-      background-color: $green;
+      @include pxh-override-px-theme-bg-color('pxh-login__notifications-badge--green', $pxh-login-notifications-badge-bg-color-green);
+      background-color: $pxh-login-notifications-badge-bg-color-green;
     }
 
     &--blue {
-      @include pxh-override-px-theme-background-color('pxh-login__notifications-badge--blue', $blue);
-      background-color: $blue;
+      @include pxh-override-px-theme-bg-color('pxh-login__notifications-badge--blue', $pxh-login-notifications-badge-bg-color-blue);
+      background-color: $pxh-login-notifications-badge-bg-color-blue;
     }
 
     &--orange {
-      @include pxh-override-px-theme-background-color('pxh-notifications-badge--orange', $orange);
-      background-color: $orange;
+      @include pxh-override-px-theme-bg-color('pxh-notifications-badge--orange', $pxh-login-notifications-badge-bg-color-orange);
+      background-color: $pxh-login-notifications-badge-bg-color-orange;
     }
 
     &--red {
-      @include pxh-override-px-theme-background-color('pxh-notifications-badge--red', $red);
-      background-color: $red;
+      @include pxh-override-px-theme-bg-color('pxh-notifications-badge--red', $pxh-login-notifications-badge-bg-color-red);
+      background-color: $pxh-login-notifications-badge-bg-color-red;
     }
 
     &--hidden {
@@ -236,10 +239,12 @@ $pxh-login-animate-config: (
   width: $pxh-login-avatar-height-width;
   padding-top: 4px; // magic number
   text-align: center;
-  font-size: $inuit-base-font-size * 1.1; // needs a !important with anything less than a five-deep class chain
+  font-size: $pxh-login-avatar-icon-font-size; // needs a !important with anything less than a five-deep class chain
   background-color: transparent;
-  color: $gray7;
-  border: 1px solid $gray7;
+  color: $pxh-login-avatar-icon-color;
+  border-style: solid;
+  border-color: $pxh-login-avatar-icon-border-color;
+  border-width: $pxh-login-avatar-icon-border-width;
   border-radius: 100%;
 }
 
@@ -251,12 +256,12 @@ $pxh-login-animate-config: (
   padding-bottom: 0;
   padding-#{$pxh-drawer-side}: $pxh-drawer-margin / 2;
   padding-#{$pxh-drawer-opposite-side}: $pxh-drawer-margin / 2;  
-  color: $gray7;
+  color: $pxh-login-settings-link-text-color;
   text-decoration: none;
 }
 
 .pxh-login__settings-link:hover.pxh-login__settings-link:hover.pxh-login__settings-link:hover { // chained to override px-theme
-  color: $white;
+  color: $pxh-login-settings-link-text-color-hover;
 }
 
 /*------------------------------------*\
@@ -266,24 +271,26 @@ $pxh-login-animate-config: (
 .pxh-login-menu {
   z-index: 799;
   position: absolute;
-  bottom: ($pxh-login-height / 2) + 10px; // magic number to position above name
+  bottom: ($pxh-login-height / 2) + ($pxh-drawer-margin / 2); // magic number to position above name
   #{$pxh-drawer-side}: -9999px;
-  background-color: $black;
-  color: $white;
+  background-color: $pxh-login-menu-bg-color;
+  color: $pxh-login-menu-text-color;
   width: $pxh-drawer-width-wide / 2;
   border-radius: 3px;
-  border: 1px solid $gray9;
-  -webkit-box-shadow: 0 1px 2px 0 rgba(0,0,0,0.25);
-  -moz-box-shadow: 0 1px 2px 0 rgba(0,0,0,0.25);
-  box-shadow: 0 1px 2px 0 rgba(0,0,0,0.25);
+  border-style: solid;
+  border-width: $pxh-login-menu-border-width;
+  border-color: $pxh-login-menu-border-color;
+  box-shadow: $pxh-login-menu-box-shadow;
 
   &__divider {
     display: block;
-    border-top: 1px solid $gray10;
+    border-style: solid;
+    border-width: $pxh-login-menu-divider-border-width;
+    border-color: $pxh-login-menu-border-color;
   }
 
   &__link {
-    @include pxh-override-px-theme-color('pxh-login-menu__link ', $white, $white);
+    @include pxh-override-px-theme-text-color('pxh-login-menu__link ', $pxh-login-menu-link-text-color, $pxh-login-menu-link-text-color-hover);
   }
 }
 
@@ -303,17 +310,17 @@ $pxh-login-animate-config: (
 
 .pxh-login-menu__link.pxh-login-menu__link.pxh-login-menu__link { // chained to override px-theme
   display: block;
-  height: 30px;
-  padding: 5px;
+  height: $pxh-base-spacing-unit * 2;
+  padding: $pxh-base-spacing-unit / 3;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
   text-decoration: none;
-  color: $white;
+  color: $pxh-login-menu-link-text-color;
 }
 
 .pxh-login-menu__link:hover.pxh-login-menu__link:hover.pxh-login-menu__link:hover { // chained to override px-theme
-  background-color: $gray10;
+  background-color: $pxh-login-menu-link-bg-color-hover;
 }
 
 @include mq($from: md) {

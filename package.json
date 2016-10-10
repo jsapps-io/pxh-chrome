@@ -2,7 +2,7 @@
   "name": "@hubs/pxh-chrome",
   "private": true,
   "description": "Application chrome for the Predix UI App Hub",
-  "version": "2.2.1",
+  "version": "2.3.0",
   "homepage": "https://github.build.ge.com/hubs/pxh-chrome",
   "engines": {
     "node": ">=4.4.0"
@@ -40,7 +40,7 @@
     "handlebars": "^4.0.5",
     "lodash": "^4.16.2",
     "metalsmith": "^2.1.0",
-    "metalsmith-copy": "^0.2.1",
+    "metalsmith-copy": "^0.3.0",
     "metalsmith-layouts": "^1.6.5",
     "mocha": "^3.1.0",
     "protractor": "^4.0.8"
