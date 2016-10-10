@@ -20,7 +20,6 @@
 * Change import order of Sass components to be alphabetical
 * Remove `_elements.typography.scss`, as all the styles it declares are already covered by Normalize.css
 * Update Sass mixin names for clarity
-
 * Bump metalsmith-copy to 0.3.0
 
 ### 2.3.0 - September 30, 2016
