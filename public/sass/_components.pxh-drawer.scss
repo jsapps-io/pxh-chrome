@@ -84,14 +84,15 @@
   #{$pxh-drawer-side}: 0;
   width: $pxh-drawer-width-wide;
   height: 100%;
-  border-style: solid;
-  border-width: $pxh-drawer-border-width;
-  border-color: $pxh-drawer-border-color;
+  // disabled until we figure out how to add a border without reducing the logo width
+  // border-style: solid;
+  // border-width: $pxh-drawer-border-width;
+  // border-color: $pxh-drawer-border-color;
   background-color: $pxh-drawer-bg-color;
   box-shadow: $pxh-drawer-box-shadow;
 
   &--image {
-    // I don't need this class yet but I anticipate other people needing it in the future
+    // We don't need this class yet but we anticipate other people needing it in the future
   }
 
   &--animate-in {
@@ -259,7 +260,7 @@
       background-position: #{$pxh-drawer-side} center;
       background-size: contain;
       height: $pxh-drawer-margin * 3;
-      width: $pxh-drawer-width-wide - ($pxh-drawer-margin * 3) - 1px; // minus 1px to account for optional right border
+      width: $pxh-drawer-width-wide - ($pxh-drawer-margin * 3);
       text-indent: -9999px;
       font-size: 1px;
     }
