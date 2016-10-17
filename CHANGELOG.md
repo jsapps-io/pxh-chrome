@@ -1,5 +1,10 @@
 # pxh-chrome changelog
 
+### 2.3.1 - October 17, 2016
+* Bump versions on browser-sync, gulp-sourcemaps, mocha
+* Bump Airbnb base ESLint config to latest version
+  * Bump corresponding ESLint and plugin-import dependencies
+
 ### 2.3.0 - October 10, 2016
 * Add theming support
   * Consolidate all theme-related attributes and Sass variables to `_settings.theme.scss`
