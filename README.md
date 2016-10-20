@@ -1,4 +1,4 @@
-#pxh-chrome 2.3.1
+#pxh-chrome 2.4.0
 
 Application chrome for the Predix UI App Hub
 
@@ -46,11 +46,11 @@ pxh-chrome is the CSS/HTML layer of [ui-app-hub](https://github.build.ge.com/hub
 The easiest way to drop pxh-chrome into your project is via the CDN. Simply drop `pxh-chrome.css` and `pxh-chrome.js` into your HTML file with the following lines:
 
 ```html
-<link rel="stylesheet" href="//dzlpbrbc7yvq0.cloudfront.net/pxh-chrome/2.3.1/dist/css/pxh-chrome.min.css">
+<link rel="stylesheet" href="//dzlpbrbc7yvq0.cloudfront.net/pxh-chrome/2.4.0/dist/css/pxh-chrome.min.css">
 ```
 
 ```html
-<script src="//dzlpbrbc7yvq0.cloudfront.net/pxh-chrome/2.3.1/dist/js/pxh-chrome.min.js"></script>
+<script src="//dzlpbrbc7yvq0.cloudfront.net/pxh-chrome/2.4.0/dist/js/pxh-chrome.min.js"></script>
 ```
 
 Then, update your HTML to use pxh-chrome's markup and classes. Refer to the source code of `index.html` for examples.
