@@ -24,7 +24,7 @@ const componentConfig = {
 };
 
 gulp.task('sass', () => {
-  return gulp.src('public/sass/*.scss')
+  return gulp.src('sass/*.scss')
     .pipe($.plumber())
     .pipe($.sourcemaps.init())
     .pipe($.sass.sync({
@@ -41,7 +41,7 @@ gulp.task('sass', () => {
 
 gulp.task('sass:dist', () => {
   gulp.start('sass');
-  return gulp.src('public/sass/*.scss')
+  return gulp.src('sass/*.scss')
     .pipe($.plumber())
     .pipe($.sass.sync({
       outputStyle: 'expanded',
