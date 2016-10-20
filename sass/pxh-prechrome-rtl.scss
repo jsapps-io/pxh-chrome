@@ -11,6 +11,7 @@
 /// @type String [default] 'ltr'
 $pxh-language-direction: 'rtl'; // 'ltr' OR 'rtl'
 
+@import 'settings.theme-prechrome';
 @import 'settings.theme-default';
 
 /// prechrome overrides
