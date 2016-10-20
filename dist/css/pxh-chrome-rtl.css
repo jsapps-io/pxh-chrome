@@ -1,5 +1,5 @@
 @charset "UTF-8";
-/*! pxh-chrome-rtl.css 2.3.1 */
+/*! pxh-chrome-rtl.css 2.4.0 */
 /*------------------------------------*    #pxh-chrome-rtl
 \*------------------------------------*/
 /*------------------------------------*    #settings.theme-default
@@ -5801,9 +5801,16 @@ hr {
 /*------------------------------------*    #components.pxh-spinner
 \*------------------------------------*/
 .pxh-spinner {
-  margin: 60px 0 60px 0;
   text-align: center;
   overflow: hidden;
+}
+
+.pxh-spinner, .pxh-spinner--margin {
+  margin: 60px 0 60px 0;
+}
+
+.pxh-spinner--no-margin {
+  margin: 0;
 }
 
 .pxh-spinner::after {
