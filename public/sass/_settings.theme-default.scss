@@ -3,110 +3,110 @@
 \*------------------------------------*/
 
 /// @group Brand Colors - Primary
-$red                            : rgb(227,37,51);
-$blue                           : rgb(0,92,185);
-$green                          : rgb(70,173,0);
-$purple                         : rgb(134,105,255);
-$orange                         : rgb(255,152,33);
-$yellow                         : rgb(255,237,69);
+$red                            : rgb(227,37,51) !default;
+$blue                           : rgb(0,92,185) !default;
+$green                          : rgb(70,173,0) !default;
+$purple                         : rgb(134,105,255) !default;
+$orange                         : rgb(255,152,33) !default;
+$yellow                         : rgb(255,237,69) !default;
 
 /// @group Brand Colors - Light
-$red-light                      : rgb(255,92,92);
-$blue-light                     : rgb(54,147,248);
-$green-light                    : rgb(117,216,53);
-$purple-light                   : rgb(156,151,255);
-$orange-light                   : rgb(255,187,102);
-$yellow-light                   : rgb(255,249,141);
+$red-light                      : rgb(255,92,92) !default;
+$blue-light                     : rgb(54,147,248) !default;
+$green-light                    : rgb(117,216,53) !default;
+$purple-light                   : rgb(156,151,255) !default;
+$orange-light                   : rgb(255,187,102) !default;
+$yellow-light                   : rgb(255,249,141) !default;
 
 /// @group Brand Colors - Dark
-$red-dark                       : rgb(182,18,37);
-$blue-dark                      : rgb(0,54,110);
-$green-dark                     : rgb(29,95,17);
-$purple-dark                    : rgb(89,81,148);
-$orange-dark                    : rgb(229,92,0);
-$yellow-dark                    : rgb(255,207,69);
+$red-dark                       : rgb(182,18,37) !default;
+$blue-dark                      : rgb(0,54,110) !default;
+$green-dark                     : rgb(29,95,17) !default;
+$purple-dark                    : rgb(89,81,148) !default;
+$orange-dark                    : rgb(229,92,0) !default;
+$yellow-dark                    : rgb(255,207,69) !default;
 
 /// @group Monochromatic (gray10 is darkest, gray1 is lightest)
-$black                          : rgb(0,0,0);
-$gray10                         : rgb(36,35,38);
-$gray9                          : rgb(59,59,63);
-$gray8                          : rgb(82,81,86);
-$gray7                          : rgb(124,124,132);
-$gray6                          : rgb(153,153,163);
-$gray5                          : rgb(177,177,188);
-$gray4                          : rgb(209,208,216);
-$gray3                          : rgb(228,228,234);
-$gray2                          : rgb(239,239,244);
-$gray1                          : rgb(247,247,252);
-$white                          : rgb(255,255,255);
+$black                          : rgb(0,0,0) !default;
+$gray10                         : rgb(36,35,38) !default;
+$gray9                          : rgb(59,59,63) !default;
+$gray8                          : rgb(82,81,86) !default;
+$gray7                          : rgb(124,124,132) !default;
+$gray6                          : rgb(153,153,163) !default;
+$gray5                          : rgb(177,177,188) !default;
+$gray4                          : rgb(209,208,216) !default;
+$gray3                          : rgb(228,228,234) !default;
+$gray2                          : rgb(239,239,244) !default;
+$gray1                          : rgb(247,247,252) !default;
+$white                          : rgb(255,255,255) !default;
 
-$graybg                         : rgb(139,141,143);
+$graybg                         : rgb(139,141,143) !default;
 
 /// @group Primary Buttons
-$primary-blue                   : rgb(62,135,232);
-$primary-blue-hover             : rgb(53,115,197);
-$primary-blue-pressed           : rgb(43,94,162);
+$primary-blue                   : rgb(62,135,232) !default;
+$primary-blue-hover             : rgb(53,115,197) !default;
+$primary-blue-pressed           : rgb(43,94,162) !default;
 
 /// @group Select States
-$select-blue-default            : rgb(10,158,193);
-$select-blue-hover              : rgb(9,134,164);
-$select-blue-pressed            : rgb(8,110,135);
+$select-blue-default            : rgb(10,158,193) !default;
+$select-blue-hover              : rgb(9,134,164) !default;
+$select-blue-pressed            : rgb(8,110,135) !default;
 
 /// @group Alerts
-$alert-red                      : rgb(229,56,56);
-$alert-orange                   : rgb(221,107,31);
-$alert-yellow                   : rgb(232,167,54);
-$alert-blue                     : rgb(67,100,221);
+$alert-red                      : rgb(229,56,56) !default;
+$alert-orange                   : rgb(221,107,31) !default;
+$alert-yellow                   : rgb(232,167,54) !default;
+$alert-blue                     : rgb(67,100,221) !default;
 
 /// @group Data Visualization - Primary
-$dv-basic-blue                  : rgb(93,165,218);
-$dv-basic-orange                : rgb(250,164,58);
-$dv-basic-green                 : rgb(96,189,104);
-$dv-basic-pink                  : rgb(241,124,176);
-$dv-basic-brown                 : rgb(178,145,47);
-$dv-basic-purple                : rgb(178,118,178);
-$dv-basic-yellow                : rgb(222,207,63);
-$dv-basic-red                   : rgb(241,88,84);
-$dv-basic-gray                  : rgb(77,77,77);
-$dv-basic-grey                  : $dv-basic-gray;
+$dv-basic-blue                  : rgb(93,165,218) !default;
+$dv-basic-orange                : rgb(250,164,58) !default;
+$dv-basic-green                 : rgb(96,189,104) !default;
+$dv-basic-pink                  : rgb(241,124,176) !default;
+$dv-basic-brown                 : rgb(178,145,47) !default;
+$dv-basic-purple                : rgb(178,118,178) !default;
+$dv-basic-yellow                : rgb(222,207,63) !default;
+$dv-basic-red                   : rgb(241,88,84) !default;
+$dv-basic-gray                  : rgb(77,77,77) !default;
+$dv-basic-grey                  : $dv-basic-gray !default;
 
 /// @group Data Visualization - Light
-$dv-light-blue                  : rgb(136,189,230);
-$dv-light-orange                : rgb(251,178,88);
-$dv-light-green                 : rgb(144,205,151);
-$dv-light-pink                  : rgb(246,170,201);
-$dv-light-brown                 : rgb(191,165,84);
-$dv-light-purple                : rgb(188,153,199);
-$dv-light-yellow                : rgb(237,221,70);
-$dv-light-red                   : rgb(240,126,110);
-$dv-light-gray                  : rgb(140,140,140);
-$dv-light-grey                  : $dv-light-gray;
+$dv-light-blue                  : rgb(136,189,230) !default;
+$dv-light-orange                : rgb(251,178,88) !default;
+$dv-light-green                 : rgb(144,205,151) !default;
+$dv-light-pink                  : rgb(246,170,201) !default;
+$dv-light-brown                 : rgb(191,165,84) !default;
+$dv-light-purple                : rgb(188,153,199) !default;
+$dv-light-yellow                : rgb(237,221,70) !default;
+$dv-light-red                   : rgb(240,126,110) !default;
+$dv-light-gray                  : rgb(140,140,140) !default;
+$dv-light-grey                  : $dv-light-gray !default;
 
 /// @group Data Visualization - Dark
-$dv-dark-blue                   : rgb(38,93,171);
-$dv-dark-orange                 : rgb(223,92,36);
-$dv-dark-green                  : rgb(5,151,72);
-$dv-dark-pink                   : rgb(229,18,111);
-$dv-dark-brown                  : rgb(157,114,42);
-$dv-dark-purple                 : rgb(123,58,150);
-$dv-dark-yellow                 : rgb(199,180,46);
-$dv-dark-red                    : rgb(203,32,39);
-$dv-dark-gray                   : $black;
-$dv-dark-grey                   : $dv-dark-gray;
+$dv-dark-blue                   : rgb(38,93,171) !default;
+$dv-dark-orange                 : rgb(223,92,36) !default;
+$dv-dark-green                  : rgb(5,151,72) !default;
+$dv-dark-pink                   : rgb(229,18,111) !default;
+$dv-dark-brown                  : rgb(157,114,42) !default;
+$dv-dark-purple                 : rgb(123,58,150) !default;
+$dv-dark-yellow                 : rgb(199,180,46) !default;
+$dv-dark-red                    : rgb(203,32,39) !default;
+$dv-dark-gray                   : $black !default;
+$dv-dark-grey                   : $dv-dark-gray !default;
 
 
 
 
 /// @type Number [default] - Base font size
-$pxh-base-font-size:                    15px;
+$pxh-base-font-size:                    15px !default;
 
 /// @type Number [default] - Base line height
-$pxh-base-line-height:                  ($pxh-base-font-size * 4) / 3;
+$pxh-base-line-height:                  ($pxh-base-font-size * 4) / 3 !default;
 
-$pxh-base-spacing-scale-ratio:       1;
+$pxh-base-spacing-scale-ratio:       1 !default;
 
 /// @type Number [default] - Base spacing unit
-$pxh-base-spacing-unit:                 $pxh-base-font-size * $pxh-base-spacing-scale-ratio;
+$pxh-base-spacing-unit:                 $pxh-base-font-size * $pxh-base-spacing-scale-ratio !default;
 
 
 
@@ -114,19 +114,19 @@ $pxh-base-spacing-unit:                 $pxh-base-font-size * $pxh-base-spacing-
 /// Define whether the drawer should appear on the left or right side of the browser window
 /// @group pxh-settings
 /// @type String
-$pxh-drawer-side: null;
+$pxh-drawer-side: null !default;
 
 /// Define the side of the browser window opposite the drawer (e.g. 'right' if the drawer should appear on the left)
 /// @group pxh-settings
 /// @type String
-$pxh-drawer-opposite-side: null;
+$pxh-drawer-opposite-side: null !default;
 
 @if $pxh-language-direction == 'rtl' {
-  $pxh-drawer-side: right;
-  $pxh-drawer-opposite-side: left;
+  $pxh-drawer-side: right !default;
+  $pxh-drawer-opposite-side: left !default;
 } @else {
-  $pxh-drawer-side: left;
-  $pxh-drawer-opposite-side: right;
+  $pxh-drawer-side: left !default;
+  $pxh-drawer-opposite-side: right !default;
 }
 
 
@@ -135,14 +135,14 @@ $pxh-drawer-opposite-side: null;
 /// Path to GE web fonts
 /// @group pxh-settings
 /// @type String [default] - Webfont path
-$webfont-path: '//dzlpbrbc7yvq0.cloudfront.net/px/fonts/1.0.0';
+$webfont-path: '//dzlpbrbc7yvq0.cloudfront.net/px/fonts/1.0.0' !default;
 
-$webfont-name: 'GE Inspira Sans';
+$webfont-name: 'GE Inspira Sans' !default;
 
-$webfont-file-name-regular: GEInspiraSans-Regular-v01;
-$webfont-file-name-bold: GEInspiraSans-Bold-v01;
-$webfont-file-name-italic: GEInspiraSans-Italic-v01;
-$webfont-file-name-bold-italic: GEInspiraSans-BoldItalic-v01;
+$webfont-file-name-regular: GEInspiraSans-Regular-v01 !default;
+$webfont-file-name-bold: GEInspiraSans-Bold-v01 !default;
+$webfont-file-name-italic: GEInspiraSans-Italic-v01 !default;
+$webfont-file-name-bold-italic: GEInspiraSans-BoldItalic-v01 !default;
 
 
 
@@ -152,7 +152,7 @@ $webfont-file-name-bold-italic: GEInspiraSans-BoldItalic-v01;
 $mq-breakpoints: (
   md:  768px,
   lg: 1024px,
-);
+) !default;
 
 
 
@@ -160,104 +160,104 @@ $mq-breakpoints: (
 /// Path to Font Awesome fonts
 /// @group pxh-settings
 /// @type String
-$fa-font-path: '//dzlpbrbc7yvq0.cloudfront.net/libs/font-awesome/4.6.3/fonts';
+$fa-font-path: '//dzlpbrbc7yvq0.cloudfront.net/libs/font-awesome/4.6.3/fonts' !default;
 
 
 
 
 // <html> and <body> elements
 
-$pxh-base-bg-color: $gray8;
+$pxh-base-bg-color: $gray8 !default;
 
-$pxh-base-text-color: $black;
+$pxh-base-text-color: $black !default;
 
-$pxh-base-font-family: 'GE Inspira Sans', 'Helvetica', 'Arial', sans-serif;
+$pxh-base-font-family: 'GE Inspira Sans', 'Helvetica', 'Arial', sans-serif !default;
 
 
 
 
 // <hr> element
 
-$pxh-hr-color: $gray6;
+$pxh-hr-color: $gray6 !default;
 
 
 
 
 // <a> element
 
-$pxh-link-text-color: $primary-blue;
+$pxh-link-text-color: $primary-blue !default;
 
-$pxh-link-text-color-hover: $pxh-link-text-color;
+$pxh-link-text-color-hover: $pxh-link-text-color !default;
 
 
 
 
 /// @group pxh-badge
-$pxh-badge-text-color:                  $white;
-$pxh-badge-text-color-inverse:          $black;
-$pxh-badge-bg-color:                    $gray5;
-$pxh-badge-border-color:                $gray5;
-$pxh-badge-border-width:                1px;
+$pxh-badge-text-color:                  $white !default;
+$pxh-badge-text-color-inverse:          $black !default;
+$pxh-badge-bg-color:                    $gray5 !default;
+$pxh-badge-border-color:                $gray5 !default;
+$pxh-badge-border-width:                1px !default;
 
-$pxh-badge-bg-color-navigation:         $select-blue-pressed;
-$pxh-badge-border-color-navigation:     $select-blue-pressed;
+$pxh-badge-bg-color-navigation:         $select-blue-pressed !default;
+$pxh-badge-border-color-navigation:     $select-blue-pressed !default;
 
-$pxh-badge-bg-color-primary:            $primary-blue;
-$pxh-badge-border-color-primary:        $primary-blue;
+$pxh-badge-bg-color-primary:            $primary-blue !default;
+$pxh-badge-border-color-primary:        $primary-blue !default;
 
-$pxh-badge-bg-color-important:          $alert-red;
-$pxh-badge-border-color-important:      $alert-red;
+$pxh-badge-bg-color-important:          $alert-red !default;
+$pxh-badge-border-color-important:      $alert-red !default;
 
-$pxh-badge-bg-color-warning:            $alert-orange;
-$pxh-badge-border-color-warning:        $alert-orange;
+$pxh-badge-bg-color-warning:            $alert-orange !default;
+$pxh-badge-border-color-warning:        $alert-orange !default;
 
-$pxh-badge-bg-color-error:              $alert-yellow;
-$pxh-badge-border-color-error:          $alert-yellow;
+$pxh-badge-bg-color-error:              $alert-yellow !default;
+$pxh-badge-border-color-error:          $alert-yellow !default;
 
-$pxh-badge-bg-color-info:               $alert-blue;
-$pxh-badge-border-color-info:           $alert-blue;
+$pxh-badge-bg-color-info:               $alert-blue !default;
+$pxh-badge-border-color-info:           $alert-blue !default;
 
-$pxh-badge-bg-color-healthy-black:      $black;
-$pxh-badge-border-color-healthy-black:  $black;
+$pxh-badge-bg-color-healthy-black:      $black !default;
+$pxh-badge-border-color-healthy-black:  $black !default;
 
-$pxh-badge-bg-color-healthy-white:      $white;
-$pxh-badge-border-color-healthy-white:  $gray5;
+$pxh-badge-bg-color-healthy-white:      $white !default;
+$pxh-badge-border-color-healthy-white:  $gray5 !default;
 
-$pxh-badge-font-size: $pxh-base-font-size * 0.866666666666666;
+$pxh-badge-font-size: $pxh-base-font-size * 0.866666666666666 !default;
 
 
 
 
 /// @group pxh-drawer
-$pxh-drawer-bg-color: $gray10;
+$pxh-drawer-bg-color: $gray10 !default;
 
-$pxh-drawer-toggle-icon-color: $gray7;
+$pxh-drawer-toggle-icon-color: $gray7 !default;
 
-$pxh-drawer-header-image: url('../img/logo.png');
-
-/// Disabled until we figure out how to add a border without reducing the logo width
-/// $pxh-drawer-border-color: transparent;
+$pxh-drawer-header-image: url('../img/logo.png') !default;
 
 /// Disabled until we figure out how to add a border without reducing the logo width
-/// $pxh-drawer-border-width: 0;
+/// $pxh-drawer-border-color: transparent !default;
 
-$pxh-drawer-box-shadow: none;
+/// Disabled until we figure out how to add a border without reducing the logo width
+/// $pxh-drawer-border-width: 0 !default;
+
+$pxh-drawer-box-shadow: none !default;
 
 /// Width of drawer in wide state
 /// @group pxh-drawer
 /// @type Number
-$pxh-drawer-width-wide: ($pxh-base-spacing-unit * 17) + ($pxh-base-spacing-unit / 3);
+$pxh-drawer-width-wide: ($pxh-base-spacing-unit * 17) + ($pxh-base-spacing-unit / 3) !default;
 
 /// Width of drawer in narrow state
 /// @group pxh-drawer
 /// @type Number
-$pxh-drawer-width-narrow: $pxh-base-spacing-unit * 4;
+$pxh-drawer-width-narrow: $pxh-base-spacing-unit * 4 !default;
 /// Drawer margin
 /// @group pxh-drawer
 /// @type Number
-$pxh-drawer-margin: $pxh-base-spacing-unit + ($pxh-base-spacing-unit / 3);
+$pxh-drawer-margin: $pxh-base-spacing-unit + ($pxh-base-spacing-unit / 3) !default;
 
-$pxh-drawer-header-link-font-size: $pxh-base-font-size * 1.266666666666666;
+$pxh-drawer-header-link-font-size: $pxh-base-font-size * 1.266666666666666 !default;
 
 
 
@@ -267,296 +267,296 @@ $pxh-drawer-header-link-font-size: $pxh-base-font-size * 1.266666666666666;
 /// Icon color for error messages
 /// @group pxh-error
 /// @type Color
-$pxh-error-icon-color: $gray5;
+$pxh-error-icon-color: $gray5 !default;
 
 /// Title/header text color for error messages
 /// @group pxh-error
 /// @type Color
-$pxh-error-title-text-color: $gray6;
+$pxh-error-title-text-color: $gray6 !default;
 
 /// Description text color for error messages
 /// @group pxh-error
 /// @type Color
-$pxh-error-description-text-color: $gray6;
+$pxh-error-description-text-color: $gray6 !default;
 
 /// Top margin to offset error message from top of browser window
 /// @group pxh-error
 /// @type Number
-$pxh-error-margin-top: $pxh-base-spacing-unit * 3;
+$pxh-error-margin-top: $pxh-base-spacing-unit * 3 !default;
 
 /// Top padding to give error message some breathing room
 /// @group pxh-error
 /// @type Number
-$pxh-error-padding-top: $pxh-base-spacing-unit;
+$pxh-error-padding-top: $pxh-base-spacing-unit !default;
 
 /// Text decoration for hyperlinks in error messages
 /// @group pxh-error
 /// @type String
-$pxh-error-link-text-decoration: none;
+$pxh-error-link-text-decoration: none !default;
 
-$pxh-error-icon-font-size: $pxh-base-font-size * 4;
+$pxh-error-icon-font-size: $pxh-base-font-size * 4 !default;
 
-$pxh-error-title-font-size: $pxh-base-font-size * 1.333333333333333;
+$pxh-error-title-font-size: $pxh-base-font-size * 1.333333333333333 !default;
 
-$pxh-error-description-font-size: $pxh-base-font-size;
+$pxh-error-description-font-size: $pxh-base-font-size !default;
 
 
 
 
 /// @group pxh-login
-$pxh-login-border-color: rgba(0, 0, 0, 0.15);
-$pxh-login-border-width: 1px 0 0 0;
+$pxh-login-border-color: rgba(0, 0, 0, 0.15) !default;
+$pxh-login-border-width: 1px 0 0 0 !default;
 
-$pxh-login-avatar-icon-color: $gray7;
-$pxh-login-avatar-icon-border-color: $gray7;
-$pxh-login-avatar-icon-border-width: 1px;
+$pxh-login-avatar-icon-color: $gray7 !default;
+$pxh-login-avatar-icon-border-color: $gray7 !default;
+$pxh-login-avatar-icon-border-width: 1px !default;
 
-$pxh-login-settings-link-text-color: $gray7;
-$pxh-login-settings-link-text-color-hover: $white;
+$pxh-login-settings-link-text-color: $gray7 !default;
+$pxh-login-settings-link-text-color-hover: $white !default;
 
-$pxh-login-menu-text-color: $white;
-$pxh-login-menu-bg-color: $black;
-$pxh-login-menu-border-width: 1px;
-$pxh-login-menu-border-color: $gray9;
-$pxh-login-menu-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.25);
+$pxh-login-menu-text-color: $white !default;
+$pxh-login-menu-bg-color: $black !default;
+$pxh-login-menu-border-width: 1px !default;
+$pxh-login-menu-border-color: $gray9 !default;
+$pxh-login-menu-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.25) !default;
 
-$pxh-login-menu-divider-border-width: 1px 0 0 0;
-$pxh-login-menu-divider-border-color: $gray10;
+$pxh-login-menu-divider-border-width: 1px 0 0 0 !default;
+$pxh-login-menu-divider-border-color: $gray10 !default;
 
-$pxh-login-menu-link-text-color: $white;
-$pxh-login-menu-link-text-color-hover: $white;
-$pxh-login-menu-link-bg-color: transparent;
-$pxh-login-menu-link-bg-color-hover: $gray10;
+$pxh-login-menu-link-text-color: $white !default;
+$pxh-login-menu-link-text-color-hover: $white !default;
+$pxh-login-menu-link-bg-color: transparent !default;
+$pxh-login-menu-link-bg-color-hover: $gray10 !default;
 
-$pxh-login-notifications-link-text-color: $gray7;
-$pxh-login-notifications-link-text-color-hover: $white;
+$pxh-login-notifications-link-text-color: $gray7 !default;
+$pxh-login-notifications-link-text-color-hover: $white !default;
 
-$pxh-login-notifications-badge-text-color: $white;
-$pxh-login-notifications-badge-text-color-hover: $white;
+$pxh-login-notifications-badge-text-color: $white !default;
+$pxh-login-notifications-badge-text-color-hover: $white !default;
 
-$pxh-login-notifications-badge-bg-color: $gray5;
-$pxh-login-notifications-badge-bg-color-green: $green;
-$pxh-login-notifications-badge-bg-color-blue: $blue;
-$pxh-login-notifications-badge-bg-color-orange: $orange;
-$pxh-login-notifications-badge-bg-color-red: $red;
+$pxh-login-notifications-badge-bg-color: $gray5 !default;
+$pxh-login-notifications-badge-bg-color-green: $green !default;
+$pxh-login-notifications-badge-bg-color-blue: $blue !default;
+$pxh-login-notifications-badge-bg-color-orange: $orange !default;
+$pxh-login-notifications-badge-bg-color-red: $red !default;
 
-$pxh-login-font-size: $pxh-base-font-size;
+$pxh-login-font-size: $pxh-base-font-size !default;
 
-$pxh-login-notifications-badge-font-size: $pxh-base-font-size * 0.8;
+$pxh-login-notifications-badge-font-size: $pxh-base-font-size * 0.8 !default;
 
-$pxh-login-avatar-icon-font-size: $pxh-base-font-size * 1.133333333333333;
+$pxh-login-avatar-icon-font-size: $pxh-base-font-size * 1.133333333333333 !default;
 
 /// Login component height
 /// @group pxhtheme-login
 /// @type Number
-$pxh-login-height:  $pxh-base-spacing-unit * 4;
+$pxh-login-height:  $pxh-base-spacing-unit * 4 !default;
 
 /// User avatar height and width
 /// @group pxhtheme-login
 /// @type Number
-$pxh-login-avatar-height-width: $pxh-base-spacing-unit * 2;
+$pxh-login-avatar-height-width: $pxh-base-spacing-unit * 2 !default;
 
 /// "Magic number" centering for login components
 /// @group pxhtheme-login
 /// @type Number
-$pxh-login-magic-centering: $pxh-base-spacing-unit - 1px;
+$pxh-login-magic-centering: $pxh-base-spacing-unit - 1px !default;
 
 
 
 
 /// @group pxh-navigation
-$pxh-navigation-border-width: 1px 0 0 0;
-$pxh-navigation-border-color: rgba(0, 0, 0, 0.15);
+$pxh-navigation-border-width: 1px 0 0 0 !default;
+$pxh-navigation-border-color: rgba(0, 0, 0, 0.15) !default;
 
-$pxh-navigation-item-icon-color: $gray7;
-$pxh-navigation-item-icon-color-hover: $gray4;
-$pxh-navigation-item-icon-color-selected: $white;
-$pxh-navigation-item-icon-color-active: $white;
+$pxh-navigation-item-icon-color: $gray7 !default;
+$pxh-navigation-item-icon-color-hover: $gray4 !default;
+$pxh-navigation-item-icon-color-selected: $white !default;
+$pxh-navigation-item-icon-color-active: $white !default;
 
 /// Navigation color for error icon
 /// @group pxh-navigation
 /// @type Color
-$pxh-navigation-item-icon-color-error: $red;
+$pxh-navigation-item-icon-color-error: $red !default;
 
 /// Navigation link font color
 /// @group pxh-navigation
 /// @type Color
-$pxh-navigation-link-text-color: $gray7;
+$pxh-navigation-link-text-color: $gray7 !default;
 
 /// Navigation text color on hover
 /// @group pxh-navigation
 /// @type Color
-$pxh-navigation-link-text-color-hover: $gray4;
+$pxh-navigation-link-text-color-hover: $gray4 !default;
 
 /// Navigation text color for selected item
 /// @group pxh-navigation
 /// @type Color
-$pxh-navigation-link-text-color-selected: $white;
+$pxh-navigation-link-text-color-selected: $white !default;
 
 /// Navigation text color for active item
 /// @group pxh-navigation
 /// @type Color
-$pxh-navigation-link-text-color-active: $white;
+$pxh-navigation-link-text-color-active: $white !default;
 
-$pxh-navigation-link-text-color-error: $gray7;
+$pxh-navigation-link-text-color-error: $gray7 !default;
 
 /// Navigation link background color
 /// @group pxh-navigation
 /// @type Color
-$pxh-navigation-link-bg-color: transparent;
+$pxh-navigation-link-bg-color: transparent !default;
 
 /// Navigation background color on hover
 /// @group pxh-navigation
 /// @type Color
-$pxh-navigation-link-bg-color-hover: $gray9;
+$pxh-navigation-link-bg-color-hover: $gray9 !default;
 
 /// Navigation background color for selected item
 /// @group pxh-navigation
 /// @type Color
-$pxh-navigation-link-bg-color-selected: $gray9;
+$pxh-navigation-link-bg-color-selected: $gray9 !default;
 
 /// Navigation background color for active item
 /// @group pxh-navigation
 /// @type Color
-$pxh-navigation-link-bg-color-active: $gray9;
+$pxh-navigation-link-bg-color-active: $gray9 !default;
 
-$pxh-navigation-link-bg-color-error: transparent;
+$pxh-navigation-link-bg-color-error: transparent !default;
 
 /// Navigation text color for sub-item
 /// @group pxh-navigation
 /// @type Color
-$pxh-navigation-sub-link-text-color: $gray7;
+$pxh-navigation-sub-link-text-color: $gray7 !default;
 
 /// Navigation text color for sub-item on hover
 /// @group pxh-navigation
 /// @type Color
-$pxh-navigation-sub-link-text-color-hover: $gray4;
+$pxh-navigation-sub-link-text-color-hover: $gray4 !default;
 
 /// Navigation text color for selected sub-item
 /// @group pxh-navigation
 /// @type Color
-$pxh-navigation-sub-link-text-color-selected: $white;
+$pxh-navigation-sub-link-text-color-selected: $white !default;
 
-$pxh-navigation-sub-link-bg-color: transparent;
-$pxh-navigation-sub-link-bg-color-hover: transparent;
-$pxh-navigation-sub-link-bg-color-selected: transparent;
+$pxh-navigation-sub-link-bg-color: transparent !default;
+$pxh-navigation-sub-link-bg-color-hover: transparent !default;
+$pxh-navigation-sub-link-bg-color-selected: transparent !default;
 
-$pxh-navigation-sub-link-settings-text-color: $primary-blue;
-$pxh-navigation-sub-link-settings-text-color-selected: $primary-blue;
-$pxh-navigation-sub-link-settings-bg-color: transparent;
-$pxh-navigation-sub-link-settings-bg-color-hover: transparent;
-$pxh-navigation-sub-link-settings-bg-color-selected: transparent;
+$pxh-navigation-sub-link-settings-text-color: $primary-blue !default;
+$pxh-navigation-sub-link-settings-text-color-selected: $primary-blue !default;
+$pxh-navigation-sub-link-settings-bg-color: transparent !default;
+$pxh-navigation-sub-link-settings-bg-color-hover: transparent !default;
+$pxh-navigation-sub-link-settings-bg-color-selected: transparent !default;
 
-$pxh-navigation-sub-item-divider-height: 1px;
+$pxh-navigation-sub-item-divider-height: 1px !default;
 $pxh-navigation-sub-item-divider-color: $gray9; // used as bg color but that's an implementation detail
 
 /// Navigation item link height
 /// @group pxh-navigation
 /// @type Number
-$pxh-navigation-link-height: ($pxh-base-spacing-unit * 3) + 3px;
+$pxh-navigation-link-height: ($pxh-base-spacing-unit * 3) + 3px !default;
 
 /// Navigation sub-item link height
 /// @group pxh-navigation
 /// @type Number
-$pxh-navigation-sub-link-height: $pxh-base-spacing-unit * 2;
+$pxh-navigation-sub-link-height: $pxh-base-spacing-unit * 2 !default;
 
 /// Navigation margin for divider component
 /// @group pxh-navigation
 /// @type Number
-$pxh-navigation-divider-margin: $pxh-base-spacing-unit - ($pxh-base-spacing-unit / 3);
+$pxh-navigation-divider-margin: $pxh-base-spacing-unit - ($pxh-base-spacing-unit / 3) !default;
 
-$pxh-navigation-link-font-size: $pxh-base-font-size;
+$pxh-navigation-link-font-size: $pxh-base-font-size !default;
 
-$pxh-navigation-item-icon-error-font-size: $pxh-base-font-size * 1.266666666666666;
+$pxh-navigation-item-icon-error-font-size: $pxh-base-font-size * 1.266666666666666 !default;
 
-$pxh-navigation-item-text-font-size: $pxh-base-font-size * 1.066666666666666;
+$pxh-navigation-item-text-font-size: $pxh-base-font-size * 1.066666666666666 !default;
 
-$pxh-navigation-sub-link-font-size: $pxh-base-font-size * 1.066666666666666;
+$pxh-navigation-sub-link-font-size: $pxh-base-font-size * 1.066666666666666 !default;
 
 
 
 
 /// @group pxh-notifications
 
-$pxh-notifications-text-color: $gray2;
+$pxh-notifications-text-color: $gray2 !default;
 
-$pxh-notifications-bg-color: $gray10;
+$pxh-notifications-bg-color: $gray10 !default;
 
-$pxh-notifications-border-color: $gray7;
+$pxh-notifications-border-color: $gray7 !default;
 
-$pxh-notifications-border-width: 1px;
+$pxh-notifications-border-width: 1px !default;
 
-$pxh-notifications-box-shadow: none;
+$pxh-notifications-box-shadow: none !default;
 
-$pxh-notifications-header-border-width: 0 0 1px 0;
+$pxh-notifications-header-border-width: 0 0 1px 0 !default;
 
-$pxh-notifications-header-border-color: $gray7;
+$pxh-notifications-header-border-color: $gray7 !default;
 
-$pxh-notifications-link-text-color: $gray5;
+$pxh-notifications-link-text-color: $gray5 !default;
 
-$pxh-notifications-link-text-color-hover: $primary-blue;
+$pxh-notifications-link-text-color-hover: $primary-blue !default;
 
-$pxh-notifications-clear-text-color: $gray5;
+$pxh-notifications-clear-text-color: $gray5 !default;
 
-$pxh-notifications-clear-text-color-hover: $primary-blue;
+$pxh-notifications-clear-text-color-hover: $primary-blue !default;
 
-$pxh-notifications-empty-text-color: $gray7;
+$pxh-notifications-empty-text-color: $gray7 !default;
 
 
 
 
 /// @group pxh-notification
 
-$pxh-notification-border-color: $gray9;
+$pxh-notification-border-color: $gray9 !default;
 
-$pxh-notification-border-width: 0 0 1px 0;
+$pxh-notification-border-width: 0 0 1px 0 !default;
 
-$pxh-notification-icon-color: transparent;
-$pxh-notification-icon-color-green: $green;
-$pxh-notification-icon-color-blue: $blue;
-$pxh-notification-icon-color-orange: $orange;
-$pxh-notification-icon-color-red: $red;
+$pxh-notification-icon-color: transparent !default;
+$pxh-notification-icon-color-green: $green !default;
+$pxh-notification-icon-color-blue: $blue !default;
+$pxh-notification-icon-color-orange: $orange !default;
+$pxh-notification-icon-color-red: $red !default;
 
-$pxh-notification-link-text-color: $gray4;
+$pxh-notification-link-text-color: $gray4 !default;
 
-$pxh-notification-link-text-color-hover: $primary-blue;
+$pxh-notification-link-text-color-hover: $primary-blue !default;
 
-$pxh-notification-more-button-text-color: $gray7;
+$pxh-notification-more-button-text-color: $gray7 !default;
 
-$pxh-notification-more-button-text-color-hover: $gray4;
+$pxh-notification-more-button-text-color-hover: $gray4 !default;
 
-$pxh-notification-more-button-bg-color: $gray10;
+$pxh-notification-more-button-bg-color: $gray10 !default;
 
-$pxh-notification-more-button-bg-color-hover: $gray9;
+$pxh-notification-more-button-bg-color-hover: $gray9 !default;
 
-$pxh-notification-dismiss-button-icon-color: $gray8;
+$pxh-notification-dismiss-button-icon-color: $gray8 !default;
 
-$pxh-notification-dismiss-button-icon-color-hover: $primary-blue;
+$pxh-notification-dismiss-button-icon-color-hover: $primary-blue !default;
 
 /// Height of a (non-expanded) notification
 /// @group pxh-notification
 /// @type Number
-$pxh-notification-height: ($pxh-base-spacing-unit * 4) + (($pxh-base-spacing-unit / 3) * 2);
+$pxh-notification-height: ($pxh-base-spacing-unit * 4) + (($pxh-base-spacing-unit / 3) * 2) !default;
 
 /// Default margin for notification components
 /// @group pxh-notification
 /// @type Number
-$pxh-notification-margin: ($pxh-base-spacing-unit / 3);
+$pxh-notification-margin: ($pxh-base-spacing-unit / 3) !default;
 
 /// Maximum number of notifications to display at once
 /// @group pxh-notification
 /// @type Number
-$pxh-notification-max-count: 5;
+$pxh-notification-max-count: 5 !default;
 
-$pxh-notification-font-size: $pxh-base-font-size * 1.066666666666666;
+$pxh-notification-font-size: $pxh-base-font-size * 1.066666666666666 !default;
 
-$pxh-notification-icon-font-size: $pxh-base-font-size * 1.6;
+$pxh-notification-icon-font-size: $pxh-base-font-size * 1.6 !default;
 
 
 
 
 /// @group pxh-overlay
-$pxh-overlay-bg-color: rgba($black, 0.7);
+$pxh-overlay-bg-color: rgba($black, 0.7) !default;
 
 
 
@@ -566,85 +566,85 @@ $pxh-overlay-bg-color: rgba($black, 0.7);
 /// Alpha transparency for pxh-spinner
 /// @group pxh-spinner
 /// @type Number
-$pxh-spinner-alpha: 0.7;
+$pxh-spinner-alpha: 0.7 !default;
 
-$pxh-spinner-base-color: rgba($gray4, $pxh-spinner-alpha);
-$pxh-spinner-accent-color: $primary-blue;
+$pxh-spinner-base-color: rgba($gray4, $pxh-spinner-alpha) !default;
+$pxh-spinner-accent-color: $primary-blue !default;
 
-$pxh-spinner-base-color-inverted: rgba($gray8, $pxh-spinner-alpha);
-$pxh-spinner-accent-color-inverted: $pxh-spinner-accent-color;
+$pxh-spinner-base-color-inverted: rgba($gray8, $pxh-spinner-alpha) !default;
+$pxh-spinner-accent-color-inverted: $pxh-spinner-accent-color !default;
 
 
 
 
 // pxh-toast
 
-$pxh-toast-text-color: $gray5;
+$pxh-toast-text-color: $gray5 !default;
 
-$pxh-toast-bg-color: $gray10;
+$pxh-toast-bg-color: $gray10 !default;
 
 $pxh-toast-more-bg: linear-gradient(to bottom, rgba($gray10, 0) 0%, rgba($gray10, 1) 50%); // gradients are considered CSS images not colors hence bg and not bg-color
 
-$pxh-toast-more-button-text-color: $gray7;
+$pxh-toast-more-button-text-color: $gray7 !default;
 
-$pxh-toast-more-button-text-color-hover: $gray4;
+$pxh-toast-more-button-text-color-hover: $gray4 !default;
 
-$pxh-toast-more-button-bg-color: $gray10;
+$pxh-toast-more-button-bg-color: $gray10 !default;
 
-$pxh-toast-more-button-bg-color-hover: $gray9;
+$pxh-toast-more-button-bg-color-hover: $gray9 !default;
 
-$pxh-toast-more-button-border-color: $gray8;
+$pxh-toast-more-button-border-color: $gray8 !default;
 
-$pxh-toast-more-button-border-width: 1px;
+$pxh-toast-more-button-border-width: 1px !default;
 
-$pxh-toast-button-text-color: $gray5;
+$pxh-toast-button-text-color: $gray5 !default;
 
-$pxh-toast-button-text-color-hover: $gray9;
+$pxh-toast-button-text-color-hover: $gray9 !default;
 
-$pxh-toast-button-bg-color: $gray10;
+$pxh-toast-button-bg-color: $gray10 !default;
 
-$pxh-toast-button-bg-color-hover: $gray9;
+$pxh-toast-button-bg-color-hover: $gray9 !default;
 
-$pxh-toast-button-border-color: $gray8;
+$pxh-toast-button-border-color: $gray8 !default;
 
-$pxh-toast-button-border-width: 1px;
+$pxh-toast-button-border-width: 1px !default;
 
-$pxh-toast-timestamp-text-color: $gray8;
+$pxh-toast-timestamp-text-color: $gray8 !default;
 
-$pxh-toast-dismiss-button-icon-color: $gray7;
+$pxh-toast-dismiss-button-icon-color: $gray7 !default;
 
-$pxh-toast-dismiss-button-icon-color-hover: $primary-blue;
+$pxh-toast-dismiss-button-icon-color-hover: $primary-blue !default;
 
-$pxh-toast-icon-color: $white;
+$pxh-toast-icon-color: $white !default;
 
-$pxh-toast-icon-bg-color: transparent;
-$pxh-toast-icon-bg-color-green: $green;
-$pxh-toast-icon-bg-color-blue: $blue;
-$pxh-toast-icon-bg-color-orange: $orange;
-$pxh-toast-icon-bg-color-red: $red;
+$pxh-toast-icon-bg-color: transparent !default;
+$pxh-toast-icon-bg-color-green: $green !default;
+$pxh-toast-icon-bg-color-blue: $blue !default;
+$pxh-toast-icon-bg-color-orange: $orange !default;
+$pxh-toast-icon-bg-color-red: $red !default;
 
 /// Height of a (non-expanded) toast
 /// @group pxh-toast
 /// @type Number
-$pxh-toast-height: $pxh-base-spacing-unit * 4 + (($pxh-base-spacing-unit / 3) * 2);
+$pxh-toast-height: $pxh-base-spacing-unit * 4 + (($pxh-base-spacing-unit / 3) * 2) !default;
 
 /// Default margin for toast components
 /// @group pxh-toast
 /// @type Number
-$pxh-toast-margin: $pxh-base-spacing-unit / 3;
+$pxh-toast-margin: $pxh-base-spacing-unit / 3 !default;
 
 /// Maximum number of toasts to display at once
 /// @group pxh-toast
 /// @type Number
-$pxh-toast-max-count: 3;
+$pxh-toast-max-count: 3 !default;
 
-$pxh-toast-font-size: $pxh-base-font-size * 1.066666666666666;
+$pxh-toast-font-size: $pxh-base-font-size * 1.066666666666666 !default;
 
-$pxh-toast-more-button-font-size: $pxh-base-font-size * 0.933333333333333;
+$pxh-toast-more-button-font-size: $pxh-base-font-size * 0.933333333333333 !default;
 
-$pxh-toast-dismiss-font-size: $pxh-base-font-size * 1.2;
+$pxh-toast-dismiss-font-size: $pxh-base-font-size * 1.2 !default;
 
-$pxh-toast-icon-font-size: $pxh-base-font-size * 1.866666666666666;
+$pxh-toast-icon-font-size: $pxh-base-font-size * 1.866666666666666 !default;
 
 
 
@@ -666,51 +666,51 @@ $pxh-view-bg-colors: (
   gray9: $gray9, 
   gray10: $gray10, 
   black: $black
- );
+ ) !default;
 
-$pxh-view-header-bg-color: $white;
+$pxh-view-header-bg-color: $white !default;
 
-$pxh-view-header-border-color: $gray5;
+$pxh-view-header-border-color: $gray5 !default;
 
 $pxh-view-header-border-width: 0 0 1px 0; // should allow all borders, but specify just the bottom to start
 
-$pxh-view-header-drawer-toggle-icon-color: $black;
+$pxh-view-header-drawer-toggle-icon-color: $black !default;
 
-$pxh-view-header-title-link-text-color: $black;
+$pxh-view-header-title-link-text-color: $black !default;
 
-$pxh-view-header-title-font-size: $pxh-base-font-size * 1.466666666666666;
+$pxh-view-header-title-font-size: $pxh-base-font-size * 1.466666666666666 !default;
 
 /// View header height
 /// locked to current height of px-context-browser + 1px for bottom border
 /// @group pxh-view
 /// @type Number
-$pxh-view-header-height: ($pxh-base-spacing-unit * 4) + 1px;
+$pxh-view-header-height: ($pxh-base-spacing-unit * 4) + 1px !default;
 
 
 
 
 // overrides.pxh-docs
 
-$pxh-docs-bg-color: $white;
-$pxh-docs-code-font-size: $pxh-base-font-size;
-$pxh-docs-code-bg-color: #fff3f3;
-$pxh-docs-code-text-color: #900;
+$pxh-docs-bg-color: $white !default;
+$pxh-docs-code-font-size: $pxh-base-font-size !default;
+$pxh-docs-code-bg-color: #fff3f3 !default;
+$pxh-docs-code-text-color: #900 !default;
 
 
 
 
 // pxh-fancy-scrollbars
 
-$pxh-scrollbar-width: 7px;
+$pxh-scrollbar-width: 7px !default;
 
-$pxh-scrollbar-base-color: $gray10;
-$pxh-scrollbar-arrow-color: $gray8;
-$pxh-scrollbar-track-color: $gray10;
-$pxh-scrollbar-face-color:  $gray8;
+$pxh-scrollbar-base-color: $gray10 !default;
+$pxh-scrollbar-arrow-color: $gray8 !default;
+$pxh-scrollbar-track-color: $gray10 !default;
+$pxh-scrollbar-face-color:  $gray8 !default;
 
-$pxh-scrollbar-track-border-color: $gray10;
-$pxh-scrollbar-track-border-width: 2px;
+$pxh-scrollbar-track-border-color: $gray10 !default;
+$pxh-scrollbar-track-border-width: 2px !default;
 
-$pxh-scrollbar-thumb-color: $gray7;
-$pxh-scrollbar-thumb-border-color: $gray10;
-$pxh-scrollbar-thumb-border-width: 0 2px 0 2px;
+$pxh-scrollbar-thumb-color: $gray7 !default;
+$pxh-scrollbar-thumb-border-color: $gray10 !default;
+$pxh-scrollbar-thumb-border-width: 0 2px 0 2px !default;
