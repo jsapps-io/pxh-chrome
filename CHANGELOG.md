@@ -1,5 +1,10 @@
 # pxh-chrome changelog
 
+### 2.4.0 - October 20, 2016
+* Add `pxh-spinner--no-margin` and `pxh-spinner--margin` modifier classes to pxh-spinner loading indicator
+  * `pxh-spinner--no-margin` removes all margins around the loading indicator, allowing it to be used just about anywhere
+  * The styles associated with `pxh-spinner--margin` are redundant, as they're applied by default to `pxh-spinner` to maintain the indicator's currently expected behavior when used when a microapp is loading; that said, if we could do it over again, we'd obviously make `no-margin` the default styling
+
 ### 2.3.1 - October 17, 2016
 * Bump versions on browser-sync, gulp-sourcemaps, mocha
 * Bump Airbnb base ESLint config to latest version
