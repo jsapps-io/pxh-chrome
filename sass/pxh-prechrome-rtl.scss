@@ -6,11 +6,15 @@
 
 // ** #SETTINGS ** //
 
+// SORT ORDER IS IMPORTANT IN THIS LAYER //
+
 /// Define whether the application is rendering in a 'left-to-right' language or a 'right-to-left' language
 /// @group pxh-settings
 /// @type String [default] 'ltr'
 $pxh-language-direction: 'rtl'; // 'ltr' OR 'rtl'
 
+@import 'settings.spacing';
+@import 'settings.colors';
 @import 'settings.theme-prechrome';
 @import 'settings.theme-default';
 
