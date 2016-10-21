@@ -15,7 +15,9 @@
     ".tmp",
     "bower.json",
     "gulpfile.babel.js",
-    "package.json"
+    "package.json",
+    "THEMING.md",
+    "yarn.lock",
     "bower_components",
     "dist/*.html",
     "node_modules",
