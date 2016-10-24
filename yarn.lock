@@ -2469,9 +2469,9 @@ gulp-size@^2.1.0:
     stream-counter "^1.0.0"
     through2 "^2.0.0"
 
-gulp-sourcemaps@^2.1.1:
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/gulp-sourcemaps/-/gulp-sourcemaps-2.1.1.tgz#ddfeabc285b7b6eb82fd13cb1cfb5b50e14797ae"
+gulp-sourcemaps@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/gulp-sourcemaps/-/gulp-sourcemaps-2.2.0.tgz#dea8a4dc9aa74630a04ae9cf1871a7a08bc1310d"
   dependencies:
     acorn "4.X"
     convert-source-map "1.X"
