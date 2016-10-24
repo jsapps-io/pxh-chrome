@@ -7,8 +7,8 @@
 * Stop ignoring Sass files in `bower.json` so people can get them when they run `bower install, and can include them in their own Sass manifests
 * Bump versions on node modules
 * Alphebetize ignored files and ignore a few new ones when installing pxh-chrome via Bower
-* Support Yarn by adding `yarn.lock` file 
-  * Install yarn via `npm install -g yarn` and run it by typing `yarn` instead of `npm install`
+* Support Yarn by adding a `yarn.lock` file 
+  * Install yarn via `npm install -g yarn` and run it by typing `yarn` instead of `npm install` in the root of your project
   * To get Yarn to work behind the GE proxy, you'll need to create a `.yarnrc` file in your `~/` home folder with the line `strict-ssl false` 
 
 ### 2.4.0 - October 20, 2016
