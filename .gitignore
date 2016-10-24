@@ -1,6 +1,6 @@
-node_modules
-.tmp
-.sass-cache
-bower_components
-test/bower_components
 *.log
+.sass-cache
+.tmp
+bower_components
+node_modules
+test/bower_components
