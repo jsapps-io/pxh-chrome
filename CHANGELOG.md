@@ -1,6 +1,6 @@
 # pxh-chrome changelog
 
-### pending release
+### 2.5.0 - October 24, 2016
 * Move prechrome override variables out of the Sass manifest and into a `settings.theme-prechrome` layer where they belong
 * Split Px colors and font/line/spacing Sass values into their own `settings` partials
   * This way, downstream themes (e.g. "prechrome") can use their variables natively without needing to redeclare them
