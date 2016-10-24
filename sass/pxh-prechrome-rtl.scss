@@ -1,16 +1,21 @@
-/*! pxh-prechrome.css 2.4.0 */
+/*! pxh-prechrome-rtl.css 2.5.0 */
 
 /*------------------------------------*\
-    #pxh-prechrome
+    #pxh-prechrome-rtl
 \*------------------------------------*/
 
 // ** #SETTINGS ** //
 
+// SORT ORDER IS IMPORTANT IN THIS LAYER //
+
 /// Define whether the application is rendering in a 'left-to-right' language or a 'right-to-left' language
 /// @group pxh-settings
 /// @type String [default] 'ltr'
-$pxh-language-direction: 'ltr'; // 'ltr' OR 'rtl'
+$pxh-language-direction: 'rtl'; // 'ltr' OR 'rtl'
 
+@import 'settings.spacing';
+@import 'settings.colors';
+@import 'settings.theme-prechrome';
 @import 'settings.theme-default';
 
 /// prechrome overrides

@@ -19,12 +19,12 @@ const reload = browserSync.reload;
 const componentConfig = {
   site: {
     title: 'pxh-chrome',
-    version: '2.4.0',
+    version: '2.5.0',
   }
 };
 
 gulp.task('sass', () => {
-  return gulp.src('public/sass/*.scss')
+  return gulp.src('sass/*.scss')
     .pipe($.plumber())
     .pipe($.sourcemaps.init())
     .pipe($.sass.sync({
@@ -41,7 +41,7 @@ gulp.task('sass', () => {
 
 gulp.task('sass:dist', () => {
   gulp.start('sass');
-  return gulp.src('public/sass/*.scss')
+  return gulp.src('sass/*.scss')
     .pipe($.plumber())
     .pipe($.sass.sync({
       outputStyle: 'expanded',

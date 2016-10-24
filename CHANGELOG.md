@@ -1,5 +1,16 @@
 # pxh-chrome changelog
 
+### 2.5.0 - October 24, 2016
+* Move prechrome override variables out of the Sass manifest and into a `settings.theme-prechrome` layer where they belong
+* Split Px colors and font/line/spacing Sass values into their own `settings` partials
+  * This way, downstream themes (e.g. "prechrome") can use their variables natively without needing to redeclare them
+* Stop ignoring Sass files in `bower.json` so people can get them when they run `bower install, and can include them in their own Sass manifests
+* Bump versions on node modules
+* Alphebetize ignored files and ignore a few new ones when installing pxh-chrome via Bower
+* Support Yarn by adding a `yarn.lock` file 
+  * Install yarn via `npm install -g yarn` and run it by typing `yarn` instead of `npm install` in the root of your project
+  * To get Yarn to work behind the GE proxy, you'll need to create a `.yarnrc` file in your `~/` home folder with the line `strict-ssl false` 
+
 ### 2.4.0 - October 20, 2016
 * Add `pxh-spinner--no-margin` and `pxh-spinner--margin` modifier classes to pxh-spinner loading indicator
   * `pxh-spinner--no-margin` removes all margins around the loading indicator, allowing it to be used just about anywhere
