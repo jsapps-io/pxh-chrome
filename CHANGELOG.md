@@ -1,5 +1,11 @@
 # pxh-chrome changelog
 
+### pending release
+* Update Font Awesome to [4.7.0](https://github.com/FortAwesome/Font-Awesome/pull/10012)
+  * New icons including handshake, open envelope, bath, shower, id card, address book, thermometer
+* Bump Babel node modules
+* Tweak 2.5.0 release notes
+
 ### 2.5.0 - October 24, 2016
 * Move prechrome override variables out of the Sass manifest and into a `settings.theme-prechrome` layer where they belong
 * Split Px colors and font/line/spacing Sass values into their own `settings` partials
