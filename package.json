@@ -2,14 +2,14 @@
   "name": "@hubs/pxh-chrome",
   "private": true,
   "description": "Application chrome for the Predix UI App Hub",
-  "version": "2.5.0",
+  "version": "2.6.0",
   "homepage": "https://github.build.ge.com/hubs/pxh-chrome",
   "engines": {
     "node": ">=4.4.0"
   },
   "devDependencies": {
-    "babel-core": "^6.17.0",
-    "babel-preset-es2015": "^6.16.0",
+    "babel-core": "^6.18.0",
+    "babel-preset-es2015": "^6.18.0",
     "browser-sync": "^2.17.5",
     "chai": "^3.5.0",
     "chai-as-promised": "^6.0.0",

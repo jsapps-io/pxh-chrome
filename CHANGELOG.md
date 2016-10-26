@@ -1,10 +1,17 @@
 # pxh-chrome changelog
 
+### 2.6.0 - October 26, 2016
+* Update Font Awesome to [4.7.0](https://github.com/FortAwesome/Font-Awesome/pull/10012)
+  * New icons including handshake, open envelope, bath, shower, id card, address book, thermometer
+* Bump Babel node modules
+* Tweak 2.5.0 release notes
+
 ### 2.5.0 - October 24, 2016
 * Move prechrome override variables out of the Sass manifest and into a `settings.theme-prechrome` layer where they belong
 * Split Px colors and font/line/spacing Sass values into their own `settings` partials
   * This way, downstream themes (e.g. "prechrome") can use their variables natively without needing to redeclare them
-* Stop ignoring Sass files in `bower.json` so people can get them when they run `bower install, and can include them in their own Sass manifests
+* Stop ignoring Sass files in `bower.json` so people can get them when they run `bower install`, and can include them in their own Sass manifests
+* Move Sass files out of `/public` folder and into root `/sass` folder
 * Bump versions on node modules
 * Alphebetize ignored files and ignore a few new ones when installing pxh-chrome via Bower
 * Support Yarn by adding a `yarn.lock` file 
