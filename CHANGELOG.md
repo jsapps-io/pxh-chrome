@@ -1,5 +1,8 @@
 # pxh-chrome changelog
 
+### pending release
+* Fix path to `sass` folder in Sass watch task
+
 ### 2.6.0 - October 26, 2016
 * Update Font Awesome to [4.7.0](https://github.com/FortAwesome/Font-Awesome/pull/10012)
   * New icons including handshake, open envelope, bath, shower, id card, address book, thermometer
