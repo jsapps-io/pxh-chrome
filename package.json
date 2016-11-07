@@ -5,7 +5,8 @@
   "version": "2.6.0",
   "homepage": "https://github.build.ge.com/hubs/pxh-chrome",
   "engines": {
-    "node": ">=4.4.0"
+    "node": "^6.3.0",
+    "npm": "^3.10.0"
   },
   "devDependencies": {
     "babel-core": "^6.18.0",
