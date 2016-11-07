@@ -6597,6 +6597,7 @@ hr {
 .pxh-view {
   height: 100%;
   overflow: auto;
+  background-color: #525156;
   -webkit-overflow-scrolling: touch;
 }
 
@@ -6820,7 +6821,7 @@ hr {
   right: 0;
   background-color: white;
   border-style: solid;
-  border-color: #b1b1bc;
+  border-color: rgba(0, 0, 0, 0.3);
   border-width: 0 0 1px 0;
   height: 61px;
   z-index: 250;
