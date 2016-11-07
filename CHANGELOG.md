@@ -1,6 +1,12 @@
 # pxh-chrome changelog
 
 ### pending release
+* Change default value of `$pxh-view-header-border-color` from an actual color to black with 30% alpha transparency, to support a wider variety of `pxh-view` background colors
+* Add `$pxh-view-bg-color` variable to allow customization of default `pxh-view` background color independently from default `<html>`/`<body` color or default `pxh-wrapper` color
+* Bump required version of node to 6.3.0 and add required version of npm
+* Bump node modules
+* Bump sass-mq to 3.3.1
+* Add carets to bower component references so latest minor releases will always be installed (yolo)
 * Fix path to `sass` folder in Sass watch task
 
 ### 2.6.0 - October 26, 2016
