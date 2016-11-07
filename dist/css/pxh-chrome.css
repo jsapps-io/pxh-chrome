@@ -1,5 +1,5 @@
 @charset "UTF-8";
-/*! pxh-chrome.css 2.6.0 */
+/*! pxh-chrome.css 2.7.0 */
 /*------------------------------------*    #pxh-chrome
 \*------------------------------------*/
 /*------------------------------------*    #settings.spacing
@@ -6596,6 +6596,7 @@ hr {
 .pxh-view {
   height: 100%;
   overflow: auto;
+  background-color: #525156;
   -webkit-overflow-scrolling: touch;
 }
 
@@ -6819,7 +6820,7 @@ hr {
   left: 0;
   background-color: white;
   border-style: solid;
-  border-color: #b1b1bc;
+  border-color: rgba(0, 0, 0, 0.3);
   border-width: 0 0 1px 0;
   height: 61px;
   z-index: 250;

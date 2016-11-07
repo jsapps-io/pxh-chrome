@@ -65,6 +65,7 @@
 .pxh-view {
   height: 100%;
   overflow: auto;
+  background-color: $pxh-view-bg-color;
   -webkit-overflow-scrolling: touch;
 
   &--animate-wide {

@@ -19,7 +19,7 @@ const reload = browserSync.reload;
 const componentConfig = {
   site: {
     title: 'pxh-chrome',
-    version: '2.6.0',
+    version: '2.7.0',
   }
 };
 
@@ -159,7 +159,7 @@ gulp.task('serve', ['sass', 'js', 'extras', 'img'], () => {
   });
 
   gulp.watch('src/**/*.hbs', ['smith']);
-  gulp.watch('public/sass/**/*.scss', ['sass']);
+  gulp.watch('sass/**/*.scss', ['sass']);
   gulp.watch('public/js/**/*.js', ['js']);
   gulp.watch('public/img/**', ['img']);
 
@@ -182,7 +182,7 @@ gulp.task('serve:dist', ['sass:dist', 'js', 'extras', 'img'], () => {
       baseDir: ['dist'],
     },
   });
-  gulp.watch('public/sass/**/*.scss', ['sass']);
+  gulp.watch('sass/**/*.scss', ['sass']);
   gulp.watch('public/js/**/*.js', ['js']);
 });
 
