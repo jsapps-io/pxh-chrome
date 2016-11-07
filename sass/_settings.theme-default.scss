@@ -563,7 +563,7 @@ $pxh-view-bg-colors: (
 
 $pxh-view-header-bg-color: $white !default;
 
-$pxh-view-header-border-color: $gray5 !default;
+$pxh-view-header-border-color: rgba(0,0,0,0.3) !default;
 
 $pxh-view-header-border-width: 0 0 1px 0; // should allow all borders, but specify just the bottom to start
 
