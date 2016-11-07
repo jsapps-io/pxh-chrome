@@ -1,5 +1,5 @@
 @charset "UTF-8";
-/*! pxh-chrome.css 2.7.0 */
+/*! pxh-chrome.css 2.8.0 */
 /*------------------------------------*    #pxh-chrome
 \*------------------------------------*/
 /*------------------------------------*    #settings.spacing
@@ -6596,7 +6596,7 @@ hr {
 .pxh-view {
   height: 100%;
   overflow: auto;
-  background-color: #525156;
+  background-color: transparent;
   -webkit-overflow-scrolling: touch;
 }
 

@@ -1,5 +1,8 @@
 # pxh-chrome changelog
 
+### 2.8.0 - November 7, 2016
+* Change default `$pxh-view-bg-color` value to `transparent` instead of a color to minimize confusion and surprise when applied to existing designs 
+
 ### 2.7.0 - November 7, 2016
 * Change default value of `$pxh-view-header-border-color` from an actual color to black with 30% alpha transparency, to support a wider variety of `pxh-view` background colors
 * Add `$pxh-view-bg-color` variable to allow customization of default `pxh-view` background color independently from default `<html>`/`<body` color or default `pxh-wrapper` color
