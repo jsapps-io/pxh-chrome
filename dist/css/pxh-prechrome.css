@@ -3565,7 +3565,7 @@ html {
 html {
   font-size: 0.9375em;
   line-height: 1.3333333333;
-  background-color: #525156;
+  background-color: #425866;
   color: black;
 }
 
@@ -3590,8 +3590,8 @@ a {
 \*------------------------------------*/
 hr {
   height: 1px;
-  color: #9999a3;
-  background: #9999a3;
+  color: #748b99;
+  background: #748b99;
   font-size: 0;
   border: 0;
   margin-top: 15px;
@@ -3599,7 +3599,7 @@ hr {
 }
 
 html {
-  background-color: #242326;
+  background-color: #1b2a33;
   color: white;
 }
 
@@ -3635,14 +3635,14 @@ a {
 
 .pxh-error__icon {
   font-size: 60px;
-  color: #b1b1bc;
+  color: #96a8b2;
   line-height: 1;
 }
 
 .pxh-error__title {
   font-size: 20px;
   font-weight: bold;
-  color: #9999a3;
+  color: #748b99;
 }
 
 .pxh-error__title a,
@@ -3652,7 +3652,7 @@ a {
 
 .pxh-error__description {
   font-size: 15px;
-  color: #9999a3;
+  color: #748b99;
 }
 
 .pxh-error__description a,
