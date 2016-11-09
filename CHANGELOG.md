@@ -1,6 +1,7 @@
 # pxh-chrome changelog
 
 ### pending release
+* Update demo text for user with a long name
 * Replace avatar image with Thomas Edison
 
 ### 2.8.0 - November 7, 2016
