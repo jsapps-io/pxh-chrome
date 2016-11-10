@@ -162,10 +162,10 @@
     width: $pxh-drawer-margin * 3;
     height: $pxh-drawer-margin * 3;
     padding: $pxh-drawer-margin;
-    color: $white;
+    color: $pxh-drawer-toggle-icon-color;
     &:link,
     &:visited {
-      color: $white;
+      color: $pxh-drawer-toggle-icon-color;
     }
   }
 
