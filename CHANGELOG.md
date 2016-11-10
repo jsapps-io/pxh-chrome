@@ -1,5 +1,9 @@
 # pxh-chrome changelog
 
+### 2.8.1 - November 10, 2016
+* Update demo text for "user with a really long name"
+* Replace avatar image with Thomas Edison
+
 ### 2.8.0 - November 7, 2016
 * Change default `$pxh-view-bg-color` value to `transparent` instead of a color to minimize confusion and surprise when applied to existing designs 
 
