@@ -3951,11 +3951,11 @@ hr {
   width: 60px;
   height: 60px;
   padding: 20px;
-  color: white;
+  color: #59717f;
 }
 
 .pxh-drawer-toggle__link:link, .pxh-drawer-toggle__link:visited {
-  color: white;
+  color: #59717f;
 }
 
 .pxh-drawer-toggle__icon {
