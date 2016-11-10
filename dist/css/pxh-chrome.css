@@ -1,5 +1,5 @@
 @charset "UTF-8";
-/*! pxh-chrome.css 2.8.0 */
+/*! pxh-chrome.css 2.8.1 */
 /*------------------------------------*    #pxh-chrome
 \*------------------------------------*/
 /*------------------------------------*    #settings.spacing
@@ -3863,7 +3863,7 @@ hr {
   left: 0;
   width: 260px;
   height: 100%;
-  background-color: #121f26;
+  background-color: #05090c;
   box-shadow: none;
 }
 
@@ -4367,7 +4367,7 @@ hr {
   border-style: solid;
   border-color: rgba(0, 0, 0, 0.15);
   border-width: 1px 0 0 0;
-  background-color: #121f26;
+  background-color: #05090c;
   position: absolute;
   bottom: 0;
   height: 60px;
