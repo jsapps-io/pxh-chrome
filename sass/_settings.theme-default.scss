@@ -195,7 +195,7 @@ $pxh-error-description-font-size: $pxh-base-font-size !default;
 
 
 /// @group pxh-login
-$pxh-login-border-color: rgba(0, 0, 0, 0.15) !default;
+$pxh-login-border-color: rgba($black, 0.15) !default;
 $pxh-login-border-width: 1px 0 0 0 !default;
 
 $pxh-login-avatar-icon-color: $gray7 !default;
@@ -209,7 +209,7 @@ $pxh-login-menu-text-color: $white !default;
 $pxh-login-menu-bg-color: $black !default;
 $pxh-login-menu-border-width: 1px !default;
 $pxh-login-menu-border-color: $gray9 !default;
-$pxh-login-menu-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.25) !default;
+$pxh-login-menu-box-shadow: 0 1px 2px 0 rgba($black, 0.25) !default;
 
 $pxh-login-menu-divider-border-width: 1px 0 0 0 !default;
 $pxh-login-menu-divider-border-color: $gray10 !default;
@@ -257,7 +257,7 @@ $pxh-login-magic-centering: $pxh-base-spacing-unit - 1px !default;
 
 /// @group pxh-navigation
 $pxh-navigation-border-width: 1px 0 0 0 !default;
-$pxh-navigation-border-color: rgba(0, 0, 0, 0.15) !default;
+$pxh-navigation-border-color: rgba($black, 0.15) !default;
 
 $pxh-navigation-item-icon-color: $gray7 !default;
 $pxh-navigation-item-icon-color-hover: $gray4 !default;
@@ -563,7 +563,7 @@ $pxh-view-bg-colors: (
 
 $pxh-view-header-bg-color: $white !default;
 
-$pxh-view-header-border-color: rgba(0,0,0,0.3) !default;
+$pxh-view-header-border-color: rgba($black, 0.3) !default;
 
 $pxh-view-header-border-width: 0 0 1px 0; // should allow all borders, but specify just the bottom to start
 
