@@ -6,6 +6,14 @@
 \*------------------------------------*/
 /*------------------------------------*    #settings.colors
 \*------------------------------------*/
+/*------------------------------------*    #2016 default neutral-gray theme
+\*------------------------------------*/
+/*------------------------------------*    #default colors
+\*------------------------------------*/
+/*------------------------------------*    #2017 light-colored cool-gray theme
+\*------------------------------------*/
+/*------------------------------------*    #lights-out theme
+\*------------------------------------*/
 /*------------------------------------*    #settings.theme-prechrome
 \*------------------------------------*/
 /*------------------------------------*    #settings.theme-default
@@ -3565,7 +3573,7 @@ html {
 html {
   font-size: 0.9375em;
   line-height: 1.3333333333;
-  background-color: #425866;
+  background-color: #525156;
   color: black;
 }
 
@@ -3590,8 +3598,8 @@ a {
 \*------------------------------------*/
 hr {
   height: 1px;
-  color: #748b99;
-  background: #748b99;
+  color: #9999a3;
+  background: #9999a3;
   font-size: 0;
   border: 0;
   margin-top: 15px;
@@ -3599,7 +3607,7 @@ hr {
 }
 
 html {
-  background-color: #1b2a33;
+  background-color: #242326;
   color: white;
 }
 
@@ -3635,14 +3643,14 @@ a {
 
 .pxh-error__icon {
   font-size: 60px;
-  color: #96a8b2;
+  color: #b1b1bc;
   line-height: 1;
 }
 
 .pxh-error__title {
   font-size: 20px;
   font-weight: bold;
-  color: #748b99;
+  color: #9999a3;
 }
 
 .pxh-error__title a,
@@ -3652,7 +3660,7 @@ a {
 
 .pxh-error__description {
   font-size: 15px;
-  color: #748b99;
+  color: #9999a3;
 }
 
 .pxh-error__description a,
