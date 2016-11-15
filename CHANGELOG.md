@@ -1,6 +1,6 @@
 # pxh-chrome changelog
 
-### pending release
+### 2.8.2 - November 15, 2016
 * Add color variables for new 2017 cooler shades of gray
   * Namespaced as `$l-grayxx` (`l` for `light` as opposed to `dark` theme)
 * Add color variables for dark "lights out" Predix UI theme
