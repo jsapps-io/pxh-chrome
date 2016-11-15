@@ -1,5 +1,5 @@
 /*------------------------------------*\
-    #settings.theme-default
+    #settings.theme-lights-out
 \*------------------------------------*/
 
 /// Define whether the drawer should appear on the left or right side of the browser window
@@ -58,9 +58,9 @@ $fa-font-path: '//dzlpbrbc7yvq0.cloudfront.net/libs/font-awesome/4.7.0/fonts' !d
 
 // <html> and <body> elements
 
-$pxh-base-bg-color: $gray8 !default;
+$pxh-base-bg-color: $d-gray19 !default;
 
-$pxh-base-text-color: $black !default;
+$pxh-base-text-color: $d-gray4 !default;
 
 $pxh-base-font-family: 'GE Inspira Sans', 'Helvetica', 'Arial', sans-serif !default;
 
@@ -69,14 +69,14 @@ $pxh-base-font-family: 'GE Inspira Sans', 'Helvetica', 'Arial', sans-serif !defa
 
 // <hr> element
 
-$pxh-hr-color: $gray6 !default;
+$pxh-hr-color: $d-gray6 !default;
 
 
 
 
 // <a> element
 
-$pxh-link-text-color: $primary-blue !default;
+$pxh-link-text-color: $d-primary-blue !default;
 
 $pxh-link-text-color-hover: $pxh-link-text-color !default;
 
@@ -84,35 +84,35 @@ $pxh-link-text-color-hover: $pxh-link-text-color !default;
 
 
 /// @group pxh-badge
-$pxh-badge-text-color:                  $white !default;
-$pxh-badge-text-color-inverse:          $black !default;
-$pxh-badge-bg-color:                    $gray5 !default;
-$pxh-badge-border-color:                $gray5 !default;
+$pxh-badge-text-color:                  $d-white !default;
+$pxh-badge-text-color-inverse:          $d-black !default;
+$pxh-badge-bg-color:                    $d-gray5 !default;
+$pxh-badge-border-color:                $d-gray5 !default;
 $pxh-badge-border-width:                1px !default;
 
-$pxh-badge-bg-color-navigation:         $select-blue-pressed !default;
-$pxh-badge-border-color-navigation:     $select-blue-pressed !default;
+$pxh-badge-bg-color-navigation:         $d-select-blue-pressed !default;
+$pxh-badge-border-color-navigation:     $d-select-blue-pressed !default;
 
-$pxh-badge-bg-color-primary:            $primary-blue !default;
-$pxh-badge-border-color-primary:        $primary-blue !default;
+$pxh-badge-bg-color-primary:            $d-primary-blue !default;
+$pxh-badge-border-color-primary:        $d-primary-blue !default;
 
-$pxh-badge-bg-color-important:          $alert-red !default;
-$pxh-badge-border-color-important:      $alert-red !default;
+$pxh-badge-bg-color-important:          $d-alert-red !default;
+$pxh-badge-border-color-important:      $d-alert-red !default;
 
-$pxh-badge-bg-color-warning:            $alert-orange !default;
-$pxh-badge-border-color-warning:        $alert-orange !default;
+$pxh-badge-bg-color-warning:            $d-alert-orange !default;
+$pxh-badge-border-color-warning:        $d-alert-orange !default;
 
-$pxh-badge-bg-color-error:              $alert-yellow !default;
-$pxh-badge-border-color-error:          $alert-yellow !default;
+$pxh-badge-bg-color-error:              $d-alert-yellow !default;
+$pxh-badge-border-color-error:          $d-alert-yellow !default;
 
-$pxh-badge-bg-color-info:               $alert-blue !default;
-$pxh-badge-border-color-info:           $alert-blue !default;
+$pxh-badge-bg-color-info:               $d-alert-blue !default;
+$pxh-badge-border-color-info:           $d-alert-blue !default;
 
-$pxh-badge-bg-color-healthy-black:      $black !default;
-$pxh-badge-border-color-healthy-black:  $black !default;
+$pxh-badge-bg-color-healthy-black:      $d-black !default;
+$pxh-badge-border-color-healthy-black:  $d-black !default;
 
-$pxh-badge-bg-color-healthy-white:      $white !default;
-$pxh-badge-border-color-healthy-white:  $gray5 !default;
+$pxh-badge-bg-color-healthy-white:      $d-white !default;
+$pxh-badge-border-color-healthy-white:  $d-gray5 !default;
 
 $pxh-badge-font-size: $pxh-base-font-size * 0.866666666666666 !default;
 
@@ -120,9 +120,9 @@ $pxh-badge-font-size: $pxh-base-font-size * 0.866666666666666 !default;
 
 
 /// @group pxh-drawer
-$pxh-drawer-bg-color: $gray10 !default;
+$pxh-drawer-bg-color: $d-gray20 !default;
 
-$pxh-drawer-toggle-icon-color: $gray7 !default;
+$pxh-drawer-toggle-icon-color: $d-gray12 !default;
 
 $pxh-drawer-header-image: url('../img/logo.png') !default;
 
@@ -158,17 +158,17 @@ $pxh-drawer-header-link-font-size: $pxh-base-font-size * 1.266666666666666 !defa
 /// Icon color for error messages
 /// @group pxh-error
 /// @type Color
-$pxh-error-icon-color: $gray5 !default;
+$pxh-error-icon-color: $d-gray5 !default;
 
 /// Title/header text color for error messages
 /// @group pxh-error
 /// @type Color
-$pxh-error-title-text-color: $gray6 !default;
+$pxh-error-title-text-color: $d-gray6 !default;
 
 /// Description text color for error messages
 /// @group pxh-error
 /// @type Color
-$pxh-error-description-text-color: $gray6 !default;
+$pxh-error-description-text-color: $d-gray6 !default;
 
 /// Top margin to offset error message from top of browser window
 /// @group pxh-error
@@ -195,41 +195,41 @@ $pxh-error-description-font-size: $pxh-base-font-size !default;
 
 
 /// @group pxh-login
-$pxh-login-border-color: rgba($black, 0.15) !default;
+$pxh-login-border-color: rgba(0, 0, 0, 0.15) !default;
 $pxh-login-border-width: 1px 0 0 0 !default;
 
-$pxh-login-avatar-icon-color: $gray7 !default;
-$pxh-login-avatar-icon-border-color: $gray7 !default;
+$pxh-login-avatar-icon-color: $d-gray7 !default;
+$pxh-login-avatar-icon-border-color: $d-gray7 !default;
 $pxh-login-avatar-icon-border-width: 1px !default;
 
-$pxh-login-settings-link-text-color: $gray7 !default;
-$pxh-login-settings-link-text-color-hover: $white !default;
+$pxh-login-settings-link-text-color: $d-gray12 !default;
+$pxh-login-settings-link-text-color-hover: $d-white !default;
 
-$pxh-login-menu-text-color: $white !default;
-$pxh-login-menu-bg-color: $black !default;
+$pxh-login-menu-text-color: $d-white !default;
+$pxh-login-menu-bg-color: $d-black !default;
 $pxh-login-menu-border-width: 1px !default;
-$pxh-login-menu-border-color: $gray9 !default;
-$pxh-login-menu-box-shadow: 0 1px 2px 0 rgba($black, 0.25) !default;
+$pxh-login-menu-border-color: $d-gray9 !default;
+$pxh-login-menu-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.25) !default;
 
 $pxh-login-menu-divider-border-width: 1px 0 0 0 !default;
-$pxh-login-menu-divider-border-color: $gray10 !default;
+$pxh-login-menu-divider-border-color: $d-gray10 !default;
 
-$pxh-login-menu-link-text-color: $white !default;
-$pxh-login-menu-link-text-color-hover: $white !default;
+$pxh-login-menu-link-text-color: $d-white !default;
+$pxh-login-menu-link-text-color-hover: $d-white !default;
 $pxh-login-menu-link-bg-color: transparent !default;
-$pxh-login-menu-link-bg-color-hover: $gray10 !default;
+$pxh-login-menu-link-bg-color-hover: $d-gray10 !default;
 
-$pxh-login-notifications-link-text-color: $gray7 !default;
-$pxh-login-notifications-link-text-color-hover: $white !default;
+$pxh-login-notifications-link-text-color: $d-gray7 !default;
+$pxh-login-notifications-link-text-color-hover: $d-white !default;
 
-$pxh-login-notifications-badge-text-color: $white !default;
-$pxh-login-notifications-badge-text-color-hover: $white !default;
+$pxh-login-notifications-badge-text-color: $d-white !default;
+$pxh-login-notifications-badge-text-color-hover: $d-white !default;
 
-$pxh-login-notifications-badge-bg-color: $gray5 !default;
-$pxh-login-notifications-badge-bg-color-green: $green !default;
-$pxh-login-notifications-badge-bg-color-blue: $blue !default;
-$pxh-login-notifications-badge-bg-color-orange: $orange !default;
-$pxh-login-notifications-badge-bg-color-red: $red !default;
+$pxh-login-notifications-badge-bg-color: $d-gray5 !default;
+$pxh-login-notifications-badge-bg-color-green: $d-alert-green !default;
+$pxh-login-notifications-badge-bg-color-blue: $d-alert-blue !default;
+$pxh-login-notifications-badge-bg-color-orange: $d-alert-orange !default;
+$pxh-login-notifications-badge-bg-color-red: $d-alert-red !default;
 
 $pxh-login-font-size: $pxh-base-font-size !default;
 
@@ -257,39 +257,39 @@ $pxh-login-magic-centering: $pxh-base-spacing-unit - 1px !default;
 
 /// @group pxh-navigation
 $pxh-navigation-border-width: 1px 0 0 0 !default;
-$pxh-navigation-border-color: rgba($black, 0.15) !default;
+$pxh-navigation-border-color: rgba(0, 0, 0, 0.15) !default;
 
-$pxh-navigation-item-icon-color: $gray7 !default;
-$pxh-navigation-item-icon-color-hover: $gray4 !default;
-$pxh-navigation-item-icon-color-selected: $white !default;
-$pxh-navigation-item-icon-color-active: $white !default;
+$pxh-navigation-item-icon-color: $d-gray12 !default;
+$pxh-navigation-item-icon-color-hover: $d-gray4 !default;
+$pxh-navigation-item-icon-color-selected: $d-white !default;
+$pxh-navigation-item-icon-color-active: $d-white !default;
 
 /// Navigation color for error icon
 /// @group pxh-navigation
 /// @type Color
-$pxh-navigation-item-icon-color-error: $red !default;
+$pxh-navigation-item-icon-color-error: $d-alert-red !default;
 
 /// Navigation link font color
 /// @group pxh-navigation
 /// @type Color
-$pxh-navigation-link-text-color: $gray7 !default;
+$pxh-navigation-link-text-color: $d-gray12 !default;
 
 /// Navigation text color on hover
 /// @group pxh-navigation
 /// @type Color
-$pxh-navigation-link-text-color-hover: $gray4 !default;
+$pxh-navigation-link-text-color-hover: $d-gray4 !default;
 
 /// Navigation text color for selected item
 /// @group pxh-navigation
 /// @type Color
-$pxh-navigation-link-text-color-selected: $white !default;
+$pxh-navigation-link-text-color-selected: $d-white !default;
 
 /// Navigation text color for active item
 /// @group pxh-navigation
 /// @type Color
-$pxh-navigation-link-text-color-active: $white !default;
+$pxh-navigation-link-text-color-active: $d-white !default;
 
-$pxh-navigation-link-text-color-error: $gray7 !default;
+$pxh-navigation-link-text-color-error: $d-gray7 !default;
 
 /// Navigation link background color
 /// @group pxh-navigation
@@ -299,47 +299,47 @@ $pxh-navigation-link-bg-color: transparent !default;
 /// Navigation background color on hover
 /// @group pxh-navigation
 /// @type Color
-$pxh-navigation-link-bg-color-hover: $gray9 !default;
+$pxh-navigation-link-bg-color-hover: $d-gray9 !default;
 
 /// Navigation background color for selected item
 /// @group pxh-navigation
 /// @type Color
-$pxh-navigation-link-bg-color-selected: $gray9 !default;
+$pxh-navigation-link-bg-color-selected: $d-gray9 !default;
 
 /// Navigation background color for active item
 /// @group pxh-navigation
 /// @type Color
-$pxh-navigation-link-bg-color-active: $gray9 !default;
+$pxh-navigation-link-bg-color-active: $d-gray9 !default;
 
 $pxh-navigation-link-bg-color-error: transparent !default;
 
 /// Navigation text color for sub-item
 /// @group pxh-navigation
 /// @type Color
-$pxh-navigation-sub-link-text-color: $gray7 !default;
+$pxh-navigation-sub-link-text-color: $d-gray12 !default;
 
 /// Navigation text color for sub-item on hover
 /// @group pxh-navigation
 /// @type Color
-$pxh-navigation-sub-link-text-color-hover: $gray4 !default;
+$pxh-navigation-sub-link-text-color-hover: $d-gray4 !default;
 
 /// Navigation text color for selected sub-item
 /// @group pxh-navigation
 /// @type Color
-$pxh-navigation-sub-link-text-color-selected: $white !default;
+$pxh-navigation-sub-link-text-color-selected: $d-white !default;
 
 $pxh-navigation-sub-link-bg-color: transparent !default;
 $pxh-navigation-sub-link-bg-color-hover: transparent !default;
 $pxh-navigation-sub-link-bg-color-selected: transparent !default;
 
-$pxh-navigation-sub-link-settings-text-color: $primary-blue !default;
-$pxh-navigation-sub-link-settings-text-color-selected: $primary-blue !default;
+$pxh-navigation-sub-link-settings-text-color: $d-primary-blue !default;
+$pxh-navigation-sub-link-settings-text-color-selected: $d-primary-blue !default;
 $pxh-navigation-sub-link-settings-bg-color: transparent !default;
 $pxh-navigation-sub-link-settings-bg-color-hover: transparent !default;
 $pxh-navigation-sub-link-settings-bg-color-selected: transparent !default;
 
 $pxh-navigation-sub-item-divider-height: 1px !default;
-$pxh-navigation-sub-item-divider-color: $gray9; // used as bg color but that's an implementation detail
+$pxh-navigation-sub-item-divider-color: $d-gray14; // used as bg color but that's an implementation detail
 
 /// Navigation item link height
 /// @group pxh-navigation
@@ -369,11 +369,11 @@ $pxh-navigation-sub-link-font-size: $pxh-base-font-size * 1.066666666666666 !def
 
 /// @group pxh-notifications
 
-$pxh-notifications-text-color: $gray2 !default;
+$pxh-notifications-text-color: $d-gray2 !default;
 
-$pxh-notifications-bg-color: $gray10 !default;
+$pxh-notifications-bg-color: $d-gray10 !default;
 
-$pxh-notifications-border-color: $gray7 !default;
+$pxh-notifications-border-color: $d-gray7 !default;
 
 $pxh-notifications-border-width: 1px !default;
 
@@ -381,48 +381,48 @@ $pxh-notifications-box-shadow: none !default;
 
 $pxh-notifications-header-border-width: 0 0 1px 0 !default;
 
-$pxh-notifications-header-border-color: $gray7 !default;
+$pxh-notifications-header-border-color: $d-gray7 !default;
 
-$pxh-notifications-link-text-color: $gray5 !default;
+$pxh-notifications-link-text-color: $d-gray5 !default;
 
-$pxh-notifications-link-text-color-hover: $primary-blue !default;
+$pxh-notifications-link-text-color-hover: $d-primary-blue !default;
 
-$pxh-notifications-clear-text-color: $gray5 !default;
+$pxh-notifications-clear-text-color: $d-gray5 !default;
 
-$pxh-notifications-clear-text-color-hover: $primary-blue !default;
+$pxh-notifications-clear-text-color-hover: $d-primary-blue !default;
 
-$pxh-notifications-empty-text-color: $gray7 !default;
+$pxh-notifications-empty-text-color: $d-gray7 !default;
 
 
 
 
 /// @group pxh-notification
 
-$pxh-notification-border-color: $gray9 !default;
+$pxh-notification-border-color: $d-gray9 !default;
 
 $pxh-notification-border-width: 0 0 1px 0 !default;
 
 $pxh-notification-icon-color: transparent !default;
-$pxh-notification-icon-color-green: $green !default;
-$pxh-notification-icon-color-blue: $blue !default;
-$pxh-notification-icon-color-orange: $orange !default;
-$pxh-notification-icon-color-red: $red !default;
+$pxh-notification-icon-color-green: $d-alert-green !default;
+$pxh-notification-icon-color-blue: $d-alert-blue !default;
+$pxh-notification-icon-color-orange: $d-alert-orange !default;
+$pxh-notification-icon-color-red: $d-alert-red !default;
 
-$pxh-notification-link-text-color: $gray4 !default;
+$pxh-notification-link-text-color: $d-gray4 !default;
 
-$pxh-notification-link-text-color-hover: $primary-blue !default;
+$pxh-notification-link-text-color-hover: $d-primary-blue !default;
 
-$pxh-notification-more-button-text-color: $gray7 !default;
+$pxh-notification-more-button-text-color: $d-gray7 !default;
 
-$pxh-notification-more-button-text-color-hover: $gray4 !default;
+$pxh-notification-more-button-text-color-hover: $d-gray4 !default;
 
-$pxh-notification-more-button-bg-color: $gray10 !default;
+$pxh-notification-more-button-bg-color: $d-gray10 !default;
 
-$pxh-notification-more-button-bg-color-hover: $gray9 !default;
+$pxh-notification-more-button-bg-color-hover: $d-gray9 !default;
 
-$pxh-notification-dismiss-button-icon-color: $gray8 !default;
+$pxh-notification-dismiss-button-icon-color: $d-gray8 !default;
 
-$pxh-notification-dismiss-button-icon-color-hover: $primary-blue !default;
+$pxh-notification-dismiss-button-icon-color-hover: $d-primary-blue !default;
 
 /// Height of a (non-expanded) notification
 /// @group pxh-notification
@@ -447,7 +447,7 @@ $pxh-notification-icon-font-size: $pxh-base-font-size * 1.6 !default;
 
 
 /// @group pxh-overlay
-$pxh-overlay-bg-color: rgba($black, 0.7) !default;
+$pxh-overlay-bg-color: rgba($d-black, 0.7) !default;
 
 
 
@@ -459,10 +459,10 @@ $pxh-overlay-bg-color: rgba($black, 0.7) !default;
 /// @type Number
 $pxh-spinner-alpha: 0.7 !default;
 
-$pxh-spinner-base-color: rgba($gray4, $pxh-spinner-alpha) !default;
-$pxh-spinner-accent-color: $primary-blue !default;
+$pxh-spinner-base-color: rgba($d-gray4, $pxh-spinner-alpha) !default;
+$pxh-spinner-accent-color: $d-primary-blue !default;
 
-$pxh-spinner-base-color-inverted: rgba($gray8, $pxh-spinner-alpha) !default;
+$pxh-spinner-base-color-inverted: rgba($d-gray8, $pxh-spinner-alpha) !default;
 $pxh-spinner-accent-color-inverted: $pxh-spinner-accent-color !default;
 
 
@@ -470,49 +470,49 @@ $pxh-spinner-accent-color-inverted: $pxh-spinner-accent-color !default;
 
 // pxh-toast
 
-$pxh-toast-text-color: $gray5 !default;
+$pxh-toast-text-color: $d-gray5 !default;
 
-$pxh-toast-bg-color: $gray10 !default;
+$pxh-toast-bg-color: $d-gray10 !default;
 
-$pxh-toast-more-bg: linear-gradient(to bottom, rgba($gray10, 0) 0%, rgba($gray10, 1) 50%); // gradients are considered CSS images not colors hence bg and not bg-color
+$pxh-toast-more-bg: linear-gradient(to bottom, rgba($d-gray10, 0) 0%, rgba($d-gray10, 1) 50%); // gradients are considered CSS images not colors hence bg and not bg-color
 
-$pxh-toast-more-button-text-color: $gray7 !default;
+$pxh-toast-more-button-text-color: $d-gray7 !default;
 
-$pxh-toast-more-button-text-color-hover: $gray4 !default;
+$pxh-toast-more-button-text-color-hover: $d-gray4 !default;
 
-$pxh-toast-more-button-bg-color: $gray10 !default;
+$pxh-toast-more-button-bg-color: $d-gray10 !default;
 
-$pxh-toast-more-button-bg-color-hover: $gray9 !default;
+$pxh-toast-more-button-bg-color-hover: $d-gray9 !default;
 
-$pxh-toast-more-button-border-color: $gray8 !default;
+$pxh-toast-more-button-border-color: $d-gray8 !default;
 
 $pxh-toast-more-button-border-width: 1px !default;
 
-$pxh-toast-button-text-color: $gray5 !default;
+$pxh-toast-button-text-color: $d-gray5 !default;
 
-$pxh-toast-button-text-color-hover: $gray9 !default;
+$pxh-toast-button-text-color-hover: $d-gray9 !default;
 
-$pxh-toast-button-bg-color: $gray10 !default;
+$pxh-toast-button-bg-color: $d-gray10 !default;
 
-$pxh-toast-button-bg-color-hover: $gray9 !default;
+$pxh-toast-button-bg-color-hover: $d-gray9 !default;
 
-$pxh-toast-button-border-color: $gray8 !default;
+$pxh-toast-button-border-color: $d-gray8 !default;
 
 $pxh-toast-button-border-width: 1px !default;
 
-$pxh-toast-timestamp-text-color: $gray8 !default;
+$pxh-toast-timestamp-text-color: $d-gray8 !default;
 
-$pxh-toast-dismiss-button-icon-color: $gray7 !default;
+$pxh-toast-dismiss-button-icon-color: $d-gray7 !default;
 
-$pxh-toast-dismiss-button-icon-color-hover: $primary-blue !default;
+$pxh-toast-dismiss-button-icon-color-hover: $d-primary-blue !default;
 
-$pxh-toast-icon-color: $white !default;
+$pxh-toast-icon-color: $d-white !default;
 
 $pxh-toast-icon-bg-color: transparent !default;
-$pxh-toast-icon-bg-color-green: $green !default;
-$pxh-toast-icon-bg-color-blue: $blue !default;
-$pxh-toast-icon-bg-color-orange: $orange !default;
-$pxh-toast-icon-bg-color-red: $red !default;
+$pxh-toast-icon-bg-color-green: $d-alert-green !default;
+$pxh-toast-icon-bg-color-blue: $d-alert-blue !default;
+$pxh-toast-icon-bg-color-orange: $d-alert-orange !default;
+$pxh-toast-icon-bg-color-red: $d-alert-red !default;
 
 /// Height of a (non-expanded) toast
 /// @group pxh-toast
@@ -542,34 +542,34 @@ $pxh-toast-icon-font-size: $pxh-base-font-size * 1.866666666666666 !default;
 
 /// @group pxh-view
 
-$pxh-view-bg-color: transparent !default;
+$pxh-view-bg-color: $d-black !default;
 
 /// Options for pxh-view background colors
 /// @group pxh-view
 $pxh-view-bg-colors: (
-  white: $white, 
-  gray1: $gray1, 
-  gray2: $gray2, 
-  gray3: $gray3, 
-  gray4: $gray4, 
-  gray5: $gray5, 
-  gray6: $gray6, 
-  gray7: $gray7, 
-  gray8: $gray8, 
-  gray9: $gray9, 
-  gray10: $gray10, 
-  black: $black
+  white: $d-white, 
+  gray1: $d-gray1, 
+  gray2: $d-gray2, 
+  gray3: $d-gray3, 
+  gray4: $d-gray4, 
+  gray5: $d-gray5, 
+  gray6: $d-gray6, 
+  gray7: $d-gray7, 
+  gray8: $d-gray8, 
+  gray9: $d-gray9, 
+  gray10: $d-gray10, 
+  black: $d-black
  ) !default;
 
-$pxh-view-header-bg-color: $white !default;
+$pxh-view-header-bg-color: $d-gray17 !default;
 
-$pxh-view-header-border-color: rgba($black, 0.3) !default;
+$pxh-view-header-border-color: rgba(255,255,255,0.2) !default;
 
 $pxh-view-header-border-width: 0 0 1px 0; // should allow all borders, but specify just the bottom to start
 
-$pxh-view-header-drawer-toggle-icon-color: $black !default;
+$pxh-view-header-drawer-toggle-icon-color: $d-gray12 !default;
 
-$pxh-view-header-title-link-text-color: $black !default;
+$pxh-view-header-title-link-text-color: $d-gray4 !default;
 
 $pxh-view-header-title-font-size: $pxh-base-font-size * 1.466666666666666 !default;
 
@@ -584,10 +584,10 @@ $pxh-view-header-height: ($pxh-base-spacing-unit * 4) + 1px !default;
 
 // overrides.pxh-docs
 
-$pxh-docs-bg-color: $white !default;
+$pxh-docs-bg-color: $d-gray17 !default;
 $pxh-docs-code-font-size: $pxh-base-font-size !default;
-$pxh-docs-code-bg-color: #fff3f3 !default;
-$pxh-docs-code-text-color: #900 !default;
+$pxh-docs-code-bg-color: transparent !default;
+$pxh-docs-code-text-color: $d-gray4 !default;
 
 
 
@@ -596,14 +596,14 @@ $pxh-docs-code-text-color: #900 !default;
 
 $pxh-scrollbar-width: 7px !default;
 
-$pxh-scrollbar-base-color: $gray10 !default;
-$pxh-scrollbar-arrow-color: $gray8 !default;
-$pxh-scrollbar-track-color: $gray10 !default;
-$pxh-scrollbar-face-color:  $gray8 !default;
+$pxh-scrollbar-base-color: $d-gray10 !default;
+$pxh-scrollbar-arrow-color: $d-gray8 !default;
+$pxh-scrollbar-track-color: $d-gray10 !default;
+$pxh-scrollbar-face-color:  $d-gray8 !default;
 
-$pxh-scrollbar-track-border-color: $gray10 !default;
+$pxh-scrollbar-track-border-color: $d-gray10 !default;
 $pxh-scrollbar-track-border-width: 2px !default;
 
-$pxh-scrollbar-thumb-color: $gray7 !default;
-$pxh-scrollbar-thumb-border-color: $gray10 !default;
+$pxh-scrollbar-thumb-color: $d-gray7 !default;
+$pxh-scrollbar-thumb-border-color: $d-gray10 !default;
 $pxh-scrollbar-thumb-border-width: 0 2px 0 2px !default;
