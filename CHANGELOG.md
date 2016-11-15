@@ -1,6 +1,12 @@
 # pxh-chrome changelog
 
 ### pending release
+* Add color variables for new 2017 cooler shades of gray
+  * Namespaced as `$l-grayxx` (`l` for `light` as opposed to `dark` theme)
+* Add color variables for dark "lights out" Predix UI theme
+* Remove a stray `$white` variable for drawer header link color so pxh-chrome Sass files are completely independent from colors defined in `_settings.colors.scss`
+  * The only place these colors are used now are in theme files (e.g. `_settings.theme-defaults.scss`, `_settings.theme-lights-out.scss`)
+* Use `$white` and `$black` variables instead of hard-coded RGB values for box shadows and borders
 * Fix end-to-end test for pxh-chrome version number
 
 ### 2.8.1 - November 10, 2016
