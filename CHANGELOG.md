@@ -1,5 +1,12 @@
 # pxh-chrome changelog
 
+### pending release
+* Add `latest` tag to CDN, which always points to the latest available version of pxh-chrome
+  * Use it like this:
+    * `<link rel="stylesheet" href="//dzlpbrbc7yvq0.cloudfront.net/pxh-chrome/latest/dist/css/pxh-chrome.min.css">`
+    * `<script src="//dzlpbrbc7yvq0.cloudfront.net/pxh-chrome/latest/dist/js/pxh-chrome.min.js"></script>`
+* Update README docs to use `latest` tag on CDN
+
 ### 2.8.2 - November 15, 2016
 * Add color variables for new 2017 cooler shades of gray
   * Namespaced as `$l-grayxx` (`l` for `light` as opposed to `d` for `dark` theme)
