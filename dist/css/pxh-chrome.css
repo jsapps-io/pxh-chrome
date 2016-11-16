@@ -5837,9 +5837,9 @@ hr {
 
 .pxh-notification__more {
   position: absolute;
-  top: 40px;
+  top: 35px;
   width: 100%;
-  height: 30px;
+  height: 35px;
   padding: 7px 0 5px 0;
   background: -webkit-linear-gradient(top, rgba(36, 35, 38, 0) 0%, #242326 50%);
   background: linear-gradient(to bottom, rgba(36, 35, 38, 0) 0%, #242326 50%);
@@ -5859,8 +5859,10 @@ hr {
   border-style: solid;
   border-width: 1px;
   border-color: #525156;
-  border-radius: 5px;
-  padding: 1px 5px 0 5px;
+  border-radius: 100%;
+  height: 25px;
+  width: 25px;
+  padding: 3px 0 0 0;
   display: inline-block;
   text-decoration: none;
   text-transform: lowercase;
@@ -6380,9 +6382,9 @@ hr {
 
 .pxh-toast__more {
   position: absolute;
-  top: 40px;
+  top: 35px;
   width: 100%;
-  height: 30px;
+  height: 35px;
   padding: 7px 0 5px 0;
   background: -webkit-linear-gradient(top, rgba(36, 35, 38, 0) 0%, #242326 50%);
   background: linear-gradient(to bottom, rgba(36, 35, 38, 0) 0%, #242326 50%);
@@ -6402,8 +6404,10 @@ hr {
   border-style: solid;
   border-width: 1px;
   border-color: #525156;
-  border-radius: 5px;
-  padding: 1px 5px 0 5px;
+  border-radius: 100%;
+  height: 25px;
+  width: 25px;
+  padding: 3px 0 0 0;
   display: inline-block;
   text-decoration: none;
   text-transform: lowercase;
