@@ -1,6 +1,7 @@
 # pxh-chrome changelog
 
 ### pending release
+* Replace "show more/less" text buttons in toasts and notifications with "down/up chevrons" to simplify internationalization
 * Add `latest` tag to CDN, which always points to the latest available version of pxh-chrome
   * Use it like this:
     * `<link rel="stylesheet" href="//dzlpbrbc7yvq0.cloudfront.net/pxh-chrome/latest/dist/css/pxh-chrome.min.css">`
