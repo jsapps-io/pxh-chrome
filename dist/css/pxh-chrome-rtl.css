@@ -5850,6 +5850,8 @@ hr {
 .pxh-notification__more--expanded {
   position: relative;
   top: 0;
+  padding-bottom: 3px;
+  padding-left: 10px;
   height: auto;
   background: transparent;
 }
@@ -6395,6 +6397,8 @@ hr {
 .pxh-toast__more--expanded {
   position: relative;
   top: 0;
+  padding-bottom: 3px;
+  padding-left: 10px;
   height: auto;
   background: transparent;
 }
