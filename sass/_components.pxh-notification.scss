@@ -47,6 +47,8 @@
   &--expanded {
     position: relative;
     top: 0;
+    padding-bottom: $pxh-toast-margin - 2px;
+    padding-left: $pxh-toast-margin * 2;
     height: auto;
     background: transparent;
   }
