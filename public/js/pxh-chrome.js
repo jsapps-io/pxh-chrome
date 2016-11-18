@@ -1,5 +1,5 @@
 'use strict';
-/*! pxh-chrome.js 2.9.0 */
+/*! pxh-chrome.js 2.10.0 */
 
 // **************
 // CONFIG OBJECTS
@@ -1703,12 +1703,12 @@ pxh.toast = {
     if (element.classList.contains('pxh-' + slug + '--expanded')) {
       element.classList.remove('pxh-' + slug + '--expanded');
       element.querySelector('.pxh-' + slug + '__more').classList.remove('pxh-' + slug + '__more--expanded');
-      element.querySelector('.pxh-' + slug + '__more-button').innerHTML = 'Show more';
+      element.querySelector('.pxh-' + slug + '__more-button').innerHTML = '<i class="fa fa-chevron-down"></i>';
     } else {
       element.classList.remove('pxh-' + slug + '--animate-in');
       element.classList.add('pxh-' + slug + '--expanded');
       element.querySelector('.pxh-' + slug + '__more').classList.add('pxh-' + slug + '__more--expanded');
-      element.querySelector('.pxh-' + slug + '__more-button').innerHTML = 'Show less';
+      element.querySelector('.pxh-' + slug + '__more-button').innerHTML = '<i class="fa fa-chevron-up"></i>';
     }
   },
   /** @namespace pxh.toast.markup */
@@ -1783,7 +1783,7 @@ pxh.toast = {
       var markup = [];
       markup.push('  <div class="pxh-' + slug + '__more">\n');
       markup.push('    <a href="#" class="pxh-' + slug + '__more-button js-' + slug + '__more-button">\n');
-      markup.push('      Show more\n');
+      markup.push('      <i class="fa fa-chevron-down"></i>\n');
       markup.push('    </a>\n');
       markup.push('  </div>\n');
       markup = markup.join('');

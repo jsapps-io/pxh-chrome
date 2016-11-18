@@ -1,5 +1,5 @@
 @charset "UTF-8";
-/*! pxh-chrome.css 2.9.0 */
+/*! pxh-chrome.css 2.10.0 */
 /*------------------------------------*    #pxh-chrome
 \*------------------------------------*/
 /*------------------------------------*    #settings.spacing
@@ -5837,10 +5837,10 @@ hr {
 
 .pxh-notification__more {
   position: absolute;
-  top: 40px;
+  top: 35px;
   width: 100%;
-  height: 30px;
-  padding: 7px 0 5px 0;
+  height: 35px;
+  padding: 13px 0 5px 0;
   background: -webkit-linear-gradient(top, rgba(36, 35, 38, 0) 0%, #242326 50%);
   background: linear-gradient(to bottom, rgba(36, 35, 38, 0) 0%, #242326 50%);
   text-align: center;
@@ -5849,6 +5849,8 @@ hr {
 .pxh-notification__more--expanded {
   position: relative;
   top: 0;
+  padding-bottom: 3px;
+  padding-left: 10px;
   height: auto;
   background: transparent;
 }
@@ -5859,12 +5861,14 @@ hr {
   border-style: solid;
   border-width: 1px;
   border-color: #525156;
-  border-radius: 5px;
-  padding: 1px 5px 0 5px;
+  border-radius: 100%;
+  height: 20px;
+  width: 20px;
+  padding: 2px 0 1px 0;
   display: inline-block;
   text-decoration: none;
   text-transform: lowercase;
-  font-size: 14px;
+  font-size: 13px;
   color: #d1d0d8 !important;
   background-color: #242326 !important;
 }
@@ -6380,10 +6384,10 @@ hr {
 
 .pxh-toast__more {
   position: absolute;
-  top: 40px;
+  top: 35px;
   width: 100%;
-  height: 30px;
-  padding: 7px 0 5px 0;
+  height: 35px;
+  padding: 13px 0 5px 0;
   background: -webkit-linear-gradient(top, rgba(36, 35, 38, 0) 0%, #242326 50%);
   background: linear-gradient(to bottom, rgba(36, 35, 38, 0) 0%, #242326 50%);
   text-align: center;
@@ -6392,6 +6396,8 @@ hr {
 .pxh-toast__more--expanded {
   position: relative;
   top: 0;
+  padding-bottom: 3px;
+  padding-left: 10px;
   height: auto;
   background: transparent;
 }
@@ -6402,12 +6408,14 @@ hr {
   border-style: solid;
   border-width: 1px;
   border-color: #525156;
-  border-radius: 5px;
-  padding: 1px 5px 0 5px;
+  border-radius: 100%;
+  height: 20px;
+  width: 20px;
+  padding: 2px 0 1px 0;
   display: inline-block;
   text-decoration: none;
   text-transform: lowercase;
-  font-size: 14px;
+  font-size: 13px;
   color: #7c7c84 !important;
   background-color: #242326 !important;
 }

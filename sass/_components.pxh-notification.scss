@@ -38,15 +38,17 @@
 
 @mixin pxh-toast__more {
   position: absolute;
-  top: $pxh-toast-margin * 8;
+  top: $pxh-toast-margin * 7;
   width: 100%;
-  height: $pxh-toast-margin * 6;
-  padding: ($pxh-toast-margin + 2px) 0 $pxh-toast-margin 0;
+  height: $pxh-toast-margin * 7;
+  padding: ($pxh-toast-margin * 3) - 2px 0 $pxh-toast-margin 0;
   background: $pxh-toast-more-bg;
   text-align: center;
   &--expanded {
     position: relative;
     top: 0;
+    padding-bottom: $pxh-toast-margin - 2px;
+    padding-left: $pxh-toast-margin * 2;
     height: auto;
     background: transparent;
   }
@@ -58,8 +60,10 @@
   border-style: solid;
   border-width: $pxh-toast-more-button-border-width;
   border-color: $pxh-toast-more-button-border-color;
-  border-radius: 5px;
-  padding: 1px ($pxh-base-spacing-unit / 3) 0 ($pxh-base-spacing-unit / 3);
+  border-radius: 100%;
+  height: $pxh-toast-margin * 4;
+  width: $pxh-toast-margin * 4;
+  padding: 2px 0 1px 0;
   display: inline-block;
   text-decoration: none;
   text-transform: lowercase;
