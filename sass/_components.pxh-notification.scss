@@ -41,7 +41,7 @@
   top: $pxh-toast-margin * 7;
   width: 100%;
   height: $pxh-toast-margin * 7;
-  padding: ($pxh-toast-margin + 2px) 0 $pxh-toast-margin 0;
+  padding: ($pxh-toast-margin * 3) - 2px 0 $pxh-toast-margin 0;
   background: $pxh-toast-more-bg;
   text-align: center;
   &--expanded {
@@ -61,9 +61,9 @@
   border-width: $pxh-toast-more-button-border-width;
   border-color: $pxh-toast-more-button-border-color;
   border-radius: 100%;
-  height: $pxh-toast-margin * 5;
-  width: $pxh-toast-margin * 5;
-  padding: 3px 0 0 0;
+  height: $pxh-toast-margin * 4;
+  width: $pxh-toast-margin * 4;
+  padding: 2px 0 1px 0;
   display: inline-block;
   text-decoration: none;
   text-transform: lowercase;
