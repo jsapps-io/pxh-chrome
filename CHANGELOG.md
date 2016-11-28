@@ -1,5 +1,8 @@
 # pxh-chrome changelog
 
+### pending release
+* Bump versions on browser-sync, eslint, gulp-sourcemaps, mocha
+
 ### 2.10.0 - November 18, 2016
 * Replace "show more/less" text buttons in toasts and notifications with "down/up chevrons" to simplify internationalization
 * Bump versions on browser-sync, eslint, handlebars, lodash, protractor
