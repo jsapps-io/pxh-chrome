@@ -1,5 +1,6 @@
 'use strict';
-/*! pxh-chrome.js 2.10.0 */
+
+/*! pxh-chrome.js 2.11.0 */
 
 // **************
 // CONFIG OBJECTS
@@ -1737,7 +1738,17 @@ pxh.toast = {
      * @param {String} slug The text slug to be used when generating class names and targets
      */
     toastText: function toastText(object, slug) {
-      var text = object.text ? pxh.stripHTML(object.text) : 'You received a new notification.';
+      // If toast text is defined in the toast object, use it
+      // If not, see if it's defined in App Hub's nav.localeData object and use that
+      // If not, use the default 'You received a new notification' text
+      var text = '';
+      if (object.text) {
+        text = pxh.stripHTML(object.text);
+      } else if ((window.nav) && (window.nav.localeData.toastTextDefault)) {
+        text = pxh.stripHTML(window.nav.localeData.toastTextDefault)
+      } else {
+        text = 'You received a new notification.';
+      }
       var markup = [];
       markup.push('<div class="pxh-' + slug + '__text">\n');
       markup.push('  ' + text + '\n');
@@ -1755,7 +1766,17 @@ pxh.toast = {
      * @param {String} id The unique ID of the notification being created
      */
     notificationText: function notificationText(object, slug, id) {
-      var text = object.text ? pxh.stripHTML(object.text) : 'You received a new notification.';
+      // If toast text is defined in the toast object, use it
+      // If not, see if it's defined in App Hub's nav.localeData object and use that
+      // If not, use the default 'You received a new notification' text
+      var text = '';
+      if (object.text) {
+        text = pxh.stripHTML(object.text);
+      } else if ((window.nav) && (window.nav.localeData.toastTextDefault)) {
+        text = pxh.stripHTML(window.nav.localeData.toastTextDefault)
+      } else {
+        text = 'You received a new notification.';
+      }
       var markup = [];
       markup.push('<div class="pxh-' + slug + '__text">\n');
       if (object.actionLink) {
@@ -1844,16 +1865,26 @@ pxh.toast = {
      */
     button: function button(object, slug, id) {
       var markup = [];
-      if (!object.actionLabel) {
-        object.actionLabel = 'Action';
+
+      // If actionLabel is defined in the toast object, use it
+      // If not, see if it's defined in App Hub's nav.localeData object and use that
+      // If not, use the default 'Action' text
+      var label = '';
+
+      if (object.actionLabel) {
+        label = pxh.stripHTML(object.actionLabel);
+      } else if ((window.nav) && (window.nav.localeData.toastActionLabelDefault)) {
+        label = pxh.stripHTML(window.nav.localeData.toastActionLabelDefault);
+      } else {
+        label = 'Action';
       }
       if (object.actionLink) {
         markup.push('<div class="pxh-' + slug + '__action">\n');
-        markup.push('  <a class="pxh-' + slug + '__button" href="' + object.actionLink + '">' + object.actionLabel + '</a>\n');
+        markup.push('  <a class="pxh-' + slug + '__button" href="' + object.actionLink + '">' + label + '</a>\n');
         markup.push('</div>\n');
       } else if (object.actionCallback) {
         markup.push('<div class="pxh-' + slug + '__action">\n');
-        markup.push('  <a class="pxh-' + slug + '__button" href="#" id="js-' + slug + '__button--' + id + '">' + object.actionLabel + '</a>\n');
+        markup.push('  <a class="pxh-' + slug + '__button" href="#" id="js-' + slug + '__button--' + id + '">' + label + '</a>\n');
         markup.push('</div>\n');
       }
       markup = markup.join('');
