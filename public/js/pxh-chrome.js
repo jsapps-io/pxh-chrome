@@ -1741,9 +1741,14 @@ pxh.toast = {
       // If toast text is defined in the toast object, use it
       // If not, see if it's defined in App Hub's nav.localeData object and use that
       // If not, use the default 'You received a new notification' text
-      var text = object.text ? pxh.stripHTML(object.text) : 
-                 nav.localeData.toastTextDefault ? pxh.stripHTML(nav.localeData.toastTextDefault) : 
-                 'You received a new notification???!?!?!';
+      var text = '';
+      if (object.text) {
+        text = pxh.stripHTML(object.text);
+      } else if ((window.nav) && (window.nav.localeData.toastTextDefault)) {
+        text = pxh.stripHTML(window.nav.localeData.toastTextDefault)
+      } else {
+        text = 'You received a new notification.';
+      }
       var markup = [];
       markup.push('<div class="pxh-' + slug + '__text">\n');
       markup.push('  ' + text + '\n');
@@ -1764,9 +1769,14 @@ pxh.toast = {
       // If toast text is defined in the toast object, use it
       // If not, see if it's defined in App Hub's nav.localeData object and use that
       // If not, use the default 'You received a new notification' text
-      var text = object.text ? pxh.stripHTML(object.text) : 
-                 nav.localeData.toastTextDefault ? pxh.stripHTML(nav.localeData.toastTextDefault) : 
-                 'You received a new notification.';
+      var text = '';
+      if (object.text) {
+        text = pxh.stripHTML(object.text);
+      } else if ((window.nav) && (window.nav.localeData.toastTextDefault)) {
+        text = pxh.stripHTML(window.nav.localeData.toastTextDefault)
+      } else {
+        text = 'You received a new notification.';
+      }
       var markup = [];
       markup.push('<div class="pxh-' + slug + '__text">\n');
       if (object.actionLink) {
@@ -1859,16 +1869,22 @@ pxh.toast = {
       // If actionLabel is defined in the toast object, use it
       // If not, see if it's defined in App Hub's nav.localeData object and use that
       // If not, use the default 'Action' text
-      object.actionLabel = object.actionLabel ? pxh.stripHTML(object.actionLabel) : 
-                           nav.localeData.toastActionLabelDefault ? pxh.stripHTML(nav.localeData.toastActionLabelDefault) : 
-                           'Action';
+      var label = '';
+
+      if (object.actionLabel) {
+        label = pxh.stripHTML(object.actionLabel);
+      } else if ((window.nav) && (window.nav.localeData.toastActionLabelDefault)) {
+        label = pxh.stripHTML(window.nav.localeData.toastActionLabelDefault);
+      } else {
+        label = 'Action';
+      }
       if (object.actionLink) {
         markup.push('<div class="pxh-' + slug + '__action">\n');
-        markup.push('  <a class="pxh-' + slug + '__button" href="' + object.actionLink + '">' + object.actionLabel + '</a>\n');
+        markup.push('  <a class="pxh-' + slug + '__button" href="' + object.actionLink + '">' + label + '</a>\n');
         markup.push('</div>\n');
       } else if (object.actionCallback) {
         markup.push('<div class="pxh-' + slug + '__action">\n');
-        markup.push('  <a class="pxh-' + slug + '__button" href="#" id="js-' + slug + '__button--' + id + '">' + object.actionLabel + '</a>\n');
+        markup.push('  <a class="pxh-' + slug + '__button" href="#" id="js-' + slug + '__button--' + id + '">' + label + '</a>\n');
         markup.push('</div>\n');
       }
       markup = markup.join('');
