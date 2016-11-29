@@ -1,4 +1,5 @@
 'use strict';
+
 /*! pxh-chrome.js 2.10.0 */
 
 // **************
@@ -1737,6 +1738,9 @@ pxh.toast = {
      * @param {String} slug The text slug to be used when generating class names and targets
      */
     toastText: function toastText(object, slug) {
+      // If toast text is defined in the toast object, use it
+      // If not, see if it's defined in App Hub's nav.localeData object and use that
+      // If not, use the default 'You received a new notification' text
       var text = object.text ? pxh.stripHTML(object.text) : 
                  nav.localeData.toastTextDefault ? pxh.stripHTML(nav.localeData.toastTextDefault) : 
                  'You received a new notification???!?!?!';
@@ -1757,6 +1761,9 @@ pxh.toast = {
      * @param {String} id The unique ID of the notification being created
      */
     notificationText: function notificationText(object, slug, id) {
+      // If toast text is defined in the toast object, use it
+      // If not, see if it's defined in App Hub's nav.localeData object and use that
+      // If not, use the default 'You received a new notification' text
       var text = object.text ? pxh.stripHTML(object.text) : 
                  nav.localeData.toastTextDefault ? pxh.stripHTML(nav.localeData.toastTextDefault) : 
                  'You received a new notification.';
@@ -1848,6 +1855,10 @@ pxh.toast = {
      */
     button: function button(object, slug, id) {
       var markup = [];
+
+      // If actionLabel is defined in the toast object, use it
+      // If not, see if it's defined in App Hub's nav.localeData object and use that
+      // If not, use the default 'Action' text
       object.actionLabel = object.actionLabel ? pxh.stripHTML(object.actionLabel) : 
                            nav.localeData.toastActionLabelDefault ? pxh.stripHTML(nav.localeData.toastActionLabelDefault) : 
                            'Action';
