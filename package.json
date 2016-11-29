@@ -15,7 +15,7 @@
     "chai": "^3.5.0",
     "chai-as-promised": "^6.0.0",
     "del": "^2.2.2",
-    "eslint": "^3.11.0",
+    "eslint": "^3.11.1",
     "eslint-config-airbnb-base": "^9.0.0",
     "eslint-plugin-import": "^2.2.0",
     "gulp": "^3.9.1",
