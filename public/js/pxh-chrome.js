@@ -1737,7 +1737,9 @@ pxh.toast = {
      * @param {String} slug The text slug to be used when generating class names and targets
      */
     toastText: function toastText(object, slug) {
-      var text = object.text ? pxh.stripHTML(object.text) : 'You received a new notification.';
+      var text = object.text ? pxh.stripHTML(object.text) : 
+                 nav.localeData.toastTextDefault ? pxh.stripHTML(nav.localeData.toastTextDefault) : 
+                 'You received a new notification???!?!?!';
       var markup = [];
       markup.push('<div class="pxh-' + slug + '__text">\n');
       markup.push('  ' + text + '\n');
@@ -1755,7 +1757,9 @@ pxh.toast = {
      * @param {String} id The unique ID of the notification being created
      */
     notificationText: function notificationText(object, slug, id) {
-      var text = object.text ? pxh.stripHTML(object.text) : 'You received a new notification.';
+      var text = object.text ? pxh.stripHTML(object.text) : 
+                 nav.localeData.toastTextDefault ? pxh.stripHTML(nav.localeData.toastTextDefault) : 
+                 'You received a new notification.';
       var markup = [];
       markup.push('<div class="pxh-' + slug + '__text">\n');
       if (object.actionLink) {
@@ -1844,9 +1848,9 @@ pxh.toast = {
      */
     button: function button(object, slug, id) {
       var markup = [];
-      if (!object.actionLabel) {
-        object.actionLabel = 'Action';
-      }
+      object.actionLabel = object.actionLabel ? pxh.stripHTML(object.actionLabel) : 
+                           nav.localeData.toastActionLabelDefault ? pxh.stripHTML(nav.localeData.toastActionLabelDefault) : 
+                           'Action';
       if (object.actionLink) {
         markup.push('<div class="pxh-' + slug + '__action">\n');
         markup.push('  <a class="pxh-' + slug + '__button" href="' + object.actionLink + '">' + object.actionLabel + '</a>\n');
