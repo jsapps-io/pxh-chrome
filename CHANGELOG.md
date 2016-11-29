@@ -1,6 +1,7 @@
 # pxh-chrome changelog
 
 ### pending release
+* Fix height of view header drawer toggle to match drawer toggle
 * Bump versions on browser-sync, eslint, gulp-sourcemaps, mocha
 
 ### 2.10.0 - November 18, 2016
