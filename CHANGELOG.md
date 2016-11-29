@@ -1,6 +1,10 @@
 # pxh-chrome changelog
 
 ### pending release
+* Add support for localization/internationalization of hard-coded default toast strings via App Hub's `window.nav.localeData` object
+  * If `text` or `actionLabel` are defined in the passed toast object, it simply uses those values
+  * If not, it looks for `nav.localeData.toastTextDefault` for the default internationalized "You received a new notification." message and `nav.localeData.toastActionLabelDefault` for the default internationalized "Action" label
+  * If not, it uses the default strings hard-coded in pxh-chrome
 * Fix height of view header drawer toggle to match drawer toggle
 * Bump versions on browser-sync, eslint, gulp-sourcemaps, mocha
 
