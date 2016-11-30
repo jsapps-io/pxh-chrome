@@ -3,5 +3,19 @@
   "extends": "airbnb-base/legacy",
   "env": {
     "browser": true
+  },
+  "rules": {
+    "func-names": "off",
+    "max-len": "off",
+    "new-cap": "warn",
+    "no-loop-func": "warn",
+    "no-new": "warn",
+    "no-param-reassign": [
+      "error", {
+        "props": false
+      }
+    ],
+    "no-restricted-syntax": "warn",
+    "no-unused-vars": "warn"
   }
 }
