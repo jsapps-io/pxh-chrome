@@ -2,6 +2,8 @@
 
 ### 2.11.1 - November 30, 2016
 * Add unit tests that test the behavior of toast and notification default strings with (and without) corresponding `window.nav.localeData` values
+* Tweak `.eslintc` overrides for eslint-config-airbnb-base
+* Resolve all ESLint errors in `pxh-chrome.js`
 
 ### 2.11.0 - November 29, 2016
 * Add support for localization/internationalization of hard-coded default toast strings via App Hub's `window.nav.localeData` object
