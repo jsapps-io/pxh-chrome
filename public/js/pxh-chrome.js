@@ -2,6 +2,13 @@
 
 /*! pxh-chrome.js 2.11.0 */
 
+// **********************
+// RESPONSIVE BREAKPOINTS
+// **********************
+
+var lgBreakpoint;
+var mdBreakpoint;
+
 // **************
 // CONFIG OBJECTS
 // **************
@@ -539,9 +546,9 @@ pxh.transitions = {
   }
 };
 
-// *********
+// *********************
 // THIRD PARTY LIBRARIES
-// *********
+// *********************
 
 /* eslint-disable */
 
@@ -578,7 +585,7 @@ var pxhResizeSensor = function pxhResizeSensor(element, callback) {
     var i;
     var j;
     this.call = function () {
-      for (i = 0, j = this.q.length; i < j; i++) {
+      for (i = 0, j = this.q.length; i < j; i += 1) {
         this.q[i].call();
       }
     };
@@ -679,7 +686,7 @@ var pxhResizeSensor = function pxhResizeSensor(element, callback) {
   if (isCollectionTyped) {
     var i = 0,
         j = element.length;
-    for (; i < j; i++) {
+    for (; i < j; i += 1) {
       attachResizeEvent(element[i], callback);
     }
   } else {
@@ -690,7 +697,7 @@ var pxhResizeSensor = function pxhResizeSensor(element, callback) {
     if (isCollectionTyped) {
       var i = 0,
           j = element.length;
-      for (; i < j; i++) {
+      for (; i < j; i += 1) {
         pxhResizeSensor.detach(element[i]);
       }
     } else {
@@ -744,10 +751,11 @@ if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
 }(function () {
   function extend () {
     var i = 0;
+    var key;
     var result = {};
-    for (; i < arguments.length; i++) {
+    for (; i < arguments.length; i += 1) {
       var attributes = arguments[ i ];
-      for (var key in attributes) {
+      for (key in attributes) {
         result[key] = attributes[key];
       }
     }
@@ -814,7 +822,7 @@ if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
       var rdecode = /(%[0-9A-Z]{2})+/g;
       var i = 0;
 
-      for (; i < cookies.length; i++) {
+      for (; i < cookies.length; i += 1) {
         var parts = cookies[i].split('=');
         var cookie = parts.slice(1).join('=');
 
@@ -867,7 +875,8 @@ if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
 
     api.removeAll = function () {
       var cookies = document.cookie.split(';');
-      for (var i = cookies.length - 1; i >= 0; i--) {
+      var i;
+      for (i = cookies.length - 1; i >= 0; i -= 1) {
         var cookie = cookies[i];
         var eqPos = cookie.indexOf('=');
         var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
@@ -913,9 +922,8 @@ if (!('remove' in Element.prototype)) {
 pxh.arrayExists = function (array) {
   if (typeof array !== 'undefined' && array.length > 0) {
     return true;
-  } else {
-    return false;
   }
+  return false;
 };
 
 /**
@@ -926,13 +934,14 @@ pxh.arrayExists = function (array) {
  * @returns {Object|Boolean} Object that corresponds to the property name if found, false if not
  */
 pxh.getItemByPropertyName = function (haystack, propertyName) {
-  for (var i in haystack) {
-    if (haystack.hasOwnProperty(propertyName)) {
-      return haystack[propertyName];
-    } else {
-      return false;
+  var item;
+  var i;
+  for (i in haystack) {
+    if ({}.hasOwnProperty.call(haystack, propertyName)) {
+      item = haystack[propertyName];
     }
   }
+  return item;
 };
 
 /**
@@ -944,11 +953,11 @@ pxh.getItemByPropertyName = function (haystack, propertyName) {
  */
 pxh.getStyle = function (id, property) {
   var element = document.getElementById(id);
-  var style = '';
+  var style;
   if (window.getComputedStyle) {
-    var style = document.defaultView.getComputedStyle(element, null).getPropertyValue(property);
+    style = document.defaultView.getComputedStyle(element, null).getPropertyValue(property);
   } else if (element.currentStyle) {
-    var style = element.currentStyle[property];
+    style = element.currentStyle[property];
   }
   return style;
 };
@@ -960,13 +969,13 @@ pxh.getStyle = function (id, property) {
  * @returns {String|Boolean} Input string's text with HTML removed, false if no input parameter provided
  */
 pxh.stripHTML = function (html) {
+  var tmp;
   if (html) {
-    var tmp = document.createElement('div');
+    tmp = document.createElement('div');
     tmp.innerHTML = html;
     return tmp.textContent || tmp.innerText || '';
-  } else {
-    return false;
   }
+  return false;
 };
 
 /**
@@ -976,22 +985,26 @@ pxh.stripHTML = function (html) {
  * // finds all elements with class `nav` and adds the class `nav--hidden` to them
  * pxh.changeClasses('nav', 'add', 'nav--hidden');
  * @param {String} targetClassName Base CSS class of the targeted elements to be changed
- * @param {String} changeType Type of change to apply. Options are `add`, `remove`, `toggle` 
+ * @param {String} changeType Type of change to apply. Options are `add`, `remove`, `toggle`
  * @param {String} classNamesToChange List of classes to change on the targeted elements, separated by spaces
  */
 pxh.changeClasses = function (targetClassName, changeType, classNamesToChange) {
   var targetElements = document.getElementsByClassName(targetClassName);
+  var classNames;
+  var classNamesArray;
+  var i;
+  var j;
   if (pxh.arrayExists(targetElements) && classNamesToChange) {
-    classNamesToChange = classNamesToChange.replace(/  +/g, ' ');
-    var classNamesToChangeArray = classNamesToChange.split(' ');
-    for (var i = targetElements.length - 1; i >= 0; i--) {
-      for (var j = classNamesToChangeArray.length - 1; j >= 0; j--) {
+    classNames = classNamesToChange.replace(/ {2,}/g, ' ');
+    classNamesArray = classNames.split(' ');
+    for (i = targetElements.length - 1; i >= 0; i -= 1) {
+      for (j = classNamesArray.length - 1; j >= 0; j -= 1) {
         if (changeType === 'add') {
-          targetElements[i].classList.add(classNamesToChangeArray[j]);
+          targetElements[i].classList.add(classNamesArray[j]);
         } else if (changeType === 'remove') {
-          targetElements[i].classList.remove(classNamesToChangeArray[j]);
+          targetElements[i].classList.remove(classNamesArray[j]);
         } else if (changeType === 'toggle') {
-          targetElements[i].classList.toggle(classNamesToChangeArray[j]);
+          targetElements[i].classList.toggle(classNamesArray[j]);
         }
       }
     }
@@ -1045,14 +1058,15 @@ pxh.action.clickToCloseAndHold = function (control, target, className) {
   var closeElement = document.getElementById('js-closer');
   var targetElement = document.getElementById(target);
   var zIndex = pxh.getStyle(target, 'z-index') - 1;
+  var insertedCloser;
   if (controlElement && targetElement) {
     if (!closeElement) {
-      var closeElement = document.createElement('div');
+      closeElement = document.createElement('div');
       closeElement.id = 'js-closer';
       closeElement.classList.add('pxh-closer');
       closeElement.classList.add('pxh-closer--transparent');
       closeElement.setAttribute('style', 'z-index: ' + zIndex + ';');
-      var insertedCloser = document.body.appendChild(closeElement);
+      insertedCloser = document.body.appendChild(closeElement);
       insertedCloser.addEventListener('click', function (event) {
         targetElement.classList.remove(className);
         insertedCloser.remove();
@@ -1073,8 +1087,9 @@ pxh.action.clickToCloseAndHold = function (control, target, className) {
 pxh.toggleMenu = function (control, target, className) {
   var controlElements = document.getElementsByClassName(control);
   var targetElements = document.getElementsByClassName(target);
+  var i;
   if (pxh.arrayExists(controlElements) && pxh.arrayExists(targetElements)) {
-    for (var i = controlElements.length - 1; i >= 0; i--) {
+    for (i = controlElements.length - 1; i >= 0; i -= 1) {
       controlElements[i].addEventListener('click', function (event) {
         event.preventDefault();
         pxh.changeClasses(target, 'toggle', className);
@@ -1096,16 +1111,24 @@ pxh.toggleMenu = function (control, target, className) {
 pxh.loadState = function (stateObject, targetStateName) {
   // grab the target state object from the master states object
   var targetState = pxh.getItemByPropertyName(stateObject, targetStateName);
+  var targetClass;
+  var stateChangeTarget;
+  var stateChangeType;
+  var stateChangeClasses;
   // iterate through each target class in the target state object
-  for (var targetClass in targetState) {
-    // grab the target state for each class in the target state
-    var stateChangeTarget = targetState[targetClass];
-    // iterate through each target state change (e.g. whether to add, remove, toggle)
-    for (var stateChangeType in stateChangeTarget) {
-      // grab the target state change classes (e.g. which classes to add, remove, or toggle)
-      var stateChangeClasses = stateChangeTarget[stateChangeType];
-      // change the classes of each target element based on its target class, the type of change to make, and its target classes
-      pxh.changeClasses(targetClass, stateChangeType, stateChangeClasses);
+  for (targetClass in targetState) {
+    if ({}.hasOwnProperty.call(targetState, targetClass)) {
+      // grab the target state for each class in the target state
+      stateChangeTarget = targetState[targetClass];
+      // iterate through each target state change (e.g. whether to add, remove, toggle)
+      for (stateChangeType in stateChangeTarget) {
+        if ({}.hasOwnProperty.call(stateChangeTarget, stateChangeType)) {
+          // grab the target state change classes (e.g. which classes to add, remove, or toggle)
+          stateChangeClasses = stateChangeTarget[stateChangeType];
+          // change the classes of each target element based on its target class, the type of change to make, and its target classes
+          pxh.changeClasses(targetClass, stateChangeType, stateChangeClasses);
+        }
+      }
     }
   }
 };
@@ -1118,14 +1141,19 @@ pxh.loadState = function (stateObject, targetStateName) {
 pxh.bindControl = function (controlName) {
   var controlElements = document.getElementsByClassName(controlName);
   var drawer = document.getElementById('js-drawer');
+  var drawerIsAtDefaultState;
+  var drawerIsNarrowAtMd;
+  var drawerIsHiddenAtSm;
+  var closeElement;
+  var i;
   if (pxh.arrayExists(controlElements) && drawer) {
-    for (var i = controlElements.length - 1; i >= 0; i--) {
+    for (i = controlElements.length - 1; i >= 0; i -= 1) {
       controlElements[i].addEventListener('click', function (event) {
         event.preventDefault();
-        var drawerIsAtDefaultState = drawer.classList.contains(pxh.DRAWER_WIDE_AT_LG);
-        var drawerIsNarrowAtMd = drawer.classList.contains(pxh.DRAWER_NARROW_AT_MD);
-        var drawerIsHiddenAtSm = drawer.classList.contains(pxh.DRAWER_HIDDEN_UNTIL_AT_MD);
-        var closeElement = document.getElementById('js-closer');
+        drawerIsAtDefaultState = drawer.classList.contains(pxh.DRAWER_WIDE_AT_LG);
+        drawerIsNarrowAtMd = drawer.classList.contains(pxh.DRAWER_NARROW_AT_MD);
+        drawerIsHiddenAtSm = drawer.classList.contains(pxh.DRAWER_HIDDEN_UNTIL_AT_MD);
+        closeElement = document.getElementById('js-closer');
         pxh.loadState(pxh.transitions, 'clearAll');
         if (window.matchMedia('(min-width: 1024px)').matches && drawerIsAtDefaultState) {
           pxh.loadState(pxh.transitions, 'wideToNarrow');
@@ -1176,7 +1204,7 @@ pxh.bindControl = function (controlName) {
  *
  * @param {String} breakpoint
  */
-pxh.breakpointAtMd = function (mdBreakpoint) {
+pxh.breakpointAtMd = function () {
   var drawer = document.getElementById('js-drawer');
   var drawerIsNarrowAtMd = drawer.classList.contains('pxh-drawer--narrow@md');
   pxh.loadState(pxh.transitions, 'clearAll');
@@ -1207,11 +1235,18 @@ pxh.breakpointAtMd = function (mdBreakpoint) {
  * @param {String} breakpoint
  */
 pxh.breakpointAtLg = function (breakpoint) {
+  var drawer;
+  var drawerIsWideAtLg;
+  var drawerIsNarrowAtMd;
+  var closeElement;
+
   pxh.loadState(pxh.transitions, 'clearAll');
-  var drawer = document.getElementById('js-drawer');
-  var drawerIsWideAtLg = drawer.classList.contains('pxh-drawer--wide@lg');
-  var drawerIsNarrowAtMd = drawer.classList.contains('pxh-drawer--narrow@md');
-  var closeElement = document.getElementById('js-closer');
+
+  drawer = document.getElementById('js-drawer');
+  drawerIsWideAtLg = drawer.classList.contains('pxh-drawer--wide@lg');
+  drawerIsNarrowAtMd = drawer.classList.contains('pxh-drawer--narrow@md');
+  closeElement = document.getElementById('js-closer');
+
   if (breakpoint.matches) {
     // we entered the @lg breakpoint from the @md breakpoint
     if (drawerIsWideAtLg && !drawerIsNarrowAtMd) {
@@ -1255,9 +1290,10 @@ pxh.breakpointAtLg = function (breakpoint) {
 pxh.bindDrawerMediaQueryControls = function (targetClass, mediaQuery) {
   var targetElements = document.getElementsByClassName(targetClass);
   var drawer = document.getElementById('js-drawer');
+  var i;
   if (pxh.arrayExists(targetElements) && drawer) {
     // iterate through drawer controls and fire the pxhToggleDrawer function when clicked
-    for (var i = targetElements.length - 1; i >= 0; i--) {
+    for (i = targetElements.length - 1; i >= 0; i -= 1) {
       targetElements[i].addEventListener('click', function () {
         pxh.loadState(pxh.transitions, 'clearAll');
         if (!mediaQuery.matches) {
@@ -1277,8 +1313,9 @@ pxh.bindDrawerMediaQueryControls = function (targetClass, mediaQuery) {
  */
 pxh.overlayDrawerControl = function () {
   var overlay = document.getElementsByClassName(pxh.OVERLAY);
+  var i;
   if (pxh.arrayExists(overlay)) {
-    for (var i = overlay.length - 1; i >= 0; i--) {
+    for (i = overlay.length - 1; i >= 0; i -= 1) {
       overlay[i].addEventListener('click', function (event) {
         if (!lgBreakpoint.matches && pxh.Cookies.get('pxh-drawer-open') === 'true') {
           pxh.loadState(pxh.transitions, 'clearAll');
@@ -1298,7 +1335,7 @@ pxh.overlayDrawerControl = function () {
  */
 pxh.escapeDrawerControl = function () {
   document.addEventListener('keyup', function (event) {
-    if (event.keyCode == 27 && !lgBreakpoint.matches && pxh.Cookies.get('pxh-drawer-open') === 'true') {
+    if (event.keyCode === 27 && !lgBreakpoint.matches && pxh.Cookies.get('pxh-drawer-open') === 'true') {
       pxh.loadState(pxh.transitions, 'clearAll');
       pxh.loadState(pxh.states, 'default');
       document.dispatchEvent(pxh.drawerClosed);
@@ -1318,11 +1355,13 @@ pxh.escapeDrawerControl = function () {
 pxh.toggleLoginMenu = function (toggleControl, toggleTarget, toggleClass) {
   var toggleControlElements = document.getElementsByClassName(toggleControl);
   var toggleTargetElements = document.getElementsByClassName(toggleTarget);
+  var menuIsVisible;
+  var i;
   if (pxh.arrayExists(toggleControlElements) && pxh.arrayExists(toggleTargetElements)) {
-    for (var i = toggleControlElements.length - 1; i >= 0; i--) {
+    for (i = toggleControlElements.length - 1; i >= 0; i -= 1) {
       toggleControlElements[i].addEventListener('click', function (event) {
         event.preventDefault();
-        var menuIsVisible = toggleTargetElements[0].classList.contains(toggleClass);
+        menuIsVisible = toggleTargetElements[0].classList.contains(toggleClass);
         pxh.changeClasses(pxh.LOGIN_MENU, 'remove', toggleClass);
         if (!menuIsVisible) {
           pxh.changeClasses(toggleTarget, 'toggle', toggleClass);
@@ -1352,7 +1391,7 @@ pxh.toast = {
      * Won't display a value below zero
      */
     increment: function increment() {
-      pxh.toast.badge.count = pxh.toast.badge.count + 1;
+      pxh.toast.badge.count += 1;
       if (pxh.toast.badge.count > 9) {
         pxh.toast.badge.text = '9+';
       } else if (pxh.toast.badge.count < 0) {
@@ -1371,7 +1410,7 @@ pxh.toast = {
      * Won't display a value below zero
      */
     decrement: function decrement() {
-      pxh.toast.badge.count = pxh.toast.badge.count - 1;
+      pxh.toast.badge.count -= 1;
       if (pxh.toast.badge.count > 9) {
         pxh.toast.badge.text = '9+';
       } else if (pxh.toast.badge.count < 0) {
@@ -1387,9 +1426,9 @@ pxh.toast = {
      * Hides the notification icon and badge entirely if there aren't any notifications
      */
     update: function update() {
-      var notificationIcon = '';
-      var notificationBadge = '';
-      if ((notificationIcon = document.getElementById('js-login__notifications')) && (notificationBadge = document.getElementById('js-login__notifications-badge'))) {
+      var notificationIcon = document.getElementById('js-login__notifications');
+      var notificationBadge = document.getElementById('js-login__notifications-badge');
+      if (notificationIcon && notificationBadge) {
         notificationBadge.innerHTML = pxh.toast.badge.text;
         if (pxh.toast.badge.count > 0) {
           notificationIcon.classList.remove(pxh.DISPLAY_NONE);
@@ -1461,11 +1500,16 @@ pxh.toast = {
    */
   add: function add(object, suppressToast) {
     var id = object && object.id ? object.id : Math.floor(Math.random() * 16777215).toString(16);
-    var notificationList = '';
-    var toastList = '';
-    if ((notificationList = document.getElementById('js-notifications__list')) && (object.actionLink || object.actionCallback)) {
-      var notificationFirstChild = notificationList.firstChild;
-      var notificationElement = notificationList.insertBefore(pxh.toast.markup.createNotification(object, id), notificationFirstChild);
+    var notificationList = document.getElementById('js-notifications__list');
+    var toastList = document.getElementById('js-toasts');
+    var notificationFirstChild;
+    var notificationElement;
+    var toastFirstChild;
+    var toastElement;
+
+    if (notificationList && (object.actionLink || object.actionCallback)) {
+      notificationFirstChild = notificationList.firstChild;
+      notificationElement = notificationList.insertBefore(pxh.toast.markup.createNotification(object, id), notificationFirstChild);
       pxh.toast.badge.increment();
       pxh.toast.action.dismissButton(notificationElement, 'notification', id);
       pxh.toast.action.expandButton(notificationElement, 'notification');
@@ -1475,9 +1519,9 @@ pxh.toast = {
         pxh.toast.action.bindCallback(toastElement, 'notification__link', id, object.actionCallback);
       }
     }
-    if ((toastList = document.getElementById('js-toasts')) && !object.suppressToast) {
-      var toastFirstChild = toastList.firstChild;
-      var toastElement = toastList.insertBefore(pxh.toast.markup.createToast(object, id), toastFirstChild);
+    if (toastList && !object.suppressToast) {
+      toastFirstChild = toastList.firstChild;
+      toastElement = toastList.insertBefore(pxh.toast.markup.createToast(object, id), toastFirstChild);
       pxh.toast.action.dismissButton(toastElement, 'toast', id, true);
       pxh.toast.action.expandButton(toastElement, 'toast');
       if (object.actionLink) {
@@ -1604,15 +1648,15 @@ pxh.toast = {
    * @param {Boolean} [preserveNotification=false] When dismissing a toast, whether to retain its corresponding notification in the notification list
    */
   hide: function hide(id, preserveNotification) {
-    var toastList = '';
-    var toastItem = '';
-    var notificationList = '';
-    var notification = '';
-    if ((toastList = document.getElementById('js-toasts')) && (toastItem = document.getElementById('js-toast--' + id))) {
+    var toastList = document.getElementById('js-toasts');
+    var toastItem = document.getElementById('js-toast--' + id);
+    var notificationList = document.getElementById('js-notifications__list');
+    var notification = document.getElementById('js-notification--' + id);
+    if (toastList && toastItem) {
       toastItem.classList.add(pxh.TOAST_ANIMATE_OUT);
       toastItem.classList.remove(pxh.TOAST_ANIMATE_IN);
     }
-    if ((notificationList = document.getElementById('js-notifications__list')) && (notification = document.getElementById('js-notification--' + id)) && !preserveNotification) {
+    if (notificationList && notification && !preserveNotification) {
       notification.classList.add(pxh.NOTIFICATION_ANIMATE_OUT);
       notification.classList.remove(pxh.NOTIFICATION_ANIMATE_IN);
     }
@@ -1623,11 +1667,13 @@ pxh.toast = {
    *
    */
   hideAll: function hideAll() {
-    var notificationList = '';
-    var notifications = [];
-    if ((notificationList = document.getElementById('js-notifications__list')) && (notifications = document.getElementsByClassName(pxh.NOTIFICATION))) {
-      for (var i = notifications.length - 1; i >= 0; i--) {
-        var id = notifications[i].id.replace('js-notification--', '');
+    var notificationList = document.getElementById('js-notifications__list');
+    var notifications = document.getElementsByClassName(pxh.NOTIFICATION);
+    var id;
+    var i;
+    if (notificationList && notifications) {
+      for (i = notifications.length - 1; i >= 0; i -= 1) {
+        id = notifications[i].id.replace('js-notification--', '');
         pxh.toast.hide(id);
       }
     }
@@ -1639,9 +1685,9 @@ pxh.toast = {
    * @param {String} id The unique ID of the toast to hide
    */
   autoHide: function autoHide(id) {
-    var toastList = '';
-    var toastItem = '';
-    if ((toastList = document.getElementById('js-toasts')) && (toastItem = document.getElementById('js-toast--' + id))) {
+    var toastList = document.getElementById('js-toasts');
+    var toastItem = document.getElementById('js-toast--' + id);
+    if (toastList && toastItem) {
       toastItem.classList.add(pxh.TOAST_ANIMATE_OUT);
       toastItem.classList.remove(pxh.TOAST_ANIMATE_IN);
     }
@@ -1653,14 +1699,14 @@ pxh.toast = {
    * @param {String} id The unique ID of the toast/notification combination to remove
    */
   remove: function remove(id, preserveNotification) {
-    var toastList = '';
-    var toastElement = '';
-    var notificationList = '';
-    var notification = '';
-    if ((toastList = document.getElementById('js-toasts')) && (toastElement = document.getElementById('js-toast--' + id))) {
+    var toastList = document.getElementById('js-toasts');
+    var toastElement = document.getElementById('js-toast--' + id);
+    var notificationList = document.getElementById('js-notifications__list');
+    var notification = document.getElementById('js-notification--' + id);
+    if (toastList && toastElement) {
       toastElement.remove();
     }
-    if ((notificationList = document.getElementById('js-notifications__list')) && (notification = document.getElementById('js-notification--' + id)) && !preserveNotification) {
+    if (notificationList && notification && !preserveNotification) {
       notification.remove();
       pxh.toast.badge.decrement();
     }
@@ -1672,9 +1718,9 @@ pxh.toast = {
    * @param {String} id The unique ID of the toast to remove
    */
   autoRemove: function autoRemove(id) {
-    var toastList = '';
-    var toastElement = '';
-    if ((toastList = document.getElementById('js-toasts')) && (toastElement = document.getElementById('js-toast--' + id))) {
+    var toastList = document.getElementById('js-toasts');
+    var toastElement = document.getElementById('js-toast--' + id);
+    if (toastList && toastElement) {
       toastElement.remove();
     }
   },
@@ -1684,11 +1730,13 @@ pxh.toast = {
    *
    */
   removeAll: function removeAll() {
-    var notificationList = '';
-    var notifications = [];
-    if ((notificationList = document.getElementById('js-notifications__list')) && (notifications = document.getElementsByClassName(pxh.NOTIFICATION))) {
-      for (var i = notifications.length - 1; i >= 0; i--) {
-        var id = notifications[i].id.replace('js-notification--', '');
+    var notificationList = document.getElementById('js-notifications__list');
+    var notifications = document.getElementsByClassName(pxh.NOTIFICATION);
+    var id;
+    var i;
+    if (notificationList && notifications) {
+      for (i = notifications.length - 1; i >= 0; i -= 1) {
+        id = notifications[i].id.replace('js-notification--', '');
         pxh.toast.remove(id);
       }
     }
@@ -1721,11 +1769,11 @@ pxh.toast = {
      * @param {String} slug The text slug to be used when generating class names and targets
      */
     icon: function icon(object, slug) {
-      var icon = object.icon ? object.icon : 'info-circle';
+      var iconSlug = object.icon ? object.icon : 'info-circle';
       var type = object.type ? object.type : 'blue';
       var markup = [];
       markup.push('<div class="pxh-' + slug + '__icon pxh-' + slug + '__icon--' + type + '">\n');
-      markup.push('  <i class="fa fa-' + icon + '"></i>\n');
+      markup.push('  <i class="fa fa-' + iconSlug + '"></i>\n');
       markup.push('</div>\n');
       markup = markup.join('');
       return markup;
@@ -1741,15 +1789,15 @@ pxh.toast = {
       // If toast text is defined in the toast object, use it
       // If not, see if it's defined in App Hub's nav.localeData object and use that
       // If not, use the default 'You received a new notification' text
-      var text = '';
+      var text;
+      var markup = [];
       if (object.text) {
         text = pxh.stripHTML(object.text);
       } else if ((window.nav) && (window.nav.localeData.toastTextDefault)) {
-        text = pxh.stripHTML(window.nav.localeData.toastTextDefault)
+        text = pxh.stripHTML(window.nav.localeData.toastTextDefault);
       } else {
         text = 'You received a new notification.';
       }
-      var markup = [];
       markup.push('<div class="pxh-' + slug + '__text">\n');
       markup.push('  ' + text + '\n');
       markup.push(pxh.toast.markup.more(object, slug));
@@ -1769,15 +1817,15 @@ pxh.toast = {
       // If toast text is defined in the toast object, use it
       // If not, see if it's defined in App Hub's nav.localeData object and use that
       // If not, use the default 'You received a new notification' text
-      var text = '';
+      var text;
+      var markup = [];
       if (object.text) {
         text = pxh.stripHTML(object.text);
       } else if ((window.nav) && (window.nav.localeData.toastTextDefault)) {
-        text = pxh.stripHTML(window.nav.localeData.toastTextDefault)
+        text = pxh.stripHTML(window.nav.localeData.toastTextDefault);
       } else {
         text = 'You received a new notification.';
       }
-      var markup = [];
       markup.push('<div class="pxh-' + slug + '__text">\n');
       if (object.actionLink) {
         markup.push('  <a class="pxh-' + slug + '__link" href="' + object.actionLink + '" id="js-' + slug + '__link--' + id + '">\n');
@@ -1819,19 +1867,19 @@ pxh.toast = {
      */
     timestamp: function timestamp(object, slug) {
       var formattedTimestamp = object.formattedTimestamp ? object.formattedTimestamp : false;
-      var timestamp = object.timestamp ? object.timestamp : false;
-      var timestampTitle = '';
-      if (timestamp) {
-        timestampTitle = ' title="' + timestamp + '"';
-      }
+      var rawTimestamp = object.timestamp ? object.timestamp : false;
+      var timestampTitle;
       var markup = [];
+      if (rawTimestamp) {
+        timestampTitle = ' title="' + rawTimestamp + '"';
+      }
       if (formattedTimestamp) {
         markup.push('<div class="pxh-' + slug + '__timestamp"' + timestampTitle + '>\n');
         markup.push('  ' + formattedTimestamp + '\n');
         markup.push('</div>\n');
-      } else if (timestamp) {
+      } else if (rawTimestamp) {
         markup.push('<div class="pxh-' + slug + '__timestamp">\n');
-        markup.push('  ' + timestamp + '\n');
+        markup.push('  ' + rawTimestamp + '\n');
         markup.push('</div>\n');
       }
       markup = markup.join('');
@@ -1869,7 +1917,7 @@ pxh.toast = {
       // If actionLabel is defined in the toast object, use it
       // If not, see if it's defined in App Hub's nav.localeData object and use that
       // If not, use the default 'Action' text
-      var label = '';
+      var label;
 
       if (object.actionLabel) {
         label = pxh.stripHTML(object.actionLabel);
@@ -1901,9 +1949,9 @@ pxh.toast = {
     createToast: function createToast(object, id) {
       var slug = 'toast';
       var element = document.createElement('div');
+      var markup = [];
       element.className = 'pxh-' + slug + ' pxh-' + slug + '--animate-in';
       element.id = 'js-' + slug + '--' + id;
-      var markup = [];
       markup.push(pxh.toast.markup.icon(object, slug));
       markup.push(pxh.toast.markup.toastText(object, slug));
       markup.push(pxh.toast.markup.button(object, slug, id));
@@ -1923,9 +1971,9 @@ pxh.toast = {
     createNotification: function createNotification(object, id) {
       var slug = 'notification';
       var element = document.createElement('div');
+      var markup = [];
       element.className = 'pxh-' + slug;
       element.id = 'js-' + slug + '--' + id;
-      var markup = [];
       markup.push(pxh.toast.markup.icon(object, slug));
       markup.push(pxh.toast.markup.notificationText(object, slug, id));
       markup.push(pxh.toast.markup.timestamp(object, slug));
@@ -1941,26 +1989,29 @@ pxh.toast = {
    * @returns {Array|Boolean} notifications An array of notification IDs, or false if no notifications are currently displayed in the notification list
    */
   getNotifications: function getNotifications() {
-    var notifications = [];
+    var notifications;
     var notificationList = document.getElementById('js-notifications__list');
-    var notificationElements = '';
+    var notificationElements;
+    var i;
     if (notificationList) {
       notificationElements = notificationList.getElementsByClassName(pxh.NOTIFICATION);
     }
     if (notificationElements.length > 0) {
-      for (var i = notificationElements.length - 1; i >= 0; i--) {
+      for (i = notificationElements.length - 1; i >= 0; i -= 1) {
         notifications.push(notificationElements[i].id);
       }
       return notifications;
-    } else {
-      return false;
     }
+    return false;
   }
 };
 
 // ********
 // FIRE!!!!
 // ********
+
+lgBreakpoint = window.matchMedia('(min-width: 1024px)');
+mdBreakpoint = window.matchMedia('(min-width: 768px)');
 
 pxh.viewResized = document.createEvent('CustomEvent');
 pxh.viewResized.initCustomEvent('pxhViewResized', false, false, {
@@ -1970,9 +2021,6 @@ pxh.viewResized.initCustomEvent('pxhViewResized', false, false, {
 document.addEventListener('DOMContentLoaded', function (event) {
   pxh.addResizeSensor('js-view');
 });
-
-var lgBreakpoint = window.matchMedia('(min-width: 1024px)');
-var mdBreakpoint = window.matchMedia('(min-width: 768px)');
 
 document.addEventListener('DOMContentLoaded', function (event) {
   if (document.getElementById('js-drawer')) {
@@ -2011,7 +2059,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
   } else {
     pxh.Cookies.set('pxh-drawer-open', 'false', { expires: 1, path: '/' });
   }
-  document.addEventListener('navRefreshed', function (event) {
+  document.addEventListener('navRefreshed', function () {
     pxh.toggleLoginMenu(pxh.LOGIN_PROFILE_LINK, pxh.LOGIN_MENU_PROFILE, pxh.LOGIN_MENU_VISIBLE);
     pxh.toggleLoginMenu(pxh.LOGIN_SETTINGS_LINK, pxh.LOGIN_MENU_SETTINGS, pxh.LOGIN_MENU_VISIBLE);
   });
@@ -2030,20 +2078,21 @@ document.addEventListener('DOMContentLoaded', function (event) {
   pxh.toggleLoginMenu(pxh.LOGIN_SETTINGS_LINK, pxh.LOGIN_MENU_SETTINGS, pxh.LOGIN_MENU_VISIBLE);
 });
 
-document.addEventListener('DOMContentLoaded', function (event) {
-  pxh.toggleMenu(pxh.LOGIN_NOTIFICATIONS, pxh.NOTIFICATIONS, pxh.NOTIFICATIONS_VISIBLE);
+document.addEventListener('DOMContentLoaded', function () {
   var notificationsIcon;
-  if (notificationsIcon = document.getElementById('js-login__notifications')) {
-    notificationsIcon.addEventListener('click', function (event) {
-      event.preventDefault();
+  var clearNotificationsLink;
+  pxh.toggleMenu(pxh.LOGIN_NOTIFICATIONS, pxh.NOTIFICATIONS, pxh.NOTIFICATIONS_VISIBLE);
+  notificationsIcon = document.getElementById('js-login__notifications');
+  if (notificationsIcon) {
+    notificationsIcon.addEventListener('click', function (e) {
+      e.preventDefault();
       pxh.action.clickToCloseAndHold('js-login__notifications', 'js-notifications', pxh.NOTIFICATIONS_VISIBLE);
     });
   }
-
-  var clearNotificationsLink;
-  if (clearNotificationsLink = document.getElementById('js-notifications__link--clear')) {
-    clearNotificationsLink.addEventListener('click', function (event) {
-      event.preventDefault();
+  clearNotificationsLink = document.getElementById('js-notifications__link--clear');
+  if (clearNotificationsLink) {
+    clearNotificationsLink.addEventListener('click', function (e) {
+      e.preventDefault();
       pxh.toast.action.removeAllButton();
     });
   }
