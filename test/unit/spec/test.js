@@ -11,16 +11,16 @@ pxh.Cookies.removeAll();
 // set a cookie to test getting
 pxh.Cookies.set('qa-cookie-set', 'qa-cookie-is-set', {expires: 1, path: '/'});
 // get the cookie and assign it to a variable
-var testCookie = (pxh.Cookies.get('qa-cookie-set'));
+let testCookie = (pxh.Cookies.get('qa-cookie-set'));
 
 // set a cookie to test removing
 pxh.Cookies.set('qa-cookie-remove', 'qa-cookie-to-remove', {expires: 1, path: '/'});
 // remove the cookie
 pxh.Cookies.remove('qa-cookie-remove');
-var removedTestCookie = (pxh.Cookies.get('qa-cookie-remove'));
+let removedTestCookie = (pxh.Cookies.get('qa-cookie-remove'));
 
 // create a state object for testing purposes
-var testStatesObject = {
+let testStatesObject = {
   'stateOne' : {
     'qa-item-one' : {
       'remove' : 'qa-item-one--state-two',
@@ -52,102 +52,101 @@ window.nav = {
 }
 
 // assign individual test states from the test states object to variables
-var testStateOne = pxh.getItemByPropertyName(testStatesObject, 'stateOne');
-var testStateTwo = pxh.getItemByPropertyName(testStatesObject, 'stateTwo');
+let testStateOne = pxh.getItemByPropertyName(testStatesObject, 'stateOne');
+let testStateTwo = pxh.getItemByPropertyName(testStatesObject, 'stateTwo');
 
 // create element to manipulate by toggling state
-var stateItemOne = document.createElement('div');
+let stateItemOne = document.createElement('div');
 stateItemOne.classList.add('qa-item-one');
 stateItemOne.classList.add('qa-item-one--state-one');
 document.body.appendChild(stateItemOne);
 
 // create element to manipulate by toggling state
-var stateItemTwo = document.createElement('div');
+let stateItemTwo = document.createElement('div');
 stateItemOne.classList.add('qa-item-two');
 stateItemOne.classList.add('qa-item-two--state-one');
 document.body.appendChild(stateItemTwo);
 
 // create element to test adding a single class
-var addClass = document.createElement('div');
+let addClass = document.createElement('div');
 addClass.classList.add('qa-target-add');
 document.body.appendChild(addClass);
 
 // create element to test adding multiple classes
-var addMultipleClasses = document.createElement('div');
+let addMultipleClasses = document.createElement('div');
 addMultipleClasses.classList.add('qa-target-add-multiple');
 document.body.appendChild(addMultipleClasses);
 
 // create element to test removing a single class
-var removeClass = document.createElement('div');
+let removeClass = document.createElement('div');
 removeClass.classList.add('qa-target-removed');
 removeClass.classList.add('qa-remove');
 document.body.appendChild(removeClass);
 
 // create element to test removing multiple classes
-var removeMultipleClasses = document.createElement('div');
+let removeMultipleClasses = document.createElement('div');
 removeMultipleClasses.classList.add('qa-target-removed-multiple');
 removeMultipleClasses.classList.add('qa-remove-multiple-one');
 removeMultipleClasses.classList.add('qa-remove-multiple-two');
 document.body.appendChild(removeMultipleClasses);
 
 // create element to test toggling multiple classes on multiple targets
-var toggleMultipleClassesOnMultipleTargetsOne = document.createElement('div');
+let toggleMultipleClassesOnMultipleTargetsOne = document.createElement('div');
 toggleMultipleClassesOnMultipleTargetsOne.classList.add('qa-target-toggle');
 toggleMultipleClassesOnMultipleTargetsOne.classList.add('qa-toggle-remove');
 document.body.appendChild(toggleMultipleClassesOnMultipleTargetsOne);
 
 // create element to test toggling multiple classes on multiple targets
-var toggleMultipleClassesOnMultipleTargetsTwo = document.createElement('div');
+let toggleMultipleClassesOnMultipleTargetsTwo = document.createElement('div');
 toggleMultipleClassesOnMultipleTargetsTwo.classList.add('qa-target-toggle-multiple');
 toggleMultipleClassesOnMultipleTargetsTwo.classList.add('qa-toggle-remove-multiple-one');
 toggleMultipleClassesOnMultipleTargetsTwo.classList.add('qa-toggle-remove-multiple-two');
 document.body.appendChild(toggleMultipleClassesOnMultipleTargetsTwo);
 
 // create elements to test pxh.toast.badge.update
-var notificationsIcon = document.createElement('div');
+let notificationsIcon = document.createElement('div');
 notificationsIcon.id = 'js-login__notifications';
 document.body.appendChild(notificationsIcon);
 
-var notificationsBadge = document.createElement('div');
+let notificationsBadge = document.createElement('div');
 notificationsBadge.id = 'js-login__notifications-badge';
 document.body.appendChild(notificationsBadge);
 
 // create element for inserting toasts
-var toasts = document.createElement('div');
+let toasts = document.createElement('div');
 toasts.id = 'js-toasts';
 document.body.appendChild(toasts);
 
 // create element for inserting notifications
-var notifications = document.createElement('div');
+let notifications = document.createElement('div');
 notifications.id = 'js-notifications__list';
 document.body.appendChild(notifications);
 
-var toastCallback = function() {
+let toastCallback = function() {
   console.log('toast callback fired!');
 }
 
-var toastObject1 = {};
-var toastObject2 = {
+let toastObject1 = {};
+let toastObject2 = {
   isPersistent: true,
   text: 'Persistent toast w/o link or action',
 };
-var toastObject3 = {
+let toastObject3 = {
   isPersistent: true,
-  actionLink: 'http://predix.com/',
-  text: 'Persistent toast w/ link',
+  actionLink: 'http://predix.com/'
 };
-var toastObject4 = {
+let toastObject4 = {
   isPersistent: true,
   actionCallback: toastCallback,
   text: 'Persistent toast w/ callback',
 };
-var toastObject5 = {
+let toastObject5 = {
   suppressToast: true,
   isPersistent: true,
   actionLink: 'http://predix.com/',
   text: 'Persistent notification w/ suppressed toast',
 };
-var toastObject6 = {
+let toastObject6 = {
   id: 'b4d455',
   isPersistent: true,
   actionLink: 'http://predix.com/',
@@ -156,7 +155,7 @@ var toastObject6 = {
   actionLabel: 'Custom action label',
   text: '<strong>Persistent</strong> <a href="http://predix.com/">toast</a> with <div class="qa-toast-bogus-class" id="qa-toast-bogus-id"><span>HTML</span></div>',
 };
-var toastObject7 = {
+let toastObject7 = {
   id: 'qaTimestamp',
   isPersistent: true,
   actionLink: 'http://predix.com/',
@@ -237,7 +236,7 @@ describe('pxh-chrome.js', () => {
 
     describe('pxh.toast.badge', () => {
       it('badge count increments by 1 and shows 1', () => {
-        var assertCount = 1;
+        let assertCount = 1;
         pxh.toast.badge.increment();
         pxh.toast.badge.update();
         assert.deepEqual(pxh.toast.badge.count, assertCount);
@@ -245,7 +244,7 @@ describe('pxh-chrome.js', () => {
         assert.equal(document.getElementById('js-login__notifications-badge').innerHTML, assertCount.toString());
       });
       it('badge count decrements by 1 and shows 0', () => {
-        var assertCount = 0;
+        let assertCount = 0;
         pxh.toast.badge.decrement();
         pxh.toast.badge.update();
         assert.deepEqual(pxh.toast.badge.count, assertCount);
@@ -253,8 +252,8 @@ describe('pxh-chrome.js', () => {
         assert.equal(document.getElementById('js-login__notifications-badge').innerHTML, assertCount.toString());
       });
       it('badge count does not decrement below 0 or show below 0', () => {
-        var assertCount = 0;
-        for (var i = 10; i > 0; i -= 1) {
+        let assertCount = 0;
+        for (let i = 10; i > 0; i -= 1) {
           pxh.toast.badge.decrement();
           pxh.toast.badge.update();
         }
@@ -263,8 +262,8 @@ describe('pxh-chrome.js', () => {
         assert.equal(document.getElementById('js-login__notifications-badge').innerHTML, assertCount.toString());
       });
       it('badge count increments to 2 and shows 2', () => {
-        var assertCount = 2;
-        for (var i = 2; i > 0; i -= 1) {
+        let assertCount = 2;
+        for (let i = 2; i > 0; i -= 1) {
           pxh.toast.badge.increment();
           pxh.toast.badge.update();
 
@@ -274,8 +273,8 @@ describe('pxh-chrome.js', () => {
         assert.equal(document.getElementById('js-login__notifications-badge').innerHTML, assertCount.toString());
       });
       it('badge count decrements to 0 and shows 0', () => {
-        var assertCount = 0;
-        for (var i = 2; i > 0; i -= 1) {
+        let assertCount = 0;
+        for (let i = 2; i > 0; i -= 1) {
           pxh.toast.badge.decrement();
         }
         pxh.toast.badge.update();
@@ -284,8 +283,8 @@ describe('pxh-chrome.js', () => {
         assert.equal(document.getElementById('js-login__notifications-badge').innerHTML, assertCount.toString());
       });
       it('badge count increments to 9 and shows 9', () => {
-        var assertCount = 9;
-        for (var i = 9; i > 0; i -= 1) {
+        let assertCount = 9;
+        for (let i = 9; i > 0; i -= 1) {
           pxh.toast.badge.increment();
         }
         pxh.toast.badge.update();
@@ -294,8 +293,8 @@ describe('pxh-chrome.js', () => {
         assert.equal(document.getElementById('js-login__notifications-badge').innerHTML, assertCount.toString());
       });
       it('badge count increases to 10 but displayed count is 9+', () => {
-        var assertCount = 10;
-        var assertText = '9+'
+        let assertCount = 10;
+        let assertText = '9+'
         pxh.toast.badge.increment();
         pxh.toast.badge.update();
         assert.deepEqual(pxh.toast.badge.count, assertCount);
@@ -304,9 +303,9 @@ describe('pxh-chrome.js', () => {
         assert.equal(document.getElementById('js-login__notifications-badge').innerHTML, assertText);
       });
       it('badge count increases beyond 9 and displayed count remains 9+', () => {
-        var assertCount = 20;
-        var assertText = '9+';
-        for (var i = 10; i > 0; i -= 1) {
+        let assertCount = 20;
+        let assertText = '9+';
+        for (let i = 10; i > 0; i -= 1) {
           pxh.toast.badge.increment();
         }
         pxh.toast.badge.update();
@@ -316,9 +315,9 @@ describe('pxh-chrome.js', () => {
         assert.equal(document.getElementById('js-login__notifications-badge').innerHTML, assertText);
       });
       it('badge count decrements back down to 0', () => {
-        var assertCount = 0;
-        var assertText = 0;
-        for (var i = 20; i > 0; i -= 1) {
+        let assertCount = 0;
+        let assertText = 0;
+        for (let i = 20; i > 0; i -= 1) {
           pxh.toast.badge.decrement();
         }
         pxh.toast.badge.update();
@@ -375,7 +374,6 @@ describe('pxh-chrome.js', () => {
         assert.equal(document.getElementById('js-login__notifications-badge').innerHTML, 4);
         assert.isOk(document.getElementById('js-toast--b4d455'));
         assert.isOk(document.getElementById('js-notification--b4d455'));
-        // console.log(document.getElementById('js-toast--b4d455').getElementsByClassName('pxh-toast__text')[0].innerHTML);
         assert.include(document.getElementById('js-toast--b4d455').getElementsByClassName('pxh-toast__text')[0].innerHTML, 'Persistent toast with HTML');
         assert.include(document.getElementById('js-notification--b4d455').getElementsByClassName('pxh-notification__link')[0].innerHTML, 'Persistent toast with HTML');
         assert.include(document.getElementById('js-toast--b4d455').getElementsByClassName('pxh-toast__button')[0].innerHTML, 'Custom action label');
