@@ -43,6 +43,14 @@ var testStatesObject = {
   }
 }
 
+// create a nav object for testing internationalization/localization via App Hub
+window.nav = {
+  localeData: {
+    toastTextDefault: '[EN] You received a new notification.',
+    toastActionLabelDefault: '[EN] Action'
+  }
+}
+
 // assign individual test states from the test states object to variables
 var testStateOne = pxh.getItemByPropertyName(testStatesObject, 'stateOne');
 var testStateTwo = pxh.getItemByPropertyName(testStatesObject, 'stateTwo');
@@ -327,6 +335,9 @@ describe('pxh-chrome.js', () => {
         assert.lengthOf(document.getElementById('js-notifications__list').getElementsByClassName('pxh-notification'), 0);
         assert.equal(document.getElementById('js-login__notifications-badge').innerHTML, 0);
       });
+      it('inserts a blank toast that displays the default text from nav.localeData', () => {
+        assert.equal(document.getElementById('js-toasts').getElementsByClassName('pxh-toast')[0].getElementsByClassName('pxh-toast__text')[0].textContent.trim(), window.nav.localeData.toastTextDefault);
+      });
       it('inserts a persistent toast w/o an action so it does not appear in notifications', () => {
         pxh.toast.add(toastObject2);
         assert.lengthOf(document.getElementById('js-toasts').getElementsByClassName('pxh-toast'), 2);
@@ -338,6 +349,12 @@ describe('pxh-chrome.js', () => {
         assert.lengthOf(document.getElementById('js-toasts').getElementsByClassName('pxh-toast'), 3);
         assert.lengthOf(document.getElementById('js-notifications__list').getElementsByClassName('pxh-notification'), 1);
         assert.equal(document.getElementById('js-login__notifications-badge').innerHTML, 1);
+      });
+      it('inserts a notification with the default text from nav.localeData', () => {
+        assert.equal(document.getElementById('js-notifications__list').getElementsByClassName('pxh-notification')[0].getElementsByClassName('pxh-notification__text')[0].textContent.trim(), window.nav.localeData.toastTextDefault);
+      });
+      it('inserts a persistent toast w/ an action link with the default text from nav.localeData', () => {
+        assert.equal(document.getElementById('js-toasts').getElementsByClassName('pxh-toast')[0].getElementsByClassName('pxh-toast__action')[0].textContent.trim(), window.nav.localeData.toastActionLabelDefault);
       });
       it('inserts a persistent toast w/ an action callback so it appears in notifications', () => {
         pxh.toast.add(toastObject4);
@@ -370,12 +387,28 @@ describe('pxh-chrome.js', () => {
         pxh.toast.add(toastObject7);
         assert.include(document.getElementById('js-notification--qaTimestamp').getElementsByClassName('pxh-notification__timestamp')[0].innerHTML, '2016-08-01T17:36:10+00:00');
       });
+      it('inserts a toast with default text when nav object doesn\'t define default strings', () => {
+        window.nav = {
+          localeData: {
+            logOut: 'Log out',
+          }
+        }
+        pxh.toast.add(toastObject1);
+        assert.equal(document.getElementById('js-toasts').getElementsByClassName('pxh-toast')[0].getElementsByClassName('pxh-toast__text')[0].textContent.trim(), 'You received a new notification.');
+      });
+      it('inserts a toast with default action text when nav.localeData doesn\'t define default strings', () => {
+        pxh.toast.add(toastObject3);
+        assert.equal(document.getElementById('js-toasts').getElementsByClassName('pxh-toast')[0].getElementsByClassName('pxh-toast__action')[0].textContent.trim(), 'Action');
+      });
+      it('inserts a notification with default text when nav.localeData doesn\'t define default strings', () => {
+        assert.equal(document.getElementById('js-notifications__list').getElementsByClassName('pxh-notification')[0].getElementsByClassName('pxh-notification__text')[0].textContent.trim(), 'You received a new notification.');
+      });
     });
 
     describe('pxh.toast.removeAll', () => {
       it('removes all notifications', () => {
-        assert.lengthOf(document.getElementById('js-notifications__list').getElementsByClassName('pxh-notification'), 5);
-        assert.equal(document.getElementById('js-login__notifications-badge').innerHTML, 5);
+        assert.lengthOf(document.getElementById('js-notifications__list').getElementsByClassName('pxh-notification'), 6);
+        assert.equal(document.getElementById('js-login__notifications-badge').innerHTML, 6);
         pxh.toast.removeAll();
         assert.lengthOf(document.getElementById('js-notifications__list').getElementsByClassName('pxh-notification'), 0);
         assert.equal(document.getElementById('js-login__notifications-badge').innerHTML, 0);
