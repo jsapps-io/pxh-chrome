@@ -1,5 +1,8 @@
 # pxh-chrome changelog
 
+### pending release
+* Tweak view header font size modifier so it renders at 20px by default
+
 ### 2.11.1 - November 30, 2016
 * Add unit tests that test the behavior of toast and notification default strings with (and without) corresponding `window.nav.localeData` values
 * Tweak `.eslintc` overrides for eslint-config-airbnb-base
