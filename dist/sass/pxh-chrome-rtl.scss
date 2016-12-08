@@ -1,7 +1,7 @@
-/*! pxh-chrome.css 2.11.1 */
+/*! pxh-chrome-rtl.css 2.11.1 */
 
 /*------------------------------------*\
-    #pxh-chrome
+    #pxh-chrome-rtl
 \*------------------------------------*/
 
 // ** #SETTINGS ** //
@@ -11,7 +11,7 @@
 /// Define whether the application is rendering in a 'left-to-right' language or a 'right-to-left' language
 /// @group pxh-settings
 /// @type String [default] 'ltr'
-$pxh-language-direction: 'ltr'; // 'ltr' OR 'rtl'
+$pxh-language-direction: 'rtl'; // 'ltr' OR 'rtl'
 
 /*------------------------------------*\
     #settings.spacing
@@ -855,10 +855,6 @@ $pxh-scrollbar-thumb-color: $gray7 !default;
 $pxh-scrollbar-thumb-border-color: $gray10 !default;
 $pxh-scrollbar-thumb-border-width: 0 2px 0 2px !default;
 
-
-// ** The following string will be replaced ** //
-// ** with the user's theme variables.      ** //
-// ** THEME VARS GO HERE ** //
 
 // ** #GENERIC ** //
 
