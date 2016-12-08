@@ -39,14 +39,12 @@
     "gulp-useref": "^3.1.2",
     "gulpsmith": "^0.5.5",
     "handlebars": "^4.0.6",
+    "import-resolve": "^0.4.0",
     "lodash": "^4.17.2",
     "metalsmith": "^2.3.0",
     "metalsmith-copy": "^0.3.0",
     "metalsmith-layouts": "^1.7.0",
     "mocha": "^3.2.0",
     "protractor": "^4.0.11"
-  },
-  "dependencies": {
-    "import-resolve": "^0.4.0"
   }
 }
