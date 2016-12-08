@@ -45,5 +45,8 @@
     "metalsmith-layouts": "^1.7.0",
     "mocha": "^3.2.0",
     "protractor": "^4.0.11"
+  },
+  "dependencies": {
+    "import-resolve": "^0.4.0"
   }
 }
