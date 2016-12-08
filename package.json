@@ -22,6 +22,7 @@
     "gulp-autoprefixer": "^3.1.1",
     "gulp-babel": "^6.1.2",
     "gulp-cache": "^0.4.5",
+    "gulp-concat-css": "^2.3.0",
     "gulp-cssnano": "^2.1.2",
     "gulp-eslint": "^3.0.1",
     "gulp-ext-replace": "^0.3.0",
@@ -32,6 +33,7 @@
     "gulp-plumber": "^1.1.0",
     "gulp-replace": "^0.5.4",
     "gulp-sass": "^2.3.2",
+    "gulp-sass-glob": "^1.0.6",
     "gulp-shell": "^0.5.2",
     "gulp-size": "^2.1.0",
     "gulp-sourcemaps": "^2.2.1",
@@ -45,5 +47,8 @@
     "metalsmith-layouts": "^1.7.0",
     "mocha": "^3.2.0",
     "protractor": "^4.0.11"
+  },
+  "dependencies": {
+    "import-resolve": "^0.4.0"
   }
 }
