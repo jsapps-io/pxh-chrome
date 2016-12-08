@@ -17,6 +17,10 @@ $pxh-language-direction: 'ltr'; // 'ltr' OR 'rtl'
 @import 'settings.colors';
 @import 'settings.theme-default';
 
+// ** The following string will be replaced ** //
+// ** with the user's theme variables.      ** //
+// ** THEME VARS GO HERE ** //
+
 // ** #GENERIC ** //
 
 @import 'generic.normalize';
@@ -25,8 +29,8 @@ $pxh-language-direction: 'ltr'; // 'ltr' OR 'rtl'
 
 // ** #TOOLS ** //
 
-@import 'sass-mq/mq'; // our sass task includes /bower_components automatically so we don't need to specify it
-@import 'font-awesome/scss/font-awesome'; // our sass task includes /bower_components automatically so we don't need to specify it
+@import '../bower_components/sass-mq/mq'; // our sass task includes /bower_components automatically so we don't need to specify it
+@import '../bower_components/font-awesome/scss/font-awesome'; // our sass task includes /bower_components automatically so we don't need to specify it
 @import 'tools.pxh-animations';
 @import 'tools.pxh-mixins';
 
