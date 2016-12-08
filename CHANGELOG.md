@@ -1,6 +1,8 @@
 # pxh-chrome changelog
 
 ### pending release
+* Add import-resolve and `flatten.js` task to generate concatenated Sass manifest files
+* Hard code `../bower_components` path to bower components to facilitate manifest concatenation
 * Tweak view header font size modifier so it renders at 20px by default
 
 ### 2.11.1 - November 30, 2016
