@@ -59,8 +59,8 @@ $pxh-error-link-text-decoration: underline;
 
 // ** #TOOLS ** //
 
-@import 'sass-mq/mq'; // our sass task includes /bower_components automatically so we don't need to specify it
-@import 'font-awesome/scss/font-awesome'; // our sass task includes /bower_components automatically so we don't need to specify it
+@import '../bower_components/sass-mq/mq';
+@import '../bower_components/font-awesome/scss/font-awesome';
 @import 'tools.pxh-animations';
 @import 'tools.pxh-mixins';
 
