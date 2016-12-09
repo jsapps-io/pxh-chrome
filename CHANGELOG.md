@@ -1,6 +1,13 @@
 # pxh-chrome changelog
 
-### pending release
+### 3.0.0 - December 9, 2016
+**In order to support future theming-as-a-service capabilities, this release introduces breaking changes that will affect apps that use the pxh-chrome Sass files directly.**
+
+* The file `sass/_settings.theme-default.scss` has been renamed `sass/_theme.default.scss`
+* The file `sass/_settings.theme-prechrome.scss` has been renamed `sass/_theme.prechrome.scss`
+
+Apps that use the compiled pxh-chrome CSS are not affected.
+
 * Add import-resolve and `flatten.js` task to generate concatenated Sass manifest files
 * Hard code `../bower_components` path to bower components to facilitate manifest concatenation
 * Add `theme` layer to all Sass manifests and move theme-related Sass partials into it
