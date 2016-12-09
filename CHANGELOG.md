@@ -3,6 +3,9 @@
 ### pending release
 * Add import-resolve and `flatten.js` task to generate concatenated Sass manifest files
 * Hard code `../bower_components` path to bower components to facilitate manifest concatenation
+* Add `theme` layer to all Sass manifests and move theme-related Sass partials into it
+* Refine prechrome theme so it follows the theming contract
+* Add text decoration and hover style properties for default hyperlinks, and expose them as variables to allow customization via theming
 * Tweak view header font size modifier so it renders at 20px by default
 
 ### 2.11.1 - November 30, 2016
