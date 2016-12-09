@@ -43,15 +43,6 @@ $pxh-language-direction: 'ltr'; // 'ltr' OR 'rtl'
 @import 'elements.links';
 @import 'elements.hr';
 
-html {
-  background-color: $gray10;
-  color: $white;
-}
-
-a {
-  text-decoration: none;
-}
-
 // ** #OBJECTS ** //
 
 // ** #COMPONENTS ** //
