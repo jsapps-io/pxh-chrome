@@ -6,7 +6,9 @@
 * Add `theme` layer to all Sass manifests and move theme-related Sass partials into it
 * Refine prechrome theme so it follows the theming contract
 * Add text decoration and hover style properties for default hyperlinks, and expose them as variables to allow customization via theming
+* Add `sass:flatten` Gulp task to flatten Sass manifests and output them to `dist/sass
 * Tweak view header font size modifier so it renders at 20px by default
+* Bump versions on babel-core, eslint, protractor
 
 ### 2.11.1 - November 30, 2016
 * Add unit tests that test the behavior of toast and notification default strings with (and without) corresponding `window.nav.localeData` values
