@@ -41,6 +41,7 @@ gulp.task('sass', () => {
 
 gulp.task('sass:dist', () => {
   gulp.start('sass');
+  gulp.start('sass:flatten');
   return gulp.src('sass/*.scss')
     .pipe($.plumber())
     .pipe($.sass.sync({
