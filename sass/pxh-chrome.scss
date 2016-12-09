@@ -15,11 +15,13 @@ $pxh-language-direction: 'ltr'; // 'ltr' OR 'rtl'
 
 @import 'settings.spacing';
 @import 'settings.colors';
-@import 'settings.theme-default';
 
-// ** The following string will be replaced ** //
-// ** with the user's theme variables.      ** //
+// ** #THEME ** //
+
+/// The following string will be replaced with the user's theme variables:
 // ** THEME VARS GO HERE ** //
+
+@import 'theme.default';
 
 // ** #GENERIC ** //
 

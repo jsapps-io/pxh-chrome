@@ -51,6 +51,14 @@ $pxh-error-padding-top: $pxh-base-spacing-unit * 2;
 /// @type String
 $pxh-error-link-text-decoration: underline;
 
+// ** #THEME ** //
+
+/// The following string will be replaced with the user's theme variables:
+// ** THEME VARS GO HERE ** //
+
+@import 'theme.prechrome';
+@import 'theme.default';
+
 // ** #GENERIC ** //
 
 @import 'generic.normalize';

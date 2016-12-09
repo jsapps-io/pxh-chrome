@@ -15,7 +15,13 @@ $pxh-language-direction: 'rtl'; // 'ltr' OR 'rtl'
 
 @import 'settings.spacing';
 @import 'settings.colors';
-@import 'settings.theme-default';
+
+// ** #THEME ** //
+
+/// The following string will be replaced with the user's theme variables:
+// ** THEME VARS GO HERE ** //
+
+@import 'theme.default';
 
 // ** #GENERIC ** //
 
