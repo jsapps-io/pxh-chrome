@@ -3573,8 +3573,8 @@ html {
 html {
   font-size: 0.9375em;
   line-height: 1.3333333333;
-  background-color: #525156;
-  color: black;
+  background-color: #242326;
+  color: white;
 }
 
 html, body {
@@ -3592,6 +3592,12 @@ body {
 \*------------------------------------*/
 a {
   color: #3e87e8;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #3e87e8;
+  text-decoration: none;
 }
 
 /*------------------------------------*    #elements.hr
@@ -3604,15 +3610,6 @@ hr {
   border: 0;
   margin-top: 15px;
   margin-bottom: 15px;
-}
-
-html {
-  background-color: #242326;
-  color: white;
-}
-
-a {
-  text-decoration: none;
 }
 
 /*------------------------------------*    #components.pxh-error

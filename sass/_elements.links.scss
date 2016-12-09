@@ -4,4 +4,9 @@
 
 a {
   color: $pxh-link-text-color;
+  text-decoration: $pxh-link-text-decoration;
+  &:hover {
+    color: $pxh-link-text-color-hover;
+    text-decoration: $pxh-link-text-decoration-hover;
+  }
 }

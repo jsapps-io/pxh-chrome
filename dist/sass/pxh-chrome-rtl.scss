@@ -1,7 +1,7 @@
-/*! pxh-chrome.css 2.11.1 */
+/*! pxh-chrome-rtl.css 2.11.1 */
 
 /*------------------------------------*\
-    #pxh-chrome
+    #pxh-chrome-rtl
 \*------------------------------------*/
 
 // ** #SETTINGS ** //
@@ -11,7 +11,7 @@
 /// Define whether the application is rendering in a 'left-to-right' language or a 'right-to-left' language
 /// @group pxh-settings
 /// @type String [default] 'ltr'
-$pxh-language-direction: 'ltr'; // 'ltr' OR 'rtl'
+$pxh-language-direction: 'rtl'; // 'ltr' OR 'rtl'
 
 /*------------------------------------*\
     #settings.spacing

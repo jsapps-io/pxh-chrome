@@ -3591,6 +3591,12 @@ body {
 \*------------------------------------*/
 a {
   color: #3e87e8;
+  text-decoration: underline;
+}
+
+a:hover {
+  color: #3e87e8;
+  text-decoration: underline;
 }
 
 /*------------------------------------*    #elements.hr
@@ -6920,7 +6926,7 @@ hr {
   text-overflow: ellipsis;
   padding-top: 15px;
   text-align: center;
-  font-size: 22px;
+  font-size: 20px;
 }
 
 .pxh-view-header__title-link.pxh-view-header__title-link.pxh-view-header__title-link {

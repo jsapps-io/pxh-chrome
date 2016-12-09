@@ -41,6 +41,7 @@ gulp.task('sass', () => {
 
 gulp.task('sass:dist', () => {
   gulp.start('sass');
+  gulp.start('sass:flatten');
   return gulp.src('sass/*.scss')
     .pipe($.plumber())
     .pipe($.sass.sync({
@@ -54,6 +55,8 @@ gulp.task('sass:dist', () => {
     .pipe(gulp.dest('.tmp/css'))
     .pipe(gulp.dest('dist/css'));
 });
+
+gulp.task('sass:flatten', shell.task('node ./flatten.js'));
 
 gulp.task('js', () => {
   return gulp.src('public/js/**/*.js')
@@ -187,6 +190,7 @@ gulp.task('serve:dist', ['sass:dist', 'js', 'extras', 'img'], () => {
 });
 
 gulp.task('webdriver:update', shell.task('./node_modules/protractor/bin/webdriver-manager update'));
+
 gulp.task('e2e', shell.task('protractor ./test/e2e/protractor.config.js'));
 
 gulp.task('serve:e2e', ['webdriver:update', 'sass', 'js', 'extras', 'img'], () => {
