@@ -18,15 +18,15 @@ $pxh-language-direction: 'rtl'; // 'ltr' OR 'rtl'
 \*------------------------------------*/
 
 /// @type Number [default] - Base font size
-$pxh-base-font-size:                    15px !default;
+$pxh-base-font-size:          15px !default;
 
 /// @type Number [default] - Base line height
-$pxh-base-line-height:                  ($pxh-base-font-size * 4) / 3 !default;
+$pxh-base-line-height:         ($pxh-base-font-size * 4) / 3 !default;
 
-$pxh-base-spacing-scale-ratio:       1 !default;
+$pxh-base-spacing-scale-ratio: 1.0 !default;
 
 /// @type Number [default] - Base spacing unit
-$pxh-base-spacing-unit:                 $pxh-base-font-size * $pxh-base-spacing-scale-ratio !default;
+$pxh-base-spacing-unit:        $pxh-base-font-size * $pxh-base-spacing-scale-ratio !default;
 
 /*------------------------------------*\
     #settings.colors
@@ -245,41 +245,51 @@ $d-dv-muted-10                  : rgb(137,52,63) !default;
 
 
 
+
+// ** #THEME ** //
+
+/// The following string will be replaced with the user's theme variables:
+// ** THEME VARS GO HERE ** //
+
 /*------------------------------------*\
     #settings.theme-prechrome
 \*------------------------------------*/
 
-/// prechrome overrides
+$pxh-base-bg-color: $gray10 !default;
+
+$pxh-base-text-color: $white !default;
+
+$pxh-link-text-decoration: none !default;
 
 /// Icon color for error messages
 /// @group pxh-error
 /// @type Color
-$pxh-error-icon-color: $gray5;
+$pxh-error-icon-color: $gray5 !default;
 
 /// Title/header text color for error messages
 /// @group pxh-error
 /// @type Color
-$pxh-error-title-color: $white;
+$pxh-error-title-color: $white !default;
 
 /// Description text color for error messages
 /// @group pxh-error
 /// @type Color
-$pxh-error-description-color: $white;
+$pxh-error-description-color: $white !default;
 
 /// Top margin to offset error message from top of browser window
 /// @group pxh-error
 /// @type Number
-$pxh-error-margin-top: $pxh-base-spacing-unit * 6;
+$pxh-error-margin-top: $pxh-base-spacing-unit * 6 !default;
 
 /// Top padding to give error message some breathing room
 /// @group pxh-error
 /// @type Number
-$pxh-error-padding-top: $pxh-base-spacing-unit * 2;
+$pxh-error-padding-top: $pxh-base-spacing-unit * 2 !default;
 
 /// Text decoration for hyperlinks in error messages
 /// @group pxh-error
 /// @type String
-$pxh-error-link-text-decoration: underline;
+$pxh-error-link-text-decoration: underline !default;
 
 /*------------------------------------*\
     #settings.theme-default
@@ -338,9 +348,8 @@ $fa-font-path: '//dzlpbrbc7yvq0.cloudfront.net/libs/font-awesome/4.7.0/fonts' !d
 
 
 
-
-// <html> and <body> elements
-
+/// <html> and <body> elements
+/// @group pxh-base
 $pxh-base-bg-color: $gray8 !default;
 
 $pxh-base-text-color: $black !default;
@@ -349,19 +358,21 @@ $pxh-base-font-family: 'GE Inspira Sans', 'Helvetica', 'Arial', sans-serif !defa
 
 
 
-
-// <hr> element
-
+/// <hr> element
+/// @group pxh-hr
 $pxh-hr-color: $gray6 !default;
 
 
 
-
-// <a> element
-
+/// <a> element
+/// @group pxh-link 
 $pxh-link-text-color: $primary-blue !default;
 
 $pxh-link-text-color-hover: $pxh-link-text-color !default;
+
+$pxh-link-text-decoration: underline !default;
+
+$pxh-link-text-decoration-hover: $pxh-link-text-decoration !default;
 
 
 
@@ -751,8 +762,7 @@ $pxh-spinner-accent-color-inverted: $pxh-spinner-accent-color !default;
 
 
 
-// pxh-toast
-
+/// @group pxh-toast
 $pxh-toast-text-color: $gray5 !default;
 
 $pxh-toast-bg-color: $gray10 !default;
@@ -824,7 +834,6 @@ $pxh-toast-icon-font-size: $pxh-base-font-size * 1.866666666666666 !default;
 
 
 /// @group pxh-view
-
 $pxh-view-bg-color: transparent !default;
 
 /// Options for pxh-view background colors
@@ -865,7 +874,7 @@ $pxh-view-header-height: ($pxh-base-spacing-unit * 4) + 1px !default;
 
 
 
-// overrides.pxh-docs
+/// @group pxh-docs
 
 $pxh-docs-bg-color: $white !default;
 $pxh-docs-code-font-size: $pxh-base-font-size !default;
@@ -875,7 +884,7 @@ $pxh-docs-code-text-color: #900 !default;
 
 
 
-// pxh-fancy-scrollbars
+/// @group pxh-scrollbars
 
 $pxh-scrollbar-width: 7px !default;
 
@@ -891,39 +900,6 @@ $pxh-scrollbar-thumb-color: $gray7 !default;
 $pxh-scrollbar-thumb-border-color: $gray10 !default;
 $pxh-scrollbar-thumb-border-width: 0 2px 0 2px !default;
 
-
-/// prechrome overrides
-/// these should go somewhere else
-
-/// Icon color for error messages
-/// @group pxh-error
-/// @type Color
-$pxh-error-icon-color: $gray5;
-
-/// Title/header text color for error messages
-/// @group pxh-error
-/// @type Color
-$pxh-error-title-color: $white;
-
-/// Description text color for error messages
-/// @group pxh-error
-/// @type Color
-$pxh-error-description-color: $white;
-
-/// Top margin to offset error message from top of browser window
-/// @group pxh-error
-/// @type Number
-$pxh-error-margin-top: $pxh-base-spacing-unit * 6;
-
-/// Top padding to give error message some breathing room
-/// @group pxh-error
-/// @type Number
-$pxh-error-padding-top: $pxh-base-spacing-unit * 2;
-
-/// Text decoration for hyperlinks in error messages
-/// @group pxh-error
-/// @type String
-$pxh-error-link-text-decoration: underline;
 
 // ** #GENERIC ** //
 
@@ -3836,6 +3812,11 @@ body {
 
 a {
   color: $pxh-link-text-color;
+  text-decoration: $pxh-link-text-decoration;
+  &:hover {
+    color: $pxh-link-text-color-hover;
+    text-decoration: $pxh-link-text-decoration-hover;
+  }
 }
 
 /*------------------------------------*\
@@ -3852,15 +3833,6 @@ hr {
     margin-bottom: $pxh-base-spacing-unit;
 }
 
-
-html {
-  background-color: $gray10;
-  color: $white;
-}
-
-a {
-  text-decoration: none;
-}
 
 // ** #OBJECTS ** //
 
