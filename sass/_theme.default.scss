@@ -55,9 +55,8 @@ $fa-font-path: '//dzlpbrbc7yvq0.cloudfront.net/libs/font-awesome/4.7.0/fonts' !d
 
 
 
-
-// <html> and <body> elements
-
+/// <html> and <body> elements
+/// @group pxh-base
 $pxh-base-bg-color: $gray8 !default;
 
 $pxh-base-text-color: $black !default;
@@ -66,19 +65,21 @@ $pxh-base-font-family: 'GE Inspira Sans', 'Helvetica', 'Arial', sans-serif !defa
 
 
 
-
-// <hr> element
-
+/// <hr> element
+/// @group pxh-hr
 $pxh-hr-color: $gray6 !default;
 
 
 
-
-// <a> element
-
+/// <a> element
+/// @group pxh-link 
 $pxh-link-text-color: $primary-blue !default;
 
 $pxh-link-text-color-hover: $pxh-link-text-color !default;
+
+$pxh-link-text-decoration: underline !default;
+
+$pxh-link-text-decoration-hover: $pxh-link-text-decoration !default;
 
 
 
@@ -468,8 +469,7 @@ $pxh-spinner-accent-color-inverted: $pxh-spinner-accent-color !default;
 
 
 
-// pxh-toast
-
+/// @group pxh-toast
 $pxh-toast-text-color: $gray5 !default;
 
 $pxh-toast-bg-color: $gray10 !default;
@@ -541,7 +541,6 @@ $pxh-toast-icon-font-size: $pxh-base-font-size * 1.866666666666666 !default;
 
 
 /// @group pxh-view
-
 $pxh-view-bg-color: transparent !default;
 
 /// Options for pxh-view background colors
@@ -571,7 +570,7 @@ $pxh-view-header-drawer-toggle-icon-color: $black !default;
 
 $pxh-view-header-title-link-text-color: $black !default;
 
-$pxh-view-header-title-font-size: $pxh-base-font-size * 1.466666666666666 !default;
+$pxh-view-header-title-font-size: $pxh-base-font-size * 1.333333333333333 !default;
 
 /// View header height
 /// locked to current height of px-context-browser + 1px for bottom border
@@ -582,7 +581,7 @@ $pxh-view-header-height: ($pxh-base-spacing-unit * 4) + 1px !default;
 
 
 
-// overrides.pxh-docs
+/// @group pxh-docs
 
 $pxh-docs-bg-color: $white !default;
 $pxh-docs-code-font-size: $pxh-base-font-size !default;
@@ -592,7 +591,7 @@ $pxh-docs-code-text-color: #900 !default;
 
 
 
-// pxh-fancy-scrollbars
+/// @group pxh-scrollbars
 
 $pxh-scrollbar-width: 7px !default;
 
