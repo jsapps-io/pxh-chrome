@@ -167,21 +167,6 @@ gulp.task('serve', ['sass', 'js', 'extras', 'img'], () => {
   ]).on('change', reload);
 });
 
-gulp.task('serve:dist', ['sass:dist', 'js', 'extras', 'img'], () => {
-  browserSync.init({
-    ui: {
-      port: 4040,
-    },
-    port: 4000,
-    notify: false,
-    server: {
-      baseDir: ['dist'],
-    },
-  });
-  gulp.watch('sass/**/*.scss', ['sass']);
-  gulp.watch('public/js/**/*.js', ['js']);
-});
-
 gulp.task('webdriver:update', shell.task('./node_modules/protractor/bin/webdriver-manager update'));
 
 gulp.task('e2e', shell.task('protractor ./test/e2e/protractor.config.js'));
