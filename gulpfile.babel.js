@@ -201,11 +201,9 @@ gulp.task('build', ['lint', 'smith', 'html', 'extras', 'img'], () => {
   return gulp.src('dist/**/*').pipe($.size({ title: 'build', gzip: true }));
 });
 
-// dist task is just a copy of the default task
 gulp.task('dist', ['clean'], () => {
   gulp.start('build');
 });
 
-gulp.task('default', ['clean'], () => {
-  gulp.start('build');
-});
+// the default task is the dist task
+gulp.task('default', ['dist']);
