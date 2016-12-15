@@ -116,12 +116,7 @@ gulp.task('smith', () => {
   .pipe(reload({ stream: true }));
 });
 
-gulp.task('html', ['sass:dist', 'js'], () => {
-  return gulp.src(['.tmp/*.html'])
-    .pipe($.useref({ searchPath: ['.tmp'] }))
-    .pipe($.if('*.html', $.htmlmin()))
-    .pipe(gulp.dest('dist'));
-});
+gulp.task('html', ['sass', 'js']);
 
 gulp.task('extras', () => {
   return gulp.src([
