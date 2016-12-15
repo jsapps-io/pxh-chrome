@@ -23,8 +23,9 @@ const componentConfig = {
   }
 };
 
-gulp.task('sass', () => {
-  return gulp.src('sass/*.scss')
+gulp.task('sass', ['sass:flatten'], () => {
+  gulp.start('sass:min');
+  return gulp.src('dist/sass/*.scss')
     .pipe($.plumber())
     .pipe($.sourcemaps.init())
     .pipe($.sass.sync({
@@ -36,10 +37,8 @@ gulp.task('sass', () => {
     .pipe(gulp.dest('dist/css'))
 });
 
-gulp.task('sass:dist', () => {
-  gulp.start('sass');
-  gulp.start('sass:flatten');
-  return gulp.src('sass/*.scss')
+gulp.task('sass:min', () => {
+  return gulp.src('dist/sass/*.scss')
     .pipe($.plumber())
     .pipe($.sass.sync({
       outputStyle: 'expanded',
