@@ -129,7 +129,7 @@ gulp.task('extras', () => {
 });
 
 gulp.task('img', () => {
-  return gulp.src(['public/img/*']).pipe(gulp.dest('dist/img')).pipe(gulp.dest('.tmp/img'));
+  return gulp.src(['public/img/*']).pipe(gulp.dest('dist/img'));
 });
 
 gulp.task('clean', del.bind(null, ['dist']));
