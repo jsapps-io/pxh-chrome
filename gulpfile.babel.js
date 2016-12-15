@@ -34,7 +34,6 @@ gulp.task('sass', () => {
     .pipe($.autoprefixer({ browsers: ['> 1%', 'last 2 versions', 'Firefox ESR'] }))
     .pipe($.sourcemaps.write('.'))
     .pipe(gulp.dest('dist/css'))
-    .pipe(reload({ stream: true }));
 });
 
 gulp.task('sass:dist', () => {
