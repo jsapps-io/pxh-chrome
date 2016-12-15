@@ -75,7 +75,6 @@ function lint(files, options) {
       .pipe(reload({ stream: true, once: true }))
       .pipe($.eslint(options))
       .pipe($.eslint.format());
-      // .pipe($.if(!browserSync.active, $.eslint.failAfterError()));
   };
 }
 const testLintOptions = {
