@@ -7,6 +7,7 @@ import path from 'path';
 import replace from 'gulp-replace';
 import ext_replace from 'gulp-ext-replace';
 import shell from 'gulp-shell';
+import extReplace from 'gulp-ext-replace';
 import gulpsmith from 'gulpsmith';
 import layouts from 'metalsmith-layouts';
 import copy from 'metalsmith-copy';
@@ -46,7 +47,7 @@ gulp.task('sass:min', () => {
     }).on('error', $.sass.logError))
     .pipe($.autoprefixer({ browsers: ['> 1%', 'last 2 versions', 'Firefox ESR'] }))
     .pipe($.cssnano())
-    .pipe(ext_replace('.min.css', '.css'))
+    .pipe(extReplace('.min.css', '.css'))
     .pipe(gulp.dest('dist/css'));
 });
 
@@ -62,7 +63,7 @@ gulp.task('js', () => {
     .pipe($.if('*.js', $.uglify({
       preserveComments: 'some',
     })))
-    .pipe(ext_replace('.min.js', '.js'))
+    .pipe(extReplace('.min.js', '.js'))
     .pipe(gulp.dest('dist/js'))
     .pipe(reload({ stream: true }));
 });
