@@ -113,8 +113,6 @@ gulp.task('smith', () => {
   .pipe(reload({ stream: true }));
 });
 
-gulp.task('html', ['sass', 'js']);
-
 gulp.task('extras', () => {
   return gulp.src([
     'public/*.*',
@@ -197,9 +195,7 @@ gulp.task('serve:test', ['js'], () => {
   gulp.watch('test/unit/spec/**/*.js', ['lint:test']);
 });
 
-gulp.task('build', ['lint', 'smith', 'html', 'extras', 'img'], () => {
-  return gulp.src('dist/**/*').pipe($.size({ title: 'build', gzip: true }));
-});
+gulp.task('build', ['lint', 'smith', 'sass', 'js', 'extras', 'img']);
 
 gulp.task('dist', ['clean'], () => {
   gulp.start('build');
