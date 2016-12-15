@@ -33,7 +33,6 @@ gulp.task('sass', () => {
     }).on('error', $.sass.logError))
     .pipe($.autoprefixer({ browsers: ['> 1%', 'last 2 versions', 'Firefox ESR'] }))
     .pipe($.sourcemaps.write('.'))
-    .pipe(gulp.dest('.tmp/css'))
     .pipe(gulp.dest('dist/css'))
     .pipe(reload({ stream: true }));
 });
@@ -50,7 +49,6 @@ gulp.task('sass:dist', () => {
     .pipe($.autoprefixer({ browsers: ['> 1%', 'last 2 versions', 'Firefox ESR'] }))
     .pipe($.cssnano())
     .pipe(ext_replace('.min.css', '.css'))
-    .pipe(gulp.dest('.tmp/css'))
     .pipe(gulp.dest('dist/css'));
 });
 
@@ -62,13 +60,11 @@ gulp.task('js', () => {
     .pipe($.sourcemaps.init())
     .pipe($.babel())
     .pipe($.sourcemaps.write('.'))
-    .pipe(gulp.dest('.tmp/js'))
     .pipe(gulp.dest('dist/js'))
     .pipe($.if('*.js', $.uglify({
       preserveComments: 'some',
     })))
     .pipe(ext_replace('.min.js', '.js'))
-    .pipe(gulp.dest('.tmp/js'))
     .pipe(gulp.dest('dist/js'))
     .pipe(reload({ stream: true }));
 });
@@ -116,7 +112,6 @@ gulp.task('smith', () => {
     }))
     .on('error', console.log.bind(console))
   )
-  .pipe(gulp.dest('.tmp'))
   .pipe(gulp.dest('dist'))
   .pipe(reload({ stream: true }));
 });
@@ -142,7 +137,7 @@ gulp.task('img', () => {
   return gulp.src(['public/img/*']).pipe(gulp.dest('dist/img')).pipe(gulp.dest('.tmp/img'));
 });
 
-gulp.task('clean', del.bind(null, ['.tmp', 'dist']));
+gulp.task('clean', del.bind(null, ['dist']));
 
 gulp.task('serve', ['sass', 'js', 'extras', 'img'], () => {
   browserSync.init({
@@ -152,7 +147,7 @@ gulp.task('serve', ['sass', 'js', 'extras', 'img'], () => {
     port: 4000,
     notify: false,
     server: {
-      baseDir: ['.tmp', 'public'],
+      baseDir: ['dist', 'public'],
       routes: {
         '/bower_components': 'bower_components',
       },
@@ -165,10 +160,10 @@ gulp.task('serve', ['sass', 'js', 'extras', 'img'], () => {
   gulp.watch('public/img/**', ['img']);
 
   gulp.watch([
-    '.tmp/*.html',
-    '.tmp/img/*',
-    '.tmp/css/*.css',
-    '.tmp/js/*.js',
+    'dist/*.html',
+    'dist/img/*',
+    'dist/css/*.css',
+    'dist/js/*.js',
   ]).on('change', reload);
 });
 
@@ -198,7 +193,7 @@ gulp.task('serve:e2e', ['webdriver:update', 'sass', 'js', 'extras', 'img'], () =
     open: false,
     notify: false,
     server: {
-      baseDir: ['.tmp'],
+      baseDir: ['dist'],
       routes: {
         '/bower_components': 'bower_components',
       },
@@ -214,7 +209,7 @@ gulp.task('serve:test', ['js'], () => {
     server: {
       baseDir: 'test/unit',
       routes: {
-        '/js': '.tmp/js',
+        '/js': 'dist/js',
         '/bower_components': 'bower_components',
       },
     },
