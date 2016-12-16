@@ -1,12 +1,13 @@
 # pxh-chrome changelog
 
-### pending release
+### 3.0.1 - December 15, 2016
 * Remove `.tmp` folder
   * Everything now builds to and serves from the `/dist` folder
 * Update Sass compilation gulp tasks to compile against the flattened Sass files in `/dist/sass`
   * This way everything is compiling against the exact same Sass files, no matter if it's being done within pxh-chrome, or by ui-theme-service
 * Remove `includePaths` property from Sass compilation tasks
   * We don't need them now that we're compiling against flattened Sass
+* Remove underline on notification badge number when hovered
 * Bump browser-sync, eslint, gulp-sass, gulp-sourcemaps
 
 ### 3.0.0 - December 9, 2016
