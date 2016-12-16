@@ -7,6 +7,7 @@ import path from 'path';
 import replace from 'gulp-replace';
 import ext_replace from 'gulp-ext-replace';
 import shell from 'gulp-shell';
+import extReplace from 'gulp-ext-replace';
 import gulpsmith from 'gulpsmith';
 import layouts from 'metalsmith-layouts';
 import copy from 'metalsmith-copy';
@@ -19,40 +20,34 @@ const reload = browserSync.reload;
 const componentConfig = {
   site: {
     title: 'pxh-chrome',
-    version: '3.0.0',
-  }
+    version: '3.0.1',
+  },
 };
 
-gulp.task('sass', () => {
-  return gulp.src('sass/*.scss')
+gulp.task('sass', ['sass:flatten'], () => {
+  gulp.start('sass:min');
+  return gulp.src('dist/sass/*.scss')
     .pipe($.plumber())
     .pipe($.sourcemaps.init())
     .pipe($.sass.sync({
       outputStyle: 'expanded',
       precision: 10,
-      includePaths: ['.', 'bower_components'],
     }).on('error', $.sass.logError))
     .pipe($.autoprefixer({ browsers: ['> 1%', 'last 2 versions', 'Firefox ESR'] }))
     .pipe($.sourcemaps.write('.'))
-    .pipe(gulp.dest('.tmp/css'))
     .pipe(gulp.dest('dist/css'))
-    .pipe(reload({ stream: true }));
 });
 
-gulp.task('sass:dist', () => {
-  gulp.start('sass');
-  gulp.start('sass:flatten');
-  return gulp.src('sass/*.scss')
+gulp.task('sass:min', () => {
+  return gulp.src('dist/sass/*.scss')
     .pipe($.plumber())
     .pipe($.sass.sync({
       outputStyle: 'expanded',
       precision: 10,
-      includePaths: ['.', 'bower_components'],
     }).on('error', $.sass.logError))
     .pipe($.autoprefixer({ browsers: ['> 1%', 'last 2 versions', 'Firefox ESR'] }))
     .pipe($.cssnano())
-    .pipe(ext_replace('.min.css', '.css'))
-    .pipe(gulp.dest('.tmp/css'))
+    .pipe(extReplace('.min.css', '.css'))
     .pipe(gulp.dest('dist/css'));
 });
 
@@ -64,13 +59,11 @@ gulp.task('js', () => {
     .pipe($.sourcemaps.init())
     .pipe($.babel())
     .pipe($.sourcemaps.write('.'))
-    .pipe(gulp.dest('.tmp/js'))
     .pipe(gulp.dest('dist/js'))
     .pipe($.if('*.js', $.uglify({
       preserveComments: 'some',
     })))
-    .pipe(ext_replace('.min.js', '.js'))
-    .pipe(gulp.dest('.tmp/js'))
+    .pipe(extReplace('.min.js', '.js'))
     .pipe(gulp.dest('dist/js'))
     .pipe(reload({ stream: true }));
 });
@@ -81,7 +74,6 @@ function lint(files, options) {
       .pipe(reload({ stream: true, once: true }))
       .pipe($.eslint(options))
       .pipe($.eslint.format());
-      // .pipe($.if(!browserSync.active, $.eslint.failAfterError()));
   };
 }
 const testLintOptions = {
@@ -118,16 +110,8 @@ gulp.task('smith', () => {
     }))
     .on('error', console.log.bind(console))
   )
-  .pipe(gulp.dest('.tmp'))
   .pipe(gulp.dest('dist'))
   .pipe(reload({ stream: true }));
-});
-
-gulp.task('html', ['sass:dist', 'js'], () => {
-  return gulp.src(['.tmp/*.html'])
-    .pipe($.useref({ searchPath: ['.tmp'] }))
-    .pipe($.if('*.html', $.htmlmin()))
-    .pipe(gulp.dest('dist'));
 });
 
 gulp.task('extras', () => {
@@ -141,10 +125,10 @@ gulp.task('extras', () => {
 });
 
 gulp.task('img', () => {
-  return gulp.src(['public/img/*']).pipe(gulp.dest('dist/img')).pipe(gulp.dest('.tmp/img'));
+  return gulp.src(['public/img/*']).pipe(gulp.dest('dist/img'));
 });
 
-gulp.task('clean', del.bind(null, ['.tmp', 'dist']));
+gulp.task('clean', del.bind(null, ['dist']));
 
 gulp.task('serve', ['sass', 'js', 'extras', 'img'], () => {
   browserSync.init({
@@ -154,7 +138,7 @@ gulp.task('serve', ['sass', 'js', 'extras', 'img'], () => {
     port: 4000,
     notify: false,
     server: {
-      baseDir: ['.tmp', 'public'],
+      baseDir: ['dist', 'public'],
       routes: {
         '/bower_components': 'bower_components',
       },
@@ -167,26 +151,11 @@ gulp.task('serve', ['sass', 'js', 'extras', 'img'], () => {
   gulp.watch('public/img/**', ['img']);
 
   gulp.watch([
-    '.tmp/*.html',
-    '.tmp/img/*',
-    '.tmp/css/*.css',
-    '.tmp/js/*.js',
+    'dist/*.html',
+    'dist/img/*',
+    'dist/css/*.css',
+    'dist/js/*.js',
   ]).on('change', reload);
-});
-
-gulp.task('serve:dist', ['sass:dist', 'js', 'extras', 'img'], () => {
-  browserSync.init({
-    ui: {
-      port: 4040,
-    },
-    port: 4000,
-    notify: false,
-    server: {
-      baseDir: ['dist'],
-    },
-  });
-  gulp.watch('sass/**/*.scss', ['sass']);
-  gulp.watch('public/js/**/*.js', ['js']);
 });
 
 gulp.task('webdriver:update', shell.task('./node_modules/protractor/bin/webdriver-manager update'));
@@ -200,7 +169,7 @@ gulp.task('serve:e2e', ['webdriver:update', 'sass', 'js', 'extras', 'img'], () =
     open: false,
     notify: false,
     server: {
-      baseDir: ['.tmp'],
+      baseDir: ['dist'],
       routes: {
         '/bower_components': 'bower_components',
       },
@@ -216,7 +185,7 @@ gulp.task('serve:test', ['js'], () => {
     server: {
       baseDir: 'test/unit',
       routes: {
-        '/js': '.tmp/js',
+        '/js': 'dist/js',
         '/bower_components': 'bower_components',
       },
     },
@@ -227,15 +196,11 @@ gulp.task('serve:test', ['js'], () => {
   gulp.watch('test/unit/spec/**/*.js', ['lint:test']);
 });
 
-gulp.task('build', ['lint', 'smith', 'html', 'extras', 'img'], () => {
-  return gulp.src('dist/**/*').pipe($.size({ title: 'build', gzip: true }));
-});
+gulp.task('build', ['lint', 'smith', 'sass', 'js', 'extras', 'img']);
 
-// dist task is just a copy of the default task
 gulp.task('dist', ['clean'], () => {
   gulp.start('build');
 });
 
-gulp.task('default', ['clean'], () => {
-  gulp.start('build');
-});
+// the default task is the dist task
+gulp.task('default', ['dist']);

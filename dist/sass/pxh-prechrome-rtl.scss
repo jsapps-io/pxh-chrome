@@ -1,4 +1,4 @@
-/*! pxh-prechrome-rtl.css 3.0.0 */
+/*! pxh-prechrome-rtl.css 3.0.1 */
 
 /*------------------------------------*\
     #pxh-prechrome-rtl
@@ -321,16 +321,24 @@ $pxh-drawer-opposite-side: null !default;
 
 
 
-/// Path to GE web fonts
+/// Path to web font
 /// @group pxh-settings
 /// @type String [default] - Webfont path
 $webfont-path: '//dzlpbrbc7yvq0.cloudfront.net/px/fonts/1.0.0' !default;
 
+/// Name to associate with web font
 $webfont-name: 'GE Inspira Sans' !default;
 
+/// File name of regular weight web font
 $webfont-file-name-regular: GEInspiraSans-Regular-v01 !default;
+
+/// File name of bold weight web font
 $webfont-file-name-bold: GEInspiraSans-Bold-v01 !default;
+
+/// File name of italic web font 
 $webfont-file-name-italic: GEInspiraSans-Italic-v01 !default;
+
+/// File name of bold italic web font
 $webfont-file-name-bold-italic: GEInspiraSans-BoldItalic-v01 !default;
 
 
@@ -355,29 +363,37 @@ $fa-font-path: '//dzlpbrbc7yvq0.cloudfront.net/libs/font-awesome/4.7.0/fonts' !d
 
 /// <html> and <body> elements
 /// @group pxh-base
+/// Base background color
 $pxh-base-bg-color: $gray8 !default;
 
+/// Base text color
 $pxh-base-text-color: $black !default;
 
+/// Base font family
 $pxh-base-font-family: 'GE Inspira Sans', 'Helvetica', 'Arial', sans-serif !default;
 
 
 
 /// <hr> element
 /// @group pxh-hr
+/// Horizontal rule color
 $pxh-hr-color: $gray6 !default;
 
 
 
 /// <a> element
 /// @group pxh-link 
+/// Default hyperlink text color
 $pxh-link-text-color: $primary-blue !default;
 
+/// Hyperlink text color on hover
 $pxh-link-text-color-hover: $pxh-link-text-color !default;
 
+/// Default hyperlink text decoration 
 $pxh-link-text-decoration: underline !default;
 
-$pxh-link-text-decoration-hover: $pxh-link-text-decoration !default;
+/// Hyperlink text decoration on hover
+$pxh-link-text-decoration-hover: none !default;
 
 
 
@@ -419,10 +435,13 @@ $pxh-badge-font-size: $pxh-base-font-size * 0.866666666666666 !default;
 
 
 /// @group pxh-drawer
+/// Drawer background color
 $pxh-drawer-bg-color: $gray10 !default;
 
+/// Drawer toggle icon color
 $pxh-drawer-toggle-icon-color: $gray7 !default;
 
+/// Drawer header logo (if used)
 $pxh-drawer-header-image: url('../img/logo.png') !default;
 
 /// Disabled until we figure out how to add a border without reducing the logo width
@@ -431,6 +450,7 @@ $pxh-drawer-header-image: url('../img/logo.png') !default;
 /// Disabled until we figure out how to add a border without reducing the logo width
 /// $pxh-drawer-border-width: 0 !default;
 
+/// Drawer box shadow
 $pxh-drawer-box-shadow: none !default;
 
 /// Width of drawer in wide state
@@ -442,11 +462,13 @@ $pxh-drawer-width-wide: ($pxh-base-spacing-unit * 17) + ($pxh-base-spacing-unit 
 /// @group pxh-drawer
 /// @type Number
 $pxh-drawer-width-narrow: $pxh-base-spacing-unit * 4 !default;
+
 /// Drawer margin
 /// @group pxh-drawer
 /// @type Number
 $pxh-drawer-margin: $pxh-base-spacing-unit + ($pxh-base-spacing-unit / 3) !default;
 
+/// Font size of drawer header link
 $pxh-drawer-header-link-font-size: $pxh-base-font-size * 1.266666666666666 !default;
 
 
@@ -484,24 +506,39 @@ $pxh-error-padding-top: $pxh-base-spacing-unit !default;
 /// @type String
 $pxh-error-link-text-decoration: none !default;
 
+/// Font size of error icon
 $pxh-error-icon-font-size: $pxh-base-font-size * 4 !default;
 
+/// Font size of error title
 $pxh-error-title-font-size: $pxh-base-font-size * 1.333333333333333 !default;
 
+/// Font size of error description
 $pxh-error-description-font-size: $pxh-base-font-size !default;
 
 
 
 
 /// @group pxh-login
+
+/// Border color of the login component
 $pxh-login-border-color: rgba($black, 0.15) !default;
+
+/// Border width of the login component
 $pxh-login-border-width: 1px 0 0 0 !default;
 
+/// Color of the generic avatar icon
 $pxh-login-avatar-icon-color: $gray7 !default;
+
+/// Color of the generic avatar icon border
 $pxh-login-avatar-icon-border-color: $gray7 !default;
+
+/// Width of the generic avatar icon border
 $pxh-login-avatar-icon-border-width: 1px !default;
 
+/// Color of the login settings menu link text
 $pxh-login-settings-link-text-color: $gray7 !default;
+
+/// Color on hover of the login settings menu link text
 $pxh-login-settings-link-text-color-hover: $white !default;
 
 $pxh-login-menu-text-color: $white !default;
