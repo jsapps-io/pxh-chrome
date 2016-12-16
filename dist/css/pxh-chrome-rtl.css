@@ -1,5 +1,5 @@
 @charset "UTF-8";
-/*! pxh-chrome-rtl.css 3.0.0 */
+/*! pxh-chrome-rtl.css 3.0.1 */
 /*------------------------------------*    #pxh-chrome-rtl
 \*------------------------------------*/
 /*------------------------------------*    #settings.spacing
@@ -3596,7 +3596,7 @@ a {
 
 a:hover {
   color: #3e87e8;
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 /*------------------------------------*    #elements.hr

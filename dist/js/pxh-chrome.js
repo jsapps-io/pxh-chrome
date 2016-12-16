@@ -1,6 +1,6 @@
 'use strict';
 
-/*! pxh-chrome.js 3.0.0 */
+/*! pxh-chrome.js 3.0.1 */
 
 // **********************
 // RESPONSIVE BREAKPOINTS
