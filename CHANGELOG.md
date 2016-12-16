@@ -7,7 +7,7 @@
   * This way everything is compiling against the exact same Sass files, no matter if it's being done within pxh-chrome, or by ui-theme-service
 * Remove `includePaths` property from Sass compilation tasks
   * We don't need them now that we're compiling against flattened Sass
-* Remove underline on notification badge number when hovered
+* Remove underline on hover by default for all links
 * Bump browser-sync, eslint, gulp-sass, gulp-sourcemaps
 
 ### 3.0.0 - December 9, 2016
