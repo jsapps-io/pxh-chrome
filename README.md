@@ -1,6 +1,6 @@
 # pxh-chrome 3.0.1
 
-Application chrome for the Predix UI App Hub
+Application chrome for the Predix UI AppHub
 
 ## [Live Demo](https://github.build.ge.com/pages/hubs/pxh-chrome-demo)
 
@@ -88,7 +88,7 @@ The following JS files are available via CDN or Bower:
 ## Design Philosophy
 Harry Roberts' [discovr](https://github.com/csswizardry/discovr/tree/correct) application from his CSS Architecture workshop is a great reference that encapsulates much of our markup and style goals with pxh-chrome.
 
-pxh-chrome aims to provide the App Hub with enough HTML, CSS and JS to render the above components, and then get out of the way for microapp development. In achieving this goal it loads a few external depenencies (detailed in its `bower.json` file), including Sass components from Px, Font Awesome, and the GE Inspira Sans typeface.
+pxh-chrome aims to provide the AppHub with enough HTML, CSS and JS to render the above components, and then get out of the way for microapp development. In achieving this goal it loads a few external depenencies (detailed in its `bower.json` file), including Sass components from Px, Font Awesome, and the GE Inspira Sans typeface.
 
 We use Sass to author our style rules for pxh-chrome, which in turn are compiled into CSS. We pull in our color variables from [px-colors-design](https://github.com/PredixDev/px-colors-design), reset and normalize the browser's default styles with [normalize.css](https://github.com/PredixDev/px-normalize-design), and [update the global `box-sizing` state](https://github.com/PredixDev/px-box-sizing-design) to `border-box` for all elements. Additionally we use [sass-mq](https://github.com/sass-mq/sass-mq) to define our responsive media queries, ensuring they are consistent and readable.
 
@@ -174,7 +174,7 @@ Since pxh-chrome is mobile-first and responsive, there may be cases where you ne
 
 Listening to `window.width` will cover many responsive use cases, but it doesn't cover the expansion (and collapse) of the navigation drawer, as that behavior changes the width of `pxh-view` without changing the width of the browser window.
 
-Fortunately, pxh-chrome and the App Hub provides a custom event, `pxhViewResized`, that fires whenever the `pxh-view` element changes size. Simply listen for this event in your microapp, and respond as necessary after it fires.
+Fortunately, pxh-chrome and the AppHub provides a custom event, `pxhViewResized`, that fires whenever the `pxh-view` element changes size. Simply listen for this event in your microapp, and respond as necessary after it fires.
 
 * We include the ResizeSensor class from css-element-queries to give ourselves the ability to track when elements resize
 * We grab `pxh-view` by ID and put it in a var
@@ -253,13 +253,13 @@ pxh-chrome is tested in the most recent major releases of Chrome, Firefox, Safar
   1. At this point you might want to test your local version of pxh-chrome in your local version of ui-app-hub
   1. In your local pxh-chrome folder, type `bower link` to create a local symlink for pxh-chrome
   1. In your local ui-app-hub folder, type `bower link pxh-chrome` to tell ui-app-hub to use _your local modified version_ of pxh-chrome rather than the version listed on ui-app-hub's `bower.json` file
-  1. In your local ui-app-hub folder, run `gulp` (or `node app.js` or `nodemon`) to start your local App Hub
+  1. In your local ui-app-hub folder, run `gulp` (or `node app.js` or `nodemon`) to start your local AppHub
   1. Preview your changes to your local ui-app-hub and local pxh-chrome at [http://localhost:4000](http://localhost:4000)
   1. If anything looks broken, keep modifying your local ui-app-hub and pxh-chrome until it looks right
 1. If everything looks good, bump your local version of pxh-chrome (use the `gulp bump` task with parameters listed above), merge to master, tag it as a release, and push it to GitHub (remember to push your `--tags` too!)
 1. Update the `bower.json` in your local version of ui-app-hub to reference your latest version of pxh-chrome
 1. Run `bower install` to install the version of pxh-chrome that you just pushed to GitHub
-1. Fire up your local App Hub
+1. Fire up your local AppHub
 1. If everything looks good, commit your changes to ui-app-hub and push them to GitHub
 
 ## Creating a new release of pxh-chrome
