@@ -1,5 +1,8 @@
 # pxh-chrome changelog
 
+### 3.0.3 - March 7, 2017
+* Update colors to latest px 2017 themes.
+
 ### 3.0.1 - December 15, 2016
 * Remove `.tmp` folder
   * Everything now builds to and serves from the `/dist` folder
@@ -70,7 +73,7 @@ Apps that use the compiled pxh-chrome CSS are not affected.
 * Replace avatar image with Thomas Edison
 
 ### 2.8.0 - November 7, 2016
-* Change default `$pxh-view-bg-color` value to `transparent` instead of a color to minimize confusion and surprise when applied to existing designs 
+* Change default `$pxh-view-bg-color` value to `transparent` instead of a color to minimize confusion and surprise when applied to existing designs
 
 ### 2.7.0 - November 7, 2016
 * Change default value of `$pxh-view-header-border-color` from an actual color to black with 30% alpha transparency, to support a wider variety of `pxh-view` background colors
@@ -95,9 +98,9 @@ Apps that use the compiled pxh-chrome CSS are not affected.
 * Move Sass files out of `/public` folder and into root `/sass` folder
 * Bump versions on node modules
 * Alphebetize ignored files and ignore a few new ones when installing pxh-chrome via Bower
-* Support Yarn by adding a `yarn.lock` file 
+* Support Yarn by adding a `yarn.lock` file
   * Install yarn via `npm install -g yarn` and run it by typing `yarn` instead of `npm install` in the root of your project
-  * To get Yarn to work behind the GE proxy, you'll need to create a `.yarnrc` file in your `~/` home folder with the line `strict-ssl false` 
+  * To get Yarn to work behind the GE proxy, you'll need to create a `.yarnrc` file in your `~/` home folder with the line `strict-ssl false`
 
 ### 2.4.0 - October 20, 2016
 * Add `pxh-spinner--no-margin` and `pxh-spinner--margin` modifier classes to pxh-spinner loading indicator
@@ -506,11 +509,11 @@ Apps that use the compiled pxh-chrome CSS are not affected.
 * Remove `:host` declarations and minification hacks
 * Remove `calculateRem` mixin
 * Pluralize `elements.links` layer
-* Make `pxh-badge` font weight normal (not bold) by default 
+* Make `pxh-badge` font weight normal (not bold) by default
 
 ### 0.10.0 - May 12, 2016
 * Change "Your Profile" user menu item to "My Profile"
-* Move all Px Sass `@import` dependencies directly into pxh-chrome 
+* Move all Px Sass `@import` dependencies directly into pxh-chrome
 * Remove all Px dependencies from `bower.json`
 * Remove GE Inspira fonts from pxh-chrome
   * We are relying on each microapp to load it if it needs it, which current experience indicates is a reliable assumption
@@ -611,7 +614,7 @@ Apps that use the compiled pxh-chrome CSS are not affected.
   * Prevent all scrolling of `<html>` and `<body>` elements
   * Force iOS intertial scrolling of the `pxh-view`-classed element
   * Disable scrolling of `pxh-view` when `pxh-overlay` is visible
-* Move `pxh-chrome` documentation styles into a `pxh-docs` class 
+* Move `pxh-chrome` documentation styles into a `pxh-docs` class
 
 ### 0.4.1 - March 31, 2016
 * Prevent default event from firing when clicking drawer toggle buttons

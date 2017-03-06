@@ -1,6 +1,6 @@
 'use strict';
 
-/*! pxh-chrome.js 3.0.1 */
+/*! pxh-chrome.js 3.0.3 */
 
 // **********************
 // RESPONSIVE BREAKPOINTS
@@ -885,7 +885,10 @@ if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
   return init(function () {});
 });
 
-pxh.Cookies = Cookies.noConflict();
+if (Cookies)
+{
+  pxh.Cookies = Cookies.noConflict();
+}
 
 /* eslint-enable */
 
