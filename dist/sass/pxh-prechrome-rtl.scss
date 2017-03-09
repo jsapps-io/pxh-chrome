@@ -36,19 +36,22 @@ $pxh-base-spacing-unit:        $pxh-base-font-size * $pxh-base-spacing-scale-rat
     #2016 default neutral-gray theme
 \*------------------------------------*/
 
-/// @group Monochromatic (gray10 is darkest, gray1 is lightest)
+
+/// @group Monochromatic (gray10 is darkest, gray1 is lightest) - 2017 new grays regular theme
+
 $black                          : rgb(0,0,0) !default;
-$gray10                         : rgb(36,35,38) !default;
-$gray9                          : rgb(59,59,63) !default;
-$gray8                          : rgb(82,81,86) !default;
-$gray7                          : rgb(124,124,132) !default;
-$gray6                          : rgb(153,153,163) !default;
-$gray5                          : rgb(177,177,188) !default;
-$gray4                          : rgb(209,208,216) !default;
-$gray3                          : rgb(228,228,234) !default;
-$gray2                          : rgb(239,239,244) !default;
-$gray1                          : rgb(247,247,252) !default;
+$gray10                         : rgb(27,42,51) !default;
+$gray9                          : rgb(44,64,76) !default;
+$gray8                          : rgb(66,88,102) !default;
+$gray7                          : rgb(89,113,127) !default;
+$gray6                          : rgb(116,139,153) !default;
+$gray5                          : rgb(150,168,178) !default;
+$gray4                          : rgb(182,195,204) !default;
+$gray3                          : rgb(216,224,229) !default;
+$gray2                          : rgb(226,232,237) !default;
+$gray1                          : rgb(240,244,247) !default;
 $white                          : rgb(255,255,255) !default;
+
 
 $graybg                         : rgb(139,141,143) !default;
 
@@ -136,34 +139,11 @@ $dv-dark-gray                   : $black !default;
 $dv-dark-grey                   : $dv-dark-gray !default;
 
 
-
-
-/*------------------------------------*\
-    #2017 light-colored cool-gray theme
-\*------------------------------------*/
-
-/// @group Monochromatic (gray10 is darkest, gray1 is lightest)
-$l-black                          : rgb(0,0,0) !default;
-$l-gray10                         : rgb(27,42,51) !default;
-$l-gray9                          : rgb(44,64,76) !default;
-$l-gray8                          : rgb(66,88,102) !default;
-$l-gray7                          : rgb(89,113,127) !default;
-$l-gray6                          : rgb(116,139,153) !default;
-$l-gray5                          : rgb(150,168,178) !default;
-$l-gray4                          : rgb(182,195,204) !default;
-$l-gray3                          : rgb(216,224,229) !default;
-$l-gray2                          : rgb(226,232,237) !default;
-$l-gray1                          : rgb(240,244,247) !default;
-$l-white                          : rgb(255,255,255) !default;
-
-
-
-
 /*------------------------------------*\
     #lights-out theme
 \*------------------------------------*/
 
-/// @group Monochromatic (gray20 is darkest, gray1 is lightest)
+/// @group Monochromatic (gray20 is darkest, gray1 is lightest) - dark theme
 $d-black                        : rgb(0,0,0) !default;
 $d-gray20                       : rgb(5,9,12) !default;
 $d-gray19                       : rgb(12,20,25) !default;
@@ -324,7 +304,7 @@ $pxh-drawer-opposite-side: null !default;
 /// Path to web font
 /// @group pxh-settings
 /// @type String [default] - Webfont path
-$webfont-path: '//dzlpbrbc7yvq0.cloudfront.net/px/fonts/1.0.0' !default;
+$webfont-path: '//dzlpbrbc7yvq0.cloudfront.net/predixdev/fonts/1.0.0' !default;
 
 /// Name to associate with web font
 $webfont-name: 'GE Inspira Sans' !default;
@@ -357,7 +337,7 @@ $mq-breakpoints: (
 /// Path to Font Awesome fonts
 /// @group pxh-settings
 /// @type String
-$fa-font-path: '//dzlpbrbc7yvq0.cloudfront.net/libs/font-awesome/4.7.0/fonts' !default;
+$fa-font-path: '//dzlpbrbc7yvq0.cloudfront.net/libs/font-awesome/4.4.0/fonts' !default;
 
 
 
@@ -1484,7 +1464,7 @@ $mq-base-font-size: 16px !default;
 /// @example scss
 ///  // old-ie.scss
 ///  $mq-responsive: false;
-///  @import '/Users/212326609/Desktop/App Hub/pxh-chrome/bower_components/sass-mq/main'; // @media queries in this file will be rasterized up to $mq-static-breakpoint
+///  @import '/Users/212425812/hubs/pxh-chrome/bower_components/sass-mq/main'; // @media queries in this file will be rasterized up to $mq-static-breakpoint
 ///                   // larger breakpoints will be ignored
 ///
 /// @type Boolean
@@ -1519,7 +1499,7 @@ $mq-breakpoints: (
 ///  // and fix the styles (e.g. layout) at tablet width
 ///  $mq-responsive: false;
 ///  $mq-static-breakpoint: tablet;
-///  @import '/Users/212326609/Desktop/App Hub/pxh-chrome/bower_components/sass-mq/main'; // @media queries in this file will be rasterized up to tablet
+///  @import '/Users/212425812/hubs/pxh-chrome/bower_components/sass-mq/main'; // @media queries in this file will be rasterized up to tablet
 ///                   // larger breakpoints will be ignored
 ///
 /// @type String

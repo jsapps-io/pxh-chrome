@@ -10,8 +10,6 @@
 \*------------------------------------*/
 /*------------------------------------*    #default colors
 \*------------------------------------*/
-/*------------------------------------*    #2017 light-colored cool-gray theme
-\*------------------------------------*/
 /*------------------------------------*    #lights-out theme
 \*------------------------------------*/
 /*------------------------------------*    #settings.theme-prechrome
@@ -476,32 +474,32 @@ template {
   font-family: "GE Inspira Sans";
   font-weight: normal;
   font-style: normal;
-  src: url("//dzlpbrbc7yvq0.cloudfront.net/px/fonts/1.0.0/GEInspiraSans-Regular-v01.eot");
-  src: url("//dzlpbrbc7yvq0.cloudfront.net/px/fonts/1.0.0/GEInspiraSans-Regular-v01.eot?#iefix") format("embedded-opentype"), url("//dzlpbrbc7yvq0.cloudfront.net/px/fonts/1.0.0/GEInspiraSans-Regular-v01.woff") format("woff"), url("//dzlpbrbc7yvq0.cloudfront.net/px/fonts/1.0.0/GEInspiraSans-Regular-v01.ttf") format("truetype"), url("//dzlpbrbc7yvq0.cloudfront.net/px/fonts/1.0.0/GEInspiraSans-Regular-v01.svg#GE Inspira Sans") format("svg");
+  src: url("//dzlpbrbc7yvq0.cloudfront.net/predixdev/fonts/1.0.0/GEInspiraSans-Regular-v01.eot");
+  src: url("//dzlpbrbc7yvq0.cloudfront.net/predixdev/fonts/1.0.0/GEInspiraSans-Regular-v01.eot?#iefix") format("embedded-opentype"), url("//dzlpbrbc7yvq0.cloudfront.net/predixdev/fonts/1.0.0/GEInspiraSans-Regular-v01.woff") format("woff"), url("//dzlpbrbc7yvq0.cloudfront.net/predixdev/fonts/1.0.0/GEInspiraSans-Regular-v01.ttf") format("truetype"), url("//dzlpbrbc7yvq0.cloudfront.net/predixdev/fonts/1.0.0/GEInspiraSans-Regular-v01.svg#GE Inspira Sans") format("svg");
 }
 
 @font-face {
   font-family: "GE Inspira Sans";
   font-weight: normal;
   font-style: italic;
-  src: url("//dzlpbrbc7yvq0.cloudfront.net/px/fonts/1.0.0/GEInspiraSans-Italic-v01.eot");
-  src: url("//dzlpbrbc7yvq0.cloudfront.net/px/fonts/1.0.0/GEInspiraSans-Italic-v01.eot?#iefix") format("embedded-opentype"), url("//dzlpbrbc7yvq0.cloudfront.net/px/fonts/1.0.0/GEInspiraSans-Italic-v01.woff") format("woff"), url("//dzlpbrbc7yvq0.cloudfront.net/px/fonts/1.0.0/GEInspiraSans-Italic-v01.ttf") format("truetype"), url("//dzlpbrbc7yvq0.cloudfront.net/px/fonts/1.0.0/GEInspiraSans-Italic-v01.svg#GE Inspira Sans") format("svg");
+  src: url("//dzlpbrbc7yvq0.cloudfront.net/predixdev/fonts/1.0.0/GEInspiraSans-Italic-v01.eot");
+  src: url("//dzlpbrbc7yvq0.cloudfront.net/predixdev/fonts/1.0.0/GEInspiraSans-Italic-v01.eot?#iefix") format("embedded-opentype"), url("//dzlpbrbc7yvq0.cloudfront.net/predixdev/fonts/1.0.0/GEInspiraSans-Italic-v01.woff") format("woff"), url("//dzlpbrbc7yvq0.cloudfront.net/predixdev/fonts/1.0.0/GEInspiraSans-Italic-v01.ttf") format("truetype"), url("//dzlpbrbc7yvq0.cloudfront.net/predixdev/fonts/1.0.0/GEInspiraSans-Italic-v01.svg#GE Inspira Sans") format("svg");
 }
 
 @font-face {
   font-family: "GE Inspira Sans";
   font-weight: bold;
   font-style: normal;
-  src: url("//dzlpbrbc7yvq0.cloudfront.net/px/fonts/1.0.0/GEInspiraSans-Bold-v01.eot");
-  src: url("//dzlpbrbc7yvq0.cloudfront.net/px/fonts/1.0.0/GEInspiraSans-Bold-v01.eot?#iefix") format("embedded-opentype"), url("//dzlpbrbc7yvq0.cloudfront.net/px/fonts/1.0.0/GEInspiraSans-Bold-v01.woff") format("woff"), url("//dzlpbrbc7yvq0.cloudfront.net/px/fonts/1.0.0/GEInspiraSans-Bold-v01.ttf") format("truetype"), url("//dzlpbrbc7yvq0.cloudfront.net/px/fonts/1.0.0/GEInspiraSans-Bold-v01.svg#GE Inspira Sans") format("svg");
+  src: url("//dzlpbrbc7yvq0.cloudfront.net/predixdev/fonts/1.0.0/GEInspiraSans-Bold-v01.eot");
+  src: url("//dzlpbrbc7yvq0.cloudfront.net/predixdev/fonts/1.0.0/GEInspiraSans-Bold-v01.eot?#iefix") format("embedded-opentype"), url("//dzlpbrbc7yvq0.cloudfront.net/predixdev/fonts/1.0.0/GEInspiraSans-Bold-v01.woff") format("woff"), url("//dzlpbrbc7yvq0.cloudfront.net/predixdev/fonts/1.0.0/GEInspiraSans-Bold-v01.ttf") format("truetype"), url("//dzlpbrbc7yvq0.cloudfront.net/predixdev/fonts/1.0.0/GEInspiraSans-Bold-v01.svg#GE Inspira Sans") format("svg");
 }
 
 @font-face {
   font-family: "GE Inspira Sans";
   font-weight: bold;
   font-style: italic;
-  src: url("//dzlpbrbc7yvq0.cloudfront.net/px/fonts/1.0.0/GEInspiraSans-BoldItalic-v01.eot");
-  src: url("//dzlpbrbc7yvq0.cloudfront.net/px/fonts/1.0.0/GEInspiraSans-BoldItalic-v01.eot?#iefix") format("embedded-opentype"), url("//dzlpbrbc7yvq0.cloudfront.net/px/fonts/1.0.0/GEInspiraSans-BoldItalic-v01.woff") format("woff"), url("//dzlpbrbc7yvq0.cloudfront.net/px/fonts/1.0.0/GEInspiraSans-BoldItalic-v01.ttf") format("truetype"), url("//dzlpbrbc7yvq0.cloudfront.net/px/fonts/1.0.0/GEInspiraSans-BoldItalic-v01.svg#GE Inspira Sans") format("svg");
+  src: url("//dzlpbrbc7yvq0.cloudfront.net/predixdev/fonts/1.0.0/GEInspiraSans-BoldItalic-v01.eot");
+  src: url("//dzlpbrbc7yvq0.cloudfront.net/predixdev/fonts/1.0.0/GEInspiraSans-BoldItalic-v01.eot?#iefix") format("embedded-opentype"), url("//dzlpbrbc7yvq0.cloudfront.net/predixdev/fonts/1.0.0/GEInspiraSans-BoldItalic-v01.woff") format("woff"), url("//dzlpbrbc7yvq0.cloudfront.net/predixdev/fonts/1.0.0/GEInspiraSans-BoldItalic-v01.ttf") format("truetype"), url("//dzlpbrbc7yvq0.cloudfront.net/predixdev/fonts/1.0.0/GEInspiraSans-BoldItalic-v01.svg#GE Inspira Sans") format("svg");
 }
 
 /*------------------------------------*    #generic.defaults
@@ -528,8 +526,8 @@ html {
  * -------------------------- */
 @font-face {
   font-family: 'FontAwesome';
-  src: url("//dzlpbrbc7yvq0.cloudfront.net/libs/font-awesome/4.7.0/fonts/fontawesome-webfont.eot?v=4.7.0");
-  src: url("//dzlpbrbc7yvq0.cloudfront.net/libs/font-awesome/4.7.0/fonts/fontawesome-webfont.eot?#iefix&v=4.7.0") format("embedded-opentype"), url("//dzlpbrbc7yvq0.cloudfront.net/libs/font-awesome/4.7.0/fonts/fontawesome-webfont.woff2?v=4.7.0") format("woff2"), url("//dzlpbrbc7yvq0.cloudfront.net/libs/font-awesome/4.7.0/fonts/fontawesome-webfont.woff?v=4.7.0") format("woff"), url("//dzlpbrbc7yvq0.cloudfront.net/libs/font-awesome/4.7.0/fonts/fontawesome-webfont.ttf?v=4.7.0") format("truetype"), url("//dzlpbrbc7yvq0.cloudfront.net/libs/font-awesome/4.7.0/fonts/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular") format("svg");
+  src: url("//dzlpbrbc7yvq0.cloudfront.net/libs/font-awesome/4.4.0/fonts/fontawesome-webfont.eot?v=4.7.0");
+  src: url("//dzlpbrbc7yvq0.cloudfront.net/libs/font-awesome/4.4.0/fonts/fontawesome-webfont.eot?#iefix&v=4.7.0") format("embedded-opentype"), url("//dzlpbrbc7yvq0.cloudfront.net/libs/font-awesome/4.4.0/fonts/fontawesome-webfont.woff2?v=4.7.0") format("woff2"), url("//dzlpbrbc7yvq0.cloudfront.net/libs/font-awesome/4.4.0/fonts/fontawesome-webfont.woff?v=4.7.0") format("woff"), url("//dzlpbrbc7yvq0.cloudfront.net/libs/font-awesome/4.4.0/fonts/fontawesome-webfont.ttf?v=4.7.0") format("truetype"), url("//dzlpbrbc7yvq0.cloudfront.net/libs/font-awesome/4.4.0/fonts/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular") format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -3573,7 +3571,7 @@ html {
 html {
   font-size: 0.9375em;
   line-height: 1.3333333333;
-  background-color: #242326;
+  background-color: #1b2a33;
   color: white;
 }
 
@@ -3605,8 +3603,8 @@ a:hover {
 \*------------------------------------*/
 hr {
   height: 1px;
-  color: #9999a3;
-  background: #9999a3;
+  color: #748b99;
+  background: #748b99;
   font-size: 0;
   border: 0;
   margin-top: 15px;
@@ -3641,14 +3639,14 @@ hr {
 
 .pxh-error__icon {
   font-size: 60px;
-  color: #b1b1bc;
+  color: #96a8b2;
   line-height: 1;
 }
 
 .pxh-error__title {
   font-size: 20px;
   font-weight: bold;
-  color: #9999a3;
+  color: #748b99;
 }
 
 .pxh-error__title a,
@@ -3658,7 +3656,7 @@ hr {
 
 .pxh-error__description {
   font-size: 15px;
-  color: #9999a3;
+  color: #748b99;
 }
 
 .pxh-error__description a,

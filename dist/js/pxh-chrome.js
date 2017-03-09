@@ -885,10 +885,7 @@ if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
   return init(function () {});
 });
 
-if (Cookies)
-{
-  pxh.Cookies = Cookies.noConflict();
-}
+pxh.Cookies = Cookies.noConflict();
 
 /* eslint-enable */
 
