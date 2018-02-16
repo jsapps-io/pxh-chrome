@@ -114,7 +114,7 @@ gulp.task('smith', () => {
   .pipe(reload({ stream: true }));
 });
 
-gulp.task('extras', () => {
+gulp.task('extras', ['fonts'], () => {
   return gulp.src([
     'public/*.*',
     '!public/*.html',
@@ -126,6 +126,9 @@ gulp.task('extras', () => {
 
 gulp.task('img', () => {
   return gulp.src(['public/img/*']).pipe(gulp.dest('dist/img'));
+});
+gulp.task('fonts', () => {
+  return gulp.src(['fonts/*']).pipe(gulp.dest('dist/fonts'));
 });
 
 gulp.task('clean', del.bind(null, ['dist']));
