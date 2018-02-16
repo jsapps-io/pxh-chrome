@@ -2,7 +2,7 @@
   "name": "pxh-chrome",
   "private": true,
   "description": "Application chrome for the Predix UI App Hub",
-  "version": "3.0.3",
+  "version": "3.0.4",
   "homepage": "https://github.build.ge.com/hubs/pxh-chrome",
   "ignore": [
     ".babelrc",

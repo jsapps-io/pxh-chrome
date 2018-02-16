@@ -1,5 +1,8 @@
 # pxh-chrome changelog
 
+### 3.0.4 - Feb, 2018
+* Local fonts
+
 ### 3.0.3 - March 7, 2017
 * Update colors to latest px 2017 themes.
 
