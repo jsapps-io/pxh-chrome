@@ -472,32 +472,32 @@ template {
   font-family: "GE Inspira Sans";
   font-weight: normal;
   font-style: normal;
-  src: url("../fonts/GEInspiraSans-Regular-v01.eot");
-  src: url("../fonts/GEInspiraSans-Regular-v01.eot?#iefix") format("embedded-opentype"), url("../fonts/GEInspiraSans-Regular-v01.woff") format("woff"), url("../fonts/GEInspiraSans-Regular-v01.ttf") format("truetype"), url("../fonts/GEInspiraSans-Regular-v01.svg#GE Inspira Sans") format("svg");
+  src: url("../fonts/GEInspiraSans.eot");
+  src: url("../fonts/GEInspiraSans.eot?#iefix") format("embedded-opentype"), url("../fonts/GEInspiraSans.woff") format("woff"), url("../fonts/GEInspiraSans.ttf") format("truetype"), url("../fonts/GEInspiraSans.svg#GE Inspira Sans") format("svg");
 }
 
 @font-face {
   font-family: "GE Inspira Sans";
   font-weight: normal;
   font-style: italic;
-  src: url("../fonts/GEInspiraSans-Italic-v01.eot");
-  src: url("../fonts/GEInspiraSans-Italic-v01.eot?#iefix") format("embedded-opentype"), url("../fonts/GEInspiraSans-Italic-v01.woff") format("woff"), url("../fonts/GEInspiraSans-Italic-v01.ttf") format("truetype"), url("../fonts/GEInspiraSans-Italic-v01.svg#GE Inspira Sans") format("svg");
+  src: url("../fonts/GEInspiraSans-Italic.eot");
+  src: url("../fonts/GEInspiraSans-Italic.eot?#iefix") format("embedded-opentype"), url("../fonts/GEInspiraSans-Italic.woff") format("woff"), url("../fonts/GEInspiraSans-Italic.ttf") format("truetype"), url("../fonts/GEInspiraSans-Italic.svg#GE Inspira Sans") format("svg");
 }
 
 @font-face {
   font-family: "GE Inspira Sans";
   font-weight: bold;
   font-style: normal;
-  src: url("../fonts/GEInspiraSans-Bold-v01.eot");
-  src: url("../fonts/GEInspiraSans-Bold-v01.eot?#iefix") format("embedded-opentype"), url("../fonts/GEInspiraSans-Bold-v01.woff") format("woff"), url("../fonts/GEInspiraSans-Bold-v01.ttf") format("truetype"), url("../fonts/GEInspiraSans-Bold-v01.svg#GE Inspira Sans") format("svg");
+  src: url("../fonts/GEInspiraSans-Bold.eot");
+  src: url("../fonts/GEInspiraSans-Bold.eot?#iefix") format("embedded-opentype"), url("../fonts/GEInspiraSans-Bold.woff") format("woff"), url("../fonts/GEInspiraSans-Bold.ttf") format("truetype"), url("../fonts/GEInspiraSans-Bold.svg#GE Inspira Sans") format("svg");
 }
 
 @font-face {
   font-family: "GE Inspira Sans";
   font-weight: bold;
   font-style: italic;
-  src: url("../fonts/GEInspiraSans-BoldItalic-v01.eot");
-  src: url("../fonts/GEInspiraSans-BoldItalic-v01.eot?#iefix") format("embedded-opentype"), url("../fonts/GEInspiraSans-BoldItalic-v01.woff") format("woff"), url("../fonts/GEInspiraSans-BoldItalic-v01.ttf") format("truetype"), url("../fonts/GEInspiraSans-BoldItalic-v01.svg#GE Inspira Sans") format("svg");
+  src: url("../fonts/GEInspiraSans-BoldItalic.eot");
+  src: url("../fonts/GEInspiraSans-BoldItalic.eot?#iefix") format("embedded-opentype"), url("../fonts/GEInspiraSans-BoldItalic.woff") format("woff"), url("../fonts/GEInspiraSans-BoldItalic.ttf") format("truetype"), url("../fonts/GEInspiraSans-BoldItalic.svg#GE Inspira Sans") format("svg");
 }
 
 /*------------------------------------*    #generic.defaults
