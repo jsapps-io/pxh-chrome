@@ -3553,7 +3553,7 @@ $fa-var-youtube-square: "\f166";
 // mixin for embedding common animation declarations across pxh-navigation elements
 @mixin pxh-animation($name) {
   animation-name: $name;
-  animation-duration: 500ms;
+  animation-duration: var(--pxh-chrome-animation-duration, 350ms);
   animation-timing-function: ease-in-out;
   animation-iteration-count: 1;
 }
@@ -3573,7 +3573,7 @@ $mega-animate-default-config: (
   height-out: auto,
   opacity-out: 0,
   animation-name-out: animate-out,
-  animation-duration: 500ms,
+  animation-duration: var(--pxh-chrome-animation-duration, 350ms),
   block-class: default
 );
 
@@ -4055,7 +4055,7 @@ hr {
     animation-duration: 250ms;
     animation-name: pxh-drawer--animate-in;
   }
-  
+
   &--animate-out {
     animation-timing-function: ease-in-out;
     animation-fill-mode: forwards;
@@ -4066,21 +4066,21 @@ hr {
   &--animate-narrow {
     animation-timing-function: ease-in-out;
     animation-fill-mode: forwards;
-    animation-duration: 1000ms;
+    animation-duration: 500ms;
     animation-name: pxh-drawer--animate-narrow;
   }
 
   &--animate-wide {
     animation-timing-function: ease-in-out;
     animation-fill-mode: forwards;
-    animation-duration: 500ms;
+    animation-duration: 350ms;
     animation-name: pxh-drawer--animate-wide;
   }
 
   &--animate-out-wide {
     animation-timing-function: ease-in-out;
     animation-fill-mode: forwards;
-    animation-duration: 1000ms;
+    animation-duration: 500ms;
     animation-name: pxh-drawer--animate-out-wide;
   }
 
@@ -4115,7 +4115,7 @@ hr {
     float: $pxh-drawer-side;
     width: $pxh-drawer-margin * 3;
     height: $pxh-drawer-margin * 3;
-    padding: $pxh-drawer-margin;
+    padding: $pxh-drawer-margin / 2 + 4;
     color: $pxh-drawer-toggle-icon-color;
     &:link,
     &:visited {
@@ -4125,6 +4125,10 @@ hr {
 
   &__icon {
     fill: $pxh-drawer-toggle-icon-color;
+    //height: 1em;
+    //width: 1em;
+    transform-origin: 0px 0px 0px;
+    font-size: 24px;
   }
 }
 
@@ -4197,13 +4201,13 @@ hr {
 
     &--animate-in {
       animation-fill-mode: forwards;
-      animation-duration: 1000ms;
+      animation-duration: var(--pxh-chrome-link-animation-duration, 350ms);
       animation-name: pxh-drawer-header__link--animate-in;
     }
 
     &--animate-out {
       animation-fill-mode: forwards;
-      animation-duration: 1000ms;
+      animation-duration: var(--pxh-chrome-link-animation-duration, 350ms);
       animation-name: pxh-drawer-header__link--animate-out;
     }
 
@@ -4242,7 +4246,7 @@ hr {
 // chain to override px-theme
 .pxh-drawer-header__link {
   @include pxh-override-px-theme-text-color('pxh-drawer-header__link');
-} 
+}
 
 /*------------------------------------*\
     #components.pxh-error
@@ -4758,12 +4762,12 @@ $pxh-login-animate-config: (
 .pxh-navigation__item-text {
   &--animate-in {
     animation-fill-mode: forwards;
-    animation-duration: 1000ms;
+    animation-duration: var(--pxh-chrome-animation-duration, 350ms);
     animation-name: pxh-navigation__item-text--animate-in;
   }
   &--animate-out {
     animation-fill-mode: forwards;
-    animation-duration: 1000ms;
+    animation-duration: var(--pxh-chrome-animation-duration, 350ms);
     animation-name: pxh-navigation__item-text--animate-out;
   }
 }
@@ -4846,13 +4850,13 @@ $pxh-login-animate-config: (
 .pxh-navigation__sub-link {
   &--animate-in {
     animation-fill-mode: forwards;
-    animation-duration: 1000ms;
+    animation-duration: var(--pxh-chrome-sub-link-animation-duration, 350ms);
     animation-name: pxh-navigation__sub-link--animate-in;
 
   }
   &--animate-out {
     animation-fill-mode: forwards;
-    animation-duration: 1000ms;
+    animation-duration: var(--pxh-chrome-sub-link-animation-duration, 350ms);
     animation-name: pxh-navigation__sub-link--animate-out;
   }
 }
@@ -5895,6 +5899,8 @@ $pxh-login-animate-config: (
   border-width: $pxh-view-header-border-width;
   height: $pxh-view-header-height;
   z-index: 250;
+  display: flex;
+  align-items: center;
 
   &--animate-wide {
     animation-timing-function: ease-in-out;
@@ -5966,7 +5972,8 @@ $pxh-login-animate-config: (
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  padding-top: $pxh-base-spacing-unit;
+  //padding-top: $pxh-base-spacing-unit;
+  flex: 1;
   text-align: center;
   font-size: $pxh-view-header-title-font-size;
 }
@@ -6004,15 +6011,16 @@ $pxh-login-animate-config: (
   // in a bounce scenario.
   &--hidden {
     #{$pxh-drawer-side}: $pxh-drawer-width-narrow * -1;
-    opacity: 0;  
+    opacity: 0;
   }
 
   &__link {
     display: block;
     height: $pxh-drawer-width-narrow;
     width: $pxh-drawer-width-narrow;
-    padding-top: $pxh-drawer-margin;
-    padding-#{$pxh-drawer-side}: $pxh-drawer-margin;
+    //padding-top: $pxh-drawer-margin;
+    //padding-#{$pxh-drawer-side}: $pxh-drawer-margin;
+    padding: 10px;
     text-decoration: none;
   }
 }

@@ -3805,21 +3805,21 @@ hr {
 .pxh-drawer--animate-narrow {
   animation-timing-function: ease-in-out;
   animation-fill-mode: forwards;
-  animation-duration: 1000ms;
+  animation-duration: 500ms;
   animation-name: pxh-drawer--animate-narrow;
 }
 
 .pxh-drawer--animate-wide {
   animation-timing-function: ease-in-out;
   animation-fill-mode: forwards;
-  animation-duration: 500ms;
+  animation-duration: 350ms;
   animation-name: pxh-drawer--animate-wide;
 }
 
 .pxh-drawer--animate-out-wide {
   animation-timing-function: ease-in-out;
   animation-fill-mode: forwards;
-  animation-duration: 1000ms;
+  animation-duration: 500ms;
   animation-name: pxh-drawer--animate-out-wide;
 }
 
@@ -3850,7 +3850,7 @@ hr {
   float: left;
   width: 60px;
   height: 60px;
-  padding: 20px;
+  padding: 14px;
   color: #59717f;
 }
 
@@ -3860,6 +3860,8 @@ hr {
 
 .pxh-drawer-toggle__icon {
   fill: #59717f;
+  transform-origin: 0px 0px 0px;
+  font-size: 24px;
 }
 
 /*------------------------------------*    #pxh-drawer-header
@@ -3952,13 +3954,13 @@ hr {
 
 .pxh-drawer-header__link--animate-in {
   animation-fill-mode: forwards;
-  animation-duration: 1000ms;
+  animation-duration: var(--pxh-chrome-link-animation-duration, 350ms);
   animation-name: pxh-drawer-header__link--animate-in;
 }
 
 .pxh-drawer-header__link--animate-out {
   animation-fill-mode: forwards;
-  animation-duration: 1000ms;
+  animation-duration: var(--pxh-chrome-link-animation-duration, 350ms);
   animation-name: pxh-drawer-header__link--animate-out;
 }
 
@@ -4755,13 +4757,13 @@ hr {
 
 .pxh-navigation__item-text--animate-in {
   animation-fill-mode: forwards;
-  animation-duration: 1000ms;
+  animation-duration: var(--pxh-chrome-animation-duration, 350ms);
   animation-name: pxh-navigation__item-text--animate-in;
 }
 
 .pxh-navigation__item-text--animate-out {
   animation-fill-mode: forwards;
-  animation-duration: 1000ms;
+  animation-duration: var(--pxh-chrome-animation-duration, 350ms);
   animation-name: pxh-navigation__item-text--animate-out;
 }
 
@@ -4851,13 +4853,13 @@ hr {
 
 .pxh-navigation__sub-link--animate-in {
   animation-fill-mode: forwards;
-  animation-duration: 1000ms;
+  animation-duration: var(--pxh-chrome-sub-link-animation-duration, 350ms);
   animation-name: pxh-navigation__sub-link--animate-in;
 }
 
 .pxh-navigation__sub-link--animate-out {
   animation-fill-mode: forwards;
-  animation-duration: 1000ms;
+  animation-duration: var(--pxh-chrome-sub-link-animation-duration, 350ms);
   animation-name: pxh-navigation__sub-link--animate-out;
 }
 
@@ -6198,6 +6200,10 @@ hr {
   border-width: 0 0 1px 0;
   height: 61px;
   z-index: 250;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+      align-items: center;
 }
 
 .pxh-view-header--animate-wide {
@@ -6259,7 +6265,8 @@ hr {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  padding-top: 15px;
+  -ms-flex: 1;
+      flex: 1;
   text-align: center;
   font-size: 20px;
 }
@@ -6298,8 +6305,7 @@ hr {
   display: block;
   height: 60px;
   width: 60px;
-  padding-top: 20px;
-  padding-left: 20px;
+  padding: 10px;
   text-decoration: none;
 }
 

@@ -197,6 +197,8 @@
   border-width: $pxh-view-header-border-width;
   height: $pxh-view-header-height;
   z-index: 250;
+  display: flex;
+  align-items: center;
 
   &--animate-wide {
     animation-timing-function: ease-in-out;
@@ -268,7 +270,8 @@
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  padding-top: $pxh-base-spacing-unit;
+  //padding-top: $pxh-base-spacing-unit;
+  flex: 1;
   text-align: center;
   font-size: $pxh-view-header-title-font-size;
 }
@@ -306,15 +309,16 @@
   // in a bounce scenario.
   &--hidden {
     #{$pxh-drawer-side}: $pxh-drawer-width-narrow * -1;
-    opacity: 0;  
+    opacity: 0;
   }
 
   &__link {
     display: block;
     height: $pxh-drawer-width-narrow;
     width: $pxh-drawer-width-narrow;
-    padding-top: $pxh-drawer-margin;
-    padding-#{$pxh-drawer-side}: $pxh-drawer-margin;
+    //padding-top: $pxh-drawer-margin;
+    //padding-#{$pxh-drawer-side}: $pxh-drawer-margin;
+    padding: 10px;
     text-decoration: none;
   }
 }
