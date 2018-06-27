@@ -101,7 +101,7 @@
     animation-duration: 250ms;
     animation-name: pxh-drawer--animate-in;
   }
-  
+
   &--animate-out {
     animation-timing-function: ease-in-out;
     animation-fill-mode: forwards;
@@ -112,21 +112,21 @@
   &--animate-narrow {
     animation-timing-function: ease-in-out;
     animation-fill-mode: forwards;
-    animation-duration: 1000ms;
+    animation-duration: 500ms;
     animation-name: pxh-drawer--animate-narrow;
   }
 
   &--animate-wide {
     animation-timing-function: ease-in-out;
     animation-fill-mode: forwards;
-    animation-duration: 500ms;
+    animation-duration: 350ms;
     animation-name: pxh-drawer--animate-wide;
   }
 
   &--animate-out-wide {
     animation-timing-function: ease-in-out;
     animation-fill-mode: forwards;
-    animation-duration: 1000ms;
+    animation-duration: 500ms;
     animation-name: pxh-drawer--animate-out-wide;
   }
 
@@ -161,7 +161,7 @@
     float: $pxh-drawer-side;
     width: $pxh-drawer-margin * 3;
     height: $pxh-drawer-margin * 3;
-    padding: $pxh-drawer-margin;
+    padding: $pxh-drawer-margin / 2 + 4;
     color: $pxh-drawer-toggle-icon-color;
     &:link,
     &:visited {
@@ -171,6 +171,10 @@
 
   &__icon {
     fill: $pxh-drawer-toggle-icon-color;
+    //height: 1em;
+    //width: 1em;
+    transform-origin: 0px 0px 0px;
+    font-size: 24px;
   }
 }
 
@@ -243,13 +247,13 @@
 
     &--animate-in {
       animation-fill-mode: forwards;
-      animation-duration: 1000ms;
+      animation-duration: var(--pxh-chrome-link-animation-duration, 350ms);
       animation-name: pxh-drawer-header__link--animate-in;
     }
 
     &--animate-out {
       animation-fill-mode: forwards;
-      animation-duration: 1000ms;
+      animation-duration: var(--pxh-chrome-link-animation-duration, 350ms);
       animation-name: pxh-drawer-header__link--animate-out;
     }
 
@@ -288,4 +292,4 @@
 // chain to override px-theme
 .pxh-drawer-header__link {
   @include pxh-override-px-theme-text-color('pxh-drawer-header__link');
-} 
+}

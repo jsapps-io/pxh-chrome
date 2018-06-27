@@ -118,12 +118,12 @@
 .pxh-navigation__item-text {
   &--animate-in {
     animation-fill-mode: forwards;
-    animation-duration: 1000ms;
+    animation-duration: var(--pxh-chrome-animation-duration, 350ms);
     animation-name: pxh-navigation__item-text--animate-in;
   }
   &--animate-out {
     animation-fill-mode: forwards;
-    animation-duration: 1000ms;
+    animation-duration: var(--pxh-chrome-animation-duration, 350ms);
     animation-name: pxh-navigation__item-text--animate-out;
   }
 }
@@ -206,13 +206,13 @@
 .pxh-navigation__sub-link {
   &--animate-in {
     animation-fill-mode: forwards;
-    animation-duration: 1000ms;
+    animation-duration: var(--pxh-chrome-sub-link-animation-duration, 350ms);
     animation-name: pxh-navigation__sub-link--animate-in;
 
   }
   &--animate-out {
     animation-fill-mode: forwards;
-    animation-duration: 1000ms;
+    animation-duration: var(--pxh-chrome-sub-link-animation-duration, 350ms);
     animation-name: pxh-navigation__sub-link--animate-out;
   }
 }

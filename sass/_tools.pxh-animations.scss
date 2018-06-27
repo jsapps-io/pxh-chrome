@@ -24,7 +24,7 @@
 // mixin for embedding common animation declarations across pxh-navigation elements
 @mixin pxh-animation($name) {
   animation-name: $name;
-  animation-duration: 500ms;
+  animation-duration: var(--pxh-chrome-animation-duration, 350ms);
   animation-timing-function: ease-in-out;
   animation-iteration-count: 1;
 }
@@ -44,7 +44,7 @@ $mega-animate-default-config: (
   height-out: auto,
   opacity-out: 0,
   animation-name-out: animate-out,
-  animation-duration: 500ms,
+  animation-duration: var(--pxh-chrome-animation-duration, 350ms),
   block-class: default
 );
 
