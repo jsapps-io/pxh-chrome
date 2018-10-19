@@ -197,9 +197,8 @@
   border-width: $pxh-view-header-border-width;
   height: $pxh-view-header-height;
   z-index: 250;
-  display: flex;
-  align-items: center;
-
+  display: block;
+ 
   &--animate-wide {
     animation-timing-function: ease-in-out;
     animation-fill-mode: forwards;
