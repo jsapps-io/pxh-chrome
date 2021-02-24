@@ -4,7 +4,7 @@ Application chrome for the Predix UI AppHub
 
 ## [Live Demo](https://github.build.ge.com/pages/hubs/pxh-chrome-demo)
 
-pxh-chrome is the CSS/HTML layer of [ui-app-hub](https://github.build.ge.com/hubs/ui-app-hub), a front-end architecture that allows you to build and deliver separate [microapps](https://github.build.ge.com/hubs/ui-microapp) to your users through a shared navigation portal. Adhering to a mobile-first mindset, pxh-chrome offers the following components:
+pxh-chrome is the CSS/HTML layer of [ui-app-hub](), a front-end architecture that allows you to build and deliver separate [microapps](https://github.build.ge.com/hubs/ui-microapp) to your users through a shared navigation portal. Adhering to a mobile-first mindset, pxh-chrome offers the following components:
 
 * `pxh-drawer`, a fixed lefthand drawer that contains application navigation, user profile information, and login controls
 * `pxh-drawer-toggle` - a "hamburger" that allows a user to toggle the navigation drawer open or closed
