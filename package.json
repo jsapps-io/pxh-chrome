@@ -1,6 +1,6 @@
 {
-  "name": "@jsapps/pxh-chrome",
-  "description": "Application chrome for the Predix UI App Hub",
+  "name": "@jsapps-io/pxh-chrome",
+  "description": "Application chrome for the UI AppHub",
   "version": "3.0.7",
   "homepage": "https://github.com/jsapps-io/pxh-chrome",
   "engines": {
